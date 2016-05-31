@@ -1,0 +1,42 @@
+<div class="navbar navbar-default">
+    <div class="navbar-header">
+        <p>Assessment Tool</p>
+    </div>
+</div>
+
+<h1>{{getCurrentPage().title}}</h1>
+
+<div *ngFor='#column of getCurrentPageContent()' class="col-sm-6 col-md-3">
+    <div *ngFor='#element of column.getElements()' class="thumbnail tile tile-large tile-{{element.color}}">
+        <a (click)="element.onClick()" class="fa-links">
+            <h1>{{element.name}}</h1>
+            <i class="fa fa-3x {{element.icon}}"></i>
+        </a>
+    </div>
+</div>
+
+<div class="col-sm-6 col-md-3">
+    <div class="col-sm-6 col-md-3">
+        <div *ngFor='#element of getCurrentForm()'>
+            <div class="modal fade show in danger" id="myModal" role="dialog">
+                <h1>{{element.title}}</h1>
+                <form [ngFormModel]="loginForm" (submit)="doLogin($event)">
+                    <div *ngFor='#field of element.fields'>
+                        <div *ngIf="field.type == 'text'">
+                            {{field.name}}<input type="text"/>
+                        </div>
+                        <div *ngIf="field.type == 'date'">
+                            {{field.name}}<input type="date"/>
+                        </div>
+                        <div *ngIf="field.type == 'okButton'" type="button">
+                            <input type="button" value="{{field.name}}"/>
+                        </div>
+                        <div *ngIf="field.type == 'cancelButton'" type="button">
+                            <input type="button" value="{{field.name}}"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
