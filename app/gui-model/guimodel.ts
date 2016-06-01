@@ -35,7 +35,7 @@ export class GuiModel {
                         },
                         {
                             "type": "autocomplete",
-                            "name": "Deloitte PL",
+                            "name": "D******e PL",
                             "actions": [{"type": "new", "name": "New..."}]
                         },
                         {
