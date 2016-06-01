@@ -126,6 +126,22 @@ export class FormField {
     }
 }
 
+export class RadioGroup extends FormField {
+    private _radios:Radio[] = [];
+
+    get radios():Radio[] {
+        return this._radios;
+    }
+
+    set radios(value:Radio[]) {
+        this._radios = value;
+    }
+}
+
+export class Radio extends FormField {
+
+}
+
 export class AutoComplete extends FormField {
     public query = '';
     public data = [];

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/common';
 import {GuiModel} from './gui-model/guimodel';
-import {Column, Page, Form, FormField, Action, Button, PathApp, AutoComplete} from './path-framework/path';
+import {Column, Page, Form, FormField, Action, Button, PathApp, AutoComplete, RadioGroup, Radio} from './path-framework/path';
 
 
 @Component({
@@ -33,6 +33,14 @@ export class AppComponent implements PathApp {
 
   public doCancel() {
     this.currentForms = [];
+  }
+
+  public getCurrentPage() {
+    return this.currentPage;
+  }
+
+  public getCurrentForms() {
+    return this.currentForms;
   }
 
   public setCurrentPage(pageId:String) {
@@ -86,6 +94,16 @@ export class AppComponent implements PathApp {
               formField = autoCompleteFormField;
               break;
             }
+            case "radiogroup": {
+              let radioGroupFormField = new RadioGroup(this);
+              for (var radioModel of modelFormField["radios"]) {
+                let radio = new Radio(this);
+                radio.name = radioModel.name;
+                radioGroupFormField.radios.push(radio);
+              }
+              formField = radioGroupFormField;
+              break;
+            }
             default: {
               formField = new FormField(this);
             }
@@ -107,14 +125,6 @@ export class AppComponent implements PathApp {
       }
     }
     this.currentForms = forms;
-  }
-
-  public getCurrentPage() {
-    return this.currentPage;
-  }
-
-  public getCurrentForm() {
-    return this.currentForms;
   }
 
 }

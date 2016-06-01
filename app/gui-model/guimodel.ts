@@ -38,6 +38,18 @@ export class GuiModel {
                             "data": ["Oil& Gas", "Basic Materials", "Industrials", "Consumer Services", "Consumer Goods", "Health Care", "Financials", "Technology", "Telecommunications", "Utilities"]
                         },
                         {
+                            "type": "radiogroup",
+                            "name": "Benchmarking",
+                            "radios": [{
+                                type: "radio",
+                                name: "Yes"
+                            }, {
+                                type: "radio",
+                                name: "No"
+                            }
+                            ]
+                        },
+                        {
                             "type": "text",
                             "name": "Comments",
                             "height": 8

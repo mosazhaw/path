@@ -19,7 +19,7 @@
 <!-- Form -->
 <div class="col-sm-6 col-md-3">
     <div class="col-sm-6 col-md-3">
-        <div *ngFor='let element of getCurrentForm()'>
+        <div *ngFor="let element of getCurrentForms()">
             <div class="modal fade show in danger" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -72,6 +72,23 @@
                                                     <!-- Action -->
                                                     <span class="input-group-btn" *ngFor='let action of field.actions'>
                                                         <button class="btn btn-default" type="button">{{action.name}}</button>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="field.type == 'radiogroup'">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h4 class="modal-title">{{field.name}}</h4>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="input-group input-group-lg">
+                                                    <span *ngFor='let radioElement of field.radios'>
+                                                            <label class="control radio">
+                                                                <input type="radio">
+                                                                <span class="radio-label"> {{radioElement.name}}</span>
+                                                            </label>
                                                     </span>
                                                 </div>
                                             </div>
