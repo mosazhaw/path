@@ -54,6 +54,21 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div *ngIf="field.type == 'select'">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h4 class="modal-title">{{field.name}}</h4>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="input-group input-group-lg">
+                                                    <input type="text" class="form-control" placeholder="">
+                                                        <span class="input-group-btn" *ngFor='let action of field.actions'>
+                                                            <button class="btn btn-default" type="button">{{action.name}}</button>
+                                                        </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">

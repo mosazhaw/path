@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/common';
 import {GuiModel} from './gui-model/guimodel';
-import {Column, Page, Form, FormField, Button, PathApp} from './path-framework/path';
+import {Column, Page, Form, FormField, Action, Button, PathApp} from './path-framework/path';
 
 
 @Component({
@@ -66,6 +66,14 @@ export class AppComponent implements PathApp {
           let formField:FormField = new FormField(this);
           formField.name = formFieldItem.name;
           formField.type = formFieldItem.type;
+          if (formFieldItem.actions != null) {
+            for (var action of formFieldItem.actions) {
+              let actionObject:Action = new Action();
+              actionObject.name = action.name;
+              actionObject.type = action.type;
+              formField.actions.push(actionObject);
+            }
+          }
           form.fields.push(formField);
         }
         forms.push(form)

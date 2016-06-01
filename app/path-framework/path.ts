@@ -48,10 +48,32 @@ export class Form {
     }
 }
 
+export class Action {
+    private _name:String;
+    private _type:String;
+
+    get name():String {
+        return this._name;
+    }
+
+    set name(value:String) {
+        this._name = value;
+    }
+
+    get type():String {
+        return this._type;
+    }
+
+    set type(value:String) {
+        this._type = value;
+    }
+}
+
 export class FormField {
     private _app:PathApp;
     private _name:String;
     private _type:String;
+    private _actions:Action[] = [];
 
     constructor(app:PathApp) {
         this._app = app;
@@ -75,6 +97,14 @@ export class FormField {
 
     set type(value:String) {
         this._type = value;
+    }
+
+    get actions():Action[] {
+        return this._actions;
+    }
+
+    set actions(value:Array) {
+        this._actions = value;
     }
 }
 

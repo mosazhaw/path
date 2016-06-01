@@ -21,6 +21,24 @@ export class GuiModel {
                             "name": "End Date"
                         },
                         {
+                            "type": "select",
+                            "name": "Customer PL",
+                            "actions": [{"type": "new", "name": "New..."}]
+                        },
+                        {
+                            "type": "select",
+                            "name": "Deloitte PL",
+                            "actions": [{"type": "new", "name": "New..."}]
+                        },
+                        {
+                            "type": "select",
+                            "name": "Industry Segment"
+                        },
+                        {
+                            "type": "text",
+                            "name": "Comments"
+                        },
+                        {
                             "type": "cancelButton",
                             "name": "Cancel"
                         },
