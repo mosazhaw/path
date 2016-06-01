@@ -31,26 +31,42 @@
                             <div class="modal-body">
                                 <div *ngFor='let field of element.fields'>
                                     <div *ngIf="field.type == 'text'">
-                                        <div class="input-group input-group-lg">
-                                            <span class="input-group-addon">{{field.name}}</span>
-                                            <input type="text" class="form-control" placeholder="">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h4 class="modal-title">{{field.name}}</h4>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="input-group input-group-lg">
+                                                    <input type="text" class="form-control" placeholder="">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div *ngIf="field.type == 'date'">
-                                        <div class="input-group input-group-lg">
-                                            <span class="input-group-addon">{{field.name}}</span>
-                                            <input type="date" class="form-control" placeholder="">
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <h4 class="modal-title">{{field.name}}</h4>
+                                            </div>
+                                            <div class="col-md-8">
+                                                <div class="input-group input-group-lg">
+                                                    <input type="date" class="form-control" placeholder="">
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <div *ngFor='let field of element.fields'>
-                                    <div *ngIf="field.type == 'okButton'" type="button">
-                                        <input type="button" class="btn btn-default btn-lg" (click)="doOk()" value="{{field.name}}"/>
-                                    </div>
-                                    <div *ngIf="field.type == 'cancelButton'" type="button">
-                                        <input type="button" class="btn btn-default btn-lg" (click)="doCancel()" value="{{field.name}}"/>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <span *ngFor='let field of element.fields'>
+                                            <span *ngIf="field.type == 'okButton'">
+                                                <input type="button" class="btn btn-default btn-lg" (click)="doOk()" value="{{field.name}}"/>
+                                            </span>
+                                            <span *ngIf="field.type == 'cancelButton'">
+                                                <input type="button" class="btn btn-default btn-lg" (click)="doCancel()" value="{{field.name}}"/>
+                                            </span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
