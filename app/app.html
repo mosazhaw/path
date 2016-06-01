@@ -23,7 +23,7 @@
             <div class="modal fade show in danger" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <form [ngFormModel]="dynamicForm" (submit)="doLogin($event)">
+                        <form (submit)="doLogin($event)">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" (click)="doCancel()">&times;</button>
                                 <h4 class="modal-title">{{element.title}}</h4>
@@ -54,17 +54,26 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div *ngIf="field.type == 'select'">
+                                    <div *ngIf="field.type == 'autocomplete'">
                                         <div class="row">
                                             <div class="col-md-4">
                                                 <h4 class="modal-title">{{field.name}}</h4>
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="input-group input-group-lg">
-                                                    <input type="text" class="form-control" placeholder="">
-                                                        <span class="input-group-btn" *ngFor='let action of field.actions'>
-                                                            <button class="btn btn-default" type="button">{{action.name}}</button>
-                                                        </span>
+                                                    <input #el type="text" (keyup)=field.filter(el.value) class="form-control" placeholder="">
+                                                    <!-- Action -->
+                                                    <span class="input-group-btn" *ngFor='let action of field.actions'>
+                                                        <button class="btn btn-default" type="button">{{action.name}}</button>
+                                                    </span>
+                                                    <!-- Auto Complete -->
+                                                    <div class="suggestions" *ngIf="field.filteredList.length > 0">
+                                                        <ul *ngFor="let item of field.filteredList" >
+                                                            <li>
+                                                                <a (click)="select(item)">{{item}}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

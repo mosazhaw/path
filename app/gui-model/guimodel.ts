@@ -21,17 +21,25 @@ export class GuiModel {
                             "name": "End Date"
                         },
                         {
-                            "type": "select",
+                            "type": "autocomplete",
                             "name": "Customer PL",
-                            "actions": [{"type": "new", "name": "New..."}]
+                            "actions": [{"type": "new", "name": "New..."}],
+                            "data": ["Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus",
+                                "Belgium", "Bosnia & Herzegovina", "Bulgaria", "Croatia", "Cyprus",
+                                "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Georgia",
+                                "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo",
+                                "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Malta",
+                                "Moldova", "Monaco", "Montenegro", "Netherlands", "Norway", "Poland",
+                                "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia",
+                                "Spain", "Sweden", "Switzerland", "Turkey", "Ukraine", "United Kingdom", "Vatican City"]
                         },
                         {
-                            "type": "select",
+                            "type": "autocomplete",
                             "name": "Deloitte PL",
                             "actions": [{"type": "new", "name": "New..."}]
                         },
                         {
-                            "type": "select",
+                            "type": "autocomplete",
                             "name": "Industry Segment"
                         },
                         {

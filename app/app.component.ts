@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/common';
 import {GuiModel} from './gui-model/guimodel';
-import {Column, Page, Form, FormField, Action, Button, PathApp} from './path-framework/path';
+import {Column, Page, Form, FormField, Action, Button, PathApp, AutoComplete} from './path-framework/path';
 
 
 @Component({
@@ -64,6 +64,10 @@ export class AppComponent implements PathApp {
         form.title = item.title;
         for (var formFieldItem of item.formFieldList) {
           let formField:FormField = new FormField(this);
+          // TODO use better switch
+          if (formFieldItem.type == "autocomplete") {
+            formField = new AutoComplete(this);
+          }
           formField.name = formFieldItem.name;
           formField.type = formFieldItem.type;
           if (formFieldItem.actions != null) {
@@ -79,8 +83,6 @@ export class AppComponent implements PathApp {
         forms.push(form)
       }
     }
-    console.log("Form displayed");
-    console.log(forms);
     return forms;
   }
 
