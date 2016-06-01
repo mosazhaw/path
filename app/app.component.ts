@@ -22,15 +22,15 @@ export class AppComponent implements PathApp {
   }
 
   private currentPage:String = "mainmenu"; // TODO use page object instead of string
-  private currentForm:String = null;
+  private currentForms:Form[] = [];
   private showMenu:boolean = true;
 
   public doOk() {
-    this.currentForm = null;
+    this.currentForms = [];
   }
 
   public doCancel() {
-    this.currentForm = null;
+    this.currentForms = [];
   }
 
   public itemSelected = () => {
@@ -41,25 +41,11 @@ export class AppComponent implements PathApp {
     this.currentPage = page;
   }
 
-  public setCurrentForm(form:String) {
-    this.currentForm = form;
-  }
-
-  public getCurrentPage() {
-    let page:Page = new Page();
-    for (var item of this.appConfig.application.pageList) {
-      if (item.id === this.currentPage) {
-        page.title = item.title;
-      }
-    }
-    return page;
-  }
-
-  public getCurrentForm() {
+  public setCurrentForm(formId:String) {
     let forms:Form[] = [];
     let form:Form = null;
     for (var item of this.appConfig.application.formList) {
-      if (item.id === this.currentForm) {
+      if (item.id === formId) {
         form = new Form();
         form.title = item.title;
         for (var formFieldItem of item.formFieldList) {
@@ -83,7 +69,21 @@ export class AppComponent implements PathApp {
         forms.push(form)
       }
     }
-    return forms;
+    this.currentForms = forms;
+  }
+
+  public getCurrentPage() {
+    let page:Page = new Page();
+    for (var item of this.appConfig.application.pageList) {
+      if (item.id === this.currentPage) {
+        page.title = item.title;
+      }
+    }
+    return page;
+  }
+
+  public getCurrentForm() {
+    return this.currentForms;
   }
 
   // TODO move to current page
