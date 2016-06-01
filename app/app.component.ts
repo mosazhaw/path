@@ -44,23 +44,30 @@ export class AppComponent implements PathApp {
   public setCurrentForm(formId:String) {
     let forms:Form[] = [];
     let form:Form = null;
-    for (var item of this.appConfig.application.formList) {
-      if (item.id === formId) {
+    for (var modelForm of this.appConfig.application.formList) {
+      if (modelForm.id === formId) {
+        // create form
         form = new Form();
-        form.title = item.title;
-        for (var formFieldItem of item.formFieldList) {
-          let formField:FormField = new FormField(this);
-          // TODO use better switch
-          if (formFieldItem.type == "autocomplete") {
-            let autoCompleteFormField = new AutoComplete(this);
-            autoCompleteFormField.data = formFieldItem["data"];
-            formField = autoCompleteFormField;
+        form.title = modelForm.title;
+        for (var modelFormField of modelForm.formFieldList) {
+          // create form fields
+          let formField:FormField = null;
+          switch (modelFormField.type) {
+            case "autocomplete": {
+              let autoCompleteFormField = new AutoComplete(this);
+              autoCompleteFormField.data = modelFormField["data"];
+              formField = autoCompleteFormField;
+              break;
+            }
+            default: {
+              formField = new FormField(this);
+            }
           }
-          formField.name = formFieldItem.name;
-          formField.type = formFieldItem.type;
-          formField.height = formFieldItem["height"];
-          if (formFieldItem["actions"] != null) {
-            for (var action of formFieldItem["actions"]) {
+          formField.name = modelFormField.name;
+          formField.type = modelFormField.type;
+          formField.height = modelFormField["height"];
+          if (modelFormField["actions"] != null) {
+            for (var action of modelFormField["actions"]) {
               let actionObject:Action = new Action();
               actionObject.name = action.name;
               actionObject.type = action.type;
