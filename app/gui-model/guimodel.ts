@@ -159,11 +159,11 @@ export class GuiModel {
                             "column": 1
                         },
                         {
-                            "type": "button",
-                            "name": "Select Customer",
+                            "type": "list",
+                            "name": "Customer List",
                             "icon": "fa-home",
                             "color": "blue",
-                            "column": 1
+                            "data": [ {"name":"Project One"}, {"name":"Project Two"}, {"name":"Project Three"}]
                         }
                     ]
                 }

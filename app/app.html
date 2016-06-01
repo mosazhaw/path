@@ -8,12 +8,22 @@
 
 <!-- Page -->
 <div class="col-md-12">
-    <div *ngFor='let pageElement of getCurrentPage().content' class="thumbnail tile tile-large tile-{{pageElement.color}}">
+    <span *ngFor='let pageElement of getCurrentPage().content'>
+    <div *ngIf='pageElement.type == "button"' class="thumbnail tile tile-large tile-{{pageElement.color}}">
         <a (click)="pageElement.onClick()" class="fa-links">
             <h1>{{pageElement.name}}</h1>
             <i class="fa fa-3x {{pageElement.icon}}"></i>
         </a>
     </div>
+    <span *ngIf='pageElement.type == "list"'>
+    <div *ngFor='let listElement of pageElement.content' class="thumbnail tile tile-large tile-{{pageElement.color}}">
+        <a (click)="listElement.onClick()" class="fa-links">
+            <h1>{{listElement.name}}</h1>
+            <i class="fa fa-3x {{listElement.icon}}"></i>
+        </a>
+    </div>
+    </span>
+    </span>
 </div>
 
 <!-- Form -->

@@ -33,6 +33,18 @@ export class PageElement {
     }
 }
 
+export class List extends PageElement {
+    private _content:PageButton[] = [];
+
+    get content():PageButton[] {
+        return this._content;
+    }
+
+    set content(value:PageButton[]) {
+        this._content = value;
+    }
+}
+
 export class Page {
     private _title:String;
     private _content:PageElement[] = [];
@@ -99,7 +111,7 @@ export class Action {
 export class FormField extends PageElement {
     private _height:Number;
     private _actions:Action[] = [];
-    
+
     get actions():Action[] {
         return this._actions;
     }
