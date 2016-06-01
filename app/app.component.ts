@@ -19,9 +19,11 @@ export class AppComponent implements PathApp {
       email: ["", Validators.required],
       password: ["", Validators.required]
     });
+
+    this.setCurrentPage("mainmenu"); // start page
   }
 
-  private currentPage:String = "mainmenu"; // TODO use page object instead of string
+  private currentPage:Page = null;
   private currentForms:Form[] = [];
   private showMenu:boolean = true;
 
@@ -37,7 +39,36 @@ export class AppComponent implements PathApp {
     this.showMenu = false;
   };
 
-  public setCurrentPage(page:String) {
+  public setCurrentPage(pageId:String) {
+    let page:Page = new Page();
+    let lastColumn:number = null;
+    let currentCol:Column = null;
+    let content = [];
+
+    for (var modelPage of this.appConfig.application.pageList) {
+      if (modelPage.id == pageId) {
+        page.title = modelPage.title;
+        for (var modelElement of modelPage.elementList) {
+          // column layout
+          if (currentCol == null || modelElement.column != lastColumn) {
+            currentCol = new Column();
+            content.push(currentCol);
+          }
+          // element
+          let element:Button = new Button(this);
+          element.name = modelElement.name;
+          element.icon = modelElement.icon;
+          element.type = modelElement.type;
+          element.color = modelElement.color;
+          element.page = modelElement["page"];
+          element.form = modelElement["form"];
+          currentCol.addElement(element);
+          lastColumn = modelElement.column;
+        }
+      }
+    }
+    page.content = content;
+
     this.currentPage = page;
   }
 
@@ -83,47 +114,11 @@ export class AppComponent implements PathApp {
   }
 
   public getCurrentPage() {
-    let page:Page = new Page();
-    for (var item of this.appConfig.application.pageList) {
-      if (item.id === this.currentPage) {
-        page.title = item.title;
-      }
-    }
-    return page;
+    return this.currentPage;
   }
 
   public getCurrentForm() {
     return this.currentForms;
-  }
-
-  // TODO move to current page
-  public getCurrentPageContent() {
-    let lastColumn:number = null;
-    let currentCol:Column = null;
-    let content = [];
-    for (var page of this.appConfig.application.pageList) {
-      if (page.id === this.currentPage) {
-        for (var item of page.elementList) {
-          // column layout
-          if (currentCol == null || item.column != lastColumn) {
-            currentCol = new Column();
-            content.push(currentCol);
-          }
-          // element
-          let element:Button = new Button(this);
-          element.name = item.name;
-          element.icon = item.icon;
-          element.type = item.type;
-          element.color = item.color;
-          element.page = item["page"];
-          element.form = item["form"];
-          currentCol.addElement(element);
-          lastColumn = item.column;
-        }
-      }
-    }
-    console.log("fetching page content: ".concat("" + content.length));
-    return content;
   }
 
 }

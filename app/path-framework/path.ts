@@ -17,6 +17,7 @@ export class Column {
 
 export class Page {
     private _title:String;
+    private _content:Column[];
 
     get title():String {
         return this._title;
@@ -24,6 +25,14 @@ export class Page {
 
     set title(value:String) {
         this._title = value;
+    }
+
+    get content():Column[] {
+        return this._content;
+    }
+
+    set content(value:Column[]) {
+        this._content = value;
     }
 }
 

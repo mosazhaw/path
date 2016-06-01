@@ -7,7 +7,7 @@
 <h1>{{getCurrentPage().title}}</h1>
 
 <!-- Page -->
-<div *ngFor='let column of getCurrentPageContent()' class="col-sm-6 col-md-3">
+<div *ngFor='let column of getCurrentPage().content' class="col-sm-6 col-md-3">
     <div *ngFor='let element of column.getElements()' class="thumbnail tile tile-large tile-{{element.color}}">
         <a (click)="element.onClick()" class="fa-links">
             <h1>{{element.name}}</h1>
