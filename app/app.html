@@ -61,19 +61,19 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="input-group input-group-lg">
-                                                    <input #el type="text" (keyup)=field.filter(el.value) class="form-control" placeholder="">
+                                                    <input #inputElement type="text" [(ngModel)]=field.query (keyup)=field.filter(inputElement.value) class="form-control" placeholder="">
+                                                    <!-- Auto Complete -->
+                                                    <div *ngIf="field.filteredList.length > 0">
+                                                        <ul class="path-autocomplete list-group">
+                                                            <li class="list-group-item" *ngFor="let item of field.filteredList">
+                                                                <a (click)="field.select(item)">{{item}}</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                     <!-- Action -->
                                                     <span class="input-group-btn" *ngFor='let action of field.actions'>
                                                         <button class="btn btn-default" type="button">{{action.name}}</button>
                                                     </span>
-                                                    <!-- Auto Complete -->
-                                                    <div class="suggestions" *ngIf="field.filteredList.length > 0">
-                                                        <ul *ngFor="let item of field.filteredList" >
-                                                            <li>
-                                                                <a (click)="select(item)">{{item}}</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,1 +1,7 @@
 /* custom css styles */
+
+.path-autocomplete {
+    position:absolute;
+    z-index: 99;
+    top: 43px; /* TODO */
+}
