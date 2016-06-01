@@ -66,6 +66,9 @@ export class AppComponent implements PathApp {
                             for (var listElement of modelElement.data) {
                                 let button:PageButton = new PageButton(this);
                                 button.name = listElement.name;
+                                button.icon = modelElement.icon;
+                                button.page = modelElement["page"];
+                                button.form = modelElement["form"];
                                 dynamicList.content.push(button);
                             }
                             element = dynamicList;

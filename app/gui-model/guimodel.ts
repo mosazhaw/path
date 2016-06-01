@@ -163,6 +163,7 @@ export class GuiModel {
                             "name": "Customer List",
                             "icon": "fa-home",
                             "color": "blue",
+                            "form": "projectform",
                             "data": [ {"name":"Project One"}, {"name":"Project Two"}, {"name":"Project Three"}]
                         }
                     ]
