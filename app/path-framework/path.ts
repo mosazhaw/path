@@ -3,21 +3,39 @@ export interface PathApp {
     setCurrentPage(d:String);
 }
 
-export class Column {
-    private elements:FormField[] = [];
+export class PageElement {
+    private _app:PathApp;
+    private _name:String;
+    private _type:String;
 
-    public addElement(element:FormField) {
-        this.elements.push(element);
+    constructor(app:PathApp) {
+        this._app = app;
     }
 
-    public getElements() {
-        return this.elements;
+    get app():PathApp {
+        return this._app;
+    }
+
+    get name():String {
+        return this._name;
+    }
+
+    set name(value:String) {
+        this._name = value;
+    }
+
+    get type():String {
+        return this._type;
+    }
+
+    set type(value:String) {
+        this._type = value;
     }
 }
 
 export class Page {
     private _title:String;
-    private _content:Column[];
+    private _content:PageElement[] = [];
 
     get title():String {
         return this._title;
@@ -27,11 +45,11 @@ export class Page {
         this._title = value;
     }
 
-    get content():Column[] {
+    get content():PageElement[] {
         return this._content;
     }
 
-    set content(value:Column[]) {
+    set content(value:PageElement[]) {
         this._content = value;
     }
 }
@@ -78,37 +96,10 @@ export class Action {
     }
 }
 
-export class FormField {
-    private _app:PathApp;
-    private _name:String;
-    private _type:String;
+export class FormField extends PageElement {
     private _height:Number;
     private _actions:Action[] = [];
-
-    constructor(app:PathApp) {
-        this._app = app;
-    }
-
-    get app():PathApp {
-        return this._app;
-    }
-
-    get name():String {
-        return this._name;
-    }
-
-    set name(value:String) {
-        this._name = value;
-    }
-
-    get type():String {
-        return this._type;
-    }
-
-    set type(value:String) {
-        this._type = value;
-    }
-
+    
     get actions():Action[] {
         return this._actions;
     }
@@ -177,7 +168,7 @@ export class AutoComplete extends FormField {
 
 }
 
-export class Button extends FormField {
+export class PageButton extends PageElement {
     private _icon:String;
     private _color:String;
     private _page:String;

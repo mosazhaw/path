@@ -7,11 +7,11 @@
 <h1>{{getCurrentPage().title}}</h1>
 
 <!-- Page -->
-<div *ngFor='let column of getCurrentPage().content' class="col-sm-6 col-md-3">
-    <div *ngFor='let element of column.getElements()' class="thumbnail tile tile-large tile-{{element.color}}">
-        <a (click)="element.onClick()" class="fa-links">
-            <h1>{{element.name}}</h1>
-            <i class="fa fa-3x {{element.icon}}"></i>
+<div class="col-md-12">
+    <div *ngFor='let pageElement of getCurrentPage().content' class="thumbnail tile tile-large tile-{{pageElement.color}}">
+        <a (click)="pageElement.onClick()" class="fa-links">
+            <h1>{{pageElement.name}}</h1>
+            <i class="fa fa-3x {{pageElement.icon}}"></i>
         </a>
     </div>
 </div>

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/common';
 import {GuiModel} from './gui-model/guimodel';
-import {Column, Page, Form, FormField, Action, Button, PathApp, AutoComplete, RadioGroup, Radio} from './path-framework/path';
+import {PageElement, Page, Form, FormField, Action, PageButton, PathApp, AutoComplete, RadioGroup, Radio} from './path-framework/path';
 
 
 @Component({
@@ -45,33 +45,23 @@ export class AppComponent implements PathApp {
 
   public setCurrentPage(pageId:String) {
     let page:Page = new Page();
-    let lastColumn:number = null;
-    let currentCol:Column = null;
-    let content = [];
 
     for (var modelPage of this.appConfig.application.pageList) {
       if (modelPage.id == pageId) {
         page.title = modelPage.title;
         for (var modelElement of modelPage.elementList) {
-          // column layout
-          if (currentCol == null || modelElement.column != lastColumn) {
-            currentCol = new Column();
-            content.push(currentCol);
-          }
           // element
-          let element:Button = new Button(this);
+          let element:PageButton = new PageButton(this);
           element.name = modelElement.name;
           element.icon = modelElement.icon;
           element.type = modelElement.type;
           element.color = modelElement.color;
           element.page = modelElement["page"];
           element.form = modelElement["form"];
-          currentCol.addElement(element);
-          lastColumn = modelElement.column;
+          page.content.push(element);
         }
       }
     }
-    page.content = content;
 
     this.currentPage = page;
   }

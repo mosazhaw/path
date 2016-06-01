@@ -156,14 +156,14 @@ export class GuiModel {
                             "icon": "fa-home",
                             "color": "green",
                             "form": "projectform",
-                            "column": 2
+                            "column": 1
                         },
                         {
                             "type": "button",
                             "name": "Select Customer",
                             "icon": "fa-home",
                             "color": "blue",
-                            "column": 3
+                            "column": 1
                         }
                     ]
                 }
