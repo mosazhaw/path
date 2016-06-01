@@ -25,8 +25,8 @@ export class AppComponent implements PathApp {
 
   private currentPage:Page = null;
   private currentForms:Form[] = [];
-  private showMenu:boolean = true;
 
+  // TODO move ok and cancel to button object
   public doOk() {
     this.currentForms = [];
   }
@@ -34,10 +34,6 @@ export class AppComponent implements PathApp {
   public doCancel() {
     this.currentForms = [];
   }
-
-  public itemSelected = () => {
-    this.showMenu = false;
-  };
 
   public setCurrentPage(pageId:String) {
     let page:Page = new Page();
