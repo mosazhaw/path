@@ -24,23 +24,18 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Customer PL",
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": ["Albania", "Andorra", "Armenia", "Austria", "Azerbaijan", "Belarus",
-                                "Belgium", "Bosnia & Herzegovina", "Bulgaria", "Croatia", "Cyprus",
-                                "Czech Republic", "Denmark", "Estonia", "Finland", "France", "Georgia",
-                                "Germany", "Greece", "Hungary", "Iceland", "Ireland", "Italy", "Kosovo",
-                                "Latvia", "Liechtenstein", "Lithuania", "Luxembourg", "Macedonia", "Malta",
-                                "Moldova", "Monaco", "Montenegro", "Netherlands", "Norway", "Poland",
-                                "Portugal", "Romania", "Russia", "San Marino", "Serbia", "Slovakia", "Slovenia",
-                                "Spain", "Sweden", "Switzerland", "Turkey", "Ukraine", "United Kingdom", "Vatican City"]
+                            "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"]
                         },
                         {
                             "type": "autocomplete",
                             "name": "D******e PL",
-                            "actions": [{"type": "new", "name": "New..."}]
+                            "actions": [{"type": "new", "name": "New..."}],
+                            "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"]
                         },
                         {
                             "type": "autocomplete",
-                            "name": "Industry Segment"
+                            "name": "Industry Segment",
+                            "data": ["Oil& Gas", "Basic Materials", "Industrials", "Consumer Services", "Consumer Goods", "Health Care", "Financials", "Technology", "Telecommunications", "Utilities"]
                         },
                         {
                             "type": "text",

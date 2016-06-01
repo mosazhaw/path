@@ -64,11 +64,9 @@
                                                     <input #inputElement type="text" [(ngModel)]=field.query (keyup)=field.filter(inputElement.value) class="form-control" placeholder="">
                                                     <!-- Auto Complete -->
                                                     <div *ngIf="field.filteredList.length > 0">
-                                                        <ul class="path-autocomplete list-group">
-                                                            <li class="list-group-item" *ngFor="let item of field.filteredList">
-                                                                <a (click)="field.select(item)">{{item}}</a>
-                                                            </li>
-                                                        </ul>
+                                                        <div class="path-autocomplete list-group">
+                                                            <a *ngFor="let item of field.filteredList" class="list-group-item" href="#" (click)="field.select(item)"><h4>{{item}}</h4></a>
+                                                        </div>
                                                     </div>
                                                     <!-- Action -->
                                                     <span class="input-group-btn" *ngFor='let action of field.actions'>

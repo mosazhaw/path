@@ -52,7 +52,9 @@ export class AppComponent implements PathApp {
           let formField:FormField = new FormField(this);
           // TODO use better switch
           if (formFieldItem.type == "autocomplete") {
-            formField = new AutoComplete(this);
+            let autoCompleteFormField = new AutoComplete(this);
+            autoCompleteFormField.data = formFieldItem.data;
+            formField = autoCompleteFormField;
           }
           formField.name = formFieldItem.name;
           formField.type = formFieldItem.type;
