@@ -3,5 +3,22 @@
 .path-autocomplete {
     position:absolute;
     z-index: 99;
-    top: 43px; /* TODO */
+    width: 100%;
+    top: 45px; /* TODO */
+}
+
+.path-textarea {
+    height: 150px !important;
+}
+
+.input-group {
+    width: 100%;
+}
+
+.modal-dialog {
+    width: 50%;
+}
+
+.row {
+    padding-top: 20px;
 }

@@ -39,7 +39,8 @@ export class GuiModel {
                         },
                         {
                             "type": "text",
-                            "name": "Comments"
+                            "name": "Comments",
+                            "height": 8
                         },
                         {
                             "type": "cancelButton",

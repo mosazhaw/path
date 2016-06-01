@@ -73,6 +73,7 @@ export class FormField {
     private _app:PathApp;
     private _name:String;
     private _type:String;
+    private _height:Number;
     private _actions:Action[] = [];
 
     constructor(app:PathApp) {
@@ -103,8 +104,16 @@ export class FormField {
         return this._actions;
     }
 
-    set actions(value:Array) {
+    set actions(value:Action[]) {
         this._actions = value;
+    }
+
+    get height():Number {
+        return this._height;
+    }
+
+    set height(value:Number) {
+        this._height = value;
     }
 }
 
@@ -116,15 +125,21 @@ export class AutoComplete extends FormField {
 
     filter(value) {
         this.query = value;
-        if (this.query !== "") {
+        if (this.query.length > 0 && this.query.replace(/\s/g, '').length == 0) {
+            /* space: all */
+            this.filteredList = this.data;
+        }
+        else if (this.query !== "") {
+            /* search term: filter */
             this.filteredList = this.data.filter(function (entry) {
-                if (this.data.length > 5) {
+                if (this.data.length > 15) {
                     return entry.toLowerCase().startsWith(this.query.toLowerCase());
                 } else {
                     return entry.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
                 }
             }.bind(this));
         } else {
+            /* empty: nothing */
             this.filteredList = [];
         }
         this.filteredList.sort();

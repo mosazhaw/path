@@ -53,13 +53,14 @@ export class AppComponent implements PathApp {
           // TODO use better switch
           if (formFieldItem.type == "autocomplete") {
             let autoCompleteFormField = new AutoComplete(this);
-            autoCompleteFormField.data = formFieldItem.data;
+            autoCompleteFormField.data = formFieldItem["data"];
             formField = autoCompleteFormField;
           }
           formField.name = formFieldItem.name;
           formField.type = formFieldItem.type;
-          if (formFieldItem.actions != null) {
-            for (var action of formFieldItem.actions) {
+          formField.height = formFieldItem["height"];
+          if (formFieldItem["actions"] != null) {
+            for (var action of formFieldItem["actions"]) {
               let actionObject:Action = new Action();
               actionObject.name = action.name;
               actionObject.type = action.type;

@@ -37,7 +37,8 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="input-group input-group-lg">
-                                                    <input type="text" class="form-control" placeholder="">
+                                                    <input *ngIf="field.height == null || field.height <= 1" type="text" class="form-control" placeholder="">
+                                                    <textarea *ngIf="field.height != null && field.height > 1" rows="{{field.height}}" type="text" class="form-control path-textarea" placeholder=""></textarea>
                                                 </div>
                                             </div>
                                         </div>
@@ -49,7 +50,7 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="input-group input-group-lg">
-                                                    <input type="date" class="form-control" placeholder="">
+                                                    <input style="display: block; width: 100%" type="date" class="form-control" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
