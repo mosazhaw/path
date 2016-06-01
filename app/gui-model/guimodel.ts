@@ -56,6 +56,7 @@ export class GuiModel {
                             "name": "Customers",
                             "icon": "fa-home",
                             "color": "green",
+                            "form": "projectform",
                             "column": 2
                         },
                         {

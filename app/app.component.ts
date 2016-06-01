@@ -12,10 +12,10 @@ import {Column, Page, Form, FormField, Button, PathApp} from './path-framework/p
 export class AppComponent implements PathApp {
 
   private appConfig = new GuiModel().guiModel;
-  private loginForm;
+  private dynamicForm;
 
   constructor(fb: FormBuilder) {
-    this.loginForm = fb.group({
+    this.dynamicForm = fb.group({
       email: ["", Validators.required],
       password: ["", Validators.required]
     });
@@ -24,6 +24,14 @@ export class AppComponent implements PathApp {
   private currentPage:String = "mainmenu"; // TODO use page object instead of string
   private currentForm:String = null;
   private showMenu:boolean = true;
+
+  public doOk() {
+    this.currentForm = null;
+  }
+
+  public doCancel() {
+    this.currentForm = null;
+  }
 
   public itemSelected = () => {
     this.showMenu = false;
