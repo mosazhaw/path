@@ -23,7 +23,6 @@ export class AppComponent implements PathApp {
         this.setCurrentPage("mainmenu"); // start page
     }
 
-    private currentPage:Page = null;
     private pageStack:Page[] = [];
     private currentForms:Form[] = [];
 
@@ -37,7 +36,7 @@ export class AppComponent implements PathApp {
     }
 
     public getCurrentPage() {
-        return this.currentPage;
+        return this.pageStack[this.pageStack.length - 1];
     }
 
     public navigateBack() {
@@ -49,12 +48,12 @@ export class AppComponent implements PathApp {
     }
 
     public displayPath() {
-        let string:String = "";
+        let string:string = "";
         for (var element of this.pageStack) {
             if (string.length > 0) {
-                string += " > ";
+                string = string.concat(" > ");
             }
-            string += element.title;
+            string = string.concat(element.title);
         }
 
         return string;
@@ -64,7 +63,7 @@ export class AppComponent implements PathApp {
         return this.currentForms;
     }
 
-    public setCurrentPage(pageId:String) {
+    public setCurrentPage(pageId:string) {
         let page:Page = new Page();
         page.id=pageId;
 
@@ -77,16 +76,16 @@ export class AppComponent implements PathApp {
                     switch (modelElement.type) {
                         case "button":
                             let pageButton:PageButton = new PageButton(this);
-                            pageButton.icon = modelElement.icon;
-                            pageButton.color = modelElement.color;
+                            pageButton.icon = modelElement["icon"];
+                            pageButton.color = modelElement["color"];
                             pageButton.page = modelElement["page"];
                             pageButton.form = modelElement["form"];
                             element = pageButton;
                             break;
                         case "backbutton":
                             let backButton:BackButton = new BackButton(this);
-                            backButton.icon = modelElement.icon;
-                            backButton.color = modelElement.color;
+                            backButton.icon = modelElement["icon"];
+                            backButton.color = modelElement["color"];
                             element = backButton;
                             break;
                         case "list":
@@ -94,8 +93,8 @@ export class AppComponent implements PathApp {
                             for (var listElement of modelElement["data"]) {
                                 let button:PageButton = new PageButton(this);
                                 button.name = listElement.name;
-                                button.color = modelElement.color;
-                                button.icon = modelElement.icon;
+                                button.color = modelElement["color"];
+                                button.icon = modelElement["icon"];
                                 button.page = modelElement["page"];
                                 button.form = modelElement["form"];
                                 dynamicList.content.push(button);
@@ -103,18 +102,17 @@ export class AppComponent implements PathApp {
                             element = dynamicList;
                             break;
                     }
-                    element.name = modelElement.name;
+                    element.name = modelElement["name"];
                     element.type = modelElement.type;
                     page.content.push(element);
                 }
             }
         }
 
-        this.currentPage = page;
         this.pageStack.push(page);
     }
 
-    public setCurrentForm(formId:String) {
+    public setCurrentForm(formId:string) {
         let forms:Form[] = [];
         let form:Form = null;
         for (var modelForm of this.appConfig.application.formList) {

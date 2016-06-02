@@ -5,15 +5,15 @@ export interface PathApp {
 }
 
 export class Page {
-    private _title:String;
-    private _id:String;
+    private _title:string;
+    private _id:string;
     private _content:PageElement[] = [];
 
-    get title():String {
+    get title():string {
         return this._title;
     }
 
-    set title(value:String) {
+    set title(value:string) {
         this._title = value;
     }
 
@@ -25,11 +25,11 @@ export class Page {
         this._content = value;
     }
 
-    get id():String {
+    get id():string {
         return this._id;
     }
 
-    set id(value:String) {
+    set id(value:string) {
         this._id = value;
     }
 }
