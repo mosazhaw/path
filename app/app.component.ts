@@ -48,6 +48,18 @@ export class AppComponent implements PathApp {
         this.setCurrentPage(lastPage.id);
     }
 
+    public displayPath() {
+        let string:String = "";
+        for (var element of this.pageStack) {
+            if (string.length > 0) {
+                string += " > ";
+            }
+            string += element.title;
+        }
+
+        return string;
+    }
+
     public getCurrentForms() {
         return this.currentForms;
     }

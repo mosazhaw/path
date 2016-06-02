@@ -223,7 +223,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanspage",
-                    "title": "Quick Scan",
+                    "title": "QuickScan",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -248,7 +248,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanpage",
-                    "title": "QuickScan",
+                    "title": "Interviewees",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -281,7 +281,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscancategoriespage",
-                    "title": "Interviewee - QuickScan Categories",
+                    "title": "Categories",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -306,7 +306,7 @@ export class GuiModel {
                 },
                 {
                     "id": "categoryquestionspage",
-                    "title": "Interviewee - Category XY - Questions",
+                    "title": "Questions",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -333,12 +333,7 @@ export class GuiModel {
                     "title": "Customers",
                     "elementList": [
                         {
-                            "type": "button",
-                            "name": "Back",
-                            "icon": "fa-backward",
-                            "color": "silver",
-                            "page": "mainmenu",
-                            "column": 1
+                            "type": "backbutton",
                         },
                         {
                             "type": "button",
@@ -363,12 +358,7 @@ export class GuiModel {
                     "title": "Persons",
                     "elementList": [
                         {
-                            "type": "button",
-                            "name": "Back",
-                            "icon": "fa-backward",
-                            "color": "silver",
-                            "page": "mainmenu",
-                            "column": 1
+                            "type": "backbutton",
                         },
                         {
                             "type": "button",
@@ -393,12 +383,7 @@ export class GuiModel {
                     "title": "Customer - Persons",
                     "elementList": [
                         {
-                            "type": "button",
-                            "name": "Back",
-                            "icon": "fa-backward",
-                            "color": "silver",
-                            "page": "customerspage",
-                            "column": 1
+                            "type": "backbutton",
                         },
                         {
                             "type": "button",
