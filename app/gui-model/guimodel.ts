@@ -173,7 +173,7 @@ export class GuiModel {
                             "type": "button",
                             "name": "Customers",
                             "icon": "fa-home",
-                            "color": "emerald",
+                            "color": "purple",
                             "page": "customerspage",
                             "column": 2
                         },
@@ -284,8 +284,8 @@ export class GuiModel {
                             "type": "list",
                             "name": "Customer List",
                             "icon": "fa-home",
-                            "color": "emerald",
-                            "form": "customerform",
+                            "color": "purple",
+                            "page": "customerpersonspage",
                             "data": [ {"name":"Alpha Hospital"}, {"name":"Blue Hospital"}, {"name":"Charisma Hospital"}]
                         }
                     ]
@@ -305,7 +305,7 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "New Person",
-                            "icon": "fa-home",
+                            "icon": "fa-user",
                             "color": "green",
                             "form": "personform",
                             "column": 1
@@ -313,10 +313,48 @@ export class GuiModel {
                         {
                             "type": "list",
                             "name": "Person List",
-                            "icon": "fa-home",
+                            "icon": "fa-user",
                             "color": "orange",
                             "form": "personform",
-                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Held"}]
+                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Held"}, {"name":"Frau Dr. Gesund"}, {"name":"Frau Dr. Krank"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "customerpersonspage",
+                    "title": "Customer - Persons",
+                    "elementList": [
+                        {
+                            "type": "button",
+                            "name": "Back",
+                            "icon": "fa-fast-forward",
+                            "color": "silver",
+                            "page": "customerspage",
+                            "column": 1
+                        },
+                        {
+                            "type": "button",
+                            "name": "Edit Customer",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": "customerform",
+                            "column": 1
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Person",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "form": "personform",
+                            "column": 1
+                        },
+                        {
+                            "type": "list",
+                            "name": "Person List",
+                            "icon": "fa-user",
+                            "color": "orange",
+                            "form": "personform",
+                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}]
                         }
                     ]
                 }
