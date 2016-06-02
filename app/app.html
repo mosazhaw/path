@@ -11,7 +11,7 @@
 </div>
 
 <div class="col-md-12">
-<h1>{{getCurrentPage().title}}</h1>
+<h1>{{getCurrentPage().title}} {{getCurrentPage().parent?.name}}</h1>
 </div>
 
 <!-- Page -->
@@ -21,6 +21,12 @@
         <a (click)="pageElement.onClick()" class="fa-links">
             <h1>{{pageElement.name}}</h1>
             <i class="fa fa-3x {{pageElement.icon}}"></i>
+        </a>
+    </div>
+    <div *ngIf='pageElement.type == "backbutton"' class="thumbnail tile tile-large tile-silver">
+        <a (click)="pageElement.onClick()" class="fa-links">
+            <h1>Back</h1>
+            <i class="fa fa-3x fa-backward"></i>
         </a>
     </div>
     <span *ngIf='pageElement.type == "list"'>

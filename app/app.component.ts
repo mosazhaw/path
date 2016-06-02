@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormBuilder, Validators} from '@angular/common';
 import {GuiModel} from './gui-model/guimodel';
-import {PageElement, Page, Form, FormField, Action, PageButton, PathApp, AutoComplete, RadioGroup, Radio, List} from './path-framework/path';
+import {PageElement, Page, Form, FormField, Action, PageButton, BackButton, PathApp, AutoComplete, RadioGroup, Radio, List} from './path-framework/path';
 
 
 @Component({
@@ -24,6 +24,7 @@ export class AppComponent implements PathApp {
     }
 
     private currentPage:Page = null;
+    private pageStack:Page[] = [];
     private currentForms:Form[] = [];
 
     // TODO move ok and cancel to button object
@@ -39,12 +40,21 @@ export class AppComponent implements PathApp {
         return this.currentPage;
     }
 
+    public navigateBack() {
+        let lastPage = this.pageStack[this.pageStack.length - 2];
+        console.log(lastPage.id);
+        this.pageStack.pop();
+        this.pageStack.pop(); // TODO use same page instead of creating a new page
+        this.setCurrentPage(lastPage.id);
+    }
+
     public getCurrentForms() {
         return this.currentForms;
     }
 
     public setCurrentPage(pageId:String) {
         let page:Page = new Page();
+        page.id=pageId;
 
         for (var modelPage of this.appConfig.application.pageList) {
             if (modelPage.id == pageId) {
@@ -60,6 +70,12 @@ export class AppComponent implements PathApp {
                             pageButton.page = modelElement["page"];
                             pageButton.form = modelElement["form"];
                             element = pageButton;
+                            break;
+                        case "backbutton":
+                            let backButton:BackButton = new BackButton(this);
+                            backButton.icon = modelElement.icon;
+                            backButton.color = modelElement.color;
+                            element = backButton;
                             break;
                         case "list":
                             let dynamicList:List = new List(this);
@@ -83,6 +99,7 @@ export class AppComponent implements PathApp {
         }
 
         this.currentPage = page;
+        this.pageStack.push(page);
     }
 
     public setCurrentForm(formId:String) {

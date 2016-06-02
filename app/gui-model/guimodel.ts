@@ -226,12 +226,7 @@ export class GuiModel {
                     "title": "Quick Scan",
                     "elementList": [
                         {
-                            "type": "button",
-                            "name": "Back",
-                            "icon": "fa-backward",
-                            "color": "silver",
-                            "page": "mainmenu",
-                            "column": 1
+                            "type": "backbutton",
                         },
                         {
                             "type": "button",
@@ -256,12 +251,7 @@ export class GuiModel {
                     "title": "QuickScan",
                     "elementList": [
                         {
-                            "type": "button",
-                            "name": "Back",
-                            "icon": "fa-backward",
-                            "color": "silver",
-                            "page": "quickscanspage",
-                            "column": 1
+                            "type": "backbutton",
                         },
                         {
                             "type": "button",
@@ -294,12 +284,7 @@ export class GuiModel {
                     "title": "Interviewee - QuickScan Categories",
                     "elementList": [
                         {
-                            "type": "button",
-                            "name": "Back",
-                            "icon": "fa-backward",
-                            "color": "silver",
-                            "page": "quickscanpage",
-                            "column": 1
+                            "type": "backbutton",
                         },
                         {
                             "type": "list",
@@ -324,12 +309,7 @@ export class GuiModel {
                     "title": "Interviewee - Category XY - Questions",
                     "elementList": [
                         {
-                            "type": "button",
-                            "name": "Back",
-                            "icon": "fa-backward",
-                            "color": "silver",
-                            "page": "quickscancategoriespage",
-                            "column": 1
+                            "type": "backbutton",
                         },
                         {
                             "type": "button",

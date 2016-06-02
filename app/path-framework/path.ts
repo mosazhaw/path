@@ -1,10 +1,12 @@
 export interface PathApp {
-    setCurrentForm(d:String);
-    setCurrentPage(d:String);
+    setCurrentForm(formId:String);
+    setCurrentPage(pageId:String);
+    navigateBack();
 }
 
 export class Page {
     private _title:String;
+    private _id:String;
     private _content:PageElement[] = [];
 
     get title():String {
@@ -21,6 +23,14 @@ export class Page {
 
     set content(value:PageElement[]) {
         this._content = value;
+    }
+
+    get id():String {
+        return this._id;
+    }
+
+    set id(value:String) {
+        this._id = value;
     }
 }
 
@@ -112,6 +122,14 @@ export class PageButton extends PageElement {
     set form(value:String) {
         this._form = value;
     }
+}
+
+export class BackButton extends PageButton {
+
+    public onClick() {
+        this.app.navigateBack();
+    }
+
 }
 
 export class Form {
