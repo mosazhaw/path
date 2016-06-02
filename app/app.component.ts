@@ -66,6 +66,7 @@ export class AppComponent implements PathApp {
                             for (var listElement of modelElement.data) {
                                 let button:PageButton = new PageButton(this);
                                 button.name = listElement.name;
+                                button.color = modelElement.color;
                                 button.icon = modelElement.icon;
                                 button.page = modelElement["page"];
                                 button.form = modelElement["form"];
@@ -134,6 +135,9 @@ export class AppComponent implements PathApp {
                 }
                 forms.push(form)
             }
+        }
+        if (form == null && formId != null) {
+            alert("Missing form: " + formId);
         }
         this.currentForms = forms;
     }

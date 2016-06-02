@@ -63,6 +63,90 @@ export class GuiModel {
                             "name": "Ok"
                         }
                     ]
+                },
+                {
+                    "id": "customerform",
+                    "title": "Customer Details",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Company Name"
+                        },
+                        {
+                            "type": "text",
+                            "name": "Street"
+                        },
+                        {
+                            "type": "text",
+                            "name": "Postal Code"
+                        },
+                        {
+                            "type": "text",
+                            "name": "City"
+                        },
+                        {
+                            "type": "text",
+                            "name": "Comments",
+                            "height": 8
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "personform",
+                    "title": "Person Details",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Salutation"
+                        },
+                        {
+                            "type": "text",
+                            "name": "Family Name"
+                        },
+                        {
+                            "type": "text",
+                            "name": "First Name"
+                        },
+                        {
+                            "type": "text",
+                            "name": "Employment Title"
+                        },
+                        {
+                            "type": "autocomplete",
+                            "name": "Company",
+                            "actions": [{"type": "new", "name": "New..."}],
+                            "data": [ "Alpha Hospital", "Blue Hospital", "Charisma Hospital" ]
+                        },
+                        {
+                            "type": "text",
+                            "name": "Postal Code"
+                        },
+                        {
+                            "type": "text",
+                            "name": "City"
+                        },
+                        {
+                            "type": "text",
+                            "name": "Comments",
+                            "height": 8
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
                 }
             ],
             "pageList": [
@@ -89,8 +173,16 @@ export class GuiModel {
                             "type": "button",
                             "name": "Customers",
                             "icon": "fa-home",
-                            "color": "green",
-                            "form": "projectform",
+                            "color": "emerald",
+                            "page": "customerspage",
+                            "column": 2
+                        },
+                        {
+                            "type": "button",
+                            "name": "Persons",
+                            "icon": "fa-user",
+                            "color": "orange",
+                            "page": "personspage",
                             "column": 2
                         },
                         {
@@ -165,6 +257,66 @@ export class GuiModel {
                             "color": "blue",
                             "form": "projectform",
                             "data": [ {"name":"Project One"}, {"name":"Project Two"}, {"name":"Project Three"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "customerspage",
+                    "title": "Customers",
+                    "elementList": [
+                        {
+                            "type": "button",
+                            "name": "Back",
+                            "icon": "fa-fast-forward",
+                            "color": "silver",
+                            "page": "mainmenu",
+                            "column": 1
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Customer",
+                            "icon": "fa-home",
+                            "color": "green",
+                            "form": "customerform",
+                            "column": 1
+                        },
+                        {
+                            "type": "list",
+                            "name": "Customer List",
+                            "icon": "fa-home",
+                            "color": "emerald",
+                            "form": "customerform",
+                            "data": [ {"name":"Alpha Hospital"}, {"name":"Blue Hospital"}, {"name":"Charisma Hospital"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "personspage",
+                    "title": "Persons",
+                    "elementList": [
+                        {
+                            "type": "button",
+                            "name": "Back",
+                            "icon": "fa-fast-forward",
+                            "color": "silver",
+                            "page": "mainmenu",
+                            "column": 1
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Person",
+                            "icon": "fa-home",
+                            "color": "green",
+                            "form": "personform",
+                            "column": 1
+                        },
+                        {
+                            "type": "list",
+                            "name": "Person List",
+                            "icon": "fa-home",
+                            "color": "orange",
+                            "form": "personform",
+                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Held"}]
                         }
                     ]
                 }

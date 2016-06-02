@@ -24,7 +24,7 @@
         </a>
     </div>
     <span *ngIf='pageElement.type == "list"'>
-    <div *ngFor='let listElement of pageElement.content' class="thumbnail tile tile-large tile-{{pageElement.color}}">
+    <div *ngFor='let listElement of pageElement.content' class="thumbnail tile tile-large tile-{{listElement.color}}">
         <a (click)="listElement.onClick()" class="fa-links">
             <h1>{{listElement.name}}</h1>
             <i class="fa fa-3x {{listElement.icon}}"></i>
