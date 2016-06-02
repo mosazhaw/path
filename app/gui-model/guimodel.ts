@@ -278,6 +278,14 @@ export class GuiModel {
                             "color": "blue",
                             "page": "quickscancategoriespage",
                             "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Remove",
+                            "icon": "fa-remove",
+                            "color": "red",
+                            "page": "quickscanspage",
+                            "column": 1
                         }
                     ]
                 },
