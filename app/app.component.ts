@@ -63,7 +63,7 @@ export class AppComponent implements PathApp {
                             break;
                         case "list":
                             let dynamicList:List = new List(this);
-                            for (var listElement of modelElement.data) {
+                            for (var listElement of modelElement["data"]) {
                                 let button:PageButton = new PageButton(this);
                                 button.name = listElement.name;
                                 button.color = modelElement.color;

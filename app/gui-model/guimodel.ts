@@ -6,7 +6,7 @@ export class GuiModel {
             "formList": [
                 {
                     "id": "projectform",
-                    "title": "New Customer - Project Details",
+                    "title": "Project Details (QuickScan)",
                     "formFieldList": [
                         {
                             "type": "text",
@@ -28,7 +28,7 @@ export class GuiModel {
                         },
                         {
                             "type": "autocomplete",
-                            "name": "D******e PL",
+                            "name": "Deloitte PL",
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"]
                         },
@@ -147,7 +147,27 @@ export class GuiModel {
                             "name": "Ok"
                         }
                     ]
-                }
+                },
+                {
+                    "id": "intervieweeform",
+                    "title": "Interviewee",
+                    "formFieldList": [
+                        {
+                            "type": "autocomplete",
+                            "name": "Person",
+                            "actions": [{"type": "new", "name": "New..."}],
+                            "data": [ "Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"]
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
             ],
             "pageList": [
                 {
@@ -160,7 +180,7 @@ export class GuiModel {
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
                             "column": 1,
-                            "page": "quickscan"
+                            "page": "quickscanspage"
                         },
                         {
                             "type": "button",
@@ -202,13 +222,13 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "quickscan",
+                    "id": "quickscanspage",
                     "title": "Quick Scan",
                     "elementList": [
                         {
                             "type": "button",
                             "name": "Back",
-                            "icon": "fa-fast-forward",
+                            "icon": "fa-backward",
                             "color": "silver",
                             "page": "mainmenu",
                             "column": 1
@@ -218,45 +238,105 @@ export class GuiModel {
                             "name": "New",
                             "icon": "fa-fast-forward",
                             "color": "green",
-                            "page": "customerassignment",
+                            "form": "projectform",
                             "column": 2
                         },
                         {
-                            "type": "button",
-                            "name": "Change",
-                            "icon": "fa-arrows-alt",
-                            "color": "blue",
-                            "column": 3
+                            "type": "list",
+                            "name": "QuickScans List",
+                            "icon": "fa-home",
+                            "color": "alizarin",
+                            "page": "quickscanpage",
+                            "data": [ {"name":"QuickScan One"}, {"name":"QuickScan Two"}, {"name":"QuickScan Three"}, {"name":"QuickScan Four"}, {"name":"QuickScan Five"}, {"name":"QuickScan Six"}]
                         }
                     ]
                 },
                 {
-                    "id": "customerassignment",
-                    "title": "Customer Assignment",
+                    "id": "quickscanpage",
+                    "title": "QuickScan",
                     "elementList": [
                         {
                             "type": "button",
                             "name": "Back",
-                            "icon": "fa-fast-forward",
+                            "icon": "fa-backward",
                             "color": "silver",
-                            "page": "quickscan",
+                            "page": "quickscanspage",
                             "column": 1
                         },
                         {
                             "type": "button",
-                            "name": "New Customer",
-                            "icon": "fa-home",
+                            "name": "Add Interviewee",
+                            "icon": "fa-user",
                             "color": "green",
-                            "form": "projectform",
+                            "form": "intervieweeform",
                             "column": 1
                         },
                         {
                             "type": "list",
-                            "name": "Customer List",
-                            "icon": "fa-home",
+                            "name": "Interviewee List",
+                            "icon": "fa-user",
                             "color": "blue",
-                            "form": "projectform",
-                            "data": [ {"name":"Project One"}, {"name":"Project Two"}, {"name":"Project Three"}]
+                            "page": "quickscancategoriespage",
+                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "quickscancategoriespage",
+                    "title": "Interviewee - QuickScan Categories",
+                    "elementList": [
+                        {
+                            "type": "button",
+                            "name": "Back",
+                            "icon": "fa-backward",
+                            "color": "silver",
+                            "page": "quickscanpage",
+                            "column": 1
+                        },
+                        {
+                            "type": "list",
+                            "name": "Categories",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "page": "categoryquestionspage",
+                            "data": [ {"name":"B1"}, {"name":"B2"}, {"name":"B3"}, {"name":"B4"}, {"name":"B5"}, {"name":"B6"}, {"name":"B7"}, {"name":"B8"}, {"name":"B9"}, {"name":"B10"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Remove",
+                            "icon": "fa-remove",
+                            "color": "red",
+                            "page": "quickscanpage",
+                            "column": 1
+                        },
+                    ]
+                },
+                {
+                    "id": "categoryquestionspage",
+                    "title": "Interviewee - Category XY - Questions",
+                    "elementList": [
+                        {
+                            "type": "button",
+                            "name": "Back",
+                            "icon": "fa-backward",
+                            "color": "silver",
+                            "page": "quickscancategoriespage",
+                            "column": 1
+                        },
+                        {
+                            "type": "button",
+                            "name": "TODO - Questions",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "column": 1
+                        },
+                        {
+                            "type": "button",
+                            "name": "Next",
+                            "icon": "fa-forward",
+                            "color": "silver",
+                            "page": "categoryquestionspage",
+                            "column": 1
                         }
                     ]
                 },
@@ -267,7 +347,7 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "Back",
-                            "icon": "fa-fast-forward",
+                            "icon": "fa-backward",
                             "color": "silver",
                             "page": "mainmenu",
                             "column": 1
@@ -297,7 +377,7 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "Back",
-                            "icon": "fa-fast-forward",
+                            "icon": "fa-backward",
                             "color": "silver",
                             "page": "mainmenu",
                             "column": 1
@@ -327,7 +407,7 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "Back",
-                            "icon": "fa-fast-forward",
+                            "icon": "fa-backward",
                             "color": "silver",
                             "page": "customerspage",
                             "column": 1
