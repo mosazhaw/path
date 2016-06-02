@@ -5,7 +5,7 @@ import {PageElement, Page, Form, FormField, Action, PageButton, PathApp, AutoCom
 
 
 @Component({
-    selector: 'my-app',
+    selector: 'path-application',
     templateUrl: 'app/app.html'
 })
 
