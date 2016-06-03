@@ -14,15 +14,9 @@ export class AppComponent implements PathApp {
     private _appConfig = new GuiModel().guiModel;
     private _pageStack:Page[] = [];
     private _formStack:Form[] = [];
-    private _dynamicForm;
 
-    constructor(fb:FormBuilder) {
-        this._dynamicForm = fb.group({
-            email: ["", Validators.required],
-            password: ["", Validators.required]
-        });
-
-        this.setCurrentPage("mainmenu", null); // start page
+    constructor() {
+        this.setCurrentPage("mainmenu", null); // set start page
     }
 
     public getPageStack():Page[] {
