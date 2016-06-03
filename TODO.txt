@@ -1,5 +1,14 @@
 Deloitte
 - Review
+- Question Pages / Wizard
+- Reports / Custom Components
+
+Questions
+- Customer/Person: Country required?
+- User vs. Person: Different or same?
+- Elemente: Stammdatenobjekt, Bewegungsdatenobjekt, Organisationsstrukturen bei DeepScan?
+- KPI Kategorie - benötigt?
+- Berechtigungen: User auf Kunde?
 
 Path Framework
 - Detail Data in Buttons
