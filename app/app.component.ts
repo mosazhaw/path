@@ -20,7 +20,7 @@ export class AppComponent implements PathApp {
             password: ["", Validators.required]
         });
 
-        this.setCurrentPage("mainmenu"); // start page
+        this.setCurrentPage("mainmenu", null); // start page
     }
 
     private pageStack:Page[] = [];
@@ -40,20 +40,20 @@ export class AppComponent implements PathApp {
     }
 
     public navigateBack() {
-        let lastPage = this.pageStack[this.pageStack.length - 2];
-        console.log(lastPage.id);
         this.pageStack.pop();
-        this.pageStack.pop(); // TODO use same page instead of creating a new page
-        this.setCurrentPage(lastPage.id);
     }
 
     public displayPath() {
         let string:string = "";
-        for (var element of this.pageStack) {
+        for (let element:Page of this.pageStack) {
             if (string.length > 0) {
                 string = string.concat(" > ");
             }
-            string = string.concat(element.title);
+            if (element.parentPageElement == null) {
+                string = string.concat(element.title);
+            } else {
+                string = string.concat(element.parentPageElement.name);
+            }
         }
 
         return string;
@@ -63,9 +63,10 @@ export class AppComponent implements PathApp {
         return this.currentForms;
     }
 
-    public setCurrentPage(pageId:string) {
+    public setCurrentPage(pageId:string, parentPageElement:PageElement) {
         let page:Page = new Page();
         page.id=pageId;
+        page.parentPageElement=parentPageElement;
 
         for (var modelPage of this.appConfig.application.pageList) {
             if (modelPage.id == pageId) {
