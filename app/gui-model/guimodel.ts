@@ -219,7 +219,6 @@ export class GuiModel {
                             "name": "QuickScan",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
-                            "column": 1,
                             "page": "quickscanspage"
                         },
                         {
@@ -228,7 +227,6 @@ export class GuiModel {
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
                             "page": "deepscanspage",
-                            "column": 1
                         },
                         {
                             "type": "button",
@@ -236,7 +234,6 @@ export class GuiModel {
                             "icon": "fa-home",
                             "color": "purple",
                             "page": "customerspage",
-                            "column": 2
                         },
                         {
                             "type": "button",
@@ -244,21 +241,18 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "orange",
                             "page": "personspage",
-                            "column": 2
                         },
                         {
                             "type": "button",
                             "name": "Reports",
                             "icon": "fa-file",
                             "color": "blue",
-                            "column": 3
                         },
                         {
                             "type": "button",
                             "name": "Admin",
                             "icon": "fa-gear",
                             "color": "concrete",
-                            "column": 3
                         }
                     ]
                 },
@@ -275,7 +269,6 @@ export class GuiModel {
                             "icon": "fa-fast-forward",
                             "color": "green",
                             "form": "projectform",
-                            "column": 2
                         },
                         {
                             "type": "list",
@@ -300,7 +293,6 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": "projectform",
-                            "column": 1
                         },
                         {
                             "type": "button",
@@ -338,7 +330,6 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": "projectintervieweeform",
-                            "column": 1
                         },
                         {
                             "type": "list",
@@ -410,7 +401,6 @@ export class GuiModel {
                             "name": "TODO - Questions",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "column": 1
                         },
                         {
                             "type": "button",
@@ -418,7 +408,6 @@ export class GuiModel {
                             "icon": "fa-forward",
                             "color": "silver",
                             "page": "categoryquestionspage",
-                            "column": 1
                         }
                     ]
                 },
@@ -435,7 +424,6 @@ export class GuiModel {
                             "icon": "fa-fast-forward",
                             "color": "green",
                             "form": "projectform",
-                            "column": 2
                         },
                         {
                             "type": "list",
@@ -460,7 +448,6 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": "projectform",
-                            "column": 1
                         },
                         {
                             "type": "button",
@@ -498,7 +485,6 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": "projectintervieweeform",
-                            "column": 1
                         },
                         {
                             "type": "list",
@@ -570,7 +556,6 @@ export class GuiModel {
                             "name": "TODO - Questions",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "column": 1
                         },
                         {
                             "type": "button",
@@ -578,7 +563,6 @@ export class GuiModel {
                             "icon": "fa-forward",
                             "color": "silver",
                             "page": "processquestionspage",
-                            "column": 1
                         }
                     ]
                 },
@@ -595,7 +579,6 @@ export class GuiModel {
                             "icon": "fa-home",
                             "color": "green",
                             "form": "customerform",
-                            "column": 1
                         },
                         {
                             "type": "list",
@@ -620,7 +603,6 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": "personform",
-                            "column": 1
                         },
                         {
                             "type": "list",
@@ -645,7 +627,6 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": "customerform",
-                            "column": 1
                         },
                         {
                             "type": "button",
@@ -653,7 +634,6 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": "personform",
-                            "column": 1
                         },
                         {
                             "type": "list",
