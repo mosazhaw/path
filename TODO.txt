@@ -1,11 +1,9 @@
 Deloitte
 - Review
-- DeepScan, Admin, Reports, ...
 
 Path Framework
 - Detail Data in Buttons
 - List / Select List with Objects - not String
-- Intelligent Search Button
 - Form Mode with Mock Data?
 - Refactor classes into individual files?
 

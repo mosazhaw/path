@@ -79,6 +79,7 @@ export class AppComponent implements PathApp {
                             break;
                         case "list":
                             let dynamicList:List = new List(this);
+                            dynamicList.search = modelElement["search"];
                             for (var listElement of modelElement["data"]) {
                                 let button:PageButton = new PageButton(this);
                                 button.name = listElement.name;

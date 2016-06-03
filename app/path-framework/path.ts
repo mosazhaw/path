@@ -75,6 +75,7 @@ export class PageElement {
 
 export class List extends PageElement {
     private _content:PageButton[] = [];
+    private _search:boolean;
 
     get content():PageButton[] {
         return this._content;
@@ -82,6 +83,14 @@ export class List extends PageElement {
 
     set content(value:PageButton[]) {
         this._content = value;
+    }
+
+    get search():boolean {
+        return this._search;
+    }
+
+    set search(value:boolean) {
+        this._search = value;
     }
 }
 

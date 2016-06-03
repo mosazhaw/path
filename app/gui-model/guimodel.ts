@@ -428,6 +428,7 @@ export class GuiModel {
                             "name": "QuickScans List",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
+                            "search": true,
                             "page": "quickscanpage",
                             "data": [ {"name":"QuickScan One"}, {"name":"QuickScan Two"}, {"name":"QuickScan Three"}, {"name":"QuickScan Four"}, {"name":"QuickScan Five"}, {"name":"QuickScan Six"}]
                         }
@@ -489,6 +490,7 @@ export class GuiModel {
                             "name": "Interviewee List",
                             "icon": "fa-user",
                             "color": "blue",
+                            "search": true,
                             "page": "quickscanintervieweecategoriespage",
                             "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}, {"name":"Frau Dr. Gesund"}]
                         }
@@ -583,6 +585,7 @@ export class GuiModel {
                             "name": "DeepScans List",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
+                            "search": true,
                             "page": "deepscanpage",
                             "data": [ {"name":"DeepScan One"}, {"name":"DeepScan Two"}, {"name":"DeepScan Three"}, {"name":"DeepScan Four"}, {"name":"DeepScan Five"}, {"name":"DeepScan Six"}]
                         }
@@ -755,6 +758,7 @@ export class GuiModel {
                             "name": "Customer List",
                             "icon": "fa-home",
                             "color": "purple",
+                            "search": true,
                             "page": "customerpersonspage",
                             "data": [ {"name":"Alpha Hospital"}, {"name":"Blue Hospital"}, {"name":"Charisma Hospital"}]
                         }
@@ -780,6 +784,7 @@ export class GuiModel {
                             "name": "Person List",
                             "icon": "fa-user",
                             "color": "orange",
+                            "search": true,
                             "form": "personform",
                             "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Held"}, {"name":"Frau Dr. Gesund"}, {"name":"Frau Dr. Krank"}]
                         }
@@ -811,6 +816,7 @@ export class GuiModel {
                             "name": "Person List",
                             "icon": "fa-user",
                             "color": "orange",
+                            "search": true,
                             "form": "personform",
                             "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}]
                         }
@@ -829,6 +835,7 @@ export class GuiModel {
                             "name": "Customer List",
                             "icon": "fa-home",
                             "color": "purple",
+                            "search": true,
                             "page": "customerprojectspage",
                             "data": [ {"name":"Alpha Hospital"}, {"name":"Blue Hospital"}, {"name":"Charisma Hospital"}]
                         }
@@ -941,6 +948,7 @@ export class GuiModel {
                             "name": "User List",
                             "icon": "fa-user",
                             "color": "orange",
+                            "search": true,
                             "form": "personform",
                             "data": [ {"name":"Anton Amacker"}, {"name":"Beate Burkhardt"}, {"name":"Chris Connor"}, {"name":"Doris Dempster"}, {"name":"Edgar Evans"}]
                         }
@@ -994,6 +1002,7 @@ export class GuiModel {
                             "name": "Categories",
                             "icon": "fa-cube",
                             "color": "asbestos",
+                            "search": true,
                             "page": "quickscancategoryconfigurationpage",
                             "data": [ {"name":"Category B1"}, {"name":"Category B2"}, {"name":"Category B3"}, {"name":"Category B4"}, {"name":"Category B5"}, {"name":"Category B6"}, {"name":"Category B7"}, {"name":"Category B8"}, {"name":"Category B9"}, {"name":"Category B10"}]
                         }
@@ -1025,6 +1034,7 @@ export class GuiModel {
                             "name": "Questions",
                             "icon": "fa-question",
                             "color": "lime",
+                            "search": true,
                             "form": "questionform",
                             "data": [ {"name":"Question 1"}, {"name":"Question 2"}, {"name":"Question 3"}, {"name":"Question 4"}, {"name":"Question 5"}, {"name":"Question 6"}, {"name":"Question 7"}, {"name":"Question 8"}, {"name":"Question 9"}, {"name":"Question 10"}]
                         },
@@ -1085,6 +1095,7 @@ export class GuiModel {
                             "name": "Process Groups",
                             "icon": "fa-cube",
                             "color": "asbestos",
+                            "search": true,
                             "page": "deepscanprocessesconfigurationpage",
                             "data": [ {"name":"Process Group S1"}, {"name":"Process Group S2"}, {"name":"Process Group S3"}, {"name":"Process Group S4"}, {"name":"Process Group S5"}, {"name":"Process Group S6"}, {"name":"Process Group S7"}, {"name":"Process Group S8"}, {"name":"Process Group S9"}, {"name":"Process  Group S10"}]
                         }
@@ -1117,6 +1128,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "form": "processform",
+                            "search": true,
                             "data": [ {"name":"Process S1"}, {"name":"Process S2"}, {"name":"Process S3"}, {"name":"Process S4"}, {"name":"Process S5"}, {"name":"Process S6"}, {"name":"Process S7"}, {"name":"Process S8"}, {"name":"Process S10"}, {"name":"Process S11"}]
                         },
                         {
@@ -1147,6 +1159,7 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "wet-asphalt",
                             "page": "kpiconfigurationpage",
+                            "search": true,
                             "data": [ {"name":"Anteil extern erbrachte Beschaffungs-Leistungen"}, {"name":"Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name":"Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"}, {"name":"Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik"}, {"name":"Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung"}, {"name":"Anzahl FTE Beschaffung"}, {"name":"Kosten je Bestellung"}, {"name":"Gesamtkosten Beschaffung pro Fall stationär"}, {"name":"Gesamtkosten Beschaffung pro Fall ambulant"}]
                         }
                     ]
