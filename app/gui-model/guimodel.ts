@@ -253,6 +253,7 @@ export class GuiModel {
                             "name": "Admin",
                             "icon": "fa-gear",
                             "color": "concrete",
+                            "page": "adminpage"
                         }
                     ]
                 },
@@ -642,6 +643,80 @@ export class GuiModel {
                             "color": "orange",
                             "form": "personform",
                             "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "adminpage",
+                    "title": "Administration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Users",
+                            "icon": "fa-user",
+                            "color": "alizarin",
+                            "page": "userspage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Configuration",
+                            "icon": "fa-gear",
+                            "color": "wet-asphalt",
+                            "page": "configurationpage",
+                        }
+                    ]
+                },
+                {
+                    "id": "userspage",
+                    "title": "User",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New User",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "form": "personform",
+                        },
+                        {
+                            "type": "list",
+                            "name": "User List",
+                            "icon": "fa-user",
+                            "color": "orange",
+                            "form": "personform",
+                            "data": [ {"name":"Anton Amacker"}, {"name":"Beate Burkhardt"}, {"name":"Chris Connor"}, {"name":"Doris Dempster"}, {"name":"Edgar Evans"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "configurationpage",
+                    "title": "Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "QuickScan Categories",
+                            "icon": "fa-fast-forward",
+                            "color": "alizarin",
+                        },
+                        {
+                            "type": "button",
+                            "name": "DeepScan Processes & KPIs",
+                            "icon": "fa-chevron-down",
+                            "color": "wet-asphalt",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Reports and Handbooks",
+                            "icon": "fa-file",
+                            "color": "wisteria",
                         }
                     ]
                 }
