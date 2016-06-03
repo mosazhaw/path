@@ -11,11 +11,13 @@ import {PageElement, Page, Form, FormField, Action, PageButton, BackButton, Path
 
 export class AppComponent implements PathApp {
 
-    private appConfig = new GuiModel().guiModel;
-    private dynamicForm;
+    private _appConfig = new GuiModel().guiModel;
+    private _pageStack:Page[] = [];
+    private _formStack:Form[] = [];
+    private _dynamicForm;
 
     constructor(fb:FormBuilder) {
-        this.dynamicForm = fb.group({
+        this._dynamicForm = fb.group({
             email: ["", Validators.required],
             password: ["", Validators.required]
         });
@@ -23,48 +25,29 @@ export class AppComponent implements PathApp {
         this.setCurrentPage("mainmenu", null); // start page
     }
 
-    private pageStack:Page[] = [];
-    private currentForms:Form[] = [];
+    public getPageStack():Page[] {
+        return this._pageStack;
+    }
 
-    // TODO move ok and cancel to button object
+    public getFormStack():Form[] {
+        return this._formStack;
+    }
+
+// TODO move ok and cancel to button object
     public doOk() {
-        this.currentForms = [];
+        this._formStack = [];
     }
 
     public doCancel() {
-        this.currentForms = [];
+        this._formStack = [];
     }
 
     public getCurrentPage() {
-        return this.pageStack[this.pageStack.length - 1];
+        return this._pageStack[this._pageStack.length - 1];
     }
 
     public navigateBack() {
-        this.pageStack.pop();
-    }
-
-    public displayPath() {
-        let string:string = "";
-        for (let element of this.pageStack) {
-            if (string.length > 0) {
-                string = string.concat(" > ");
-            }
-            if (element.parentPageElement == null) {
-                string = string.concat(element.title);
-            } else {
-                string = string.concat(element.parentPageElement.name);
-            }
-        }
-
-        return string;
-    }
-
-    public getPageStack() {
-        return this.pageStack;
-    }
-
-    public getCurrentForms() {
-        return this.currentForms;
+        this._pageStack.pop();
     }
 
     public setCurrentPage(pageId:string, parentPageElement:PageElement) {
@@ -72,7 +55,7 @@ export class AppComponent implements PathApp {
         page.id=pageId;
         page.parentPageElement=parentPageElement;
 
-        for (var modelPage of this.appConfig.application.pageList) {
+        for (var modelPage of this._appConfig.application.pageList) {
             if (modelPage.id == pageId) {
                 page.title = modelPage.title;
                 for (var modelElement of modelPage.elementList) {
@@ -114,13 +97,13 @@ export class AppComponent implements PathApp {
             }
         }
 
-        this.pageStack.push(page);
+        this._pageStack.push(page);
     }
 
     public setCurrentForm(formId:string) {
         let forms:Form[] = [];
         let form:Form = null;
-        for (var modelForm of this.appConfig.application.formList) {
+        for (var modelForm of this._appConfig.application.formList) {
             if (modelForm.id === formId) {
                 // create form
                 form = new Form();
@@ -171,7 +154,7 @@ export class AppComponent implements PathApp {
         if (form == null && formId != null) {
             alert("Missing form: " + formId);
         }
-        this.currentForms = forms;
+        this._formStack = forms;
     }
 
 }
