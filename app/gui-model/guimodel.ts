@@ -967,7 +967,7 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "KPI",
-                            "icon": "fa-chevron-down",
+                            "icon": "fa-tachometer",
                             "color": "wet-asphalt",
                             "page": "kpisconfigurationpage"
                         },
@@ -1044,17 +1044,68 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "New KPI",
-                            "icon": "fa-cube",
+                            "icon": "fa-tachometer",
                             "color": "green",
                             "form": "kpiform"
                         },
                         {
                             "type": "list",
                             "name": "Key Performance Indicator",
-                            "icon": "fa-cube",
-                            "color": "asbestos",
-                            "form": "kpiform",
+                            "icon": "fa-tachometer",
+                            "color": "wet-asphalt",
+                            "page": "kpiconfigurationpage",
                             "data": [ {"name":"Anteil extern erbrachte Beschaffungs-Leistungen"}, {"name":"Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name":"Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"}, {"name":"Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik"}, {"name":"Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung"}, {"name":"Anzahl FTE Beschaffung"}, {"name":"Kosten je Bestellung"}, {"name":"Gesamtkosten Beschaffung pro Fall stationär"}, {"name":"Gesamtkosten Beschaffung pro Fall ambulant"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "kpiconfigurationpage",
+                    "title": "Key Performance Indicators",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Edit KPI",
+                            "icon": "fa-tachometer",
+                            "color": "green",
+                            "form": "kpiform",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Add Input KPI",
+                            "icon": "fa-tachometer",
+                            "color": "green",
+                            "form": "kpiform"
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Input Parameter",
+                            "icon": "fa-pencil",
+                            "color": "green",
+                            "form": "kpiform"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Input KPIs",
+                            "icon": "fa-tachometer",
+                            "color": "wet-asphalt",
+                            "form": "kpiform",
+                            "data": [ {"name":"Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name":"Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"} ]
+                        },
+                        {
+                            "type": "list",
+                            "name": "Input Parameter",
+                            "icon": "fa-pencil",
+                            "color": "pumpkin",
+                            "data": [ {"name":"Anzahl Betten"}, {"name":"Anzahl Mittagessen"} ]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Remove",
+                            "icon": "fa-remove",
+                            "color": "red"
                         }
                     ]
                 },
