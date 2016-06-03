@@ -971,6 +971,13 @@ export class GuiModel {
                             "color": "wet-asphalt",
                             "page": "kpisconfigurationpage"
                         },
+                        {
+                            "type": "button",
+                            "name": "KPI Categories",
+                            "icon": "fa-book",
+                            "color": "pomegra",
+                            "page": "kpicategoriesconfigurationpage"
+                        },
                     ]
                 },
                 {
@@ -1106,6 +1113,30 @@ export class GuiModel {
                             "name": "Remove",
                             "icon": "fa-remove",
                             "color": "red"
+                        }
+                    ]
+                },
+                {
+                    "id": "kpicategoriesconfigurationpage",
+                    "title": "KPI Categories",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New KPI Category",
+                            "icon": "fa-book",
+                            "color": "green",
+                            "form": "kpicategoryform"
+                        },
+                        {
+                            "type": "list",
+                            "name": "KPI Categories",
+                            "icon": "fa-book",
+                            "color": "pomegra",
+                            "form": "kpicategoryform",
+                            "data": [ {"name":"KPI Category 1"}, {"name":"KPI Category 2"}, {"name":"KPI Category 3"}, {"name":"KPI Category 4"}, {"name":"KPI Category 5"}, {"name":"KPI Category 6"}, {"name":"KPI Category 7"}, {"name":"KPI Category 8"}, {"name":"KPI Category 9"}, {"name":"KPI Category 10"}]
                         }
                     ]
                 },
