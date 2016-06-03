@@ -209,6 +209,30 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "projectprocessgroupform",
+                    "title": "Add Process Group to Project",
+                    "formFieldList": [
+                        {
+                            "type": "autocomplete",
+                            "name": "Process Group",
+                            "actions": [{"type": "new", "name": "New..."}],
+                            "data": [ "Process Group S1", "Process Group S2", "Process Group S3", "Process Group S4", "Process Group S5", "Process Group S6"]
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "categoryform",
                     "title": "Category",
                     "formFieldList": [
@@ -231,12 +255,94 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "processgroupform",
+                    "title": "Process Group",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Process Group Name"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "processform",
+                    "title": "Process",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Process Name"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "questionform",
                     "title": "Question",
                     "formFieldList": [
                         {
                             "type": "text",
                             "name": "Capability Question",
+                            "height": 8
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "kpiform",
+                    "title": "Key Performance Indicator (KPI)",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Key Performance Indicator Name"
+                        },
+                        {
+                            "type": "autocomplete",
+                            "name": "Output Unit",
+                            "actions": [{"type": "new", "name": "New..."}],
+                            "data": [ "CHF", "FTE", "kg", "h", "Betten", "min"]
+                        },
+                        {
+                            "type": "text",
+                            "name": "Formula",
+                            "height": 8
+                        },
+                        {
+                            "type": "text",
+                            "name": "Comments",
                             "height": 8
                         },
                         {
@@ -773,6 +879,7 @@ export class GuiModel {
                             "name": "DeepScan Processes & KPIs",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
+                            "page": "deepscanconfigurationpage"
                         },
                         {
                             "type": "button",
@@ -842,7 +949,115 @@ export class GuiModel {
                             "color": "red"
                         }
                     ]
-                }
+                },
+                {
+                    "id": "deepscanconfigurationpage",
+                    "title": "Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Process Groups",
+                            "icon": "fa-fast-forward",
+                            "color": "alizarin",
+                            "page": "deepscanprocessgroupsconfigurationpage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "KPI",
+                            "icon": "fa-chevron-down",
+                            "color": "wet-asphalt",
+                            "page": "kpisconfigurationpage"
+                        },
+                    ]
+                },
+                {
+                    "id": "deepscanprocessgroupsconfigurationpage",
+                    "title": "Process Groups",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Process Group",
+                            "icon": "fa-cube",
+                            "color": "green",
+                            "form": "processgroupform"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Process Groups",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "page": "deepscanprocessesconfigurationpage",
+                            "data": [ {"name":"Process Group S1"}, {"name":"Process Group S2"}, {"name":"Process Group S3"}, {"name":"Process Group S4"}, {"name":"Process Group S5"}, {"name":"Process Group S6"}, {"name":"Process Group S7"}, {"name":"Process Group S8"}, {"name":"Process Group S9"}, {"name":"Process  Group S10"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanprocessesconfigurationpage",
+                    "title": "Processes",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Edit Process Group",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": "processgroupform",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Process",
+                            "icon": "fa-cube",
+                            "color": "green",
+                            "form": "processform"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Processes",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "form": "processform",
+                            "data": [ {"name":"Process S1"}, {"name":"Process S2"}, {"name":"Process S3"}, {"name":"Process S4"}, {"name":"Process S5"}, {"name":"Process S6"}, {"name":"Process S7"}, {"name":"Process S8"}, {"name":"Process S10"}, {"name":"Process S11"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Remove",
+                            "icon": "fa-remove",
+                            "color": "red"
+                        }
+                    ]
+                },
+                {
+                    "id": "kpisconfigurationpage",
+                    "title": "Key Performance Indicators",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New KPI",
+                            "icon": "fa-cube",
+                            "color": "green",
+                            "form": "kpiform"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Key Performance Indicator",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "form": "kpiform",
+                            "data": [ {"name":"Anteil extern erbrachte Beschaffungs-Leistungen"}, {"name":"Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name":"Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"}, {"name":"Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik"}, {"name":"Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung"}, {"name":"Anzahl FTE Beschaffung"}, {"name":"Kosten je Bestellung"}, {"name":"Gesamtkosten Beschaffung pro Fall stationär"}, {"name":"Gesamtkosten Beschaffung pro Fall ambulant"}]
+                        }
+                    ]
+                },
             ]
         }
     };
