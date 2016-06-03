@@ -312,7 +312,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "categoryquestionspage",
-                            "data": [ {"name":"B1"}, {"name":"B2"}, {"name":"B3"}, {"name":"B4"}, {"name":"B5"}, {"name":"B6"}, {"name":"B7"}, {"name":"B8"}, {"name":"B9"}, {"name":"B10"}]
+                            "data": [ {"name":"Category B1"}, {"name":"Category B2"}, {"name":"Category B3"}, {"name":"Category B4"}, {"name":"Category B5"}, {"name":"Category B6"}, {"name":"Category B7"}, {"name":"Category B8"}, {"name":"Category B9"}, {"name":"Category B10"}]
                         },
                         {
                             "type": "button",
