@@ -10,11 +10,17 @@
     </div>
 </div>
 
+<!-- Navigation Path -->
 <div class="col-md-12">
-<h1>{{displayPath()}}</h1>
+    <h1>
+        <span *ngFor='let page of getPageStack()'>
+            <span *ngIf='page.parentPageElement == null'>{{page.title}}</span><!-- First element has no parent-->
+            <span *ngIf='page.parentPageElement != null'> > {{page.parentPageElement?.name}}</span><!-- Element 2 to n -->
+        </span>
+    </h1>
 </div>
 
-<!-- Page -->
+<!-- Page Elements -->
 <div class="col-md-12">
     <span *ngFor='let pageElement of getCurrentPage().content'>
     <div *ngIf='pageElement.type == "button"' class="thumbnail tile tile-large tile-{{pageElement.color}}">
@@ -40,7 +46,7 @@
     </span>
 </div>
 
-<!-- Form -->
+<!-- Forms -->
 <div class="col-sm-6 col-md-3">
     <div class="col-sm-6 col-md-3">
         <div *ngFor="let element of getCurrentForms()">

@@ -45,8 +45,8 @@ export class Page {
 
 export class PageElement {
     private _app:PathApp;
-    private _name:String;
-    private _type:String;
+    private _name:string;
+    private _type:string;
 
     constructor(app:PathApp) {
         this._app = app;
@@ -56,19 +56,19 @@ export class PageElement {
         return this._app;
     }
 
-    get name():String {
+    get name():string {
         return this._name;
     }
 
-    set name(value:String) {
+    set name(value:string) {
         this._name = value;
     }
 
-    get type():String {
+    get type():string {
         return this._type;
     }
 
-    set type(value:String) {
+    set type(value:string) {
         this._type = value;
     }
 }

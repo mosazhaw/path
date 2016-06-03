@@ -45,7 +45,7 @@ export class AppComponent implements PathApp {
 
     public displayPath() {
         let string:string = "";
-        for (let element:Page of this.pageStack) {
+        for (let element of this.pageStack) {
             if (string.length > 0) {
                 string = string.concat(" > ");
             }
@@ -57,6 +57,10 @@ export class AppComponent implements PathApp {
         }
 
         return string;
+    }
+
+    public getPageStack() {
+        return this.pageStack;
     }
 
     public getCurrentForms() {
