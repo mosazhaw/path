@@ -3,7 +3,6 @@ Deloitte
 - DeepScan, Admin, Reports, ...
 
 Path Framework
-- Navigation Path
 - Detail Data in Buttons
 - List / Select List with Objects - not String
 - Intelligent Search Button
