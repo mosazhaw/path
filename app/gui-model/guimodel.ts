@@ -846,7 +846,7 @@ export class GuiModel {
                             "name": "QuickScans List",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
-                            "page": "quickscanpage",
+                            "page": "reportspage",
                             "data": [ {"name":"QuickScan One"}, {"name":"QuickScan Two"}, {"name":"QuickScan Three"}]
                         },
                         {
@@ -854,8 +854,47 @@ export class GuiModel {
                             "name": "DeepScans List",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
-                            "page": "deepscanpage",
+                            "page": "reportspage",
                             "data": [ {"name":"DeepScan One"}, {"name":"DeepScan Two"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "reportspage",
+                    "title": "Reports",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Completeness Check",
+                            "icon": "fa-thumbs-o-up",
+                            "color": "green"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Gap Analysis",
+                            "icon": "fa-bar-chart",
+                            "color": "carrot"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Spider Graph",
+                            "icon": "fa-line-chart",
+                            "color": "pink"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Assessment Report",
+                            "icon": "fa-file",
+                            "color": "wisteria"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Introduction Handbook",
+                            "icon": "fa-file",
+                            "color": "wisteria"
                         }
                     ]
                 },
