@@ -14,17 +14,12 @@
 <div class="col-md-12">
     <h1>
         <ol class="breadcrumb">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Library</a></li>
-            <li class="active">Data</li>
-        </ol>
-
-        <ol class="breadcrumb">
             <li *ngFor='let page of getPageStack(); let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
                 <a href="#" *ngIf='!last && page.parentPageElement == null' (click)="goToPage(currentIndex)">{{page.title}}</a><!-- First element has no parent-->
                 <a href="#" *ngIf='!last && page.parentPageElement != null' (click)="goToPage(currentIndex)">{{page.parentPageElement?.name}}</a><!-- Element 2 to n -->
                 {{last && page.parentPageElement == null ? page.title : ''}}<!-- First element has no parent-->
                 {{last && page.parentPageElement != null ? page.parentPageElement?.name : ''}}<!-- Element 2 to n -->
+                &nbsp;
             </li>
         </ol>
     </h1>
