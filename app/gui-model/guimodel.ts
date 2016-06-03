@@ -23,18 +23,21 @@ export class GuiModel {
                         {
                             "type": "autocomplete",
                             "name": "Customer PL",
+                            "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"]
                         },
                         {
                             "type": "autocomplete",
                             "name": "Deloitte PL",
+                            "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"]
                         },
                         {
                             "type": "autocomplete",
                             "name": "Industry Segment",
+                            "wordSearchEnabled": false,
                             "data": ["Oil& Gas", "Basic Materials", "Industrials", "Consumer Services", "Consumer Goods", "Health Care", "Financials", "Technology", "Telecommunications", "Utilities"]
                         },
                         {
@@ -134,6 +137,7 @@ export class GuiModel {
                         {
                             "type": "autocomplete",
                             "name": "Company",
+                            "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": [ "Alpha Hospital", "Blue Hospital", "Charisma Hospital" ]
                         },
@@ -167,6 +171,7 @@ export class GuiModel {
                         {
                             "type": "autocomplete",
                             "name": "Person",
+                            "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": [ "Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"]
                         },
@@ -191,6 +196,7 @@ export class GuiModel {
                         {
                             "type": "autocomplete",
                             "name": "Category",
+                            "wordSearchEnabled": false,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": [ "Category B1", "Category B2", "Category B3", "Category B4", "Category B5", "Category B6"]
                         },
@@ -215,6 +221,7 @@ export class GuiModel {
                         {
                             "type": "autocomplete",
                             "name": "Process Group",
+                            "wordSearchEnabled": false,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": [ "Process Group S1", "Process Group S2", "Process Group S3", "Process Group S4", "Process Group S5", "Process Group S6"]
                         },
@@ -332,6 +339,7 @@ export class GuiModel {
                         {
                             "type": "autocomplete",
                             "name": "Output Unit",
+                            "wordSearchEnabled": false,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": [ "CHF", "FTE", "kg", "h", "Betten", "min"]
                         },

@@ -118,6 +118,7 @@ export class AppComponent implements PathApp {
                         {
                             let autoCompleteFormField = new AutoComplete(this);
                             autoCompleteFormField.data = modelFormField["data"];
+                            autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
                             formField = autoCompleteFormField;
                             break;
                         }
