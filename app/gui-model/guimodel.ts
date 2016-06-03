@@ -267,6 +267,14 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "Edit QuickScan",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": "projectform",
+                            "column": 1
+                        },
+                        {
+                            "type": "button",
                             "name": "Add Interviewee",
                             "icon": "fa-user",
                             "color": "green",
@@ -279,7 +287,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "page": "quickscancategoriespage",
-                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}]
+                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}, {"name":"Frau Dr. Gesund"}]
                         },
                         {
                             "type": "button",
