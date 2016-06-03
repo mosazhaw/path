@@ -139,7 +139,14 @@
                             </div>
                             <div class="modal-footer">
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-2">
+                                        <span class="pull-left" *ngFor='let field of element.fields'>
+                                            <span *ngIf="field.type == 'deleteButton'">
+                                                <input type="button" class="btn btn-default btn-lg" (click)="doOk()" value="{{field.name}}"/>
+                                            </span>
+                                        </span>
+                                    </div>
+                                    <div class="col-md-10">
                                         <span *ngFor='let field of element.fields'>
                                             <span *ngIf="field.type == 'okButton'">
                                                 <input type="button" class="btn btn-default btn-lg" (click)="doOk()" value="{{field.name}}"/>

@@ -161,14 +161,42 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "intervieweeform",
-                    "title": "Interviewee",
+                    "id": "projectintervieweeform",
+                    "title": "Add Interviewee to Project",
                     "formFieldList": [
                         {
                             "type": "autocomplete",
                             "name": "Person",
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": [ "Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"]
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "projectcategoryform",
+                    "title": "Add Category to Project",
+                    "formFieldList": [
+                        {
+                            "type": "autocomplete",
+                            "name": "Category",
+                            "actions": [{"type": "new", "name": "New..."}],
+                            "data": [ "Category B1", "Category B2", "Category B3", "Category B4", "Category B5", "Category B6"]
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
                         },
                         {
                             "type": "cancelButton",
@@ -275,10 +303,40 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "Categories",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "page": "quickscancategoriespage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Interviewees",
+                            "icon": "fa-user",
+                            "color": "blue",
+                            "page": "quickscanintervieweespage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Remove",
+                            "icon": "fa-remove",
+                            "color": "red",
+                            "page": "quickscanspage"
+                        }
+                    ]
+                },
+                {
+                    "id": "quickscanintervieweespage",
+                    "title": "Interviewees",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
                             "name": "Add Interviewee",
                             "icon": "fa-user",
                             "color": "green",
-                            "form": "intervieweeform",
+                            "form": "projectintervieweeform",
                             "column": 1
                         },
                         {
@@ -286,22 +344,38 @@ export class GuiModel {
                             "name": "Interviewee List",
                             "icon": "fa-user",
                             "color": "blue",
-                            "page": "quickscancategoriespage",
+                            "page": "quickscanintervieweecategoriespage",
                             "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}, {"name":"Frau Dr. Gesund"}]
-                        },
-                        {
-                            "type": "button",
-                            "name": "Remove",
-                            "icon": "fa-remove",
-                            "color": "red",
-                            "page": "quickscanspage",
-                            "column": 1
                         }
                     ]
                 },
                 {
                     "id": "quickscancategoriespage",
                     "title": "Categories",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Add Category",
+                            "icon": "fa-cube",
+                            "color": "green",
+                            "form": "projectcategoryform"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Categories",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "form": "projectcategoryform",
+                            "data": [ {"name":"Category B1"}, {"name":"Category B2"}, {"name":"Category B3"}, {"name":"Category B4"}, {"name":"Category B5"}, {"name":"Category B6"}, {"name":"Category B7"}, {"name":"Category B8"}, {"name":"Category B9"}, {"name":"Category B10"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "quickscanintervieweecategoriespage",
+                    "title": "Interviewee Categories",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -319,9 +393,8 @@ export class GuiModel {
                             "name": "Remove",
                             "icon": "fa-remove",
                             "color": "red",
-                            "page": "quickscanpage",
-                            "column": 1
-                        },
+                            "page": "quickscanspage"
+                        }
                     ]
                 },
                 {
