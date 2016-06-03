@@ -497,10 +497,10 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Processes",
+                            "name": "Process Groups",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "page": "deepscanprocessespage"
+                            "page": "deepscanprocessgroupspage"
                         },
                         {
                             "type": "button",
@@ -537,32 +537,55 @@ export class GuiModel {
                             "name": "Interviewee List",
                             "icon": "fa-user",
                             "color": "blue",
-                            "page": "deepscanintervieweeprocessespage",
+                            "page": "deepscanintervieweeprocessgroupspage",
                             "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}, {"name":"Frau Dr. Gesund"}]
                         }
                     ]
                 },
                 {
-                    "id": "deepscanprocessespage",
-                    "title": "Processes",
+                    "id": "deepscanprocessgroupspage",
+                    "title": "Process Groups",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "button",
-                            "name": "Add Process",
+                            "name": "Add Process Group",
                             "icon": "fa-cube",
                             "color": "green",
-                            "form": "projectprocessform"
+                            "form": "projectprocessgroupform"
                         },
                         {
                             "type": "list",
                             "name": "Processes",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "form": "projectprocessform",
-                            "data": [ {"name":"Process S1"}, {"name":"Process S2"}, {"name":"Process S3"}, {"name":"Process S4"}, {"name":"Process S5"}, {"name":"Process S6"}, {"name":"Process S7"}, {"name":"Process S8"}, {"name":"Process S10"}, {"name":"Process S11"}]
+                            "form": "projectprocessgroupform",
+                            "data": [ {"name":"Process Group S1"}, {"name":"Process Group S2"}, {"name":"Process Group S3"}, {"name":"Process Group S4"}, {"name":"Process Group S5"}, {"name":"Process Group S6"}, {"name":"Process Group S7"}, {"name":"Process Group S8"}, {"name":"Process Group S9"}, {"name":"Process  Group S10"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanintervieweeprocessgroupspage",
+                    "title": "Interviewee Process Groups",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Process Groups",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "page": "deepscanintervieweeprocessespage",
+                            "data": [ {"name":"Process Group S1"}, {"name":"Process Group S2"}, {"name":"Process Group S3"}, {"name":"Process Group S4"}, {"name":"Process Group S5"}, {"name":"Process Group S6"}, {"name":"Process Group S7"}, {"name":"Process Group S8"}, {"name":"Process Group S9"}, {"name":"Process  Group S10"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Delete",
+                            "icon": "fa-remove",
+                            "color": "red"
                         }
                     ]
                 },
@@ -580,13 +603,6 @@ export class GuiModel {
                             "color": "asbestos",
                             "page": "processquestionspage",
                             "data": [ {"name":"Process S1"}, {"name":"Process S2"}, {"name":"Process S3"}, {"name":"Process S4"}, {"name":"Process S5"}, {"name":"Process S6"}, {"name":"Process S7"}, {"name":"Process S8"}, {"name":"Process S10"}, {"name":"Process S11"}]
-                        },
-                        {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red",
-                            "page": "deepscanspage"
                         }
                     ]
                 },
