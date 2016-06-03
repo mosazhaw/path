@@ -466,7 +466,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Remove",
+                            "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red",
                             "page": "deepscanspage"
@@ -538,7 +538,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Remove",
+                            "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red",
                             "page": "deepscanspage"
@@ -705,6 +705,7 @@ export class GuiModel {
                             "name": "QuickScan Categories",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
+                            "page": "quickscancategoriesconfigurationpage"
                         },
                         {
                             "type": "button",
@@ -717,6 +718,67 @@ export class GuiModel {
                             "name": "Reports and Handbooks",
                             "icon": "fa-file",
                             "color": "wisteria",
+                        }
+                    ]
+                },
+                {
+                    "id": "quickscancategoriesconfigurationpage",
+                    "title": "Categories",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Add Category",
+                            "icon": "fa-cube",
+                            "color": "green",
+                            "form": "categoryform"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Categories",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "page": "quickscancategoryconfigurationpage",
+                            "data": [ {"name":"Category B1"}, {"name":"Category B2"}, {"name":"Category B3"}, {"name":"Category B4"}, {"name":"Category B5"}, {"name":"Category B6"}, {"name":"Category B7"}, {"name":"Category B8"}, {"name":"Category B9"}, {"name":"Category B10"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "quickscancategoryconfigurationpage",
+                    "title": "Category",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Edit Category",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": "categoryform"
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Question",
+                            "icon": "fa-question",
+                            "color": "green",
+                            "form": "questionform"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Questions",
+                            "icon": "fa-question",
+                            "color": "lime",
+                            "form": "questionform",
+                            "data": [ {"name":"Question 1"}, {"name":"Question 2"}, {"name":"Question 3"}, {"name":"Question 4"}, {"name":"Question 5"}, {"name":"Question 6"}, {"name":"Question 7"}, {"name":"Question 8"}, {"name":"Question 9"}, {"name":"Question 10"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Remove",
+                            "icon": "fa-remove",
+                            "color": "red"
                         }
                     ]
                 }
