@@ -398,6 +398,7 @@ export class GuiModel {
                             "name": "Reports",
                             "icon": "fa-file",
                             "color": "blue",
+                            "page": "reportcustomerspage"
                         },
                         {
                             "type": "button",
@@ -734,6 +735,7 @@ export class GuiModel {
                         }
                     ]
                 },
+                /* customers */
                 {
                     "id": "customerspage",
                     "title": "Customers",
@@ -758,6 +760,7 @@ export class GuiModel {
                         }
                     ]
                 },
+                /* persons */
                 {
                     "id": "personspage",
                     "title": "Persons",
@@ -813,6 +816,50 @@ export class GuiModel {
                         }
                     ]
                 },
+                /* reports */
+                {
+                    "id": "reportcustomerspage",
+                    "title": "Customers",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Customer List",
+                            "icon": "fa-home",
+                            "color": "purple",
+                            "page": "customerprojectspage",
+                            "data": [ {"name":"Alpha Hospital"}, {"name":"Blue Hospital"}, {"name":"Charisma Hospital"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "customerprojectspage",
+                    "title": "Customer Projects",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "QuickScans List",
+                            "icon": "fa-fast-forward",
+                            "color": "alizarin",
+                            "page": "quickscanpage",
+                            "data": [ {"name":"QuickScan One"}, {"name":"QuickScan Two"}, {"name":"QuickScan Three"}]
+                        },
+                        {
+                            "type": "list",
+                            "name": "DeepScans List",
+                            "icon": "fa-chevron-down",
+                            "color": "wet-asphalt",
+                            "page": "deepscanpage",
+                            "data": [ {"name":"DeepScan One"}, {"name":"DeepScan Two"}]
+                        }
+                    ]
+                },
+                /* admin */
                 {
                     "id": "adminpage",
                     "title": "Administration",
@@ -885,7 +932,7 @@ export class GuiModel {
                             "type": "button",
                             "name": "Reports and Handbooks",
                             "icon": "fa-file",
-                            "color": "wisteria",
+                            "color": "wisteria"
                         }
                     ]
                 },
