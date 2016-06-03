@@ -1,0 +1,16 @@
+Deloitte
+- Review
+- DeepScan, Admin, Reports, ...
+
+Path Framework
+- Navigation Path
+- Detail Data in Buttons
+- List / Select List with Objects - not String
+- Intelligent Search Button
+- Form Mode with Mock Data?
+- Refactor classes into individual files?
+
+CI
+- Separation of Framework/Project
+- Unit Tests
+- Build

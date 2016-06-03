@@ -50,6 +50,18 @@ export class GuiModel {
                             ]
                         },
                         {
+                            "type": "radiogroup",
+                            "name": "Monitoring (over Time)",
+                            "radios": [{
+                                type: "radio",
+                                name: "Yes"
+                            }, {
+                                type: "radio",
+                                name: "No"
+                            }
+                            ]
+                        },
+                        {
                             "type": "text",
                             "name": "Comments",
                             "height": 8
