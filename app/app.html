@@ -49,10 +49,10 @@
     <span *ngIf='pageElement.type == "list"'>
     <div *ngIf='pageElement.search' class="thumbnail tile tile-large tile-green">
         <div class="input-group input-group-lg">
-            <h1>Enter text</h1>
+            <h1>Search</h1>
             <i class="fa fa-3x fa-search"></i>
             <h1></h1>
-            <input placeholder="Search" class="form-control" type="text">
+            <input placeholder="Enter search text" class="form-control" type="text">
         </div>
     </div>
     <div *ngFor='let listElement of pageElement.content' class="thumbnail tile tile-large tile-{{listElement.color}}">
