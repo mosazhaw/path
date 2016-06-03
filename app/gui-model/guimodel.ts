@@ -6,7 +6,7 @@ export class GuiModel {
             "formList": [
                 {
                     "id": "projectform",
-                    "title": "Project Details (QuickScan)",
+                    "title": "Project Details",
                     "formFieldList": [
                         {
                             "type": "text",
@@ -225,8 +225,9 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "DeepScan",
-                            "icon": "fa-play",
+                            "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
+                            "page": "deepscanspage",
                             "column": 1
                         },
                         {
@@ -279,7 +280,7 @@ export class GuiModel {
                         {
                             "type": "list",
                             "name": "QuickScans List",
-                            "icon": "fa-home",
+                            "icon": "fa-fast-forward",
                             "color": "alizarin",
                             "page": "quickscanpage",
                             "data": [ {"name":"QuickScan One"}, {"name":"QuickScan Two"}, {"name":"QuickScan Three"}, {"name":"QuickScan Four"}, {"name":"QuickScan Five"}, {"name":"QuickScan Six"}]
@@ -417,6 +418,166 @@ export class GuiModel {
                             "icon": "fa-forward",
                             "color": "silver",
                             "page": "categoryquestionspage",
+                            "column": 1
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanspage",
+                    "title": "DeepScan",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New",
+                            "icon": "fa-fast-forward",
+                            "color": "green",
+                            "form": "projectform",
+                            "column": 2
+                        },
+                        {
+                            "type": "list",
+                            "name": "DeepScans List",
+                            "icon": "fa-chevron-down",
+                            "color": "wet-asphalt",
+                            "page": "deepscanpage",
+                            "data": [ {"name":"DeepScan One"}, {"name":"DeepScan Two"}, {"name":"DeepScan Three"}, {"name":"DeepScan Four"}, {"name":"DeepScan Five"}, {"name":"DeepScan Six"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanpage",
+                    "title": "Interviewees",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Edit DeepScan",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": "projectform",
+                            "column": 1
+                        },
+                        {
+                            "type": "button",
+                            "name": "Processes",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "page": "deepscanprocessespage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Interviewees",
+                            "icon": "fa-user",
+                            "color": "blue",
+                            "page": "deepscanintervieweespage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Remove",
+                            "icon": "fa-remove",
+                            "color": "red",
+                            "page": "deepscanspage"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanintervieweespage",
+                    "title": "Interviewees",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Add Interviewee",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "form": "projectintervieweeform",
+                            "column": 1
+                        },
+                        {
+                            "type": "list",
+                            "name": "Interviewee List",
+                            "icon": "fa-user",
+                            "color": "blue",
+                            "page": "deepscanintervieweeprocessespage",
+                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}, {"name":"Frau Dr. Gesund"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanprocessespage",
+                    "title": "Processes",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Add Process",
+                            "icon": "fa-cube",
+                            "color": "green",
+                            "form": "projectprocessform"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Processes",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "form": "projectprocessform",
+                            "data": [ {"name":"Process S1"}, {"name":"Process S2"}, {"name":"Process S3"}, {"name":"Process S4"}, {"name":"Process S5"}, {"name":"Process S6"}, {"name":"Process S7"}, {"name":"Process S8"}, {"name":"Process S10"}, {"name":"Process S11"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanintervieweeprocessespage",
+                    "title": "Interviewee Processes",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Processes",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "page": "processquestionspage",
+                            "data": [ {"name":"Process S1"}, {"name":"Process S2"}, {"name":"Process S3"}, {"name":"Process S4"}, {"name":"Process S5"}, {"name":"Process S6"}, {"name":"Process S7"}, {"name":"Process S8"}, {"name":"Process S10"}, {"name":"Process S11"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Remove",
+                            "icon": "fa-remove",
+                            "color": "red",
+                            "page": "deepscanspage"
+                        }
+                    ]
+                },
+                {
+                    "id": "processquestionspage",
+                    "title": "Questions",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "TODO - Questions",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "column": 1
+                        },
+                        {
+                            "type": "button",
+                            "name": "Next",
+                            "icon": "fa-forward",
+                            "color": "silver",
+                            "page": "processquestionspage",
                             "column": 1
                         }
                     ]
