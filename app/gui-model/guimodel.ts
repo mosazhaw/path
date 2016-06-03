@@ -208,6 +208,51 @@ export class GuiModel {
                         }
                     ]
                 },
+                {
+                    "id": "categoryform",
+                    "title": "Category",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Category Name"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "questionform",
+                    "title": "Question",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Capability Question",
+                            "height": 8
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                }
             ],
             "pageList": [
                 {
@@ -730,7 +775,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Add Category",
+                            "name": "New Category",
                             "icon": "fa-cube",
                             "color": "green",
                             "form": "categoryform"
