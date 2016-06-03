@@ -44,6 +44,15 @@ export class AppComponent implements PathApp {
         this._pageStack.pop();
     }
 
+    public goToPage(pageNumber:number) {
+        console.log(this.getPageStack().length);
+        console.log(pageNumber);
+        for (let k = this.getPageStack().length-1; k > pageNumber; k--) {
+            console.log("back");
+            this.navigateBack();
+        }
+    }
+
     public setCurrentPage(pageId:string, parentPageElement:PageElement) {
         let page:Page = new Page();
         page.id=pageId;
