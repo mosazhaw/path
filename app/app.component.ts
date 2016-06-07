@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {GuiModel} from './gui-model/guimodel';
 import * as path from './path-framework/path';
-import {AutoCompleteComponent, AutoComplete} from './path-framework/form/field/autocomplete/autocomplete.component';
+import {AutoCompleteComponent, AutoCompleteField} from './path-framework/form/field/autocomplete/autocomplete.component';
 
 @Component({
     selector: 'path-application',
@@ -116,7 +116,7 @@ export class AppComponent implements path.PathApp {
                     switch (modelFormField.type) {
                         case "autocomplete":
                         {
-                            let autoCompleteFormField = new AutoComplete(this);
+                            let autoCompleteFormField = new AutoCompleteField(this);
                             autoCompleteFormField.data = modelFormField["data"];
                             autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
                             formField = autoCompleteFormField;

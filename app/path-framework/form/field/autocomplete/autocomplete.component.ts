@@ -34,7 +34,7 @@ export class AutoCompleteComponent {
     }
 }
 
-export class AutoComplete extends FormField {
+export class AutoCompleteField extends FormField {
     private _query = '';
     private _filteredList:string[] = [];
     private _data = [];
