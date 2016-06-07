@@ -1,7 +1,12 @@
+/* path imports */
 import {Component} from '@angular/core';
-import {GuiModel} from './gui-model/guimodel';
 import * as path from './path-framework/path';
 import {AutoCompleteComponent, AutoCompleteField} from './path-framework/form/field/autocomplete/autocomplete.component';
+
+/* model imports */
+import {GuiModel} from './gui-model/guimodel';
+import * as handler from './gui-model/form/handlers'
+import * as beans from './gui-model/generated/forms'
 
 @Component({
     selector: 'path-application',
@@ -137,6 +142,8 @@ export class AppComponent implements path.PathApp {
                             formField = new path.FormField(this);
                         }
                     }
+                    // general values
+                    formField.id = modelFormField["id"];
                     formField.name = modelFormField.name;
                     formField.type = modelFormField.type;
                     formField.height = modelFormField["height"];
@@ -150,6 +157,19 @@ export class AppComponent implements path.PathApp {
                     }
                     form.fields.push(formField);
                 }
+                // get handler and execute load
+                let handlerName = formId + 'Handler';
+                if (beans[formId] != null && handler[handlerName] != null) {
+                    let formBean:path.IForm = new beans[formId];
+                    let formHandler:path.IFormHandler = new handler[handlerName];
+                    for (let a = 0; a < form.fields.length; a++) {
+                        if (form.fields[a].id != null) {
+                            formBean[form.fields[a].id] = form.fields[a];
+                        }
+                    }
+                    formHandler.doLoad(formBean);
+                }
+
                 forms.push(form)
             }
         }

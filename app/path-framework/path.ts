@@ -4,6 +4,15 @@ export interface PathApp {
     navigateBack();
 }
 
+export interface IFormHandler {
+    doLoad(form:IForm);
+    doSave(form:IForm);
+    doValidate(form:IForm);
+}
+
+export interface IForm {
+}
+
 export class Page {
     private _title:string;
     private _id:string;
@@ -45,6 +54,7 @@ export class Page {
 
 export class PageElement {
     private _app:PathApp;
+    private _id:string;
     private _name:string;
     private _type:string;
 
@@ -70,6 +80,14 @@ export class PageElement {
 
     set type(value:string) {
         this._type = value;
+    }
+
+    get id():string {
+        return this._id;
+    }
+
+    set id(value:string) {
+        this._id = value;
     }
 }
 

@@ -5,7 +5,7 @@ export class GuiModel {
             "title": "Assessment Tool",
             "formList": [
                 {
-                    "id": "projectform",
+                    "id": "ProjectForm",
                     "title": "Project Details",
                     "formFieldList": [
                         {
@@ -80,10 +80,11 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "customerform",
+                    "id": "CustomerForm",
                     "title": "Customer Details",
                     "formFieldList": [
                         {
+                            "id": "companyName",
                             "type": "text",
                             "name": "Company Name"
                         },
@@ -429,7 +430,7 @@ export class GuiModel {
                             "name": "New",
                             "icon": "fa-fast-forward",
                             "color": "green",
-                            "form": "projectform",
+                            "form": "ProjectForm",
                         },
                         {
                             "type": "list",
@@ -454,7 +455,7 @@ export class GuiModel {
                             "name": "Edit QuickScan",
                             "icon": "fa-arrows-alt",
                             "color": "green",
-                            "form": "projectform",
+                            "form": "ProjectForm",
                         },
                         {
                             "type": "button",
@@ -586,7 +587,7 @@ export class GuiModel {
                             "name": "New",
                             "icon": "fa-fast-forward",
                             "color": "green",
-                            "form": "projectform",
+                            "form": "ProjectForm",
                         },
                         {
                             "type": "list",
@@ -611,7 +612,7 @@ export class GuiModel {
                             "name": "Edit DeepScan",
                             "icon": "fa-arrows-alt",
                             "color": "green",
-                            "form": "projectform",
+                            "form": "ProjectForm",
                         },
                         {
                             "type": "button",
@@ -759,7 +760,7 @@ export class GuiModel {
                             "name": "New Customer",
                             "icon": "fa-home",
                             "color": "green",
-                            "form": "customerform",
+                            "form": "CustomerForm",
                         },
                         {
                             "type": "list",
@@ -810,7 +811,7 @@ export class GuiModel {
                             "name": "Edit Customer",
                             "icon": "fa-arrows-alt",
                             "color": "green",
-                            "form": "customerform",
+                            "form": "CustomerForm",
                         },
                         {
                             "type": "button",
