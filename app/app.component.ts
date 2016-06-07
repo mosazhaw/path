@@ -8,7 +8,6 @@ import {AutoCompleteComponent, AutoCompleteField} from './path-framework/form/fi
     templateUrl: 'app/app.html',
     directives: [AutoCompleteComponent]
 })
-
 export class AppComponent implements path.PathApp {
 
     private _appConfig = new GuiModel().guiModel;

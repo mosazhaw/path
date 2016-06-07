@@ -8,7 +8,6 @@ import {FormField} from './../../../path';
     },
     templateUrl: 'app/path-framework/form/field/autocomplete/autocomplete.html'
 })
-
 export class AutoCompleteComponent {
     @Input('field')
     @Output('field')
