@@ -12,7 +12,7 @@ import {FormField} from './../../../path';
 export class AutoCompleteComponent {
     @Input('field')
     @Output('field')
-    field: AutoComplete;
+    field: AutoCompleteField;
     private _elementRef;
 
     constructor(myElement: ElementRef) {
