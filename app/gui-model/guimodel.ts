@@ -22,6 +22,13 @@ export class GuiModel {
                         },
                         {
                             "type": "autocomplete",
+                            "name": "Customer",
+                            "wordSearchEnabled": true,
+                            "actions": [{"type": "new", "name": "New..."}],
+                            "data": [ "Alpha Hospital", "Blue Hospital", "Charisma Hospital" ]
+                        },
+                        {
+                            "type": "autocomplete",
                             "name": "Customer PL",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
@@ -154,6 +161,10 @@ export class GuiModel {
                             "type": "text",
                             "name": "Comments",
                             "height": 8
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
                         },
                         {
                             "type": "cancelButton",
@@ -473,7 +484,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Remove",
+                            "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red",
                             "page": "quickscanspage"
@@ -546,7 +557,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Remove",
+                            "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red",
                             "page": "quickscanspage"
@@ -828,6 +839,12 @@ export class GuiModel {
                             "search": true,
                             "form": "personform",
                             "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Delete",
+                            "icon": "fa-remove",
+                            "color": "red"
                         }
                     ]
                 },
@@ -1049,7 +1066,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Remove",
+                            "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red"
                         }
@@ -1142,7 +1159,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Remove",
+                            "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red"
                         }
@@ -1218,7 +1235,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Remove",
+                            "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red"
                         }
