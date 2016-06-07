@@ -86,8 +86,8 @@
                                             </div>
                                             <div class="col-md-8">
                                                 <div class="input-group input-group-lg">
-                                                    <input *ngIf="field.height == null || field.height <= 1" type="text" class="form-control" placeholder="">
-                                                    <textarea *ngIf="field.height != null && field.height > 1" rows="{{field.height}}" type="text" class="form-control path-textarea" placeholder=""></textarea>
+                                                    <input [(ngModel)]=field.value *ngIf="field.height == null || field.height <= 1" type="text" class="form-control" placeholder="">
+                                                    <textarea [(ngModel)]=field.value *ngIf="field.height != null && field.height > 1" rows="{{field.height}}" type="text" class="form-control path-textarea" placeholder=""></textarea>
                                                 </div>
                                             </div>
                                         </div>

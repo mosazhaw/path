@@ -14,8 +14,10 @@ Path Framework
 - Detail Data in Buttons
 - List / Select List with Objects - not String
 - Listbox / Multi Select Autocomplete
-- Form Mode with Mock Data?
 - Refactor classes into individual files?
+- Form Handlers
+    - Generate Form Beans automatically
+    - Use Interfaces everywhere in generated beans and handlers (e.g. ITextField)
 
 CI
 - Separation of Framework/Project

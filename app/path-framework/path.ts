@@ -231,6 +231,18 @@ export class FormField extends PageElement {
     }
 }
 
+export class TextField extends FormField {
+    private _value:string;
+
+    get value():string {
+        return this._value;
+    }
+
+    set value(value:string) {
+        this._value = value;
+    }
+}
+
 export class RadioGroup extends FormField {
     private _radios:Radio[] = [];
 

@@ -23,6 +23,7 @@ export class CustomerFormHandler implements IFormHandler {
         console.log("loading customer form");
         console.log(form);
         // form.companyName.name = "Changed";
+        // form.companyName.value = "value updated";
     }
 
     public doSave(form:forms.CustomerForm) {

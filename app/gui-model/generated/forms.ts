@@ -89,49 +89,49 @@ export class ProjectForm implements path.IForm {
 
 export class CustomerForm implements path.IForm {
 
-    private _companyName:path.FormField;
-    private _street:path.FormField;
-    private _postalCode:path.FormField;
-    private _city:path.FormField;
-    private _comments:path.FormField;
+    private _companyName:path.TextField;
+    private _street:path.TextField;
+    private _postalCode:path.TextField;
+    private _city:path.TextField;
+    private _comments:path.TextField;
 
-    get companyName():path.FormField {
+    get companyName():path.TextField {
         return this._companyName;
     }
 
-    set companyName(value:path.FormField) {
+    set companyName(value:path.TextField) {
         this._companyName = value;
     }
 
-    get street():path.FormField {
+    get street():path.TextField {
         return this._street;
     }
 
-    set street(value:path.FormField) {
+    set street(value:path.TextField) {
         this._street = value;
     }
 
-    get postalCode():path.FormField {
+    get postalCode():path.TextField {
         return this._postalCode;
     }
 
-    set postalCode(value:path.FormField) {
+    set postalCode(value:path.TextField) {
         this._postalCode = value;
     }
 
-    get city():path.FormField {
+    get city():path.TextField {
         return this._city;
     }
 
-    set city(value:path.FormField) {
+    set city(value:path.TextField) {
         this._city = value;
     }
 
-    get comments():path.FormField {
+    get comments():path.TextField {
         return this._comments;
     }
 
-    set comments(value:path.FormField) {
+    set comments(value:path.TextField) {
         this._comments = value;
     }
 }

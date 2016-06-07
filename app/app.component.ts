@@ -118,6 +118,10 @@ export class AppComponent implements path.PathApp {
                     // create form fields
                     let formField:path.FormField = null;
                     switch (modelFormField.type) {
+                        case "text": {
+                            formField = new path.TextField(this);
+                            break;
+                        }
                         case "autocomplete":
                         {
                             let autoCompleteFormField = new AutoCompleteField(this);
