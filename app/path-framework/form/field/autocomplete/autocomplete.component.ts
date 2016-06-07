@@ -11,14 +11,14 @@ import {FormField} from './../../../path';
 export class AutoCompleteComponent {
     @Input('field')
     @Output('field')
-    field: AutoCompleteField;
+    field:AutoCompleteField;
     private _elementRef;
 
-    constructor(myElement: ElementRef) {
+    constructor(myElement:ElementRef) {
         this._elementRef = myElement;
     }
 
-    handleClick(event){
+    handleClick(event) {
         var clickedComponent = event.target;
         var inside = false;
         do {
@@ -27,7 +27,7 @@ export class AutoCompleteComponent {
             }
             clickedComponent = clickedComponent.parentNode;
         } while (clickedComponent);
-        if(!inside){
+        if (!inside) {
             this.field.clearFilteredList();
         }
     }
@@ -62,14 +62,14 @@ export class AutoCompleteField extends FormField {
             }.bind(this));
         } else {
             /* empty: nothing */
-            this._filteredList = [];
+            this.clearFilteredList();
         }
         this._filteredList.sort();
     }
 
     select(item) {
         this.query = item;
-        this._filteredList = [];
+        this.clearFilteredList();
     }
 
     public clearFilteredList() {
