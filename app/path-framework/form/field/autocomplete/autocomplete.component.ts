@@ -30,6 +30,9 @@ export class AutoCompleteComponent {
         if (!inside) {
             this.field.clearFilteredList();
         }
+        if (!this.field.valueSet) {
+            this.field.query = null;
+        }
     }
 }
 
@@ -38,8 +41,10 @@ export class AutoCompleteField extends FormField {
     private _filteredList:string[] = [];
     private _data = [];
     private _wordSearchEnabled:boolean;
+    private _valueSet:boolean = false;
 
     filter(value) {
+        this._valueSet = false;
         this.query = value;
         if (this.query.length > 0 && this.query.replace(/\s/g, '').length == 0) {
             /* space: all */
@@ -68,6 +73,7 @@ export class AutoCompleteField extends FormField {
     }
 
     select(item) {
+        this._valueSet = true;
         this.query = item;
         this.clearFilteredList();
     }
@@ -94,5 +100,9 @@ export class AutoCompleteField extends FormField {
 
     set wordSearchEnabled(value:boolean) {
         this._wordSearchEnabled = value;
+    }
+
+    get valueSet():boolean {
+        return this._valueSet;
     }
 }
