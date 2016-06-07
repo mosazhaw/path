@@ -1,8 +1,11 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, Input, Output, ElementRef} from '@angular/core';
 import {FormField} from './../../../path';
 
 @Component({
     selector: 'path-autocomplete',
+    host: {
+        '(document:click)': 'handleClick($event)',
+    },
     templateUrl: 'app/path-framework/form/field/autocomplete/autocomplete.html'
 })
 
@@ -10,6 +13,25 @@ export class AutoCompleteComponent {
     @Input('field')
     @Output('field')
     field: AutoComplete;
+    private _elementRef;
+
+    constructor(myElement: ElementRef) {
+        this._elementRef = myElement;
+    }
+
+    handleClick(event){
+        var clickedComponent = event.target;
+        var inside = false;
+        do {
+            if (clickedComponent === this._elementRef.nativeElement) {
+                inside = true;
+            }
+            clickedComponent = clickedComponent.parentNode;
+        } while (clickedComponent);
+        if(!inside){
+            this.field.clearFilteredList();
+        }
+    }
 }
 
 export class AutoComplete extends FormField {
@@ -48,6 +70,10 @@ export class AutoComplete extends FormField {
 
     select(item) {
         this.query = item;
+        this._filteredList = [];
+    }
+
+    public clearFilteredList() {
         this._filteredList = [];
     }
 
