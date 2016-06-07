@@ -1,29 +1,29 @@
 import {Component} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/common';
 import {GuiModel} from './gui-model/guimodel';
-import {PageElement, Page, Form, FormField, Action, PageButton, BackButton, PathApp, AutoComplete, RadioGroup, Radio, List} from './path-framework/path';
-
+import * as path from './path-framework/path';
+import {AutoCompleteComponent, AutoComplete} from './path-framework/form/field/autocomplete/autocomplete.component';
 
 @Component({
     selector: 'path-application',
-    templateUrl: 'app/app.html'
+    templateUrl: 'app/app.html',
+    directives: [AutoCompleteComponent]
 })
 
-export class AppComponent implements PathApp {
+export class AppComponent implements path.PathApp {
 
     private _appConfig = new GuiModel().guiModel;
-    private _pageStack:Page[] = [];
-    private _formStack:Form[] = [];
+    private _pageStack:path.Page[] = [];
+    private _formStack:path.Form[] = [];
 
     constructor() {
         this.setCurrentPage("mainmenu", null); // set start page
     }
 
-    public getPageStack():Page[] {
+    public getPageStack():path.Page[] {
         return this._pageStack;
     }
 
-    public getFormStack():Form[] {
+    public getFormStack():path.Form[] {
         return this._formStack;
     }
 
@@ -51,8 +51,8 @@ export class AppComponent implements PathApp {
         }
     }
 
-    public setCurrentPage(pageId:string, parentPageElement:PageElement) {
-        let page:Page = new Page();
+    public setCurrentPage(pageId:string, parentPageElement:path.PageElement) {
+        let page:path.Page = new path.Page();
         page.id=pageId;
         page.parentPageElement=parentPageElement;
 
@@ -61,10 +61,10 @@ export class AppComponent implements PathApp {
                 page.title = modelPage.title;
                 for (var modelElement of modelPage.elementList) {
                     // element
-                    let element:PageElement = null;
+                    let element:path.PageElement = null;
                     switch (modelElement.type) {
                         case "button":
-                            let pageButton:PageButton = new PageButton(this);
+                            let pageButton:path.PageButton = new path.PageButton(this);
                             pageButton.icon = modelElement["icon"];
                             pageButton.color = modelElement["color"];
                             pageButton.page = modelElement["page"];
@@ -72,16 +72,16 @@ export class AppComponent implements PathApp {
                             element = pageButton;
                             break;
                         case "backbutton":
-                            let backButton:BackButton = new BackButton(this);
+                            let backButton:path.BackButton = new path.BackButton(this);
                             backButton.icon = modelElement["icon"];
                             backButton.color = modelElement["color"];
                             element = backButton;
                             break;
                         case "list":
-                            let dynamicList:List = new List(this);
+                            let dynamicList:path.List = new path.List(this);
                             dynamicList.search = modelElement["search"];
                             for (var listElement of modelElement["data"]) {
-                                let button:PageButton = new PageButton(this);
+                                let button:path.PageButton = new path.PageButton(this);
                                 button.name = listElement.name;
                                 button.color = modelElement["color"];
                                 button.icon = modelElement["icon"];
@@ -103,16 +103,16 @@ export class AppComponent implements PathApp {
     }
 
     public setCurrentForm(formId:string) {
-        let forms:Form[] = [];
-        let form:Form = null;
+        let forms:path.Form[] = [];
+        let form:path.Form = null;
         for (var modelForm of this._appConfig.application.formList) {
             if (modelForm.id === formId) {
                 // create form
-                form = new Form();
+                form = new path.Form();
                 form.title = modelForm.title;
                 for (var modelFormField of modelForm.formFieldList) {
                     // create form fields
-                    let formField:FormField = null;
+                    let formField:path.FormField = null;
                     switch (modelFormField.type) {
                         case "autocomplete":
                         {
@@ -124,9 +124,9 @@ export class AppComponent implements PathApp {
                         }
                         case "radiogroup":
                         {
-                            let radioGroupFormField = new RadioGroup(this);
+                            let radioGroupFormField = new path.RadioGroup(this);
                             for (var radioModel of modelFormField["radios"]) {
-                                let radio = new Radio(this);
+                                let radio = new path.Radio(this);
                                 radio.name = radioModel.name;
                                 radioGroupFormField.radios.push(radio);
                             }
@@ -135,7 +135,7 @@ export class AppComponent implements PathApp {
                         }
                         default:
                         {
-                            formField = new FormField(this);
+                            formField = new path.FormField(this);
                         }
                     }
                     formField.name = modelFormField.name;
@@ -143,7 +143,7 @@ export class AppComponent implements PathApp {
                     formField.height = modelFormField["height"];
                     if (modelFormField["actions"] != null) {
                         for (var action of modelFormField["actions"]) {
-                            let actionObject:Action = new Action();
+                            let actionObject:path.Action = new path.Action();
                             actionObject.name = action.name;
                             actionObject.type = action.type;
                             formField.actions.push(actionObject);

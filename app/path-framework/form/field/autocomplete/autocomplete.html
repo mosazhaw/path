@@ -1,0 +1,20 @@
+<div class="row">
+    <div class="col-md-4">
+        <h4 class="modal-title">{{field.name}}</h4>
+    </div>
+    <div class="col-md-8">
+        <div class="input-group input-group-lg">
+            <input #inputElement type="text" [(ngModel)]=field.query (keyup)=field.filter(inputElement.value) class="form-control" placeholder="">
+            <!-- Auto Complete -->
+            <div *ngIf="field.filteredList.length > 0">
+                <div class="path-autocomplete list-group">
+                    <a *ngFor="let item of field.filteredList" class="list-group-item" href="#" (click)="field.select(item)"><h4>{{item}}</h4></a>
+                </div>
+            </div>
+            <!-- Action -->
+            <span class="input-group-btn" *ngFor='let action of field.actions'>
+                <button class="btn btn-default" type="button">{{action.name}}</button>
+            </span>
+        </div>
+    </div>
+</div>
