@@ -1,18 +1,35 @@
 import * as forms from './../generated/forms';
 import {IFormHandler} from './../../path-framework/path';
 
-export class ProjectFormHandler implements IFormHandler {
+export class ProjectFormQuickScanHandler implements IFormHandler {
 
     public doLoad(form:forms.ProjectForm) {
-        console.log("loading project form");
+        console.log("loading quick scan form");
+        form.quickScanCase.visible = true;
     }
 
     public doSave(form:forms.ProjectForm) {
-        console.log("saving project form");
+        console.log("saving quick scan form");
     }
 
     public doValidate(form:forms.ProjectForm) {
-        console.log("validating project form");
+        console.log("validating quick scan form");
+    }
+
+}
+
+export class ProjectFormDeepScanHandler implements IFormHandler {
+
+    public doLoad(form:forms.ProjectForm) {
+        console.log("loading deep scan form");
+    }
+
+    public doSave(form:forms.ProjectForm) {
+        console.log("saving deep scan form");
+    }
+
+    public doValidate(form:forms.ProjectForm) {
+        console.log("validating deep scan form");
     }
 
 }
@@ -21,9 +38,6 @@ export class CustomerFormHandler implements IFormHandler {
 
     public doLoad(form:forms.CustomerForm) {
         console.log("loading customer form");
-        console.log(form);
-        // form.companyName.name = "Changed";
-        // form.companyName.value = "value updated";
     }
 
     public doSave(form:forms.CustomerForm) {

@@ -13,6 +13,15 @@ export class GuiModel {
                             "name": "Project"
                         },
                         {
+                            "id": "quickScanCase",
+                            "type": "autocomplete",
+                            "name": "QuickScan Case",
+                            "wordSearchEnabled": false,
+                            "visible": false,
+                            "actions": [],
+                            "data": ["Case A", "Case B", "Case C", "Case D", "Case E"]
+                        },
+                        {
                             "type": "date",
                             "name": "Start Date"
                         },
@@ -25,7 +34,7 @@ export class GuiModel {
                             "name": "Customer",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": [ "Alpha Hospital", "Blue Hospital", "Charisma Hospital" ]
+                            "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"]
                         },
                         {
                             "type": "autocomplete",
@@ -36,7 +45,14 @@ export class GuiModel {
                         },
                         {
                             "type": "autocomplete",
-                            "name": "Deloitte PL",
+                            "name": "Service Provider",
+                            "wordSearchEnabled": true,
+                            "actions": [{"type": "new", "name": "New..."}],
+                            "data": ["Deloitte AG", "Service Provider AG", "Enterprise AG"]
+                        },
+                        {
+                            "type": "autocomplete",
+                            "name": "Service Provider PL",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"]
@@ -108,6 +124,12 @@ export class GuiModel {
                             "name": "City"
                         },
                         {
+                            "type": "autocomplete",
+                            "name": "Country",
+                            "wordSearchEnabled": false,
+                            "data": ["Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Ascension Island", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Indian Ocean Territory", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Canary Islands", "Cape Verde", "Caribbean Netherlands", "Cayman Islands", "Central African Republic", "Ceuta & Melilla", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo - Brazzaville", "Congo - Kinshasa", "Cook Islands", "Costa Rica", "Côte d’Ivoire", "Croatia", "Cuba", "Curaçao", "Cyprus", "Czech Republic", "Denmark", "Diego Garcia", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong SAR China", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau SAR China", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar (Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestinian Territories", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn Islands", "Poland", "Portugal", "Puerto Rico", "Qatar", "Réunion", "Romania", "Russia", "Rwanda", "Samoa", "San Marino", "São Tomé & Príncipe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia & South Sandwich Islands", "South Korea", "South Sudan", "Spain", "Sri Lanka", "St. Barthélemy", "St. Helena", "St. Kitts & Nevis", "St. Lucia", "St. Martin", "St. Pierre & Miquelon", "St. Vincent & Grenadines", "Sudan", "Suriname", "Svalbard & Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad & Tobago", "Tristan da Cunha", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos Islands", "Tuvalu", "U.S. Outlying Islands", "U.S. Virgin Islands", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Wallis & Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"]
+                        },
+                        {
                             "type": "text",
                             "name": "Comments",
                             "height": 8
@@ -144,10 +166,22 @@ export class GuiModel {
                         },
                         {
                             "type": "autocomplete",
-                            "name": "Company",
+                            "name": "Customer",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": [ "Alpha Hospital", "Blue Hospital", "Charisma Hospital" ]
+                            "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"]
+                        },
+                        {
+                            "type": "text",
+                            "name": "E-Mail"
+                        },
+                        {
+                            "type": "text",
+                            "name": "Phone"
+                        },
+                        {
+                            "type": "text",
+                            "name": "Street"
                         },
                         {
                             "type": "text",
@@ -156,6 +190,12 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "City"
+                        },
+                        {
+                            "type": "autocomplete",
+                            "name": "Country",
+                            "wordSearchEnabled": false,
+                            "data": ["Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Ascension Island", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Indian Ocean Territory", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Canary Islands", "Cape Verde", "Caribbean Netherlands", "Cayman Islands", "Central African Republic", "Ceuta & Melilla", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo - Brazzaville", "Congo - Kinshasa", "Cook Islands", "Costa Rica", "Côte d’Ivoire", "Croatia", "Cuba", "Curaçao", "Cyprus", "Czech Republic", "Denmark", "Diego Garcia", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong SAR China", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau SAR China", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar (Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestinian Territories", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn Islands", "Poland", "Portugal", "Puerto Rico", "Qatar", "Réunion", "Romania", "Russia", "Rwanda", "Samoa", "San Marino", "São Tomé & Príncipe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia & South Sandwich Islands", "South Korea", "South Sudan", "Spain", "Sri Lanka", "St. Barthélemy", "St. Helena", "St. Kitts & Nevis", "St. Lucia", "St. Martin", "St. Pierre & Miquelon", "St. Vincent & Grenadines", "Sudan", "Suriname", "Svalbard & Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad & Tobago", "Tristan da Cunha", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos Islands", "Tuvalu", "U.S. Outlying Islands", "U.S. Virgin Islands", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Wallis & Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"]
                         },
                         {
                             "type": "text",
@@ -185,7 +225,7 @@ export class GuiModel {
                             "name": "Person",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": [ "Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"]
+                            "data": ["Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"]
                         },
                         {
                             "type": "deleteButton",
@@ -210,7 +250,7 @@ export class GuiModel {
                             "name": "Category",
                             "wordSearchEnabled": false,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": [ "Category B1", "Category B2", "Category B3", "Category B4", "Category B5", "Category B6"]
+                            "data": ["Category B1", "Category B2", "Category B3", "Category B4", "Category B5", "Category B6"]
                         },
                         {
                             "type": "deleteButton",
@@ -235,7 +275,7 @@ export class GuiModel {
                             "name": "Process Group",
                             "wordSearchEnabled": false,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": [ "Process Group S1", "Process Group S2", "Process Group S3", "Process Group S4", "Process Group S5", "Process Group S6"]
+                            "data": ["Process Group S1", "Process Group S2", "Process Group S3", "Process Group S4", "Process Group S5", "Process Group S6"]
                         },
                         {
                             "type": "deleteButton",
@@ -353,7 +393,7 @@ export class GuiModel {
                             "name": "Output Unit",
                             "wordSearchEnabled": false,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": [ "CHF", "FTE", "kg", "h", "Betten", "min"]
+                            "data": ["CHF", "FTE", "kg", "h", "Betten", "min"]
                         },
                         {
                             "type": "text",
@@ -441,7 +481,11 @@ export class GuiModel {
                             "name": "New",
                             "icon": "fa-fast-forward",
                             "color": "green",
-                            "form": "ProjectForm",
+                            "form": {
+                                "form": "ProjectForm",
+                                "mode": "create",
+                                "handler": "ProjectFormQuickScanHandler"
+                            }
                         },
                         {
                             "type": "list",
@@ -450,7 +494,7 @@ export class GuiModel {
                             "color": "alizarin",
                             "search": true,
                             "page": "quickscanpage",
-                            "data": [ {"name":"QuickScan One"}, {"name":"QuickScan Two"}, {"name":"QuickScan Three"}, {"name":"QuickScan Four"}, {"name":"QuickScan Five"}, {"name":"QuickScan Six"}]
+                            "data": [{"name": "QuickScan One"}, {"name": "QuickScan Two"}, {"name": "QuickScan Three"}, {"name": "QuickScan Four"}, {"name": "QuickScan Five"}, {"name": "QuickScan Six"}]
                         }
                     ]
                 },
@@ -466,7 +510,11 @@ export class GuiModel {
                             "name": "Edit QuickScan",
                             "icon": "fa-arrows-alt",
                             "color": "green",
-                            "form": "ProjectForm",
+                            "form": {
+                                "form": "ProjectForm",
+                                "mode": "update",
+                                "handler": "ProjectFormQuickScanHandler"
+                            }
                         },
                         {
                             "type": "button",
@@ -503,7 +551,10 @@ export class GuiModel {
                             "name": "Add Interviewee",
                             "icon": "fa-user",
                             "color": "green",
-                            "form": "projectintervieweeform",
+                            "form": {
+                                "form": "projectintervieweeform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
@@ -512,7 +563,7 @@ export class GuiModel {
                             "color": "blue",
                             "search": true,
                             "page": "quickscanintervieweecategoriespage",
-                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}, {"name":"Frau Dr. Gesund"}]
+                            "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}, {"name": "Frau Dr. Last"}, {"name": "Frau Dr. Gesund"}]
                         }
                     ]
                 },
@@ -528,15 +579,23 @@ export class GuiModel {
                             "name": "Add Category",
                             "icon": "fa-cube",
                             "color": "green",
-                            "form": "projectcategoryform"
+                            "form": {
+                                "form": "projectcategoryform",
+                                "mode": "create",
+                                "handler": "ProjectFormQuickScanHandler"
+                            }
                         },
                         {
                             "type": "list",
                             "name": "Categories",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "form": "projectcategoryform",
-                            "data": [ {"name":"Category B1"}, {"name":"Category B2"}, {"name":"Category B3"}, {"name":"Category B4"}, {"name":"Category B5"}, {"name":"Category B6"}, {"name":"Category B7"}, {"name":"Category B8"}, {"name":"Category B9"}, {"name":"Category B10"}]
+                            "form": {
+                                "form": "projectcategoryform",
+                                "mode": "update",
+                                "handler": "ProjectFormQuickScanHandler"
+                            },
+                            "data": [{"name": "Category B1"}, {"name": "Category B2"}, {"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B5"}, {"name": "Category B6"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B9"}, {"name": "Category B10"}]
                         }
                     ]
                 },
@@ -553,7 +612,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "categoryquestionspage",
-                            "data": [ {"name":"Category B1"}, {"name":"Category B2"}, {"name":"Category B3"}, {"name":"Category B4"}, {"name":"Category B5"}, {"name":"Category B6"}, {"name":"Category B7"}, {"name":"Category B8"}, {"name":"Category B9"}, {"name":"Category B10"}]
+                            "data": [{"name": "Category B1"}, {"name": "Category B2"}, {"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B5"}, {"name": "Category B6"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B9"}, {"name": "Category B10"}]
                         },
                         {
                             "type": "button",
@@ -598,7 +657,11 @@ export class GuiModel {
                             "name": "New",
                             "icon": "fa-fast-forward",
                             "color": "green",
-                            "form": "ProjectForm",
+                            "form": {
+                                "form": "ProjectForm",
+                                "mode": "create",
+                                "handler": "ProjectFormDeepScanHandler"
+                            }
                         },
                         {
                             "type": "list",
@@ -607,7 +670,7 @@ export class GuiModel {
                             "color": "wet-asphalt",
                             "search": true,
                             "page": "deepscanpage",
-                            "data": [ {"name":"DeepScan One"}, {"name":"DeepScan Two"}, {"name":"DeepScan Three"}, {"name":"DeepScan Four"}, {"name":"DeepScan Five"}, {"name":"DeepScan Six"}]
+                            "data": [{"name": "DeepScan One"}, {"name": "DeepScan Two"}, {"name": "DeepScan Three"}, {"name": "DeepScan Four"}, {"name": "DeepScan Five"}, {"name": "DeepScan Six"}]
                         }
                     ]
                 },
@@ -623,7 +686,11 @@ export class GuiModel {
                             "name": "Edit DeepScan",
                             "icon": "fa-arrows-alt",
                             "color": "green",
-                            "form": "ProjectForm",
+                            "form": {
+                                "form": "ProjectForm",
+                                "mode": "update",
+                                "handler": "ProjectFormDeepScanHandler"
+                            }
                         },
                         {
                             "type": "button",
@@ -660,7 +727,10 @@ export class GuiModel {
                             "name": "Add Interviewee",
                             "icon": "fa-user",
                             "color": "green",
-                            "form": "projectintervieweeform",
+                            "form": {
+                                "form": "projectintervieweeform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
@@ -668,7 +738,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "page": "deepscanintervieweeprocessgroupspage",
-                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Last"}, {"name":"Frau Dr. Gesund"}]
+                            "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}, {"name": "Frau Dr. Last"}, {"name": "Frau Dr. Gesund"}]
                         }
                     ]
                 },
@@ -684,15 +754,21 @@ export class GuiModel {
                             "name": "Add Process Group",
                             "icon": "fa-cube",
                             "color": "green",
-                            "form": "projectprocessgroupform"
+                            "form": {
+                                "form": "projectprocessgroupform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
                             "name": "Processes",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "form": "projectprocessgroupform",
-                            "data": [ {"name":"Process Group S1"}, {"name":"Process Group S2"}, {"name":"Process Group S3"}, {"name":"Process Group S4"}, {"name":"Process Group S5"}, {"name":"Process Group S6"}, {"name":"Process Group S7"}, {"name":"Process Group S8"}, {"name":"Process Group S9"}, {"name":"Process  Group S10"}]
+                            "form": {
+                                "form": "projectprocessgroupform",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Process Group S1"}, {"name": "Process Group S2"}, {"name": "Process Group S3"}, {"name": "Process Group S4"}, {"name": "Process Group S5"}, {"name": "Process Group S6"}, {"name": "Process Group S7"}, {"name": "Process Group S8"}, {"name": "Process Group S9"}, {"name": "Process  Group S10"}]
                         }
                     ]
                 },
@@ -709,7 +785,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "deepscanintervieweeprocessespage",
-                            "data": [ {"name":"Process Group S1"}, {"name":"Process Group S2"}, {"name":"Process Group S3"}, {"name":"Process Group S4"}, {"name":"Process Group S5"}, {"name":"Process Group S6"}, {"name":"Process Group S7"}, {"name":"Process Group S8"}, {"name":"Process Group S9"}, {"name":"Process  Group S10"}]
+                            "data": [{"name": "Process Group S1"}, {"name": "Process Group S2"}, {"name": "Process Group S3"}, {"name": "Process Group S4"}, {"name": "Process Group S5"}, {"name": "Process Group S6"}, {"name": "Process Group S7"}, {"name": "Process Group S8"}, {"name": "Process Group S9"}, {"name": "Process  Group S10"}]
                         },
                         {
                             "type": "button",
@@ -732,7 +808,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "processquestionspage",
-                            "data": [ {"name":"Process S1"}, {"name":"Process S2"}, {"name":"Process S3"}, {"name":"Process S4"}, {"name":"Process S5"}, {"name":"Process S6"}, {"name":"Process S7"}, {"name":"Process S8"}, {"name":"Process S10"}, {"name":"Process S11"}]
+                            "data": [{"name": "Process S1"}, {"name": "Process S2"}, {"name": "Process S3"}, {"name": "Process S4"}, {"name": "Process S5"}, {"name": "Process S6"}, {"name": "Process S7"}, {"name": "Process S8"}, {"name": "Process S10"}, {"name": "Process S11"}]
                         }
                     ]
                 },
@@ -771,7 +847,10 @@ export class GuiModel {
                             "name": "New Customer",
                             "icon": "fa-home",
                             "color": "green",
-                            "form": "CustomerForm",
+                            "form": {
+                                "form": "CustomerForm",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
@@ -780,7 +859,7 @@ export class GuiModel {
                             "color": "purple",
                             "search": true,
                             "page": "customerpersonspage",
-                            "data": [ {"name":"Alpha Hospital"}, {"name":"Blue Hospital"}, {"name":"Charisma Hospital"}]
+                            "data": [{"name": "Alpha Hospital"}, {"name": "Blue Hospital"}, {"name": "Charisma Hospital"}]
                         }
                     ]
                 },
@@ -797,7 +876,10 @@ export class GuiModel {
                             "name": "New Person",
                             "icon": "fa-user",
                             "color": "green",
-                            "form": "personform",
+                            "form": {
+                                "form": "personform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
@@ -805,8 +887,11 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "orange",
                             "search": true,
-                            "form": "personform",
-                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}, {"name":"Frau Dr. Held"}, {"name":"Frau Dr. Gesund"}, {"name":"Frau Dr. Krank"}]
+                            "form": {
+                                "form": "personform",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}, {"name": "Frau Dr. Held"}, {"name": "Frau Dr. Gesund"}, {"name": "Frau Dr. Krank"}]
                         }
                     ]
                 },
@@ -822,14 +907,20 @@ export class GuiModel {
                             "name": "Edit Customer",
                             "icon": "fa-arrows-alt",
                             "color": "green",
-                            "form": "CustomerForm",
+                            "form": {
+                                "form": "CustomerForm",
+                                "mode": "update"
+                            }
                         },
                         {
                             "type": "button",
                             "name": "New Person",
                             "icon": "fa-user",
                             "color": "green",
-                            "form": "personform",
+                            "form": {
+                                "form": "personform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
@@ -837,8 +928,11 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "orange",
                             "search": true,
-                            "form": "personform",
-                            "data": [ {"name":"Frau Dr. Müller"}, {"name":"Herr Dr. Lisib"}]
+                            "form": {
+                                "form": "personform",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}]
                         },
                         {
                             "type": "button",
@@ -863,7 +957,7 @@ export class GuiModel {
                             "color": "purple",
                             "search": true,
                             "page": "customerprojectspage",
-                            "data": [ {"name":"Alpha Hospital"}, {"name":"Blue Hospital"}, {"name":"Charisma Hospital"}]
+                            "data": [{"name": "Alpha Hospital"}, {"name": "Blue Hospital"}, {"name": "Charisma Hospital"}]
                         }
                     ]
                 },
@@ -880,7 +974,7 @@ export class GuiModel {
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
                             "page": "reportspage",
-                            "data": [ {"name":"QuickScan One"}, {"name":"QuickScan Two"}, {"name":"QuickScan Three"}]
+                            "data": [{"name": "QuickScan One"}, {"name": "QuickScan Two"}, {"name": "QuickScan Three"}]
                         },
                         {
                             "type": "list",
@@ -888,7 +982,7 @@ export class GuiModel {
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
                             "page": "reportspage",
-                            "data": [ {"name":"DeepScan One"}, {"name":"DeepScan Two"}]
+                            "data": [{"name": "DeepScan One"}, {"name": "DeepScan Two"}]
                         }
                     ]
                 },
@@ -967,7 +1061,10 @@ export class GuiModel {
                             "name": "New User",
                             "icon": "fa-user",
                             "color": "green",
-                            "form": "personform",
+                            "form": {
+                                "form": "personform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
@@ -975,8 +1072,11 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "orange",
                             "search": true,
-                            "form": "personform",
-                            "data": [ {"name":"Anton Amacker"}, {"name":"Beate Burkhardt"}, {"name":"Chris Connor"}, {"name":"Doris Dempster"}, {"name":"Edgar Evans"}]
+                            "form": {
+                                "form": "personform",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Anton Amacker"}, {"name": "Beate Burkhardt"}, {"name": "Chris Connor"}, {"name": "Doris Dempster"}, {"name": "Edgar Evans"}]
                         }
                     ]
                 },
@@ -1021,7 +1121,10 @@ export class GuiModel {
                             "name": "New Category",
                             "icon": "fa-cube",
                             "color": "green",
-                            "form": "categoryform"
+                            "form": {
+                                "form": "categoryform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
@@ -1030,7 +1133,7 @@ export class GuiModel {
                             "color": "asbestos",
                             "search": true,
                             "page": "quickscancategoryconfigurationpage",
-                            "data": [ {"name":"Category B1"}, {"name":"Category B2"}, {"name":"Category B3"}, {"name":"Category B4"}, {"name":"Category B5"}, {"name":"Category B6"}, {"name":"Category B7"}, {"name":"Category B8"}, {"name":"Category B9"}, {"name":"Category B10"}]
+                            "data": [{"name": "Category B1"}, {"name": "Category B2"}, {"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B5"}, {"name": "Category B6"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B9"}, {"name": "Category B10"}]
                         }
                     ]
                 },
@@ -1046,14 +1149,20 @@ export class GuiModel {
                             "name": "Edit Category",
                             "icon": "fa-arrows-alt",
                             "color": "green",
-                            "form": "categoryform"
+                            "form": {
+                                "form": "categoryform",
+                                "mode": "update"
+                            }
                         },
                         {
                             "type": "button",
                             "name": "New Question",
                             "icon": "fa-question",
                             "color": "green",
-                            "form": "questionform"
+                            "form": {
+                                "form": "questionform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
@@ -1061,8 +1170,11 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "lime",
                             "search": true,
-                            "form": "questionform",
-                            "data": [ {"name":"Question 1"}, {"name":"Question 2"}, {"name":"Question 3"}, {"name":"Question 4"}, {"name":"Question 5"}, {"name":"Question 6"}, {"name":"Question 7"}, {"name":"Question 8"}, {"name":"Question 9"}, {"name":"Question 10"}]
+                            "form": {
+                                "form": "questionform",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Question 1"}, {"name": "Question 2"}, {"name": "Question 3"}, {"name": "Question 4"}, {"name": "Question 5"}, {"name": "Question 6"}, {"name": "Question 7"}, {"name": "Question 8"}, {"name": "Question 9"}, {"name": "Question 10"}]
                         },
                         {
                             "type": "button",
@@ -1114,7 +1226,10 @@ export class GuiModel {
                             "name": "New Process Group",
                             "icon": "fa-cube",
                             "color": "green",
-                            "form": "processgroupform"
+                            "form": {
+                                "form": "processgroupform",
+                                "mode": "create"
+                            },
                         },
                         {
                             "type": "list",
@@ -1123,7 +1238,7 @@ export class GuiModel {
                             "color": "asbestos",
                             "search": true,
                             "page": "deepscanprocessesconfigurationpage",
-                            "data": [ {"name":"Process Group S1"}, {"name":"Process Group S2"}, {"name":"Process Group S3"}, {"name":"Process Group S4"}, {"name":"Process Group S5"}, {"name":"Process Group S6"}, {"name":"Process Group S7"}, {"name":"Process Group S8"}, {"name":"Process Group S9"}, {"name":"Process  Group S10"}]
+                            "data": [{"name": "Process Group S1"}, {"name": "Process Group S2"}, {"name": "Process Group S3"}, {"name": "Process Group S4"}, {"name": "Process Group S5"}, {"name": "Process Group S6"}, {"name": "Process Group S7"}, {"name": "Process Group S8"}, {"name": "Process Group S9"}, {"name": "Process  Group S10"}]
                         }
                     ]
                 },
@@ -1139,23 +1254,32 @@ export class GuiModel {
                             "name": "Edit Process Group",
                             "icon": "fa-arrows-alt",
                             "color": "green",
-                            "form": "processgroupform",
+                            "form": {
+                                "form": "processgroupform",
+                                "mode": "update"
+                            },
                         },
                         {
                             "type": "button",
                             "name": "New Process",
                             "icon": "fa-cube",
                             "color": "green",
-                            "form": "processform"
+                            "form": {
+                                "form": "processform",
+                                "mode": "create"
+                            },
                         },
                         {
                             "type": "list",
                             "name": "Processes",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "form": "processform",
+                            "form": {
+                                "form": "processform",
+                                "mode": "update"
+                            },
                             "search": true,
-                            "data": [ {"name":"Process S1"}, {"name":"Process S2"}, {"name":"Process S3"}, {"name":"Process S4"}, {"name":"Process S5"}, {"name":"Process S6"}, {"name":"Process S7"}, {"name":"Process S8"}, {"name":"Process S10"}, {"name":"Process S11"}]
+                            "data": [{"name": "Process S1"}, {"name": "Process S2"}, {"name": "Process S3"}, {"name": "Process S4"}, {"name": "Process S5"}, {"name": "Process S6"}, {"name": "Process S7"}, {"name": "Process S8"}, {"name": "Process S10"}, {"name": "Process S11"}]
                         },
                         {
                             "type": "button",
@@ -1177,7 +1301,10 @@ export class GuiModel {
                             "name": "New KPI",
                             "icon": "fa-tachometer",
                             "color": "green",
-                            "form": "kpiform"
+                            "form": {
+                                "form": "kpiform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
@@ -1186,7 +1313,7 @@ export class GuiModel {
                             "color": "wet-asphalt",
                             "page": "kpiconfigurationpage",
                             "search": true,
-                            "data": [ {"name":"Anteil extern erbrachte Beschaffungs-Leistungen"}, {"name":"Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name":"Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"}, {"name":"Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik"}, {"name":"Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung"}, {"name":"Anzahl FTE Beschaffung"}, {"name":"Kosten je Bestellung"}, {"name":"Gesamtkosten Beschaffung pro Fall stationär"}, {"name":"Gesamtkosten Beschaffung pro Fall ambulant"}]
+                            "data": [{"name": "Anteil extern erbrachte Beschaffungs-Leistungen"}, {"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"}, {"name": "Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik"}, {"name": "Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung"}, {"name": "Anzahl FTE Beschaffung"}, {"name": "Kosten je Bestellung"}, {"name": "Gesamtkosten Beschaffung pro Fall stationär"}, {"name": "Gesamtkosten Beschaffung pro Fall ambulant"}]
                         }
                     ]
                 },
@@ -1202,36 +1329,48 @@ export class GuiModel {
                             "name": "Edit KPI",
                             "icon": "fa-tachometer",
                             "color": "green",
-                            "form": "kpiform",
+                            "form": {
+                                "form": "kpiform",
+                                "mode": "update"
+                            }
                         },
                         {
                             "type": "button",
                             "name": "Add Input KPI",
                             "icon": "fa-tachometer",
                             "color": "green",
-                            "form": "kpiform"
+                            "form": {
+                                "form": "kpiform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "button",
                             "name": "New Input Parameter",
                             "icon": "fa-pencil",
                             "color": "green",
-                            "form": "kpiform"
+                            "form": {
+                                "form": "kpiform",
+                                "mode": "create"
+                            }
                         },
                         {
                             "type": "list",
                             "name": "Input KPIs",
                             "icon": "fa-tachometer",
                             "color": "wet-asphalt",
-                            "form": "kpiform",
-                            "data": [ {"name":"Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name":"Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"} ]
+                            "form": {
+                                "form": "kpiform",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"}]
                         },
                         {
                             "type": "list",
                             "name": "Input Parameter",
                             "icon": "fa-pencil",
                             "color": "pumpkin",
-                            "data": [ {"name":"Anzahl Betten"}, {"name":"Anzahl Mittagessen"} ]
+                            "data": [{"name": "Anzahl Betten"}, {"name": "Anzahl Mittagessen"}]
                         },
                         {
                             "type": "button",
@@ -1253,15 +1392,21 @@ export class GuiModel {
                             "name": "New KPI Category",
                             "icon": "fa-book",
                             "color": "green",
-                            "form": "kpicategoryform"
+                            "form": {
+                                "form": "kpicategoryform",
+                                "mode": "create"
+                            },
                         },
                         {
                             "type": "list",
                             "name": "KPI Categories",
                             "icon": "fa-book",
                             "color": "pomegra",
-                            "form": "kpicategoryform",
-                            "data": [ {"name":"KPI Category 1"}, {"name":"KPI Category 2"}, {"name":"KPI Category 3"}, {"name":"KPI Category 4"}, {"name":"KPI Category 5"}, {"name":"KPI Category 6"}, {"name":"KPI Category 7"}, {"name":"KPI Category 8"}, {"name":"KPI Category 9"}, {"name":"KPI Category 10"}]
+                            "form": {
+                                "form": "kpicategoryform",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "KPI Category 1"}, {"name": "KPI Category 2"}, {"name": "KPI Category 3"}, {"name": "KPI Category 4"}, {"name": "KPI Category 5"}, {"name": "KPI Category 6"}, {"name": "KPI Category 7"}, {"name": "KPI Category 8"}, {"name": "KPI Category 9"}, {"name": "KPI Category 10"}]
                         }
                     ]
                 },

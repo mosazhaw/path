@@ -1,6 +1,6 @@
 export interface IPathApp {
-    setCurrentForm(formId:String);
-    setCurrentPage(pageId:String, parentPageElement:PageElement);
+    setCurrentForm(formId:string, mode:string, handler:string);
+    setCurrentPage(pageId:string, parentPageElement:PageElement);
     navigateBack();
 }
 
@@ -92,14 +92,14 @@ export class PageElement {
 }
 
 export class List extends PageElement {
-    private _content:PageButton[] = [];
+    private _content:Button[] = [];
     private _search:boolean;
 
-    get content():PageButton[] {
+    get content():Button[] {
         return this._content;
     }
 
-    set content(value:PageButton[]) {
+    set content(value:Button[]) {
         this._content = value;
     }
 
@@ -112,51 +112,78 @@ export class List extends PageElement {
     }
 }
 
-export class PageButton extends PageElement {
-    private _icon:String;
-    private _color:String;
-    private _page:String;
-    private _form:String;
+export class Button extends PageElement {
+    private _icon:string;
+    private _color:string;
+
+    get icon():string {
+        return this._icon;
+    }
+
+    set icon(value:string) {
+        this._icon = value;
+    }
+
+    get color():string {
+        return this._color;
+    }
+
+    set color(value:string) {
+        this._color = value;
+    }
+}
+
+export class PageButton extends Button {
+    private _page:string;
 
     public onClick() {
         if (this._page != null) {
             this.app.setCurrentPage(this._page, this);
         }
-        if (this._form != null) {
-            this.app.setCurrentForm(this._form);
-        }
     }
 
-    get icon():String {
-        return this._icon;
-    }
-
-    set icon(value:String) {
-        this._icon = value;
-    }
-
-    get color():String {
-        return this._color;
-    }
-
-    set color(value:String) {
-        this._color = value;
-    }
-
-    get page():String {
+    get page():string {
         return this._page;
     }
 
-    set page(value:String) {
+    set page(value:string) {
         this._page = value;
     }
+}
 
-    get form():String {
+export class FormButton extends Button {
+    private _form:string;
+    private _mode:string;
+    private _handler:string;
+
+    public onClick() {
+        if (this._form != null) {
+            this.app.setCurrentForm(this._form, this._form, this.handler);
+        }
+    }
+
+    get form():string {
         return this._form;
     }
 
-    set form(value:String) {
+    set form(value:string) {
         this._form = value;
+    }
+
+    get mode():string {
+        return this._mode;
+    }
+
+    set mode(value:string) {
+        this._mode = value;
+    }
+
+    get handler():string {
+        return this._handler;
+    }
+
+    set handler(value:string) {
+        this._handler = value;
     }
 }
 
@@ -212,6 +239,7 @@ export class Action {
 
 export class FormField extends PageElement {
     private _height:Number;
+    private _visible:boolean;
     private _actions:Action[] = [];
 
     get actions():Action[] {
@@ -228,6 +256,14 @@ export class FormField extends PageElement {
 
     set height(value:Number) {
         this._height = value;
+    }
+
+    get visible():boolean {
+        return this._visible;
+    }
+
+    set visible(value:boolean) {
+        this._visible = value;
     }
 }
 

@@ -5,11 +5,12 @@ import * as path from './../../path-framework/path';
 export class ProjectForm implements path.IForm {
 
     private _project:path.FormField;
+    private _quickScanCase:path.AutoCompleteField;
     private _startDate:path.FormField;
     private _endDate:path.FormField;
-    private _customerProjectLeader:string;
-    private _deloitteProjectLeader:string;
-    private _industrySegment:string;
+    private _customerProjectLeader:path.AutoCompleteField;
+    private _deloitteProjectLeader:path.AutoCompleteField;
+    private _industrySegment:path.AutoCompleteField;
     private _benchmarking:path.RadioGroup;
     private _monitoring:path.RadioGroup;
     private _comment:path.FormField;
@@ -20,6 +21,14 @@ export class ProjectForm implements path.IForm {
 
     set project(value:path.FormField) {
         this._project = value;
+    }
+
+    get quickScanCase():path.AutoCompleteField {
+        return this._quickScanCase;
+    }
+
+    set quickScanCase(value:path.AutoCompleteField) {
+        this._quickScanCase = value;
     }
 
     get startDate():path.FormField {
@@ -38,27 +47,27 @@ export class ProjectForm implements path.IForm {
         this._endDate = value;
     }
 
-    get customerProjectLeader():string {
+    get customerProjectLeader():path.AutoCompleteField {
         return this._customerProjectLeader;
     }
 
-    set customerProjectLeader(value:string) {
+    set customerProjectLeader(value:path.AutoCompleteField) {
         this._customerProjectLeader = value;
     }
 
-    get deloitteProjectLeader():string {
+    get deloitteProjectLeader():path.AutoCompleteField {
         return this._deloitteProjectLeader;
     }
 
-    set deloitteProjectLeader(value:string) {
+    set deloitteProjectLeader(value:path.AutoCompleteField) {
         this._deloitteProjectLeader = value;
     }
 
-    get industrySegment():string {
+    get industrySegment():path.AutoCompleteField {
         return this._industrySegment;
     }
 
-    set industrySegment(value:string) {
+    set industrySegment(value:path.AutoCompleteField) {
         this._industrySegment = value;
     }
 

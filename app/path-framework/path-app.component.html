@@ -79,7 +79,7 @@
                                 <h4 class="modal-title">{{element.title}}</h4>
                             </div>
                             <div class="modal-body">
-                                <div *ngFor='let field of element.fields'>
+                                <div *ngFor='let field of element.fields' [hidden]="!field.visible">
                                     <div *ngIf="field.type == 'text'">
                                         <div class="row">
                                             <div class="col-md-4">

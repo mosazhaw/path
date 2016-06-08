@@ -7,7 +7,9 @@ export abstract class PathAppComponent implements path.IPathApp {
     private _formStack:path.Form[] = [];
 
     protected abstract getGuiModel();
+
     protected abstract getBeans();
+
     protected abstract getHandlers();
 
     public getPageStack():path.Page[] {
@@ -42,7 +44,7 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public goToPage(pageNumber:number) {
-        for (let k = this.getPageStack().length-1; k > pageNumber; k--) {
+        for (let k = this.getPageStack().length - 1; k > pageNumber; k--) {
             console.log("back");
             this.navigateBack();
         }
@@ -50,8 +52,8 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     public setCurrentPage(pageId:string, parentPageElement:path.PageElement) {
         let page:path.Page = new path.Page();
-        page.id=pageId;
-        page.parentPageElement=parentPageElement;
+        page.id = pageId;
+        page.parentPageElement = parentPageElement;
 
         for (var modelPage of this.getGuiModel().application.pageList) {
             if (modelPage.id == pageId) {
@@ -61,12 +63,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     let element:path.PageElement = null;
                     switch (modelElement.type) {
                         case "button":
-                            let pageButton:path.PageButton = new path.PageButton(this);
-                            pageButton.icon = modelElement["icon"];
-                            pageButton.color = modelElement["color"];
-                            pageButton.page = modelElement["page"];
-                            pageButton.form = modelElement["form"];
-                            element = pageButton;
+                            element = this.createButton(modelElement);
                             break;
                         case "backbutton":
                             let backButton:path.BackButton = new path.BackButton(this);
@@ -78,12 +75,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                             let dynamicList:path.List = new path.List(this);
                             dynamicList.search = modelElement["search"];
                             for (var listElement of modelElement["data"]) {
-                                let button:path.PageButton = new path.PageButton(this);
+                                let button:path.Button = this.createButton(modelElement);
                                 button.name = listElement.name;
-                                button.color = modelElement["color"];
-                                button.icon = modelElement["icon"];
-                                button.page = modelElement["page"];
-                                button.form = modelElement["form"];
                                 dynamicList.content.push(button);
                             }
                             element = dynamicList;
@@ -99,7 +92,25 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._pageStack.push(page);
     }
 
-    public setCurrentForm(formId:string) {
+    private createButton(modelElement) : path.Button {
+        if (modelElement["form"] != null) {
+            let formButton:path.FormButton = new path.FormButton(this);
+            formButton.icon = modelElement["icon"];
+            formButton.color = modelElement["color"];
+            formButton.form = modelElement["form"]["form"];
+            formButton.mode = modelElement["form"]["mode"];
+            formButton.handler = modelElement["form"]["handler"];
+            return formButton;
+        } else {
+            let pageButton:path.PageButton = new path.PageButton(this);
+            pageButton.icon = modelElement["icon"];
+            pageButton.color = modelElement["color"];
+            pageButton.page = modelElement["page"];
+            return pageButton;
+        }
+    }
+
+    public setCurrentForm(formId:string, mode:string, handler:string) {
         let forms:path.Form[] = [];
         let form:path.Form = null;
         for (var modelForm of this.getGuiModel().application.formList) {
@@ -111,7 +122,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                     // create form fields
                     let formField:path.FormField = null;
                     switch (modelFormField.type) {
-                        case "text": {
+                        case "text":
+                        {
                             formField = new path.TextField(this);
                             break;
                         }
@@ -140,6 +152,10 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                     }
                     // general values
+                    formField.visible = true;
+                    if (modelFormField["visible"] != null) {
+                        formField.visible = modelFormField["visible"];
+                    }
                     formField.id = modelFormField["id"];
                     formField.name = modelFormField.name;
                     formField.type = modelFormField.type;
@@ -155,7 +171,10 @@ export abstract class PathAppComponent implements path.IPathApp {
                     form.fields.push(formField);
                 }
                 // get handler and execute load
-                let handlerName = formId + 'Handler';
+                let handlerName = handler;
+                if (handlerName == null) {
+                    handlerName = formId + 'Handler';
+                }
                 if (this.getBeans()[formId] != null && this.getHandlers()[handlerName] != null) {
                     let formBean:path.IForm = new (this.getBeans()[formId]);
                     let formHandler:path.IFormHandler = new (this.getHandlers()[handlerName]);
