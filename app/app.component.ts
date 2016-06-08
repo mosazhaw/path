@@ -1,6 +1,6 @@
 /* angular/path imports */
 import {Component} from '@angular/core';
-import * as path from "./path-framework/pathall";
+import * as path from "./path-framework/path";
 
 /* model imports */
 import {GuiModel} from './gui-model/guimodel';
@@ -12,7 +12,7 @@ import * as beans from './gui-model/generated/forms'
     templateUrl: 'app/app.html',
     directives: [path.AutoCompleteComponent]
 })
-export class AppComponent extends path.PathApp {
+export class AppComponent extends path.PathAppComponent {
 
     private _appConfig;
 

@@ -1,7 +1,7 @@
 import * as path from './path';
 import * as autocomplete from './form/field/autocomplete/autocomplete.component';
 
-export abstract class PathApp implements path.IPathApp {
+export abstract class PathAppComponent implements path.IPathApp {
 
     private _pageStack:path.Page[] = [];
     private _formStack:path.Form[] = [];
