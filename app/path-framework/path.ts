@@ -1,4 +1,4 @@
-export interface PathApp {
+export interface IPathApp {
     setCurrentForm(formId:String);
     setCurrentPage(pageId:String, parentPageElement:PageElement);
     navigateBack();
@@ -53,16 +53,16 @@ export class Page {
 }
 
 export class PageElement {
-    private _app:PathApp;
+    private _app:IPathApp;
     private _id:string;
     private _name:string;
     private _type:string;
 
-    constructor(app:PathApp) {
+    constructor(app:IPathApp) {
         this._app = app;
     }
 
-    get app():PathApp {
+    get app():IPathApp {
         return this._app;
     }
 
