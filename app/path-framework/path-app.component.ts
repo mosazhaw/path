@@ -51,12 +51,13 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public setCurrentPage(pageId:string, parentPageElement:path.PageElement) {
-        let page:path.Page = new path.Page();
-        page.id = pageId;
-        page.parentPageElement = parentPageElement;
+        let page:path.Page = null;
 
         for (var modelPage of this.getGuiModel().application.pageList) {
             if (modelPage.id == pageId) {
+                page = new path.Page();
+                page.id = pageId;
+                page.parentPageElement = parentPageElement;
                 page.title = modelPage.title;
                 for (var modelElement of modelPage.elementList) {
                     // element
@@ -89,6 +90,9 @@ export abstract class PathAppComponent implements path.IPathApp {
             }
         }
 
+        if (page == null && pageId != null) {
+            alert("Missing page: " + pageId);
+        }
         this._pageStack.push(page);
     }
 

@@ -292,12 +292,41 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "CaseForm",
+                    "title": "Case",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Case Name"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "categoryform",
                     "title": "Category",
                     "formFieldList": [
                         {
                             "type": "text",
                             "name": "Category Name"
+                        },
+                        {
+                            "type": "autocomplete",
+                            "name": "Maturity Level Schema",
+                            "wordSearchEnabled": false,
+                            "actions": [],
+                            "data": ["Maturity Level Schema 1", "Maturity Level Schema 2", "Maturity Level Schema 3"]
                         },
                         {
                             "type": "deleteButton",
@@ -358,13 +387,38 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "questionform",
-                    "title": "Question",
+                    "id": "CapabilityForm",
+                    "title": "Capability",
                     "formFieldList": [
                         {
                             "type": "text",
                             "name": "Capability Question",
                             "height": 8
+                        },
+                        {
+                            "type": "text",
+                            "name": "Awareness",
+                            "height": 4
+                        },
+                        {
+                            "type": "text",
+                            "name": "Develop",
+                            "height": 4
+                        },
+                        {
+                            "type": "text",
+                            "name": "Practice",
+                            "height": 4
+                        },
+                        {
+                            "type": "text",
+                            "name": "Optimize",
+                            "height": 4
+                        },
+                        {
+                            "type": "text",
+                            "name": "Best-In-Class",
+                            "height": 4
                         },
                         {
                             "type": "deleteButton",
@@ -611,7 +665,7 @@ export class GuiModel {
                             "name": "Categories",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "page": "categoryquestionspage",
+                            "page": "categorycapabilitiespage",
                             "data": [{"name": "Category B1"}, {"name": "Category B2"}, {"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B5"}, {"name": "Category B6"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B9"}, {"name": "Category B10"}]
                         },
                         {
@@ -624,15 +678,15 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "categoryquestionspage",
-                    "title": "Questions",
+                    "id": "categorycapabilitiespage",
+                    "title": "Capabilities",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "button",
-                            "name": "TODO - Questions",
+                            "name": "TODO - Capabilities Questions",
                             "icon": "fa-cube",
                             "color": "asbestos",
                         },
@@ -641,7 +695,7 @@ export class GuiModel {
                             "name": "Next",
                             "icon": "fa-forward",
                             "color": "silver",
-                            "page": "categoryquestionspage",
+                            "page": "categorycapabilitiespage",
                         }
                     ]
                 },
@@ -1089,14 +1143,14 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "QuickScan Categories",
+                            "name": "QuickScan",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
-                            "page": "quickscancategoriesconfigurationpage"
+                            "page": "quickscanconfigurationpage"
                         },
                         {
                             "type": "button",
-                            "name": "DeepScan Processes & KPIs",
+                            "name": "DeepScan",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
                             "page": "deepscanconfigurationpage"
@@ -1110,11 +1164,141 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "quickscanconfigurationpage",
+                    "title": "QuickScan Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Maturity Level Schemas",
+                            "icon": "fa-signal",
+                            "color": "wet-asphalt",
+                            "page": "maturitylevelschemasconfigurationpage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Cases",
+                            "icon": "fa-briefcase",
+                            "color": "carrot",
+                            "page": "quickscancasesconfigurationpage"
+                        },
+                    ]
+                },
+                {
+                    "id": "maturitylevelschemasconfigurationpage",
+                    "title": "Maturity Levels Schema Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Maturity Level Schema",
+                            "icon": "fa-signal",
+                            "color": "green",
+                            "form": {
+                                "form": "MaturityLevelSchemaForm",
+                                "mode": "create"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Maturity Level Schemas",
+                            "icon": "fa-signal",
+                            "color": "carrot",
+                            "search": false,
+                            "page": "maturitylevelsconfigurationpage",
+                            "data": [{"name": "Schema 1"}, {"name": "Schema 2"}, {"name": "Schema 3"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "maturitylevelsconfigurationpage",
+                    "title": "Maturity Levels Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Edit Maturity Level Schema",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": {
+                                "form": "MaturityLevelSchemaForm",
+                                "mode": "update"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Maturity Level",
+                            "icon": "fa-signal",
+                            "color": "green",
+                            "form": {
+                                "form": "MaturityLevelForm",
+                                "mode": "create"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Maturity Levels",
+                            "icon": "fa-signal",
+                            "color": "lime",
+                            "search": false,
+                            "form": {
+                                "form": "MaturityLevelForm",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Awareness"}, {"name": "Develop"}, {"name": "Practice"}, {"name": "Optimize"}, {"name": "Best-In-Class"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "quickscancasesconfigurationpage",
+                    "title": "QuickScan Cases",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Case",
+                            "icon": "fa-briefcase",
+                            "color": "green",
+                            "form": {
+                                "form": "CaseForm",
+                                "mode": "create"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Cases",
+                            "icon": "fa-briefcase",
+                            "color": "carrot",
+                            "search": true,
+                            "page": "quickscancategoriesconfigurationpage",
+                            "data": [{"name": "Case 1"}, {"name": "Case 2"}, {"name": "Case 3"}, {"name": "Case 4"}, {"name": "Case 5"}, {"name": "Case 6"}, {"name": "Case 7"}, {"name": "Case 8"}, {"name": "Case 9"}, {"name": "Case 10"}]
+                        }
+                    ]
+                },
+                {
                     "id": "quickscancategoriesconfigurationpage",
                     "title": "Categories",
                     "elementList": [
                         {
                             "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Edit Case",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": {
+                                "form": "CaseForm",
+                                "mode": "update"
+                            }
                         },
                         {
                             "type": "button",
@@ -1134,6 +1318,12 @@ export class GuiModel {
                             "search": true,
                             "page": "quickscancategoryconfigurationpage",
                             "data": [{"name": "Category B1"}, {"name": "Category B2"}, {"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B5"}, {"name": "Category B6"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B9"}, {"name": "Category B10"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Delete",
+                            "icon": "fa-remove",
+                            "color": "red"
                         }
                     ]
                 },
@@ -1156,25 +1346,25 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "New Question",
+                            "name": "New Capability",
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "questionform",
+                                "form": "CapabilityForm",
                                 "mode": "create"
                             }
                         },
                         {
                             "type": "list",
-                            "name": "Questions",
+                            "name": "Capabilities",
                             "icon": "fa-question",
                             "color": "lime",
                             "search": true,
                             "form": {
-                                "form": "questionform",
+                                "form": "CapabilityForm",
                                 "mode": "update"
                             },
-                            "data": [{"name": "Question 1"}, {"name": "Question 2"}, {"name": "Question 3"}, {"name": "Question 4"}, {"name": "Question 5"}, {"name": "Question 6"}, {"name": "Question 7"}, {"name": "Question 8"}, {"name": "Question 9"}, {"name": "Question 10"}]
+                            "data": [{"name": "Capability 1"}, {"name": "Capability 2"}, {"name": "Capability 3"}, {"name": "Capability 4"}, {"name": "Capability 5"}, {"name": "Capability 6"}, {"name": "Capability 7"}, {"name": "Capability 8"}, {"name": "Capability 9"}, {"name": "Capability 10"}]
                         },
                         {
                             "type": "button",
