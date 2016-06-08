@@ -31,13 +31,19 @@ export class AppComponent implements path.PathApp {
         return this._formStack;
     }
 
-// TODO move ok and cancel to button object
+    // TODO move ok and cancel to button object
     public doOk() {
         this._formStack = [];
     }
 
     public doCancel() {
         this._formStack = [];
+    }
+
+    public onKey(event) {
+        if (event.keyCode == 27) {
+            this.doCancel();
+        }
     }
 
     public getCurrentPage() {
