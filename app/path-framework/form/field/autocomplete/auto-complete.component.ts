@@ -6,7 +6,7 @@ import {FormField} from './../../../path';
     host: {
         '(document:click)': 'handleClick($event)',
     },
-    templateUrl: 'app/path-framework/form/field/autocomplete/autocomplete.html'
+    templateUrl: 'app/path-framework/form/field/autocomplete/auto-complete.component.html'
 })
 export class AutoCompleteComponent {
     @Input('field')

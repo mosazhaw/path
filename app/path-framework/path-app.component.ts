@@ -1,5 +1,5 @@
 import * as path from './path';
-import * as autocomplete from './form/field/autocomplete/autocomplete.component';
+import * as autocomplete from './form/field/autocomplete/auto-complete.component';
 
 export abstract class PathAppComponent implements path.IPathApp {
 
