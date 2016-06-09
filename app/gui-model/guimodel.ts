@@ -242,31 +242,6 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "projectcategoryform",
-                    "title": "Add Category to Project",
-                    "formFieldList": [
-                        {
-                            "type": "autocomplete",
-                            "name": "Category",
-                            "wordSearchEnabled": false,
-                            "actions": [{"type": "new", "name": "New..."}],
-                            "data": ["Category B1", "Category B2", "Category B3", "Category B4", "Category B5", "Category B6"]
-                        },
-                        {
-                            "type": "deleteButton",
-                            "name": "Delete"
-                        },
-                        {
-                            "type": "cancelButton",
-                            "name": "Cancel"
-                        },
-                        {
-                            "type": "okButton",
-                            "name": "Ok"
-                        }
-                    ]
-                },
-                {
                     "id": "projectprocessgroupform",
                     "title": "Add Process Group to Project",
                     "formFieldList": [
@@ -629,26 +604,10 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
-                            "name": "Add Category",
-                            "icon": "fa-cube",
-                            "color": "green",
-                            "form": {
-                                "form": "projectcategoryform",
-                                "mode": "create",
-                                "handler": "ProjectFormQuickScanHandler"
-                            }
-                        },
-                        {
                             "type": "list",
                             "name": "Categories",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "form": {
-                                "form": "projectcategoryform",
-                                "mode": "update",
-                                "handler": "ProjectFormQuickScanHandler"
-                            },
                             "data": [{"name": "Category B1"}, {"name": "Category B2"}, {"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B5"}, {"name": "Category B6"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B9"}, {"name": "Category B10"}]
                         }
                     ]
