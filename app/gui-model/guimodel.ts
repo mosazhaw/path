@@ -145,7 +145,7 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "personform",
+                    "id": "PersonForm",
                     "title": "Person Details",
                     "formFieldList": [
                         {
@@ -217,7 +217,7 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "projectintervieweeform",
+                    "id": "ProjectIntervieweeForm",
                     "title": "Add Interviewee to Project",
                     "formFieldList": [
                         {
@@ -242,7 +242,7 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "projectprocessgroupform",
+                    "id": "ProjectProcessGroupForm",
                     "title": "Add Process Group to Project",
                     "formFieldList": [
                         {
@@ -289,7 +289,7 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "categoryform",
+                    "id": "CategoryForm",
                     "title": "Category",
                     "formFieldList": [
                         {
@@ -318,7 +318,7 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "processgroupform",
+                    "id": "ProcessGroupForm",
                     "title": "Process Group",
                     "formFieldList": [
                         {
@@ -340,7 +340,7 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "processform",
+                    "id": "ProcessForm",
                     "title": "Process",
                     "formFieldList": [
                         {
@@ -410,7 +410,7 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "kpiform",
+                    "id": "KpiForm",
                     "title": "Key Performance Indicator (KPI)",
                     "formFieldList": [
                         {
@@ -647,7 +647,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "projectintervieweeform",
+                                "form": "ProjectIntervieweeForm",
                                 "mode": "create"
                             }
                         },
@@ -807,7 +807,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "projectintervieweeform",
+                                "form": "ProjectIntervieweeForm",
                                 "mode": "create"
                             }
                         },
@@ -834,7 +834,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "projectprocessgroupform",
+                                "form": "ProjectProcessGroupForm",
                                 "mode": "create"
                             }
                         },
@@ -844,7 +844,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "form": {
-                                "form": "projectprocessgroupform",
+                                "form": "ProjectProcessGroupForm",
                                 "mode": "update"
                             },
                             "data": [{"name": "Process Group S1"}, {"name": "Process Group S2"}, {"name": "Process Group S3"}, {"name": "Process Group S4"}, {"name": "Process Group S5"}, {"name": "Process Group S6"}, {"name": "Process Group S7"}, {"name": "Process Group S8"}, {"name": "Process Group S9"}, {"name": "Process  Group S10"}]
@@ -956,7 +956,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "personform",
+                                "form": "PersonForm",
                                 "mode": "create"
                             }
                         },
@@ -967,7 +967,7 @@ export class GuiModel {
                             "color": "orange",
                             "search": true,
                             "form": {
-                                "form": "personform",
+                                "form": "PersonForm",
                                 "mode": "update"
                             },
                             "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}, {"name": "Frau Dr. Held"}, {"name": "Frau Dr. Gesund"}, {"name": "Frau Dr. Krank"}]
@@ -997,7 +997,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "personform",
+                                "form": "PersonForm",
                                 "mode": "create"
                             }
                         },
@@ -1008,7 +1008,7 @@ export class GuiModel {
                             "color": "orange",
                             "search": true,
                             "form": {
-                                "form": "personform",
+                                "form": "PersonForm",
                                 "mode": "update"
                             },
                             "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}]
@@ -1141,7 +1141,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "personform",
+                                "form": "PersonForm",
                                 "mode": "create"
                             }
                         },
@@ -1152,7 +1152,7 @@ export class GuiModel {
                             "color": "orange",
                             "search": true,
                             "form": {
-                                "form": "personform",
+                                "form": "PersonForm",
                                 "mode": "update"
                             },
                             "data": [{"name": "Anton Amacker"}, {"name": "Beate Burkhardt"}, {"name": "Chris Connor"}, {"name": "Doris Dempster"}, {"name": "Edgar Evans"}]
@@ -1331,7 +1331,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "categoryform",
+                                "form": "CategoryForm",
                                 "mode": "create"
                             }
                         },
@@ -1365,7 +1365,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "categoryform",
+                                "form": "CategoryForm",
                                 "mode": "update"
                             }
                         },
@@ -1442,7 +1442,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "processgroupform",
+                                "form": "ProcessGroupForm",
                                 "mode": "create"
                             },
                         },
@@ -1470,7 +1470,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "processgroupform",
+                                "form": "ProcessGroupForm",
                                 "mode": "update"
                             },
                         },
@@ -1480,7 +1480,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "processform",
+                                "form": "ProcessForm",
                                 "mode": "create"
                             },
                         },
@@ -1490,7 +1490,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "form": {
-                                "form": "processform",
+                                "form": "ProcessForm",
                                 "mode": "update"
                             },
                             "search": true,
@@ -1517,7 +1517,7 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "green",
                             "form": {
-                                "form": "kpiform",
+                                "form": "KpiForm",
                                 "mode": "create"
                             }
                         },
@@ -1545,7 +1545,7 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "green",
                             "form": {
-                                "form": "kpiform",
+                                "form": "KpiForm",
                                 "mode": "update"
                             }
                         },
@@ -1555,7 +1555,7 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "green",
                             "form": {
-                                "form": "kpiform",
+                                "form": "KpiForm",
                                 "mode": "create"
                             }
                         },
@@ -1565,7 +1565,7 @@ export class GuiModel {
                             "icon": "fa-pencil",
                             "color": "green",
                             "form": {
-                                "form": "kpiform",
+                                "form": "KpiForm",
                                 "mode": "create"
                             }
                         },
@@ -1575,7 +1575,7 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "wet-asphalt",
                             "form": {
-                                "form": "kpiform",
+                                "form": "KpiForm",
                                 "mode": "update"
                             },
                             "data": [{"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"}]
