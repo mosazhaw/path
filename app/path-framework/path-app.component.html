@@ -35,19 +35,19 @@
 <div class="col-md-12">
     <span *ngFor='let pageElement of getCurrentPage().content'>
     <!-- Button -->
-    <div *ngIf='pageElement.type == "button"' class="thumbnail tile tile-large tile-{{pageElement.color}}">
-        <a (click)="pageElement.onClick()" class="fa-links">
+    <a *ngIf='pageElement.type == "button"' (click)="pageElement.onClick()" class="fa-links">
+        <div class="thumbnail tile tile-large tile-{{pageElement.color}}">
             <h1>{{pageElement.name}}</h1>
             <i class="fa fa-3x {{pageElement.icon}}"></i>
-        </a>
-    </div>
+        </div>
+    </a>
     <!-- Back Button -->
-    <div *ngIf='pageElement.type == "backbutton"' class="thumbnail tile tile-large tile-silver">
-        <a (click)="pageElement.onClick()" class="fa-links">
+    <a *ngIf='pageElement.type == "backbutton"' (click)="pageElement.onClick()" class="fa-links">
+        <div class="thumbnail tile tile-large tile-silver">
             <h1>Back</h1>
             <i class="fa fa-3x fa-backward"></i>
-        </a>
-    </div>
+        </div>
+    </a>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
     <div *ngIf='pageElement.search' class="thumbnail tile tile-large tile-green">
@@ -58,12 +58,12 @@
             <input placeholder="Enter search text" class="form-control" type="text">
         </div>
     </div>
-    <div *ngFor='let listElement of pageElement.content' class="thumbnail tile tile-large tile-{{listElement.color}}">
-        <a (click)="listElement.onClick()" class="fa-links">
-            <h1>{{listElement.name}}</h1>
-            <i class="fa fa-3x {{listElement.icon}}"></i>
+        <a *ngFor='let listElement of pageElement.content' (click)="listElement.onClick()" class="fa-links">
+            <div class="thumbnail tile tile-large tile-{{listElement.color}}">
+                <h1>{{listElement.name}}</h1>
+                <i class="fa fa-3x {{listElement.icon}}"></i>
+            </div>
         </a>
-    </div>
     </span>
     </span>
 </div>
