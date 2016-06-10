@@ -674,7 +674,7 @@ export class GuiModel {
                             "name": "Categories",
                             "icon": "fa-cube",
                             "handler": "CategoryListButtonHandler",
-                            "data": [{"name": "Category B1", "color": "wet-asphalt"}, {"name": "Category B2", "color": "wet-asphalt"}, {"name": "Category B3", "color": "wet-asphalt"}, {"name": "Category B4", "color": "wet-asphalt"}, {"name": "Category B5", "color": "wet-asphalt"}, {"name": "Category B6", "color": "wet-asphalt"}, {"name": "Category B7", "color": "wet-asphalt"}, {"name": "Category B8", "color": "wet-asphalt"}, {"name": "Category B9", "color": "wet-asphalt"}, {"name": "Category B10", "color": "wet-asphalt"}]
+                            "data": [{"name": "Category B1", "color": "belize-hole"}, {"name": "Category B2", "color": "belize-hole"}, {"name": "Category B3", "color": "belize-hole"}, {"name": "Category B4", "color": "belize-hole"}, {"name": "Category B5", "color": "belize-hole"}, {"name": "Category B6", "color": "belize-hole"}, {"name": "Category B7", "color": "belize-hole"}, {"name": "Category B8", "color": "belize-hole"}, {"name": "Category B9", "color": "belize-hole"}, {"name": "Category B10", "color": "belize-hole"}]
                         }
                     ]
                 },
