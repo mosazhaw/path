@@ -447,6 +447,72 @@ export class GuiModel {
                             "name": "Ok"
                         }
                     ]
+                },
+                {
+                    "id": "MaturityLevelSchemaForm",
+                    "title": "Maturity Level Schema",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Maturity Level Schema"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "MaturityLevelForm",
+                    "title": "Maturity Level",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Maturity Level"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "KpiCategoryForm",
+                    "title": "KPI Category",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "KPI Category"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
                 }
             ],
             "pageList": [
@@ -1542,7 +1608,7 @@ export class GuiModel {
                             "icon": "fa-book",
                             "color": "green",
                             "form": {
-                                "form": "kpicategoryform",
+                                "form": "KpiCategoryForm",
                                 "mode": "create"
                             },
                         },
@@ -1552,7 +1618,7 @@ export class GuiModel {
                             "icon": "fa-book",
                             "color": "pomegra",
                             "form": {
-                                "form": "kpicategoryform",
+                                "form": "KpiCategoryForm",
                                 "mode": "update"
                             },
                             "data": [{"name": "KPI Category 1"}, {"name": "KPI Category 2"}, {"name": "KPI Category 3"}, {"name": "KPI Category 4"}, {"name": "KPI Category 5"}, {"name": "KPI Category 6"}, {"name": "KPI Category 7"}, {"name": "KPI Category 8"}, {"name": "KPI Category 9"}, {"name": "KPI Category 10"}]
