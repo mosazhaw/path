@@ -4,20 +4,17 @@ Deloitte
 - Reports / Custom Components
 
 Questions
-- Customer/Person: Country required?
-- User vs. Person: Different or same?
 - Elemente: Stammdatenobjekt, Bewegungsdatenobjekt, Organisationsstrukturen bei DeepScan?
 - KPI Kategorie - benötigt?
 - Berechtigungen: User auf Kunde?
 
 Path Framework
-- Detail Data in Buttons
+- use fromJson() on objects to create element
+- probably use Json Schema for Gui Model (http://json-schema.org/)
 - List / Select List with Objects - not String
 - Listbox / Multi Select Autocomplete
-- Refactor classes into individual files?
-- Form Handlers
-    - Generate Form Beans automatically
-    - Use Interfaces everywhere in generated beans and handlers (e.g. ITextField)
+- Generate Form Beans automatically
+- Use Interfaces everywhere in generated beans and handlers (e.g. ITextField)
 
 CI
 - Separation of Framework/Project
