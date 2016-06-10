@@ -4,6 +4,7 @@ export class Button extends path.PageElement implements path.IButton {
     private _icon:string;
     private _color:string;
     private _handler:path.IButtonHandler;
+    private _details:path.ButtonDetail[] = [];
 
     public onClick() {
         if (this._handler != null) {
@@ -49,5 +50,13 @@ export class Button extends path.PageElement implements path.IButton {
 
     set handler(value:path.IButtonHandler) {
         this._handler = value;
+    }
+
+    get details():path.ButtonDetail[] {
+        return this._details;
+    }
+
+    set details(value:path.ButtonDetail[]) {
+        this._details = value;
     }
 }

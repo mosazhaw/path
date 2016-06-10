@@ -5,6 +5,7 @@ export * from './page/page';
 
 export * from './page/element/page-element';
 export * from './page/element/button/button';
+export * from './page/element/button/button-detail';
 export * from './page/element/button/back-button';
 export * from './page/element/button/form-button';
 export * from './page/element/button/page-button';

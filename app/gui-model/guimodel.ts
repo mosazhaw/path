@@ -589,7 +589,7 @@ export class GuiModel {
                             "color": "alizarin",
                             "search": true,
                             "page": "quickscanpage",
-                            "data": [{"name": "QuickScan One"}, {"name": "QuickScan Two"}, {"name": "QuickScan Three"}, {"name": "QuickScan Four"}, {"name": "QuickScan Five"}, {"name": "QuickScan Six"}]
+                            "data": [{"name": "QuickScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "QuickScan Two", "details": [ "05/2017", "Charisma Hospital" ]}, {"name": "QuickScan Three"}, {"name": "QuickScan Four"}, {"name": "QuickScan Five"}, {"name": "QuickScan Six"}]
                         }
                     ]
                 },

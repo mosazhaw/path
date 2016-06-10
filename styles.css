@@ -25,3 +25,8 @@
 .breadcrumb {
     background-color: #fff;
 }
+
+/* probably to be removed with bootstrap v4 */
+.m-t-5 {
+    margin-top: 5px !important;
+}

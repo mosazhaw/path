@@ -61,6 +61,7 @@
         <a *ngFor='let listElement of pageElement.content' (click)="listElement.onClick()" class="fa-links">
             <div class="thumbnail tile tile-large tile-{{listElement.color}}">
                 <h1>{{listElement.name}}</h1>
+                <span *ngFor='let detail of listElement.details'><h3 class="m-t-5">{{detail.text}}</h3></span>
                 <i class="fa fa-3x {{listElement.icon}}"></i>
             </div>
         </a>
