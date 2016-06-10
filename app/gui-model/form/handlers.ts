@@ -55,7 +55,11 @@ export class CategoryListButtonHandler implements path.IButtonHandler {
     public doClick(button:path.IButton) {
         console.log("clicked " + button.getColor());
         if (button.getColor() == "belize-hole") {
-            button.setColor("concrete");
+            let yesHandler = () => {
+                button.setColor("concrete");
+            };
+            let noHandler = () => {};
+            button.getApp().yesNo("Do you really want to deselect category " + button.getName() + "?", yesHandler, noHandler);
         } else {
             button.setColor("belize-hole");
         }

@@ -2,6 +2,8 @@ export interface IPathApp {
     setCurrentForm(formId:string, mode:string, handler:string);
     setCurrentPage(pageId:string, parentPageElement:PageElement);
     navigateBack();
+    yesNo(text:string, yesHandler : () => void, noHandler : () => void);
+    closeForm();
 }
 
 export interface IFormHandler {
@@ -117,9 +119,10 @@ export class List extends PageElement {
 }
 
 export interface IButton {
-
     setColor(color:string);
     getColor() : string;
+    getName() : string;
+    getApp():IPathApp;
 }
 
 export class Button extends PageElement implements IButton {
@@ -139,6 +142,14 @@ export class Button extends PageElement implements IButton {
 
     public getColor() {
         return this.color;
+    }
+
+    public getApp() {
+        return this.app;
+    }
+
+    public getName() {
+        return this.name;
     }
 
     get icon():string {
@@ -327,5 +338,44 @@ export class RadioGroup extends FormField {
 }
 
 export class Radio extends FormField {
+
+}
+
+export class OkButton extends FormField {
+    private _handler:IButtonHandler;
+
+    get handler():IButtonHandler {
+        return this._handler;
+    }
+
+    set handler(value:IButtonHandler) {
+        this._handler = value;
+    }
+
+    public onClick() {
+        if (this._handler != null) {
+            this._handler.doClick(null); // TODO
+        }
+        this.app.closeForm();
+    }
+}
+
+export class CancelButton extends FormField {
+    private _handler:IButtonHandler;
+
+    get handler():IButtonHandler {
+        return this._handler;
+    }
+
+    set handler(value:IButtonHandler) {
+        this._handler = value;
+    }
+
+    public onClick() {
+        if (this._handler != null) {
+            this._handler.doClick(null); // TODO
+        }
+        this.app.closeForm();
+    }
 
 }

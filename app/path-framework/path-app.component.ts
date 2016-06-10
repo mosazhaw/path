@@ -19,12 +19,39 @@ export abstract class PathAppComponent implements path.IPathApp {
     public getFormStack():path.Form[] {
         return this._formStack;
     }
+    
+    public yesNo(text:string, yesHandler : () => void, noHandler : () => void) {
+        let form:path.Form = new path.Form();
+        let message:path.TextField = new path.TextField(this);
+        message.type = "text";
+        message.visible = true;
+        message.value = text;
+        form.fields.push(message);
+        let okButton:path.OkButton = new path.OkButton(this);
+        okButton.type = "okButton";
+        okButton.name = "Ok";
+        let handler : path.IButtonHandler = {
+            doClick(button:path.IButton) {
+                yesHandler();
+            }
+        }
+        okButton.handler = handler;
+        form.fields.push(okButton);
 
-    // TODO move ok and cancel to button object
-    public doOk() {
-        this._formStack = [];
+        let cancelButton:path.CancelButton = new path.CancelButton(this);
+        cancelButton.type = "cancelButton";
+        cancelButton.name = "Cancel";
+        form.fields.push(cancelButton);
+
+
+        this.getFormStack().push(form);
     }
 
+    public closeForm() {
+        this._formStack.pop();
+    }
+
+    // TODO remove
     public doCancel() {
         this._formStack = [];
     }
@@ -133,6 +160,16 @@ export abstract class PathAppComponent implements path.IPathApp {
                         case "text":
                         {
                             formField = new path.TextField(this);
+                            break;
+                        }
+                        case "okButton":
+                        {
+                            formField = new path.OkButton(this);
+                            break;
+                        }
+                        case "cancelButton":
+                        {
+                            formField = new path.CancelButton(this);
                             break;
                         }
                         case "autocomplete":
