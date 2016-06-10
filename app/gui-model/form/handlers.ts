@@ -54,10 +54,10 @@ export class CategoryListButtonHandler implements path.IButtonHandler {
 
     public doClick(button:path.IButton) {
         console.log("clicked " + button.getColor());
-        if (button.getColor() == "asbestos") {
+        if (button.getColor() == "silver") {
             button.setColor("wet-asphalt");
         } else {
-            button.setColor("asbestos");
+            button.setColor("silver");
         }
     }
 

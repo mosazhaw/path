@@ -673,9 +673,8 @@ export class GuiModel {
                             "type": "list",
                             "name": "Categories",
                             "icon": "fa-cube",
-                            "color": "asbestos",
                             "handler": "CategoryListButtonHandler",
-                            "data": [{"name": "Category B1", "color": "asbestos"}, {"name": "Category B2", "color": "wet-asphalt"}, {"name": "Category B3", "color": "asbestos"}, {"name": "Category B4", "color": "asbestos"}, {"name": "Category B5", "color": "asbestos"}, {"name": "Category B6", "color": "asbestos"}, {"name": "Category B7", "color": "asbestos"}, {"name": "Category B8", "color": "asbestos"}, {"name": "Category B9", "color": "asbestos"}, {"name": "Category B10", "color": "asbestos"}]
+                            "data": [{"name": "Category B1", "color": "wet-asphalt"}, {"name": "Category B2", "color": "wet-asphalt"}, {"name": "Category B3", "color": "wet-asphalt"}, {"name": "Category B4", "color": "wet-asphalt"}, {"name": "Category B5", "color": "wet-asphalt"}, {"name": "Category B6", "color": "wet-asphalt"}, {"name": "Category B7", "color": "wet-asphalt"}, {"name": "Category B8", "color": "wet-asphalt"}, {"name": "Category B9", "color": "wet-asphalt"}, {"name": "Category B10", "color": "wet-asphalt"}]
                         }
                     ]
                 },
