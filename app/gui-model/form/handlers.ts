@@ -1,5 +1,5 @@
 import * as forms from './../generated/forms';
-import * as path from './../../path-framework/path';
+import * as path from './../../path-framework/pathinterface';
 
 export class ProjectFormQuickScanHandler implements path.IFormHandler {
 

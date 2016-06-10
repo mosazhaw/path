@@ -1,4 +1,4 @@
-import * as path from './../../path-framework/path';
+import * as path from './../../path-framework/path'; // TODO use interfaces
 
 // TODO in future versions these classes will be generated from gui model
 

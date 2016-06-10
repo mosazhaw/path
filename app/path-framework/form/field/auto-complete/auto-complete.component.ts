@@ -1,5 +1,5 @@
 import {Component, Input, Output, ElementRef} from '@angular/core';
-import {FormField} from './../../../path';
+import {FormField} from './../form-field';
 
 @Component({
     selector: 'path-autocomplete',
