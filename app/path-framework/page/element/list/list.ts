@@ -1,4 +1,4 @@
-import * as path from './../../path';
+import * as path from '../../../path';
 
 export class List extends path.PageElement {
     private _content:path.Button[] = [];

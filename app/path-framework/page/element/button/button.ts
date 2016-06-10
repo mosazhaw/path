@@ -1,4 +1,4 @@
-import * as path from './../../path';
+import * as path from '../../../path';
 
 export class Button extends path.PageElement implements path.IButton {
     private _icon:string;

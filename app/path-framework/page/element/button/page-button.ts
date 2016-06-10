@@ -1,4 +1,4 @@
-import * as path from './../../path';
+import * as path from '../../../path';
 
 export class PageButton extends path.Button {
     private _page:string;

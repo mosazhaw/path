@@ -4,11 +4,11 @@ export * from './path-app.component';
 export * from './page/page';
 
 export * from './page/element/page-element';
-export * from './page/element/button';
-export * from './page/element/back-button';
-export * from './page/element/form-button';
-export * from './page/element/page-button';
-export * from './page/element/list';
+export * from './page/element/button/button';
+export * from './page/element/button/back-button';
+export * from './page/element/button/form-button';
+export * from './page/element/button/page-button';
+export * from './page/element/list/list';
 
 export * from './form/form'
 

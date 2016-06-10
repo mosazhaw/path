@@ -1,4 +1,4 @@
-import {PageButton} from './../../page/element/page-button';
+import {PageButton} from './page-button';
 
 export class BackButton extends PageButton {
 

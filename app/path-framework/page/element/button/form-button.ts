@@ -1,4 +1,4 @@
-import * as path from './../../path';
+import * as path from '../../../path';
 
 export class FormButton extends path.Button {
     private _form:string;
