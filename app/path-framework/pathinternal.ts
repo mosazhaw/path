@@ -10,6 +10,10 @@ export interface IFormHandler {
     doValidate(form:IForm);
 }
 
+export interface IButtonHandler {
+    doClick(button:IButton);
+}
+
 export interface IForm {
 }
 
@@ -112,9 +116,30 @@ export class List extends PageElement {
     }
 }
 
-export class Button extends PageElement {
+export interface IButton {
+
+    setColor(color:string);
+    getColor() : string;
+}
+
+export class Button extends PageElement implements IButton {
     private _icon:string;
     private _color:string;
+    private _handler:IButtonHandler;
+
+    public onClick() {
+        if (this._handler != null) {
+            this._handler.doClick(this);
+        }
+    }
+
+    public setColor(color:string) {
+        this.color = color;
+    }
+
+    public getColor() {
+        return this.color;
+    }
 
     get icon():string {
         return this._icon;
@@ -131,12 +156,21 @@ export class Button extends PageElement {
     set color(value:string) {
         this._color = value;
     }
+
+    get handler():IButtonHandler {
+        return this._handler;
+    }
+
+    set handler(value:IButtonHandler) {
+        this._handler = value;
+    }
 }
 
 export class PageButton extends Button {
     private _page:string;
 
     public onClick() {
+        super.onClick();
         if (this._page != null) {
             this.app.setCurrentPage(this._page, this);
         }
@@ -154,11 +188,12 @@ export class PageButton extends Button {
 export class FormButton extends Button {
     private _form:string;
     private _mode:string;
-    private _handler:string;
+    private _formHandler:string;
 
     public onClick() {
+        super.onClick();
         if (this._form != null) {
-            this.app.setCurrentForm(this._form, this._form, this.handler);
+            this.app.setCurrentForm(this._form, this._form, this._formHandler);
         }
     }
 
@@ -178,12 +213,12 @@ export class FormButton extends Button {
         this._mode = value;
     }
 
-    get handler():string {
-        return this._handler;
+    get formHandler():string {
+        return this._formHandler;
     }
 
-    set handler(value:string) {
-        this._handler = value;
+    set formHandler(value:string) {
+        this._formHandler = value;
     }
 }
 

@@ -34,18 +34,21 @@
 <!-- Page Elements -->
 <div class="col-md-12">
     <span *ngFor='let pageElement of getCurrentPage().content'>
+    <!-- Button -->
     <div *ngIf='pageElement.type == "button"' class="thumbnail tile tile-large tile-{{pageElement.color}}">
         <a (click)="pageElement.onClick()" class="fa-links">
             <h1>{{pageElement.name}}</h1>
             <i class="fa fa-3x {{pageElement.icon}}"></i>
         </a>
     </div>
+    <!-- Back Button -->
     <div *ngIf='pageElement.type == "backbutton"' class="thumbnail tile tile-large tile-silver">
         <a (click)="pageElement.onClick()" class="fa-links">
             <h1>Back</h1>
             <i class="fa fa-3x fa-backward"></i>
         </a>
     </div>
+    <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
     <div *ngIf='pageElement.search' class="thumbnail tile tile-large tile-green">
         <div class="input-group input-group-lg">

@@ -1,7 +1,7 @@
 import * as forms from './../generated/forms';
-import {IFormHandler} from './../../path-framework/path';
+import * as path from './../../path-framework/path';
 
-export class ProjectFormQuickScanHandler implements IFormHandler {
+export class ProjectFormQuickScanHandler implements path.IFormHandler {
 
     public doLoad(form:forms.ProjectForm) {
         console.log("loading quick scan form");
@@ -18,7 +18,7 @@ export class ProjectFormQuickScanHandler implements IFormHandler {
 
 }
 
-export class ProjectFormDeepScanHandler implements IFormHandler {
+export class ProjectFormDeepScanHandler implements path.IFormHandler {
 
     public doLoad(form:forms.ProjectForm) {
         console.log("loading deep scan form");
@@ -34,7 +34,7 @@ export class ProjectFormDeepScanHandler implements IFormHandler {
 
 }
 
-export class CustomerFormHandler implements IFormHandler {
+export class CustomerFormHandler implements path.IFormHandler {
 
     public doLoad(form:forms.CustomerForm) {
         console.log("loading customer form");
@@ -46,6 +46,19 @@ export class CustomerFormHandler implements IFormHandler {
 
     public doValidate(form:forms.CustomerForm) {
         console.log("validating customer form");
+    }
+
+}
+
+export class CategoryListButtonHandler implements path.IButtonHandler {
+
+    public doClick(button:path.IButton) {
+        console.log("clicked " + button.getColor());
+        if (button.getColor() == "asbestos") {
+            button.setColor("wet-asphalt");
+        } else {
+            button.setColor("asbestos");
+        }
     }
 
 }

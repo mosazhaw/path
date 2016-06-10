@@ -674,7 +674,8 @@ export class GuiModel {
                             "name": "Categories",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "data": [{"name": "Category B1"}, {"name": "Category B2"}, {"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B5"}, {"name": "Category B6"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B9"}, {"name": "Category B10"}]
+                            "handler": "CategoryListButtonHandler",
+                            "data": [{"name": "Category B1", "color": "asbestos"}, {"name": "Category B2", "color": "wet-asphalt"}, {"name": "Category B3", "color": "asbestos"}, {"name": "Category B4", "color": "asbestos"}, {"name": "Category B5", "color": "asbestos"}, {"name": "Category B6", "color": "asbestos"}, {"name": "Category B7", "color": "asbestos"}, {"name": "Category B8", "color": "asbestos"}, {"name": "Category B9", "color": "asbestos"}, {"name": "Category B10", "color": "asbestos"}]
                         }
                     ]
                 },

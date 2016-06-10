@@ -78,6 +78,10 @@ export abstract class PathAppComponent implements path.IPathApp {
                             for (var listElement of modelElement["data"]) {
                                 let button:path.Button = this.createButton(modelElement);
                                 button.name = listElement.name;
+                                button.color = listElement["color"] != null ? listElement["color"] : button.color;
+                                if (modelElement["handler"] != null) {
+                                    button.handler = new (this.getHandlers()[modelElement["handler"]]);
+                                }
                                 dynamicList.content.push(button);
                             }
                             element = dynamicList;
@@ -103,7 +107,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             formButton.color = modelElement["color"];
             formButton.form = modelElement["form"]["form"];
             formButton.mode = modelElement["form"]["mode"];
-            formButton.handler = modelElement["form"]["handler"];
+            formButton.formHandler = modelElement["form"]["handler"];
             return formButton;
         } else {
             let pageButton:path.PageButton = new path.PageButton(this);
