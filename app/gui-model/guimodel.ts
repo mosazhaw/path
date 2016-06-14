@@ -630,7 +630,6 @@ export class GuiModel {
                             "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red",
-                            "page": "quickscanspage"
                         }
                     ]
                 },
@@ -697,8 +696,7 @@ export class GuiModel {
                             "type": "button",
                             "name": "Delete",
                             "icon": "fa-remove",
-                            "color": "red",
-                            "page": "quickscanspage"
+                            "color": "red"
                         }
                     ]
                 },
@@ -789,8 +787,7 @@ export class GuiModel {
                             "type": "button",
                             "name": "Delete",
                             "icon": "fa-remove",
-                            "color": "red",
-                            "page": "deepscanspage"
+                            "color": "red"
                         }
                     ]
                 },
