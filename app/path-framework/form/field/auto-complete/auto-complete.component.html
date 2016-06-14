@@ -1,8 +1,7 @@
-<div class="row">
-    <div class="col-md-4">
+    <div class="col-md-2">
         <h4 class="modal-title">{{field.name}}</h4>
     </div>
-    <div class="col-md-8">
+    <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
         <div class="input-group input-group-lg">
             <input #inputElement type="text" [(ngModel)]=field.query (keyup)=field.filter(inputElement.value) class="form-control" placeholder="">
             <!-- Auto Complete -->
@@ -17,4 +16,3 @@
             </span>
         </div>
     </div>
-</div>
