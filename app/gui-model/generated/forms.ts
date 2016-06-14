@@ -96,7 +96,7 @@ export class ProjectForm implements path.IForm {
     }
 }
 
-export class CustomerForm implements path.IForm {
+export class CompanyForm implements path.IForm {
 
     private _companyName:path.TextField;
     private _street:path.TextField;

@@ -34,18 +34,18 @@ export class ProjectFormDeepScanHandler implements path.IFormHandler {
 
 }
 
-export class CustomerFormHandler implements path.IFormHandler {
+export class CompanyFormHandler implements path.IFormHandler {
 
-    public doLoad(form:forms.CustomerForm) {
-        console.log("loading customer form");
+    public doLoad(form:forms.CompanyForm) {
+        console.log("loading company form");
     }
 
-    public doSave(form:forms.CustomerForm) {
-        console.log("saving customer form");
+    public doSave(form:forms.CompanyForm) {
+        console.log("saving company form");
     }
 
-    public doValidate(form:forms.CustomerForm) {
-        console.log("validating customer form");
+    public doValidate(form:forms.CompanyForm) {
+        console.log("validating company form");
     }
 
 }

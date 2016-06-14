@@ -103,8 +103,8 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "CustomerForm",
-                    "title": "Customer Details",
+                    "id": "CompanyForm",
+                    "title": "Company Details",
                     "formFieldList": [
                         {
                             "id": "companyName",
@@ -536,10 +536,10 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Customers",
+                            "name": "Companies",
                             "icon": "fa-home",
                             "color": "purple",
-                            "page": "customerspage",
+                            "page": "companiespage",
                         },
                         {
                             "type": "button",
@@ -553,7 +553,7 @@ export class GuiModel {
                             "name": "Reports",
                             "icon": "fa-file",
                             "color": "blue",
-                            "page": "reportcustomerspage"
+                            "page": "reportcompaniespage"
                         },
                         {
                             "type": "button",
@@ -910,31 +910,31 @@ export class GuiModel {
                         }
                     ]
                 },
-                /* customers */
+                /* companies */
                 {
-                    "id": "customerspage",
-                    "title": "Customers",
+                    "id": "companiespage",
+                    "title": "Companies",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "button",
-                            "name": "New Customer",
+                            "name": "New Company",
                             "icon": "fa-home",
                             "color": "green",
                             "form": {
-                                "form": "CustomerForm",
+                                "form": "CompanyForm",
                                 "mode": "create"
                             }
                         },
                         {
                             "type": "list",
-                            "name": "Customer List",
+                            "name": "Company List",
                             "icon": "fa-home",
                             "color": "purple",
                             "search": true,
-                            "page": "customerpersonspage",
+                            "page": "companypersonspage",
                             "data": [{"name": "Alpha Hospital"}, {"name": "Blue Hospital"}, {"name": "Charisma Hospital"}]
                         }
                     ]
@@ -972,19 +972,19 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "customerpersonspage",
-                    "title": "Customer - Persons",
+                    "id": "companypersonspage",
+                    "title": "Company - Persons",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "button",
-                            "name": "Edit Customer",
+                            "name": "Edit Company",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "CustomerForm",
+                                "form": "CompanyForm",
                                 "mode": "update"
                             }
                         },
@@ -1020,26 +1020,26 @@ export class GuiModel {
                 },
                 /* reports */
                 {
-                    "id": "reportcustomerspage",
-                    "title": "Customers",
+                    "id": "reportcompaniespage",
+                    "title": "Companies",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "list",
-                            "name": "Customer List",
+                            "name": "Company List",
                             "icon": "fa-home",
                             "color": "purple",
                             "search": true,
-                            "page": "customerprojectspage",
+                            "page": "companyprojectspage",
                             "data": [{"name": "Alpha Hospital"}, {"name": "Blue Hospital"}, {"name": "Charisma Hospital"}]
                         }
                     ]
                 },
                 {
-                    "id": "customerprojectspage",
-                    "title": "Customer Projects",
+                    "id": "companyprojectspage",
+                    "title": "Company Projects",
                     "elementList": [
                         {
                             "type": "backbutton",
