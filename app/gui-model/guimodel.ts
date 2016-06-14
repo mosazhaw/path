@@ -589,7 +589,7 @@ export class GuiModel {
                             "color": "alizarin",
                             "search": true,
                             "page": "quickscanpage",
-                            "data": [{"name": "QuickScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "QuickScan Two", "details": [ "05/2017", "Charisma Hospital" ]}, {"name": "QuickScan Three"}, {"name": "QuickScan Four"}, {"name": "QuickScan Five"}, {"name": "QuickScan Six"}]
+                            "data": [{"name": "QuickScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "QuickScan Two", "details": [ "05/2017", "Charisma Hospital" ]}, {"name": "QuickScan Three", "details": [ "06/2017", "Alpha Hospital" ]}, {"name": "QuickScan Four", "details": [ "07/2017", "Charisma Hospital" ]}, {"name": "QuickScan Five", "details": [ "08/2017", "Charisma Hospital" ]}, {"name": "QuickScan Six", "details": [ "09/2017", "Charisma Hospital" ]}]
                         }
                     ]
                 },
@@ -658,7 +658,7 @@ export class GuiModel {
                             "color": "blue",
                             "search": true,
                             "page": "quickscanintervieweecategoriespage",
-                            "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}, {"name": "Frau Dr. Last"}, {"name": "Frau Dr. Gesund"}]
+                            "data": [{"name": "Frau Dr. Müller", "details": [ "Alpha Hospital" ]}, {"name": "Herr Dr. Lisib", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Last", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Gesund", "details": [ "Alpha Hospital" ]}]
                         }
                     ]
                 },
@@ -749,7 +749,7 @@ export class GuiModel {
                             "color": "wet-asphalt",
                             "search": true,
                             "page": "deepscanpage",
-                            "data": [{"name": "DeepScan One"}, {"name": "DeepScan Two"}, {"name": "DeepScan Three"}, {"name": "DeepScan Four"}, {"name": "DeepScan Five"}, {"name": "DeepScan Six"}]
+                            "data": [{"name": "DeepScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "DeepScan Two", "details": [ "04/2017", "Blue Hospital" ]}, {"name": "DeepScan Three", "details": [ "04/2017", "Alpha Hospital" ]}, {"name": "DeepScan Four", "details": [ "05/2017", "Alpha Hospital" ]}, {"name": "DeepScan Five", "details": [ "06/2017", "Charisma Hospital" ]}, {"name": "DeepScan Six", "details": [ "11/2017", "Alpha Hospital" ]}]
                         }
                     ]
                 },
@@ -817,7 +817,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "page": "deepscanintervieweeprocessgroupspage",
-                            "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}, {"name": "Frau Dr. Last"}, {"name": "Frau Dr. Gesund"}]
+                            "data": [{"name": "Frau Dr. Müller", "details": [ "Alpha Hospital" ]}, {"name": "Herr Dr. Lisib", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Last", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Gesund", "details": [ "Alpha Hospital" ]}]
                         }
                     ]
                 },
@@ -970,7 +970,7 @@ export class GuiModel {
                                 "form": "PersonForm",
                                 "mode": "update"
                             },
-                            "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}, {"name": "Frau Dr. Held"}, {"name": "Frau Dr. Gesund"}, {"name": "Frau Dr. Krank"}]
+                            "data": [{"name": "Frau Dr. Müller", "details": [ "Alpha Hospital" ]}, {"name": "Herr Dr. Lisib", "details": [ "Blue Hospital" ]}, {"name": "Frau Dr. Held", "details": [ "Blue Hospital" ]}, {"name": "Frau Dr. Gesund", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Krank", "details": [ "Charisma Hospital" ]}]
                         }
                     ]
                 },
@@ -1011,7 +1011,7 @@ export class GuiModel {
                                 "form": "PersonForm",
                                 "mode": "update"
                             },
-                            "data": [{"name": "Frau Dr. Müller"}, {"name": "Herr Dr. Lisib"}]
+                            "data": [{"name": "Frau Dr. Müller", "details": [ "Alpha Hospital" ]}, {"name": "Herr Dr. Lisib", "details": [ "Alpha Hospital" ]}]
                         },
                         {
                             "type": "button",
@@ -1053,7 +1053,7 @@ export class GuiModel {
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
                             "page": "reportspage",
-                            "data": [{"name": "QuickScan One"}, {"name": "QuickScan Two"}, {"name": "QuickScan Three"}]
+                            "data": [{"name": "QuickScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "QuickScan Two", "details": [ "05/2017", "Alpha Hospital" ]}, {"name": "QuickScan Three", "details": [ "11/2017", "Alpha Hospital" ]}]
                         },
                         {
                             "type": "list",
@@ -1061,7 +1061,7 @@ export class GuiModel {
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
                             "page": "reportspage",
-                            "data": [{"name": "DeepScan One"}, {"name": "DeepScan Two"}]
+                            "data": [{"name": "DeepScan One", "details": [ "10/2017", "Alpha Hospital" ]}, {"name": "DeepScan Two", "details": [ "01/2018", "Alpha Hospital" ]}]
                         }
                     ]
                 },
