@@ -3,6 +3,7 @@ import * as path from './../path';
 export class Form {
     private _title:String;
     private _fields:path.FormField[] = [];
+    private _rows:FormRow[] = [];
 
     get title():String {
         return this._title;
@@ -20,7 +21,15 @@ export class Form {
         this._fields = value;
     }
 
-    public getRows():FormRow[] {
+    get rows():FormRow[] {
+        return this._rows;
+    }
+
+    set rows(value:FormRow[]) {
+        this._rows = value;
+    }
+
+    public updateRows() {
         let rows:FormRow[] = [];
 
         let currentFormRow:FormRow;
@@ -33,7 +42,7 @@ export class Form {
             }
             currentFormRow.fields.push(field);
         }
-        return rows;
+        this._rows = rows;
     }
 }
 

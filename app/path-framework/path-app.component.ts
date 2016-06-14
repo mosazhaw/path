@@ -228,6 +228,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     form.fields.push(formField);
                 }
+                form.updateRows(); // TODO check if this can be done automatically
+
                 // get handler and execute load
                 let handlerName = handler;
                 if (handlerName == null) {
