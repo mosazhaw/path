@@ -10,7 +10,8 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Project"
+                            "name": "Project",
+                            "width": 2
                         },
                         {
                             "id": "quickScanCase",
@@ -19,11 +20,12 @@ export class GuiModel {
                             "wordSearchEnabled": false,
                             "visible": false,
                             "actions": [],
-                            "data": ["Case A", "Case B", "Case C", "Case D", "Case E"]
+                            "data": ["Case A", "Case B", "Case C", "Case D", "Case E"],
+                            "width": 2
                         },
                         {
                             "type": "date",
-                            "name": "Start Date"
+                            "name": "Start Date",
                         },
                         {
                             "type": "date",
@@ -34,7 +36,8 @@ export class GuiModel {
                             "name": "Customer",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"]
+                            "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"],
+                            "newRow": true
                         },
                         {
                             "type": "autocomplete",
@@ -48,7 +51,8 @@ export class GuiModel {
                             "name": "Service Provider",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": ["Deloitte AG", "Service Provider AG", "Enterprise AG"]
+                            "data": ["Deloitte AG", "Service Provider AG", "Enterprise AG"],
+                            "newRow": true
                         },
                         {
                             "type": "autocomplete",
@@ -61,7 +65,8 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Industry Segment",
                             "wordSearchEnabled": false,
-                            "data": ["Oil& Gas", "Basic Materials", "Industrials", "Consumer Services", "Consumer Goods", "Health Care", "Financials", "Technology", "Telecommunications", "Utilities"]
+                            "data": ["Oil& Gas", "Basic Materials", "Industrials", "Consumer Services", "Consumer Goods", "Health Care", "Financials", "Technology", "Telecommunications", "Utilities"],
+                            "width": 2
                         },
                         {
                             "type": "radiogroup",
@@ -90,7 +95,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Comments",
-                            "height": 8
+                            "height": 8,
+                            "width": 2
                         },
                         {
                             "type": "cancelButton",
@@ -109,15 +115,19 @@ export class GuiModel {
                         {
                             "id": "companyName",
                             "type": "text",
-                            "name": "Company Name"
+                            "name": "Company Name",
+                            "width": 2,
                         },
                         {
                             "type": "text",
-                            "name": "Street"
+                            "name": "Street",
+                            "newRow": true,
+                            "width": 2
                         },
                         {
                             "type": "text",
-                            "name": "Postal Code"
+                            "name": "Postal Code",
+                            "newRow": true
                         },
                         {
                             "type": "text",
@@ -127,12 +137,15 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Country",
                             "wordSearchEnabled": false,
-                            "data": ["Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Ascension Island", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Indian Ocean Territory", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Canary Islands", "Cape Verde", "Caribbean Netherlands", "Cayman Islands", "Central African Republic", "Ceuta & Melilla", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo - Brazzaville", "Congo - Kinshasa", "Cook Islands", "Costa Rica", "Côte d’Ivoire", "Croatia", "Cuba", "Curaçao", "Cyprus", "Czech Republic", "Denmark", "Diego Garcia", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong SAR China", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau SAR China", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar (Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestinian Territories", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn Islands", "Poland", "Portugal", "Puerto Rico", "Qatar", "Réunion", "Romania", "Russia", "Rwanda", "Samoa", "San Marino", "São Tomé & Príncipe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia & South Sandwich Islands", "South Korea", "South Sudan", "Spain", "Sri Lanka", "St. Barthélemy", "St. Helena", "St. Kitts & Nevis", "St. Lucia", "St. Martin", "St. Pierre & Miquelon", "St. Vincent & Grenadines", "Sudan", "Suriname", "Svalbard & Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad & Tobago", "Tristan da Cunha", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos Islands", "Tuvalu", "U.S. Outlying Islands", "U.S. Virgin Islands", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Wallis & Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"]
+                            "data": ["Afghanistan", "Åland Islands", "Albania", "Algeria", "American Samoa", "Andorra", "Angola", "Anguilla", "Antarctica", "Antigua & Barbuda", "Argentina", "Armenia", "Aruba", "Ascension Island", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "Bolivia", "Bosnia & Herzegovina", "Botswana", "Brazil", "British Indian Ocean Territory", "British Virgin Islands", "Brunei", "Bulgaria", "Burkina Faso", "Burundi", "Cambodia", "Cameroon", "Canada", "Canary Islands", "Cape Verde", "Caribbean Netherlands", "Cayman Islands", "Central African Republic", "Ceuta & Melilla", "Chad", "Chile", "China", "Christmas Island", "Cocos (Keeling) Islands", "Colombia", "Comoros", "Congo - Brazzaville", "Congo - Kinshasa", "Cook Islands", "Costa Rica", "Côte d’Ivoire", "Croatia", "Cuba", "Curaçao", "Cyprus", "Czech Republic", "Denmark", "Diego Garcia", "Djibouti", "Dominica", "Dominican Republic", "Ecuador", "Egypt", "El Salvador", "Equatorial Guinea", "Eritrea", "Estonia", "Ethiopia", "Falkland Islands", "Faroe Islands", "Fiji", "Finland", "France", "French Guiana", "French Polynesia", "French Southern Territories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guam", "Guatemala", "Guernsey", "Guinea", "Guinea-Bissau", "Guyana", "Haiti", "Honduras", "Hong Kong SAR China", "Hungary", "Iceland", "India", "Indonesia", "Iran", "Iraq", "Ireland", "Isle of Man", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "Kosovo", "Kuwait", "Kyrgyzstan", "Laos", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Macau SAR China", "Macedonia", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "Marshall Islands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "Micronesia", "Moldova", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar (Burma)", "Namibia", "Nauru", "Nepal", "Netherlands", "New Caledonia", "New Zealand", "Nicaragua", "Niger", "Nigeria", "Niue", "Norfolk Island", "North Korea", "Northern Mariana Islands", "Norway", "Oman", "Pakistan", "Palau", "Palestinian Territories", "Panama", "Papua New Guinea", "Paraguay", "Peru", "Philippines", "Pitcairn Islands", "Poland", "Portugal", "Puerto Rico", "Qatar", "Réunion", "Romania", "Russia", "Rwanda", "Samoa", "San Marino", "São Tomé & Príncipe", "Saudi Arabia", "Senegal", "Serbia", "Seychelles", "Sierra Leone", "Singapore", "Sint Maarten", "Slovakia", "Slovenia", "Solomon Islands", "Somalia", "South Africa", "South Georgia & South Sandwich Islands", "South Korea", "South Sudan", "Spain", "Sri Lanka", "St. Barthélemy", "St. Helena", "St. Kitts & Nevis", "St. Lucia", "St. Martin", "St. Pierre & Miquelon", "St. Vincent & Grenadines", "Sudan", "Suriname", "Svalbard & Jan Mayen", "Swaziland", "Sweden", "Switzerland", "Syria", "Taiwan", "Tajikistan", "Tanzania", "Thailand", "Timor-Leste", "Togo", "Tokelau", "Tonga", "Trinidad & Tobago", "Tristan da Cunha", "Tunisia", "Turkey", "Turkmenistan", "Turks & Caicos Islands", "Tuvalu", "U.S. Outlying Islands", "U.S. Virgin Islands", "Uganda", "Ukraine", "United Arab Emirates", "United Kingdom", "United States", "Uruguay", "Uzbekistan", "Vanuatu", "Vatican City", "Venezuela", "Vietnam", "Wallis & Futuna", "Western Sahara", "Yemen", "Zambia", "Zimbabwe"],
+                            "newRow": true,
+                            "width": 2
                         },
                         {
                             "type": "text",
                             "name": "Comments",
-                            "height": 8
+                            "height": 8,
+                            "width": 2
                         },
                         {
                             "type": "cancelButton",
@@ -243,7 +256,8 @@ export class GuiModel {
                             "name": "Person",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": ["Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"]
+                            "data": ["Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"],
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -268,7 +282,8 @@ export class GuiModel {
                             "name": "Process Group",
                             "wordSearchEnabled": false,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": ["Process Group S1", "Process Group S2", "Process Group S3", "Process Group S4", "Process Group S5", "Process Group S6"]
+                            "data": ["Process Group S1", "Process Group S2", "Process Group S3", "Process Group S4", "Process Group S5", "Process Group S6"],
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -290,7 +305,8 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Case Name"
+                            "name": "Case Name",
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -312,14 +328,16 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Category Name"
+                            "name": "Category Name",
+                            "width": 2
                         },
                         {
                             "type": "autocomplete",
                             "name": "Maturity Level Schema",
                             "wordSearchEnabled": false,
                             "actions": [],
-                            "data": ["Maturity Level Schema 1", "Maturity Level Schema 2", "Maturity Level Schema 3"]
+                            "data": ["Maturity Level Schema 1", "Maturity Level Schema 2", "Maturity Level Schema 3"],
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -341,7 +359,8 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Process Group Name"
+                            "name": "Process Group Name",
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -363,7 +382,8 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Process Name"
+                            "name": "Process Name",
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -386,32 +406,38 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Capability Question",
-                            "height": 8
+                            "height": 8,
+                            "width": 2
                         },
                         {
                             "type": "text",
                             "name": "Awareness",
-                            "height": 4
+                            "height": 4,
+                            "width": 2
                         },
                         {
                             "type": "text",
                             "name": "Develop",
-                            "height": 4
+                            "height": 4,
+                            "width": 2
                         },
                         {
                             "type": "text",
                             "name": "Practice",
-                            "height": 4
+                            "height": 4,
+                            "width": 2
                         },
                         {
                             "type": "text",
                             "name": "Optimize",
-                            "height": 4
+                            "height": 4,
+                            "width": 2
                         },
                         {
                             "type": "text",
                             "name": "Best-In-Class",
-                            "height": 4
+                            "height": 4,
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -433,24 +459,28 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Key Performance Indicator Name"
+                            "name": "Key Performance Indicator Name",
+                            "width": 2
                         },
                         {
                             "type": "autocomplete",
                             "name": "Output Unit",
                             "wordSearchEnabled": false,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": ["CHF", "FTE", "kg", "h", "Betten", "min"]
+                            "data": ["CHF", "FTE", "kg", "h", "Betten", "min"],
+                            "width": 2
                         },
                         {
                             "type": "text",
                             "name": "Formula",
-                            "height": 8
+                            "height": 8,
+                            "width": 2
                         },
                         {
                             "type": "text",
                             "name": "Comments",
-                            "height": 8
+                            "height": 8,
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -472,7 +502,8 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Maturity Level Schema"
+                            "name": "Maturity Level Schema",
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -494,7 +525,8 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Maturity Level"
+                            "name": "Maturity Level",
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -516,7 +548,8 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "KPI Category"
+                            "name": "KPI Category",
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",

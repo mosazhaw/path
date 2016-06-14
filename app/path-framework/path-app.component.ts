@@ -41,6 +41,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         cancelButton.type = "cancelButton";
         cancelButton.name = "Cancel";
         form.fields.push(cancelButton);
+        form.updateRows();
 
         this.getFormStack().push(form);
     }

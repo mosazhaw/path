@@ -83,7 +83,7 @@
                                 <h4 class="modal-title">{{element.title}}</h4>
                             </div>
                             <div class="modal-body">
-                                <div *ngFor='let row of element.rows;' class="row">
+                                <div *ngFor='let row of element.rows;' class="row" [hidden]="!row.isVisible()">
                                     <div *ngFor='let field of row.fields;' [hidden]="!field.visible">
                                         <div *ngIf="field.type == 'text'">
                                             <div class="col-md-2">
@@ -135,21 +135,21 @@
                             <div class="modal-footer">
                                 <div class="row">
                                     <div class="col-md-2">
-                                            <span *ngFor='let field of element.fields'>
+                                        <span *ngFor='let field of element.fields' class="pull-left">
                                             <span *ngIf="field.type == 'deleteButton'">
                                                 <input type="button" class="btn btn-default btn-lg" (click)="field.onClick()" value="{{field.name}}"/>
                                             </span>
-                                            </span>
+                                        </span>
                                     </div>
                                     <div class="col-md-10">
-                                            <span *ngFor='let field of element.fields'>
+                                        <span *ngFor='let field of element.fields'>
                                             <span *ngIf="field.type == 'okButton'">
                                                 <input type="button" class="btn btn-default btn-lg" (click)="field.onClick()" value="{{field.name}}"/>
                                             </span>
                                             <span *ngIf="field.type == 'cancelButton'">
                                                 <input type="button" class="btn btn-default btn-lg" (click)="field.onClick()" value="{{field.name}}"/>
                                             </span>
-                                            </span>
+                                        </span>
                                     </div>
                                 </div>
                             </div>

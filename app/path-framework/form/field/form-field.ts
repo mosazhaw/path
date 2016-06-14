@@ -2,8 +2,8 @@ import {PageElement} from './../../page/element/page-element';
 import {Action} from './../../form/field/button/action';
 
 export class FormField extends PageElement {
-    private _height:Number;
-    private _width:Number;
+    private _height:number;
+    private _width:number;
     private _newRow:boolean;
     private _visible:boolean;
     private _actions:Action[] = [];
@@ -16,11 +16,11 @@ export class FormField extends PageElement {
         this._actions = value;
     }
 
-    get height():Number {
+    get height():number {
         return this._height;
     }
 
-    set height(value:Number) {
+    set height(value:number) {
         this._height = value;
     }
 
@@ -32,11 +32,11 @@ export class FormField extends PageElement {
         this._visible = value;
     }
 
-    get width():Number {
+    get width():number {
         return this._width;
     }
 
-    set width(value:Number) {
+    set width(value:number) {
         this._width = value;
     }
 
