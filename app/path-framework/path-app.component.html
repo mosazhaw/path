@@ -83,48 +83,42 @@
                                 <h4 class="modal-title">{{element.title}}</h4>
                             </div>
                             <div class="modal-body">
-                                <div *ngFor='let field of element.fields' [hidden]="!field.visible">
-                                    <div *ngIf="field.type == 'text'">
-                                        <div class="row">
-                                            <div class="col-md-4">
+                                <div *ngFor='let row of element.getRows();' class="row">
+                                    <div *ngFor='let field of row.fields;' [hidden]="!field.visible">
+                                        <div *ngIf="field.type == 'text'">
+                                            <div class="col-md-2">
                                                 <h4 class="modal-title">{{field.name}}</h4>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
                                                 <div class="input-group input-group-lg">
                                                     <input [(ngModel)]=field.value *ngIf="field.height == null || field.height <= 1" type="text" class="form-control" placeholder="">
                                                     <textarea [(ngModel)]=field.value *ngIf="field.height != null && field.height > 1" rows="{{field.height}}" type="text" class="form-control path-textarea" placeholder=""></textarea>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div *ngIf="field.type == 'label'">
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                        <div *ngIf="field.type == 'label'">
+                                            <div class="col-md-6">
                                                 <h4 class="modal-title">{{field.value}}</h4>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div *ngIf="field.type == 'date'">
-                                        <div class="row">
-                                            <div class="col-md-4">
+                                        <div *ngIf="field.type == 'date'">
+                                            <div class="col-md-2">
                                                 <h4 class="modal-title">{{field.name}}</h4>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
                                                 <div class="input-group input-group-lg">
                                                     <input style="display: block; width: 100%" type="date" class="form-control" placeholder="">
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div *ngIf="field.type == 'autocomplete'">
-                                        <path-autocomplete [field]="field"></path-autocomplete>
-                                    </div>
-                                    <div *ngIf="field.type == 'radiogroup'">
-                                        <div class="row">
-                                            <div class="col-md-4">
+                                        <div *ngIf="field.type == 'autocomplete'">
+                                            <path-autocomplete [field]="field"></path-autocomplete>
+                                        </div>
+                                        <div *ngIf="field.type == 'radiogroup'">
+                                            <div class="col-md-2">
                                                 <h4 class="modal-title">{{field.name}}</h4>
                                             </div>
-                                            <div class="col-md-8">
+                                            <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
                                                 <div class="input-group input-group-lg">
                                                     <span *ngFor='let radioElement of field.radios'>
                                                             <label class="control radio">
@@ -141,21 +135,21 @@
                             <div class="modal-footer">
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <span class="pull-left" *ngFor='let field of element.fields'>
+                                            <span *ngFor='let field of element.fields'>
                                             <span *ngIf="field.type == 'deleteButton'">
                                                 <input type="button" class="btn btn-default btn-lg" (click)="field.onClick()" value="{{field.name}}"/>
                                             </span>
-                                        </span>
+                                            </span>
                                     </div>
                                     <div class="col-md-10">
-                                        <span *ngFor='let field of element.fields'>
+                                            <span *ngFor='let field of element.fields'>
                                             <span *ngIf="field.type == 'okButton'">
                                                 <input type="button" class="btn btn-default btn-lg" (click)="field.onClick()" value="{{field.name}}"/>
                                             </span>
                                             <span *ngIf="field.type == 'cancelButton'">
                                                 <input type="button" class="btn btn-default btn-lg" (click)="field.onClick()" value="{{field.name}}"/>
                                             </span>
-                                        </span>
+                                            </span>
                                     </div>
                                 </div>
                             </div>

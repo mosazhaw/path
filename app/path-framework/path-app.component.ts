@@ -42,7 +42,6 @@ export abstract class PathAppComponent implements path.IPathApp {
         cancelButton.name = "Cancel";
         form.fields.push(cancelButton);
 
-
         this.getFormStack().push(form);
     }
 
@@ -206,6 +205,14 @@ export abstract class PathAppComponent implements path.IPathApp {
                     formField.visible = true;
                     if (modelFormField["visible"] != null) {
                         formField.visible = modelFormField["visible"];
+                    }
+                    formField.width = 1;
+                    if (modelFormField["width"] != null) {
+                        formField.width = modelFormField["width"];
+                    }
+                    formField.newRow = false;
+                    if (modelFormField["newRow"] != null) {
+                        formField.newRow = modelFormField["newRow"];
                     }
                     formField.id = modelFormField["id"];
                     formField.name = modelFormField.name;
