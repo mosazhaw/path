@@ -86,15 +86,7 @@
                                 <div *ngFor='let row of element.rows;' class="row" [hidden]="!row.isVisible()">
                                     <div *ngFor='let field of row.fields;' [hidden]="!field.visible">
                                         <div *ngIf="field.type == 'text'">
-                                            <div class="col-md-2">
-                                                <h4 class="modal-title">{{field.name}}</h4>
-                                            </div>
-                                            <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
-                                                <div class="input-group input-group-lg">
-                                                    <input [(ngModel)]=field.value *ngIf="field.height == null || field.height <= 1" type="text" class="form-control" placeholder="">
-                                                    <textarea [(ngModel)]=field.value *ngIf="field.height != null && field.height > 1" rows="{{field.height}}" type="text" class="form-control path-textarea" placeholder=""></textarea>
-                                                </div>
-                                            </div>
+                                            <path-textfield [field]="field"></path-textfield>
                                         </div>
                                         <div *ngIf="field.type == 'label'">
                                             <div class="col-md-6">
