@@ -4,17 +4,17 @@ import {Radio} from './radio';
 import {FormFieldLabelComponent} from './../form-field-label.component';
 
 @Component({
-    selector: 'path-radiogroup',
+    selector: 'path-radio-group',
     templateUrl: 'app/path-framework/form/field/radio/radio-group.component.html',
     directives: [FormFieldLabelComponent]
 })
 export class RadioGroupComponent {
     @Input('field')
     @Output('field')
-    field:RadioGroup;
+    field:RadioGroupField;
 }
 
-export class RadioGroup extends FormField {
+export class RadioGroupField extends FormField {
     private _radios:Radio[] = [];
 
     get radios():Radio[] {

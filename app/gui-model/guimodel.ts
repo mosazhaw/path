@@ -68,13 +68,13 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
-                            "type": "CheckboxListField",
+                            "type": "CheckboxGroupField",
                             "name": "Industry Segment",
                             "data": [{id: "1", name: "Oil& Gas"}, {id: "2", name: "Basic Materials"}, {id: "3", name: "Industrials"}, {id: "4", name: "Consumer Services"}, {id: "5", name: "Consumer Goods"}, {id: "6", name: "Health Care"}, {id: "7", name: "Financials"}, {id: "8", name: "Technology"}, {id: "9", name: "Telecommunications"}, {id: "10", name: "Utilities"}],
                             "width": 2
                         },
                         {
-                            "type": "radiogroup",
+                            "type": "RadioGroupField",
                             "name": "Benchmarking",
                             "radios": [{
                                 type: "radio",
@@ -86,7 +86,7 @@ export class GuiModel {
                             ]
                         },
                         {
-                            "type": "radiogroup",
+                            "type": "RadioGroupField",
                             "name": "Monitoring (over Time)",
                             "radios": [{
                                 type: "radio",

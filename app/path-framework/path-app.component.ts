@@ -186,9 +186,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField = autoCompleteFormField;
                             break;
                         }
-                        case "radiogroup":
+                        case "RadioGroupField":
                         {
-                            let radioGroupFormField = new path.RadioGroup(this);
+                            let radioGroupFormField = new path.RadioGroupField(this);
                             for (var radioModel of modelFormField["radios"]) {
                                 let radio = new path.Radio(this);
                                 radio.name = radioModel.name;
@@ -197,11 +197,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField = radioGroupFormField;
                             break;
                         }
-                        case "CheckboxListField":
+                        case "CheckboxGroupField":
                         {
-                            let checkboxListField = new path.CheckboxListField(this);
+                            let checkboxListField = new path.CheckboxGroupField(this);
                             for (var entryModel of modelFormField["data"]) {
-                                let entry = new path.CheckboxListEntry();
+                                let entry = new path.CheckboxGroupEntry();
                                 entry.name = entryModel.name;
                                 entry.id = entryModel.id;
                                 entry.selected = false;

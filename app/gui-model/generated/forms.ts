@@ -11,8 +11,8 @@ export class ProjectForm implements path.IForm {
     private _customerProjectLeader:path.AutoCompleteField;
     private _deloitteProjectLeader:path.AutoCompleteField;
     private _industrySegment:path.AutoCompleteField;
-    private _benchmarking:path.RadioGroup;
-    private _monitoring:path.RadioGroup;
+    private _benchmarking:path.RadioGroupField;
+    private _monitoring:path.RadioGroupField;
     private _comment:path.FormField;
 
     get project():path.FormField {
@@ -71,19 +71,19 @@ export class ProjectForm implements path.IForm {
         this._industrySegment = value;
     }
 
-    get benchmarking():path.RadioGroup {
+    get benchmarking():path.RadioGroupField {
         return this._benchmarking;
     }
 
-    set benchmarking(value:path.RadioGroup) {
+    set benchmarking(value:path.RadioGroupField) {
         this._benchmarking = value;
     }
 
-    get monitoring():path.RadioGroup {
+    get monitoring():path.RadioGroupField {
         return this._monitoring;
     }
 
-    set monitoring(value:path.RadioGroup) {
+    set monitoring(value:path.RadioGroupField) {
         this._monitoring = value;
     }
 

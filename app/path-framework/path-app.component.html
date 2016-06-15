@@ -104,11 +104,11 @@
                                         <div *ngIf="field.type == 'autocomplete'">
                                             <path-autocomplete [field]="field"></path-autocomplete>
                                         </div>
-                                        <div *ngIf="field.type == 'radiogroup'">
-                                            <path-radiogroup [field]="field"></path-radiogroup>
+                                        <div *ngIf="field.type == 'RadioGroupField'">
+                                            <path-radio-group [field]="field"></path-radio-group>
                                         </div>
-                                        <div *ngIf="field.type == 'CheckboxListField'">
-                                            <path-checkbox-list [field]="field"></path-checkbox-list>
+                                        <div *ngIf="field.type == 'CheckboxGroupField'">
+                                            <path-checkbox-group [field]="field"></path-checkbox-group>
                                         </div>
                                     </div>
                                 </div>

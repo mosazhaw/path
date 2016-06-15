@@ -1,31 +1,31 @@
-import {Component, Input, Output, ElementRef} from '@angular/core';
+import {Component, Input, Output} from '@angular/core';
 import {FormField} from './../form-field';
 import {FormFieldLabelComponent} from './../form-field-label.component';
 
 @Component({
-    selector: 'path-checkbox-list',
-    templateUrl: 'app/path-framework/form/field/checkbox-list/checkbox-list.component.html',
+    selector: 'path-checkbox-group',
+    templateUrl: 'app/path-framework/form/field/checkbox/checkbox-group.component.html',
     directives: [FormFieldLabelComponent]
 })
-export class CheckboxListComponent {
+export class CheckboxGroupComponent {
     @Input('field')
     @Output('field')
-    field:CheckboxListField;
+    field:CheckboxGroupField;
 }
 
-export class CheckboxListField extends FormField {
-    private _entries:CheckboxListEntry[] = [];
+export class CheckboxGroupField extends FormField {
+    private _entries:CheckboxGroupEntry[] = [];
 
-    get entries():CheckboxListEntry[] {
+    get entries():CheckboxGroupEntry[] {
         return this._entries;
     }
 
-    set entries(value:CheckboxListEntry[]) {
+    set entries(value:CheckboxGroupEntry[]) {
         this._entries = value;
     }
 }
 
-export class CheckboxListEntry {
+export class CheckboxGroupEntry {
     private _id:string;
     private _name:string;
     private _selected:boolean;
