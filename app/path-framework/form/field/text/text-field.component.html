@@ -1,6 +1,4 @@
-<div class="col-md-2">
-    <h4 class="modal-title">{{field.name}}</h4>
-</div>
+<path-form-field-label [label]="field.name"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
     <div class="input-group input-group-lg">
         <input [(ngModel)]=field.value *ngIf="field.height == null || field.height <= 1" type="text" class="form-control" placeholder="">

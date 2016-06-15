@@ -6,6 +6,7 @@ export class FormField extends PageElement {
     private _width:number;
     private _newRow:boolean;
     private _visible:boolean;
+    private _mandatory:boolean;
     private _actions:Action[] = [];
 
     get actions():Action[] {
@@ -46,5 +47,13 @@ export class FormField extends PageElement {
 
     set newRow(value:boolean) {
         this._newRow = value;
+    }
+
+    get mandatory():boolean {
+        return this._mandatory;
+    }
+
+    set mandatory(value:boolean) {
+        this._mandatory = value;
     }
 }

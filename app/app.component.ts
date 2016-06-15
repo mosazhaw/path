@@ -10,7 +10,7 @@ import * as beans from './gui-model/generated/forms'
 @Component({
     selector: 'path-application',
     templateUrl: 'app/path-framework/path-app.component.html',
-    directives: [path.AutoCompleteComponent, path.TextFieldComponent]
+    directives: [path.AutoCompleteComponent, path.TextFieldComponent, path.FormFieldLabelComponent]
 })
 export class AppComponent extends path.PathAppComponent {
 

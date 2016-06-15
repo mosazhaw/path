@@ -117,6 +117,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Company Name",
                             "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "text",

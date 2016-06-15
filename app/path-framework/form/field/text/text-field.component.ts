@@ -1,9 +1,11 @@
 import {Component, Input, Output, ElementRef} from '@angular/core';
 import {FormField} from './../form-field';
+import {FormFieldLabelComponent} from './../form-field-label.component';
 
 @Component({
     selector: 'path-textfield',
-    templateUrl: 'app/path-framework/form/field/text/text-field.component.html'
+    templateUrl: 'app/path-framework/form/field/text/text-field.component.html',
+    directives: [FormFieldLabelComponent]
 })
 export class TextFieldComponent {
     @Input('field')

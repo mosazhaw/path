@@ -1,7 +1,5 @@
-    <div class="col-md-2">
-        <h4 class="modal-title">{{field.name}}</h4>
-    </div>
-    <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
+<path-form-field-label [label]="field.name"></path-form-field-label>
+<div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
         <div class="input-group input-group-lg">
             <input #inputElement type="text" [(ngModel)]=field.query (keyup)=field.filter(inputElement.value) class="form-control" placeholder="">
             <!-- Auto Complete -->
@@ -15,4 +13,4 @@
                 <button class="btn btn-default" type="button">{{action.name}}</button>
             </span>
         </div>
-    </div>
+</div>

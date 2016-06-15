@@ -215,6 +215,10 @@ export abstract class PathAppComponent implements path.IPathApp {
                     if (modelFormField["newRow"] != null) {
                         formField.newRow = modelFormField["newRow"];
                     }
+                    formField.mandatory = false;
+                    if (modelFormField["mandatory"] != null) {
+                        formField.mandatory = modelFormField["mandatory"];
+                    }
                     formField.id = modelFormField["id"];
                     formField.name = modelFormField.name;
                     formField.type = modelFormField.type;
