@@ -19,7 +19,7 @@ export * from './form/field/auto-complete/auto-complete.component';
 export * from './form/field/button/action';
 export * from './form/field/button/cancel-button';
 export * from './form/field/button/ok-button';
+export * from './form/field/radio/radio-group.component';
 export * from './form/field/radio/radio';
-export * from './form/field/radio/radio-group';
 export * from './form/field/text/text-field.component';
 
