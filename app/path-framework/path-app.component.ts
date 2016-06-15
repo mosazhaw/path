@@ -52,7 +52,7 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     // TODO remove
     public doCancel() {
-        this._formStack = [];
+        this._formStack.pop();
     }
 
     public onKey(event) {

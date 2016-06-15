@@ -46,7 +46,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Customer PL",
                             "wordSearchEnabled": true,
-                            "actions": [{"name": "New..."}],
+                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
                             "mandatory": true
                         },
@@ -63,7 +63,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Service Provider PL",
                             "wordSearchEnabled": true,
-                            "actions": [{"name": "New..."}],
+                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
                             "mandatory": true
                         },
@@ -264,7 +264,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Person",
                             "wordSearchEnabled": true,
-                            "actions": [{"name": "New..."}],
+                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "data": ["Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"],
                             "width": 2,
                             "mandatory": true
