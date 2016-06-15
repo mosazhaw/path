@@ -1,6 +1,6 @@
 import {PageElement} from './../../page/element/page-element';
 import {Action} from './../../form/field/button/action';
-import {IFormField} from "../../pathinterface";
+import {IFormField, IPathApp} from "../../pathinterface";
 
 export class FormField extends PageElement implements IFormField{
     private _height:number;
@@ -9,6 +9,10 @@ export class FormField extends PageElement implements IFormField{
     private _visible:boolean;
     private _mandatory:boolean;
     private _actions:Action[] = [];
+
+    public getApp():IPathApp {
+        return this.app;
+    }
 
     get actions():Action[] {
         return this._actions;

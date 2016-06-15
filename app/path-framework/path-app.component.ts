@@ -152,7 +152,6 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public setCurrentForm(formId:string, mode:string, handler:string) {
-        let forms:path.Form[] = [];
         let form:path.Form = null;
         for (var modelForm of this.getGuiModel().application.formList) {
             if (modelForm.id === formId) {
@@ -266,14 +265,13 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     formHandler.doLoad(formBean);
                 }
-
-                forms.push(form)
             }
         }
         if (form == null && formId != null) {
             alert("Missing form: " + formId);
+        } else {
+            this._formStack.push(form);
         }
-        this._formStack = forms;
     }
 
 }

@@ -71,6 +71,7 @@ export class CompanyActionHandler implements path.IActionHandler {
 
     doClick(field:path.IFormField, action:path.IAction) {
         console.log("action clicked " + field["name"]);
+        field.getApp().setCurrentForm("CompanyForm", "New", "CompanyFormHandler");
     }
 
 }

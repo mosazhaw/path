@@ -10,6 +10,7 @@ export interface IPageElement {
 }
 
 export interface IFormField {
+    getApp():IPathApp;
 }
 
 export interface IFormHandler {
