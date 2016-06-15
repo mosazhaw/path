@@ -107,6 +107,9 @@
                                         <div *ngIf="field.type == 'radiogroup'">
                                             <path-radiogroup [field]="field"></path-radiogroup>
                                         </div>
+                                        <div *ngIf="field.type == 'CheckboxListField'">
+                                            <path-checkbox-list [field]="field"></path-checkbox-list>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

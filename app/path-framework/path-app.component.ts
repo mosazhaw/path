@@ -197,6 +197,19 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField = radioGroupFormField;
                             break;
                         }
+                        case "CheckboxListField":
+                        {
+                            let checkboxListField = new path.CheckboxListField(this);
+                            for (var entryModel of modelFormField["data"]) {
+                                let entry = new path.CheckboxListEntry();
+                                entry.name = entryModel.name;
+                                entry.id = entryModel.id;
+                                entry.selected = false;
+                                checkboxListField.entries.push(entry);
+                            }
+                            formField = checkboxListField;
+                            break;
+                        }
                         default:
                         {
                             formField = new path.FormField(this);
