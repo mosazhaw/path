@@ -61,4 +61,27 @@ export class FormField extends PageElement implements IFormField{
     set mandatory(value:boolean) {
         this._mandatory = value;
     }
+
+    public fromJson(modelFormField) {
+        this.visible = true;
+        if (modelFormField["visible"] != null) {
+            this.visible = modelFormField["visible"];
+        }
+        this.width = 1;
+        if (modelFormField["width"] != null) {
+            this.width = modelFormField["width"];
+        }
+        this.newRow = false;
+        if (modelFormField["newRow"] != null) {
+            this.newRow = modelFormField["newRow"];
+        }
+        this.mandatory = false;
+        if (modelFormField["mandatory"] != null) {
+            this.mandatory = modelFormField["mandatory"];
+        }
+        this.id = modelFormField["id"];
+        this.name = modelFormField.name;
+        this.type = modelFormField.type;
+        this.height = modelFormField["height"];
+    }
 }

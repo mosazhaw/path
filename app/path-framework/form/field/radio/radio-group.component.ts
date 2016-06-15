@@ -34,4 +34,13 @@ export class RadioGroupField extends FormField {
             }
         }
     }
+
+    public fromJson(modelFormField) {
+        super.fromJson(modelFormField);
+        for (var radioModel of modelFormField["radios"]) {
+            let radio = new Radio(this.app);
+            radio.name = radioModel.name;
+            this.radios.push(radio);
+        }
+    }
 }

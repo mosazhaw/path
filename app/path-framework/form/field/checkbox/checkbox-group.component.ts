@@ -23,6 +23,17 @@ export class CheckboxGroupField extends FormField {
     set entries(value:CheckboxGroupEntry[]) {
         this._entries = value;
     }
+
+    public fromJson(modelFormField) {
+        super.fromJson(modelFormField);
+        for (var entryModel of modelFormField["data"]) {
+            let entry = new CheckboxGroupEntry();
+            entry.name = entryModel.name;
+            entry.id = entryModel.id;
+            entry.selected = false;
+            this.entries.push(entry);
+        }
+    }
 }
 
 export class CheckboxGroupEntry {

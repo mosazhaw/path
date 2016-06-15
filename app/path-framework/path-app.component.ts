@@ -165,16 +165,19 @@ export abstract class PathAppComponent implements path.IPathApp {
                         case "text":
                         {
                             formField = new path.TextField(this);
+                            formField.fromJson(modelFormField);
                             break;
                         }
                         case "okButton":
                         {
                             formField = new path.OkButton(this);
+                            formField.fromJson(modelFormField);
                             break;
                         }
                         case "cancelButton":
                         {
                             formField = new path.CancelButton(this);
+                            formField.fromJson(modelFormField);
                             break;
                         }
                         case "autocomplete":
@@ -183,58 +186,29 @@ export abstract class PathAppComponent implements path.IPathApp {
                             autoCompleteFormField.data = modelFormField["data"];
                             autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
                             formField = autoCompleteFormField;
+                            formField.fromJson(modelFormField);
                             break;
                         }
                         case "RadioGroupField":
                         {
                             let radioGroupFormField = new path.RadioGroupField(this);
-                            for (var radioModel of modelFormField["radios"]) {
-                                let radio = new path.Radio(this);
-                                radio.name = radioModel.name;
-                                radioGroupFormField.radios.push(radio);
-                            }
+                            radioGroupFormField.fromJson(modelFormField);
                             formField = radioGroupFormField;
                             break;
                         }
                         case "CheckboxGroupField":
                         {
-                            let checkboxListField = new path.CheckboxGroupField(this);
-                            for (var entryModel of modelFormField["data"]) {
-                                let entry = new path.CheckboxGroupEntry();
-                                entry.name = entryModel.name;
-                                entry.id = entryModel.id;
-                                entry.selected = false;
-                                checkboxListField.entries.push(entry);
-                            }
-                            formField = checkboxListField;
+                            let checkboxGroupField = new path.CheckboxGroupField(this);
+                            checkboxGroupField.fromJson(modelFormField);
+                            formField = checkboxGroupField;
                             break;
                         }
                         default:
                         {
                             formField = new path.FormField(this);
+                            formField.fromJson(modelFormField);
                         }
                     }
-                    // general values
-                    formField.visible = true;
-                    if (modelFormField["visible"] != null) {
-                        formField.visible = modelFormField["visible"];
-                    }
-                    formField.width = 1;
-                    if (modelFormField["width"] != null) {
-                        formField.width = modelFormField["width"];
-                    }
-                    formField.newRow = false;
-                    if (modelFormField["newRow"] != null) {
-                        formField.newRow = modelFormField["newRow"];
-                    }
-                    formField.mandatory = false;
-                    if (modelFormField["mandatory"] != null) {
-                        formField.mandatory = modelFormField["mandatory"];
-                    }
-                    formField.id = modelFormField["id"];
-                    formField.name = modelFormField.name;
-                    formField.type = modelFormField.type;
-                    formField.height = modelFormField["height"];
                     // form field actions
                     if (modelFormField["actions"] != null) {
                         for (var actionModel of modelFormField["actions"]) {
