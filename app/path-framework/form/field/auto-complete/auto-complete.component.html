@@ -10,7 +10,7 @@
             </div>
             <!-- Action -->
             <span class="input-group-btn" *ngFor='let action of field.actions'>
-                <button class="btn btn-default" type="button">{{action.name}}</button>
+                <button (click)="action.handler?.doClick(field,action)" class="btn btn-default" type="button">{{action.name}}</button>
             </span>
         </div>
 </div>

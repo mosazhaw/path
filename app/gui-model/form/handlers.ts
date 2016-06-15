@@ -66,3 +66,11 @@ export class CategoryListButtonHandler implements path.IButtonHandler {
     }
 
 }
+
+export class CompanyActionHandler implements path.IActionHandler {
+
+    doClick(field:path.IFormField, action:path.IAction) {
+        console.log("action clicked " + field["name"]);
+    }
+
+}

@@ -1,8 +1,8 @@
 import * as path from './../../../path';
 
-export class Action {
+export class Action implements path.IAction {
     private _name:String;
-    private _type:String;
+    private _handler:path.IActionHandler;
 
     get name():String {
         return this._name;
@@ -12,11 +12,11 @@ export class Action {
         this._name = value;
     }
 
-    get type():String {
-        return this._type;
+    get handler():path.IActionHandler {
+        return this._handler;
     }
 
-    set type(value:String) {
-        this._type = value;
+    set handler(value:path.IActionHandler) {
+        this._handler = value;
     }
 }

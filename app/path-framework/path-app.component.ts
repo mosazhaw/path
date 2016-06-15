@@ -236,12 +236,15 @@ export abstract class PathAppComponent implements path.IPathApp {
                     formField.name = modelFormField.name;
                     formField.type = modelFormField.type;
                     formField.height = modelFormField["height"];
+                    // form field actions
                     if (modelFormField["actions"] != null) {
-                        for (var action of modelFormField["actions"]) {
-                            let actionObject:path.Action = new path.Action();
-                            actionObject.name = action.name;
-                            actionObject.type = action.type;
-                            formField.actions.push(actionObject);
+                        for (var actionModel of modelFormField["actions"]) {
+                            let action:path.Action = new path.Action();
+                            action.name = actionModel.name;
+                            if (actionModel["handler"] != null && this.getHandlers()[actionModel["handler"]] != null) {
+                                action.handler = new (this.getHandlers()[actionModel["handler"]]);
+                            }
+                            formField.actions.push(action);
                         }
                     }
                     form.fields.push(formField);

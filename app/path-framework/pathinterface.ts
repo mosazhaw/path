@@ -9,6 +9,9 @@ export interface IPathApp {
 export interface IPageElement {
 }
 
+export interface IFormField {
+}
+
 export interface IFormHandler {
     doLoad(form:IForm);
     doSave(form:IForm);
@@ -17,6 +20,13 @@ export interface IFormHandler {
 
 export interface IButtonHandler {
     doClick(button:IButton);
+}
+
+export interface IActionHandler {
+    doClick(field:IFormField, action:IAction);
+}
+
+export interface IAction {
 }
 
 export interface IForm {

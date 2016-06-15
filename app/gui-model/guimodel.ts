@@ -37,7 +37,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,
-                            "actions": [{"type": "new", "name": "New..."}],
+                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"],
                             "newRow": true,
                             "mandatory": true
@@ -46,7 +46,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Customer PL",
                             "wordSearchEnabled": true,
-                            "actions": [{"type": "new", "name": "New..."}],
+                            "actions": [{"name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
                             "mandatory": true
                         },
@@ -54,7 +54,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Service Provider",
                             "wordSearchEnabled": true,
-                            "actions": [{"type": "new", "name": "New..."}],
+                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "data": ["Deloitte AG", "Service Provider AG", "Enterprise AG"],
                             "newRow": true,
                             "mandatory": true
@@ -63,7 +63,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Service Provider PL",
                             "wordSearchEnabled": true,
-                            "actions": [{"type": "new", "name": "New..."}],
+                            "actions": [{"name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
                             "mandatory": true
                         },
@@ -191,7 +191,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,
-                            "actions": [{"type": "new", "name": "New..."}],
+                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"],
                             "width": 2,
                             "mandatory": true
@@ -264,7 +264,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Person",
                             "wordSearchEnabled": true,
-                            "actions": [{"type": "new", "name": "New..."}],
+                            "actions": [{"name": "New..."}],
                             "data": ["Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"],
                             "width": 2,
                             "mandatory": true
@@ -291,7 +291,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Process Group",
                             "wordSearchEnabled": false,
-                            "actions": [{"type": "new", "name": "New..."}],
+                            "actions": [{"name": "New..."}],
                             "data": ["Process Group S1", "Process Group S2", "Process Group S3", "Process Group S4", "Process Group S5", "Process Group S6"],
                             "width": 2,
                             "mandatory": true
@@ -488,7 +488,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Output Unit",
                             "wordSearchEnabled": false,
-                            "actions": [{"type": "new", "name": "New..."}],
+                            "actions": [{"name": "New..."}],
                             "data": ["CHF", "FTE", "kg", "h", "Betten", "min"],
                             "width": 2
                         },

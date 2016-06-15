@@ -1,7 +1,8 @@
 import {PageElement} from './../../page/element/page-element';
 import {Action} from './../../form/field/button/action';
+import {IFormField} from "../../pathinterface";
 
-export class FormField extends PageElement {
+export class FormField extends PageElement implements IFormField{
     private _height:number;
     private _width:number;
     private _newRow:boolean;
