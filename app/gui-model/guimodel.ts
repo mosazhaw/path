@@ -11,7 +11,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Project",
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "id": "quickScanCase",
@@ -21,7 +22,8 @@ export class GuiModel {
                             "visible": false,
                             "actions": [],
                             "data": ["Case A", "Case B", "Case C", "Case D", "Case E"],
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "date",
@@ -37,14 +39,16 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"],
-                            "newRow": true
+                            "newRow": true,
+                            "mandatory": true
                         },
                         {
                             "type": "autocomplete",
                             "name": "Customer PL",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"]
+                            "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
+                            "mandatory": true
                         },
                         {
                             "type": "autocomplete",
@@ -52,14 +56,16 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": ["Deloitte AG", "Service Provider AG", "Enterprise AG"],
-                            "newRow": true
+                            "newRow": true,
+                            "mandatory": true
                         },
                         {
                             "type": "autocomplete",
                             "name": "Service Provider PL",
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
-                            "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"]
+                            "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
+                            "mandatory": true
                         },
                         {
                             "type": "autocomplete",
@@ -169,11 +175,13 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Family Name",
-                            "newRow": true
+                            "newRow": true,
+                            "mandatory": true
                         },
                         {
                             "type": "text",
-                            "name": "First Name"
+                            "name": "First Name",
+                            "mandatory": true
                         },
                         {
                             "type": "text",
@@ -186,7 +194,8 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"],
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "text",
@@ -258,7 +267,8 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": ["Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"],
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "deleteButton",
@@ -284,7 +294,8 @@ export class GuiModel {
                             "wordSearchEnabled": false,
                             "actions": [{"type": "new", "name": "New..."}],
                             "data": ["Process Group S1", "Process Group S2", "Process Group S3", "Process Group S4", "Process Group S5", "Process Group S6"],
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "deleteButton",
@@ -307,7 +318,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Case Name",
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "deleteButton",
@@ -330,7 +342,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Category Name",
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "autocomplete",
@@ -361,7 +374,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Process Group Name",
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "deleteButton",
@@ -384,7 +398,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Process Name",
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "deleteButton",
@@ -408,37 +423,43 @@ export class GuiModel {
                             "type": "text",
                             "name": "Capability Question",
                             "height": 8,
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "text",
                             "name": "Awareness",
                             "height": 4,
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "text",
                             "name": "Develop",
                             "height": 4,
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "text",
                             "name": "Practice",
                             "height": 4,
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "text",
                             "name": "Optimize",
                             "height": 4,
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "text",
                             "name": "Best-In-Class",
                             "height": 4,
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "deleteButton",
@@ -461,7 +482,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Key Performance Indicator Name",
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "autocomplete",
@@ -504,7 +526,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Maturity Level Schema",
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "deleteButton",
@@ -527,7 +550,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "Maturity Level",
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "deleteButton",
@@ -550,7 +574,8 @@ export class GuiModel {
                         {
                             "type": "text",
                             "name": "KPI Category",
-                            "width": 2
+                            "width": 2,
+                            "mandatory": true
                         },
                         {
                             "type": "deleteButton",

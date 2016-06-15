@@ -30,3 +30,7 @@
 .m-t-5 {
     margin-top: 5px !important;
 }
+
+.mandatory {
+    font-weight: bold;
+}

@@ -94,7 +94,7 @@
                                             </div>
                                         </div>
                                         <div *ngIf="field.type == 'date'">
-                                            <path-form-field-label [label]="field.name"></path-form-field-label>
+                                            <path-form-field-label [label]="field.name" [mandatory]="field.mandatory"></path-form-field-label>
                                             <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
                                                 <div class="input-group input-group-lg">
                                                     <input style="display: block; width: 100%" type="date" class="form-control" placeholder="">
@@ -105,7 +105,7 @@
                                             <path-autocomplete [field]="field"></path-autocomplete>
                                         </div>
                                         <div *ngIf="field.type == 'radiogroup'">
-                                            <path-form-field-label [label]="field.name"></path-form-field-label>
+                                            <path-form-field-label [label]="field.name" [mandatory]="field.mandatory"></path-form-field-label>
                                             <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
                                                 <div class="input-group input-group-lg">
                                                     <span *ngFor='let radioElement of field.radios'>
