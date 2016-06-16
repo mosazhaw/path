@@ -1,3 +1,5 @@
+import {Http} from '@angular/http';
+
 export interface IPathApp {
     setCurrentForm(formId:string, mode:string, handler:string);
     setCurrentPage(pageId:string, parentPageElement:IPageElement);
@@ -17,6 +19,14 @@ export interface IFormHandler {
     doLoad(form:IForm);
     doSave(form:IForm);
     doValidate(form:IForm);
+}
+
+export interface IList {
+    getContent():IButton[];
+}
+
+export interface IListHandler {
+    doLoad(list:IList , http:Http);
 }
 
 export interface IButtonHandler {

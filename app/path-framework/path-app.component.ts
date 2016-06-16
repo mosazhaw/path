@@ -1,10 +1,15 @@
 import * as path from './path';
 import * as autocomplete from './form/field/auto-complete/auto-complete.component';
+import {Http} from '@angular/http';
+import 'rxjs/add/operator/map';
 
 export abstract class PathAppComponent implements path.IPathApp {
 
     private _pageStack:path.Page[] = [];
     private _formStack:path.Form[] = [];
+
+    constructor(private http: Http) {
+    }
 
     protected abstract getGuiModel();
 
@@ -101,12 +106,17 @@ export abstract class PathAppComponent implements path.IPathApp {
                         case "list":
                             let dynamicList:path.List = new path.List(this);
                             dynamicList.search = modelElement["search"];
+                            if (modelElement["handler"] != null) {
+                                dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
+                                // TODO
+                                dynamicList.handler.doLoad(dynamicList, this.http);
+                            }
                             for (var listElement of modelElement["data"]) {
                                 let button:path.Button = this.createButton(modelElement);
                                 button.name = listElement.name;
                                 button.color = listElement["color"] != null ? listElement["color"] : button.color;
-                                if (modelElement["handler"] != null) {
-                                    button.handler = new (this.getHandlers()[modelElement["handler"]]);
+                                if (modelElement["buttonhandler"] != null) {
+                                    button.handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                                 }
                                 if (listElement["details"] != null) {
                                     for (let detailModel of listElement["details"]) {

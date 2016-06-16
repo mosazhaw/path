@@ -1,5 +1,6 @@
 /* angular/path imports */
 import {Component} from '@angular/core';
+import {Http} from '@angular/http';
 import * as path from "./path-framework/path";
 
 /* model imports */
@@ -16,8 +17,8 @@ export class AppComponent extends path.PathAppComponent {
 
     private _appConfig;
 
-    constructor() {
-        super();
+    constructor(http: Http) {
+        super(http);
         this._appConfig = new GuiModel();
         this.setCurrentPage("mainmenu", null); // set start page
     }
