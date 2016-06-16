@@ -1,8 +1,6 @@
 import * as forms from './../generated/forms';
 import * as path from './../../path-framework/pathinterface';
 import {Http, Response} from '@angular/http';
-import * as pathtemp from './../../path-framework/path';
-import {IPathApp} from "../../path-framework/pathinterface"; // TODO remove
 
 export class ProjectFormQuickScanHandler implements path.IFormHandler {
 
@@ -102,11 +100,10 @@ export class QuickScanListHandler implements path.IListHandler {
                         list.getContent().pop();
                     }
                     for (let item of data) {
-                        let b:pathtemp.Button = new pathtemp.Button(<IPathApp>app);
-                        b.name = item["name"];
-                        b.color = "alizarin";
-                        b.icon = "fa-fast-forward";
-                        list.getContent().push(b);
+                        let button:path.IButton = list.addButton(1, item["name"], null, [item["startDate"],item["companyName"]]);
+                        button.setColor("alizarin");
+                        button.setIcon("fa-fast-forward");
+                        button.setPage("quickscanpage");
                     }
                 },
                 err => console.error(err),

@@ -22,6 +22,7 @@ export interface IFormHandler {
 }
 
 export interface IList {
+    addButton(id:number,name:string,handler:IButtonHandler,details:string[]):IButton;
     getContent():IButton[];
 }
 
@@ -48,6 +49,11 @@ export interface IForm {
 export interface IButton {
     setColor(color:string);
     getColor() : string;
+    setIcon(icon:string);
+    setForm(form:string);
+    setMode(mode:string);
+    setFormHandler(formHandler:string);
+    setPage(page:string);
     getName() : string;
     getApp():IPathApp;
 }

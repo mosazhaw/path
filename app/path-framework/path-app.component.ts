@@ -95,7 +95,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                     let element:path.PageElement = null;
                     switch (modelElement.type) {
                         case "button":
-                            element = this.createButton(modelElement);
+                            element = new path.Button(this);
+                            this.updateButton(<path.Button>element, modelElement);
                             break;
                         case "backbutton":
                             let backButton:path.BackButton = new path.BackButton(this);
@@ -112,20 +113,13 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 dynamicList.handler.doLoad(dynamicList, this.http);
                             }
                             for (var listElement of modelElement["data"]) {
-                                let button:path.Button = this.createButton(modelElement);
-                                button.name = listElement.name;
-                                button.color = listElement["color"] != null ? listElement["color"] : button.color;
+                                let buttonHandler:path.IButtonHandler;
                                 if (modelElement["buttonhandler"] != null) {
-                                    button.handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
+                                    buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                                 }
-                                if (listElement["details"] != null) {
-                                    for (let detailModel of listElement["details"]) {
-                                        let detail:path.ButtonDetail = new path.ButtonDetail();
-                                        detail.text = detailModel;
-                                        button.details.push(detail);
-                                    }
-                                }
-                                dynamicList.content.push(button);
+                                let button:path.IButton = dynamicList.addButton(1, listElement.name, buttonHandler, listElement["details"]);
+                                this.updateButton(button, modelElement);
+                                button.setColor(listElement["color"] != null ? listElement["color"] : button.getColor());
                             }
                             element = dynamicList;
                             break;
@@ -143,22 +137,15 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._pageStack.push(page);
     }
 
-    private createButton(modelElement) : path.Button {
+    private updateButton(button:path.IButton,modelElement) {
+        button.setIcon(modelElement["icon"]);
+        button.setColor(modelElement["color"]);
         if (modelElement["form"] != null) {
-            let formButton:path.FormButton = new path.FormButton(this);
-            formButton.icon = modelElement["icon"];
-            formButton.color = modelElement["color"];
-            formButton.form = modelElement["form"]["form"];
-            formButton.mode = modelElement["form"]["mode"];
-            formButton.formHandler = modelElement["form"]["handler"];
-            return formButton;
-        } else {
-            let pageButton:path.PageButton = new path.PageButton(this);
-            pageButton.icon = modelElement["icon"];
-            pageButton.color = modelElement["color"];
-            pageButton.page = modelElement["page"];
-            return pageButton;
+            button.setForm(modelElement["form"]["form"]);
+            button.setMode(modelElement["form"]["mode"]);
+            button.setFormHandler(modelElement["form"]["handler"]);
         }
+        button.setPage(modelElement["page"]);
     }
 
     public setCurrentForm(formId:string, mode:string, handler:string) {
