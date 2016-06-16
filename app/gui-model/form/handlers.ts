@@ -1,6 +1,5 @@
 import * as forms from './../generated/forms';
 import * as path from './../../path-framework/pathinterface';
-import {Http, Response} from '@angular/http';
 
 export class ProjectFormQuickScanHandler implements path.IFormHandler {
 
@@ -88,27 +87,17 @@ export class PersonActionHandler implements path.IActionHandler {
 
 export class QuickScanListHandler implements path.IListHandler {
 
-    doLoad(list:path.IList, http:Http) {
+    doLoad(list:path.IList, data) {
         console.log("loading list data");
-
-        http.get('http://localhost:4567/project')
-            .map((res:Response) => res.json())
-            .subscribe(
-                data => {
-                    let app = list.getContent()[0]["app"];
-                    while (list.getContent().length > 0) {
-                        list.getContent().pop();
-                    }
-                    for (let item of data) {
-                        let button:path.IButton = list.addButton(1, item["name"], null, [item["startDate"],item["companyName"]]);
-                        button.setColor("alizarin");
-                        button.setIcon("fa-fast-forward");
-                        button.setPage("quickscanpage");
-                    }
-                },
-                err => console.error(err),
-                () => console.log('done')
-            );
+        while (list.getContent().length > 0) {
+            list.getContent().pop();
+        }
+        for (let item of data) {
+            let button:path.IButton = list.addButton(1, item["name"], null, [item["startDate"],item["companyName"]]);
+            button.setColor("alizarin");
+            button.setIcon("fa-fast-forward");
+            button.setPage("quickscanpage");
+        }
     }
 
 }

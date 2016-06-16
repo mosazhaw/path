@@ -26,6 +26,10 @@ export class AppComponent extends path.PathAppComponent {
     protected getGuiModel() {
         return this._appConfig.guiModel;
     }
+
+    protected getBackendUrl() {
+        return "http://localhost:4567";
+    }
     
     protected getBeans() {
         return beans;

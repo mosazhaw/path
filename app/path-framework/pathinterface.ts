@@ -1,5 +1,3 @@
-import {Http} from '@angular/http';
-
 export interface IPathApp {
     setCurrentForm(formId:string, mode:string, handler:string);
     setCurrentPage(pageId:string, parentPageElement:IPageElement);
@@ -27,7 +25,7 @@ export interface IList {
 }
 
 export interface IListHandler {
-    doLoad(list:IList , http:Http);
+    doLoad(list:IList , data:any);
 }
 
 export interface IButtonHandler {
@@ -44,8 +42,6 @@ export interface IAction {
 export interface IForm {
 }
 
-
-
 export interface IButton {
     setColor(color:string);
     getColor() : string;
@@ -57,5 +53,3 @@ export interface IButton {
     getName() : string;
     getApp():IPathApp;
 }
-
-

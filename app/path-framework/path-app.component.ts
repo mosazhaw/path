@@ -1,6 +1,6 @@
 import * as path from './path';
 import * as autocomplete from './form/field/auto-complete/auto-complete.component';
-import {Http} from '@angular/http';
+import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 export abstract class PathAppComponent implements path.IPathApp {
@@ -16,6 +16,8 @@ export abstract class PathAppComponent implements path.IPathApp {
     protected abstract getBeans();
 
     protected abstract getHandlers();
+
+    protected abstract getBackendUrl():string;
 
     public getPageStack():path.Page[] {
         return this._pageStack;
@@ -110,7 +112,18 @@ export abstract class PathAppComponent implements path.IPathApp {
                             if (modelElement["handler"] != null) {
                                 dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
                                 // TODO
-                                dynamicList.handler.doLoad(dynamicList, this.http);
+                                this.http.get(this.getBackendUrl() + modelElement["url"])
+                                    .map((res:Response) => res.json())
+                                    .subscribe(
+                                        data => {
+                                            dynamicList.handler.doLoad(dynamicList, data);
+                                        },
+                                        err => {
+                                            alert(err.status);
+                                            console.error(err)
+                                        },
+                                        () => console.log('done')
+                                    );
                             }
                             for (var listElement of modelElement["data"]) {
                                 let buttonHandler:path.IButtonHandler;
