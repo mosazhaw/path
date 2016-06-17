@@ -11,7 +11,8 @@ import * as beans from './gui-model/generated/forms'
     selector: 'path-application',
     templateUrl: 'app/path-framework/path-app.component.html',
     directives: [path.AutoCompleteComponent, path.TextFieldComponent, path.RadioGroupComponent, path.CheckboxGroupComponent, path.FormFieldLabelComponent],
-    providers: [path.PathService]
+    providers: [{ provide: path.PathService, useClass: path.PathMockService }]
+    // providers: [path.PathService]
 })
 export class AppComponent extends path.PathAppComponent {
 

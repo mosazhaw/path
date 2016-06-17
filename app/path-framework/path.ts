@@ -23,3 +23,4 @@ export * from './form/field/radio/radio';
 export * from './form/field/text/text-field.component';
 
 export * from './service/path.service'
+export * from './service/path.mock.service'
