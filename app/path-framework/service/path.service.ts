@@ -8,18 +8,18 @@ export class PathService {
     constructor(@Inject(Http) private http:Http) {
     }
 
-    serverRequest(url:string, list:IList, processor:(list:IList , data:any) => any) {
+    serverRequest<T>(url:string, element:T, processor:(element:T , data:any) => any) {
         this.http.get(url)
             .map((res:Response) => res.json())
             .subscribe(
                 data => {
-                    processor(list, data);
+                    processor(element, data);
                 },
                 err => {
                     alert(err.status);
                     console.error(err)
                 },
-                () => console.log('done')
+                () => console.log('server request to ' + url + ' finished')
             );
     }
 }
