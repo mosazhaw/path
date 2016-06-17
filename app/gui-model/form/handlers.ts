@@ -84,3 +84,22 @@ export class PersonActionHandler implements path.IActionHandler {
     }
 
 }
+
+export class QuickScanListHandler implements path.IListHandler {
+
+    doLoad(list:path.IList, data) {
+        console.log("loading list data");
+        while (list.getContent().length > 0) {
+            list.getContent().pop();
+        }
+        for (let item of data) {
+            let startDate:Date = new Date(item["startDate"]);
+            let startDateString = (startDate.getMonth() + 1) + "/" + startDate.getFullYear();
+            let button:path.IButton = list.addButton(1, item["name"], null, [startDateString,item["companyName"]]);
+            button.setColor("alizarin");
+            button.setIcon("fa-fast-forward");
+            button.setPage("quickscanpage");
+        }
+    }
+
+}

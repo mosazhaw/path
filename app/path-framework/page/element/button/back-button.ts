@@ -1,6 +1,6 @@
-import {PageButton} from './page-button';
+import {Button} from './button';
 
-export class BackButton extends PageButton {
+export class BackButton extends Button {
 
     public onClick() {
         this.app.navigateBack();

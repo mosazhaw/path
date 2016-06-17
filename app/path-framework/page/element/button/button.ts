@@ -6,9 +6,26 @@ export class Button extends path.PageElement implements path.IButton {
     private _handler:path.IButtonHandler;
     private _details:path.ButtonDetail[] = [];
 
+    // TODO refactor prototype stuff
+    private _page:string;
+    private _form:string;
+    private _mode:string;
+    private _formHandler:string;
+
     public onClick() {
         if (this._handler != null) {
             this._handler.doClick(this);
+            return;
+        }
+
+        if (this._page != null) {
+            this.app.setCurrentPage(this._page, this);
+            return;
+        }
+
+        if (this._form != null) {
+            this.app.setCurrentForm(this._form, this._mode, this._formHandler);
+            return;
         }
     }
 
@@ -18,6 +35,26 @@ export class Button extends path.PageElement implements path.IButton {
 
     public getColor() {
         return this.color;
+    }
+
+    public setIcon(icon:string) {
+        this.icon = icon;
+    }
+
+    public setForm(form:string) {
+        this.form = form;
+    }
+
+    public setMode(mode:string) {
+        this.mode = mode;
+    }
+
+    public setFormHandler(formHandler:string) {
+        this.formHandler = formHandler;
+    }
+
+    public setPage(page:string) {
+        this.page = page;
     }
 
     public getApp() {
@@ -58,5 +95,37 @@ export class Button extends path.PageElement implements path.IButton {
 
     set details(value:path.ButtonDetail[]) {
         this._details = value;
+    }
+
+    get page():string {
+        return this._page;
+    }
+
+    set page(value:string) {
+        this._page = value;
+    }
+
+    get form():string {
+        return this._form;
+    }
+
+    set form(value:string) {
+        this._form = value;
+    }
+
+    get mode():string {
+        return this._mode;
+    }
+
+    set mode(value:string) {
+        this._mode = value;
+    }
+
+    get formHandler():string {
+        return this._formHandler;
+    }
+
+    set formHandler(value:string) {
+        this._formHandler = value;
     }
 }

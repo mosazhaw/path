@@ -7,8 +7,6 @@ export * from './page/element/page-element';
 export * from './page/element/button/button';
 export * from './page/element/button/button-detail';
 export * from './page/element/button/back-button';
-export * from './page/element/button/form-button';
-export * from './page/element/button/page-button';
 export * from './page/element/list/list';
 
 export * from './form/form'
@@ -24,3 +22,5 @@ export * from './form/field/radio/radio-group.component';
 export * from './form/field/radio/radio';
 export * from './form/field/text/text-field.component';
 
+export * from './service/path.service'
+export * from './service/path.mock.service'

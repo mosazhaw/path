@@ -1,16 +1,22 @@
 import * as path from './path';
 import * as autocomplete from './form/field/auto-complete/auto-complete.component';
+import 'rxjs/add/operator/map';
 
 export abstract class PathAppComponent implements path.IPathApp {
 
     private _pageStack:path.Page[] = [];
     private _formStack:path.Form[] = [];
 
+    constructor(private pathService:path.PathService) {
+    }
+
     protected abstract getGuiModel();
 
     protected abstract getBeans();
 
     protected abstract getHandlers();
+
+    protected abstract getBackendUrl():string;
 
     public getPageStack():path.Page[] {
         return this._pageStack;
@@ -90,7 +96,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                     let element:path.PageElement = null;
                     switch (modelElement.type) {
                         case "button":
-                            element = this.createButton(modelElement);
+                            element = new path.Button(this);
+                            this.updateButton(<path.Button>element, modelElement);
                             break;
                         case "backbutton":
                             let backButton:path.BackButton = new path.BackButton(this);
@@ -101,21 +108,23 @@ export abstract class PathAppComponent implements path.IPathApp {
                         case "list":
                             let dynamicList:path.List = new path.List(this);
                             dynamicList.search = modelElement["search"];
-                            for (var listElement of modelElement["data"]) {
-                                let button:path.Button = this.createButton(modelElement);
-                                button.name = listElement.name;
-                                button.color = listElement["color"] != null ? listElement["color"] : button.color;
-                                if (modelElement["handler"] != null) {
-                                    button.handler = new (this.getHandlers()[modelElement["handler"]]);
+                            if (modelElement["handler"] != null) {
+                                dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
+                                let listHandlerDoLoad = (list:path.IList) => (data:any) => { // use currying for pathService
+                                    return dynamicList.handler.doLoad(list, data);
                                 }
-                                if (listElement["details"] != null) {
-                                    for (let detailModel of listElement["details"]) {
-                                        let detail:path.ButtonDetail = new path.ButtonDetail();
-                                        detail.text = detailModel;
-                                        button.details.push(detail);
+                                this.pathService.serverRequest(this.getBackendUrl() + modelElement["url"], listHandlerDoLoad(dynamicList));
+                            }
+                            if (modelElement["data"] != null) {
+                                for (var listElement of modelElement["data"]) {
+                                    let buttonHandler:path.IButtonHandler;
+                                    if (modelElement["buttonhandler"] != null) {
+                                        buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                                     }
+                                    let button:path.IButton = dynamicList.addButton(1, listElement.name, buttonHandler, listElement["details"]);
+                                    this.updateButton(button, modelElement);
+                                    button.setColor(listElement["color"] != null ? listElement["color"] : button.getColor());
                                 }
-                                dynamicList.content.push(button);
                             }
                             element = dynamicList;
                             break;
@@ -133,22 +142,15 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._pageStack.push(page);
     }
 
-    private createButton(modelElement) : path.Button {
+    private updateButton(button:path.IButton,modelElement) {
+        button.setIcon(modelElement["icon"]);
+        button.setColor(modelElement["color"]);
         if (modelElement["form"] != null) {
-            let formButton:path.FormButton = new path.FormButton(this);
-            formButton.icon = modelElement["icon"];
-            formButton.color = modelElement["color"];
-            formButton.form = modelElement["form"]["form"];
-            formButton.mode = modelElement["form"]["mode"];
-            formButton.formHandler = modelElement["form"]["handler"];
-            return formButton;
-        } else {
-            let pageButton:path.PageButton = new path.PageButton(this);
-            pageButton.icon = modelElement["icon"];
-            pageButton.color = modelElement["color"];
-            pageButton.page = modelElement["page"];
-            return pageButton;
+            button.setForm(modelElement["form"]["form"]);
+            button.setMode(modelElement["form"]["mode"]);
+            button.setFormHandler(modelElement["form"]["handler"]);
         }
+        button.setPage(modelElement["page"]);
     }
 
     public setCurrentForm(formId:string, mode:string, handler:string) {

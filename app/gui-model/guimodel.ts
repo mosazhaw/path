@@ -9,6 +9,7 @@ export class GuiModel {
                     "title": "Project Details",
                     "formFieldList": [
                         {
+                            "id": "name",
                             "type": "text",
                             "name": "Project",
                             "width": 2,
@@ -665,7 +666,8 @@ export class GuiModel {
                             "color": "alizarin",
                             "search": true,
                             "page": "quickscanpage",
-                            "data": [{"name": "QuickScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "QuickScan Two", "details": [ "05/2017", "Charisma Hospital" ]}, {"name": "QuickScan Three", "details": [ "06/2017", "Alpha Hospital" ]}, {"name": "QuickScan Four", "details": [ "07/2017", "Charisma Hospital" ]}, {"name": "QuickScan Five", "details": [ "08/2017", "Charisma Hospital" ]}, {"name": "QuickScan Six", "details": [ "09/2017", "Charisma Hospital" ]}]
+                            "handler": "QuickScanListHandler",
+                            "url": "/project"
                         }
                     ]
                 },
@@ -748,7 +750,7 @@ export class GuiModel {
                             "type": "list",
                             "name": "Categories",
                             "icon": "fa-cube",
-                            "handler": "CategoryListButtonHandler",
+                            "buttonhandler": "CategoryListButtonHandler",
                             "data": [{"name": "Category B1", "color": "belize-hole"}, {"name": "Category B2", "color": "belize-hole"}, {"name": "Category B3", "color": "belize-hole"}, {"name": "Category B4", "color": "belize-hole"}, {"name": "Category B5", "color": "belize-hole"}, {"name": "Category B6", "color": "belize-hole"}, {"name": "Category B7", "color": "belize-hole"}, {"name": "Category B8", "color": "belize-hole"}, {"name": "Category B9", "color": "belize-hole"}, {"name": "Category B10", "color": "belize-hole"}]
                         }
                     ]
