@@ -22,3 +22,4 @@ export * from './form/field/radio/radio-group.component';
 export * from './form/field/radio/radio';
 export * from './form/field/text/text-field.component';
 
+export * from './service/path.service'

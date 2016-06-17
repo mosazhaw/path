@@ -1,6 +1,5 @@
 import * as path from './path';
 import * as autocomplete from './form/field/auto-complete/auto-complete.component';
-import {Http, Response} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 export abstract class PathAppComponent implements path.IPathApp {
@@ -8,7 +7,7 @@ export abstract class PathAppComponent implements path.IPathApp {
     private _pageStack:path.Page[] = [];
     private _formStack:path.Form[] = [];
 
-    constructor(private http: Http) {
+    constructor(private pathService:path.PathService) {
     }
 
     protected abstract getGuiModel();
@@ -111,19 +110,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             dynamicList.search = modelElement["search"];
                             if (modelElement["handler"] != null) {
                                 dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
-                                // TODO
-                                this.http.get(this.getBackendUrl() + modelElement["url"])
-                                    .map((res:Response) => res.json())
-                                    .subscribe(
-                                        data => {
-                                            dynamicList.handler.doLoad(dynamicList, data);
-                                        },
-                                        err => {
-                                            alert(err.status);
-                                            console.error(err)
-                                        },
-                                        () => console.log('done')
-                                    );
+                                this.pathService.serverRequest(this.getBackendUrl() + modelElement["url"], dynamicList, dynamicList.handler.doLoad);
                             }
                             for (var listElement of modelElement["data"]) {
                                 let buttonHandler:path.IButtonHandler;
