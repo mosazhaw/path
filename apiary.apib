@@ -1,0 +1,67 @@
+FORMAT: 1A
+/* HOST: http://polls.apiblueprint.org/ */
+
+# Deloitte AssessmentTool
+
+REST API for Deloitte Assessment Tool
+
+## Projects [/project]
+
+### List All Projects [GET]
+
++ Response 200 (application/json)
+    + Attributes (array)
+        + (Project)
+        + (Project)
+            + name: QuickScan 2
+        + (Project)
+            + name: QuickScan 3
+            + companyName: Charisma Hospital
+            + startDate: Aug 16, 2016 11:50:06 AM
+        + (Project)
+            + name: QuickScan 4
+            + companyName: Charisma Hospital
+        + (Project)
+            + name: QuickScan 5
+            + companyName: Charisma Hospital
+            + startDate: Dec 16, 2016 11:50:06 AM
+        + (Project)
+            + name: QuickScan 6
+            + startDate: Jan 16, 2017 11:50:06 AM
+
+### Create a new Project [POST]
+
++ Request (application/json)
+
+        {
+            "question": "Favourite programming language?",
+            "choices": [
+                "Swift",
+                "Ruby"
+            ]
+        }
+
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /project/1
+
+    + Body
+
+            {
+                "name": "QuickScan 1",
+                "startDate": "Jun 16, 2016 11:50:06 AM",
+                "endDate": "Jun 16, 2016 11:50:06 AM",
+                "benchmarking": true
+            }
+            
+            
+# Data Structures
+
+## Project (object)
+- id: 123 (number)
+- name: QuickScan 1 (string, required)
+- startDate: Jun 16, 2016 11:50:06 AM (string, required)            
+- endDate: Jun 16, 2016 11:50:06 AM (string, required)            
+- companyName: Alpha Hospital
