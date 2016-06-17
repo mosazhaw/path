@@ -28,7 +28,7 @@ export class AppComponent extends path.PathAppComponent {
     }
 
     protected getBackendUrl() {
-        return "http://localhost:4567";
+        return "http://localhost:4567/services";
     }
     
     protected getBeans() {
