@@ -667,8 +667,7 @@ export class GuiModel {
                             "search": true,
                             "page": "quickscanpage",
                             "handler": "QuickScanListHandler",
-                            "url": "/project",
-                            "data": [{"name": "QuickScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "QuickScan Two", "details": [ "05/2017", "Charisma Hospital" ]}, {"name": "QuickScan Three", "details": [ "06/2017", "Alpha Hospital" ]}, {"name": "QuickScan Four", "details": [ "07/2017", "Charisma Hospital" ]}, {"name": "QuickScan Five", "details": [ "08/2017", "Charisma Hospital" ]}, {"name": "QuickScan Six", "details": [ "09/2017", "Charisma Hospital" ]}]
+                            "url": "/project"
                         }
                     ]
                 },

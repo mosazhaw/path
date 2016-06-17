@@ -115,14 +115,16 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 }
                                 this.pathService.serverRequest(this.getBackendUrl() + modelElement["url"], listHandlerDoLoad(dynamicList));
                             }
-                            for (var listElement of modelElement["data"]) {
-                                let buttonHandler:path.IButtonHandler;
-                                if (modelElement["buttonhandler"] != null) {
-                                    buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
+                            if (modelElement["data"] != null) {
+                                for (var listElement of modelElement["data"]) {
+                                    let buttonHandler:path.IButtonHandler;
+                                    if (modelElement["buttonhandler"] != null) {
+                                        buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
+                                    }
+                                    let button:path.IButton = dynamicList.addButton(1, listElement.name, buttonHandler, listElement["details"]);
+                                    this.updateButton(button, modelElement);
+                                    button.setColor(listElement["color"] != null ? listElement["color"] : button.getColor());
                                 }
-                                let button:path.IButton = dynamicList.addButton(1, listElement.name, buttonHandler, listElement["details"]);
-                                this.updateButton(button, modelElement);
-                                button.setColor(listElement["color"] != null ? listElement["color"] : button.getColor());
                             }
                             element = dynamicList;
                             break;

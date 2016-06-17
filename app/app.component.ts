@@ -11,8 +11,8 @@ import * as beans from './gui-model/generated/forms'
     selector: 'path-application',
     templateUrl: 'app/path-framework/path-app.component.html',
     directives: [path.AutoCompleteComponent, path.TextFieldComponent, path.RadioGroupComponent, path.CheckboxGroupComponent, path.FormFieldLabelComponent],
-    providers: [{ provide: path.PathService, useClass: path.PathMockService }]
-    // providers: [path.PathService]
+    // providers: [{ provide: path.PathService, useClass: path.PathMockService }]
+    providers: [path.PathService]
 })
 export class AppComponent extends path.PathAppComponent {
 
@@ -29,7 +29,8 @@ export class AppComponent extends path.PathAppComponent {
     }
 
     protected getBackendUrl() {
-        return "http://localhost:4567/services";
+        return "http://private-7286d4-deloitteassessmenttool.apiary-mock.com";
+        // return "http://localhost:4567/services";
     }
     
     protected getBeans() {
