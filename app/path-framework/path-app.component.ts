@@ -110,7 +110,10 @@ export abstract class PathAppComponent implements path.IPathApp {
                             dynamicList.search = modelElement["search"];
                             if (modelElement["handler"] != null) {
                                 dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
-                                this.pathService.serverRequest(this.getBackendUrl() + modelElement["url"], dynamicList, dynamicList.handler.doLoad);
+                                let listHandlerDoLoad = (list:path.IList) => (data:any) => { // use currying for pathService
+                                    return dynamicList.handler.doLoad(list, data);
+                                }
+                                this.pathService.serverRequest(this.getBackendUrl() + modelElement["url"], listHandlerDoLoad(dynamicList));
                             }
                             for (var listElement of modelElement["data"]) {
                                 let buttonHandler:path.IButtonHandler;
