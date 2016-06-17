@@ -93,7 +93,9 @@ export class QuickScanListHandler implements path.IListHandler {
             list.getContent().pop();
         }
         for (let item of data) {
-            let button:path.IButton = list.addButton(1, item["name"], null, [item["startDate"],item["companyName"]]);
+            let startDate:Date = new Date(item["startDate"]);
+            let startDateString = startDate.getMonth() + "/" + startDate.getFullYear();
+            let button:path.IButton = list.addButton(1, item["name"], null, [startDateString,item["companyName"]]);
             button.setColor("alizarin");
             button.setIcon("fa-fast-forward");
             button.setPage("quickscanpage");
