@@ -1,6 +1,5 @@
 import {Injectable, Inject} from "@angular/core";
 import {Response, Http} from "@angular/http";
-import {IList} from "../pathinterface";
 
 @Injectable()
 export class PathService {
