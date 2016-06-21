@@ -2,7 +2,8 @@
   "name": "angular2-quickstart",
   "version": "1.0.0",
   "engines": {
-    "node": "5.4.1"
+    "node": "5.4.1",
+    "npm": "3.8.5"
   },
   "scripts": {
     "start": "node server.js",
