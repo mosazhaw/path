@@ -239,25 +239,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                 }
                 form.updateRows(); // TODO check if this can be done automatically
 
-                // get handler and execute load
-                let handlerName = handler;
-                if (handlerName == null) {
-                    handlerName = formId + 'Handler';
-                }
-                /*if (this.getBeans()[formId] != null && this.getHandlers()[handlerName] != null) {
-                    let formBean:path.IForm = new (this.getBeans()[formId]);
-                    let formHandler:path.IFormHandler = new (this.getHandlers()[handlerName]);
-                    for (let a = 0; a < form.fields.length; a++) {
-                        if (form.fields[a].id != null) {
-                            formBean[form.fields[a].id] = form.fields[a];
-                        }
-                    }
-
-                    let formHandlerDoLoad = (form:path.IForm) => (data:any) => { // use currying for pathService
-                        return formHandler.doLoad(form, data);
-                    }
-                    this.pathService.serverRequest(this.getBackendUrl(),modelForm["url"], formHandlerDoLoad(form));
-                }*/
+                // fetch data from backend
                 if (modelForm["url"] != null && key != null) {
                     this.pathService.serverRequest(this.getBackendUrl(),modelForm["url"] + "/" + key, (data:any) => {
                         console.log(data);
@@ -267,6 +249,21 @@ export abstract class PathAppComponent implements path.IPathApp {
                             }
                         }
                     })
+                }
+                // execute handler
+                let handlerName = handler;
+                if (handlerName == null) {
+                    handlerName = formId + 'Handler';
+                }
+                if (this.getBeans()[formId] != null && this.getHandlers()[handlerName] != null) {
+                    let formBean:path.IForm = new (this.getBeans()[formId]);
+                    let formHandler:path.IFormHandler = new (this.getHandlers()[handlerName]);
+                    for (let a = 0; a < form.fields.length; a++) {
+                        if (form.fields[a].id != null) {
+                            formBean[form.fields[a].id] = form.fields[a];
+                        }
+                    }
+                    formHandler.doLoad(formBean, null);
                 }
             }
         }
