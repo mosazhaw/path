@@ -29,8 +29,10 @@ export class AppComponent extends path.PathAppComponent {
     }
 
     protected getBackendUrl() {
-        return "http://private-7286d4-deloitteassessmenttool.apiary-mock.com";
-        // return "http://localhost:4567/services";
+        if (window.location.hostname.indexOf("herokuapp") != -1) {
+            return "https://assessment-backend.herokuapp.com/services";
+        }
+        return "http://localhost:4567/services";
     }
     
     protected getBeans() {
