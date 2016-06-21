@@ -2,7 +2,8 @@
   "name": "angular2-quickstart",
   "version": "1.0.0",
   "scripts": {
-    "start": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "start": "node server.js",
+    "start-dev": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
     "lite": "lite-server",
     "test": "karma start karma.conf.js",
     "postinstall": "typings install",
@@ -21,15 +22,16 @@
     "@angular/router": "2.0.0-rc.1",
     "@angular/router-deprecated": "2.0.0-rc.1",
     "@angular/upgrade": "2.0.0-rc.1",
-    "systemjs": "0.19.27",
-    "core-js": "^2.4.0",
-    "reflect-metadata": "^0.1.3",
-    "rxjs": "5.0.0-beta.6",
-    "zone.js": "^0.6.12",
     "angular2-in-memory-web-api": "0.0.10",
     "bootstrap": "^3.3.6",
+    "core-js": "^2.4.0",
+    "express": "^4.14.0",
+    "font-awesome": "4.5.0",
     "metro-bootstrap": "https://github.com/TalksLab/metro-bootstrap.git",
-    "font-awesome": "4.5.0"
+    "reflect-metadata": "^0.1.3",
+    "rxjs": "5.0.0-beta.6",
+    "systemjs": "0.19.27",
+    "zone.js": "^0.6.12"
   },
   "devDependencies": {
     "browserify": "^13.0.1",
