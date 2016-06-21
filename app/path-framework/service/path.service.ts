@@ -7,18 +7,25 @@ export class PathService {
     constructor(@Inject(Http) private http:Http) {
     }
 
-    serverRequest(url:string, processor:(data:any) => any) {
-        this.http.get(url)
-            .map((res:Response) => res.json())
-            .subscribe(
-                data => {
-                    processor(data);
-                },
-                err => {
-                    alert(err.status);
-                    console.error(err)
-                },
-                () => console.log('server request to ' + url + ' finished')
-            );
+    serverRequest(server:string, url:string, processor:(data:any) => any) {
+        if (url != null) {
+            // fetch json data from url
+            this.http.get(server + url)
+                .map((res:Response) => res.json())
+                .subscribe(
+                    data => {
+                        processor(data);
+                    },
+                    err => {
+                        alert(err.status);
+                        console.error(err)
+                    },
+                    () => console.log('server request to ' + server + url + ' finished')
+                );
+        } else {
+            // no url provided, therefore call processor without data
+            processor(null);
+        }
+
     }
 }

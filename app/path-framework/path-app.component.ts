@@ -113,8 +113,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 let listHandlerDoLoad = (list:path.IList) => (data:any) => { // use currying for pathService
                                     return dynamicList.handler.doLoad(list, data);
                                 }
-                                this.pathService.serverRequest(this.getBackendUrl() + modelElement["url"], listHandlerDoLoad(dynamicList));
+                                this.pathService.serverRequest(this.getBackendUrl(), modelElement["url"], listHandlerDoLoad(dynamicList));
                             }
+                            // TODO - only for mock data contained in guimodel
                             if (modelElement["data"] != null) {
                                 for (var listElement of modelElement["data"]) {
                                     let buttonHandler:path.IButtonHandler;
@@ -239,7 +240,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formBean[form.fields[a].id] = form.fields[a];
                         }
                     }
-                    formHandler.doLoad(formBean);
+
+                    let formHandlerDoLoad = (form:path.IForm) => (data:any) => { // use currying for pathService
+                        return formHandler.doLoad(form, data);
+                    }
+                    this.pathService.serverRequest(this.getBackendUrl(),modelForm["url"], formHandlerDoLoad(form));
                 }
             }
         }

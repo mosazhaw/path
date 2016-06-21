@@ -7,6 +7,7 @@ export class GuiModel {
                 {
                     "id": "ProjectForm",
                     "title": "Project Details",
+                    "url": "/project/1",
                     "formFieldList": [
                         {
                             "id": "name",

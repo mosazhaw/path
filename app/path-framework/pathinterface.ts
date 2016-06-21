@@ -14,7 +14,7 @@ export interface IFormField {
 }
 
 export interface IFormHandler {
-    doLoad(form:IForm);
+    doLoad(form:IForm,data:any);
     doSave(form:IForm);
     doValidate(form:IForm);
 }

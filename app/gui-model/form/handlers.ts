@@ -3,9 +3,12 @@ import * as path from './../../path-framework/pathinterface';
 
 export class ProjectFormQuickScanHandler implements path.IFormHandler {
 
-    public doLoad(form:forms.ProjectForm) {
+    public doLoad(form:forms.ProjectForm,data:any) {
         console.log("loading quick scan form");
-        form.quickScanCase.visible = true;
+        console.log(data);
+        if (form.quickScanCase != null) {
+            form.quickScanCase.visible = true;
+        }
     }
 
     public doSave(form:forms.ProjectForm) {
@@ -20,7 +23,7 @@ export class ProjectFormQuickScanHandler implements path.IFormHandler {
 
 export class ProjectFormDeepScanHandler implements path.IFormHandler {
 
-    public doLoad(form:forms.ProjectForm) {
+    public doLoad(form:forms.ProjectForm,data:any) {
         console.log("loading deep scan form");
     }
 
@@ -36,7 +39,7 @@ export class ProjectFormDeepScanHandler implements path.IFormHandler {
 
 export class CompanyFormHandler implements path.IFormHandler {
 
-    public doLoad(form:forms.CompanyForm) {
+    public doLoad(form:forms.CompanyForm,data:any) {
         console.log("loading company form");
     }
 
@@ -95,7 +98,7 @@ export class QuickScanListHandler implements path.IListHandler {
         for (let item of data) {
             let startDate:Date = new Date(item["startDate"]);
             let startDateString = (startDate.getMonth() + 1) + "/" + startDate.getFullYear();
-            let button:path.IButton = list.addButton(1, item["name"], null, [startDateString,item["customerName"]]);
+            let button:path.IButton = list.addButton(1, item["name"], null, [startDateString,item["companyName"]]);
             button.setColor("alizarin");
             button.setIcon("fa-fast-forward");
             button.setPage("quickscanpage");

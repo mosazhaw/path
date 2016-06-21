@@ -9,7 +9,7 @@ export class PathMockService extends PathService {
         super(http);
     }
 
-    serverRequest(url:string, processor:(data:any) => any) {
+    serverRequest(server:string, url:string, processor:(data:any) => any) {
         console.log("mock service called");
     }
 }
