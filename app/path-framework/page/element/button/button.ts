@@ -5,11 +5,11 @@ export class Button extends path.PageElement implements path.IButton {
     private _color:string;
     private _handler:path.IButtonHandler;
     private _details:path.ButtonDetail[] = [];
+    private _key:number;
 
     // TODO refactor prototype stuff
     private _page:string;
     private _form:string;
-    private _mode:string;
     private _formHandler:string;
 
     public onClick() {
@@ -24,7 +24,7 @@ export class Button extends path.PageElement implements path.IButton {
         }
 
         if (this._form != null) {
-            this.app.setCurrentForm(this._form, this._mode, this._formHandler);
+            this.app.setCurrentForm(this._form, this._key, this._formHandler);
             return;
         }
     }
@@ -45,8 +45,8 @@ export class Button extends path.PageElement implements path.IButton {
         this.form = form;
     }
 
-    public setMode(mode:string) {
-        this.mode = mode;
+    public setKey(key:number) {
+        this.key = key;
     }
 
     public setFormHandler(formHandler:string) {
@@ -113,12 +113,12 @@ export class Button extends path.PageElement implements path.IButton {
         this._form = value;
     }
 
-    get mode():string {
-        return this._mode;
+    get key():number {
+        return this._key;
     }
 
-    set mode(value:string) {
-        this._mode = value;
+    set key(value:number) {
+        this._key = value;
     }
 
     get formHandler():string {

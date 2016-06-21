@@ -1,5 +1,5 @@
 export interface IPathApp {
-    setCurrentForm(formId:string, mode:string, handler:string);
+    setCurrentForm(formId:string, id:number, handler:string);
     setCurrentPage(pageId:string, parentPageElement:IPageElement);
     navigateBack();
     yesNo(text:string, yesHandler : () => void, noHandler : () => void);
@@ -47,7 +47,7 @@ export interface IButton {
     getColor() : string;
     setIcon(icon:string);
     setForm(form:string);
-    setMode(mode:string);
+    setKey(key:number);
     setFormHandler(formHandler:string);
     setPage(page:string);
     getName() : string;

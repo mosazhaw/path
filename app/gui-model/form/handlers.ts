@@ -74,7 +74,7 @@ export class CompanyActionHandler implements path.IActionHandler {
 
     doClick(field:path.IFormField, action:path.IAction) {
         console.log("action clicked " + field["name"]);
-        field.getApp().setCurrentForm("CompanyForm", "New", "CompanyFormHandler");
+        field.getApp().setCurrentForm("CompanyForm", null, "CompanyFormHandler");
     }
 
 }
@@ -83,7 +83,7 @@ export class PersonActionHandler implements path.IActionHandler {
 
     doClick(field:path.IFormField, action:path.IAction) {
         console.log("action clicked " + field["name"]);
-        field.getApp().setCurrentForm("PersonForm", "New", null);
+        field.getApp().setCurrentForm("PersonForm", null, null);
     }
 
 }
