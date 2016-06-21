@@ -28,4 +28,28 @@ export class PathService {
         }
 
     }
+
+    serverPost(server:string, url:string, data:any, processor:() => any) {
+        if (url != null) {
+            this.http.post(server + url, data, null)
+                .map(
+                    (value:Response,index:number) => {})
+                .subscribe(
+                data => {
+                    console.log("data");
+                    processor();
+                },
+                err => {
+                    alert(err.status);
+                    console.error(err)
+                },
+                () => console.log('server request to ' + server + url + ' finished')
+            );
+        } else {
+            // no url provided, therefore call processor without data
+            processor();
+        }
+
+    }
+
 }

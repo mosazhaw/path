@@ -4,6 +4,7 @@ export class Form {
     private _title:String;
     private _fields:path.FormField[] = [];
     private _rows:FormRow[] = [];
+    private _handler:path.IFormHandler;
 
     get title():String {
         return this._title;
@@ -27,6 +28,14 @@ export class Form {
 
     set rows(value:FormRow[]) {
         this._rows = value;
+    }
+
+    get handler():path.IFormHandler {
+        return this._handler;
+    }
+
+    set handler(value:path.IFormHandler) {
+        this._handler = value;
     }
 
     public updateRows() {

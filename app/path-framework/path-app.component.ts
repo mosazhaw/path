@@ -53,6 +53,12 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public closeForm() {
+        if (this._formStack[this._formStack.length-1] != null) {
+            this._formStack[this._formStack.length-1].handler.doSave(this._formStack[this._formStack.length-1]);
+        }
+
+        this.pathService.serverPost(this.getBackendUrl(), "/project", '{ name: "TestA" }', () => { console.log("hello world")});
+
         this._formStack.pop();
     }
 
@@ -264,6 +270,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                     }
                     formHandler.doLoad(formBean);
+                    form.handler = formHandler;
                 }
             }
         }
