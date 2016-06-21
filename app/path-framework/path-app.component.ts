@@ -108,13 +108,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                         case "list":
                             let dynamicList:path.List = new path.List(this);
                             dynamicList.search = modelElement["search"];
-                            /* if (modelElement["handler"] != null) {
+                            // handler
+                            if (modelElement["handler"] != null) {
                                 dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
-                                let listHandlerDoLoad = (list:path.IList) => (data:any) => { // use currying for pathService
-                                    return dynamicList.handler.doLoad(list, data);
-                                }
-                                this.pathService.serverRequest(this.getBackendUrl(), modelElement["url"], listHandlerDoLoad(dynamicList));
-                            }*/
+                            }
+                            // callback function for data
                             let dataHandler = (data:any) => {
                                 for (let item of data) {
                                     let buttonHandler:path.IButtonHandler;
@@ -125,18 +123,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     this.updateButton(button, modelElement);
                                     button.setColor(item["color"] != null ? item["color"] : button.getColor());
                                 }
-                            }
-                            let listHandlerDoLoad = (list:path.IList) => (data:any) => {
-                                for (let item of data) {
-                                    let buttonHandler:path.IButtonHandler;
-                                    if (modelElement["buttonhandler"] != null) {
-                                        buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
-                                    }
-                                    let button:path.IButton = dynamicList.addButton(1, item.name, buttonHandler, item["details"]);
-                                    this.updateButton(button, modelElement);
-                                    button.setColor(item["color"] != null ? item["color"] : button.getColor());
+                                if (dynamicList.handler != null) {
+                                    dynamicList.handler.doLoad(dynamicList); // TODO useful?
                                 }
                             }
+                            let listHandlerDoLoad = (list:path.IList) => (data:any) => dataHandler(data);
                             // backend data
                             if (modelElement["url"] != null) {
                                 this.pathService.serverRequest(this.getBackendUrl(), modelElement["url"], listHandlerDoLoad(dynamicList));

@@ -25,7 +25,7 @@ export interface IList {
 }
 
 export interface IListHandler {
-    doLoad(list:IList , data:any);
+    doLoad(list:IList);
 }
 
 export interface IButtonHandler {
