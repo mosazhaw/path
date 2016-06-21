@@ -4,6 +4,7 @@
   "scripts": {
     "start": "node server.js",
     "start-dev": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
+    "heroku-prebuild": "tsc",
     "lite": "lite-server",
     "test": "karma start karma.conf.js",
     "postinstall": "typings install",
