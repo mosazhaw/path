@@ -263,7 +263,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formBean[form.fields[a].id] = form.fields[a];
                         }
                     }
-                    formHandler.doLoad(formBean, null);
+                    formHandler.doLoad(formBean);
                 }
             }
         }

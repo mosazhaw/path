@@ -3,9 +3,8 @@ import * as path from './../../path-framework/pathinterface';
 
 export class ProjectFormQuickScanHandler implements path.IFormHandler {
 
-    public doLoad(form:forms.ProjectForm,data:any) {
+    public doLoad(form:forms.ProjectForm) {
         console.log("loading quick scan form");
-        console.log(data);
         if (form.quickScanCase != null) {
             form.quickScanCase.visible = true;
         }
@@ -23,7 +22,7 @@ export class ProjectFormQuickScanHandler implements path.IFormHandler {
 
 export class ProjectFormDeepScanHandler implements path.IFormHandler {
 
-    public doLoad(form:forms.ProjectForm,data:any) {
+    public doLoad(form:forms.ProjectForm) {
         console.log("loading deep scan form");
     }
 
@@ -39,7 +38,7 @@ export class ProjectFormDeepScanHandler implements path.IFormHandler {
 
 export class CompanyFormHandler implements path.IFormHandler {
 
-    public doLoad(form:forms.CompanyForm,data:any) {
+    public doLoad(form:forms.CompanyForm) {
         console.log("loading company form");
     }
 
