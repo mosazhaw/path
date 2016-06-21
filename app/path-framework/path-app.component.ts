@@ -124,7 +124,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     }
                                     let button:path.IButton = dynamicList.addButton(item.id, item.name, buttonHandler, item["details"]);
                                     this.updateButton(button, modelElement);
-                                    button.setKey(item["id"]);
+                                    button.setKey(item["key"]);
                                     button.setColor(item["color"] != null ? item["color"] : button.getColor());
                                 }
                                 if (dynamicList.handler != null) {
@@ -166,7 +166,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         button.setPage(modelElement["page"]);
     }
 
-    public setCurrentForm(formId:string, id:number, handler:string) {
+    public setCurrentForm(formId:string, key:number, handler:string) {
         let form:path.Form = null;
         for (var modelForm of this.getGuiModel().application.formList) {
             if (modelForm.id === formId) {
@@ -258,8 +258,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     this.pathService.serverRequest(this.getBackendUrl(),modelForm["url"], formHandlerDoLoad(form));
                 }*/
-                if (modelForm["url"] != null && id != null) {
-                    this.pathService.serverRequest(this.getBackendUrl(),modelForm["url"] + "/" + id, (data:any) => {
+                if (modelForm["url"] != null && key != null) {
+                    this.pathService.serverRequest(this.getBackendUrl(),modelForm["url"] + "/" + key, (data:any) => {
                         console.log(data);
                         for (let field of form.fields) {
                             if (data[field.id] != null && field.type == "text") { // TODO poc

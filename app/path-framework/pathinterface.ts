@@ -1,5 +1,5 @@
 export interface IPathApp {
-    setCurrentForm(formId:string, id:number, handler:string);
+    setCurrentForm(formId:string, key:number, handler:string);
     setCurrentPage(pageId:string, parentPageElement:IPageElement);
     navigateBack();
     yesNo(text:string, yesHandler : () => void, noHandler : () => void);
