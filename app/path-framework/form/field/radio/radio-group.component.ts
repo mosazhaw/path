@@ -38,7 +38,7 @@ export class RadioGroupField extends ValueField<boolean[]> {
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
         for (var radioModel of modelFormField["radios"]) {
-            let radio = new Radio(this.app);
+            let radio = new Radio(this.getForm());
             radio.name = radioModel.name;
             this.radios.push(radio);
         }

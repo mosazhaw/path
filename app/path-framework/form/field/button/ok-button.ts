@@ -15,6 +15,6 @@ export class OkButton extends path.FormField {
         if (this._handler != null) {
             this._handler.doClick(null); // TODO
         }
-        this.app.closeForm();
+        this.form.close(true);
     }
 }

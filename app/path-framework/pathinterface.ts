@@ -3,7 +3,7 @@ export interface IPathApp {
     setCurrentPage(pageId:string, parentPageElement:IPageElement);
     navigateBack();
     yesNo(text:string, yesHandler : () => void, noHandler : () => void);
-    closeForm();
+    closeCurrentForm();
     getBackendUrl():string;
     refreshCurrentPage();
 }
@@ -12,13 +12,18 @@ export interface IPageElement {
 }
 
 export interface IFormField {
+    getForm():IForm;
+}
+
+export interface IForm {
     getApp():IPathApp;
+    close(save:boolean);
 }
 
 export interface IFormHandler {
-    doLoad(form:IForm);
-    doSave(form:IForm);
-    doValidate(form:IForm);
+    doLoad(form:IFormBean);
+    doSave(form:IFormBean);
+    doValidate(form:IFormBean);
 }
 
 export interface IList {
@@ -41,7 +46,7 @@ export interface IActionHandler {
 export interface IAction {
 }
 
-export interface IForm {
+export interface IFormBean {
 }
 
 export interface IButton {

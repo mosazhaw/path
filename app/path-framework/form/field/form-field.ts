@@ -1,8 +1,11 @@
-import {PageElement} from './../../page/element/page-element';
 import {Action} from './../../form/field/button/action';
-import {IFormField, IPathApp} from "../../pathinterface";
+import {IFormField, IForm} from "../../pathinterface";
+import {Form} from "../form";
 
-export class FormField extends PageElement implements IFormField {
+export class FormField implements IFormField {
+    private _id:string;
+    private _name:string;
+    private _type:string;
     private _height:number;
     private _width:number;
     private _newRow:boolean;
@@ -10,8 +13,11 @@ export class FormField extends PageElement implements IFormField {
     private _mandatory:boolean;
     private _actions:Action[] = [];
 
-    public getApp():IPathApp {
-        return this.app;
+    constructor(protected form:IForm) {
+    }
+
+    getForm():IForm {
+        return this.form;
     }
 
     get actions():Action[] {
@@ -60,6 +66,30 @@ export class FormField extends PageElement implements IFormField {
 
     set mandatory(value:boolean) {
         this._mandatory = value;
+    }
+
+    get id():string {
+        return this._id;
+    }
+
+    set id(value:string) {
+        this._id = value;
+    }
+
+    get name():string {
+        return this._name;
+    }
+
+    set name(value:string) {
+        this._name = value;
+    }
+
+    get type():string {
+        return this._type;
+    }
+
+    set type(value:string) {
+        this._type = value;
     }
 
     public fromJson(modelFormField) {

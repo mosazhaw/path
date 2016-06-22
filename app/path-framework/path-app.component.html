@@ -20,7 +20,7 @@
 <div class="col-md-12">
     <h1>
         <ol class="breadcrumb">
-            <li *ngFor='let page of getPageStack(); let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
+            <li *ngFor='let page of _pageStack; let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
                 <a href="#" *ngIf='!last && page.parentPageElement == null' (click)="goToPage(currentIndex)">{{page.title}}</a><!-- First element has no parent-->
                 <a href="#" *ngIf='!last && page.parentPageElement != null' (click)="goToPage(currentIndex)">{{page.parentPageElement?.name}}</a><!-- Element 2 to n -->
                 {{last && page.parentPageElement == null ? page.title : ''}}<!-- First element has no parent-->
@@ -73,13 +73,13 @@
 <div class="col-sm-6 col-md-3">
     <div class="col-sm-6 col-md-3">
         <!-- TODO listen to escape only, not to all keystrokes -->
-        <div (window:keyup)="onKey($event)" *ngFor="let element of getFormStack()">
+        <div (window:keyup)="element.onKey($event)" *ngFor="let element of _formStack">
             <div class="modal fade show in danger" id="myModal" role="dialog">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <form>
                             <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" (click)="doCancel()">&times;</button>
+                                <button type="button" class="close" data-dismiss="modal" (click)="element.close(false)">&times;</button>
                                 <h4 class="modal-title">{{element.title}}</h4>
                             </div>
                             <div class="modal-body">

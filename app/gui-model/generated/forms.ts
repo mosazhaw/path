@@ -2,7 +2,7 @@ import * as path from './../../path-framework/path'; // TODO use interfaces
 
 // TODO in future versions these classes will be generated from gui model
 
-export class ProjectForm implements path.IForm {
+export class ProjectForm implements path.IFormBean {
 
     private _project:path.FormField;
     private _quickScanCase:path.AutoCompleteField;
@@ -96,7 +96,7 @@ export class ProjectForm implements path.IForm {
     }
 }
 
-export class CompanyForm implements path.IForm {
+export class CompanyForm implements path.IFormBean {
 
     private _companyName:path.TextField;
     private _street:path.TextField;

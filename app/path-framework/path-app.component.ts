@@ -18,43 +18,7 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     public abstract getBackendUrl():string;
 
-    public getPageStack():path.Page[] {
-        return this._pageStack;
-    }
-
-    public getFormStack():path.Form[] {
-        return this._formStack;
-    }
-    
-    public yesNo(text:string, yesHandler : () => void, noHandler : () => void) {
-        let form:path.Form = new path.Form(this.pathService, this);
-        let message:path.TextField = new path.TextField(this);
-        message.type = "label";
-        message.visible = true;
-        message.value = text;
-        form.fields.push(message);
-        let okButton:path.OkButton = new path.OkButton(this);
-        okButton.type = "okButton";
-        okButton.name = "Ok";
-        okButton.handler = {
-            doClick(button:path.IButton) {
-                yesHandler();
-            }
-        };
-        form.fields.push(okButton);
-
-        let cancelButton:path.CancelButton = new path.CancelButton(this);
-        cancelButton.type = "cancelButton";
-        cancelButton.name = "Cancel";
-        form.fields.push(cancelButton);
-        form.updateRows();
-
-        this.getFormStack().push(form);
-    }
-
-    public closeForm() {
-        // close form
-        this._formStack[this._formStack.length-1].close();
+    public closeCurrentForm() {
         this._formStack.pop();
     }
 
@@ -67,15 +31,30 @@ export abstract class PathAppComponent implements path.IPathApp {
         }
     }
 
-    // TODO remove
-    public doCancel() {
-        this._formStack.pop();
-    }
+    public yesNo(text:string, yesHandler : () => void, noHandler : () => void) {
+        let form:path.Form = new path.Form(this.pathService, this);
+        let message:path.TextField = new path.TextField(form);
+        message.type = "label";
+        message.visible = true;
+        message.value = text;
+        form.fields.push(message);
+        let okButton:path.OkButton = new path.OkButton(form);
+        okButton.type = "okButton";
+        okButton.name = "Ok";
+        okButton.handler = {
+            doClick(button:path.IButton) {
+                yesHandler();
+            }
+        };
+        form.fields.push(okButton);
 
-    public onKey(event) {
-        if (event.keyCode == 27) {
-            this.doCancel();
-        }
+        let cancelButton:path.CancelButton = new path.CancelButton(form);
+        cancelButton.type = "cancelButton";
+        cancelButton.name = "Cancel";
+        form.fields.push(cancelButton);
+        form.updateRows();
+
+        this._formStack.push(form);
     }
 
     private getCurrentPage():path.Page {
@@ -87,7 +66,7 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public goToPage(pageNumber:number) {
-        for (let k = this.getPageStack().length - 1; k > pageNumber; k--) {
+        for (let k = this._pageStack.length - 1; k > pageNumber; k--) {
             console.log("back");
             this.navigateBack();
         }
@@ -179,19 +158,19 @@ export abstract class PathAppComponent implements path.IPathApp {
                     switch (modelFormField.type) {
                         case "text":
                         {
-                            formField = new path.TextField(this);
+                            formField = new path.TextField(form);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "date":
                         {
-                            formField = new path.DateField(this);
+                            formField = new path.DateField(form);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "autocomplete":
                         {
-                            let autoCompleteFormField = new autocomplete.AutoCompleteField(this);
+                            let autoCompleteFormField = new autocomplete.AutoCompleteField(form);
                             autoCompleteFormField.data = modelFormField["data"];
                             autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
                             formField = autoCompleteFormField;
@@ -200,33 +179,33 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                         case "RadioGroupField":
                         {
-                            let radioGroupFormField = new path.RadioGroupField(this);
+                            let radioGroupFormField = new path.RadioGroupField(form);
                             radioGroupFormField.fromJson(modelFormField);
                             formField = radioGroupFormField;
                             break;
                         }
                         case "CheckboxGroupField":
                         {
-                            let checkboxGroupField = new path.CheckboxGroupField(this);
+                            let checkboxGroupField = new path.CheckboxGroupField(form);
                             checkboxGroupField.fromJson(modelFormField);
                             formField = checkboxGroupField;
                             break;
                         }
                         case "okButton":
                         {
-                            formField = new path.OkButton(this);
+                            formField = new path.OkButton(form);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "cancelButton":
                         {
-                            formField = new path.CancelButton(this);
+                            formField = new path.CancelButton(form);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         default:
                         {
-                            formField = new path.FormField(this);
+                            formField = new path.FormField(form);
                             formField.fromJson(modelFormField);
                         }
                     }
