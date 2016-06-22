@@ -1,7 +1,7 @@
 import {Component, Input, Output, ElementRef} from '@angular/core';
-import {FormField} from './../form-field';
 import {Radio} from './radio';
 import {FormFieldLabelComponent} from './../form-field-label.component';
+import {ValueField} from "../value-field";
 
 @Component({
     selector: 'path-radio-group',
@@ -14,7 +14,7 @@ export class RadioGroupComponent {
     field:RadioGroupField;
 }
 
-export class RadioGroupField extends FormField {
+export class RadioGroupField extends ValueField<boolean[]> {
     private _radios:Radio[] = [];
 
     get radios():Radio[] {

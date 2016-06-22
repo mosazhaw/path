@@ -1,6 +1,6 @@
 import {Component, Input, Output, ElementRef} from '@angular/core';
-import {FormField} from './../form-field';
 import {FormFieldLabelComponent} from './../form-field-label.component';
+import {ValueField} from "../value-field";
 
 @Component({
     selector: 'path-autocomplete',
@@ -38,7 +38,7 @@ export class AutoCompleteComponent {
     }
 }
 
-export class AutoCompleteField extends FormField {
+export class AutoCompleteField extends ValueField<string> {
     private _query = '';
     private _filteredList:string[] = [];
     private _data = [];
@@ -47,6 +47,7 @@ export class AutoCompleteField extends FormField {
 
     filter(value) {
         this._valueSet = false;
+        this.value = null;
         this.query = value;
         if (this.query.length > 0 && this.query.replace(/\s/g, '').length == 0) {
             /* space: all */
@@ -77,6 +78,7 @@ export class AutoCompleteField extends FormField {
     select(item) {
         this._valueSet = true;
         this.query = item;
+        this.value = item;
         this.clearFilteredList();
     }
 

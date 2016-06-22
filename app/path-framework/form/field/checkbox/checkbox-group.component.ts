@@ -1,6 +1,6 @@
 import {Component, Input, Output} from '@angular/core';
-import {FormField} from './../form-field';
 import {FormFieldLabelComponent} from './../form-field-label.component';
+import {ValueField} from "../value-field";
 
 @Component({
     selector: 'path-checkbox-group',
@@ -13,7 +13,7 @@ export class CheckboxGroupComponent {
     field:CheckboxGroupField;
 }
 
-export class CheckboxGroupField extends FormField {
+export class CheckboxGroupField extends ValueField<boolean[]> {
     private _entries:CheckboxGroupEntry[] = [];
 
     get entries():CheckboxGroupEntry[] {

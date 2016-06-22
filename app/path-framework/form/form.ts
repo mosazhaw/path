@@ -1,5 +1,5 @@
 import * as path from './../path';
-import {TextField} from "./field/text/text-field.component";
+import {ValueField} from "./field/value-field";
 
 export class Form {
     private _title:String;
@@ -66,8 +66,8 @@ export class Form {
         let data = {};
         for (let field of this._fields) {
             // TODO refactor valueField
-            if (field instanceof TextField && field.id != null) {
-                data[field.id] = (<TextField>field).value;
+            if (field instanceof ValueField && field.id != null) {
+                data[field.id] = (<ValueField<any>>field).value;
             }
         }
         console.log(data);
