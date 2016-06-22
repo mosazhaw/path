@@ -80,14 +80,13 @@ export class Form implements IForm {
             }
             let data = {};
             for (let field of this._fields) {
-                // TODO refactor valueField
                 if (field instanceof ValueField && field.id != null) {
                     data[field.id] = (<ValueField<any>>field).value;
                 }
             }
-            console.log(data);
             this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, () => {
-                console.log("saved on backend");
+                console.log("saved on backend:");
+                console.log(data);
                 this.app.closeCurrentForm();
                 this.app.refreshCurrentPage();
             });
