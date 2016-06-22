@@ -7,7 +7,7 @@ export class PathService {
     constructor(@Inject(Http) private http:Http) {
     }
 
-    serverRequest(server:string, url:string, processor:(data:any) => any) {
+    serverGet(server:string, url:string, processor:(data:any) => any) {
         if (url != null) {
             // fetch json data from url
             this.http.get(server + url)
@@ -20,7 +20,7 @@ export class PathService {
                         alert(err.status);
                         console.error(err)
                     },
-                    () => console.log('server request to ' + server + url + ' finished')
+                    () => console.log('server GET to ' + server + url + ' finished')
                 );
         } else {
             // no url provided, therefore call processor without data
@@ -36,20 +36,39 @@ export class PathService {
                     (value:Response,index:number) => {})
                 .subscribe(
                 data => {
-                    console.log("data");
+                    console.log(data);
                     processor();
                 },
                 err => {
                     alert(err.status);
                     console.error(err)
                 },
-                () => console.log('server request to ' + server + url + ' finished')
+                () => console.log('server POST to ' + server + url + ' finished')
             );
         } else {
             // no url provided, therefore call processor without data
             processor();
         }
+    }
 
+    serverPut(server:string, url:string, key:number, data:any, processor:() => any) {
+        if (url != null) {
+            this.http.put(server + url + "/" + key, JSON.stringify(data), null)
+                .subscribe(
+                    data => {
+                        console.log(data);
+                        processor();
+                    },
+                    err => {
+                        alert(err.status);
+                        console.error(err)
+                    },
+                    () => console.log('server PUT to ' + server + url + ' finished')
+                );
+        } else {
+            // no url provided, therefore call processor without data
+            processor();
+        }
     }
 
 }

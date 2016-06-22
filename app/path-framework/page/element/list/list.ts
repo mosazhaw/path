@@ -63,7 +63,7 @@ export class List extends path.PageElement implements IList {
         let listHandlerDoLoad = (list:path.IList) => (data:any) => dataHandler(data);
         // backend data
         if (this._url != null) {
-            this.pathService.serverRequest(this.app.getBackendUrl(), this.url, listHandlerDoLoad(this));
+            this.pathService.serverGet(this.app.getBackendUrl(), this.url, listHandlerDoLoad(this));
         }
         // mock data
         if (this._mockData != null) {

@@ -143,6 +143,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             if (modelForm.id === formId) {
                 // create form
                 form = new path.Form(this.pathService, this);
+                form.key = key;
                 form.title = modelForm.title;
                 form.url = modelForm["url"];
                 for (var modelFormField of modelForm.formFieldList) {
@@ -218,12 +219,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                 form.updateRows(); // TODO check if this can be done automatically
 
                 // fetch data from backend
-                if (modelForm["url"] != null && key != null) {
-                    this.pathService.serverRequest(this.getBackendUrl(),modelForm["url"] + "/" + key, (data:any) => {
-                        console.log(data);
+                if (form.url != null && form.key != null) {
+                    this.pathService.serverGet(this.getBackendUrl(), form.url + "/" + form.key, (data:any) => {
                         for (let field of form.fields) {
-                            if (data[field.id] != null && field.type == "text") { // TODO poc
-                                (<path.TextField>field).value = data[field.id];
+                            if (data[field.id] != null && field instanceof path.ValueField) {
+                                (<path.ValueField<any>>field).value = data[field.id];
                             }
                         }
                     })

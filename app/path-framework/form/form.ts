@@ -3,6 +3,7 @@ import {ValueField} from "./field/value-field";
 import {IForm, IPathApp} from "../pathinterface";
 
 export class Form implements IForm {
+    private _key:number;
     private _title:string;
     private _fields:path.FormField[] = [];
     private _rows:FormRow[] = [];
@@ -14,6 +15,14 @@ export class Form implements IForm {
 
     getApp():IPathApp {
         return this.app;
+    }
+
+    get key():number {
+        return this._key;
+    }
+
+    set key(value:number) {
+        this._key = value;
     }
 
     get title():string {
@@ -84,12 +93,17 @@ export class Form implements IForm {
                     data[field.id] = (<ValueField<any>>field).value;
                 }
             }
-            this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, () => {
-                console.log("saved on backend:");
-                console.log(data);
+            let closeAndRefresh = () => {
                 this.app.closeCurrentForm();
                 this.app.refreshCurrentPage();
-            });
+            };
+            if (this.key == null) {
+                // create
+                this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, closeAndRefresh);
+            } else {
+                // update (with key)
+                this.pathService.serverPut(this.app.getBackendUrl(), this.url, this.key, data, closeAndRefresh);
+            }
         } else {
             this.app.closeCurrentForm();
         }
