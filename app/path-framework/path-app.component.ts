@@ -33,6 +33,7 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     public navigateBack() {
         this._pageStack.pop();
+        this.refreshCurrentPage();
     }
 
     public navigateToPage(pageNumber:number) {
