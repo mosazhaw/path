@@ -17,9 +17,9 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
-                            "id": "quickScanCase",
+                            "id": "caseKey",
                             "type": "autocomplete",
-                            "name": "QuickScan Case",
+                            "name": "Case",
                             "wordSearchEnabled": false,
                             "visible": false,
                             "actions": [],
@@ -38,7 +38,7 @@ export class GuiModel {
                             "name": "End Date"
                         },
                         {
-                            "id": "companyName",
+                            "id": "customerKey",
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,
@@ -48,6 +48,7 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
+                            "id": "customerProjectLeaderKey",
                             "type": "autocomplete",
                             "name": "Customer PL",
                             "wordSearchEnabled": true,
@@ -56,6 +57,7 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
+                            "id": "serviceProviderKey",
                             "type": "autocomplete",
                             "name": "Service Provider",
                             "wordSearchEnabled": true,
@@ -65,6 +67,7 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
+                            "id": "serviceProviderProjectLeaderKey",
                             "type": "autocomplete",
                             "name": "Service Provider PL",
                             "wordSearchEnabled": true,
@@ -73,12 +76,14 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
+                            "id": "industrySegment",
                             "type": "CheckboxGroupField",
                             "name": "Industry Segment",
                             "data": [{id: "1", name: "Oil& Gas"}, {id: "2", name: "Basic Materials"}, {id: "3", name: "Industrials"}, {id: "4", name: "Consumer Services"}, {id: "5", name: "Consumer Goods"}, {id: "6", name: "Health Care"}, {id: "7", name: "Financials"}, {id: "8", name: "Technology"}, {id: "9", name: "Telecommunications"}, {id: "10", name: "Utilities"}],
                             "width": 2
                         },
                         {
+                            "id": "benchmarking",
                             "type": "RadioGroupField",
                             "name": "Benchmarking",
                             "radios": [{
@@ -91,6 +96,7 @@ export class GuiModel {
                             ]
                         },
                         {
+                            "id": "monitoring",
                             "type": "RadioGroupField",
                             "name": "Monitoring (over Time)",
                             "radios": [{
@@ -103,6 +109,7 @@ export class GuiModel {
                             ]
                         },
                         {
+                            "id": "comments",
                             "type": "text",
                             "name": "Comments",
                             "height": 8,

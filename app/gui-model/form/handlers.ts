@@ -5,8 +5,8 @@ export class ProjectFormQuickScanHandler implements path.IFormHandler {
 
     public doLoad(form:forms.ProjectForm) {
         console.log("loading quick scan form");
-        if (form.quickScanCase != null) {
-            form.quickScanCase.visible = true;
+        if (form.caseKey != null) {
+            form.caseKey.visible = true;
         }
     }
 

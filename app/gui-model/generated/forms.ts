@@ -1,97 +1,118 @@
-import * as path from './../../path-framework/path'; // TODO use interfaces
+import * as path from './../../path-framework/path';
+import {FormField} from "../../path-framework/form/field/form-field";
+import {AutoCompleteField} from "../../path-framework/form/field/auto-complete/auto-complete.component";
+import {RadioGroupField} from "../../path-framework/form/field/radio/radio-group.component";
 
 // TODO in future versions these classes will be generated from gui model
 
 export class ProjectForm implements path.IFormBean {
 
     private _project:path.FormField;
-    private _quickScanCase:path.AutoCompleteField;
+    private _caseKey:path.AutoCompleteField;
     private _startDate:path.FormField;
     private _endDate:path.FormField;
-    private _customerProjectLeader:path.AutoCompleteField;
-    private _deloitteProjectLeader:path.AutoCompleteField;
+    private _customerKey:path.AutoCompleteField;
+    private _serviceProviderKey:path.AutoCompleteField;
+    private _customerProjectLeaderKey:path.AutoCompleteField;
+    private _serviceProviderProjectLeaderKey:path.AutoCompleteField;
     private _industrySegment:path.AutoCompleteField;
     private _benchmarking:path.RadioGroupField;
     private _monitoring:path.RadioGroupField;
     private _comment:path.FormField;
 
-    get project():path.FormField {
+    get project():FormField {
         return this._project;
     }
 
-    set project(value:path.FormField) {
+    set project(value:FormField) {
         this._project = value;
     }
 
-    get quickScanCase():path.AutoCompleteField {
-        return this._quickScanCase;
+    get caseKey():AutoCompleteField {
+        return this._caseKey;
     }
 
-    set quickScanCase(value:path.AutoCompleteField) {
-        this._quickScanCase = value;
+    set caseKey(value:AutoCompleteField) {
+        this._caseKey = value;
     }
 
-    get startDate():path.FormField {
+    get startDate():FormField {
         return this._startDate;
     }
 
-    set startDate(value:path.FormField) {
+    set startDate(value:FormField) {
         this._startDate = value;
     }
 
-    get endDate():path.FormField {
+    get endDate():FormField {
         return this._endDate;
     }
 
-    set endDate(value:path.FormField) {
+    set endDate(value:FormField) {
         this._endDate = value;
     }
 
-    get customerProjectLeader():path.AutoCompleteField {
-        return this._customerProjectLeader;
+    get customerKey():AutoCompleteField {
+        return this._customerKey;
     }
 
-    set customerProjectLeader(value:path.AutoCompleteField) {
-        this._customerProjectLeader = value;
+    set customerKey(value:AutoCompleteField) {
+        this._customerKey = value;
     }
 
-    get deloitteProjectLeader():path.AutoCompleteField {
-        return this._deloitteProjectLeader;
+    get serviceProviderKey():AutoCompleteField {
+        return this._serviceProviderKey;
     }
 
-    set deloitteProjectLeader(value:path.AutoCompleteField) {
-        this._deloitteProjectLeader = value;
+    set serviceProviderKey(value:AutoCompleteField) {
+        this._serviceProviderKey = value;
     }
 
-    get industrySegment():path.AutoCompleteField {
+    get customerProjectLeaderKey():AutoCompleteField {
+        return this._customerProjectLeaderKey;
+    }
+
+    set customerProjectLeaderKey(value:AutoCompleteField) {
+        this._customerProjectLeaderKey = value;
+    }
+
+    get serviceProviderProjectLeaderKey():AutoCompleteField {
+        return this._serviceProviderProjectLeaderKey;
+    }
+
+    set serviceProviderProjectLeaderKey(value:AutoCompleteField) {
+        this._serviceProviderProjectLeaderKey = value;
+    }
+
+    get industrySegment():AutoCompleteField {
         return this._industrySegment;
     }
 
-    set industrySegment(value:path.AutoCompleteField) {
+    set industrySegment(value:AutoCompleteField) {
         this._industrySegment = value;
     }
 
-    get benchmarking():path.RadioGroupField {
+    get benchmarking():RadioGroupField {
         return this._benchmarking;
     }
 
-    set benchmarking(value:path.RadioGroupField) {
+    set benchmarking(value:RadioGroupField) {
         this._benchmarking = value;
     }
 
-    get monitoring():path.RadioGroupField {
+    get monitoring():RadioGroupField {
         return this._monitoring;
     }
 
-    set monitoring(value:path.RadioGroupField) {
+    set monitoring(value:RadioGroupField) {
         this._monitoring = value;
     }
 
-    get comment():path.FormField {
+    get comment():FormField {
         return this._comment;
     }
 
-    set comment(value:path.FormField) {
+    set comment(value:FormField) {
         this._comment = value;
     }
 }

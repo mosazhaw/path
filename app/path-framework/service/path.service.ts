@@ -63,7 +63,10 @@ export class PathService {
                         alert(err.status);
                         console.error(err)
                     },
-                    () => console.log('server PUT to ' + server + url + ' finished')
+                    () => {
+                        console.log(data);
+                        console.log('server PUT to ' + server + url + ' finished')
+                    }
                 );
         } else {
             // no url provided, therefore call processor without data
