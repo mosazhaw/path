@@ -91,7 +91,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             }
                             button.setPage(modelElement["page"]);
                             if (parentPageElement != null) {
-                                (<path.Button>element).key = (<path.Button>parentPageElement).key; // TODO
+                                button.key = (<path.Button>parentPageElement).key; // TODO
                             }
                             element = button;
                             break;
