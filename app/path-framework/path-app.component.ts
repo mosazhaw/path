@@ -82,11 +82,18 @@ export abstract class PathAppComponent implements path.IPathApp {
                     let element:path.PageElement = null;
                     switch (modelElement.type) {
                         case "button":
-                            element = new path.Button(this);
-                            this.updateButton(<path.Button>element, modelElement);
+                            let button = new path.Button(this);
+                            button.setIcon(modelElement["icon"]);
+                            button.setColor(modelElement["color"]);
+                            if (modelElement["form"] != null) {
+                                button.setForm(modelElement["form"]["form"]);
+                                button.setFormHandler(modelElement["form"]["handler"]);
+                            }
+                            button.setPage(modelElement["page"]);
                             if (parentPageElement != null) {
                                 (<path.Button>element).key = (<path.Button>parentPageElement).key; // TODO
                             }
+                            element = button;
                             break;
                         case "backbutton":
                             let backButton:path.BackButton = new path.BackButton(this);
@@ -128,16 +135,6 @@ export abstract class PathAppComponent implements path.IPathApp {
             alert("Missing page: " + pageId);
         }
         this._pageStack.push(page);
-    }
-
-    private updateButton(button:path.IButton,modelElement) {
-        button.setIcon(modelElement["icon"]);
-        button.setColor(modelElement["color"]);
-        if (modelElement["form"] != null) {
-            button.setForm(modelElement["form"]["form"]);
-            button.setFormHandler(modelElement["form"]["handler"]);
-        }
-        button.setPage(modelElement["page"]);
     }
 
     public setCurrentForm(formId:string, key:number, handler:string) {
