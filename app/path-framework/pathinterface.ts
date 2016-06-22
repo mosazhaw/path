@@ -4,6 +4,8 @@ export interface IPathApp {
     navigateBack();
     yesNo(text:string, yesHandler : () => void, noHandler : () => void);
     closeForm();
+    getBackendUrl():string;
+    refreshCurrentPage();
 }
 
 export interface IPageElement {

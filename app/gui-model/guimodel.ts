@@ -28,14 +28,17 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
+                            "id": "startDate",
                             "type": "date",
                             "name": "Start Date",
                         },
                         {
+                            "id": "endDate",
                             "type": "date",
                             "name": "End Date"
                         },
                         {
+                            "id": "companyName",
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,

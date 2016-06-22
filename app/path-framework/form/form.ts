@@ -1,10 +1,14 @@
 import * as path from './../path';
+import {TextField} from "./field/text/text-field.component";
 
 export class Form {
     private _title:String;
     private _fields:path.FormField[] = [];
     private _rows:FormRow[] = [];
     private _handler:path.IFormHandler;
+
+    constructor(private pathService:path.PathService, private app:path.IPathApp) {
+    }
 
     get title():String {
         return this._title;
@@ -52,6 +56,25 @@ export class Form {
             currentFormRow.fields.push(field);
         }
         this._rows = rows;
+    }
+
+    public close() {
+        // call close handler
+        if (this.handler != null) {
+            this.handler.doSave(this);
+        }
+        let data = {};
+        for (let field of this._fields) {
+            // TODO refactor valueField
+            if (field instanceof TextField && field.id != null) {
+                data[field.id] = (<TextField>field).value;
+            }
+        }
+        console.log(data);
+        this.pathService.serverPost(this.app.getBackendUrl(), "/project", data, () => {
+            console.log("saved on backend");
+            this.app.refreshCurrentPage();
+        });
     }
 }
 

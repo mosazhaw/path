@@ -28,7 +28,7 @@ export class AppComponent extends path.PathAppComponent {
         return this._appConfig.guiModel;
     }
 
-    protected getBackendUrl() {
+    public getBackendUrl() {
         if (window.location.hostname.indexOf("herokuapp") != -1) {
             return "https://assessment-backend.herokuapp.com/services";
         }

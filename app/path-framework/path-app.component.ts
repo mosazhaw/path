@@ -16,7 +16,7 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     protected abstract getHandlers();
 
-    protected abstract getBackendUrl():string;
+    public abstract getBackendUrl():string;
 
     public getPageStack():path.Page[] {
         return this._pageStack;
@@ -27,7 +27,7 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
     
     public yesNo(text:string, yesHandler : () => void, noHandler : () => void) {
-        let form:path.Form = new path.Form();
+        let form:path.Form = new path.Form(this.pathService, this);
         let message:path.TextField = new path.TextField(this);
         message.type = "label";
         message.visible = true;
@@ -53,13 +53,18 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public closeForm() {
-        if (this._formStack[this._formStack.length-1] != null) {
-            this._formStack[this._formStack.length-1].handler.doSave(this._formStack[this._formStack.length-1]);
-        }
-
-        this.pathService.serverPost(this.getBackendUrl(), "/project", '{ name: "TestA" }', () => { console.log("hello world")});
-
+        // close form
+        this._formStack[this._formStack.length-1].close();
         this._formStack.pop();
+    }
+
+    public refreshCurrentPage() {
+        for (let element of this.getCurrentPage().content) {
+            if (element instanceof path.List) {
+                console.log("reload list " + element.id);
+                (<path.List>element).refresh();
+            }
+        }
     }
 
     // TODO remove
@@ -73,7 +78,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         }
     }
 
-    public getCurrentPage() {
+    private getCurrentPage():path.Page {
         return this._pageStack[this._pageStack.length - 1];
     }
 
@@ -115,37 +120,25 @@ export abstract class PathAppComponent implements path.IPathApp {
                             element = backButton;
                             break;
                         case "list":
-                            let dynamicList:path.List = new path.List(this);
+                            let dynamicList:path.List = new path.List(this, this.pathService);
                             dynamicList.search = modelElement["search"];
                             // handler
                             if (modelElement["handler"] != null) {
                                 dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
                             }
-                            // callback function for data
-                            let dataHandler = (data:any) => {
-                                for (let item of data) {
-                                    let buttonHandler:path.IButtonHandler;
-                                    if (modelElement["buttonhandler"] != null) {
-                                        buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
-                                    }
-                                    let button:path.IButton = dynamicList.addButton(item.id, item.name, buttonHandler, item["details"]);
-                                    this.updateButton(button, modelElement);
-                                    button.setKey(item["key"]);
-                                    button.setColor(item["color"] != null ? item["color"] : button.getColor());
-                                }
-                                if (dynamicList.handler != null) {
-                                    dynamicList.handler.doLoad(dynamicList); // TODO useful?
-                                }
+                            if (modelElement["buttonhandler"] != null) {
+                                dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                             }
-                            let listHandlerDoLoad = (list:path.IList) => (data:any) => dataHandler(data);
-                            // backend data
-                            if (modelElement["url"] != null) {
-                                this.pathService.serverRequest(this.getBackendUrl(), modelElement["url"], listHandlerDoLoad(dynamicList));
+                            dynamicList.url = modelElement["url"];
+                            dynamicList.color = modelElement["color"];
+                            if (modelElement["form"] != null) {
+                                dynamicList.form = modelElement["form"]["form"];
+                                dynamicList.formHandler = modelElement["form"]["formHandler"];
                             }
-                            // mock data
-                            if (modelElement["data"] != null) {
-                                dataHandler(modelElement["data"]);
-                            }
+                            dynamicList.page = modelElement["page"];
+                            dynamicList.icon = modelElement["icon"];
+                            dynamicList.mockData = modelElement["data"];
+                            dynamicList.refresh();
                             element = dynamicList;
                             break;
                     }
@@ -177,7 +170,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         for (var modelForm of this.getGuiModel().application.formList) {
             if (modelForm.id === formId) {
                 // create form
-                form = new path.Form();
+                form = new path.Form(this.pathService, this);
                 form.title = modelForm.title;
                 for (var modelFormField of modelForm.formFieldList) {
                     // create form fields

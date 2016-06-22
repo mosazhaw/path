@@ -31,7 +31,7 @@ export class PathService {
 
     serverPost(server:string, url:string, data:any, processor:() => any) {
         if (url != null) {
-            this.http.post(server + url, data, null)
+            this.http.post(server + url, JSON.stringify(data), null)
                 .map(
                     (value:Response,index:number) => {})
                 .subscribe(
