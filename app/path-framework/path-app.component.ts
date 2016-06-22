@@ -56,7 +56,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         let message:path.TextField = new path.TextField(form);
         message.type = "label";
         message.visible = true;
-        message.value = text;
+        message.setValue(text);
         form.fields.push(message);
         let okButton:path.OkButton = new path.OkButton(form);
         okButton.type = "okButton";
