@@ -45,28 +45,27 @@ export class AutoCompleteField extends ValueField<string> {
     private _wordSearchEnabled:boolean;
     private _valueSet:boolean = false;
 
-    filter(value) {
+    filter() {
+        console.log("filter: " + this.query);
         this._valueSet = false;
-        this.value = null;
-        this.query = value;
-        if (this.query.length > 0 && this.query.replace(/\s/g, '').length == 0) {
+        if (this.query !== "" && this.query.length > 0 && this.query.replace(/\s/g, '').length == 0) {
             /* space: all */
             this._filteredList = this._data;
         }
         else if (this.query !== "") {
             /* search term: filter */
             this._filteredList = this._data.filter(function (entry) {
-                if (this._wordSearchEnabled) {
+                if (entry.toLowerCase().indexOf(this.query.toLowerCase()) > -1) {
+                    return true;
+                } else if (this._wordSearchEnabled) {
                     let tokens:string[] = entry.toLowerCase().split(" ");
                     for (let token of tokens) {
                         if (token.startsWith(this.query.toLowerCase())) {
                             return true;
                         }
                     }
-                    return false;
-                } else {
-                    return entry.toLowerCase().indexOf(this.query.toLowerCase()) > -1;
                 }
+                return false;
             }.bind(this));
         } else {
             /* empty: nothing */
@@ -77,9 +76,15 @@ export class AutoCompleteField extends ValueField<string> {
 
     select(item) {
         this._valueSet = true;
-        this.query = item;
-        this.value = item;
+        this.setValue(item);
         this.clearFilteredList();
+    }
+
+    public setValue(value:string) {
+        this._valueSet = true;
+        this.clearFilteredList();
+        super.setValue(value);
+        this.query = value;
     }
 
     public clearFilteredList() {

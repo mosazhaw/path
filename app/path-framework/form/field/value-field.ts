@@ -7,7 +7,7 @@ export class ValueField<T> extends FormField {
         return this._value;
     }
 
-    set value(value:T) {
+    public setValue(value:T) {
         this._value = value;
     }
 }

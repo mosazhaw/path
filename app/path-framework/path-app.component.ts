@@ -1,6 +1,7 @@
 import * as path from './path';
 import * as autocomplete from './form/field/auto-complete/auto-complete.component';
 import 'rxjs/add/operator/map';
+import {AutoCompleteField} from "./form/field/auto-complete/auto-complete.component";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -231,7 +232,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     this.pathService.serverGet(this.getBackendUrl(), form.url + "/" + form.key, (data:any) => {
                         for (let field of form.fields) {
                             if (data[field.id] != null && field instanceof path.ValueField) {
-                                (<path.ValueField<any>>field).value = data[field.id];
+                                (<path.ValueField<any>>field).setValue(data[field.id]);
                             }
                         }
                     })

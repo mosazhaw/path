@@ -14,7 +14,7 @@ export class RadioGroupComponent {
     field:RadioGroupField;
 }
 
-export class RadioGroupField extends ValueField<boolean[]> {
+export class RadioGroupField extends ValueField<any> {
     private _radios:Radio[] = [];
 
     get radios():Radio[] {
@@ -25,9 +25,18 @@ export class RadioGroupField extends ValueField<boolean[]> {
         this._radios = value;
     }
 
-    public doClick(name:string) {
+    public doClick(key:string) {
         for (let radio of this.radios) {
-            if (radio.name == name) {
+            if (radio.key == key) {
+                this.setValue(key);
+            }
+        }
+    }
+
+    public setValue(value:string) {
+        super.setValue(value);
+        for (let radio of this.radios) {
+            if (radio.key == value) {
                 radio.value = true;
             } else {
                 radio.value = false;
@@ -40,6 +49,12 @@ export class RadioGroupField extends ValueField<boolean[]> {
         for (var radioModel of modelFormField["radios"]) {
             let radio = new Radio(this.getForm());
             radio.name = radioModel.name;
+            radio.key = radioModel.key;
+            if (radio.key == modelFormField["defaultKey"]) {
+                radio.value = true;
+            } else {
+                radio.value = false;
+            }
             this.radios.push(radio);
         }
     }

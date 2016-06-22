@@ -3,7 +3,7 @@
 	<div class="input-group input-group-lg">
 		<span *ngFor='let radioElement of field.radios'>
             <label class="control radio">
-                <input [checked]="radioElement.value" (click)="field.doClick(radioElement.name)" type="radio">
+                <input [checked]="radioElement.value" (click)="field.doClick(radioElement.key)" type="radio">
                 <span class="radio-label"> {{radioElement.name}}</span>
             </label>
         </span>

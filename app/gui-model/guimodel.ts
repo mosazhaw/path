@@ -86,12 +86,15 @@ export class GuiModel {
                             "id": "benchmarking",
                             "type": "RadioGroupField",
                             "name": "Benchmarking",
+                            "defaultKey": true,
                             "radios": [{
                                 type: "radio",
-                                name: "Yes"
+                                name: "Yes",
+                                key: true
                             }, {
                                 type: "radio",
-                                name: "No"
+                                name: "No",
+                                key: false
                             }
                             ]
                         },
@@ -99,12 +102,15 @@ export class GuiModel {
                             "id": "monitoring",
                             "type": "RadioGroupField",
                             "name": "Monitoring (over Time)",
+                            "defaultKey": false,
                             "radios": [{
                                 type: "radio",
-                                name: "Yes"
+                                name: "Yes",
+                                key: true
                             }, {
                                 type: "radio",
-                                name: "No"
+                                name: "No",
+                                key: false
                             }
                             ]
                         },
