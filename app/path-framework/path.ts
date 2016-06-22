@@ -18,6 +18,7 @@ export * from './form/field/checkbox/checkbox-group.component';
 export * from './form/field/button/action';
 export * from './form/field/button/cancel-button';
 export * from './form/field/button/ok-button';
+export * from './form/field/date/date-field.component';
 export * from './form/field/radio/radio-group.component';
 export * from './form/field/radio/radio';
 export * from './form/field/text/text-field.component';

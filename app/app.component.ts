@@ -10,7 +10,7 @@ import * as beans from './gui-model/generated/forms'
 @Component({
     selector: 'path-application',
     templateUrl: 'app/path-framework/path-app.component.html',
-    directives: [path.AutoCompleteComponent, path.TextFieldComponent, path.RadioGroupComponent, path.CheckboxGroupComponent, path.FormFieldLabelComponent],
+    directives: [path.AutoCompleteComponent, path.TextFieldComponent, path.DateFieldComponent, path.RadioGroupComponent, path.CheckboxGroupComponent, path.FormFieldLabelComponent],
     // providers: [{ provide: path.PathService, useClass: path.PathMockService }]
     providers: [path.PathService]
 })

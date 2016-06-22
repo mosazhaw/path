@@ -172,6 +172,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                 // create form
                 form = new path.Form(this.pathService, this);
                 form.title = modelForm.title;
+                form.url = modelForm["url"];
                 for (var modelFormField of modelForm.formFieldList) {
                     // create form fields
                     let formField:path.FormField = null;
@@ -182,15 +183,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.fromJson(modelFormField);
                             break;
                         }
-                        case "okButton":
+                        case "date":
                         {
-                            formField = new path.OkButton(this);
-                            formField.fromJson(modelFormField);
-                            break;
-                        }
-                        case "cancelButton":
-                        {
-                            formField = new path.CancelButton(this);
+                            formField = new path.DateField(this);
                             formField.fromJson(modelFormField);
                             break;
                         }
@@ -215,6 +210,18 @@ export abstract class PathAppComponent implements path.IPathApp {
                             let checkboxGroupField = new path.CheckboxGroupField(this);
                             checkboxGroupField.fromJson(modelFormField);
                             formField = checkboxGroupField;
+                            break;
+                        }
+                        case "okButton":
+                        {
+                            formField = new path.OkButton(this);
+                            formField.fromJson(modelFormField);
+                            break;
+                        }
+                        case "cancelButton":
+                        {
+                            formField = new path.CancelButton(this);
+                            formField.fromJson(modelFormField);
                             break;
                         }
                         default:

@@ -2,19 +2,20 @@ import * as path from './../path';
 import {ValueField} from "./field/value-field";
 
 export class Form {
-    private _title:String;
+    private _title:string;
     private _fields:path.FormField[] = [];
     private _rows:FormRow[] = [];
     private _handler:path.IFormHandler;
+    private _url:string;
 
     constructor(private pathService:path.PathService, private app:path.IPathApp) {
     }
 
-    get title():String {
+    get title():string {
         return this._title;
     }
 
-    set title(value:String) {
+    set title(value:string) {
         this._title = value;
     }
 
@@ -40,6 +41,14 @@ export class Form {
 
     set handler(value:path.IFormHandler) {
         this._handler = value;
+    }
+
+    get url():string {
+        return this._url;
+    }
+
+    set url(value:string) {
+        this._url = value;
     }
 
     public updateRows() {
@@ -71,7 +80,7 @@ export class Form {
             }
         }
         console.log(data);
-        this.pathService.serverPost(this.app.getBackendUrl(), "/project", data, () => {
+        this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, () => {
             console.log("saved on backend");
             this.app.refreshCurrentPage();
         });
