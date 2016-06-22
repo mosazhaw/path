@@ -48,11 +48,11 @@ export class AutoCompleteField extends ValueField<string> {
     filter() {
         console.log("filter: " + this.query);
         this._valueSet = false;
-        if (this.query !== "" && this.query.length > 0 && this.query.replace(/\s/g, '').length == 0) {
+        if (this.query !== null && this.query.length > 0 && this.query.replace(/\s/g, '').length == 0) {
             /* space: all */
             this._filteredList = this._data;
         }
-        else if (this.query !== "") {
+        else if (this.query !== null && this.query !== "") {
             /* search term: filter */
             this._filteredList = this._data.filter(function (entry) {
                 if (entry.toLowerCase().indexOf(this.query.toLowerCase()) > -1) {

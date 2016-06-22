@@ -20,7 +20,9 @@ export class PathService {
                         alert(err.status);
                         console.error(err)
                     },
-                    () => console.log('server GET to ' + server + url + ' finished')
+                    () => {
+                        console.log('server GET to ' + server + url + ' finished:')
+                    }
                 );
         } else {
             // no url provided, therefore call processor without data
@@ -35,15 +37,18 @@ export class PathService {
                 .map(
                     (value:Response,index:number) => {})
                 .subscribe(
-                data => {
-                    console.log(data);
-                    processor();
-                },
-                err => {
-                    alert(err.status);
-                    console.error(err)
-                },
-                () => console.log('server POST to ' + server + url + ' finished')
+                    data => {
+                        console.log(data);
+                        processor();
+                    },
+                    err => {
+                        alert(err.status);
+                        console.error(err)
+                    },
+                    () => {
+                        console.log('server POST to ' + server + url + ' finished:')
+                        console.log(data);
+                    }
             );
         } else {
             // no url provided, therefore call processor without data
@@ -64,8 +69,8 @@ export class PathService {
                         console.error(err)
                     },
                     () => {
+                        console.log('server PUT to ' + server + url + ' finished:')
                         console.log(data);
-                        console.log('server PUT to ' + server + url + ' finished')
                     }
                 );
         } else {
