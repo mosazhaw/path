@@ -23,11 +23,22 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public refreshCurrentPage() {
-        for (let element of this.getCurrentPage().content) {
+        for (let element of this._pageStack[this._pageStack.length - 1].content) {
             if (element instanceof path.List) {
                 console.log("reload list " + element.id);
                 (<path.List>element).refresh();
             }
+        }
+    }
+
+    public navigateBack() {
+        this._pageStack.pop();
+    }
+
+    public navigateToPage(pageNumber:number) {
+        for (let k = this._pageStack.length - 1; k > pageNumber; k--) {
+            console.log("back");
+            this.navigateBack();
         }
     }
 
@@ -55,21 +66,6 @@ export abstract class PathAppComponent implements path.IPathApp {
         form.updateRows();
 
         this._formStack.push(form);
-    }
-
-    private getCurrentPage():path.Page {
-        return this._pageStack[this._pageStack.length - 1];
-    }
-
-    public navigateBack() {
-        this._pageStack.pop();
-    }
-
-    public goToPage(pageNumber:number) {
-        for (let k = this._pageStack.length - 1; k > pageNumber; k--) {
-            console.log("back");
-            this.navigateBack();
-        }
     }
 
     public setCurrentPage(pageId:string, parentPageElement:path.PageElement) {

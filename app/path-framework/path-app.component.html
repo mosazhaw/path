@@ -21,8 +21,8 @@
     <h1>
         <ol class="breadcrumb">
             <li *ngFor='let page of _pageStack; let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
-                <a href="#" *ngIf='!last && page.parentPageElement == null' (click)="goToPage(currentIndex)">{{page.title}}</a><!-- First element has no parent-->
-                <a href="#" *ngIf='!last && page.parentPageElement != null' (click)="goToPage(currentIndex)">{{page.parentPageElement?.name}}</a><!-- Element 2 to n -->
+                <a href="#" *ngIf='!last && page.parentPageElement == null' (click)="navigateToPage(currentIndex)">{{page.title}}</a><!-- First element has no parent-->
+                <a href="#" *ngIf='!last && page.parentPageElement != null' (click)="navigateToPage(currentIndex)">{{page.parentPageElement?.name}}</a><!-- Element 2 to n -->
                 {{last && page.parentPageElement == null ? page.title : ''}}<!-- First element has no parent-->
                 {{last && page.parentPageElement != null ? page.parentPageElement?.name : ''}}<!-- Element 2 to n -->
                 &nbsp;
@@ -33,7 +33,7 @@
 
 <!-- Page Elements -->
 <div class="col-md-12">
-    <span *ngFor='let pageElement of getCurrentPage().content'>
+    <span *ngFor='let pageElement of _pageStack[_pageStack.length - 1].content'>
     <!-- Button -->
     <a *ngIf='pageElement.type == "button"' (click)="pageElement.onClick()" class="fa-links">
         <div class="thumbnail tile tile-large tile-{{pageElement.color}}">
