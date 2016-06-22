@@ -134,30 +134,35 @@ export class GuiModel {
                 {
                     "id": "CompanyForm",
                     "title": "Company Details",
+                    "url": "/company",
                     "formFieldList": [
                         {
-                            "id": "companyName",
+                            "id": "name",
                             "type": "text",
                             "name": "Company Name",
                             "width": 2,
                             "mandatory": true
                         },
                         {
+                            "id": "street",
                             "type": "text",
                             "name": "Street",
                             "newRow": true,
                             "width": 2
                         },
                         {
+                            "id": "zipCode",
                             "type": "text",
                             "name": "Postal Code",
                             "newRow": true
                         },
                         {
+                            "id": "city",
                             "type": "text",
                             "name": "City"
                         },
                         {
+                            "id": "country",
                             "type": "autocomplete",
                             "name": "Country",
                             "wordSearchEnabled": false,
@@ -166,6 +171,7 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "id": "comments",
                             "type": "text",
                             "name": "Comments",
                             "height": 8,
@@ -1030,7 +1036,7 @@ export class GuiModel {
                             "color": "purple",
                             "search": true,
                             "page": "companypersonspage",
-                            "data": [{"name": "Alpha Hospital"}, {"name": "Blue Hospital"}, {"name": "Charisma Hospital"}]
+                            "url": "/company"
                         }
                     ]
                 },

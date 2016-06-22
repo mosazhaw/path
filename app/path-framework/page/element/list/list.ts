@@ -74,6 +74,12 @@ export class List extends path.PageElement implements IList {
         }
         // mock data
         if (this._mockData != null) {
+            let count:number = 0;
+            // fake a key for mock data
+            for (let mock of this.mockData) {
+                count++;
+                mock["key"] = count;
+            }
             dataHandler(this.mockData);
         }
     }
