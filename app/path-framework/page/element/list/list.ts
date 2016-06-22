@@ -25,36 +25,43 @@ export class List extends path.PageElement implements IList {
         return this.buttons;
     }
 
-    public addButton(id:number,name:string,handler:path.IButtonHandler,details:string[]):path.IButton {
-        let button:path.Button = new path.Button(this.app);
-        button.handler = handler;
-        button.name = name;
-        if (details != null) {
-            for (let detail of details) {
-                let bd:path.ButtonDetail = new ButtonDetail();
-                bd.text = detail;
-                button.details.push(bd);
-            }
-        }
-        this.buttons.push(button);
-        return button;
-    }
-
     public refresh() {
-        this.buttons = [];
         // callback function for data
         let dataHandler = (data:any) => {
+            let oldButtons = this.buttons; // TODO handle delete case
             for (let item of data) {
-                let button:path.IButton = this.addButton(item.id, item.name, this.buttonHandler, item["details"]);
+                let isNewButton:boolean = false;
+                let button:path.Button = this.findButton(item["key"]);
+                if (button == null) {
+                    button = new path.Button(this.app);
+                    isNewButton = true;
+                }
+                // general attributes
+                button.id = item.id;
+                button.setKey(item["key"]);
+                button.handler = this._buttonHandler;
+                button.name = item.name;
                 button.setIcon(this.icon);
-                button.setColor(this.color);
+                button.setColor(item["color"] != null ? item["color"] : this.color);
+                // button details
+                if (item["details"] != null) {
+                    button.details = [];
+                    for (let detail of item["details"]) {
+                        let bd:path.ButtonDetail = new ButtonDetail();
+                        bd.text = detail;
+                        button.details.push(bd);
+                    }
+                }
+                // form button
                 if (this.form != null) {
                     button.setForm(this.form);
                     button.setFormHandler(this.formHandler);
                 }
+                // page button
                 button.setPage(this.page);
-                button.setKey(item["key"]);
-                button.setColor(item["color"] != null ? item["color"] : button.getColor());
+                if (isNewButton) {
+                    this.buttons.push(button);
+                }
             }
             if (this.handler != null) {
                 this.handler.doLoad(this); // TODO useful?
@@ -69,6 +76,15 @@ export class List extends path.PageElement implements IList {
         if (this._mockData != null) {
             dataHandler(this.mockData);
         }
+    }
+
+    private findButton(key:number):path.Button {
+        for (let button of this._buttons) {
+            if (button.key == key) {
+                return button;
+            }
+        }
+        return null;
     }
 
     get buttons():path.Button[] {

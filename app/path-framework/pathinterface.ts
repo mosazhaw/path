@@ -27,7 +27,6 @@ export interface IFormHandler {
 }
 
 export interface IList {
-    addButton(id:number,name:string,handler:IButtonHandler,details:string[]):IButton;
     getContent():IButton[];
 }
 

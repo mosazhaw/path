@@ -23,10 +23,19 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public refreshCurrentPage() {
+        console.log("refresh " + this._pageStack[this._pageStack.length - 1].title);
         for (let element of this._pageStack[this._pageStack.length - 1].content) {
             if (element instanceof path.List) {
-                console.log("reload list " + element.id);
                 (<path.List>element).refresh();
+            }
+        }
+        // breadcrumbs
+        if (this._pageStack[this._pageStack.length - 2] != null) {
+            console.log("refresh " + this._pageStack[this._pageStack.length - 2].title);
+            for (let element of this._pageStack[this._pageStack.length - 2].content) {
+                if (element instanceof path.List) {
+                    (<path.List>element).refresh();
+                }
             }
         }
     }
