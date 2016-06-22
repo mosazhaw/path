@@ -21,7 +21,7 @@ export class PathService {
                         console.error(err)
                     },
                     () => {
-                        console.log('server GET to ' + server + url + ' finished:')
+                        console.log('server GET to ' + server + url + ' finished')
                     }
                 );
         } else {

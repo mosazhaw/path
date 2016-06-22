@@ -91,8 +91,6 @@ export class Form implements IForm {
             for (let field of this._fields) {
                 if (field instanceof ValueField && field.id != null) {
                     data[field.id] = (<ValueField<any>>field).value;
-                    console.log(field.id);
-                    console.log(field["value"]);
                 }
             }
             let closeAndRefresh = () => {
