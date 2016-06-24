@@ -388,12 +388,12 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "ProcessForm",
-                    "title": "Process",
+                    "id": "SubprocessForm",
+                    "title": "Subprocess",
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Process Name",
+                            "name": "Subprocess Name",
                             "width": 2,
                             "mandatory": true
                         },
@@ -901,10 +901,10 @@ export class GuiModel {
                         },
                         {
                             "type": "list",
-                            "name": "Processes",
+                            "name": "Support Processes",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Process  Group S10"}]
+                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
                         }
                     ]
                 },
@@ -921,7 +921,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "deepscanintervieweeprocessespage",
-                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Process  Group S10"}]
+                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
                         },
                         {
                             "type": "button",
@@ -940,11 +940,11 @@ export class GuiModel {
                         },
                         {
                             "type": "list",
-                            "name": "Processes",
+                            "name": "Subprocesses",
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "processquestionspage",
-                            "data": [{"name": "Process S1"}, {"name": "Process S2"}, {"name": "Process S3"}, {"name": "Process S4"}, {"name": "Process S5"}, {"name": "Process S6"}, {"name": "Process S7"}, {"name": "Process S8"}, {"name": "Process S10"}, {"name": "Process S11"}]
+                            "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
                         }
                     ]
                 },
@@ -1510,13 +1510,13 @@ export class GuiModel {
                             "color": "asbestos",
                             "search": true,
                             "page": "deepscanprocessesconfigurationpage",
-                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Process  Group S10"}]
+                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
                         }
                     ]
                 },
                 {
                     "id": "deepscanprocessesconfigurationpage",
-                    "title": "Processes",
+                    "title": "Support Processes",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -1537,21 +1537,21 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "ProcessForm",
+                                "form": "SubprocessForm",
                                 "mode": "create"
                             },
                         },
                         {
                             "type": "list",
-                            "name": "Processes",
+                            "name": "Subprocesses",
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "form": {
-                                "form": "ProcessForm",
+                                "form": "SubprocessForm",
                                 "mode": "update"
                             },
                             "search": true,
-                            "data": [{"name": "Process S1"}, {"name": "Process S2"}, {"name": "Process S3"}, {"name": "Process S4"}, {"name": "Process S5"}, {"name": "Process S6"}, {"name": "Process S7"}, {"name": "Process S8"}, {"name": "Process S10"}, {"name": "Process S11"}]
+                            "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
                         },
                         {
                             "type": "button",
