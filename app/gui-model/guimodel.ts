@@ -308,33 +308,6 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "ProjectProcessGroupForm",
-                    "title": "Add Process Group to Project",
-                    "formFieldList": [
-                        {
-                            "type": "autocomplete",
-                            "name": "Process Group",
-                            "wordSearchEnabled": false,
-                            "actions": [{"name": "New..."}],
-                            "data": ["Process Group S1", "Process Group S2", "Process Group S3", "Process Group S4", "Process Group S5", "Process Group S6"],
-                            "width": 2,
-                            "mandatory": true
-                        },
-                        {
-                            "type": "deleteButton",
-                            "name": "Delete"
-                        },
-                        {
-                            "type": "cancelButton",
-                            "name": "Cancel"
-                        },
-                        {
-                            "type": "okButton",
-                            "name": "Ok"
-                        }
-                    ]
-                },
-                {
                     "id": "CaseForm",
                     "title": "Case",
                     "formFieldList": [
@@ -391,12 +364,12 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "ProcessGroupForm",
-                    "title": "Process Group",
+                    "id": "SupportProcessForm",
+                    "title": "Support Process",
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Process Group Name",
+                            "name": "Support Process Name",
                             "width": 2,
                             "mandatory": true
                         },
@@ -872,10 +845,10 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Process Groups",
+                            "name": "Support Processes",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "page": "deepscanprocessgroupspage"
+                            "page": "deepscansupportprocessespage"
                         },
                         {
                             "type": "button",
@@ -914,55 +887,41 @@ export class GuiModel {
                             "name": "Interviewee List",
                             "icon": "fa-user",
                             "color": "blue",
-                            "page": "deepscanintervieweeprocessgroupspage",
+                            "page": "deepscanintervieweesupportprocessespage",
                             "data": [{"name": "Frau Dr. Müller", "details": [ "Alpha Hospital" ]}, {"name": "Herr Dr. Lisib", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Last", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Gesund", "details": [ "Alpha Hospital" ]}]
                         }
                     ]
                 },
                 {
-                    "id": "deepscanprocessgroupspage",
-                    "title": "Process Groups",
+                    "id": "deepscansupportprocessespage",
+                    "title": "Support Processes",
                     "elementList": [
                         {
                             "type": "backbutton",
-                        },
-                        {
-                            "type": "button",
-                            "name": "Add Process Group",
-                            "icon": "fa-cube",
-                            "color": "green",
-                            "form": {
-                                "form": "ProjectProcessGroupForm",
-                                "mode": "create"
-                            }
                         },
                         {
                             "type": "list",
                             "name": "Processes",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "form": {
-                                "form": "ProjectProcessGroupForm",
-                                "mode": "update"
-                            },
-                            "data": [{"name": "Process Group S1"}, {"name": "Process Group S2"}, {"name": "Process Group S3"}, {"name": "Process Group S4"}, {"name": "Process Group S5"}, {"name": "Process Group S6"}, {"name": "Process Group S7"}, {"name": "Process Group S8"}, {"name": "Process Group S9"}, {"name": "Process  Group S10"}]
+                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Process  Group S10"}]
                         }
                     ]
                 },
                 {
-                    "id": "deepscanintervieweeprocessgroupspage",
-                    "title": "Interviewee Process Groups",
+                    "id": "deepscanintervieweesupportprocessespage",
+                    "title": "Interviewee Support Processes",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "list",
-                            "name": "Process Groups",
+                            "name": "Support Processes",
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "deepscanintervieweeprocessespage",
-                            "data": [{"name": "Process Group S1"}, {"name": "Process Group S2"}, {"name": "Process Group S3"}, {"name": "Process Group S4"}, {"name": "Process Group S5"}, {"name": "Process Group S6"}, {"name": "Process Group S7"}, {"name": "Process Group S8"}, {"name": "Process Group S9"}, {"name": "Process  Group S10"}]
+                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Process  Group S10"}]
                         },
                         {
                             "type": "button",
@@ -1506,10 +1465,10 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Process Groups",
+                            "name": "Support Processes",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
-                            "page": "deepscanprocessgroupsconfigurationpage"
+                            "page": "deepscansupportprocessesconfigurationpage"
                         },
                         {
                             "type": "button",
@@ -1528,30 +1487,30 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "deepscanprocessgroupsconfigurationpage",
-                    "title": "Process Groups",
+                    "id": "deepscansupportprocessesconfigurationpage",
+                    "title": "Support Processes",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "button",
-                            "name": "New Process Group",
+                            "name": "New Support Process",
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "ProcessGroupForm",
+                                "form": "SupportProcessForm",
                                 "mode": "create"
                             },
                         },
                         {
                             "type": "list",
-                            "name": "Process Groups",
+                            "name": "Support Processes",
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "search": true,
                             "page": "deepscanprocessesconfigurationpage",
-                            "data": [{"name": "Process Group S1"}, {"name": "Process Group S2"}, {"name": "Process Group S3"}, {"name": "Process Group S4"}, {"name": "Process Group S5"}, {"name": "Process Group S6"}, {"name": "Process Group S7"}, {"name": "Process Group S8"}, {"name": "Process Group S9"}, {"name": "Process  Group S10"}]
+                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Process  Group S10"}]
                         }
                     ]
                 },
@@ -1564,11 +1523,11 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit Process Group",
+                            "name": "Edit Support Process",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "ProcessGroupForm",
+                                "form": "SupportProcessForm",
                                 "mode": "update"
                             },
                         },
