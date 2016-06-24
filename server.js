@@ -15,7 +15,7 @@ var auth = function(request, response, next) {
         return unauthorized(response);
     };
 
-    if (user.name === 'foo' && user.pass === 'bar') {
+    if (user.name === 'deloitte' && user.pass === 'zHn790ppp' || user.name === 'tom' && user.pass === 'skyr') {
         return next();
     } else {
         return unauthorized(response);
