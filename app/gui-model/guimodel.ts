@@ -677,6 +677,56 @@ export class GuiModel {
                             "name": "Next"
                         }
                     ]
+                },
+                {
+                    "id": "KPIQuestionForm",
+                    "title": "KPI Question",
+                    "formFieldList": [
+                        {
+                            "type": "ProgressBarField",
+                            "name": "Progress",
+                            "value": 10,
+                            "width": 2
+                        },
+                        {
+                            "id": "question",
+                            "type": "RadioGroupField",
+                            "name": "Question 1",
+                            "defaultKey": null,
+                            "radios": [{
+                                type: "radio",
+                                name: "Isolated",
+                                key: 1
+                            }, {
+                                type: "radio",
+                                name: "Basic",
+                                key: 2
+                            }, {
+                                type: "radio",
+                                name: "Moderate",
+                                key: 3
+                            }, {
+                                type: "radio",
+                                name: "Advanced",
+                                key: 4
+                            }, {
+                                type: "radio",
+                                name: "World-Class",
+                                key: 5
+                            }
+                            ],
+                            "width": 2
+
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Previous"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Next"
+                        }
+                    ]
                 }
             ],
             "pageList": [
@@ -1034,20 +1084,8 @@ export class GuiModel {
                     "title": "Questions",
                     "elementList": [
                         {
-                            "type": "backbutton",
-                        },
-                        {
-                            "type": "button",
-                            "name": "TODO - Questions",
-                            "icon": "fa-cube",
-                            "color": "asbestos",
-                        },
-                        {
-                            "type": "button",
-                            "name": "Next",
-                            "icon": "fa-forward",
-                            "color": "silver",
-                            "page": "processquestionspage",
+                            "type": "form",
+                            "form": "KPIQuestionForm"
                         }
                     ]
                 },
