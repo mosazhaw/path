@@ -923,7 +923,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "pumpkin",
                             "page": "deepscanintervieweeprocessespage",
-                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
+                            "data": [{"name": "Support Process S2"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
                         },
                         {
                             "type": "button",
