@@ -633,6 +633,12 @@ export class GuiModel {
                     "title": "Category - Capability Questions",
                     "formFieldList": [
                         {
+                            "type": "ProgressBarField",
+                            "name": "Progress",
+                            "value": 10,
+                            "width": 2
+                        },
+                        {
                             "id": "question",
                             "type": "RadioGroupField",
                             "name": "Question 1",

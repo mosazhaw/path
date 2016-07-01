@@ -21,6 +21,9 @@
 					<div *ngIf="field.type == 'autocomplete'">
 						<path-autocomplete [field]="field"></path-autocomplete>
 					</div>
+					<div *ngIf="field.type == 'ProgressBarField'">
+						<path-progress-bar [field]="field"></path-progress-bar>
+					</div>
 					<div *ngIf="field.type == 'RadioGroupField'">
 						<path-radio-group [field]="field"></path-radio-group>
 					</div>

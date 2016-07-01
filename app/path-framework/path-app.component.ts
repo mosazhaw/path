@@ -211,6 +211,13 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField = checkboxGroupField;
                             break;
                         }
+                        case "ProgressBarField":
+                        {
+                            let progressBarField = new path.ProgressBarField(form);
+                            progressBarField.fromJson(modelFormField);
+                            formField = progressBarField;
+                            break;
+                        }
                         case "okButton":
                         {
                             formField = new path.OkButton(form);
