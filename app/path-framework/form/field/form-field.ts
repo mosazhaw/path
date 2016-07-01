@@ -1,6 +1,5 @@
 import {Action} from './../../form/field/button/action';
 import {IFormField, IForm} from "../../pathinterface";
-import {Form} from "../form";
 
 export class FormField implements IFormField {
     private _id:string;

@@ -1,6 +1,6 @@
-import * as path from './../../../path';
+import {FormField} from "../form-field";
 
-export class Radio extends path.FormField {
+export class Radio extends FormField {
     private _value:boolean;
     private _key:any;
 

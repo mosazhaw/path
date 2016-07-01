@@ -9,7 +9,7 @@ export * from './page/element/button/button-detail';
 export * from './page/element/button/back-button';
 export * from './page/element/list/list';
 
-export * from './form/form'
+export * from './form/form.component'
 
 export * from './form/field/form-field'
 export * from './form/field/form-field-label.component'

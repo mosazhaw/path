@@ -1,16 +1,35 @@
-import * as path from './../path';
+import {Component, Input, Output} from "@angular/core";
+import {PathService} from "../service/path.service";
+import {IForm, IPathApp, IFormHandler} from "../pathinterface";
 import {ValueField} from "./field/value-field";
-import {IForm, IPathApp} from "../pathinterface";
+import {FormField} from "./field/form-field";
+import {AutoCompleteComponent} from "./field/auto-complete/auto-complete.component";
+import {TextFieldComponent} from "./field/text/text-field.component";
+import {DateFieldComponent} from "./field/date/date-field.component";
+import {RadioGroupComponent} from "./field/radio/radio-group.component";
+import {CheckboxGroupComponent} from "./field/checkbox/checkbox-group.component";
+import {FormFieldLabelComponent} from "./field/form-field-label.component";
+
+@Component({
+    selector: 'path-form',
+    templateUrl: 'app/path-framework/form/form.component.html',
+    directives: [AutoCompleteComponent, TextFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent]
+})
+export class FormComponent {
+    @Input('form')
+    @Output('form')
+    form:Form;
+}
 
 export class Form implements IForm {
     private _key:number;
     private _title:string;
-    private _fields:path.FormField[] = [];
+    private _fields:FormField[] = [];
     private _rows:FormRow[] = [];
-    private _handler:path.IFormHandler;
+    private _handler:IFormHandler;
     private _url:string;
 
-    constructor(private pathService:path.PathService, private app:path.IPathApp) {
+    constructor(private pathService:PathService, private app:IPathApp) {
     }
 
     getApp():IPathApp {
@@ -33,11 +52,11 @@ export class Form implements IForm {
         this._title = value;
     }
 
-    get fields():path.FormField[] {
+    get fields():FormField[] {
         return this._fields;
     }
 
-    set fields(value:path.FormField[]) {
+    set fields(value:FormField[]) {
         this._fields = value;
     }
 
@@ -49,11 +68,11 @@ export class Form implements IForm {
         this._rows = value;
     }
 
-    get handler():path.IFormHandler {
+    get handler():IFormHandler {
         return this._handler;
     }
 
-    set handler(value:path.IFormHandler) {
+    set handler(value:IFormHandler) {
         this._handler = value;
     }
 
@@ -117,13 +136,13 @@ export class Form implements IForm {
 }
 
 class FormRow {
-    private _fields:path.FormField[] = [];
+    private _fields:FormField[] = [];
 
-    get fields():path.FormField[] {
+    get fields():FormField[] {
         return this._fields;
     }
 
-    set fields(value:path.FormField[]) {
+    set fields(value:FormField[]) {
         this._fields = value;
     }
 

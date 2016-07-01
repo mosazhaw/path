@@ -82,61 +82,7 @@
         <div (window:keyup)="form.onKey($event)" *ngFor="let form of _formStack">
             <div class="modal fade show in danger" id="myModal" role="dialog">
                 <div class="modal-dialog">
-                    <div class="modal-content">
-                        <form>
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" (click)="form.close(false)">&times;</button>
-                                <h5 class="modal-title">{{form.title}}</h5>
-                            </div>
-                            <div class="modal-body">
-                                <div *ngFor='let row of form.rows;' class="row" [hidden]="!row.isVisible()">
-                                    <div *ngFor='let field of row.fields;' [hidden]="!field.visible">
-                                        <div *ngIf="field.type == 'text'">
-                                            <path-textfield [field]="field"></path-textfield>
-                                        </div>
-                                        <div *ngIf="field.type == 'label'">
-                                            <div class="col-md-6">
-                                                <h5 class="modal-title">{{field.value}}</h5>
-                                            </div>
-                                        </div>
-                                        <div *ngIf="field.type == 'date'">
-                                            <path-datefield [field]="field"></path-datefield>
-                                        </div>
-                                        <div *ngIf="field.type == 'autocomplete'">
-                                            <path-autocomplete [field]="field"></path-autocomplete>
-                                        </div>
-                                        <div *ngIf="field.type == 'RadioGroupField'">
-                                            <path-radio-group [field]="field"></path-radio-group>
-                                        </div>
-                                        <div *ngIf="field.type == 'CheckboxGroupField'">
-                                            <path-checkbox-group [field]="field"></path-checkbox-group>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <div class="row">
-                                    <div class="col-md-2">
-                                        <span *ngFor='let field of form.fields' class="pull-left">
-                                            <span *ngIf="field.type == 'deleteButton'">
-                                                <input type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
-                                            </span>
-                                        </span>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <span *ngFor='let field of form.fields'>
-                                            <span *ngIf="field.type == 'okButton'">
-                                                <input type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
-                                            </span>
-                                            <span *ngIf="field.type == 'cancelButton'">
-                                                <input type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
-                                            </span>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+	                <path-form [form]="form"></path-form>
                 </div>
             </div>
         </div>
