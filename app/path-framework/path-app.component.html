@@ -18,7 +18,7 @@
 
 <!-- Breadcrumb Path -->
 <div class="col-md-12">
-    <h1>
+    <h3>
         <ol class="breadcrumb">
             <li *ngFor='let page of _pageStack; let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
                 <a href="#" *ngIf='!last && page.parentPageElement == null' (click)="navigateToPage(currentIndex)">{{page.title}}</a><!-- First element has no parent-->
@@ -28,45 +28,51 @@
                 &nbsp;
             </li>
         </ol>
-    </h1>
+    </h3>
 </div>
 
 <!-- Page Elements -->
-<div class="col-md-12">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
     <span *ngFor='let pageElement of _pageStack[_pageStack.length - 1].content'>
     <!-- Button -->
     <a *ngIf='pageElement.type == "button"' (click)="pageElement.onClick()" class="fa-links">
-        <div class="thumbnail tile tile-large tile-{{pageElement.color}}">
-            <h1>{{pageElement.name}}</h1>
-            <i class="fa fa-3x {{pageElement.icon}}"></i>
+        <div class="thumbnail tile tile-medium tile-{{pageElement.color}} col-md-3">
+            <div class="h3">{{pageElement.name}}</div>
+            <i class="fa fa-2x {{pageElement.icon}}"></i>
         </div>
     </a>
     <!-- Back Button -->
     <a *ngIf='pageElement.type == "backbutton"' (click)="pageElement.onClick()" class="fa-links">
-        <div class="thumbnail tile tile-large tile-silver">
-            <h1>Back</h1>
-            <i class="fa fa-3x fa-backward"></i>
+        <div class="thumbnail tile tile-medium tile-silver col-md-3">
+            <div class="h3">Back</div>
+            <i class="fa fa-2x fa-backward"></i>
         </div>
     </a>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
-    <div *ngIf='pageElement.search' class="thumbnail tile tile-large tile-green">
-        <div class="input-group input-group-lg">
-            <h1>Search</h1>
-            <i class="fa fa-3x fa-search"></i>
-            <h1></h1>
+    <div *ngIf='pageElement.search' class="thumbnail tile tile-medium tile-green col-md-3">
+        <div class="input-group input-group-sm">
+            <div class="h3">Search</div>
+            <i class="fa fa-2x fa-search"></i>
+            <div class="h5"></div>
             <input placeholder="Enter search text" class="form-control" type="text">
         </div>
     </div>
         <a *ngFor='let listElement of pageElement.buttons' (click)="listElement.onClick()" class="fa-links">
-            <div class="thumbnail tile tile-large tile-{{listElement.color}}">
-                <h1>{{listElement.name}}</h1>
-                <span *ngFor='let detail of listElement.details'><h3 class="m-t-5">{{detail.text}}</h3></span>
-                <i class="fa fa-3x {{listElement.icon}}"></i>
+            <div class="thumbnail tile tile-wide tile-{{listElement.color}} col-md-3">
+                <div class="h3">{{listElement.name}}</div>
+                <span *ngFor='let detail of listElement.details; let last = last;'>
+                    <span class="h4 m-t-5">{{detail.text}}</span><small [hidden]="last">&nbsp;&bull;&nbsp;</small></span>
+                <div class="h4 m-t-5"></div>
+                <i class="fa fa-2x {{listElement.icon}}"></i>
             </div>
         </a>
     </span>
     </span>
+        </div>
+    </div>
 </div>
 
 <!-- Forms -->
@@ -80,7 +86,7 @@
                         <form>
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" (click)="form.close(false)">&times;</button>
-                                <h4 class="modal-title">{{form.title}}</h4>
+                                <h5 class="modal-title">{{form.title}}</h5>
                             </div>
                             <div class="modal-body">
                                 <div *ngFor='let row of form.rows;' class="row" [hidden]="!row.isVisible()">
@@ -90,7 +96,7 @@
                                         </div>
                                         <div *ngIf="field.type == 'label'">
                                             <div class="col-md-6">
-                                                <h4 class="modal-title">{{field.value}}</h4>
+                                                <h5 class="modal-title">{{field.value}}</h5>
                                             </div>
                                         </div>
                                         <div *ngIf="field.type == 'date'">
@@ -113,17 +119,17 @@
                                     <div class="col-md-2">
                                         <span *ngFor='let field of form.fields' class="pull-left">
                                             <span *ngIf="field.type == 'deleteButton'">
-                                                <input type="button" class="btn btn-default btn-lg" (click)="field.onClick()" value="{{field.name}}"/>
+                                                <input type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
                                             </span>
                                         </span>
                                     </div>
                                     <div class="col-md-10">
                                         <span *ngFor='let field of form.fields'>
                                             <span *ngIf="field.type == 'okButton'">
-                                                <input type="button" class="btn btn-default btn-lg" (click)="field.onClick()" value="{{field.name}}"/>
+                                                <input type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
                                             </span>
                                             <span *ngIf="field.type == 'cancelButton'">
-                                                <input type="button" class="btn btn-default btn-lg" (click)="field.onClick()" value="{{field.name}}"/>
+                                                <input type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
                                             </span>
                                         </span>
                                     </div>

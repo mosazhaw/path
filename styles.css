@@ -1,4 +1,19 @@
 /* custom css styles */
+.row {
+    padding-top: 20px;
+}
+
+.breadcrumb {
+    background-color: #fff;
+}
+
+/* probably to be removed with bootstrap v4 */
+.m-t-5 {
+    margin-top: 5px !important;
+}
+
+
+/* modal and form*/
 .path-autocomplete {
     position:absolute;
     z-index: 99;
@@ -14,23 +29,15 @@
     width: 100%;
 }
 
-.modal-dialog {
-    width: 50%;
-}
-
-.row {
-    padding-top: 20px;
-}
-
-.breadcrumb {
-    background-color: #fff;
-}
-
-/* probably to be removed with bootstrap v4 */
-.m-t-5 {
-    margin-top: 5px !important;
-}
-
 .mandatory {
     font-weight: bold;
+}
+
+.modal-dialog {
+    width: 70%;
+}
+
+.modal-body {
+    max-height: calc(100vh - 212px);
+    overflow-y: auto;
 }
