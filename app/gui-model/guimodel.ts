@@ -1615,16 +1615,6 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Add Input KPI",
-                            "icon": "fa-tachometer",
-                            "color": "green",
-                            "form": {
-                                "form": "KpiForm",
-                                "mode": "create"
-                            }
-                        },
-                        {
-                            "type": "button",
                             "name": "New Input Parameter",
                             "icon": "fa-pencil",
                             "color": "green",
@@ -1632,17 +1622,6 @@ export class GuiModel {
                                 "form": "KpiForm",
                                 "mode": "create"
                             }
-                        },
-                        {
-                            "type": "list",
-                            "name": "Input KPIs",
-                            "icon": "fa-tachometer",
-                            "color": "wet-asphalt",
-                            "form": {
-                                "form": "KpiForm",
-                                "mode": "update"
-                            },
-                            "data": [{"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"}]
                         },
                         {
                             "type": "list",
