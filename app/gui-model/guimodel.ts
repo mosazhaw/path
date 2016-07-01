@@ -483,6 +483,31 @@ export class GuiModel {
                         },
                         {
                             "type": "autocomplete",
+                            "name": "Support Process",
+                            "wordSearchEnabled": false,
+                            "data": ["Support Process S1","Support Process S2","Support Process S3","Support Process S4"],
+                            "width": 1,
+                            "newRow": true,
+                            "mandatory": true
+                        },
+                        {
+                            "type": "autocomplete",
+                            "name": "Subprocess",
+                            "wordSearchEnabled": false,
+                            "data": ["Subprocess 1","Subprocess 2","Subprocess 3","Subprocess 4"],
+                            "width": 1
+                        },
+                        {
+                            "type": "autocomplete",
+                            "name": "KPI Category",
+                            "wordSearchEnabled": false,
+                            "data": ["KPI Category 1","KPI Category 2","KPI Category 3","KPI Category 4"],
+                            "width": 2,
+                            "newRow": true,
+                            "mandatory": true
+                        },
+                        {
+                            "type": "autocomplete",
                             "name": "Output Unit",
                             "wordSearchEnabled": false,
                             "actions": [{"name": "New..."}],
@@ -1611,16 +1636,6 @@ export class GuiModel {
                             "form": {
                                 "form": "KpiForm",
                                 "mode": "update"
-                            }
-                        },
-                        {
-                            "type": "button",
-                            "name": "New Input Parameter",
-                            "icon": "fa-pencil",
-                            "color": "green",
-                            "form": {
-                                "form": "KpiForm",
-                                "mode": "create"
                             }
                         },
                         {

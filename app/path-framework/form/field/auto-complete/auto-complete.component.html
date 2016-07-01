@@ -5,7 +5,7 @@
             <!-- Auto Complete -->
             <div *ngIf="field.filteredList.length > 0">
                 <div class="path-autocomplete list-group">
-                    <a *ngFor="let item of field.filteredList" class="list-group-item" href="#" (click)="field.select(item)"><h4>{{item}}</h4></a>
+                    <a *ngFor="let item of field.filteredList" class="list-group-item" href="#" (click)="field.select(item)"><h5>{{item}}</h5></a>
                 </div>
             </div>
             <!-- Action -->
