@@ -27,6 +27,7 @@ export class List extends path.PageElement implements IList {
 
     public refresh() {
         // callback function for data
+        console.log("refresh list");
         let dataHandler = (data:any) => {
             let oldButtons = this.buttons; // TODO handle delete case
             for (let item of data) {
@@ -42,7 +43,7 @@ export class List extends path.PageElement implements IList {
                 button.handler = this._buttonHandler;
                 button.name = item.name;
                 button.setIcon(this.icon);
-                button.setColor(item["color"] != null ? item["color"] : this.color);
+                button.setColor(item["color"] != null ? item["color"] : (button.color == null ? this.color : button.color));
                 // button details
                 if (item["details"] != null) {
                     button.details = [];
@@ -78,7 +79,9 @@ export class List extends path.PageElement implements IList {
             // fake a key for mock data
             for (let mock of this.mockData) {
                 count++;
-                mock["key"] = count;
+                if (mock["key"] == null) {
+                    mock["key"] = count;
+                }
             }
             dataHandler(this.mockData);
         }

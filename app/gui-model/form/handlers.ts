@@ -56,14 +56,31 @@ export class CategoryListButtonHandler implements path.IButtonHandler {
 
     public doClick(button:path.IButton) {
         console.log("clicked " + button.getColor());
-        if (button.getColor() == "belize-hole") {
+        if (button.getColor() == "pumpkin") {
             let yesHandler = () => {
-                button.setColor("concrete");
+                button.setColor("asbestos");
             };
             let noHandler = () => {};
             button.getApp().yesNo("Do you really want to deselect category " + button.getName() + "?", yesHandler, noHandler);
         } else {
-            button.setColor("belize-hole");
+            button.setColor("pumpkin");
+        }
+    }
+
+}
+
+export class SupportProcessListButtonHandler implements path.IButtonHandler {
+
+    public doClick(button:path.IButton) {
+        console.log("clicked " + button.getColor());
+        if (button.getColor() == "pumpkin") {
+            let yesHandler = () => {
+                button.setColor("asbestos");
+            };
+            let noHandler = () => {};
+            button.getApp().yesNo("Do you really want to deselect support process " + button.getName() + "?", yesHandler, noHandler);
+        } else {
+            button.setColor("pumpkin");
         }
     }
 

@@ -689,7 +689,7 @@ export class GuiModel {
                             "type": "button",
                             "name": "Categories",
                             "icon": "fa-cube",
-                            "color": "asbestos",
+                            "color": "pumpkin",
                             "page": "quickscancategoriespage"
                         },
                         {
@@ -746,8 +746,9 @@ export class GuiModel {
                             "type": "list",
                             "name": "Categories",
                             "icon": "fa-cube",
+                            "color": "pumpkin",
                             "buttonhandler": "CategoryListButtonHandler",
-                            "data": [{"name": "Category B1", "color": "belize-hole"}, {"name": "Category B2", "color": "belize-hole"}, {"name": "Category B3", "color": "belize-hole"}, {"name": "Category B4", "color": "belize-hole"}, {"name": "Category B5", "color": "belize-hole"}, {"name": "Category B6", "color": "belize-hole"}, {"name": "Category B7", "color": "belize-hole"}, {"name": "Category B8", "color": "belize-hole"}, {"name": "Category B9", "color": "belize-hole"}, {"name": "Category B10", "color": "belize-hole"}]
+                            "data": [{"key":1, "name": "Category B1"}, {"key":2, "name": "Category B2"}, {"key":3, "name": "Category B3"}, {"key":4, "name": "Category B4"}, {"key":5, "name": "Category B5"}, {"key":6, "name": "Category B6"}, {"key":7, "name": "Category B7"}, {"key":8, "name": "Category B8"}, {"key":9, "name": "Category B9"}, {"key":10, "name": "Category B10"}]
                         }
                     ]
                 },
@@ -847,7 +848,7 @@ export class GuiModel {
                             "type": "button",
                             "name": "Support Processes",
                             "icon": "fa-cube",
-                            "color": "asbestos",
+                            "color": "pumpkin",
                             "page": "deepscansupportprocessespage"
                         },
                         {
@@ -903,7 +904,8 @@ export class GuiModel {
                             "type": "list",
                             "name": "Support Processes",
                             "icon": "fa-cube",
-                            "color": "asbestos",
+                            "color": "pumpkin",
+                            "buttonhandler": "SupportProcessListButtonHandler",
                             "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
                         }
                     ]
@@ -919,7 +921,7 @@ export class GuiModel {
                             "type": "list",
                             "name": "Support Processes",
                             "icon": "fa-cube",
-                            "color": "asbestos",
+                            "color": "pumpkin",
                             "page": "deepscanintervieweeprocessespage",
                             "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
                         },
@@ -1510,7 +1512,7 @@ export class GuiModel {
                             "color": "asbestos",
                             "search": true,
                             "page": "deepscanprocessesconfigurationpage",
-                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
+                            "data": [{"name": "Support Process S1", "color": "pumpkin"}, {"name": "Support Process S2", "color": "pumpkin"}, {"name": "Support Process S3", "color": "pumpkin"}, {"name": "Support Process S4", "color": "pumpkin"}, {"name": "Support Process S5", "color": "pumpkin"}, {"name": "Support Process S6", "color": "pumpkin"}, {"name": "Support Process S7", "color": "pumpkin"}, {"name": "Support Process S8", "color": "pumpkin"}, {"name": "Support Process S9", "color": "pumpkin"}, {"name": "Support Process S10", "color": "pumpkin"}]
                         }
                     ]
                 },
