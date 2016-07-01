@@ -1289,6 +1289,7 @@ export class GuiModel {
                             "name": "Maturity Level Schemas",
                             "icon": "fa-signal",
                             "color": "wet-asphalt",
+                            "width": 2,
                             "page": "maturitylevelschemasconfigurationpage"
                         },
                         {
@@ -1296,6 +1297,7 @@ export class GuiModel {
                             "name": "Cases",
                             "icon": "fa-briefcase",
                             "color": "carrot",
+                            "width": 2,
                             "page": "quickscancasesconfigurationpage"
                         },
                     ]
@@ -1312,6 +1314,7 @@ export class GuiModel {
                             "name": "New Maturity Level Schema",
                             "icon": "fa-signal",
                             "color": "green",
+                            "width": 2,
                             "form": {
                                 "form": "MaturityLevelSchemaForm",
                                 "mode": "create"
@@ -1340,6 +1343,7 @@ export class GuiModel {
                             "name": "Edit Maturity Level Schema",
                             "icon": "fa-arrows-alt",
                             "color": "green",
+                            "width": 2,
                             "form": {
                                 "form": "MaturityLevelSchemaForm",
                                 "mode": "update"
@@ -1350,6 +1354,7 @@ export class GuiModel {
                             "name": "New Maturity Level",
                             "icon": "fa-signal",
                             "color": "green",
+                            "width": 2,
                             "form": {
                                 "form": "MaturityLevelForm",
                                 "mode": "create"
