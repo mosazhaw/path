@@ -551,6 +551,22 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
+                            "id": "ScanType",
+                            "type": "RadioGroupField",
+                            "name": "Scan",
+                            "defaultKey": "QuickScan",
+                            "radios": [{
+                                type: "radio",
+                                name: "QuickScan",
+                                key: "QuickScan"
+                            }, {
+                                type: "radio",
+                                name: "DeepScan",
+                                key: "DeepScan"
+                            }
+                            ]
+                        },
+                        {
                             "type": "deleteButton",
                             "name": "Delete"
                         },
@@ -1270,6 +1286,14 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "Maturity Level Schemas",
+                            "icon": "fa-signal",
+                            "color": "carrot",
+                            "width": 2,
+                            "page": "maturitylevelschemasconfigurationpage"
+                        },
+                        {
+                            "type": "button",
                             "name": "Reports and Handbooks",
                             "icon": "fa-file",
                             "color": "wisteria",
@@ -1283,14 +1307,6 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "backbutton",
-                        },
-                        {
-                            "type": "button",
-                            "name": "Maturity Level Schemas",
-                            "icon": "fa-signal",
-                            "color": "wet-asphalt",
-                            "width": 2,
-                            "page": "maturitylevelschemasconfigurationpage"
                         },
                         {
                             "type": "button",
