@@ -627,6 +627,50 @@ export class GuiModel {
                             "name": "Ok"
                         }
                     ]
+                },
+                {
+                    "id": "CapabilitiesQuestionForm",
+                    "title": "Category - Capability Questions",
+                    "formFieldList": [
+                        {
+                            "id": "question",
+                            "type": "RadioGroupField",
+                            "name": "Question 1",
+                            "defaultKey": null,
+                            "radios": [{
+                                type: "radio",
+                                name: "Isolated",
+                                key: 1
+                            }, {
+                                type: "radio",
+                                name: "Basic",
+                                key: 2
+                            }, {
+                                type: "radio",
+                                name: "Moderate",
+                                key: 3
+                            }, {
+                                type: "radio",
+                                name: "Advanced",
+                                key: 4
+                            }, {
+                                type: "radio",
+                                name: "World-Class",
+                                key: 5
+                            }
+                            ],
+                            "width": 2
+
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Previous"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Next"
+                        }
+                    ]
                 }
             ],
             "pageList": [
@@ -821,25 +865,8 @@ export class GuiModel {
                     "title": "Capabilities",
                     "elementList": [
                         {
-                            "type": "backbutton",
-                        },
-                        {
-                            "type": "button",
-                            "name": "TODO - Capabilities Questions",
-                            "icon": "fa-cube",
-                            "color": "asbestos",
-                        },
-                        {
                             "type": "form",
-                            "name": "TODO - Capabilities Questions",
-                            "form": "CompanyForm"
-                        },
-                        {
-                            "type": "button",
-                            "name": "Next",
-                            "icon": "fa-forward",
-                            "color": "silver",
-                            "page": "categorycapabilitiespage",
+                            "form": "CapabilitiesQuestionForm"
                         }
                     ]
                 },

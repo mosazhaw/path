@@ -52,7 +52,9 @@
     </a>
 	<!-- Inline Form -->
     <span *ngIf='pageElement.type == "form"'>
-	    <path-form [form]="pageElement.form"></path-form>
+	    <div class="col-md-12">
+	        <path-form [form]="pageElement.form"></path-form>
+		</div>
     </span>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
