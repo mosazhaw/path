@@ -50,6 +50,10 @@
             <i class="fa fa-2x fa-backward"></i>
         </div>
     </a>
+	<!-- Inline Form -->
+    <span *ngIf='pageElement.type == "form"'>
+	    <path-form [form]="pageElement.form"></path-form>
+    </span>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
     <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green col-md-3">

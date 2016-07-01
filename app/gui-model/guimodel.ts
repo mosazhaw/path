@@ -830,6 +830,11 @@ export class GuiModel {
                             "color": "asbestos",
                         },
                         {
+                            "type": "form",
+                            "name": "TODO - Capabilities Questions",
+                            "form": "CompanyForm"
+                        },
+                        {
                             "type": "button",
                             "name": "Next",
                             "icon": "fa-forward",

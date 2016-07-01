@@ -110,6 +110,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                             backButton.color = modelElement["color"];
                             element = backButton;
                             break;
+                        case "form":
+                            let form = new path.InlineForm(this);
+                            form.form = this.createForm(modelElement["form"], null, null);
+                            element = form;
+                            break;
                         case "list":
                             let dynamicList:path.List = new path.List(this, this.pathService);
                             dynamicList.search = modelElement["search"];
@@ -152,6 +157,13 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public setCurrentForm(formId:string, key:number, handler:string) {
+        let form:path.Form = this.createForm(formId,key,handler);
+        if (form != null) {
+            this._formStack.push(form);
+        }
+    }
+
+    private createForm(formId:string, key:number, handler:string):path.Form {
         let form:path.Form = null;
         for (var modelForm of this.getGuiModel().application.formList) {
             if (modelForm.id === formId) {
@@ -262,9 +274,8 @@ export abstract class PathAppComponent implements path.IPathApp {
         }
         if (form == null && formId != null) {
             alert("Missing form: " + formId);
-        } else {
-            this._formStack.push(form);
         }
+        return form;
     }
 
 }
