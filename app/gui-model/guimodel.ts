@@ -806,7 +806,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "categorycapabilitiespage",
-                            "data": [{"name": "Category B1"}, {"name": "Category B2"}, {"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B5"}, {"name": "Category B6"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B9"}, {"name": "Category B10"}]
+                            "data": [{"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B10"}]
                         },
                         {
                             "type": "button",
