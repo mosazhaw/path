@@ -38,21 +38,21 @@
     <span *ngFor='let pageElement of _pageStack[_pageStack.length - 1].content'>
     <!-- Button -->
     <a *ngIf='pageElement.type == "button"' (click)="pageElement.onClick()" class="fa-links">
-        <div class="thumbnail tile tile-medium tile-{{pageElement.color}} col-md-3">
+        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{pageElement.color}} col-md-3">
             <div class="h3">{{pageElement.name}}</div>
             <i class="fa fa-2x {{pageElement.icon}}"></i>
         </div>
     </a>
     <!-- Back Button -->
     <a *ngIf='pageElement.type == "backbutton"' (click)="pageElement.onClick()" class="fa-links">
-        <div class="thumbnail tile tile-medium tile-silver col-md-3">
+        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-silver col-md-3">
             <div class="h3">Back</div>
             <i class="fa fa-2x fa-backward"></i>
         </div>
     </a>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
-    <div *ngIf='pageElement.search' class="thumbnail tile tile-medium tile-green col-md-3">
+    <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green col-md-3">
         <div class="input-group input-group-sm">
             <div class="h3">Search</div>
             <i class="fa fa-2x fa-search"></i>

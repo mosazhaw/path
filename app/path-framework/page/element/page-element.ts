@@ -6,6 +6,7 @@ export class PageElement implements IPageElement {
     private _id:string;
     private _name:string;
     private _type:string;
+    private _width:number;
 
     constructor(app:path.IPathApp) {
         this._app = app;
@@ -37,5 +38,13 @@ export class PageElement implements IPageElement {
 
     set id(value:string) {
         this._id = value;
+    }
+
+    get width():number {
+        return this._width;
+    }
+
+    set width(value:number) {
+        this._width = value;
     }
 }

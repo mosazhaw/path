@@ -135,6 +135,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     element.name = modelElement["name"];
                     element.type = modelElement.type;
+                    if (modelElement["width"] != null) {
+                        element.width = modelElement["width"];
+                    } else {
+                        element.width = 1;
+                    }
                     page.content.push(element);
                 }
             }

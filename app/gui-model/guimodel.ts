@@ -1176,7 +1176,8 @@ export class GuiModel {
                             "name": "Users",
                             "icon": "fa-user",
                             "color": "alizarin",
-                            "page": "userspage"
+                            "page": "userspage",
+                            "width": 2
                         },
                         {
                             "type": "button",
@@ -1184,6 +1185,7 @@ export class GuiModel {
                             "icon": "fa-gear",
                             "color": "wet-asphalt",
                             "page": "configurationpage",
+                            "width": 2
                         }
                     ]
                 },
@@ -1230,20 +1232,23 @@ export class GuiModel {
                             "name": "QuickScan",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
-                            "page": "quickscanconfigurationpage"
+                            "page": "quickscanconfigurationpage",
+                            "width": 2
                         },
                         {
                             "type": "button",
                             "name": "DeepScan",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
-                            "page": "deepscanconfigurationpage"
+                            "page": "deepscanconfigurationpage",
+                            "width": 2
                         },
                         {
                             "type": "button",
                             "name": "Reports and Handbooks",
                             "icon": "fa-file",
-                            "color": "wisteria"
+                            "color": "wisteria",
+                            "width": 2
                         }
                     ]
                 },
