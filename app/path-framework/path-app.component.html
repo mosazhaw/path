@@ -77,9 +77,9 @@
         </a>
     </span>
     <!-- Radar Chart Element -->
-    <span *ngIf='pageElement.type == "RadarChartElement"'>
+    <span *ngIf='pageElement.type == "ChartElement"'>
 	    <div class="col-md-10">
-	        <path-radar-chart></path-radar-chart>
+	        <path-radar-chart [chart]="pageElement"></path-radar-chart>
 		</div>
     </span>
     </span>

@@ -1353,7 +1353,8 @@ export class GuiModel {
 
                         },
                         {
-                            "type": "RadarChartElement",
+                            "type": "ChartElement",
+                            "chartType": "radar",
                             "name": "Spider Report"
                         }
                     ]
@@ -1407,8 +1408,9 @@ export class GuiModel {
 
                         },
                         {
-                            "type": "RadarChartElement",
-                            "name": "Spider Report"
+                            "type": "ChartElement",
+                            "chartType": "bar",
+                            "name": "Gap Report"
                         }
                     ]
                 },

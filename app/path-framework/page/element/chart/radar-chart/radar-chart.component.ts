@@ -1,4 +1,4 @@
-import {Component, ViewChild, AfterViewInit} from '@angular/core';
+import {Component, ViewChild, AfterViewInit, Input, Output} from '@angular/core';
 import {PageElement} from "../../page-element";
 
 declare var Chart: any;
@@ -9,6 +9,9 @@ declare var Chart: any;
 })
 export class RadarChartComponent implements AfterViewInit {
     @ViewChild('canvasElement') containerElement;
+    @Input('chart')
+    @Output('chart')
+    chart:RadarChartElement;
 
     ngAfterViewInit() {
         Chart.defaults.global.defaultFontSize = 16;
@@ -24,16 +27,31 @@ export class RadarChartComponent implements AfterViewInit {
         ctx.canvas.width = this.containerElement.nativeElement.parentElement.parentElement.parentElement.clientWidth;
         ctx.canvas.height = 600;
 
-        console.log(ctx);
-        var thisChart = new Chart(ctx , {
-            type: "radar",
-            data: lineChartData,
-            options: {
-                responsive: false,
-                maintainAspectRatio: false
-            }
-        });
-        console.log(thisChart);
+        console.log(this.chart.chartType);
+
+        if (this.chart.chartType == 'bar') {
+            var thisChart = new Chart(ctx , {
+                type: "horizontalBar",
+                data: lineChartData,
+                stacked: true,
+                options: {
+                    responsive: false,
+                    maintainAspectRatio: false
+                }
+            });
+            console.log(thisChart);
+        } else {
+            var thisChart = new Chart(ctx , {
+                type: "radar",
+                data: lineChartData,
+                options: {
+                    responsive: false,
+                    maintainAspectRatio: false
+                }
+            });
+            console.log(thisChart);
+        }
+
     }
 
     initializeData() {
@@ -70,6 +88,7 @@ export class RadarChartComponent implements AfterViewInit {
 }
 
 export class RadarChartElement extends PageElement {
+    private _chartType:string;
 
     // Radar
     public radarChartLabels:string[] = ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'];
@@ -89,4 +108,11 @@ export class RadarChartElement extends PageElement {
         console.log(e);
     }
 
+    get chartType():string {
+        return this._chartType;
+    }
+
+    set chartType(value:string) {
+        this._chartType = value;
+    }
 }
