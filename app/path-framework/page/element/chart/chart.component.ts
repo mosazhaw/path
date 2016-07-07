@@ -1,17 +1,17 @@
 import {Component, ViewChild, AfterViewInit, Input, Output} from '@angular/core';
-import {PageElement} from "../../page-element";
+import {PageElement} from "../page-element";
 
 declare var Chart: any;
 
 @Component({
     selector: 'path-radar-chart',
-    templateUrl: 'app/path-framework/page/element/chart/radar-chart/radar-chart.component.html'
+    templateUrl: 'app/path-framework/page/element/chart/chart.component.html'
 })
-export class RadarChartComponent implements AfterViewInit {
+export class ChartComponent implements AfterViewInit {
     @ViewChild('canvasElement') containerElement;
     @Input('chart')
     @Output('chart')
-    chart:RadarChartElement;
+    chart:ChartElement;
 
     ngAfterViewInit() {
         Chart.defaults.global.defaultFontSize = 16;
@@ -87,7 +87,7 @@ export class RadarChartComponent implements AfterViewInit {
     }
 }
 
-export class RadarChartElement extends PageElement {
+export class ChartElement extends PageElement {
     private _chartType:string;
 
     // Radar
