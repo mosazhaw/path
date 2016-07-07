@@ -15,8 +15,6 @@ export class RadarChartComponent implements AfterViewInit {
 
         let lineChartData = this.initializeData();
         var ctx = this.containerElement.nativeElement.getContext("2d");
-        // ctx.canvas.width = this.containerElement.nativeElement.parentElement.width;
-        // ctx.canvas.height = this.containerElement.nativeElement.parentElement.height;
         ctx.canvas.width = 1000;
         ctx.canvas.height = 800;
 
