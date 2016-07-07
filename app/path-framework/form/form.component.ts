@@ -1,6 +1,6 @@
 import {Component, Input, Output} from "@angular/core";
 import {PathService} from "../service/path.service";
-import {IForm, IPathApp, IFormHandler} from "../pathinterface";
+import {IForm, IPathApp, IFormHandler, IFormBean} from "../pathinterface";
 import {ValueField} from "./field/value-field";
 import {FormField} from "./field/form-field";
 import {AutoCompleteComponent} from "./field/auto-complete/auto-complete.component";
@@ -29,6 +29,7 @@ export class Form implements IForm {
     private _rows:FormRow[] = [];
     private _handler:IFormHandler;
     private _url:string;
+    private _bean:IFormBean;
 
     constructor(private pathService:PathService, private app:IPathApp) {
     }
@@ -85,6 +86,14 @@ export class Form implements IForm {
         this._url = value;
     }
 
+    get bean():IFormBean {
+        return this._bean;
+    }
+
+    set bean(value:IFormBean) {
+        this._bean = value;
+    }
+
     public updateRows() {
         let rows:FormRow[] = [];
 
@@ -105,7 +114,7 @@ export class Form implements IForm {
         if (save) {
             // call close handler
             if (this.handler != null) {
-                this.handler.doSave(this);
+                this.handler.doSave(this._bean);
             }
             let data = {};
             for (let field of this._fields) {

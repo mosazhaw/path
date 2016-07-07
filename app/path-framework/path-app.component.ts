@@ -112,7 +112,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "form":
                             let form = new path.InlineForm(this);
-                            form.form = this.createForm(modelElement["form"], null, null);
+                            form.form = this.createForm(modelElement["form"], null, modelElement["handler"]);
                             element = form;
                             break;
                         case "list":
@@ -278,7 +278,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formBean[form.fields[a].id] = form.fields[a];
                         }
                     }
-                    formHandler.doLoad(formBean);
+                    form.bean = formBean;
+                    formHandler.doLoad(form.bean);
                     form.handler = formHandler;
                 }
             }

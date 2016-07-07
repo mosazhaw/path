@@ -52,6 +52,60 @@ export class CompanyFormHandler implements path.IFormHandler {
 
 }
 
+export class DeepScanQuestionFormHandler implements path.IFormHandler {
+
+    public doLoad(form:forms.QuestionForm) {
+        console.log("loading question form");
+        form.formula.visible = false;
+        form.input1.visible = false;
+        form.input2.visible = false;
+        form.unit1.visible = false;
+        form.unit2.visible = false;
+        form.comment.visible = false;
+    }
+
+    public doSave(form:forms.QuestionForm) {
+        console.log("saving question form");
+        form.question.visible = false;
+
+        form.formula.visible = true;
+        form.input1.visible = true;
+        form.input2.visible = true;
+        form.unit1.visible = true;
+        form.unit2.visible = true;
+        form.comment.visible = true;
+        form.progress.setValue(form.progress.value + 10);
+    }
+
+    public doValidate(form:forms.QuestionForm) {
+        console.log("validating question form");
+    }
+
+}
+
+export class QuickScanQuestionFormHandler implements path.IFormHandler {
+
+    public doLoad(form:forms.QuestionForm) {
+        console.log("loading question form");
+        form.formula.visible = false;
+        form.input1.visible = false;
+        form.input2.visible = false;
+        form.unit1.visible = false;
+        form.unit2.visible = false;
+        form.comment.visible = false;
+    }
+
+    public doSave(form:forms.QuestionForm) {
+        console.log("saving question form");
+        form.progress.setValue(form.progress.value + 10);
+    }
+
+    public doValidate(form:forms.QuestionForm) {
+        console.log("validating question form");
+    }
+
+}
+
 export class CategoryListButtonHandler implements path.IButtonHandler {
 
     public doClick(button:path.IButton) {

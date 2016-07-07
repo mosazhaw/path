@@ -641,6 +641,7 @@ export class GuiModel {
                     "title": "Question",
                     "formFieldList": [
                         {
+                            "id": "progress",
                             "type": "ProgressBarField",
                             "name": "Progress",
                             "value": 10,
@@ -675,6 +676,49 @@ export class GuiModel {
                             ],
                             "width": 2
 
+                        },
+                        {
+                            "id": "formula",
+                            "type": "text",
+                            "name": "KPI Formula",
+                            "width": 2,
+                            "height": 8
+                        },
+                        {
+                            "id": "input1",
+                            "type": "text",
+                            "name": "Input Value 1",
+                            "newRow": true,
+                            "mandatory": true,
+                            "width": 1
+                        },
+                        {
+                            "id": "unit1",
+                            "type": "text",
+                            "name": "Unit 1",
+                            "width": 1
+                        },
+                        {
+                            "id": "input2",
+                            "type": "text",
+                            "name": "Input Value 2",
+                            "newRow": true,
+                            "mandatory": true,
+                            "width": 1
+                        },
+                        {
+                            "id": "unit2",
+                            "type": "text",
+                            "name": "Unit 2",
+                            "width": 1
+                        },
+                        {
+                            "id": "comment",
+                            "type": "text",
+                            "name": "Comment",
+                            "newRow": true,
+                            "width": 2,
+                            "height": 8
                         },
                         {
                             "type": "deleteButton",
@@ -884,7 +928,8 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "form",
-                            "form": "QuestionForm"
+                            "form": "QuestionForm",
+                            "handler": "QuickScanQuestionFormHandler"
                         }
                     ]
                 },
@@ -1036,18 +1081,19 @@ export class GuiModel {
                             "name": "Subprocesses",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "page": "processquestionspage",
+                            "page": "subprocessquestionspage",
                             "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
                         }
                     ]
                 },
                 {
-                    "id": "processquestionspage",
+                    "id": "subprocessquestionspage",
                     "title": "Questions",
                     "elementList": [
                         {
                             "type": "form",
-                            "form": "QuestionForm"
+                            "form": "QuestionForm",
+                            "handler": "DeepScanQuestionFormHandler"
                         }
                     ]
                 },
