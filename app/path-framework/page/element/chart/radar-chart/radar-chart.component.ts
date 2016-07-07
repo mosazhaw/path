@@ -15,8 +15,12 @@ export class RadarChartComponent implements AfterViewInit {
 
         let lineChartData = this.initializeData();
         var ctx = this.containerElement.nativeElement.getContext("2d");
-        ctx.canvas.width = 1000;
-        ctx.canvas.height = 800;
+        // TODO workaround for chart.js responsive feature not working
+        console.log(this.containerElement.nativeElement.parentElement.parentElement);
+        console.log(this.containerElement.nativeElement.parentElement.parentElement.parentElement.clientWidth);
+        console.log(this.containerElement.nativeElement.parentElement.parentElement.parentElement.clientHeight);
+        ctx.canvas.width = this.containerElement.nativeElement.parentElement.parentElement.parentElement.clientWidth;
+        ctx.canvas.height = 600;
 
         console.log(ctx);
         var thisChart = new Chart(ctx , {
@@ -24,7 +28,7 @@ export class RadarChartComponent implements AfterViewInit {
             data: lineChartData,
             options: {
                 responsive: false,
-                maintainAspectRatio: true
+                maintainAspectRatio: false
             }
         });
         console.log(thisChart);
