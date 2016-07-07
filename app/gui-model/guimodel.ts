@@ -1313,7 +1313,8 @@ export class GuiModel {
                             "type": "button",
                             "name": "Gap Analysis",
                             "icon": "fa-bar-chart",
-                            "color": "carrot"
+                            "color": "carrot",
+                            "page": "gapreportpage"
                         },
                         {
                             "type": "button",
@@ -1388,6 +1389,26 @@ export class GuiModel {
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
                             "data": [{"name": "QuickScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "QuickScan Two", "details": [ "05/2017", "Alpha Hospital" ]}, {"name": "QuickScan Three", "details": [ "11/2017", "Alpha Hospital" ]}]
+                        }
+                    ]
+                },
+                {
+                    "id": "gapreportpage",
+                    "title": "Spider Report",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Compare To",
+                            "icon": "fa-fast-forward",
+                            "color": "alizarin"
+
+                        },
+                        {
+                            "type": "RadarChartElement",
+                            "name": "Spider Report"
                         }
                     ]
                 },
