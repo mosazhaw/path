@@ -1057,18 +1057,11 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
-                            "name": "Input Parameters",
-                            "icon": "fa-pencil",
-                            "color": "wet-asphalt",
-                            "page": "deepscanintervieweeinputparameterspage"
-                        },
-                        {
                             "type": "list",
                             "name": "Support Processes",
                             "icon": "fa-cube",
                             "color": "pumpkin",
-                            "page": "deepscanintervieweeprocessespage",
+                            "page": "deepscanintervieweesubprocessespage",
                             "data": [{"name": "Support Process S2"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
                         },
                         {
@@ -1076,6 +1069,30 @@ export class GuiModel {
                             "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanintervieweesubprocessespage",
+                    "title": "Interviewee Processes",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Input Parameters",
+                            "icon": "fa-pencil",
+                            "color": "pumpkin",
+                            "page": "deepscanintervieweeinputparameterspage"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Subprocesses",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "page": "subprocessquestionspage",
+                            "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
                         }
                     ]
                 },
@@ -1107,23 +1124,6 @@ export class GuiModel {
                                 "handler": "KPIQuestionFormHandler"
                             },
                             "data": [{"name": "Anteil extern erbrachte Beschaffungs-Leistungen", "color": "silver"}, {"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch", "color": "silver"}, {"name": "Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik", "color": "silver"}, {"name": "Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung", "color": "silver"}, {"name": "Anzahl FTE Beschaffung"}, {"name": "Kosten je Bestellung"}, {"name": "Gesamtkosten Beschaffung pro Fall stationär"}, {"name": "Gesamtkosten Beschaffung pro Fall ambulant"}]
-                        }
-                    ]
-                },
-                {
-                    "id": "deepscanintervieweeprocessespage",
-                    "title": "Interviewee Processes",
-                    "elementList": [
-                        {
-                            "type": "backbutton",
-                        },
-                        {
-                            "type": "list",
-                            "name": "Subprocesses",
-                            "icon": "fa-cube",
-                            "color": "asbestos",
-                            "page": "subprocessquestionspage",
-                            "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
                         }
                     ]
                 },
