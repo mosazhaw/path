@@ -721,14 +721,17 @@ export class GuiModel {
                             "height": 8
                         },
                         {
+                            "id": "deleteButton",
                             "type": "deleteButton",
                             "name": "Previous"
                         },
                         {
+                            "id": "cancelButton",
                             "type": "cancelButton",
                             "name": "Data not available - Next"
                         },
                         {
+                            "id": "okButton",
                             "type": "okButton",
                             "name": "Save and Next"
                         }
@@ -1054,6 +1057,13 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
+                            "type": "button",
+                            "name": "Input Parameters",
+                            "icon": "fa-pencil",
+                            "color": "wet-asphalt",
+                            "page": "deepscanintervieweeinputparameterspage"
+                        },
+                        {
                             "type": "list",
                             "name": "Support Processes",
                             "icon": "fa-cube",
@@ -1066,6 +1076,37 @@ export class GuiModel {
                             "name": "Delete",
                             "icon": "fa-remove",
                             "color": "red"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanintervieweeinputparameterspage",
+                    "title": "Interviewee Input Parameters",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Input Parameter",
+                            "icon": "fa-pencil",
+                            "color": "pumpkin",
+                            "form": {
+                                "form": "QuestionForm",
+                                "handler": "InputParameterQuestionFormHandler"
+                            },
+                            "data": [{"name": "Anzahl Betten"}, {"name": "Anzahl Mittagessen"}]
+                        },
+                        {
+                            "type": "list",
+                            "name": "Key Performance Indicator",
+                            "icon": "fa-tachometer",
+                            "color": "wet-asphalt",
+                            "form": {
+                                "form": "QuestionForm",
+                                "handler": "KPIQuestionFormHandler"
+                            },
+                            "data": [{"name": "Anteil extern erbrachte Beschaffungs-Leistungen", "color": "silver"}, {"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch", "color": "silver"}, {"name": "Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik", "color": "silver"}, {"name": "Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung", "color": "silver"}, {"name": "Anzahl FTE Beschaffung"}, {"name": "Kosten je Bestellung"}, {"name": "Gesamtkosten Beschaffung pro Fall stationär"}, {"name": "Gesamtkosten Beschaffung pro Fall ambulant"}]
                         }
                     ]
                 },

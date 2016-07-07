@@ -83,6 +83,52 @@ export class DeepScanQuestionFormHandler implements path.IFormHandler {
 
 }
 
+export class InputParameterQuestionFormHandler implements path.IFormHandler {
+
+    public doLoad(form:forms.QuestionForm) {
+        console.log("loading question form");
+        form.cancelButton.name = 'Cancel';
+        form.okButton.name = 'OK';
+        form.deleteButton.visible = false;
+        form.question.visible = false;
+        form.progress.visible = false;
+        form.formula.visible = false;
+        form.input2.visible = false;
+        form.unit2.visible = false;
+        form.comment.visible = false;
+    }
+
+    public doSave(form:forms.QuestionForm) {
+        console.log("saving question form");
+    }
+
+    public doValidate(form:forms.QuestionForm) {
+        console.log("validating question form");
+    }
+
+}
+
+export class KPIQuestionFormHandler implements path.IFormHandler {
+
+    public doLoad(form:forms.QuestionForm) {
+        form.cancelButton.name = 'Cancel';
+        form.okButton.name = 'OK';
+        form.deleteButton.visible = false;
+        form.progress.visible = false;
+        form.question.visible = false;
+        console.log("loading question form");
+    }
+
+    public doSave(form:forms.QuestionForm) {
+        console.log("saving question form");
+    }
+
+    public doValidate(form:forms.QuestionForm) {
+        console.log("validating question form");
+    }
+
+}
+
 export class QuickScanQuestionFormHandler implements path.IFormHandler {
 
     public doLoad(form:forms.QuestionForm) {

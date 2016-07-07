@@ -129,7 +129,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             dynamicList.color = modelElement["color"];
                             if (modelElement["form"] != null) {
                                 dynamicList.form = modelElement["form"]["form"];
-                                dynamicList.formHandler = modelElement["form"]["formHandler"];
+                                dynamicList.formHandler = modelElement["form"]["handler"];
                             }
                             dynamicList.page = modelElement["page"];
                             dynamicList.icon = modelElement["icon"];

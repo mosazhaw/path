@@ -36,14 +36,14 @@
 		<div class="modal-footer">
 			<div class="row">
 				<div class="col-md-2">
-					<span *ngFor='let field of form.fields' class="pull-left">
+					<span *ngFor='let field of form.fields' class="pull-left" [hidden]="!field.visible">
                         <span *ngIf="field.type == 'deleteButton'">
                             <input type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
                         </span>
                     </span>
 				</div>
 				<div class="col-md-10">
-                    <span *ngFor='let field of form.fields'>
+                    <span *ngFor='let field of form.fields' [hidden]="!field.visible">
                         <span *ngIf="field.type == 'okButton'">
                             <input type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
                         </span>

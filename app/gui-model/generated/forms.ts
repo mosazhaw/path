@@ -4,6 +4,8 @@ import {AutoCompleteField} from "../../path-framework/form/field/auto-complete/a
 import {RadioGroupField} from "../../path-framework/form/field/radio/radio-group.component";
 import {ProgressBarField} from "../../path-framework/form/field/progress-bar/progress-bar.component";
 import {TextField} from "../../path-framework/form/field/text/text-field.component";
+import {OkButton} from "../../path-framework/form/field/button/ok-button";
+import {CancelButton} from "../../path-framework/form/field/button/cancel-button";
 
 // TODO in future versions these classes will be generated from gui model
 
@@ -128,6 +130,9 @@ export class QuestionForm implements path.IFormBean {
     private _input2:path.TextField;
     private _unit2:path.TextField;
     private _comment:path.TextField;
+    private _deleteButton:path.FormField;
+    private _okButton:path.OkButton;
+    private _cancelButton:path.CancelButton;
 
     get question():RadioGroupField {
         return this._question;
@@ -191,6 +196,30 @@ export class QuestionForm implements path.IFormBean {
 
     set comment(value:TextField) {
         this._comment = value;
+    }
+
+    get deleteButton():FormField {
+        return this._deleteButton;
+    }
+
+    set deleteButton(value:FormField) {
+        this._deleteButton = value;
+    }
+
+    get okButton():OkButton {
+        return this._okButton;
+    }
+
+    set okButton(value:OkButton) {
+        this._okButton = value;
+    }
+
+    get cancelButton():CancelButton {
+        return this._cancelButton;
+    }
+
+    set cancelButton(value:CancelButton) {
+        this._cancelButton = value;
     }
 }
 
