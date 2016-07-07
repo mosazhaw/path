@@ -374,6 +374,14 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
+                            "type": "autocomplete",
+                            "name": "Maturity Level Schema",
+                            "wordSearchEnabled": false,
+                            "actions": [],
+                            "data": ["Maturity Level Schema 1", "Maturity Level Schema 2", "Maturity Level Schema 3"],
+                            "width": 2
+                        },
+                        {
                             "type": "deleteButton",
                             "name": "Delete"
                         },
@@ -1652,13 +1660,13 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "search": true,
-                            "page": "deepscanprocessesconfigurationpage",
+                            "page": "deepscansupportprocessconfigurationpage",
                             "data": [{"name": "Support Process S1", "color": "pumpkin"}, {"name": "Support Process S2", "color": "pumpkin"}, {"name": "Support Process S3", "color": "pumpkin"}, {"name": "Support Process S4", "color": "pumpkin"}, {"name": "Support Process S5", "color": "pumpkin"}, {"name": "Support Process S6", "color": "pumpkin"}, {"name": "Support Process S7", "color": "pumpkin"}, {"name": "Support Process S8", "color": "pumpkin"}, {"name": "Support Process S9", "color": "pumpkin"}, {"name": "Support Process S10", "color": "pumpkin"}]
                         }
                     ]
                 },
                 {
-                    "id": "deepscanprocessesconfigurationpage",
+                    "id": "deepscansupportprocessconfigurationpage",
                     "title": "Support Processes",
                     "elementList": [
                         {
@@ -1676,7 +1684,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "New Process",
+                            "name": "New Subprocess",
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
@@ -1689,12 +1697,76 @@ export class GuiModel {
                             "name": "Subprocesses",
                             "icon": "fa-cube",
                             "color": "asbestos",
+                            "page": "deepscansubprocessconfigurationpage",
+                            "search": true,
+                            "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Qualitative Question",
+                            "icon": "fa-question",
+                            "color": "green",
+                            "form": {
+                                "form": "CapabilityForm",
+                                "mode": "create"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Qualitative Questions",
+                            "icon": "fa-cube",
+                            "color": "lime",
+                            "form": {
+                                "form": "CapabilityForm",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Qualitative Question 1"}, {"name": "Qualitative Question 2"}, {"name": "Qualitative Question 3"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "Delete",
+                            "icon": "fa-remove",
+                            "color": "red"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscansubprocessconfigurationpage",
+                    "title": "Subprocess Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Edit Subprocess",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
                             "form": {
                                 "form": "SubprocessForm",
                                 "mode": "update"
                             },
-                            "search": true,
-                            "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Qualitative Question",
+                            "icon": "fa-question",
+                            "color": "green",
+                            "form": {
+                                "form": "CapabilityForm",
+                                "mode": "create"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Qualitative Questions",
+                            "icon": "fa-cube",
+                            "color": "lime",
+                            "form": {
+                                "form": "CapabilityForm",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Qualitative Question 1"}, {"name": "Qualitative Question 2"}, {"name": "Qualitative Question 3"}, {"name": "Qualitative Question 4"}]
                         },
                         {
                             "type": "button",
