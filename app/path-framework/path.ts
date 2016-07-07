@@ -9,6 +9,7 @@ export * from './page/element/button/button-detail';
 export * from './page/element/button/back-button';
 export * from './page/element/inline-form/inline-form';
 export * from './page/element/list/list';
+export * from './page/element/chart/radar-chart/radar-chart.component';
 
 export * from './form/form.component'
 

@@ -137,6 +137,10 @@ export abstract class PathAppComponent implements path.IPathApp {
                             dynamicList.refresh();
                             element = dynamicList;
                             break;
+                        case "RadarChartElement":
+                            let chart = new path.RadarChartElement(this);
+                            element = chart;
+                            break;
                     }
                     element.name = modelElement["name"];
                     element.type = modelElement.type;

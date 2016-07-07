@@ -10,7 +10,7 @@ import * as beans from './gui-model/generated/forms'
 @Component({
     selector: 'path-application',
     templateUrl: 'app/path-framework/path-app.component.html',
-    directives: [path.FormComponent],
+    directives: [path.FormComponent, path.RadarChartComponent],
     // providers: [{ provide: path.PathService, useClass: path.PathMockService }]
     providers: [path.PathService]
 })

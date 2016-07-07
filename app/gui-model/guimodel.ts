@@ -1264,6 +1264,7 @@ export class GuiModel {
                             "type": "button",
                             "name": "Spider Graph",
                             "icon": "fa-line-chart",
+                            "page": "spiderreportpage",
                             "color": "pink"
                         },
                         {
@@ -1277,6 +1278,19 @@ export class GuiModel {
                             "name": "Introduction Handbook",
                             "icon": "fa-file",
                             "color": "wisteria"
+                        }
+                    ]
+                },
+                {
+                    "id": "spiderreportpage",
+                    "title": "Spider Report",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "RadarChartElement",
+                            "name": "Spider Report"
                         }
                     ]
                 },
