@@ -637,62 +637,8 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "CapabilitiesQuestionForm",
-                    "title": "Category - Capability Questions",
-                    "formFieldList": [
-                        {
-                            "type": "ProgressBarField",
-                            "name": "Progress",
-                            "value": 10,
-                            "width": 2
-                        },
-                        {
-                            "id": "question",
-                            "type": "RadioGroupField",
-                            "name": "Question 1",
-                            "defaultKey": null,
-                            "radios": [{
-                                type: "radio",
-                                name: "Isolated",
-                                key: 1
-                            }, {
-                                type: "radio",
-                                name: "Basic",
-                                key: 2
-                            }, {
-                                type: "radio",
-                                name: "Moderate",
-                                key: 3
-                            }, {
-                                type: "radio",
-                                name: "Advanced",
-                                key: 4
-                            }, {
-                                type: "radio",
-                                name: "World-Class",
-                                key: 5
-                            }
-                            ],
-                            "width": 2
-
-                        },
-                        {
-                            "type": "deleteButton",
-                            "name": "Previous"
-                        },
-                        {
-                            "type": "cancelButton",
-                            "name": "Data not available - Next"
-                        },
-                        {
-                            "type": "okButton",
-                            "name": "Save and Next"
-                        }
-                    ]
-                },
-                {
-                    "id": "KPIQuestionForm",
-                    "title": "KPI Question",
+                    "id": "QuestionForm",
+                    "title": "Question",
                     "formFieldList": [
                         {
                             "type": "ProgressBarField",
@@ -938,7 +884,7 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "form",
-                            "form": "CapabilitiesQuestionForm"
+                            "form": "QuestionForm"
                         }
                     ]
                 },
@@ -1101,7 +1047,7 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "form",
-                            "form": "KPIQuestionForm"
+                            "form": "QuestionForm"
                         }
                     ]
                 },

@@ -14,8 +14,8 @@ describe("Form Reference Test", function() {
 
         for (let page of guiModel.application.pageList) {
             for (let element of page.elementList) {
-                if (element["form"] != null && forms.indexOf(element["form"]["form"]) == -1) {
-                    errors.push("missing form " + element["form"]["form"] + " on " + element["name"]);
+                if (element.hasOwnProperty("form") && element["form"]["form"] != null && forms.indexOf(element["form"]["form"]) == -1) {
+                    errors.push("missing form " + element["form"]["form"] + " on " + element["name"] + " (" + element["type"] + ")");
                 }
             }
         }
@@ -39,7 +39,7 @@ describe("Page Reference Test", function() {
 
         for (let page of guiModel.application.pageList) {
             for (let element of page.elementList) {
-                if (element["page"] != null && pages.indexOf(element["page"]) == -1) {
+                if (element.hasOwnProperty("page") && pages.indexOf(element["page"]) == -1) {
                     errors.push("missing page " + element["page"] + " on " + element["name"]);
                 }
             }
