@@ -11,6 +11,8 @@ export class RadarChartComponent implements AfterViewInit {
     @ViewChild('canvasElement') containerElement;
 
     ngAfterViewInit() {
+        Chart.defaults.global.defaultFontSize = 16;
+
         console.log(this.containerElement);
 
         let lineChartData = this.initializeData();
@@ -37,29 +39,30 @@ export class RadarChartComponent implements AfterViewInit {
     initializeData() {
         var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
         var lineChartData = {
-            labels : ["January","February","March","April","May","June","July"],
+            labels : ["Process Definition","Duplication","Timing","Cleansing","Archiving"],
             datasets : [
                 {
-                    label: "My First dataset",
+                    label: "QuickScan One",
                     fillColor : "rgba(220,220,220,0.2)",
                     strokeColor : "rgba(220,220,220,1)",
                     pointColor : "rgba(220,220,220,1)",
                     pointStrokeColor : "#fff",
                     pointHighlightFill : "#fff",
                     pointHighlightStroke : "rgba(220,220,220,1)",
-                    data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+                    data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
                 },
                 {
-                    label: "My Second dataset",
+                    label: "QuickScan Two",
                     fillColor : "rgba(151,187,205,0.2)",
                     strokeColor : "rgba(151,187,205,1)",
                     pointColor : "rgba(151,187,205,1)",
                     pointStrokeColor : "#fff",
                     pointHighlightFill : "#fff",
                     pointHighlightStroke : "rgba(151,187,205,1)",
-                    data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+                    data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
                 }
-            ]
+            ],
+            pointLabelFontSize: 16
 
         }
         return lineChartData;
