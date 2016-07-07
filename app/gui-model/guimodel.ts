@@ -681,8 +681,12 @@ export class GuiModel {
                             "name": "Previous"
                         },
                         {
+                            "type": "cancelButton",
+                            "name": "Data not available - Next"
+                        },
+                        {
                             "type": "okButton",
-                            "name": "Next"
+                            "name": "Save and Next"
                         }
                     ]
                 },
