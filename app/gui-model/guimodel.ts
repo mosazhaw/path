@@ -1344,8 +1344,50 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
+                            "type": "button",
+                            "name": "Compare To",
+                            "icon": "fa-fast-forward",
+                            "color": "alizarin",
+                            "page": "spidercompaniespage"
+
+                        },
+                        {
                             "type": "RadarChartElement",
                             "name": "Spider Report"
+                        }
+                    ]
+                },
+                {
+                    "id": "spidercompaniespage",
+                    "title": "Companies",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Company List",
+                            "icon": "fa-home",
+                            "color": "purple",
+                            "search": true,
+                            "page": "spiderprojectspage",
+                            "data": [{"name": "Alpha Hospital"}, {"name": "Blue Hospital"}, {"name": "Charisma Hospital"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "spiderprojectspage",
+                    "title": "Spider Other Projects",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "QuickScans List",
+                            "icon": "fa-fast-forward",
+                            "color": "alizarin",
+                            "data": [{"name": "QuickScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "QuickScan Two", "details": [ "05/2017", "Alpha Hospital" ]}, {"name": "QuickScan Three", "details": [ "11/2017", "Alpha Hospital" ]}]
                         }
                     ]
                 },
