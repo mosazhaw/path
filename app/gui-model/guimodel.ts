@@ -1263,7 +1263,7 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "Spider Graph",
-                            "icon": "fa-line-chart",
+                            "icon": "fa-first-order",
                             "page": "spiderreportpage",
                             "color": "pink"
                         },
