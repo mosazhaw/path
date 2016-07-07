@@ -1404,8 +1404,8 @@ export class GuiModel {
                             "type": "button",
                             "name": "Compare To",
                             "icon": "fa-fast-forward",
-                            "color": "alizarin"
-
+                            "color": "alizarin",
+                            "page": "spidercompaniespage"
                         },
                         {
                             "type": "ChartElement",
