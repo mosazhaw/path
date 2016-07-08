@@ -1307,7 +1307,8 @@ export class GuiModel {
                             "type": "button",
                             "name": "Completeness Check",
                             "icon": "fa-thumbs-o-up",
-                            "color": "green"
+                            "color": "green",
+                            "page": "completenessreportpage"
                         },
                         {
                             "type": "button",
@@ -1411,6 +1412,37 @@ export class GuiModel {
                             "type": "ChartElement",
                             "chartType": "bar",
                             "name": "Gap Report"
+                        }
+                    ]
+                },
+                {
+                    "id": "completenessreportpage",
+                    "title": "Completeness Report",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Qualitative Questions",
+                            "icon": "fa-cube",
+                            "color": "lime",
+                            "form": {
+                                "form": "CapabilityForm",
+                                "mode": "update"
+                            },
+                            "data": [{"name": "Qualitative Question 1", "details": ["Frau Dr. Müller"]}, {"name": "Qualitative Question 5", "details": ["Frau Dr. Lisib"]}, {"name": "Qualitative Question 7", "details": ["Herr Dr. Müller"]}]
+                        },
+                        {
+                            "type": "list",
+                            "name": "Key Performance Indicator",
+                            "icon": "fa-tachometer",
+                            "color": "wet-asphalt",
+                            "form": {
+                                "form": "QuestionForm",
+                                "handler": "KPIQuestionFormHandler"
+                            },
+                            "data": [{"name": "Anteil extern erbrachte Beschaffungs-Leistungen", "details": ["Herr Dr. Müller"]}, {"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital", "details": ["Herr Dr. Müller"]}, {"name": "Anzahl FTE Beschaffung", "details": ["Herr Dr. Müller"]}, {"name": "Kosten je Bestellung", "details": ["Herr Dr. Müller"]}, {"name": "Gesamtkosten Beschaffung pro Fall stationär", "details": ["Herr Dr. Müller"]}, {"name": "Gesamtkosten Beschaffung pro Fall ambulant", "details": ["Herr Dr. Müller"]}]
                         }
                     ]
                 },
