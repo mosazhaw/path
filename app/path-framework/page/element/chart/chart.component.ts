@@ -18,7 +18,6 @@ export class ChartComponent implements AfterViewInit {
 
         console.log(this.containerElement);
 
-        let lineChartData = this.initializeData();
         var ctx = this.containerElement.nativeElement.getContext("2d");
         // TODO workaround for chart.js responsive feature not working
         console.log(this.containerElement.nativeElement.parentElement.parentElement);
@@ -30,33 +29,86 @@ export class ChartComponent implements AfterViewInit {
         console.log(this.chart.chartType);
 
         if (this.chart.chartType == 'bar') {
-            var thisChart = new Chart(ctx , {
+            var data = {
+                labels: ["EAM Vision Development", "Roadmap", "Privacy", "Regulation", "EAM Vision Development", "Roadmap", "Privacy"],
+                datasets: [
+                    {
+                        label: "QuickScan One",
+                        backgroundColor: "rgba(255,255,255,255)",
+                        borderColor: "rgba(255,255,255,255)",
+                        borderWidth: 0,
+                        hoverBackgroundColor: "rgba(255,255,255,255)",
+                        hoverBorderColor: "rgba(255,255,255,255)",
+                        data: [20, 20, 15, 35, 20, 25, 20],
+                    },
+                    {
+                        label: "Start Gap",
+                        backgroundColor: "rgb(0, 153, 255)",
+                        borderColor: "rgba(255,255,255,255)",
+                        borderWidth: 0,
+                        hoverBackgroundColor: "rgb(0, 153, 255)",
+                        hoverBorderColor: "rgba(255,255,255,255)",
+                        data: [2,2,2,2,2,2,2],
+                    },
+                    {
+                        label: "Gap",
+                        backgroundColor: "rgba(255,99,132,0.2)",
+                        borderColor: "rgba(255,99,132,1)",
+                        borderWidth: 0,
+                        hoverBackgroundColor: "rgba(255,99,132,0.4)",
+                        hoverBorderColor: "rgba(255,99,132,1)",
+                        data: [65, 59, 80, 81, 56, 55, 40],
+                    },
+                    {
+                        label: "End Gap",
+                        backgroundColor: "rgb(51, 204, 51)",
+                        borderColor: "rgba(255,255,255,255)",
+                        borderWidth: 0,
+                        hoverBackgroundColor: "rgb(51, 204, 51)",
+                        hoverBorderColor: "rgba(255,255,255,255)",
+                        data: [2,2,2,2,2,2,2],
+                    },
+                ]
+            };
+
+            var barChart = new Chart(ctx , {
                 type: "horizontalBar",
-                data: lineChartData,
-                stacked: true,
+                data: data,
                 options: {
                     responsive: false,
-                    maintainAspectRatio: false
+                    maintainAspectRatio: false,
+                    scales: {
+                        xAxes: [{
+                            stacked: true
+                        }],
+                        yAxes: [{
+                            stacked: true
+                        }]
+                    },
+                    legend: {
+                        display: false
+                    }
                 }
             });
-            console.log(thisChart);
+            console.log(barChart);
+
         } else {
-            var thisChart = new Chart(ctx , {
+            var radarChart = new Chart(ctx , {
                 type: "radar",
-                data: lineChartData,
+                data: this.getRadarChartData(),
                 options: {
                     responsive: false,
                     maintainAspectRatio: false
                 }
             });
-            console.log(thisChart);
+            console.log(radarChart);
         }
 
     }
 
-    initializeData() {
+    getRadarChartData() {
         var randomScalingFactor = function(){ return Math.round(Math.random()*100)};
-        var lineChartData = {
+        var radarChartData = {
             labels : ["Process Definition","Duplication","Timing","Cleansing","Archiving"],
             datasets : [
                 {
@@ -83,7 +135,7 @@ export class ChartComponent implements AfterViewInit {
             pointLabelFontSize: 16
 
         }
-        return lineChartData;
+        return radarChartData;
     }
 }
 
