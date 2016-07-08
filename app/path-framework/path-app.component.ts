@@ -62,6 +62,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         let okButton:path.OkButton = new path.OkButton(form);
         okButton.type = "okButton";
         okButton.name = "Ok";
+        okButton.visible = true;
         okButton.handler = {
             doClick(button:path.IButton) {
                 yesHandler();
@@ -72,6 +73,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         let cancelButton:path.CancelButton = new path.CancelButton(form);
         cancelButton.type = "cancelButton";
         cancelButton.name = "Cancel";
+        cancelButton.visible = true;
         form.fields.push(cancelButton);
         form.updateRows();
 
