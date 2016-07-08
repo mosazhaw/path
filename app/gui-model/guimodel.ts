@@ -28,12 +28,12 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
-                            "id": "startDate",
+                            "id": "evtStartDate",
                             "type": "date",
                             "name": "Start Date",
                         },
                         {
-                            "id": "endDate",
+                            "id": "evtEndDate",
                             "type": "date",
                             "name": "End Date"
                         },
