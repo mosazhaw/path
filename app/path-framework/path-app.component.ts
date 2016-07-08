@@ -9,6 +9,7 @@ export abstract class PathAppComponent implements path.IPathApp {
     private _formStack:path.Form[] = [];
 
     constructor(private pathService:path.PathService) {
+        this.pathService.serverPing(this.getBackendUrl());
     }
 
     protected abstract getGuiModel();

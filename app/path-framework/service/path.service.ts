@@ -7,6 +7,19 @@ export class PathService {
     constructor(@Inject(Http) private http:Http) {
     }
 
+    serverPing(server:string) {
+            this.http.get(server + "/ping")
+                .map((res:Response) => res.json())
+                .subscribe(
+                    err => {
+                        console.error(err)
+                    },
+                    () => {
+                        console.log('server Ping to ' + server + '/ping finished')
+                    }
+                );
+    }
+
     serverGet(server:string, url:string, processor:(data:any) => any) {
         if (url != null) {
             // fetch json data from url
