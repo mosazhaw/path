@@ -10,4 +10,11 @@ export class ValueField<T> extends FormField {
     public setValue(value:T) {
         this._value = value;
     }
+
+    public fromJson(modelFormField) {
+        super.fromJson(modelFormField);
+        if (modelFormField["value"] != null) {
+            this.setValue(modelFormField["value"]);
+        }
+    }
 }

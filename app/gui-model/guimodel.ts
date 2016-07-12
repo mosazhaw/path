@@ -653,7 +653,6 @@ export class GuiModel {
                             "name": "Actual",
                             "mandatory": true,
                             "defaultKey": null,
-                            "alignment": "vertical",
                             "radios": [{
                                 type: "radio",
                                 name: "Isolated",
@@ -685,7 +684,6 @@ export class GuiModel {
                             "name": "Target",
                             "mandatory": true,
                             "defaultKey": null,
-                            "alignment": "vertical",
                             "radios": [{
                                 type: "radio",
                                 name: "Isolated",
@@ -710,6 +708,41 @@ export class GuiModel {
                             ],
                             "width": 2
 
+                        },
+                        {
+                            "id": "answer1-text",
+                            "type": "label",
+                            "name": "Isolated",
+                            "value": "Data Management process undocumented, unstructured and manual.",
+                            "width": 2
+                        },
+                        {
+                            "id": "answer1-text",
+                            "type": "label",
+                            "name": "Basic",
+                            "value": "Manual master data processing is in place. However, data cleansing is project based and there is no structured data archiving.",
+                            "width": 2
+                        },
+                        {
+                            "id": "answer1-text",
+                            "type": "label",
+                            "name": "Moderate",
+                            "value": "Most Data Management Process defined and implemented. Some validations steps or approval steps.",
+                            "width": 2
+                        },
+                        {
+                            "id": "answer1-text",
+                            "type": "label",
+                            "name": "Advanced",
+                            "value": "tbd.",
+                            "width": 2
+                        },
+                        {
+                            "id": "answer1-text",
+                            "type": "label",
+                            "name": "World Class",
+                            "value": "tbd.",
+                            "width": 2
                         },
                         {
                             "id": "formula",

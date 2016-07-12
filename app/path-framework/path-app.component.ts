@@ -57,6 +57,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         let message:path.TextField = new path.TextField(form);
         message.type = "label";
         message.visible = true;
+        message.labelVisible = false;
         message.setValue(text);
         form.fields.push(message);
         let okButton:path.OkButton = new path.OkButton(form);
@@ -187,6 +188,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                         case "text":
                         {
                             formField = new path.TextField(form);
+                            formField.fromJson(modelFormField);
+                            break;
+                        }
+                        case "label":
+                        {
+                            formField = new path.ValueField(form);
                             formField.fromJson(modelFormField);
                             break;
                         }

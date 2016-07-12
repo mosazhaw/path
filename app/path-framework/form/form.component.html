@@ -11,7 +11,8 @@
 						<path-textfield [field]="field"></path-textfield>
 					</div>
 					<div *ngIf="field.type == 'label'">
-						<div class="col-md-6">
+						<path-form-field-label [hidden]="!field.labelVisible" [label]="field.name" [mandatory]="field.mandatory"></path-form-field-label>
+						<div [class.col-md-4]="field.labelVisible" [class.col-md-6]="!field.labelVisible">
 							<h5 class="modal-title">{{field.value}}</h5>
 						</div>
 					</div>

@@ -9,6 +9,7 @@ export class FormField implements IFormField {
     private _width:number;
     private _newRow:boolean;
     private _visible:boolean;
+    private _labelVisible:boolean;
     private _mandatory:boolean;
     private _actions:Action[] = [];
 
@@ -91,10 +92,22 @@ export class FormField implements IFormField {
         this._type = value;
     }
 
+    get labelVisible():boolean {
+        return this._labelVisible;
+    }
+
+    set labelVisible(value:boolean) {
+        this._labelVisible = value;
+    }
+
     public fromJson(modelFormField) {
         this.visible = true;
         if (modelFormField["visible"] != null) {
             this.visible = modelFormField["visible"];
+        }
+        this.labelVisible = true;
+        if (modelFormField["labelVisible"] != null) {
+            this.labelVisible = modelFormField["labelVisible"];
         }
         this.width = 1;
         if (modelFormField["width"] != null) {
