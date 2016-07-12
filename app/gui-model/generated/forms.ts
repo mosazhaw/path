@@ -6,6 +6,7 @@ import {ProgressBarField} from "../../path-framework/form/field/progress-bar/pro
 import {TextField} from "../../path-framework/form/field/text/text-field.component";
 import {OkButton} from "../../path-framework/form/field/button/ok-button";
 import {CancelButton} from "../../path-framework/form/field/button/cancel-button";
+import {ValueField} from "../../path-framework/form/field/value-field";
 
 // TODO in future versions these classes will be generated from gui model
 
@@ -122,7 +123,13 @@ export class ProjectForm implements path.IFormBean {
 }
 
 export class QuestionForm implements path.IFormBean {
-    private _question:path.RadioGroupField;
+    private _questionActual:path.RadioGroupField;
+    private _questionTarget:path.RadioGroupField;
+    private _answer1:path.ValueField<string>;
+    private _answer2:path.ValueField<string>;
+    private _answer3:path.ValueField<string>;
+    private _answer4:path.ValueField<string>;
+    private _answer5:path.ValueField<string>;
     private _progress:path.ProgressBarField;
     private _formula:path.TextField;
     private _input1:path.TextField;
@@ -134,12 +141,60 @@ export class QuestionForm implements path.IFormBean {
     private _okButton:path.OkButton;
     private _cancelButton:path.CancelButton;
 
-    get question():RadioGroupField {
-        return this._question;
+    get questionActual():RadioGroupField {
+        return this._questionActual;
     }
 
-    set question(value:RadioGroupField) {
-        this._question = value;
+    set questionActual(value:RadioGroupField) {
+        this._questionActual = value;
+    }
+
+    get questionTarget():RadioGroupField {
+        return this._questionTarget;
+    }
+
+    set questionTarget(value:RadioGroupField) {
+        this._questionTarget = value;
+    }
+
+    get answer1():ValueField<string> {
+        return this._answer1;
+    }
+
+    set answer1(value:ValueField<string>) {
+        this._answer1 = value;
+    }
+
+    get answer2():ValueField<string> {
+        return this._answer2;
+    }
+
+    set answer2(value:ValueField<string>) {
+        this._answer2 = value;
+    }
+
+    get answer3():ValueField<string> {
+        return this._answer3;
+    }
+
+    set answer3(value:ValueField<string>) {
+        this._answer3 = value;
+    }
+
+    get answer4():ValueField<string> {
+        return this._answer4;
+    }
+
+    set answer4(value:ValueField<string>) {
+        this._answer4 = value;
+    }
+
+    get answer5():ValueField<string> {
+        return this._answer5;
+    }
+
+    set answer5(value:ValueField<string>) {
+        this._answer5 = value;
     }
 
     get progress():ProgressBarField {

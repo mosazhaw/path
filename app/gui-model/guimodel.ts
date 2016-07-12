@@ -648,7 +648,7 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "question-actual",
+                            "id": "questionActual",
                             "type": "RadioGroupField",
                             "name": "Actual",
                             "mandatory": true,
@@ -679,7 +679,7 @@ export class GuiModel {
 
                         },
                         {
-                            "id": "question-target",
+                            "id": "questionTarget",
                             "type": "RadioGroupField",
                             "name": "Target",
                             "mandatory": true,
@@ -710,35 +710,35 @@ export class GuiModel {
 
                         },
                         {
-                            "id": "answer1-text",
+                            "id": "answer1",
                             "type": "label",
                             "name": "Isolated",
                             "value": "Data Management process undocumented, unstructured and manual.",
                             "width": 2
                         },
                         {
-                            "id": "answer1-text",
+                            "id": "answer2",
                             "type": "label",
                             "name": "Basic",
                             "value": "Manual master data processing is in place. However, data cleansing is project based and there is no structured data archiving.",
                             "width": 2
                         },
                         {
-                            "id": "answer1-text",
+                            "id": "answer3",
                             "type": "label",
                             "name": "Moderate",
                             "value": "Most Data Management Process defined and implemented. Some validations steps or approval steps.",
                             "width": 2
                         },
                         {
-                            "id": "answer1-text",
+                            "id": "answer4",
                             "type": "label",
                             "name": "Advanced",
                             "value": "tbd.",
                             "width": 2
                         },
                         {
-                            "id": "answer1-text",
+                            "id": "answer5",
                             "type": "label",
                             "name": "World Class",
                             "value": "tbd.",
@@ -1171,6 +1171,13 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
+                            "type": "button",
+                            "name": "KPI List",
+                            "icon": "fa-pencil",
+                            "color": "pumpkin",
+                            "page": "deepscanintervieweekpispage"
+                        },
+                        {
                             "type": "list",
                             "name": "Input Parameter",
                             "icon": "fa-pencil",
@@ -1180,6 +1187,15 @@ export class GuiModel {
                                 "handler": "InputParameterQuestionFormHandler"
                             },
                             "data": [{"name": "Anzahl Betten"}, {"name": "Anzahl Mittagessen"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanintervieweekpispage",
+                    "title": "Interviewee KPIs",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
                         },
                         {
                             "type": "list",

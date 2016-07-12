@@ -66,7 +66,13 @@ export class DeepScanQuestionFormHandler implements path.IFormHandler {
 
     public doSave(form:forms.QuestionForm) {
         console.log("saving question form");
-        form.question.visible = false;
+        form.questionActual.visible = false;
+        form.questionTarget.visible = false;
+        form.answer1.visible = false;
+        form.answer2.visible = false;
+        form.answer3.visible = false;
+        form.answer4.visible = false;
+        form.answer5.visible = false;
 
         form.formula.visible = true;
         form.input1.visible = true;
@@ -90,7 +96,13 @@ export class InputParameterQuestionFormHandler implements path.IFormHandler {
         form.cancelButton.name = 'Cancel';
         form.okButton.name = 'OK';
         form.deleteButton.visible = false;
-        form.question.visible = false;
+        form.questionActual.visible = false;
+        form.questionTarget.visible = false;
+        form.answer1.visible = false;
+        form.answer2.visible = false;
+        form.answer3.visible = false;
+        form.answer4.visible = false;
+        form.answer5.visible = false;
         form.progress.visible = false;
         form.formula.visible = false;
         form.input2.visible = false;
@@ -115,7 +127,13 @@ export class KPIQuestionFormHandler implements path.IFormHandler {
         form.okButton.name = 'OK';
         form.deleteButton.visible = false;
         form.progress.visible = false;
-        form.question.visible = false;
+        form.questionActual.visible = false;
+        form.questionTarget.visible = false;
+        form.answer1.visible = false;
+        form.answer2.visible = false;
+        form.answer3.visible = false;
+        form.answer4.visible = false;
+        form.answer5.visible = false;
         console.log("loading question form");
     }
 
