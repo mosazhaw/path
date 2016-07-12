@@ -16,6 +16,7 @@ export class RadioGroupComponent {
 
 export class RadioGroupField extends ValueField<any> {
     private _radios:Radio[] = [];
+    private _horizontal:boolean;
 
     get radios():Radio[] {
         return this._radios;
@@ -23,6 +24,14 @@ export class RadioGroupField extends ValueField<any> {
 
     set radios(value:Radio[]) {
         this._radios = value;
+    }
+
+    get horizontal():boolean {
+        return this._horizontal;
+    }
+
+    set horizontal(value:boolean) {
+        this._horizontal = value;
     }
 
     public doClick(key:string) {
@@ -46,6 +55,12 @@ export class RadioGroupField extends ValueField<any> {
 
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
+        this._horizontal = true;
+        if (modelFormField["alignment"] != null) {
+            if (modelFormField["alignment"] == "vertical") {
+                this._horizontal = false;
+            }
+        }
         for (var radioModel of modelFormField["radios"]) {
             let radio = new Radio(this.getForm());
             radio.name = radioModel.name;

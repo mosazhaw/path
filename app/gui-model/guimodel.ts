@@ -648,10 +648,44 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "question",
+                            "id": "question-actual",
                             "type": "RadioGroupField",
-                            "name": "Question 1",
+                            "name": "Actual",
+                            "mandatory": true,
                             "defaultKey": null,
+                            "alignment": "vertical",
+                            "radios": [{
+                                type: "radio",
+                                name: "Isolated",
+                                key: 1
+                            }, {
+                                type: "radio",
+                                name: "Basic",
+                                key: 2
+                            }, {
+                                type: "radio",
+                                name: "Moderate",
+                                key: 3
+                            }, {
+                                type: "radio",
+                                name: "Advanced",
+                                key: 4
+                            }, {
+                                type: "radio",
+                                name: "World-Class",
+                                key: 5
+                            }
+                            ],
+                            "width": 2
+
+                        },
+                        {
+                            "id": "question-target",
+                            "type": "RadioGroupField",
+                            "name": "Target",
+                            "mandatory": true,
+                            "defaultKey": null,
+                            "alignment": "vertical",
                             "radios": [{
                                 type: "radio",
                                 name: "Isolated",
@@ -898,7 +932,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "pumpkin",
                             "buttonhandler": "CategoryListButtonHandler",
-                            "data": [{"key":1, "name": "Category B1"}, {"key":2, "name": "Category B2"}, {"key":3, "name": "Category B3"}, {"key":4, "name": "Category B4"}, {"key":5, "name": "Category B5"}, {"key":6, "name": "Category B6"}, {"key":7, "name": "Category B7"}, {"key":8, "name": "Category B8"}, {"key":9, "name": "Category B9"}, {"key":10, "name": "Category B10"}]
+                            "data": [{"key":1, "name": "MDM QuickScan"}, {"key":2, "name": "Category B2"}, {"key":3, "name": "Category B3"}, {"key":4, "name": "Category B4"}, {"key":5, "name": "Category B5"}, {"key":6, "name": "Category B6"}, {"key":7, "name": "Category B7"}, {"key":8, "name": "Category B8"}, {"key":9, "name": "Category B9"}, {"key":10, "name": "Category B10"}]
                         }
                     ]
                 },
@@ -915,7 +949,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "categorycapabilitiespage",
-                            "data": [{"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B10"}]
+                            "data": [{"name": "MDM QuickScan"}, {"name": "Category B4"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B10"}]
                         },
                         {
                             "type": "button",
