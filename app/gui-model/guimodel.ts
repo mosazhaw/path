@@ -795,7 +795,7 @@ export class GuiModel {
                         {
                             "id": "cancelButton",
                             "type": "cancelButton",
-                            "name": "Data not available - Next"
+                            "name": "Skip and Next"
                         },
                         {
                             "id": "okButton",
@@ -1160,12 +1160,6 @@ export class GuiModel {
                             "color": "asbestos",
                             "page": "subprocessquestionspage",
                             "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
-                        },
-                        {
-                            "type": "button",
-                            "name": "Skip (Data not available)",
-                            "icon": "fa-times",
-                            "color": "red",
                         }
                     ]
                 },
