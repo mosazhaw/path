@@ -1503,7 +1503,8 @@ export class GuiModel {
                             "type": "button",
                             "name": "Download",
                             "icon": "fa-file-excel-o",
-                            "color": "alizarin"
+                            "color": "alizarin",
+                            "buttonhandler": "ReportDownloadButtonHandler",
                         }
                     ]
                 },

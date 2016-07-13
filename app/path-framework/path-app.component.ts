@@ -106,6 +106,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                             if (parentPageElement != null) {
                                 button.key = (<path.Button>parentPageElement).key; // TODO
                             }
+                            if (modelElement["buttonhandler"] != null) {
+                                button.handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
+                            }
                             element = button;
                             break;
                         case "backbutton":

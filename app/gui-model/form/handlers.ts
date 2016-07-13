@@ -204,6 +204,15 @@ export class SupportProcessListButtonHandler implements path.IButtonHandler {
 
 }
 
+export class ReportDownloadButtonHandler implements path.IButtonHandler {
+
+    public doClick(button:path.IButton) {
+        console.log("open excel doc");
+        window.location.assign(button.getApp().getBackendUrl() + "/report/completenesscheck");
+    }
+
+}
+
 export class CompanyActionHandler implements path.IActionHandler {
 
     doClick(field:path.IFormField, action:path.IAction) {
