@@ -1174,19 +1174,19 @@ export class GuiModel {
                             "type": "button",
                             "name": "KPI List",
                             "icon": "fa-pencil",
-                            "color": "pumpkin",
+                            "color": "wet-asphalt",
                             "page": "deepscanintervieweekpispage"
                         },
                         {
                             "type": "list",
                             "name": "Input Parameter",
                             "icon": "fa-pencil",
-                            "color": "pumpkin",
+                            "color": "alizarin",
                             "form": {
                                 "form": "QuestionForm",
                                 "handler": "InputParameterQuestionFormHandler"
                             },
-                            "data": [{"name": "Anzahl Betten"}, {"name": "Anzahl Mittagessen"}]
+                            "data": [{"name": "Anzahl Betten", "color": "emerald"}, {"name": "Anzahl Mittagessen", "color": "emerald"}, {"name": "Anzahl Mitarbeiter"}, {"name": "Bruttogeschossfläche"}, {"name": "Stromverbrauch"}]
                         }
                     ]
                 },
@@ -1201,12 +1201,12 @@ export class GuiModel {
                             "type": "list",
                             "name": "Key Performance Indicator",
                             "icon": "fa-tachometer",
-                            "color": "wet-asphalt",
+                            "color": "alizarin",
                             "form": {
                                 "form": "QuestionForm",
                                 "handler": "KPIQuestionFormHandler"
                             },
-                            "data": [{"name": "Anteil extern erbrachte Beschaffungs-Leistungen", "color": "silver"}, {"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch", "color": "silver"}, {"name": "Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik", "color": "silver"}, {"name": "Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung", "color": "silver"}, {"name": "Anzahl FTE Beschaffung"}, {"name": "Kosten je Bestellung"}, {"name": "Gesamtkosten Beschaffung pro Fall stationär"}, {"name": "Gesamtkosten Beschaffung pro Fall ambulant"}]
+                            "data": [{"name": "Anteil extern erbrachte Beschaffungs-Leistungen", "color": "emerald"}, {"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital", "color": "emerald"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch", "color": "emerald"}, {"name": "Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik", "color": "emerald"}, {"name": "Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung", "color": "emerald"}, {"name": "Anzahl FTE Beschaffung", "color": "emerald"}, {"name": "Kosten je Bestellung"}, {"name": "Gesamtkosten Beschaffung pro Fall stationär"}, {"name": "Gesamtkosten Beschaffung pro Fall ambulant"}]
                         }
                     ]
                 },
