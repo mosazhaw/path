@@ -1594,6 +1594,7 @@ export class GuiModel {
                             "name": "Reports and Handbooks",
                             "icon": "fa-file",
                             "color": "wisteria",
+                            "page": "reportsconfigurationpage",
                             "width": 2
                         }
                     ]
@@ -2065,6 +2066,52 @@ export class GuiModel {
                         }
                     ]
                 },
+                {
+                    "id": "reportsconfigurationpage",
+                    "title": "Report Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Assessment Report",
+                            "icon": "fa-file",
+                            "color": "wisteria",
+                            "page": "reportchaptersconfigurationpage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Introduction Handbook",
+                            "icon": "fa-file",
+                            "color": "wisteria",
+                            "page": "reportchaptersconfigurationpage"
+                        }
+                    ]
+                },
+                {
+                    "id": "reportchaptersconfigurationpage",
+                    "title": "Report Chapter Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Chapter",
+                            "icon": "fa-home",
+                            "color": "green"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Chapters",
+                            "icon": "fa-book",
+                            "color": "pomegra",
+                            "page": "reportchaptersconfigurationpage",
+                            "data": [{"name": "Chapter 1"}, {"name": "Chapter 2"}, {"name": "Chapter 3"}]
+                        }
+                    ]
+                }
             ]
         }
     };
