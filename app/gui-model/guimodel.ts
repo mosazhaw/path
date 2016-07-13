@@ -2078,19 +2078,19 @@ export class GuiModel {
                             "name": "Assessment Report",
                             "icon": "fa-file",
                             "color": "wisteria",
-                            "page": "reportchaptersconfigurationpage"
+                            "page": "reportassessmentconfigurationpage"
                         },
                         {
                             "type": "button",
                             "name": "Introduction Handbook",
                             "icon": "fa-file",
                             "color": "wisteria",
-                            "page": "reportchaptersconfigurationpage"
+                            "page": "reporthandbookconfigurationpage"
                         }
                     ]
                 },
                 {
-                    "id": "reportchaptersconfigurationpage",
+                    "id": "reportassessmentconfigurationpage",
                     "title": "Report Chapter Configuration",
                     "elementList": [
                         {
@@ -2107,8 +2107,29 @@ export class GuiModel {
                             "name": "Chapters",
                             "icon": "fa-book",
                             "color": "pomegra",
-                            "page": "reportchaptersconfigurationpage",
-                            "data": [{"name": "Chapter 1"}, {"name": "Chapter 2"}, {"name": "Chapter 3"}]
+                            "data": [{"name": "1 Management Summary"}, {"name": "2 Detailanalyse QuickScan"}, {"name": "3 Detailanalyse DeepScan"}]
+                        }
+                    ]
+                },
+                {
+                    "id": "reporthandbookconfigurationpage",
+                    "title": "Report Chapter Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "New Chapter",
+                            "icon": "fa-home",
+                            "color": "green"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Chapters",
+                            "icon": "fa-book",
+                            "color": "pomegra",
+                            "data": [{"name": "1 Dokumenteneigenschaften"}, {"name": "2 Management Summary"}, {"name": "3 Scope"}, {"name": "4 Organisationseinheiten"}, {"name": "5 Stammdaten"}, {"name": "6 Datenbereinigung"}, {"name": "7 Schnittstellen"}, {"name": "8 Eigenentwicklungen"}, {"name": "9 Geschäftsprozesse"}]
                         }
                     ]
                 }
