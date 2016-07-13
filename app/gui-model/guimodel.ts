@@ -1479,13 +1479,6 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
-                            "name": "Compare To",
-                            "icon": "fa-fast-forward",
-                            "color": "alizarin",
-                            "page": "spidercompaniespage"
-                        },
-                        {
                             "type": "ChartElement",
                             "chartType": "bar",
                             "name": "Gap Report"
