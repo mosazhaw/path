@@ -1186,7 +1186,7 @@ export class GuiModel {
                                 "form": "QuestionForm",
                                 "handler": "InputParameterQuestionFormHandler"
                             },
-                            "data": [{"name": "Anzahl Betten", "color": "emerald"}, {"name": "Anzahl Mittagessen", "color": "emerald"}, {"name": "Anzahl Mitarbeiter"}, {"name": "Bruttogeschossfläche"}, {"name": "Stromverbrauch"}]
+                            "data": [{"name": "Anzahl Betten", "color": "emerald"}, {"name": "Anzahl Mittagessen", "color": "emerald"}, {"name": "Anzahl Mitarbeiter", "color": "orange"}, {"name": "Bruttogeschossfläche"}, {"name": "Stromverbrauch"}]
                         }
                     ]
                 },
@@ -1500,26 +1500,10 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "list",
-                            "name": "Qualitative Questions",
-                            "icon": "fa-cube",
-                            "color": "lime",
-                            "form": {
-                                "form": "CapabilityForm",
-                                "mode": "update"
-                            },
-                            "data": [{"name": "Qualitative Question 1", "details": ["Frau Dr. Müller"]}, {"name": "Qualitative Question 5", "details": ["Frau Dr. Lisib"]}, {"name": "Qualitative Question 7", "details": ["Herr Dr. Müller"]}]
-                        },
-                        {
-                            "type": "list",
-                            "name": "Key Performance Indicator",
-                            "icon": "fa-tachometer",
-                            "color": "wet-asphalt",
-                            "form": {
-                                "form": "QuestionForm",
-                                "handler": "KPIQuestionFormHandler"
-                            },
-                            "data": [{"name": "Anteil extern erbrachte Beschaffungs-Leistungen", "details": ["Herr Dr. Müller"]}, {"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital", "details": ["Herr Dr. Müller"]}, {"name": "Anzahl FTE Beschaffung", "details": ["Herr Dr. Müller"]}, {"name": "Kosten je Bestellung", "details": ["Herr Dr. Müller"]}, {"name": "Gesamtkosten Beschaffung pro Fall stationär", "details": ["Herr Dr. Müller"]}, {"name": "Gesamtkosten Beschaffung pro Fall ambulant", "details": ["Herr Dr. Müller"]}]
+                            "type": "button",
+                            "name": "Download",
+                            "icon": "fa-file-excel-o",
+                            "color": "alizarin"
                         }
                     ]
                 },
