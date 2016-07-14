@@ -1383,9 +1383,9 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "Completeness Check",
-                            "icon": "fa-thumbs-o-up",
+                            "icon": "fa-file-excel-o",
                             "color": "green",
-                            "page": "completenessreportpage"
+                            "buttonhandler": "ReportDownloadButtonHandler"
                         },
                         {
                             "type": "button",
@@ -1482,22 +1482,6 @@ export class GuiModel {
                             "type": "ChartElement",
                             "chartType": "bar",
                             "name": "Gap Report"
-                        }
-                    ]
-                },
-                {
-                    "id": "completenessreportpage",
-                    "title": "Completeness Report",
-                    "elementList": [
-                        {
-                            "type": "backbutton",
-                        },
-                        {
-                            "type": "button",
-                            "name": "Download",
-                            "icon": "fa-file-excel-o",
-                            "color": "alizarin",
-                            "buttonhandler": "ReportDownloadButtonHandler",
                         }
                     ]
                 },
