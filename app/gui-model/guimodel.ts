@@ -2081,19 +2081,6 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "backbutton",
-                        },
-                        {
-                            "type": "button",
-                            "name": "New Chapter",
-                            "icon": "fa-home",
-                            "color": "green"
-                        },
-                        {
-                            "type": "list",
-                            "name": "Chapters",
-                            "icon": "fa-book",
-                            "color": "pomegra",
-                            "data": [{"name": "1 Management Summary"}, {"name": "2 Detailanalyse QuickScan"}, {"name": "3 Detailanalyse DeepScan"}]
                         }
                     ]
                 },
@@ -2103,19 +2090,6 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "backbutton",
-                        },
-                        {
-                            "type": "button",
-                            "name": "New Chapter",
-                            "icon": "fa-home",
-                            "color": "green"
-                        },
-                        {
-                            "type": "list",
-                            "name": "Chapters",
-                            "icon": "fa-book",
-                            "color": "pomegra",
-                            "data": [{"name": "1 Dokumenteneigenschaften"}, {"name": "2 Management Summary"}, {"name": "3 Scope"}, {"name": "4 Organisationseinheiten"}, {"name": "5 Stammdaten"}, {"name": "6 Datenbereinigung"}, {"name": "7 Schnittstellen"}, {"name": "8 Eigenentwicklungen"}, {"name": "9 Geschäftsprozesse"}]
                         }
                     ]
                 }
