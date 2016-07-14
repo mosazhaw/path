@@ -1385,7 +1385,7 @@ export class GuiModel {
                             "name": "Completeness Check",
                             "icon": "fa-file-excel-o",
                             "color": "green",
-                            "buttonhandler": "ReportDownloadButtonHandler"
+                            "buttonhandler": "CompletenessCheckReportDownloadButtonHandler"
                         },
                         {
                             "type": "button",
@@ -1404,14 +1404,16 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "Assessment Report",
-                            "icon": "fa-file",
-                            "color": "wisteria"
+                            "icon": "fa-file-word-o",
+                            "color": "wisteria",
+                            "buttonhandler": "AssessmentReportDownloadButtonHandler"
                         },
                         {
                             "type": "button",
                             "name": "Introduction Handbook",
-                            "icon": "fa-file",
-                            "color": "wisteria"
+                            "icon": "fa-file-word-o",
+                            "color": "wisteria",
+                            "buttonhandler": "IntroductionHandbookDownloadButtonHandler"
                         }
                     ]
                 },

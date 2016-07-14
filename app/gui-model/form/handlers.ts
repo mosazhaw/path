@@ -204,11 +204,29 @@ export class SupportProcessListButtonHandler implements path.IButtonHandler {
 
 }
 
-export class ReportDownloadButtonHandler implements path.IButtonHandler {
+export class CompletenessCheckReportDownloadButtonHandler implements path.IButtonHandler {
 
     public doClick(button:path.IButton) {
         console.log("open excel doc");
         window.location.assign(button.getApp().getBackendUrl() + "/report/completenesscheck");
+    }
+
+}
+
+export class AssessmentReportDownloadButtonHandler implements path.IButtonHandler {
+
+    public doClick(button:path.IButton) {
+        console.log("open excel doc");
+        window.location.assign(button.getApp().getBackendUrl() + "/report/assessmentreport");
+    }
+
+}
+
+export class IntroductionHandbookDownloadButtonHandler implements path.IButtonHandler {
+
+    public doClick(button:path.IButton) {
+        console.log("open excel doc");
+        window.location.assign(button.getApp().getBackendUrl() + "/report/introductionhandbook");
     }
 
 }
