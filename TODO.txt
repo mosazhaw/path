@@ -3,10 +3,15 @@ Deloitte
 - Question Pages / Wizard
 - Reports / Custom Components
 
-Questions
-- Elemente: Stammdatenobjekt, Bewegungsdatenobjekt, Organisationsstrukturen bei DeepScan?
-- KPI Kategorie - benötigt?
-- Berechtigungen: User auf Kunde?
+Fragen Assessment Report
+- Welche Elemente sind dynamisch aus erfassten Daten, dynamisch aus Admin-Konfiguraiton bzw. statisch oder werden vom Berater erfasst?
+- Unterschiedlicher Report im Falle von QuickScan und DeepScan? (Kapitel 2/3)
+- DeepScan: Unterscheidung Strukturkennzahlen, Leistungskennzahlen, Kostenkennzahlen?
+
+Fragen Einführungshandbuch
+- Welche Elemente sind dynamisch aus erfassten Daten, dynamisch aus Admin-Konfiguraiton bzw. statisch oder werden vom Berater erfasst?
+- Pflege Stammdaten, Bewegungsdaten, OE-Strukturen im Admin Bereich?
+- Zuweisung zu QuickScan / DeepScan oder immer alle auflisten?
 
 Path Framework
 - use fromJson() on objects to create element
