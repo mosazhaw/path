@@ -7,9 +7,14 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     private _pageStack:path.Page[] = [];
     private _formStack:path.Form[] = [];
+    private _userId:string;
 
     constructor(private pathService:path.PathService) {
-        this.pathService.serverPing(this.getBackendUrl());
+        this.pathService.serverGet(this.getBackendUrl(), "/ping", (data:any) => {
+            if (data["userId"] != null && data["userId"] != "") {
+                this._userId = data["userId"];
+            }
+        }, (err:any) => { console.error(err); });
     }
 
     protected abstract getGuiModel();
@@ -19,6 +24,28 @@ export abstract class PathAppComponent implements path.IPathApp {
     protected abstract getHandlers();
 
     public abstract getBackendUrl():string;
+
+    public getUserId():string {
+        return this._userId;
+    }
+
+    public login(event, userId:string, password:string) {
+        this.pathService.serverGet(this.getBackendUrl(), "/login/" + userId + "/" + password, (data:any) => {
+            console.log("jwt: " + data["jwt"]);
+            localStorage.setItem("assessmentToolId", data["jwt"]);
+            this._userId = userId;
+        }, (err:any) => {
+            alert("Login failed.")
+            console.error("failed login");
+        });
+    }
+
+    public logout() {
+        localStorage.clear();
+        this._userId == null;
+        console.log("logout user " + this._userId);
+        location.reload();
+    }
 
     public closeCurrentForm() {
         this._formStack.pop();
@@ -277,7 +304,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 (<path.ValueField<any>>field).setValue(data[field.id]);
                             }
                         }
-                    })
+                    }, null)
                 }
                 // execute handler
                 let handlerName = handler;

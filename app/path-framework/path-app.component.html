@@ -11,12 +11,35 @@
 
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <div class="nav navbar-nav navbar-right">
-            <p class="navbar-text pull-right"><a href="#" class="navbar-link">Signed in as Prototype Demo User</a></p>
+            <p class="navbar-text pull-right">
+                <a *ngIf="getUserId() == null" href="#" class="navbar-link">Not signed in</a>
+                <a *ngIf="getUserId() != null" href="#" class="navbar-link">Signed in as {{getUserId()}}</a>
+                <a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link">Logout</a>
+            </p>
         </div>
     </div>
 </nav>
 
+<!-- Login Form -->
+<div *ngIf="getUserId() == null" class="container-fluid">
+<div class="login jumbotron center-block">
+    <h1>Login</h1>
+    <form role="form" (submit)="login($event, username.value, password.value)">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" #username class="form-control" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" #password class="form-control" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+</div>
+
 <!-- Breadcrumb Path -->
+<div *ngIf="getUserId() != null">
 <div class="col-md-12">
     <h3>
         <ol class="breadcrumb">
@@ -99,4 +122,5 @@
             </div>
         </div>
     </div>
+</div>
 </div>
