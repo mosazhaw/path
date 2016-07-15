@@ -32,7 +32,6 @@ export abstract class PathAppComponent implements path.IPathApp {
     public login(event, userId:string, password:string) {
         this.pathService.serverGet(this.getBackendUrl(), "/login/" + userId + "/" + password, (data:any) => {
             console.log("jwt: " + data["jwt"]);
-            localStorage.setItem("assessmentToolId", data["jwt"]);
             this._userId = userId;
         }, (err:any) => {
             alert("Login failed.")

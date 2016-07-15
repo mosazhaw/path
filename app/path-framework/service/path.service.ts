@@ -11,15 +11,20 @@ export class PathService {
         if (url != null) {
             // fetch json data from url
             this.http.get(server + url, { headers: this.appendHeaders() })
-                .map((res:Response) => res.json())
                 .subscribe(
                     data => {
-                        processor(data);
+                        let jwt = data.headers.get("Authorization");
+                        console.log("Header: " + jwt);
+                        if (jwt != null && jwt != "") {
+                            localStorage.setItem("assessmentToolId", data.headers.get("Authorization"));
+                        } else {
+                            localStorage.clear();
+                        }
+                        processor(data.json());
                     },
                     err => {
                         if (errorHandler == null) {
-                            alert(err.status);
-                            console.error(err)
+                            this.handleError(err);
                         } else {
                             errorHandler(err);
                         }
@@ -38,16 +43,14 @@ export class PathService {
     serverPost(server:string, url:string, data:any, processor:() => any) {
         if (url != null) {
             this.http.post(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
-                .map(
-                    (value:Response,index:number) => {})
                 .subscribe(
                     data => {
+                        localStorage.setItem("assessmentToolId", data.headers.get("Authorization"));
                         console.log(data);
                         processor();
                     },
                     err => {
-                        alert(err.status);
-                        console.error(err)
+                        this.handleError(err);
                     },
                     () => {
                         console.log('server POST to ' + server + url + ' finished:')
@@ -65,12 +68,12 @@ export class PathService {
             this.http.put(server + url + "/" + key, JSON.stringify(data), { headers: this.appendHeaders() })
                 .subscribe(
                     data => {
+                        localStorage.setItem("assessmentToolId", data.headers.get("Authorization"));
                         console.log(data);
                         processor();
                     },
                     err => {
-                        alert(err.status);
-                        console.error(err)
+                        this.handleError(err);
                     },
                     () => {
                         console.log('server PUT to ' + server + url + ' finished:')
@@ -80,6 +83,16 @@ export class PathService {
         } else {
             // no url provided, therefore call processor without data
             processor();
+        }
+    }
+
+    private handleError(err) {
+        if (err.status == 401) {
+            alert("Unauthorized. Please login again.");
+            location.reload();
+        } else {
+            alert(err.status);
+            console.error(err)
         }
     }
 
