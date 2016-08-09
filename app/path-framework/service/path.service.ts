@@ -16,7 +16,7 @@ export class PathService {
                         let jwt = data.headers.get("Authorization");
                         console.log("Header: " + jwt);
                         if (jwt != null && jwt != "") {
-                            localStorage.setItem("assessmentToolId", data.headers.get("Authorization"));
+                            localStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         } else {
                             localStorage.clear();
                         }
@@ -45,7 +45,7 @@ export class PathService {
             this.http.post(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
                 .subscribe(
                     data => {
-                        localStorage.setItem("assessmentToolId", data.headers.get("Authorization"));
+                        localStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
                         processor();
                     },
@@ -68,7 +68,7 @@ export class PathService {
             this.http.put(server + url + "/" + key, JSON.stringify(data), { headers: this.appendHeaders() })
                 .subscribe(
                     data => {
-                        localStorage.setItem("assessmentToolId", data.headers.get("Authorization"));
+                        localStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
                         processor();
                     },
@@ -98,7 +98,7 @@ export class PathService {
 
     private appendHeaders():Headers {
         let headers = new Headers();
-        let jwt:string = localStorage.getItem("assessmentToolId");
+        let jwt:string = localStorage.getItem("pathAppId");
         if (jwt != null) {
             headers.append("Authorization", jwt);
         }

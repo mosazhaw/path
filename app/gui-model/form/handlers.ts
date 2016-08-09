@@ -208,7 +208,7 @@ export class CompletenessCheckReportDownloadButtonHandler implements path.IButto
 
     public doClick(button:path.IButton) {
         console.log("open excel doc");
-        window.location.assign(button.getApp().getBackendUrl() + "/report/completenesscheck");
+        window.location.assign(button.getApp().getBackendUrl() + "/report/completenesscheck" + "?token=" + localStorage.getItem("pathAppId"));
     }
 
 }
@@ -217,7 +217,7 @@ export class AssessmentReportDownloadButtonHandler implements path.IButtonHandle
 
     public doClick(button:path.IButton) {
         console.log("open excel doc");
-        window.location.assign(button.getApp().getBackendUrl() + "/report/assessmentreport");
+        window.location.assign(button.getApp().getBackendUrl() + "/report/assessmentreport" + "?token=" + localStorage.getItem("pathAppId"));
     }
 
 }
@@ -226,7 +226,7 @@ export class IntroductionHandbookDownloadButtonHandler implements path.IButtonHa
 
     public doClick(button:path.IButton) {
         console.log("open excel doc");
-        window.location.assign(button.getApp().getBackendUrl() + "/report/introductionhandbook");
+        window.location.assign(button.getApp().getBackendUrl() + "/report/introductionhandbook" + "?token=" + localStorage.getItem("pathAppId"));
     }
 
 }
