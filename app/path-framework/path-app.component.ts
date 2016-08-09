@@ -236,6 +236,16 @@ export abstract class PathAppComponent implements path.IPathApp {
                         {
                             let autoCompleteFormField = new autocomplete.AutoCompleteField(form);
                             autoCompleteFormField.data = modelFormField["data"];
+                            let autoCompleteFormFieldUrl:string = modelFormField["url"];
+                            if (autoCompleteFormFieldUrl != null) {
+                                this.pathService.serverGet(this.getBackendUrl(), autoCompleteFormFieldUrl, (data:any) => {
+                                    let dynamicData = [];
+                                    for (let item of data) {
+                                        dynamicData.push(item["name"]);
+                                    }
+                                    autoCompleteFormField.data = dynamicData;
+                                }, null);
+                            }
                             autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
                             formField = autoCompleteFormField;
                             formField.fromJson(modelFormField);

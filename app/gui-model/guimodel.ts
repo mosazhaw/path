@@ -221,7 +221,7 @@ export class GuiModel {
                             "name": "Customer",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
-                            "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"],
+                            "url": "/company",
                             "width": 2,
                             "mandatory": true
                         },

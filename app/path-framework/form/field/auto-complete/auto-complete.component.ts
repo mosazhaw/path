@@ -39,7 +39,7 @@ export class AutoCompleteComponent {
 }
 
 export class AutoCompleteField extends ValueField<string> {
-    private _query = '';
+    private _query:string = '';
     private _filteredList:string[] = [];
     private _data = [];
     private _wordSearchEnabled:boolean;
