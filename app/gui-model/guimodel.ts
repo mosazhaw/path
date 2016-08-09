@@ -190,23 +190,28 @@ export class GuiModel {
                 {
                     "id": "PersonForm",
                     "title": "Person Details",
+                    "url": "/person",
                     "formFieldList": [
                         {
+                            "id":   "salutation",
                             "type": "text",
                             "name": "Salutation"
                         },
                         {
+                            "id":   "lastName",
                             "type": "text",
                             "name": "Family Name",
                             "newRow": true,
                             "mandatory": true
                         },
                         {
+                            "id":   "firstName",
                             "type": "text",
                             "name": "First Name",
                             "mandatory": true
                         },
                         {
+                            "id":   "employmentTitle",
                             "type": "text",
                             "name": "Employment Title",
                             "width": 2
@@ -221,25 +226,30 @@ export class GuiModel {
                             "mandatory": true
                         },
                         {
+                            "id":   "email",
                             "type": "text",
                             "name": "E-Mail",
                             "newRow": true
                         },
                         {
+                            "id":   "phone",
                             "type": "text",
                             "name": "Phone"
                         },
                         {
+                            "id":   "street",
                             "type": "text",
                             "name": "Street",
                             "width": 2
                         },
                         {
+                            "id":   "zipCode",
                             "type": "text",
                             "name": "Postal Code",
                             "newRow": true
                         },
                         {
+                            "id":   "city",
                             "type": "text",
                             "name": "City"
                         },
@@ -251,15 +261,18 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "date": "evtCreationDate",
                             "type": "date",
                             "name": "Creation Date",
                             "newRow": true
                         },
                         {
+                            "date": "evtClosingDate",
                             "type": "date",
                             "name": "Closing Date"
                         },
                         {
+                            "date": "comments",
                             "type": "text",
                             "name": "Comments",
                             "newRow": true,
@@ -1278,7 +1291,7 @@ export class GuiModel {
                                 "form": "PersonForm",
                                 "mode": "update"
                             },
-                            "data": [{"name": "Frau Dr. Müller", "details": [ "Alpha Hospital" ]}, {"name": "Herr Dr. Lisib", "details": [ "Blue Hospital" ]}, {"name": "Frau Dr. Held", "details": [ "Blue Hospital" ]}, {"name": "Frau Dr. Gesund", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Krank", "details": [ "Charisma Hospital" ]}]
+                            "url": "/person"
                         }
                     ]
                 },
@@ -1319,7 +1332,7 @@ export class GuiModel {
                                 "form": "PersonForm",
                                 "mode": "update"
                             },
-                            "data": [{"name": "Frau Dr. Müller", "details": [ "Alpha Hospital" ]}, {"name": "Herr Dr. Lisib", "details": [ "Alpha Hospital" ]}]
+                            "url": "/person"
                         },
                         {
                             "type": "button",
