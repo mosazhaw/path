@@ -324,10 +324,12 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "CaseForm",
+                    "id": "QuickScanCaseForm",
+                    "url": "/quickScanCase",
                     "title": "Case",
                     "formFieldList": [
                         {
+                            "id": "name",
                             "type": "text",
                             "name": "Case Name",
                             "width": 2,
@@ -1700,7 +1702,7 @@ export class GuiModel {
                             "icon": "fa-briefcase",
                             "color": "green",
                             "form": {
-                                "form": "CaseForm"
+                                "form": "QuickScanCaseForm"
                             }
                         },
                         {
@@ -1710,7 +1712,7 @@ export class GuiModel {
                             "color": "carrot",
                             "search": true,
                             "page": "quickscancategoriesconfigurationpage",
-                            "data": [{"name": "Case 1"}, {"name": "Case 2"}, {"name": "Case 3"}, {"name": "Case 4"}, {"name": "Case 5"}, {"name": "Case 6"}, {"name": "Case 7"}, {"name": "Case 8"}, {"name": "Case 9"}, {"name": "Case 10"}]
+                            "url": "/quickScanCase"
                         }
                     ]
                 },
@@ -1727,7 +1729,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "CaseForm"
+                                "form": "QuickScanCaseForm"
                             }
                         },
                         {
