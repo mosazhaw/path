@@ -1686,7 +1686,7 @@ export class GuiModel {
                                 "form": "MaturityLevelForm",
                                 "mode": "update"
                             },
-                            "data": [{"name": "Awareness"}, {"name": "Develop"}, {"name": "Practice"}, {"name": "Optimize"}, {"name": "Best-In-Class"}]
+                            "url": "/maturityLevelSchema/:key/maturityLevel"
                         }
                     ]
                 },
