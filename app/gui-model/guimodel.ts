@@ -14,7 +14,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Project",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id": "caseKey",
@@ -25,7 +25,7 @@ export class GuiModel {
                             "actions": [],
                             "data": ["Case A", "Case B", "Case C", "Case D", "Case E"],
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id": "evtStartDate",
@@ -45,7 +45,7 @@ export class GuiModel {
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"],
                             "newRow": true,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id": "customerProjectLeaderKey",
@@ -54,7 +54,7 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id": "serviceProviderKey",
@@ -64,7 +64,7 @@ export class GuiModel {
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "data": ["Deloitte AG", "Service Provider AG", "Enterprise AG"],
                             "newRow": true,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id": "serviceProviderProjectLeaderKey",
@@ -73,7 +73,7 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id": "industrySegment",
@@ -141,7 +141,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Company Name",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id": "street",
@@ -202,13 +202,13 @@ export class GuiModel {
                             "type": "text",
                             "name": "Family Name",
                             "newRow": true,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id":   "firstName",
                             "type": "text",
                             "name": "First Name",
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id":   "employmentTitle",
@@ -225,7 +225,7 @@ export class GuiModel {
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "url": "/company",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id":   "email",
@@ -306,7 +306,7 @@ export class GuiModel {
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "data": ["Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"],
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "deleteButton",
@@ -330,7 +330,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Case Name",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "deleteButton",
@@ -354,7 +354,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Category Name",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "autocomplete",
@@ -386,7 +386,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Support Process Name",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "autocomplete",
@@ -418,7 +418,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Subprocess Name",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "deleteButton",
@@ -443,42 +443,42 @@ export class GuiModel {
                             "name": "Capability Question",
                             "height": 8,
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "text",
                             "name": "Awareness",
                             "height": 4,
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "text",
                             "name": "Develop",
                             "height": 4,
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "text",
                             "name": "Practice",
                             "height": 4,
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "text",
                             "name": "Optimize",
                             "height": 4,
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "text",
                             "name": "Best-In-Class",
                             "height": 4,
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "deleteButton",
@@ -502,7 +502,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Key Performance Indicator Name",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "autocomplete",
@@ -511,7 +511,7 @@ export class GuiModel {
                             "data": ["Support Process S1","Support Process S2","Support Process S3","Support Process S4"],
                             "width": 1,
                             "newRow": true,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "autocomplete",
@@ -527,7 +527,7 @@ export class GuiModel {
                             "data": ["KPI Category 1","KPI Category 2","KPI Category 3","KPI Category 4"],
                             "width": 2,
                             "newRow": true,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "autocomplete",
@@ -573,7 +573,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Maturity Level Schema",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id": "projectType",
@@ -615,7 +615,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Maturity Level",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "id":   "maturityLevelSchema",
@@ -623,6 +623,7 @@ export class GuiModel {
                             "name": "Maturity Level Schema",
                             "wordSearchEnabled": false,
                             "defaultParentKey": true,
+                            "readonly": true,
                             "url": "/maturityLevelSchema",
                             "width": 2
                         },
@@ -648,7 +649,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "KPI Category",
                             "width": 2,
-                            "mandatory": true
+                            "required": true
                         },
                         {
                             "type": "deleteButton",
@@ -679,7 +680,7 @@ export class GuiModel {
                             "id": "questionActual",
                             "type": "RadioGroupField",
                             "name": "Actual",
-                            "mandatory": true,
+                            "required": true,
                             "defaultKey": null,
                             "radios": [{
                                 type: "radio",
@@ -710,7 +711,7 @@ export class GuiModel {
                             "id": "questionTarget",
                             "type": "RadioGroupField",
                             "name": "Target",
-                            "mandatory": true,
+                            "required": true,
                             "defaultKey": null,
                             "radios": [{
                                 type: "radio",
@@ -784,7 +785,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Input Value 1",
                             "newRow": true,
-                            "mandatory": true,
+                            "required": true,
                             "width": 1
                         },
                         {
@@ -798,7 +799,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Input Value 2",
                             "newRow": true,
-                            "mandatory": true,
+                            "required": true,
                             "width": 1
                         },
                         {

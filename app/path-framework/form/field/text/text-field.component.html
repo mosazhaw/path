@@ -1,7 +1,7 @@
-<path-form-field-label [label]="field.name" [mandatory]="field.mandatory"></path-form-field-label>
+<path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
     <div class="input-group">
-        <input [(ngModel)]=field._value *ngIf="field.height == null || field.height <= 1" type="text" class="form-control" placeholder="">
-        <textarea [(ngModel)]=field._value *ngIf="field.height != null && field.height > 1" rows="{{field.height}}" type="text" class="form-control path-textarea" placeholder=""></textarea>
+        <input [readonly]="field.readonly" [(ngModel)]=field._value *ngIf="field.height == null || field.height <= 1" type="text" class="form-control" placeholder="">
+        <textarea [readonly]="field.readonly" [(ngModel)]=field._value *ngIf="field.height != null && field.height > 1" rows="{{field.height}}" type="text" class="form-control path-textarea" placeholder=""></textarea>
     </div>
 </div>

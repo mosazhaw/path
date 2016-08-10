@@ -8,7 +8,7 @@ export class FormFieldLabelComponent {
     @Input('label')
     label:string;
 
-    @Input('mandatory')
-    mandatory:boolean;
+    @Input('required')
+    required:boolean;
 }
 

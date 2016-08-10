@@ -10,7 +10,8 @@ export class FormField implements IFormField {
     private _newRow:boolean;
     private _visible:boolean;
     private _labelVisible:boolean;
-    private _mandatory:boolean;
+    private _required:boolean;
+    private _readonly:boolean;
     private _actions:Action[] = [];
 
     constructor(protected form:IForm) {
@@ -60,12 +61,20 @@ export class FormField implements IFormField {
         this._newRow = value;
     }
 
-    get mandatory():boolean {
-        return this._mandatory;
+    get required():boolean {
+        return this._required;
     }
 
-    set mandatory(value:boolean) {
-        this._mandatory = value;
+    set required(value:boolean) {
+        this._required = value;
+    }
+
+    get readonly(): boolean {
+        return this._readonly;
+    }
+
+    set readonly(value: boolean) {
+        this._readonly = value;
     }
 
     get id():string {
@@ -117,9 +126,13 @@ export class FormField implements IFormField {
         if (modelFormField["newRow"] != null) {
             this.newRow = modelFormField["newRow"];
         }
-        this.mandatory = false;
-        if (modelFormField["mandatory"] != null) {
-            this.mandatory = modelFormField["mandatory"];
+        this.required = false;
+        if (modelFormField["required"] != null) {
+            this.required = modelFormField["required"];
+        }
+        this.readonly = false;
+        if (modelFormField["readonly"] != null) {
+            this.readonly = modelFormField["readonly"];
         }
         this.id = modelFormField["id"];
         this.name = modelFormField.name;
