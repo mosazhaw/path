@@ -222,6 +222,7 @@ export class GuiModel {
                             "name": "Customer",
                             "wordSearchEnabled": true,
                             "defaultParentKey": true,
+                            "readonly": true,
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "url": "/company",
                             "width": 2,

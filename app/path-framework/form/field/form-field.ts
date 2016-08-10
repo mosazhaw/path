@@ -109,6 +109,10 @@ export class FormField implements IFormField {
         this._labelVisible = value;
     }
 
+    public isReadonly():boolean {
+        return this.readonly;
+    }
+
     public fromJson(modelFormField) {
         this.visible = true;
         if (modelFormField["visible"] != null) {

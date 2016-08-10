@@ -1,7 +1,7 @@
 <path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
         <div class="input-group">
-            <input [readonly]="field.readonly" #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value) class="form-control" placeholder="">
+            <input [readonly]="field.isReadonly()" #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value) class="form-control" placeholder="">
             <!-- Auto Complete -->
             <div *ngIf="field.filteredList.length > 0">
                 <div class="path-autocomplete list-group">
@@ -10,7 +10,7 @@
             </div>
             <!-- Action -->
             <span class="input-group-btn" *ngFor='let action of field.actions'>
-                <button (click)="action.handler?.doClick(field,action)" class="btn btn-default" type="button">{{action.name}}</button>
+                <button [disabled]="field.isReadonly()" (click)="action.handler?.doClick(field,action)" class="btn btn-default" type="button">{{action.name}}</button>
             </span>
         </div>
 </div>

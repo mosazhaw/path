@@ -11,6 +11,10 @@ export class ValueField<T> extends FormField {
         this._value = value;
     }
 
+    public isReadonly():boolean {
+        return this.readonly && this._value != null;
+    }
+
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
         if (modelFormField["value"] != null) {
