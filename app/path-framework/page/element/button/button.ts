@@ -23,7 +23,7 @@ export class Button extends path.PageElement implements path.IButton {
         }
 
         if (this._form != null) {
-            this.app.setCurrentForm(this._form, this.key, this._formHandler);
+            this.app.setCurrentForm(this._form, this.key, this._formHandler, this);
             return;
         }
     }

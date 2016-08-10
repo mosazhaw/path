@@ -53,6 +53,10 @@ export class PageElement implements IPageElement {
         return this._key;
     }
 
+    public getKey():number {
+        return this.key;
+    }
+
     set key(value: number) {
         this._key = value;
     }

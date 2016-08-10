@@ -1,5 +1,5 @@
 export interface IPathApp {
-    setCurrentForm(formId:string, key:number, handler:string);
+    setCurrentForm(formId:string, key:number, handler:string, parentPageElement:IPageElement);
     setCurrentPage(pageId:string, parentPageElement:IPageElement);
     navigateBack();
     yesNo(text:string, yesHandler : () => void, noHandler : () => void);
@@ -9,6 +9,7 @@ export interface IPathApp {
 }
 
 export interface IPageElement {
+    getKey():number;
 }
 
 export interface IFormField {

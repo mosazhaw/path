@@ -2,6 +2,7 @@ import * as path from './path';
 import * as autocomplete from './form/field/auto-complete/auto-complete-field.component';
 import 'rxjs/add/operator/map';
 import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
+import {ValueField} from "./form/field/value-field";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -145,7 +146,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "form":
                             let form = new path.InlineForm(this);
-                            form.form = this.createForm(modelElement["form"], null, modelElement["handler"]);
+                            form.form = this.createForm(modelElement["form"], null, modelElement["handler"], null);
                             element = form;
                             break;
                         case "list":
@@ -200,14 +201,14 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._pageStack.push(page);
     }
 
-    public setCurrentForm(formId:string, key:number, handler:string) {
-        let form:path.Form = this.createForm(formId,key,handler);
+    public setCurrentForm(formId:string, key:number, handler:string, parentPageElement:path.IPageElement) {
+        let form:path.Form = this.createForm(formId,key,handler,parentPageElement);
         if (form != null) {
             this._formStack.push(form);
         }
     }
 
-    private createForm(formId:string, key:number, handler:string):path.Form {
+    private createForm(formId:string, key:number, handler:string, parentPageElement:path.IPageElement):path.Form {
         let form:path.Form = null;
         for (var modelForm of this.getGuiModel().application.formList) {
             if (modelForm.id === formId) {
@@ -314,6 +315,10 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField = new path.FormField(form);
                             formField.fromJson(modelFormField);
                         }
+                    }
+                    // use parent value
+                    if (formField instanceof ValueField && modelFormField["defaultParentKey"] == true) {
+                        (<ValueField<any>>formField).setValue(parentPageElement.getKey());
                     }
                     // form field actions
                     if (modelFormField["actions"] != null) {

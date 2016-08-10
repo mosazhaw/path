@@ -621,6 +621,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Maturity Level Schema",
                             "wordSearchEnabled": false,
+                            "defaultParentKey": true,
                             "url": "/maturityLevelSchema",
                             "width": 2
                         },
