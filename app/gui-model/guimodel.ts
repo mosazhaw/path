@@ -350,21 +350,24 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "CategoryForm",
+                    "id": "QuickScanCategoryForm",
+                    "url": "/quickScanCategory",
                     "title": "Category",
                     "formFieldList": [
                         {
+                            "id": "name",
                             "type": "text",
                             "name": "Category Name",
                             "width": 2,
                             "required": true
                         },
                         {
+                            "id": "maturityLevelSchema",
                             "type": "autocomplete",
                             "name": "Maturity Level Schema",
                             "wordSearchEnabled": false,
                             "actions": [],
-                            "data": ["Maturity Level Schema 1", "Maturity Level Schema 2", "Maturity Level Schema 3"],
+                            "url": "/maturityLevelSchema",
                             "width": 2
                         },
                         {
@@ -1738,7 +1741,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "CategoryForm"
+                                "form": "QuickScanCategoryForm"
                             }
                         },
                         {
@@ -1748,7 +1751,7 @@ export class GuiModel {
                             "color": "asbestos",
                             "search": true,
                             "page": "quickscancategoryconfigurationpage",
-                            "data": [{"name": "Category B1"}, {"name": "Category B2"}, {"name": "Category B3"}, {"name": "Category B4"}, {"name": "Category B5"}, {"name": "Category B6"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B9"}, {"name": "Category B10"}]
+                            "url": "/quickScanCategory"
                         },
                         {
                             "type": "button",
@@ -1771,7 +1774,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "CategoryForm"
+                                "form": "QuickScanCategoryForm"
                             }
                         },
                         {
