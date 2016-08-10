@@ -221,6 +221,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,
+                            "defaultParentKey": true,
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "url": "/company",
                             "width": 2,

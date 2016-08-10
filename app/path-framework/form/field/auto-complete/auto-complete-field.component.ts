@@ -85,7 +85,7 @@ export class AutoCompleteField extends ValueField<string> {
 
     public setValue(value:string) {
         // accept key values and complex objects
-        if (value["key"] != null) {
+        if (value != null && value["key"] != null) {
             value = value["key"];
         }
         this._valueSet = true;

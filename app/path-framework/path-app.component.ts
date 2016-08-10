@@ -318,7 +318,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     // use parent value
                     if (formField instanceof ValueField && modelFormField["defaultParentKey"] == true) {
-                        (<ValueField<any>>formField).setValue(parentPageElement.getKey());
+                        if (parentPageElement != null) {
+                            (<ValueField<any>>formField).setValue(parentPageElement.getKey());
+                        }
                     }
                     // form field actions
                     if (modelFormField["actions"] != null) {
