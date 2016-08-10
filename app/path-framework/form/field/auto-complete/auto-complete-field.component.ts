@@ -43,6 +43,7 @@ export class AutoCompleteField extends ValueField<string> {
     private _query:AutoCompleteFieldEntry;
     private _filteredList:AutoCompleteFieldEntry[] = [];
     private _data:AutoCompleteFieldEntry[] = [];
+    private _dataLoaded:boolean = false;
     private _wordSearchEnabled:boolean;
     private _valueSet:boolean = false;
 
@@ -91,11 +92,22 @@ export class AutoCompleteField extends ValueField<string> {
         this.clearFilteredList();
         super.setValue(value);
         this.query = null;
-        for (let item of this._data) {
-            if (item.key == value) {
-                this.query = item;
+        // must wait with display update until data is loaded
+        let displaySetter = () => {
+            if (!this.dataLoaded) {
+                console.log("data loaded: " + this.dataLoaded);
+                console.log("waiting...");
+                window.setTimeout(function() { displaySetter() }, 250);
+            } else {
+                console.log("setting display value");
+                for (let item of this._data) {
+                    if (item.key == value) {
+                        this.query = item;
+                    }
+                }
             }
         }
+        displaySetter();
     }
 
     public clearFilteredList() {
@@ -124,5 +136,13 @@ export class AutoCompleteField extends ValueField<string> {
 
     get valueSet():boolean {
         return this._valueSet;
+    }
+
+    get dataLoaded(): boolean {
+        return this._dataLoaded;
+    }
+
+    set dataLoaded(value: boolean) {
+        this._dataLoaded = value;
     }
 }

@@ -246,9 +246,10 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     k++;
                                 }
                                 autoCompleteFormField.data = data;
+                                autoCompleteFormField.dataLoaded = true;
                             }
-                            let autoCompleteFormFieldUrl:string = modelFormField["url"];
-                            if (autoCompleteFormFieldUrl != null) {
+                            else if (modelFormField["url"] != null) {
+                                let autoCompleteFormFieldUrl:string = modelFormField["url"];
                                 this.pathService.serverGet(this.getBackendUrl(), autoCompleteFormFieldUrl, (data:any) => {
                                     let dynamicData = [];
                                     for (let item of data) {
@@ -258,7 +259,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                                         dynamicData.push(entry);
                                     }
                                     autoCompleteFormField.data = dynamicData;
+                                    autoCompleteFormField.dataLoaded = true;
                                 }, null);
+                            }
+                            else {
+                                autoCompleteFormField.dataLoaded = true;
                             }
                             autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
                             formField = autoCompleteFormField;
