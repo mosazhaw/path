@@ -606,13 +606,23 @@ export class GuiModel {
                 },
                 {
                     "id": "MaturityLevelForm",
+                    "url": "/maturityLevel",
                     "title": "Maturity Level",
                     "formFieldList": [
                         {
+                            "id":   "name",
                             "type": "text",
                             "name": "Maturity Level",
                             "width": 2,
                             "mandatory": true
+                        },
+                        {
+                            "id":   "maturityLevelSchema",
+                            "type": "autocomplete",
+                            "name": "Maturity Level Schema",
+                            "wordSearchEnabled": false,
+                            "url": "/maturityLevelSchema",
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
