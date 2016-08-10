@@ -1,6 +1,6 @@
 import * as path from './../../path-framework/path';
 import {FormField} from "../../path-framework/form/field/form-field";
-import {AutoCompleteField} from "../../path-framework/form/field/auto-complete/auto-complete.component";
+import {AutoCompleteField} from "../../path-framework/form/field/auto-complete/auto-complete-field.component";
 import {RadioGroupField} from "../../path-framework/form/field/radio/radio-group.component";
 import {ProgressBarField} from "../../path-framework/form/field/progress-bar/progress-bar.component";
 import {TextField} from "../../path-framework/form/field/text/text-field.component";

@@ -3,7 +3,7 @@ import {PathService} from "../service/path.service";
 import {IForm, IPathApp, IFormHandler, IFormBean} from "../pathinterface";
 import {ValueField} from "./field/value-field";
 import {FormField} from "./field/form-field";
-import {AutoCompleteComponent} from "./field/auto-complete/auto-complete.component";
+import {AutoCompleteComponent} from "./field/auto-complete/auto-complete-field.component";
 import {TextFieldComponent} from "./field/text/text-field.component";
 import {DateFieldComponent} from "./field/date/date-field.component";
 import {RadioGroupComponent} from "./field/radio/radio-group.component";

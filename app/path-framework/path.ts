@@ -15,7 +15,7 @@ export * from './form/form.component'
 
 export * from './form/field/form-field'
 export * from './form/field/form-field-label.component'
-export * from './form/field/auto-complete/auto-complete.component';
+export * from './form/field/auto-complete/auto-complete-field.component';
 export * from './form/field/checkbox/checkbox-group.component';
 export * from './form/field/button/action';
 export * from './form/field/button/cancel-button';

@@ -1,7 +1,7 @@
 import * as path from './path';
-import * as autocomplete from './form/field/auto-complete/auto-complete.component';
+import * as autocomplete from './form/field/auto-complete/auto-complete-field.component';
 import 'rxjs/add/operator/map';
-import {AutoCompleteField} from "./form/field/auto-complete/auto-complete.component";
+import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -235,13 +235,27 @@ export abstract class PathAppComponent implements path.IPathApp {
                         case "autocomplete":
                         {
                             let autoCompleteFormField = new autocomplete.AutoCompleteField(form);
-                            autoCompleteFormField.data = modelFormField["data"];
+                            if (modelFormField["data"] != null) {
+                                let data = [];
+                                let k:number = 0;
+                                for (let item of modelFormField["data"]) {
+                                    let entry = new AutoCompleteFieldEntry();
+                                    entry.text = item;
+                                    entry.key = k;
+                                    data.push(entry);
+                                    k++;
+                                }
+                                autoCompleteFormField.data = data;
+                            }
                             let autoCompleteFormFieldUrl:string = modelFormField["url"];
                             if (autoCompleteFormFieldUrl != null) {
                                 this.pathService.serverGet(this.getBackendUrl(), autoCompleteFormFieldUrl, (data:any) => {
                                     let dynamicData = [];
                                     for (let item of data) {
-                                        dynamicData.push(item["name"]);
+                                        let entry = new AutoCompleteFieldEntry();
+                                        entry.key = item["key"];
+                                        entry.text = item["name"];
+                                        dynamicData.push(entry);
                                     }
                                     autoCompleteFormField.data = dynamicData;
                                 }, null);

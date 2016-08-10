@@ -217,6 +217,7 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "id":   "company",
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,
