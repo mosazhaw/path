@@ -14,7 +14,6 @@ export class PathService {
                 .subscribe(
                     data => {
                         let jwt = data.headers.get("Authorization");
-                        console.log("Header: " + jwt);
                         if (jwt != null && jwt != "") {
                             localStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         } else {

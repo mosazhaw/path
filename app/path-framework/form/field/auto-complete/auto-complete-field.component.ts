@@ -95,11 +95,9 @@ export class AutoCompleteField extends ValueField<string> {
         // must wait with display update until data is loaded
         let displaySetter = () => {
             if (!this.dataLoaded) {
-                console.log("data loaded: " + this.dataLoaded);
                 console.log("waiting...");
                 window.setTimeout(function() { displaySetter() }, 250);
             } else {
-                console.log("setting display value");
                 for (let item of this._data) {
                     if (item.key == value) {
                         this.query = item;
