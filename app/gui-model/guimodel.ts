@@ -580,7 +580,8 @@ export class GuiModel {
                             "id": "projectType",
                             "type": "RadioGroupField",
                             "name": "Scan",
-                            "defaultKey": "QuickScan",
+                            "required": true,
+                            "readonly": true,
                             "radios": [{
                                 type: "radio",
                                 name: "QuickScan",

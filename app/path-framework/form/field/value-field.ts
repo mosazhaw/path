@@ -12,7 +12,7 @@ export class ValueField<T> extends FormField {
     }
 
     public isReadonly():boolean {
-        return this.readonly && this._value != null;
+        return this.readonly && this.form.getKey() != null;
     }
 
     public fromJson(modelFormField) {

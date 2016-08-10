@@ -3,13 +3,13 @@
 	<div class="input-group">
 		<span [hidden]="!field.horizontal" *ngFor='let radioElement of field.radios'>
             <label class="control radio">
-                <input [checked]="radioElement.value" (click)="field.doClick(radioElement.key)" type="radio">
+                <input [disabled]="field.isReadonly()" [checked]="radioElement.value" (click)="field.doClick(radioElement.key)" type="radio">
                 <span class="radio-label"> {{radioElement.name}}</span>
             </label>
         </span>
 		<div [hidden]="field.horizontal" *ngFor='let radioElement of field.radios'>
             <label class="control radio">
-                <input [checked]="radioElement.value" (click)="field.doClick(radioElement.key)" type="radio">
+                <input [disabled]="field.isReadonly()" [checked]="radioElement.value" (click)="field.doClick(radioElement.key)" type="radio">
                 <span class="radio-label"> {{radioElement.name}}</span>
             </label>
         </div>

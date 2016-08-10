@@ -19,6 +19,7 @@ export interface IFormField {
 export interface IForm {
     getApp():IPathApp;
     close(save:boolean);
+    getKey():number;
 }
 
 export interface IFormHandler {

@@ -38,6 +38,10 @@ export class Form implements IForm {
         return this.app;
     }
 
+    getKey():number {
+        return this.key;
+    }
+
     get key():number {
         return this._key;
     }
