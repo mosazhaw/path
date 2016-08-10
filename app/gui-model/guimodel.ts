@@ -895,7 +895,6 @@ export class GuiModel {
                             "color": "green",
                             "form": {
                                 "form": "ProjectForm",
-                                "mode": "create",
                                 "handler": "ProjectFormQuickScanHandler"
                             }
                         },
@@ -925,7 +924,6 @@ export class GuiModel {
                             "color": "green",
                             "form": {
                                 "form": "ProjectForm",
-                                "mode": "update",
                                 "handler": "ProjectFormQuickScanHandler"
                             }
                         },
@@ -964,8 +962,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "ProjectIntervieweeForm",
-                                "mode": "create"
+                                "form": "ProjectIntervieweeForm"
                             }
                         },
                         {
@@ -1044,7 +1041,6 @@ export class GuiModel {
                             "color": "green",
                             "form": {
                                 "form": "ProjectForm",
-                                "mode": "create",
                                 "handler": "ProjectFormDeepScanHandler"
                             }
                         },
@@ -1073,7 +1069,6 @@ export class GuiModel {
                             "color": "green",
                             "form": {
                                 "form": "ProjectForm",
-                                "mode": "update",
                                 "handler": "ProjectFormDeepScanHandler"
                             }
                         },
@@ -1112,8 +1107,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "ProjectIntervieweeForm",
-                                "mode": "create"
+                                "form": "ProjectIntervieweeForm"
                             }
                         },
                         {
@@ -1262,8 +1256,7 @@ export class GuiModel {
                             "icon": "fa-home",
                             "color": "green",
                             "form": {
-                                "form": "CompanyForm",
-                                "mode": "create"
+                                "form": "CompanyForm"
                             }
                         },
                         {
@@ -1291,8 +1284,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "PersonForm",
-                                "mode": "create"
+                                "form": "PersonForm"
                             }
                         },
                         {
@@ -1302,8 +1294,7 @@ export class GuiModel {
                             "color": "orange",
                             "search": true,
                             "form": {
-                                "form": "PersonForm",
-                                "mode": "update"
+                                "form": "PersonForm"
                             },
                             "url": "/person"
                         }
@@ -1322,8 +1313,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "CompanyForm",
-                                "mode": "update"
+                                "form": "CompanyForm"
                             }
                         },
                         {
@@ -1332,8 +1322,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "PersonForm",
-                                "mode": "create"
+                                "form": "PersonForm"
                             }
                         },
                         {
@@ -1343,8 +1332,7 @@ export class GuiModel {
                             "color": "orange",
                             "search": true,
                             "form": {
-                                "form": "PersonForm",
-                                "mode": "update"
+                                "form": "PersonForm"
                             },
                             "url": "/company/:key/person"
                         },
@@ -1553,8 +1541,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "PersonForm",
-                                "mode": "create"
+                                "form": "PersonForm"
                             }
                         },
                         {
@@ -1564,8 +1551,7 @@ export class GuiModel {
                             "color": "orange",
                             "search": true,
                             "form": {
-                                "form": "PersonForm",
-                                "mode": "update"
+                                "form": "PersonForm"
                             },
                             "data": [{"name": "Anton Amacker"}, {"name": "Beate Burkhardt"}, {"name": "Chris Connor"}, {"name": "Doris Dempster"}, {"name": "Edgar Evans"}]
                         }
@@ -1643,8 +1629,7 @@ export class GuiModel {
                             "color": "green",
                             "width": 2,
                             "form": {
-                                "form": "MaturityLevelSchemaForm",
-                                "mode": "create"
+                                "form": "MaturityLevelSchemaForm"
                             }
                         },
                         {
@@ -1672,8 +1657,7 @@ export class GuiModel {
                             "color": "green",
                             "width": 2,
                             "form": {
-                                "form": "MaturityLevelSchemaForm",
-                                "mode": "update"
+                                "form": "MaturityLevelSchemaForm"
                             }
                         },
                         {
@@ -1683,8 +1667,7 @@ export class GuiModel {
                             "color": "green",
                             "width": 2,
                             "form": {
-                                "form": "MaturityLevelForm",
-                                "mode": "create"
+                                "form": "MaturityLevelForm"
                             }
                         },
                         {
@@ -1694,8 +1677,7 @@ export class GuiModel {
                             "color": "lime",
                             "search": false,
                             "form": {
-                                "form": "MaturityLevelForm",
-                                "mode": "update"
+                                "form": "MaturityLevelForm"
                             },
                             "url": "/maturityLevelSchema/:key/maturityLevel"
                         }
@@ -1714,8 +1696,7 @@ export class GuiModel {
                             "icon": "fa-briefcase",
                             "color": "green",
                             "form": {
-                                "form": "CaseForm",
-                                "mode": "create"
+                                "form": "CaseForm"
                             }
                         },
                         {
@@ -1742,8 +1723,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "CaseForm",
-                                "mode": "update"
+                                "form": "CaseForm"
                             }
                         },
                         {
@@ -1752,8 +1732,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "CategoryForm",
-                                "mode": "create"
+                                "form": "CategoryForm"
                             }
                         },
                         {
@@ -1786,8 +1765,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "CategoryForm",
-                                "mode": "update"
+                                "form": "CategoryForm"
                             }
                         },
                         {
@@ -1796,8 +1774,7 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "CapabilityForm",
-                                "mode": "create"
+                                "form": "CapabilityForm"
                             }
                         },
                         {
@@ -1807,8 +1784,7 @@ export class GuiModel {
                             "color": "lime",
                             "search": true,
                             "form": {
-                                "form": "CapabilityForm",
-                                "mode": "update"
+                                "form": "CapabilityForm"
                             },
                             "data": [{"name": "Capability 1"}, {"name": "Capability 2"}, {"name": "Capability 3"}, {"name": "Capability 4"}, {"name": "Capability 5"}, {"name": "Capability 6"}, {"name": "Capability 7"}, {"name": "Capability 8"}, {"name": "Capability 9"}, {"name": "Capability 10"}]
                         },
@@ -1863,8 +1839,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "SupportProcessForm",
-                                "mode": "create"
+                                "form": "SupportProcessForm"
                             },
                         },
                         {
@@ -1891,8 +1866,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "SupportProcessForm",
-                                "mode": "update"
+                                "form": "SupportProcessForm"
                             },
                         },
                         {
@@ -1901,8 +1875,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
-                                "form": "SubprocessForm",
-                                "mode": "create"
+                                "form": "SubprocessForm"
                             },
                         },
                         {
@@ -1920,8 +1893,7 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "CapabilityForm",
-                                "mode": "create"
+                                "form": "CapabilityForm"
                             }
                         },
                         {
@@ -1930,8 +1902,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "lime",
                             "form": {
-                                "form": "CapabilityForm",
-                                "mode": "update"
+                                "form": "CapabilityForm"
                             },
                             "data": [{"name": "Qualitative Question 1"}, {"name": "Qualitative Question 2"}, {"name": "Qualitative Question 3"}]
                         },
@@ -1956,8 +1927,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "SubprocessForm",
-                                "mode": "update"
+                                "form": "SubprocessForm"
                             },
                         },
                         {
@@ -1966,8 +1936,7 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "CapabilityForm",
-                                "mode": "create"
+                                "form": "CapabilityForm"
                             }
                         },
                         {
@@ -1976,8 +1945,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "lime",
                             "form": {
-                                "form": "CapabilityForm",
-                                "mode": "update"
+                                "form": "CapabilityForm"
                             },
                             "data": [{"name": "Qualitative Question 1"}, {"name": "Qualitative Question 2"}, {"name": "Qualitative Question 3"}, {"name": "Qualitative Question 4"}]
                         },
@@ -2002,8 +1970,7 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "green",
                             "form": {
-                                "form": "KpiForm",
-                                "mode": "create"
+                                "form": "KpiForm"
                             }
                         },
                         {
@@ -2030,8 +1997,7 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "green",
                             "form": {
-                                "form": "KpiForm",
-                                "mode": "update"
+                                "form": "KpiForm"
                             }
                         },
                         {
@@ -2062,8 +2028,7 @@ export class GuiModel {
                             "icon": "fa-book",
                             "color": "green",
                             "form": {
-                                "form": "KpiCategoryForm",
-                                "mode": "create"
+                                "form": "KpiCategoryForm"
                             },
                         },
                         {
@@ -2072,8 +2037,7 @@ export class GuiModel {
                             "icon": "fa-book",
                             "color": "pomegra",
                             "form": {
-                                "form": "KpiCategoryForm",
-                                "mode": "update"
+                                "form": "KpiCategoryForm"
                             },
                             "data": [{"name": "KPI Category 1"}, {"name": "KPI Category 2"}, {"name": "KPI Category 3"}, {"name": "KPI Category 4"}, {"name": "KPI Category 5"}, {"name": "KPI Category 6"}, {"name": "KPI Category 7"}, {"name": "KPI Category 8"}, {"name": "KPI Category 9"}, {"name": "KPI Category 10"}]
                         }
