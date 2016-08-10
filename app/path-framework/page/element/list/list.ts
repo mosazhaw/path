@@ -29,13 +29,12 @@ export class List extends path.PageElement implements IList {
         // callback function for data
         console.log("refresh list");
         let dataHandler = (data:any) => {
-            let oldButtons = this.buttons; // TODO handle delete case
+            let oldButtons = this.buttons;
+            this.buttons = [];
             for (let item of data) {
-                let isNewButton:boolean = false;
-                let button:path.Button = this.findButton(item["key"]);
+                let button:path.Button = this.findButton(item["key"], oldButtons);
                 if (button == null) {
                     button = new path.Button(this.app);
-                    isNewButton = true;
                 }
                 // general attributes
                 button.id = item.id;
@@ -60,9 +59,7 @@ export class List extends path.PageElement implements IList {
                 }
                 // page button
                 button.setPage(this.page);
-                if (isNewButton) {
-                    this.buttons.push(button);
-                }
+                this.buttons.push(button);
             }
             if (this.handler != null) {
                 this.handler.doLoad(this); // TODO useful?
@@ -87,8 +84,8 @@ export class List extends path.PageElement implements IList {
         }
     }
 
-    private findButton(key:number):path.Button {
-        for (let button of this._buttons) {
+    private findButton(key:number, buttons:path.Button[]):path.Button {
+        for (let button of buttons) {
             if (button.key == key) {
                 return button;
             }
