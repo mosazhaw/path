@@ -130,7 +130,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             }
                             button.setPage(modelElement["page"]);
                             if (parentPageElement != null) {
-                                button.key = (<path.Button>parentPageElement).key; // TODO
+                                button.key = parentPageElement.key;
                             }
                             if (modelElement["buttonhandler"] != null) {
                                 button.handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
@@ -159,6 +159,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                             }
                             dynamicList.url = modelElement["url"];
+                            if (parentPageElement != null) {
+                                dynamicList.key = parentPageElement.key;
+                                if (dynamicList.url != null) {
+                                    dynamicList.url = dynamicList.url.replace(":key",parentPageElement.key);
+                                }
+                            }
                             dynamicList.color = modelElement["color"];
                             if (modelElement["form"] != null) {
                                 dynamicList.form = modelElement["form"]["form"];

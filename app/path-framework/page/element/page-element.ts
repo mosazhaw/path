@@ -4,6 +4,7 @@ import {IPageElement} from "../../pathinterface";
 export class PageElement implements IPageElement {
     private _app:path.IPathApp;
     private _id:string;
+    private _key:number;
     private _name:string;
     private _type:string;
     private _width:number;
@@ -46,5 +47,13 @@ export class PageElement implements IPageElement {
 
     set width(value:number) {
         this._width = value;
+    }
+
+    get key(): number {
+        return this._key;
+    }
+
+    set key(value: number) {
+        this._key = value;
     }
 }

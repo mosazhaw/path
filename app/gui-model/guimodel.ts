@@ -1333,7 +1333,7 @@ export class GuiModel {
                                 "form": "PersonForm",
                                 "mode": "update"
                             },
-                            "url": "/person"
+                            "url": "/company/:key/person"
                         },
                         {
                             "type": "button",
