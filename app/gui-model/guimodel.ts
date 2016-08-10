@@ -564,16 +564,18 @@ export class GuiModel {
                 },
                 {
                     "id": "MaturityLevelSchemaForm",
+                    "url": "/maturityLevelSchema",
                     "title": "Maturity Level Schema",
                     "formFieldList": [
                         {
+                            "id": "name",
                             "type": "text",
                             "name": "Maturity Level Schema",
                             "width": 2,
                             "mandatory": true
                         },
                         {
-                            "id": "ScanType",
+                            "id": "projectType",
                             "type": "RadioGroupField",
                             "name": "Scan",
                             "defaultKey": "QuickScan",
@@ -1641,7 +1643,7 @@ export class GuiModel {
                             "color": "carrot",
                             "search": false,
                             "page": "maturitylevelsconfigurationpage",
-                            "data": [{"name": "Schema 1"}, {"name": "Schema 2"}, {"name": "Schema 3"}]
+                            "url": "/maturityLevelSchema"
                         }
                     ]
                 },

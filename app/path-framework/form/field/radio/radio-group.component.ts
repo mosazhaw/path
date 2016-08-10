@@ -67,6 +67,7 @@ export class RadioGroupField extends ValueField<any> {
             radio.key = radioModel.key;
             if (radio.key == modelFormField["defaultKey"]) {
                 radio.value = true;
+                this.setValue(radio.key);
             } else {
                 radio.value = false;
             }
