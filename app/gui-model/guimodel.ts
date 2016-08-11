@@ -1919,7 +1919,7 @@ export class GuiModel {
                             "form": {
                                 "form": "CapabilityForm"
                             },
-                            "data": [{"name": "Capability 1"}, {"name": "Capability 2"}, {"name": "Capability 3"}, {"name": "Capability 4"}, {"name": "Capability 5"}, {"name": "Capability 6"}, {"name": "Capability 7"}, {"name": "Capability 8"}, {"name": "Capability 9"}, {"name": "Capability 10"}]
+                            "url": "/quickScanCategory/:key/capabilityQuestion"
                         },
                         {
                             "type": "button",
