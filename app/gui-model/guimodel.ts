@@ -1124,7 +1124,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "pumpkin",
                             "buttonhandler": "CategoryListButtonHandler",
-                            "data": [{"key":1, "name": "MDM QuickScan"}, {"key":2, "name": "Category B2"}, {"key":3, "name": "Category B3"}, {"key":4, "name": "Category B4"}, {"key":5, "name": "Category B5"}, {"key":6, "name": "Category B6"}, {"key":7, "name": "Category B7"}, {"key":8, "name": "Category B8"}, {"key":9, "name": "Category B9"}, {"key":10, "name": "Category B10"}]
+                            "url": "/quickScanProject/:key/quickScanCategory"
                         }
                     ]
                 },
