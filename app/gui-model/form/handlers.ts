@@ -1,41 +1,6 @@
 import * as forms from './../generated/forms';
 import * as path from './../../path-framework/pathinterface';
 
-export class ProjectFormQuickScanHandler implements path.IFormHandler {
-
-    public doLoad(form:forms.ProjectForm) {
-        console.log("loading quick scan form");
-        if (form.caseKey != null) {
-            form.caseKey.visible = true;
-        }
-    }
-
-    public doSave(form:forms.ProjectForm) {
-        console.log("saving quick scan form");
-    }
-
-    public doValidate(form:forms.ProjectForm) {
-        console.log("validating quick scan form");
-    }
-
-}
-
-export class ProjectFormDeepScanHandler implements path.IFormHandler {
-
-    public doLoad(form:forms.ProjectForm) {
-        console.log("loading deep scan form");
-    }
-
-    public doSave(form:forms.ProjectForm) {
-        console.log("saving deep scan form");
-    }
-
-    public doValidate(form:forms.ProjectForm) {
-        console.log("validating deep scan form");
-    }
-
-}
-
 export class CompanyFormHandler implements path.IFormHandler {
 
     public doLoad(form:forms.CompanyForm) {

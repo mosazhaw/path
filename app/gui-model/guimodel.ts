@@ -5,9 +5,9 @@ export class GuiModel {
             "title": "Assessment Tool",
             "formList": [
                 {
-                    "id": "ProjectForm",
-                    "title": "Project Details",
-                    "url": "/project",
+                    "id": "QuickScanProjectForm",
+                    "title": "QuickScan Project Details",
+                    "url": "/quickScanProject",
                     "formFieldList": [
                         {
                             "id": "name",
@@ -17,13 +17,12 @@ export class GuiModel {
                             "required": true
                         },
                         {
-                            "id": "caseKey",
+                            "id": "quickScanCase",
                             "type": "autocomplete",
                             "name": "Case",
                             "wordSearchEnabled": false,
-                            "visible": false,
                             "actions": [],
-                            "data": ["Case A", "Case B", "Case C", "Case D", "Case E"],
+                            "url": "/quickScanCase",
                             "width": 2,
                             "required": true
                         },
@@ -38,41 +37,157 @@ export class GuiModel {
                             "name": "End Date"
                         },
                         {
-                            "id": "customerKey",
+                            "id": "customer",
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
-                            "data": ["Alpha Hospital", "Blue Hospital", "Charisma Hospital"],
+                            "url": "/company",
                             "newRow": true,
                             "required": true
                         },
                         {
-                            "id": "customerProjectLeaderKey",
+                            "id": "customerProjectLeader",
                             "type": "autocomplete",
                             "name": "Customer PL",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
-                            "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
+                            "url": "/person",
                             "required": true
                         },
                         {
-                            "id": "serviceProviderKey",
+                            "id": "serviceProvider",
                             "type": "autocomplete",
                             "name": "Service Provider",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
-                            "data": ["Deloitte AG", "Service Provider AG", "Enterprise AG"],
+                            "url": "/company",
                             "newRow": true,
                             "required": true
                         },
                         {
-                            "id": "serviceProviderProjectLeaderKey",
+                            "id": "serviceProviderProjectLeader",
                             "type": "autocomplete",
                             "name": "Service Provider PL",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
-                            "data": ["Marianne Johnson", "Abraham Griffin", "Lisa Silva", "Dean Mccormick", "Meghan Dunn", "Roy Steele", "Pete Nguyen", "Henrietta Holmes", "Rodolfo Murray", "Brenda Parsons", "Helen Cunningham", "Alexander Barber", "Rochelle Sharp", "Edward Phelps", "Ralph Cooper", "Drew Stevens", "Ricardo Wong", "Dale Parker", "Scott Matthews", "Claudia Bowman", "Geoffrey Lambert", "Naomi Garner", "Steve Hayes", "Brendan Johnston", "Tasha Mills"],
+                            "url": "/person",
+                            "required": true
+                        },
+                        {
+                            "id": "industrySegment",
+                            "type": "CheckboxGroupField",
+                            "name": "Industry Segment",
+                            "data": [{id: "1", name: "Oil& Gas"}, {id: "2", name: "Basic Materials"}, {id: "3", name: "Industrials"}, {id: "4", name: "Consumer Services"}, {id: "5", name: "Consumer Goods"}, {id: "6", name: "Health Care"}, {id: "7", name: "Financials"}, {id: "8", name: "Technology"}, {id: "9", name: "Telecommunications"}, {id: "10", name: "Utilities"}],
+                            "width": 2
+                        },
+                        {
+                            "id": "benchmarking",
+                            "type": "RadioGroupField",
+                            "name": "Benchmarking",
+                            "defaultKey": true,
+                            "radios": [{
+                                type: "radio",
+                                name: "Yes",
+                                key: true
+                            }, {
+                                type: "radio",
+                                name: "No",
+                                key: false
+                            }
+                            ]
+                        },
+                        {
+                            "id": "monitoring",
+                            "type": "RadioGroupField",
+                            "name": "Monitoring (over Time)",
+                            "defaultKey": false,
+                            "radios": [{
+                                type: "radio",
+                                name: "Yes",
+                                key: true
+                            }, {
+                                type: "radio",
+                                name: "No",
+                                key: false
+                            }
+                            ]
+                        },
+                        {
+                            "id": "comments",
+                            "type": "text",
+                            "name": "Comments",
+                            "height": 8,
+                            "width": 2
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "DeepScanProjectForm",
+                    "title": "DeepScan Project Details",
+                    "url": "/deepScanProject",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "Project",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "evtStartDate",
+                            "type": "date",
+                            "name": "Start Date",
+                        },
+                        {
+                            "id": "evtEndDate",
+                            "type": "date",
+                            "name": "End Date"
+                        },
+                        {
+                            "id": "customer",
+                            "type": "autocomplete",
+                            "name": "Customer",
+                            "wordSearchEnabled": true,
+                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
+                            "url": "/company",
+                            "newRow": true,
+                            "required": true
+                        },
+                        {
+                            "id": "customerProjectLeader",
+                            "type": "autocomplete",
+                            "name": "Customer PL",
+                            "wordSearchEnabled": true,
+                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
+                            "url": "/person",
+                            "required": true
+                        },
+                        {
+                            "id": "serviceProvider",
+                            "type": "autocomplete",
+                            "name": "Service Provider",
+                            "wordSearchEnabled": true,
+                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
+                            "url": "/company",
+                            "newRow": true,
+                            "required": true
+                        },
+                        {
+                            "id": "serviceProviderProjectLeader",
+                            "type": "autocomplete",
+                            "name": "Service Provider PL",
+                            "wordSearchEnabled": true,
+                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
+                            "url": "/person",
                             "required": true
                         },
                         {
@@ -916,8 +1031,7 @@ export class GuiModel {
                             "icon": "fa-fast-forward",
                             "color": "green",
                             "form": {
-                                "form": "ProjectForm",
-                                "handler": "ProjectFormQuickScanHandler"
+                                "form": "QuickScanProjectForm"
                             }
                         },
                         {
@@ -928,7 +1042,7 @@ export class GuiModel {
                             "search": true,
                             "page": "quickscanpage",
                             "handler": "QuickScanListHandler",
-                            "url": "/project"
+                            "url": "/quickScanProject"
                         }
                     ]
                 },
@@ -945,8 +1059,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "ProjectForm",
-                                "handler": "ProjectFormQuickScanHandler"
+                                "form": "QuickScanProjectForm"
                             }
                         },
                         {
@@ -1062,8 +1175,7 @@ export class GuiModel {
                             "icon": "fa-fast-forward",
                             "color": "green",
                             "form": {
-                                "form": "ProjectForm",
-                                "handler": "ProjectFormDeepScanHandler"
+                                "form": "DeepScanProjectForm"
                             }
                         },
                         {
@@ -1073,7 +1185,7 @@ export class GuiModel {
                             "color": "wet-asphalt",
                             "search": true,
                             "page": "deepscanpage",
-                            "data": [{"name": "DeepScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "DeepScan Two", "details": [ "04/2017", "Blue Hospital" ]}, {"name": "DeepScan Three", "details": [ "04/2017", "Alpha Hospital" ]}, {"name": "DeepScan Four", "details": [ "05/2017", "Alpha Hospital" ]}, {"name": "DeepScan Five", "details": [ "06/2017", "Charisma Hospital" ]}, {"name": "DeepScan Six", "details": [ "11/2017", "Alpha Hospital" ]}]
+                            "url": "/deepScanProject"
                         }
                     ]
                 },
@@ -1090,8 +1202,7 @@ export class GuiModel {
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
-                                "form": "ProjectForm",
-                                "handler": "ProjectFormDeepScanHandler"
+                                "form": "DeepScanProjectForm"
                             }
                         },
                         {
