@@ -569,12 +569,146 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "CapabilityForm",
-                    "title": "Capability",
+                    "id": "CapabilityQuestionForm",
+                    "title": "Capability Question",
+                    "url": "/capabilityQuestion",
+                    "formFieldList": [
+                        {
+                            "id": "questionText",
+                            "type": "text",
+                            "name": "Capability Question",
+                            "height": 8,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id":   "quickScanCategory",
+                            "type": "autocomplete",
+                            "name": "QuickScan Category",
+                            "wordSearchEnabled": true,
+                            "defaultParentKey": true,
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/quickScanCategory",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Awareness",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Develop",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Practice",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Optimize",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Best-In-Class",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "SupportProcessQualitativeQuestionForm",
+                    "title": "SupportProcess Qualitative Question",
                     "formFieldList": [
                         {
                             "type": "text",
-                            "name": "Capability Question",
+                            "name": "Question",
+                            "height": 8,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Awareness",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Develop",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Practice",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Optimize",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "text",
+                            "name": "Best-In-Class",
+                            "height": 4,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "SubprocessQualitativeQuestionForm",
+                    "title": "Subprocess Qualitative Question",
+                    "formFieldList": [
+                        {
+                            "type": "text",
+                            "name": "Question",
                             "height": 8,
                             "width": 2,
                             "required": true
@@ -1907,7 +2041,7 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "CapabilityForm"
+                                "form": "CapabilityQuestionForm"
                             }
                         },
                         {
@@ -1917,7 +2051,7 @@ export class GuiModel {
                             "color": "lime",
                             "search": true,
                             "form": {
-                                "form": "CapabilityForm"
+                                "form": "CapabilityQuestionForm"
                             },
                             "url": "/quickScanCategory/:key/capabilityQuestion"
                         },
@@ -2026,7 +2160,7 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "CapabilityForm"
+                                "form": "SupportProcessQualitativeQuestionForm"
                             }
                         },
                         {
@@ -2035,7 +2169,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "lime",
                             "form": {
-                                "form": "CapabilityForm"
+                                "form": "SupportProcessQualitativeQuestionForm"
                             },
                             "data": [{"name": "Qualitative Question 1"}, {"name": "Qualitative Question 2"}, {"name": "Qualitative Question 3"}]
                         },
@@ -2069,7 +2203,7 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "CapabilityForm"
+                                "form": "SubprocessQualitativeQuestionForm"
                             }
                         },
                         {
@@ -2078,7 +2212,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "lime",
                             "form": {
-                                "form": "CapabilityForm"
+                                "form": "SubprocessQualitativeQuestionForm"
                             },
                             "data": [{"name": "Qualitative Question 1"}, {"name": "Qualitative Question 2"}, {"name": "Qualitative Question 3"}, {"name": "Qualitative Question 4"}]
                         },
