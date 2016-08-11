@@ -362,10 +362,23 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "quickScanCase",
+                            "type": "autocomplete",
+                            "name": "QuickScan Case",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "defaultParentKey": true,
+                            "actions": [],
+                            "url": "/quickScanCase",
+                            "width": 2
+                        },
+                        {
                             "id": "maturityLevelSchema",
                             "type": "autocomplete",
                             "name": "Maturity Level Schema",
                             "wordSearchEnabled": false,
+                            "required": true,
                             "actions": [],
                             "url": "/maturityLevelSchema",
                             "width": 2
@@ -1751,7 +1764,7 @@ export class GuiModel {
                             "color": "asbestos",
                             "search": true,
                             "page": "quickscancategoryconfigurationpage",
-                            "url": "/quickScanCategory"
+                            "url": "/quickScanCase/:key/quickScanCategory"
                         },
                         {
                             "type": "button",
