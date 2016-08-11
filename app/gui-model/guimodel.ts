@@ -582,7 +582,7 @@ export class GuiModel {
                             "required": true
                         },
                         {
-                            "id":   "quickScanCategory",
+                            "id": "quickScanCategory",
                             "type": "autocomplete",
                             "name": "QuickScan Category",
                             "wordSearchEnabled": true,
@@ -594,6 +594,7 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "level1",
                             "type": "text",
                             "name": "Awareness",
                             "height": 4,
@@ -601,6 +602,7 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "level2",
                             "type": "text",
                             "name": "Develop",
                             "height": 4,
@@ -608,6 +610,7 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "level3",
                             "type": "text",
                             "name": "Practice",
                             "height": 4,
@@ -615,6 +618,7 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "level4",
                             "type": "text",
                             "name": "Optimize",
                             "height": 4,
@@ -622,6 +626,7 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "level5",
                             "type": "text",
                             "name": "Best-In-Class",
                             "height": 4,
