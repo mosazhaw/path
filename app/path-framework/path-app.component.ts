@@ -35,7 +35,11 @@ export abstract class PathAppComponent implements path.IPathApp {
             console.log("jwt: " + data["jwt"]);
             this._userId = userId;
         }, (err:any) => {
-            alert("Login failed.")
+            if (this.getBackendUrl().indexOf("heroku") > 0) {
+                alert("Login failed. Please try again after 30sec, because the Heroku backend server may be sleeping due to inactivity.")
+            } else {
+                alert("Login failed.")
+            }
             console.error("failed login");
         });
     }
