@@ -343,7 +343,14 @@ export abstract class PathAppComponent implements path.IPathApp {
 
                 // fetch data from backend
                 if (form.url != null && form.key != null) {
-                    this.pathService.serverGet(this.getBackendUrl(), form.url + "/" + form.key, (data:any) => {
+                    let url:any = form.url;
+                    if (url.indexOf(":key") < 0) {
+                        url = url + "/" + form.key;
+                    } else if (parentPageElement != null && parentPageElement.getKey() != null) {
+                        url = url.replace(":key",parentPageElement.getKey());
+                    }
+                    form.url = url;
+                    this.pathService.serverGet(this.getBackendUrl(), url, (data:any) => {
                         for (let field of form.fields) {
                             if (data[field.id] != null && field instanceof path.ValueField) {
                                 (<path.ValueField<any>>field).setValue(data[field.id]);

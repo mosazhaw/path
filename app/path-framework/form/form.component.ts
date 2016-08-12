@@ -135,7 +135,7 @@ export class Form implements IForm {
                 this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, closeAndRefresh);
             } else {
                 // update (with key)
-                this.pathService.serverPut(this.app.getBackendUrl(), this.url, this.key, data, closeAndRefresh);
+                this.pathService.serverPut(this.app.getBackendUrl(), this.url, data, closeAndRefresh);
             }
         } else {
             this.app.closeCurrentForm();

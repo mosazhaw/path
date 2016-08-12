@@ -62,9 +62,9 @@ export class PathService {
         }
     }
 
-    serverPut(server:string, url:string, key:number, data:any, processor:() => any) {
+    serverPut(server:string, url:string, data:any, processor:() => any) {
         if (url != null) {
-            this.http.put(server + url + "/" + key, JSON.stringify(data), { headers: this.appendHeaders() })
+            this.http.put(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
                 .subscribe(
                     data => {
                         localStorage.setItem("pathAppId", data.headers.get("Authorization"));

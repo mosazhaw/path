@@ -414,15 +414,28 @@ export class GuiModel {
                 {
                     "id": "ProjectIntervieweeForm",
                     "title": "Add Interviewee to Project",
+                    "url": "/project/:key/interviewee",
                     "formFieldList": [
                         {
+                            "id": "personKey",
                             "type": "autocomplete",
                             "name": "Person",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
-                            "data": ["Frau Dr. Müller", "Herr Dr. Lisib", "Frau Dr. Last"],
+                            "url": "/person",
                             "width": 2,
                             "required": true
+                        },
+                        {
+                            "id": "projectKey",
+                            "type": "autocomplete",
+                            "name": "Project",
+                            "wordSearchEnabled": true,
+                            "url": "/project",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultParentKey": true
                         },
                         {
                             "type": "deleteButton",
