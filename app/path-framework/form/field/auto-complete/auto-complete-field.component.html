@@ -3,7 +3,7 @@
         <div class="input-group">
             <input [readonly]="field.isReadonly()" #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value) class="form-control" placeholder="">
             <!-- Auto Complete -->
-            <div *ngIf="field.filteredList.length > 0">
+            <div *ngIf="field.filteredList.length > 0 && !field.isReadonly()">
                 <div class="path-autocomplete list-group">
                     <a *ngFor="let item of field.filteredList" class="list-group-item" href="#" (click)="field.select(item)"><h5>{{item.text}}</h5></a>
                 </div>

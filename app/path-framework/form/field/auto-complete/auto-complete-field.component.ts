@@ -22,6 +22,9 @@ export class AutoCompleteComponent {
     }
 
     handleClick(event) {
+        if (this.field.isReadonly()) {
+            return;
+        }
         var clickedComponent = event.target;
         var inside = false;
         do {
