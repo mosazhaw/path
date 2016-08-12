@@ -3,7 +3,6 @@ import * as path from './../path';
 export class Page {
     private _title:string;
     private _id:string;
-    private _parentPageElement:path.PageElement;
     private _content:path.PageElement[] = [];
 
     get title():string {
@@ -28,13 +27,5 @@ export class Page {
 
     set id(value:string) {
         this._id = value;
-    }
-
-    get parentPageElement():path.PageElement {
-        return this._parentPageElement;
-    }
-
-    set parentPageElement(value:path.PageElement) {
-        this._parentPageElement = value;
     }
 }

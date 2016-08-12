@@ -43,6 +43,7 @@ export class List extends path.PageElement implements IList {
                 button.name = item.name;
                 button.setIcon(this.icon);
                 button.setColor(item["color"] != null ? item["color"] : (button.color == null ? this.color : button.color));
+                button.parentPageElement = this.parentPageElement;
                 // button details
                 if (item["details"] != null) {
                     button.details = [];

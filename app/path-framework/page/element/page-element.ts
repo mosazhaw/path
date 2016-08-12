@@ -8,6 +8,7 @@ export class PageElement implements IPageElement {
     private _name:string;
     private _type:string;
     private _width:number;
+    private _parentPageElement:PageElement;
 
     constructor(app:path.IPathApp) {
         this._app = app;
@@ -59,5 +60,13 @@ export class PageElement implements IPageElement {
 
     set key(value: number) {
         this._key = value;
+    }
+
+    get parentPageElement(): PageElement {
+        return this._parentPageElement;
+    }
+
+    set parentPageElement(value: PageElement) {
+        this._parentPageElement = value;
     }
 }

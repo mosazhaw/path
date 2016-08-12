@@ -119,7 +119,6 @@ export abstract class PathAppComponent implements path.IPathApp {
             if (modelPage.id == pageId) {
                 page = new path.Page();
                 page.id = pageId;
-                page.parentPageElement = parentPageElement;
                 page.title = modelPage.title;
                 for (var modelElement of modelPage.elementList) {
                     // element
@@ -168,6 +167,10 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 dynamicList.key = parentPageElement.key;
                                 if (dynamicList.url != null) {
                                     dynamicList.url = dynamicList.url.replace(":key",parentPageElement.key);
+                                    if (parentPageElement.parentPageElement != null) {
+                                        // TODO support unlimited number of hierarchical parentKeys
+                                        dynamicList.url = dynamicList.url.replace(":parentKey",parentPageElement.parentPageElement.key);
+                                    }
                                 }
                             }
                             dynamicList.color = modelElement["color"];
@@ -189,6 +192,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     element.name = modelElement["name"];
                     element.type = modelElement.type;
+                    element.parentPageElement = parentPageElement;
                     if (modelElement["width"] != null) {
                         element.width = modelElement["width"];
                     } else {

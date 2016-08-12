@@ -1293,7 +1293,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "categorycapabilitiespage",
-                            "data": [{"name": "MDM QuickScan"}, {"name": "Category B4"}, {"name": "Category B7"}, {"name": "Category B8"}, {"name": "Category B10"}]
+                            "url": "/quickScanProject/:parentKey/quickScanCategory"
                         },
                         {
                             "type": "button",
