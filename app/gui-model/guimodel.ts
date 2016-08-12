@@ -1200,7 +1200,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanpage",
-                    "title": "Interviewees",
+                    "title": "QuickScan",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -1536,7 +1536,7 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Company",
                             "icon": "fa-home",
                             "color": "green",
@@ -1815,7 +1815,7 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New User",
                             "icon": "fa-user",
                             "color": "green",
@@ -1902,7 +1902,7 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Maturity Level Schema",
                             "icon": "fa-signal",
                             "color": "green",
@@ -1940,7 +1940,7 @@ export class GuiModel {
                             }
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Maturity Level",
                             "icon": "fa-signal",
                             "color": "green",
@@ -1970,7 +1970,7 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Case",
                             "icon": "fa-briefcase",
                             "color": "green",
@@ -2006,7 +2006,7 @@ export class GuiModel {
                             }
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Category",
                             "icon": "fa-cube",
                             "color": "green",
@@ -2048,7 +2048,7 @@ export class GuiModel {
                             }
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Capability",
                             "icon": "fa-question",
                             "color": "green",
@@ -2113,7 +2113,7 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Support Process",
                             "icon": "fa-cube",
                             "color": "green",
@@ -2149,7 +2149,7 @@ export class GuiModel {
                             },
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Subprocess",
                             "icon": "fa-cube",
                             "color": "green",
@@ -2167,7 +2167,7 @@ export class GuiModel {
                             "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Qualitative Question",
                             "icon": "fa-question",
                             "color": "green",
@@ -2210,7 +2210,7 @@ export class GuiModel {
                             },
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Qualitative Question",
                             "icon": "fa-question",
                             "color": "green",
@@ -2244,7 +2244,7 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New KPI",
                             "icon": "fa-tachometer",
                             "color": "green",
@@ -2302,7 +2302,7 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New KPI Category",
                             "icon": "fa-book",
                             "color": "green",

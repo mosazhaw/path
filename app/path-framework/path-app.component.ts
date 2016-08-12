@@ -120,6 +120,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                 page = new path.Page();
                 page.id = pageId;
                 page.title = modelPage.title;
+                if (parentPageElement != null) {
+                    page.title = parentPageElement.name;
+                }
                 for (var modelElement of modelPage.elementList) {
                     // element
                     let element:path.PageElement = null;
