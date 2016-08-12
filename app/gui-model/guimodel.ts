@@ -1246,7 +1246,7 @@ export class GuiModel {
                             "color": "blue",
                             "search": true,
                             "page": "quickscanintervieweecategoriespage",
-                            "data": [{"name": "Frau Dr. Müller", "details": [ "Alpha Hospital" ]}, {"name": "Herr Dr. Lisib", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Last", "details": [ "Alpha Hospital" ]}, {"name": "Frau Dr. Gesund", "details": [ "Alpha Hospital" ]}]
+                            "url": "/project/:key/interviewee"
                         }
                     ]
                 },
