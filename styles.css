@@ -41,3 +41,7 @@
     max-height: calc(100vh - 212px);
     overflow-y: auto;
 }
+
+.list-group-item {
+    padding: 3px 10px
+}
