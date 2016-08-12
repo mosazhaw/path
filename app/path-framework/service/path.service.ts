@@ -95,7 +95,11 @@ export class PathService {
                         processor();
                     },
                     err => {
-                        this.handleError(err);
+                        if (err.status == 405) {
+                            alert('Could not delete item because it is in use.');
+                        } else {
+                            this.handleError(err);
+                        }
                     },
                     () => {
                         console.log('server DELETE to ' + server + url + ' finished:')
