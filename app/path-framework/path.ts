@@ -19,6 +19,7 @@ export * from './form/field/auto-complete/auto-complete-field.component';
 export * from './form/field/checkbox/checkbox-group.component';
 export * from './form/field/button/action';
 export * from './form/field/button/cancel-button';
+export * from './form/field/button/delete-button';
 export * from './form/field/button/ok-button';
 export * from './form/field/date/date-field.component';
 export * from './form/field/progress-bar/progress-bar.component';

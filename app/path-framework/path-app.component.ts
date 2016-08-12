@@ -125,6 +125,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     let element:path.PageElement = null;
                     switch (modelElement.type) {
                         case "button":
+                        case "newButton":
                             let button = new path.Button(this);
                             button.setIcon(modelElement["icon"]);
                             button.setColor(modelElement["color"]);
@@ -133,11 +134,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 button.setFormHandler(modelElement["form"]["handler"]);
                             }
                             button.setPage(modelElement["page"]);
-                            if (parentPageElement != null) {
-                                button.key = parentPageElement.key;
-                            }
                             if (modelElement["buttonhandler"] != null) {
                                 button.handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
+                            }
+                            if (parentPageElement != null && modelElement.type == "button") {
+                                    button.key = parentPageElement.key;
                             }
                             element = button;
                             break;
@@ -318,6 +319,15 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.fromJson(modelFormField);
                             break;
                         }
+                        case "deleteButton":
+                        {
+                            formField = new path.DeleteButton(form);
+                            formField.fromJson(modelFormField);
+                            if (form.key == null) {
+                                formField.visible = false;
+                            }
+                            break;
+                        }
                         default:
                         {
                             formField = new path.FormField(form);
@@ -326,8 +336,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     // use parent value
                     if (formField instanceof ValueField && modelFormField["defaultParentKey"] == true) {
-                        if (parentPageElement != null) {
-                            (<ValueField<any>>formField).setValue(parentPageElement.getKey());
+                        if (parentPageElement != null && parentPageElement.getParent() != null) {
+                            (<ValueField<any>>formField).setValue(parentPageElement.getParent().getKey());
                         }
                     }
                     // form field actions

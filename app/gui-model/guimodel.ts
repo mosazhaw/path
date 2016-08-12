@@ -293,6 +293,10 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
                             "type": "cancelButton",
                             "name": "Cancel"
                         },
@@ -436,10 +440,6 @@ export class GuiModel {
                             "required": true,
                             "readonly": true,
                             "defaultParentKey": true
-                        },
-                        {
-                            "type": "deleteButton",
-                            "name": "Delete"
                         },
                         {
                             "type": "cancelButton",
@@ -1564,7 +1564,7 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Person",
                             "icon": "fa-user",
                             "color": "green",
@@ -1602,7 +1602,7 @@ export class GuiModel {
                             }
                         },
                         {
-                            "type": "button",
+                            "type": "newButton",
                             "name": "New Person",
                             "icon": "fa-user",
                             "color": "green",
@@ -1620,12 +1620,6 @@ export class GuiModel {
                                 "form": "PersonForm"
                             },
                             "url": "/company/:key/person"
-                        },
-                        {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red"
                         }
                     ]
                 },

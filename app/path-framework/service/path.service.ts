@@ -85,6 +85,28 @@ export class PathService {
         }
     }
 
+    serverDelete(server:string, url:string, processor:() => any) {
+        if (url != null) {
+            this.http.delete(server + url, { headers: this.appendHeaders() })
+                .subscribe(
+                    data => {
+                        localStorage.setItem("pathAppId", data.headers.get("Authorization"));
+                        console.log(data);
+                        processor();
+                    },
+                    err => {
+                        this.handleError(err);
+                    },
+                    () => {
+                        console.log('server DELETE to ' + server + url + ' finished:')
+                    }
+                );
+        } else {
+            // no url provided, therefore call processor without data
+            processor();
+        }
+    }
+
     private handleError(err) {
         if (err.status == 401) {
             alert("Unauthorized. Please login again.");

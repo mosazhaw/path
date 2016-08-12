@@ -10,6 +10,7 @@ export interface IPathApp {
 
 export interface IPageElement {
     getKey():number;
+    getParent():IPageElement;
 }
 
 export interface IFormField {
@@ -18,7 +19,7 @@ export interface IFormField {
 
 export interface IForm {
     getApp():IPathApp;
-    close(save:boolean);
+    close(save:boolean, remove:boolean);
     getKey():number;
 }
 

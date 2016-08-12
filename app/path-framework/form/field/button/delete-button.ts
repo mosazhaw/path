@@ -1,6 +1,6 @@
 import * as path from './../../../path';
 
-export class CancelButton extends path.FormField {
+export class DeleteButton extends path.FormField {
     private _handler:path.IButtonHandler;
 
     get handler():path.IButtonHandler {
@@ -15,7 +15,6 @@ export class CancelButton extends path.FormField {
         if (this._handler != null) {
             this._handler.doClick(null); // TODO
         }
-        this.form.close(false, false);
+        this.form.close(false, true);
     }
-
 }

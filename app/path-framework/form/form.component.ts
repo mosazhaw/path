@@ -114,8 +114,8 @@ export class Form implements IForm {
         this._rows = rows;
     }
 
-    public close(save:boolean) {
-        if (save) {
+    public close(save:boolean, remove:boolean) {
+        if (save || remove) {
             // call close handler
             if (this.handler != null) {
                 this.handler.doSave(this._bean);
@@ -130,7 +130,9 @@ export class Form implements IForm {
                 this.app.closeCurrentForm();
                 this.app.refreshCurrentPage();
             };
-            if (this.key == null) {
+            if (remove) {
+                this.pathService.serverDelete(this.app.getBackendUrl(), this.url, closeAndRefresh);
+            } else if (this.key == null) {
                 // create
                 this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, closeAndRefresh);
             } else {
@@ -144,7 +146,7 @@ export class Form implements IForm {
 
     public onKey(event) {
         if (event.keyCode == 27) { // esc
-            this.close(false);
+            this.close(false, false);
         }
     }
 }
