@@ -13,6 +13,7 @@ Path Framework Prio1
 - Refresh after Delete wenn in tieferem Level (e.g. Delete Company)
 - Alert Box Yes/No for Delete
 - Search
+- Actions auf AutoCompleteFields
 
 Path Framework Prio2
 - Separation of Framework/Project Frontend
