@@ -1,8 +1,3 @@
-Deloitte
-- Review
-- Question Pages / Wizard
-- Reports / Custom Components
-
 Fragen Assessment Report
 - Welche Elemente sind dynamisch aus erfassten Daten, dynamisch aus Admin-Konfiguraiton bzw. statisch oder werden vom Berater erfasst?
 - Unterschiedlicher Report im Falle von QuickScan und DeepScan? (Kapitel 2/3)
@@ -13,17 +8,23 @@ Fragen Einführungshandbuch
 - Pflege Stammdaten, Bewegungsdaten, OE-Strukturen im Admin Bereich?
 - Zuweisung zu QuickScan / DeepScan oder immer alle auflisten?
 
-Path Framework
+Path Framework Prio1
+- Checkbuttons Multiselect load/store missing
+- Form Validation (required, field length)
+- Refresh after Delete wenn in tieferem Level (e.g. Delete Company)
+- Alert Box Yes/No for Delete
+- Search
+
+Path Framework Prio2
+- Separation of Framework/Project Frontend
+- Generate Form Beans automatically
 - use fromJson() on objects to create element
 - probably use Json Schema for Gui Model (http://json-schema.org/)
-- List / Select List with Objects - not String
-- Listbox / Multi Select Autocomplete
-- Generate Form Beans automatically
 - Use Interfaces everywhere in generated beans and handlers (e.g. ITextField)
-- Form Validation
-- Delete Request and Service
-
-CI
-- Separation of Framework/Project
 - Unit Tests
 - Build
+
+Assessment App
+- QuickScan Category Select / Deselect
+- generic crud unit tests frontend / backend
+- Tickets
