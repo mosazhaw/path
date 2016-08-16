@@ -2,7 +2,7 @@
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
     <span *ngFor="let entry of field.entries">
         <label class="control checkbox">
-            <input type="checkbox">
+            <input type="checkbox" [(ngModel)]="entry.selected" (ngModelChange)="field.doClick()">
             <span class="checkbox-label"> {{entry.name}}</span>
         </label>
     </span>

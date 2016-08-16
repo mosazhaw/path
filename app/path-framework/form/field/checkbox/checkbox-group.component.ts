@@ -13,7 +13,7 @@ export class CheckboxGroupComponent {
     field:CheckboxGroupField;
 }
 
-export class CheckboxGroupField extends ValueField<boolean[]> {
+export class CheckboxGroupField extends ValueField<any[]> {
     private _entries:CheckboxGroupEntry[] = [];
 
     get entries():CheckboxGroupEntry[] {
@@ -24,12 +24,36 @@ export class CheckboxGroupField extends ValueField<boolean[]> {
         this._entries = value;
     }
 
+    public doClick(key:any) {
+        let values:any[] = [];
+        for (let entry of this.entries) {
+            if (entry.selected) {
+                values.push(entry.key);
+            }
+        }
+        this.setValue(values);
+    }
+
+    public setValue(values:any[]) {
+        super.setValue(values);
+        for (let entry of this.entries) {
+            entry.selected = false;
+        }
+        for (let value of values) {
+            for (let entry of this.entries) {
+                if (entry.key == value) {
+                    entry.selected = true;
+                }
+            }
+        }
+    }
+
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
         for (var entryModel of modelFormField["data"]) {
             let entry = new CheckboxGroupEntry();
             entry.name = entryModel.name;
-            entry.id = entryModel.id;
+            entry.key = entryModel.key;
             entry.selected = false;
             this.entries.push(entry);
         }
@@ -37,16 +61,16 @@ export class CheckboxGroupField extends ValueField<boolean[]> {
 }
 
 export class CheckboxGroupEntry {
-    private _id:string;
+    private _key:any;
     private _name:string;
     private _selected:boolean;
 
-    get id():string {
-        return this._id;
+    get key():any {
+        return this._key;
     }
 
-    set id(value:string) {
-        this._id = value;
+    set key(value:any) {
+        this._key = value;
     }
 
     get name():string {

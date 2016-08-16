@@ -78,7 +78,7 @@ export class GuiModel {
                             "id": "industrySegment",
                             "type": "CheckboxGroupField",
                             "name": "Industry Segment",
-                            "data": [{id: "1", name: "Oil& Gas"}, {id: "2", name: "Basic Materials"}, {id: "3", name: "Industrials"}, {id: "4", name: "Consumer Services"}, {id: "5", name: "Consumer Goods"}, {id: "6", name: "Health Care"}, {id: "7", name: "Financials"}, {id: "8", name: "Technology"}, {id: "9", name: "Telecommunications"}, {id: "10", name: "Utilities"}],
+                            "data": [{key: "OilAndGas", name: "Oil & Gas"}, {key: "BasicMaterials", name: "Basic Materials"}, {key: "Industrials", name: "Industrials"}, {key: "ConsumerServices", name: "Consumer Services"}, {key: "ConsumerGoods", name: "Consumer Goods"}, {key: "HealthCare", name: "Health Care"}, {key: "Financials", name: "Financials"}, {key: "Technology", name: "Technology"}, {key: "Telecommunications", name: "Telecommunications"}, {key: "Utilities", name: "Utilities"}],
                             "width": 2
                         },
                         {
@@ -194,7 +194,7 @@ export class GuiModel {
                             "id": "industrySegment",
                             "type": "CheckboxGroupField",
                             "name": "Industry Segment",
-                            "data": [{id: "1", name: "Oil& Gas"}, {id: "2", name: "Basic Materials"}, {id: "3", name: "Industrials"}, {id: "4", name: "Consumer Services"}, {id: "5", name: "Consumer Goods"}, {id: "6", name: "Health Care"}, {id: "7", name: "Financials"}, {id: "8", name: "Technology"}, {id: "9", name: "Telecommunications"}, {id: "10", name: "Utilities"}],
+                            "data": [{key: "OilAndGas", name: "Oil & Gas"}, {key: "BasicMaterials", name: "Basic Materials"}, {key: "Industrials", name: "Industrials"}, {key: "ConsumerServices", name: "Consumer Services"}, {key: "ConsumerGoods", name: "Consumer Goods"}, {key: "HealthCare", name: "Health Care"}, {key: "Financials", name: "Financials"}, {key: "Technology", name: "Technology"}, {key: "Telecommunications", name: "Telecommunications"}, {key: "Utilities", name: "Utilities"}],
                             "width": 2
                         },
                         {
