@@ -15,6 +15,6 @@ export class OkButton extends path.FormField {
         if (this._handler != null) {
             this._handler.doClick(null); // TODO
         }
-        this.form.close(true, false);
+        // closing/saving is done in submit function on form component
     }
 }

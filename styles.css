@@ -33,6 +33,10 @@
     font-weight: bold;
 }
 
+.required-field {
+    border-color: #ff6666;
+}
+
 .modal-dialog {
     width: 70%;
 }

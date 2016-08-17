@@ -12,6 +12,10 @@ export class FormComponent {
     @Input('form')
     @Output('form')
     form:Form;
+
+    public onSubmit() {
+        this.form.close(true, false);
+    }
 }
 
 export class Form implements IForm {
