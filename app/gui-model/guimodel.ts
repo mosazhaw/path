@@ -1117,6 +1117,89 @@ export class GuiModel {
                             "name": "Save and Next"
                         }
                     ]
+                },
+                {
+                    "id": "CapabilityQuestionAnswerForm",
+                    "title": "Capability Question Answer",
+                    "formFieldList": [
+                        {
+                            "id": "progress",
+                            "type": "ProgressBarField",
+                            "name": "Progress",
+                            "value": 10,
+                            "width": 2
+                        },
+                        {
+                            "id": "questionActual",
+                            "type": "RadioGroupField",
+                            "name": "Actual",
+                            "required": true,
+                            "defaultKey": null,
+                            "url": "/quickScanCategory/:key/maturityLevelSchema",
+                            "width": 2
+
+                        },
+                        {
+                            "id": "questionTarget",
+                            "type": "RadioGroupField",
+                            "name": "Target",
+                            "required": true,
+                            "defaultKey": null,
+                            "url": "/quickScanCategory/:key/maturityLevelSchema",
+                            "width": 2
+
+                        },
+                        {
+                            "id": "answer1",
+                            "type": "label",
+                            "name": "Isolated",
+                            "value": "Data Management process undocumented, unstructured and manual.",
+                            "width": 2
+                        },
+                        {
+                            "id": "answer2",
+                            "type": "label",
+                            "name": "Basic",
+                            "value": "Manual master data processing is in place. However, data cleansing is project based and there is no structured data archiving.",
+                            "width": 2
+                        },
+                        {
+                            "id": "answer3",
+                            "type": "label",
+                            "name": "Moderate",
+                            "value": "Most Data Management Process defined and implemented. Some validations steps or approval steps.",
+                            "width": 2
+                        },
+                        {
+                            "id": "answer4",
+                            "type": "label",
+                            "name": "Advanced",
+                            "value": "tbd. 1",
+                            "width": 2
+                        },
+                        {
+                            "id": "answer5",
+                            "type": "label",
+                            "name": "World Class",
+                            "value": "tbd. 2",
+                            "width": 2
+                        },
+                        {
+                            "id": "deleteButton",
+                            "type": "deleteButton",
+                            "name": "Previous"
+                        },
+                        {
+                            "id": "cancelButton",
+                            "type": "cancelButton",
+                            "name": "Skip and Next"
+                        },
+                        {
+                            "id": "okButton",
+                            "type": "okButton",
+                            "name": "Save and Next"
+                        }
+                    ]
                 }
             ],
             "pageList": [
@@ -1307,8 +1390,7 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "form",
-                            "form": "QuestionForm",
-                            "handler": "QuickScanQuestionFormHandler"
+                            "form": "CapabilityQuestionAnswerForm"
                         }
                     ]
                 },

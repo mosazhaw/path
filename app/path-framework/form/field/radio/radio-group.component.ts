@@ -60,17 +60,19 @@ export class RadioGroupField extends ValueField<any> {
                 this._horizontal = false;
             }
         }
-        for (var radioModel of modelFormField["radios"]) {
-            let radio = new Radio(this.getForm());
-            radio.name = radioModel.name;
-            radio.key = radioModel.key;
-            if (radio.key == modelFormField["defaultKey"]) {
-                radio.value = true;
-                this.setValue(radio.key);
-            } else {
-                radio.value = false;
+        if (modelFormField["radios"] != null) {
+            for (var radioModel of modelFormField["radios"]) {
+                let radio = new Radio(this.getForm());
+                radio.name = radioModel.name;
+                radio.key = radioModel.key;
+                if (radio.key == modelFormField["defaultKey"]) {
+                    radio.value = true;
+                    this.setValue(radio.key);
+                } else {
+                    radio.value = false;
+                }
+                this.radios.push(radio);
             }
-            this.radios.push(radio);
         }
     }
 }

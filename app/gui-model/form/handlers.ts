@@ -112,29 +112,6 @@ export class KPIQuestionFormHandler implements path.IFormHandler {
 
 }
 
-export class QuickScanQuestionFormHandler implements path.IFormHandler {
-
-    public doLoad(form:forms.QuestionForm) {
-        console.log("loading question form");
-        form.formula.visible = false;
-        form.input1.visible = false;
-        form.input2.visible = false;
-        form.unit1.visible = false;
-        form.unit2.visible = false;
-        form.comment.visible = false;
-    }
-
-    public doSave(form:forms.QuestionForm) {
-        console.log("saving question form");
-        form.progress.setValue(form.progress.value + 10);
-    }
-
-    public doValidate(form:forms.QuestionForm) {
-        console.log("validating question form");
-    }
-
-}
-
 export class CategoryListButtonHandler implements path.IButtonHandler {
 
     public doClick(button:path.IButton) {

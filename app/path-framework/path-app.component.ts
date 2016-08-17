@@ -153,7 +153,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "form":
                             let form = new path.InlineForm(this);
-                            form.form = this.createForm(modelElement["form"], null, modelElement["handler"], null);
+                            form.form = this.createForm(modelElement["form"], null, modelElement["handler"], parentPageElement);
                             element = form;
                             break;
                         case "list":
@@ -292,6 +292,26 @@ export abstract class PathAppComponent implements path.IPathApp {
                         case "RadioGroupField":
                         {
                             let radioGroupFormField = new path.RadioGroupField(form);
+                            if (modelFormField["url"] != null) {
+                                let radiosUrl:any = modelFormField["url"];
+                                if (parentPageElement != null && parentPageElement.getKey() != null) {
+                                    radiosUrl = radiosUrl.replace(":key",parentPageElement.getKey());
+                                }
+                                this.pathService.serverGet(this.getBackendUrl(), radiosUrl, (data:any) => {
+                                    for (let item of data) {
+                                        let radio = new path.Radio(form);
+                                        radio.name = item["name"];
+                                        radio.key = item["key"];
+                                        if (radio.key == item["defaultKey"]) {
+                                            radio.value = true;
+                                            radioGroupFormField.setValue(radio.key);
+                                        } else {
+                                            radio.value = false;
+                                        }
+                                        radioGroupFormField.radios.push(radio);
+                                    }
+                                }, null);
+                            }
                             radioGroupFormField.fromJson(modelFormField);
                             formField = radioGroupFormField;
                             break;
