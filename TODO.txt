@@ -9,7 +9,7 @@ Fragen Einführungshandbuch
 - Zuweisung zu QuickScan / DeepScan oder immer alle auflisten?
 
 Path Framework Prio1
-- Form Validation (required, field length)
+- Form Validation (field length)
 - Refresh after Delete wenn in tieferem Level (e.g. Delete Company)
 - Alert Box Yes/No for Delete
 - Search
