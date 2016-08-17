@@ -11,6 +11,7 @@ Fragen Einführungshandbuch
 Path Framework Prio1
 - Form Validation (field length)
 - Refresh after Delete wenn in tieferem Level (e.g. Delete Company)
+- DatePicker
 - Alert Box Yes/No for Delete
 - Search
 - Actions auf AutoCompleteFields
