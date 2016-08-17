@@ -1072,7 +1072,6 @@ export class GuiModel {
                             "type": "text",
                             "name": "Input Value 1",
                             "newRow": true,
-                            "required": true,
                             "width": 1
                         },
                         {
@@ -1086,7 +1085,6 @@ export class GuiModel {
                             "type": "text",
                             "name": "Input Value 2",
                             "newRow": true,
-                            "required": true,
                             "width": 1
                         },
                         {
