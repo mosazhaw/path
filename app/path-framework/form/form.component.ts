@@ -3,18 +3,10 @@ import {PathService} from "../service/path.service";
 import {IForm, IPathApp, IFormHandler, IFormBean} from "../pathinterface";
 import {ValueField} from "./field/value-field";
 import {FormField} from "./field/form-field";
-import {AutoCompleteComponent} from "./field/auto-complete/auto-complete-field.component";
-import {TextFieldComponent} from "./field/text/text-field.component";
-import {DateFieldComponent} from "./field/date/date-field.component";
-import {RadioGroupComponent} from "./field/radio/radio-group.component";
-import {CheckboxGroupComponent} from "./field/checkbox/checkbox-group.component";
-import {FormFieldLabelComponent} from "./field/form-field-label.component";
-import {ProgressBarComponent} from "./field/progress-bar/progress-bar.component";
 
 @Component({
     selector: 'path-form',
     templateUrl: 'app/path-framework/form/form.component.html',
-    directives: [AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent]
 })
 export class FormComponent {
     @Input('form')

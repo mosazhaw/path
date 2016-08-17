@@ -4,8 +4,7 @@ import {ValueField} from "../value-field";
 
 @Component({
     selector: 'path-progress-bar',
-    templateUrl: 'app/path-framework/form/field/progress-bar/progress-bar.component.html',
-    directives: [FormFieldLabelComponent]
+    templateUrl: 'app/path-framework/form/field/progress-bar/progress-bar.component.html'
 })
 export class ProgressBarComponent {
     @Input('field')

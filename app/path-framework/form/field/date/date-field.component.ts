@@ -4,8 +4,7 @@ import {ValueField} from "../value-field";
 
 @Component({
     selector: 'path-datefield',
-    templateUrl: 'app/path-framework/form/field/date/date-field.component.html',
-    directives: [FormFieldLabelComponent]
+    templateUrl: 'app/path-framework/form/field/date/date-field.component.html'
 })
 export class DateFieldComponent {
     @Input('field')

@@ -8,8 +8,7 @@ import {AutoCompleteFieldEntry} from "./auto-complete-field-entry";
     host: {
         '(document:click)': 'handleClick($event)',
     },
-    templateUrl: 'app/path-framework/form/field/auto-complete/auto-complete-field.component.html',
-    directives: [FormFieldLabelComponent]
+    templateUrl: 'app/path-framework/form/field/auto-complete/auto-complete-field.component.html'
 })
 export class AutoCompleteComponent {
     @Input('field')

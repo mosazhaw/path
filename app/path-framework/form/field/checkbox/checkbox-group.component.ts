@@ -4,8 +4,7 @@ import {ValueField} from "../value-field";
 
 @Component({
     selector: 'path-checkbox-group',
-    templateUrl: 'app/path-framework/form/field/checkbox/checkbox-group.component.html',
-    directives: [FormFieldLabelComponent]
+    templateUrl: 'app/path-framework/form/field/checkbox/checkbox-group.component.html'
 })
 export class CheckboxGroupComponent {
     @Input('field')
