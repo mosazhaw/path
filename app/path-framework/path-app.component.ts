@@ -258,8 +258,13 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.fromJson(modelFormField);
                             if (modelFormField["url"] != null) {
                                 let fieldListUrl:any = modelFormField["url"];
+                                let modelId:string = modelFormField["id"];
                                 if (parentPageElement != null && parentPageElement.getKey() != null) {
                                     fieldListUrl = fieldListUrl.replace(":key",parentPageElement.getKey());
+                                }
+                                if (parentPageElement != null && parentPageElement.getParent() != null) {
+                                    // TODO support unlimited number of hierarchical parentKeys
+                                    fieldListUrl = fieldListUrl.replace(":parentKey",parentPageElement.getParent().getKey());
                                 }
                                 if (form.key != null) {
                                     fieldListUrl = fieldListUrl.replace(":formKey",form.key);
@@ -267,18 +272,19 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 this.pathService.serverGet(this.getBackendUrl(), fieldListUrl, (data:any) => {
                                     let counter:number = 1;
                                     for (let item of data) {
-                                        let dynamicField:path.FormField = null;
+                                        let dynamicField:ValueField<any> = null;
                                         if (item["type"] == "label") {
                                             dynamicField = new LabelField(form);
                                         } else if (item["type"] == "text") {
                                             dynamicField = new path.TextField(form);
                                         }
-                                        dynamicField.id = modelFormField["id"] + counter;
                                         dynamicField.fromJson(item);
-                                        (<FieldListField>formField).labels.push(dynamicField);
+                                        dynamicField.id = modelId + counter;
+                                        (<FieldListField>formField).subfields.push(dynamicField);
                                         counter++;
                                     }
                                     form.updateRows();
+                                    (<FieldListField>formField).fieldsCreated = true;
                                 }, null);
                             }
                             break;
@@ -429,6 +435,22 @@ export abstract class PathAppComponent implements path.IPathApp {
                         for (let field of form.fields) {
                             if (data[field.id] != null && field instanceof path.ValueField) {
                                 (<path.ValueField<any>>field).setValue(data[field.id]);
+                            }
+                            if (field instanceof FieldListField) {
+                                function setValueOfFieldListField() {
+                                    if(!(<FieldListField>field).fieldsCreated) {
+                                        console.log("Waiting... ");
+                                        setTimeout(setValueOfFieldListField, 50); // wait then try again
+                                        return;
+                                    }
+                                    // update fields
+                                    for (let subfield of (<FieldListField>field).subfields) {
+                                        if (data[subfield.id] != null) {
+                                            subfield.setValue(data[subfield.id]);
+                                        }
+                                    }
+                                }
+                                setValueOfFieldListField();
                             }
                         }
                     }, null)

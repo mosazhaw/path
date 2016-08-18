@@ -1,6 +1,5 @@
 import {Component, Input, Output, ElementRef} from '@angular/core';
 import {ValueField} from "../value-field";
-import {FormField} from "../form-field";
 
 @Component({
     selector: 'path-field-list',
@@ -13,13 +12,22 @@ export class FieldListFieldComponent {
 }
 
 export class FieldListField extends ValueField<string[]> {
-    private _labels:FormField[] = [];
+    private _subfields:ValueField<any>[] = [];
+    private _fieldsCreated:boolean = false;
 
-    get labels(): FormField[] {
-        return this._labels;
+    get subfields(): ValueField<any>[] {
+        return this._subfields;
     }
 
-    set labels(value: FormField[]) {
-        this._labels = value;
+    set subfields(value: ValueField<any>[]) {
+        this._subfields = value;
+    }
+
+    get fieldsCreated(): boolean {
+        return this._fieldsCreated;
+    }
+
+    set fieldsCreated(value: boolean) {
+        this._fieldsCreated = value;
     }
 }

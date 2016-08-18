@@ -101,7 +101,7 @@ export class Form implements IForm {
         let currentFormRow:FormRow;
         for (let field of this.fields) {
             if (field instanceof FieldListField) {
-                for (let subField of (<FieldListField>field).labels) {
+                for (let subField of (<FieldListField>field).subfields) {
                     currentFormRow = this.calculateFieldRow(subField, currentFormRow, rows);
                     currentFormRow.fields.push(subField);
                 }
@@ -133,6 +133,11 @@ export class Form implements IForm {
             for (let field of this._fields) {
                 if (field instanceof ValueField && field.id != null) {
                     data[field.id] = (<ValueField<any>>field).value;
+                }
+                if (field instanceof FieldListField) {
+                    for (let subfield of (<FieldListField>field).subfields) {
+                        data[subfield.id] = (<ValueField<any>>subfield).value;
+                    }
                 }
             }
             let closeAndRefresh = () => {
