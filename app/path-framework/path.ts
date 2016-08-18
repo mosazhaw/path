@@ -28,7 +28,7 @@ export * from './form/field/radio/radio';
 export * from './form/field/text/text-field.component';
 export * from './form/field/value-field'
 export * from './form/field/label/label-field.component'
-export * from './form/field/labelList/label-list-field.component'
+export * from './form/field/fieldList/field-list-field.component'
 
 export * from './service/path.service'
 export * from './service/path.mock.service'

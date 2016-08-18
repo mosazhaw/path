@@ -1151,7 +1151,7 @@ export class GuiModel {
                         },
                         {
                             "id": "answerDescription",
-                            "type": "labelList",
+                            "type": "fieldList",
                             "url": "/question/:formKey/questionMaturityLevel",
                             "width": 2
                         },

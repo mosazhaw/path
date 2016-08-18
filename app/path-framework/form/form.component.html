@@ -13,8 +13,8 @@
 					<div *ngIf="field.type == 'label'">
 						<path-label-field [field]="field"></path-label-field>
 					</div>
-					<div *ngIf="field.type == 'labelList'">
-						<path-label-list [field]="field"></path-label-list>
+					<div *ngIf="field.type == 'fieldList'">
+						<path-field-list [field]="field"></path-field-list>
 					</div>
 					<div *ngIf="field.type == 'date'">
 						<path-datefield [field]="field"></path-datefield>

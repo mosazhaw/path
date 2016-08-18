@@ -3,7 +3,7 @@ import {PathService} from "../service/path.service";
 import {IForm, IPathApp, IFormHandler, IFormBean} from "../pathinterface";
 import {ValueField} from "./field/value-field";
 import {FormField} from "./field/form-field";
-import {LabelListField} from "./field/labelList/label-list-field.component";
+import {FieldListField} from "./field/fieldList/field-list-field.component";
 
 @Component({
     selector: 'path-form',
@@ -100,8 +100,8 @@ export class Form implements IForm {
 
         let currentFormRow:FormRow;
         for (let field of this.fields) {
-            if (field instanceof LabelListField) {
-                for (let subField of (<LabelListField>field).labels) {
+            if (field instanceof FieldListField) {
+                for (let subField of (<FieldListField>field).labels) {
                     currentFormRow = this.calculateFieldRow(subField, currentFormRow, rows);
                     currentFormRow.fields.push(subField);
                 }

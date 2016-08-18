@@ -3,7 +3,7 @@ import * as autocomplete from './form/field/auto-complete/auto-complete-field.co
 import 'rxjs/add/operator/map';
 import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
 import {ValueField} from "./form/field/value-field";
-import {LabelListField} from "./form/field/labelList/label-list-field.component";
+import {FieldListField} from "./form/field/fieldList/field-list-field.component";
 import {LabelField} from "./form/field/label/label-field.component";
 
 export abstract class PathAppComponent implements path.IPathApp {
@@ -251,9 +251,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.fromJson(modelFormField);
                             break;
                         }
-                        case "labelList":
+                        case "fieldList":
                         {
-                            formField = new path.LabelListField(form);
+                            formField = new path.FieldListField(form);
                             formField.name = "list";
                             formField.fromJson(modelFormField);
                             if (modelFormField["url"] != null) {
@@ -267,13 +267,15 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 this.pathService.serverGet(this.getBackendUrl(), fieldListUrl, (data:any) => {
                                     let counter:number = 1;
                                     for (let item of data) {
-                                        console.log(item);
-                                        let labelField = new LabelField(form);
-                                        labelField.id = modelFormField["id"] + counter;
-                                        labelField.name = item["name"];
-                                        labelField.fromJson(item);
-                                        labelField.type = "label";
-                                        (<LabelListField>formField).labels.push(labelField);
+                                        let dynamicField:path.FormField = null;
+                                        if (item["type"] == "label") {
+                                            dynamicField = new LabelField(form);
+                                        } else if (item["type"] == "text") {
+                                            dynamicField = new path.TextField(form);
+                                        }
+                                        dynamicField.id = modelFormField["id"] + counter;
+                                        dynamicField.fromJson(item);
+                                        (<FieldListField>formField).labels.push(dynamicField);
                                         counter++;
                                     }
                                     form.updateRows();
