@@ -3,6 +3,7 @@ import {PathService} from "../service/path.service";
 import {IForm, IPathApp, IFormHandler, IFormBean} from "../pathinterface";
 import {ValueField} from "./field/value-field";
 import {FormField} from "./field/form-field";
+import {LabelListField} from "./field/labelList/label-list-field.component";
 
 @Component({
     selector: 'path-form',
@@ -99,15 +100,27 @@ export class Form implements IForm {
 
         let currentFormRow:FormRow;
         for (let field of this.fields) {
-            // auto-start new row with form width 2
-            if (currentFormRow == null || field.newRow || currentFormRow.fields.length >= 2 || field.width >= 2 || currentFormRow.getWidth() >= 2) {
-                field.newRow = true;
-                currentFormRow = new FormRow();
-                rows.push(currentFormRow);
+            if (field instanceof LabelListField) {
+                for (let subField of (<LabelListField>field).labels) {
+                    currentFormRow = this.calculateFieldRow(subField, currentFormRow, rows);
+                    currentFormRow.fields.push(subField);
+                }
+            } else {
+                currentFormRow = this.calculateFieldRow(field, currentFormRow, rows);
+                currentFormRow.fields.push(field);
             }
-            currentFormRow.fields.push(field);
         }
         this._rows = rows;
+    }
+
+    private calculateFieldRow(field:FormField, currentFormRow:FormRow, rows:FormRow[]):FormRow {
+        // auto-start new row with form width 2
+        if (currentFormRow == null || field.newRow || currentFormRow.fields.length >= 2 || field.width >= 2 || currentFormRow.getWidth() >= 2) {
+            field.newRow = true;
+            currentFormRow = new FormRow();
+            rows.push(currentFormRow);
+        }
+        return currentFormRow;
     }
 
     public close(save:boolean, remove:boolean) {

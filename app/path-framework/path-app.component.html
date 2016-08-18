@@ -74,9 +74,9 @@
         </div>
     </a>
 	<!-- Inline Form -->
-    <span *ngIf='pageElement.type == "form"'>
+    <span *ngIf='pageElement.type == "inlineForm"'>
 	    <div class="col-md-12">
-	        <path-form [form]="pageElement.form"></path-form>
+	        <path-form *ngIf="pageElement.form != null" [form]="pageElement.form"></path-form>
 		</div>
     </span>
     <!-- List -->

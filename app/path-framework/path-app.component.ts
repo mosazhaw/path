@@ -3,6 +3,8 @@ import * as autocomplete from './form/field/auto-complete/auto-complete-field.co
 import 'rxjs/add/operator/map';
 import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
 import {ValueField} from "./form/field/value-field";
+import {LabelListField} from "./form/field/labelList/label-list-field.component";
+import {LabelField} from "./form/field/label/label-field.component";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -151,10 +153,14 @@ export abstract class PathAppComponent implements path.IPathApp {
                             backButton.color = modelElement["color"];
                             element = backButton;
                             break;
-                        case "form":
-                            let form = new path.InlineForm(this);
-                            form.form = this.createForm(modelElement["form"], null, modelElement["handler"], parentPageElement);
-                            element = form;
+                        case "inlineForm":
+                            let inlineForm = new path.InlineForm(this, this.pathService);
+                            let keyUrl:any = modelElement["url"];
+                            inlineForm.url = keyUrl.replace(":key",parentPageElement.key);
+                            inlineForm.formId = modelElement["form"];
+                            inlineForm.key = parentPageElement.key;
+                            inlineForm.loadNextForm();
+                            element = inlineForm;
                             break;
                         case "list":
                             let dynamicList:path.List = new path.List(this, this.pathService);
@@ -220,7 +226,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         }
     }
 
-    private createForm(formId:string, key:number, handler:string, parentPageElement:path.IPageElement):path.Form {
+    public createForm(formId:string, key:number, handler:string, parentPageElement:path.IPageElement):path.Form {
         let form:path.Form = null;
         for (var modelForm of this.getGuiModel().application.formList) {
             if (modelForm.id === formId) {
@@ -241,8 +247,38 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                         case "label":
                         {
-                            formField = new path.ValueField(form);
+                            formField = new path.LabelField(form);
                             formField.fromJson(modelFormField);
+                            break;
+                        }
+                        case "labelList":
+                        {
+                            formField = new path.LabelListField(form);
+                            formField.name = "list";
+                            formField.fromJson(modelFormField);
+                            if (modelFormField["url"] != null) {
+                                let fieldListUrl:any = modelFormField["url"];
+                                if (parentPageElement != null && parentPageElement.getKey() != null) {
+                                    fieldListUrl = fieldListUrl.replace(":key",parentPageElement.getKey());
+                                }
+                                if (form.key != null) {
+                                    fieldListUrl = fieldListUrl.replace(":formKey",form.key);
+                                }
+                                this.pathService.serverGet(this.getBackendUrl(), fieldListUrl, (data:any) => {
+                                    let counter:number = 1;
+                                    for (let item of data) {
+                                        console.log(item);
+                                        let labelField = new LabelField(form);
+                                        labelField.id = modelFormField["id"] + counter;
+                                        labelField.name = item["name"];
+                                        labelField.fromJson(item);
+                                        labelField.type = "label";
+                                        (<LabelListField>formField).labels.push(labelField);
+                                        counter++;
+                                    }
+                                    form.updateRows();
+                                }, null);
+                            }
                             break;
                         }
                         case "date":
