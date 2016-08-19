@@ -1086,6 +1086,7 @@ export class GuiModel {
                 {
                     "id": "CapabilityQuestionAnswerForm",
                     "title": "Capability Question Answer",
+                    "url": "/questionAnswer/:parentKey/:key/:formKey",
                     "formFieldList": [
                         {
                             "id": "progress",

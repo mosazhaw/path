@@ -431,10 +431,18 @@ export abstract class PathAppComponent implements path.IPathApp {
                 // fetch data from backend
                 if (form.url != null && form.key != null) {
                     let url:any = form.url;
+                    // TODO refactor :key replacement semantic and code
+                    // TODO idea: use named key/value pairs, e.g. :personKey instead of :parentKey
                     if (url.indexOf(":key") < 0) {
                         url = url + "/" + form.key;
                     } else if (parentPageElement != null && parentPageElement.getKey() != null) {
                         url = url.replace(":key",parentPageElement.getKey());
+                        url = url.replace(":formKey",form.key);
+                        if (parentPageElement.getParent() != null && parentPageElement.getParent().getKey() != null) {
+                            if (parentPageElement.getParent().getParent() != null && parentPageElement.getParent().getParent().getKey() != null) {
+                                url = url.replace(":parentKey",parentPageElement.getParent().getParent().getKey());
+                            }
+                        }
                     }
                     form.url = url;
                     this.pathService.serverGet(this.getBackendUrl(), url, (data:any) => {
