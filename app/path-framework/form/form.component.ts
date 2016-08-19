@@ -27,6 +27,7 @@ export class Form implements IForm {
     private _handler:IFormHandler;
     private _url:string;
     private _bean:IFormBean;
+    private _closeFunction: () => void;
 
     constructor(private pathService:PathService, private app:IPathApp) {
     }
@@ -95,6 +96,14 @@ export class Form implements IForm {
         this._bean = value;
     }
 
+    get closeFunction(): ()=>void {
+        return this._closeFunction;
+    }
+
+    set closeFunction(value: ()=>void) {
+        this._closeFunction = value;
+    }
+
     public updateRows() {
         let rows:FormRow[] = [];
 
@@ -141,8 +150,7 @@ export class Form implements IForm {
                 }
             }
             let closeAndRefresh = () => {
-                this.app.closeCurrentForm();
-                this.app.refreshCurrentPage();
+                this.closeFunction();
             };
             if (remove) {
                 this.pathService.serverDelete(this.app.getBackendUrl(), this.url, closeAndRefresh);
@@ -154,7 +162,7 @@ export class Form implements IForm {
                 this.pathService.serverPut(this.app.getBackendUrl(), this.url, data, closeAndRefresh);
             }
         } else {
-            this.app.closeCurrentForm();
+            this.closeFunction();
         }
     }
 

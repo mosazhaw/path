@@ -1095,6 +1095,12 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "id": "question",
+                            "type": "label",
+                            "name": "Question",
+                            "width": 2
+                        },
+                        {
                             "id": "questionActual",
                             "type": "RadioGroupField",
                             "name": "Actual",
