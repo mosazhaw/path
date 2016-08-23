@@ -1086,13 +1086,12 @@ export class GuiModel {
                 {
                     "id": "CapabilityQuestionAnswerForm",
                     "title": "Capability Question Answer",
-                    "url": "/questionAnswer/:parentParentKey/:parentKey/:formKey",
+                    "url": "/questionAnswer/:parentParentKey/:parentKey/:key/:formKey",
                     "formFieldList": [
                         {
                             "id": "progress",
                             "type": "ProgressBarField",
                             "name": "Progress",
-                            "value": 10,
                             "width": 2
                         },
                         {
