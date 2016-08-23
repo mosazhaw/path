@@ -6,6 +6,7 @@ import {ValueField} from "./form/field/value-field";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
 import {LabelField} from "./form/field/label/label-field.component";
 import {IPathApp} from "./pathinterface";
+import {RadioGroupField} from "./form/field/radio/radio-group.component";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -347,20 +348,26 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 if (parentPageElement != null && parentPageElement.getKey() != null) {
                                     radiosUrl = radiosUrl.replace(":key",parentPageElement.getKey());
                                 }
-                                this.pathService.serverGet(this.getBackendUrl(), radiosUrl, (data:any) => {
+                                let callback = (rgField:RadioGroupField) => (data:any) => {
                                     for (let item of data) {
                                         let radio = new path.Radio(form);
                                         radio.name = item["name"];
                                         radio.key = item["key"];
                                         if (radio.key == item["defaultKey"]) {
                                             radio.value = true;
-                                            radioGroupFormField.setValue(radio.key);
+                                            rgField.setValue(radio.key);
                                         } else {
                                             radio.value = false;
                                         }
-                                        radioGroupFormField.radios.push(radio);
+                                        rgField.radios.push(radio);
                                     }
-                                }, null);
+                                    rgField.created = true;
+                                    console.log("radio group field created: " + rgField.id);
+                                }
+                                let callback2 = callback(radioGroupFormField);
+                                this.pathService.serverGet(this.getBackendUrl(), radiosUrl, callback2, null);
+                            } else {
+                                radioGroupFormField.created = true;
                             }
                             radioGroupFormField.fromJson(modelFormField);
                             formField = radioGroupFormField;
@@ -433,7 +440,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                     let url:any = form.url;
                     // TODO refactor :key replacement semantic and code
                     // TODO idea: use named key/value pairs, e.g. :personKey instead of :parentKey
-                    if (url.indexOf(":key") < 0) {
+                    console.log(url);
+                    if (url.indexOf(":key") < 0 && url.indexOf(":parentKey") < 0) {
                         url = url + "/" + form.key;
                     } else if (parentPageElement != null && parentPageElement.getKey() != null) {
                         url = url.replace(":key",parentPageElement.getKey());
@@ -441,6 +449,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                         if (parentPageElement.getParent() != null && parentPageElement.getParent().getKey() != null) {
                             if (parentPageElement.getParent().getParent() != null && parentPageElement.getParent().getParent().getKey() != null) {
                                 url = url.replace(":parentKey",parentPageElement.getParent().getParent().getKey());
+                                if (parentPageElement.getParent().getParent().getParent() != null && parentPageElement.getParent().getParent().getParent().getKey() != null) {
+                                    url = url.replace(":parentParentKey",parentPageElement.getParent().getParent().getParent().getKey());
+                                }
                             }
                         }
                     }
@@ -448,13 +459,38 @@ export abstract class PathAppComponent implements path.IPathApp {
                     this.pathService.serverGet(this.getBackendUrl(), url, (data:any) => {
                         for (let field of form.fields) {
                             if (data[field.id] != null && field instanceof path.ValueField) {
-                                (<path.ValueField<any>>field).setValue(data[field.id]);
+                                if (field instanceof RadioGroupField) {
+                                    // TODO general solution
+                                    let setValueOfRadioGroupFieldContextWrapper = () => {
+                                        let f:RadioGroupField = field;
+                                        let v:any = data[field.id];
+                                        setValueOfRadioGroupField(f, v);
+                                    }
+                                    let setValueOfRadioGroupField = (radioGroupField:RadioGroupField, value:any) => {
+                                        if(!radioGroupField.created) {
+                                            console.log("Waiting for RadioGroupField " + radioGroupField.id);
+                                            console.log(radioGroupField.created);
+                                            window.setTimeout(setValueOfRadioGroupFieldContextWrapper, 50); // wait then try again
+                                            return;
+                                        }
+                                        console.log("setting radiogroupfield value");
+                                        radioGroupField.setValue(value);
+                                    }
+                                    setValueOfRadioGroupFieldContextWrapper();
+                                } else {
+                                    (<path.ValueField<any>>field).setValue(data[field.id]);
+                                }
                             }
                             if (field instanceof FieldListField) {
-                                function setValueOfFieldListField() {
+                                let setValueOfFieldListFieldContextWrapper = () => {
+                                    let f:FieldListField = field;
+                                    let d:any = data;
+                                    setValueOfFieldListField(f, d);
+                                }
+                                let setValueOfFieldListField = (fieldListField:FieldListField, value:any) => {
                                     if(!(<FieldListField>field).fieldsCreated) {
-                                        console.log("Waiting... ");
-                                        setTimeout(setValueOfFieldListField, 50); // wait then try again
+                                        console.log("Waiting for FieldListField... ");
+                                        setTimeout(setValueOfFieldListFieldContextWrapper, 50); // wait then try again
                                         return;
                                     }
                                     // update fields
@@ -464,7 +500,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                         }
                                     }
                                 }
-                                setValueOfFieldListField();
+                                setValueOfFieldListFieldContextWrapper();
                             }
                         }
                     }, null)

@@ -45,6 +45,7 @@ export class RadioGroupField extends ValueField<any> {
         super.setValue(value);
         for (let radio of this.radios) {
             if (radio.key == value) {
+                console.log("setting radio value, key=" + radio.key + ", value=" + value);
                 radio.value = true;
             } else {
                 radio.value = false;

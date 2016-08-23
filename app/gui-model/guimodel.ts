@@ -1086,7 +1086,7 @@ export class GuiModel {
                 {
                     "id": "CapabilityQuestionAnswerForm",
                     "title": "Capability Question Answer",
-                    "url": "/questionAnswer/:parentKey/:key/:formKey",
+                    "url": "/questionAnswer/:parentParentKey/:parentKey/:formKey",
                     "formFieldList": [
                         {
                             "id": "progress",
@@ -1102,7 +1102,7 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "questionActual",
+                            "id": "questionActualMaturityLevelKey",
                             "type": "RadioGroupField",
                             "name": "Actual",
                             "required": true,
@@ -1112,7 +1112,7 @@ export class GuiModel {
 
                         },
                         {
-                            "id": "questionTarget",
+                            "id": "questionTargetMaturityLevelKey",
                             "type": "RadioGroupField",
                             "name": "Target",
                             "required": true,
