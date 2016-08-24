@@ -121,6 +121,10 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
                             "type": "cancelButton",
                             "name": "Cancel"
                         },
@@ -235,6 +239,10 @@ export class GuiModel {
                             "name": "Comments",
                             "height": 8,
                             "width": 2
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
                         },
                         {
                             "type": "cancelButton",
@@ -1282,12 +1290,6 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "page": "quickscanintervieweespage"
-                        },
-                        {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red",
                         }
                     ]
                 },
