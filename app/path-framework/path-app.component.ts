@@ -91,6 +91,10 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     public yesNo(text:string, yesHandler : () => void, noHandler : () => void) {
         let form:path.Form = new path.Form(this.pathService, this);
+        form.closeFunction = () => {
+            this.closeCurrentForm();
+            this.refreshCurrentPage();
+        };
         let message:path.TextField = new path.TextField(form);
         message.type = "label";
         message.visible = true;
