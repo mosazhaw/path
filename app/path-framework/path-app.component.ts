@@ -5,9 +5,9 @@ import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-f
 import {ValueField} from "./form/field/value-field";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
 import {LabelField} from "./form/field/label/label-field.component";
-import {IPathApp, IKey} from "./pathinterface";
+import {IPathApp, IKey, IPageElement} from "./pathinterface";
 import {RadioGroupField} from "./form/field/radio/radio-group.component";
-import {Key} from "./page/element/page-element";
+import {Key, PageElement} from "./page/element/page-element";
 import {KeyUtility} from "./key-utility";
 
 export abstract class PathAppComponent implements path.IPathApp {
@@ -396,10 +396,16 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.fromJson(modelFormField);
                         }
                     }
-                    // use parent value
-                    if (formField instanceof ValueField && modelFormField["defaultParentKey"] == true) {
-                        if (parentPageElement != null && parentPageElement.getParent() != null) {
-                            (<ValueField<any>>formField).setValue(parentPageElement.getParent().getKey().getKey());
+                    // search parents for defaultKey
+                    if (formField instanceof ValueField && modelFormField["defaultKey"] != null) {
+                        let pageElement:IPageElement = parentPageElement;
+                        while (pageElement != null) {
+                            if (pageElement.getKey() != null && pageElement.getKey().getName() == modelFormField["defaultKey"]) {
+                                (<ValueField<any>>formField).setValue(pageElement.getKey().getKey());
+                                pageElement = null;
+                            } else {
+                                pageElement = pageElement.getParent();
+                            }
                         }
                     }
                     // form field actions

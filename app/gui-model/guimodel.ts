@@ -340,7 +340,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,
-                            "defaultParentKey": true,
+                            "defaultKey": "companyKey",
                             "readonly": true,
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "url": "/company",
@@ -439,7 +439,7 @@ export class GuiModel {
                             "width": 2,
                             "required": true,
                             "readonly": true,
-                            "defaultParentKey": true
+                            "defaultKey": "projectKey"
                         },
                         {
                             "type": "cancelButton",
@@ -496,7 +496,7 @@ export class GuiModel {
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,
-                            "defaultParentKey": true,
+                            "defaultKey": "quickScanCaseKey",
                             "actions": [],
                             "url": "/quickScanCase",
                             "width": 2
@@ -514,6 +514,38 @@ export class GuiModel {
                         {
                             "type": "deleteButton",
                             "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "QuickScanCategorySelectionForm",
+                    "url": "/quickScanProject/:projectKey/quickScanCategory/:quickScanCategoryKey",
+                    "title": "Category Selection",
+                    "formFieldList": [
+                        {
+                            "type": "fieldList",
+                            "name": "Category Name",
+                            "url": "/quickScanProject/:projectKey/quickScanCategory/:quickScanCategoryKey/label",
+                        },
+                        {
+                            "id": "quickScanCategory",
+                            "type": "autocomplete",
+                            "name": "QuickScan Category",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "quickScanCategoryKey",
+                            "actions": [],
+                            "url": "/quickScanCategory",
+                            "width": 2
                         },
                         {
                             "type": "cancelButton",
@@ -599,7 +631,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "QuickScan Category",
                             "wordSearchEnabled": true,
-                            "defaultParentKey": true,
+                            "defaultKey": "quickScanCategoryKey",
                             "readonly": true,
                             "actions": [],
                             "url": "/quickScanCategory",
@@ -874,7 +906,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Maturity Level Schema",
                             "wordSearchEnabled": false,
-                            "defaultParentKey": true,
+                            "defaultKey": "maturityLevelSchemaKey",
                             "readonly": true,
                             "url": "/maturityLevelSchema",
                             "width": 2
@@ -1298,7 +1330,9 @@ export class GuiModel {
                             "name": "Categories",
                             "icon": "fa-cube",
                             "color": "pumpkin",
-                            "buttonhandler": "CategoryListButtonHandler",
+                            "form": {
+                                "form": "QuickScanCategorySelectionForm"
+                            },
                             "url": "/quickScanProject/:projectKey/quickScanCategory"
                         }
                     ]
