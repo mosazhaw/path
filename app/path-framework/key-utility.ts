@@ -3,7 +3,6 @@ import {IPageElement, IKey} from "./pathinterface";
 export class KeyUtility {
 
     public static translateUrl(url:string, formKey:IKey, parentPageElement:IPageElement):string {
-        console.log("input url " + url);
         let translatedUrl:any = url;
 
         if (translatedUrl != null) {
@@ -22,7 +21,6 @@ export class KeyUtility {
             }
         }
 
-        console.log("translated url " + translatedUrl);
         return translatedUrl;
     }
 
