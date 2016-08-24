@@ -112,23 +112,6 @@ export class KPIQuestionFormHandler implements path.IFormHandler {
 
 }
 
-export class CategoryListButtonHandler implements path.IButtonHandler {
-
-    public doClick(button:path.IButton) {
-        console.log("clicked " + button.getColor());
-        if (button.getColor() == "pumpkin") {
-            let yesHandler = () => {
-                button.setColor("asbestos");
-            };
-            let noHandler = () => {};
-            button.getApp().yesNo("Do you really want to deselect category " + button.getName() + "?", yesHandler, noHandler);
-        } else {
-            button.setColor("pumpkin");
-        }
-    }
-
-}
-
 export class SupportProcessListButtonHandler implements path.IButtonHandler {
 
     public doClick(button:path.IButton) {
