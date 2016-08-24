@@ -272,7 +272,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                         counter++;
                                     }
                                     form.updateRows();
-                                    (<FieldListField>formField).fieldsCreated = true;
+                                    (<FieldListField>formField).created = true;
                                 }, null);
                             }
                             break;
@@ -448,7 +448,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     setValueOfFieldListField(f, d);
                                 }
                                 let setValueOfFieldListField = (fieldListField:FieldListField, value:any) => {
-                                    if(!(<FieldListField>field).fieldsCreated) {
+                                    if(!(<FieldListField>field).created) {
                                         console.log("Waiting for FieldListField... ");
                                         setTimeout(setValueOfFieldListFieldContextWrapper, 50); // wait then try again
                                         return;

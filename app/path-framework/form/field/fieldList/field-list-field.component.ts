@@ -13,7 +13,6 @@ export class FieldListFieldComponent {
 
 export class FieldListField extends ValueField<string[]> {
     private _subfields:ValueField<any>[] = [];
-    private _fieldsCreated:boolean = false;
 
     get subfields(): ValueField<any>[] {
         return this._subfields;
@@ -21,13 +20,5 @@ export class FieldListField extends ValueField<string[]> {
 
     set subfields(value: ValueField<any>[]) {
         this._subfields = value;
-    }
-
-    get fieldsCreated(): boolean {
-        return this._fieldsCreated;
-    }
-
-    set fieldsCreated(value: boolean) {
-        this._fieldsCreated = value;
     }
 }
