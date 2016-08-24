@@ -1316,7 +1316,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "categorycapabilitiespage",
-                            "url": "/quickScanProject/:projectKey/quickScanCategory"
+                            "url": "/quickScanProject/:projectKey/selectedQuickScanCategory"
                         },
                         {
                             "type": "button",
