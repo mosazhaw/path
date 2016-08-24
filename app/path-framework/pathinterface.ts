@@ -1,6 +1,6 @@
 export interface IPathApp {
     setCurrentForm(formId:string, key:IKey, handler:string, parentPageElement:IPageElement);
-    createForm(formId:string, key:IKey, handler:string, closeFunction: () => void, parentPageElement:IPageElement);
+    createForm(formId:string, key:IKey, handler:string, formFunction:IFormFunction, parentPageElement:IPageElement);
     setCurrentPage(pageId:string, parentPageElement:IPageElement);
     navigateBack();
     yesNo(text:string, yesHandler : () => void, noHandler : () => void);
@@ -27,6 +27,9 @@ export interface IForm {
     getApp():IPathApp;
     close(save:boolean, remove:boolean);
     getKey():IKey;
+}
+
+export interface IFormFunction {
 }
 
 export interface IFormHandler {

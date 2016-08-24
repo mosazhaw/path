@@ -3,6 +3,7 @@ import {PageElement, Key} from "../page-element";
 import {PathService} from "../../../service/path.service";
 import {Inject} from "@angular/core";
 import * as path from '../../../path';
+import {FormFunction} from "../../../form/form-function";
 
 export class InlineForm extends PageElement {
     private _formId:string;
@@ -62,10 +63,17 @@ export class InlineForm extends PageElement {
                     }
                     if (this._currentKey != null && foundNewKey) {
                         console.log("load next inline form with key " + this._currentKey.getKey() + "/" + this._currentKey.getName());
-                        let closeFunction = () => {
+                        let formFunction:FormFunction = new FormFunction();
+                        formFunction.save = () => {
                             this.loadNextForm();
                         };
-                        this._form = this.app.createForm(this._formId, this._currentKey, null, closeFunction, this);
+                        formFunction.cancel = () => {
+                            this.loadNextForm();
+                        };
+                        formFunction.delete = () => {
+                            this.loadNextForm();
+                        };
+                        this._form = this.app.createForm(this._formId, this._currentKey, null, formFunction, this);
                     } else {
                         this._form = null;
                     }

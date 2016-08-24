@@ -5,10 +5,11 @@ import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-f
 import {ValueField} from "./form/field/value-field";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
 import {LabelField} from "./form/field/label/label-field.component";
-import {IPathApp, IKey, IPageElement} from "./pathinterface";
+import {IPathApp, IKey, IPageElement, IFormFunction} from "./pathinterface";
 import {RadioGroupField} from "./form/field/radio/radio-group.component";
 import {Key, PageElement} from "./page/element/page-element";
 import {KeyUtility} from "./key-utility";
+import {FormFunction} from "./form/form-function";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -91,9 +92,13 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     public yesNo(text:string, yesHandler : () => void, noHandler : () => void) {
         let form:path.Form = new path.Form(this.pathService, this);
-        form.closeFunction = () => {
+        form.formFunction = new FormFunction();
+        form.formFunction.save = () => {
             this.closeCurrentForm();
             this.refreshCurrentPage();
+        };
+        form.formFunction.cancel = () => {
+            this.closeCurrentForm();
         };
         let message:path.TextField = new path.TextField(form);
         message.type = "label";
@@ -217,24 +222,28 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public setCurrentForm(formId:string, key:Key, handler:string, parentPageElement:path.IPageElement) {
-        let closeFunction = () => {
+        let formFunction:FormFunction  = new FormFunction();
+        formFunction.save = () => {
             this.closeCurrentForm();
             this.refreshCurrentPage();
         };
-        let form:path.Form = this.createForm(formId,key,handler,closeFunction, parentPageElement);
+        formFunction.cancel = () => {
+            this.closeCurrentForm();
+        };
+        let form:path.Form = this.createForm(formId,key,handler,formFunction, parentPageElement);
         if (form != null) {
             this._formStack.push(form);
         }
     }
 
-    public createForm(formId:string, key:Key, handler:string, closeFunction:()=>void, parentPageElement:path.IPageElement):path.Form {
+    public createForm(formId:string, key:Key, handler:string, formFunction:FormFunction, parentPageElement:path.IPageElement):path.Form {
         let form:path.Form = null;
         for (var modelForm of this.getGuiModel().application.formList) {
             if (modelForm.id === formId) {
                 // create form
                 form = new path.Form(this.pathService, this);
                 form.key = key;
-                form.closeFunction = closeFunction;
+                form.formFunction = formFunction;
                 form.title = modelForm.title;
                 form.url = modelForm["url"];
                 for (var modelFormField of modelForm.formFieldList) {
