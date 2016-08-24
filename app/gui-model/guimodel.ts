@@ -568,19 +568,23 @@ export class GuiModel {
                 {
                     "id": "SupportProcessForm",
                     "title": "Support Process",
+                    "url": "/deepScanSupportProcess",
                     "formFieldList": [
                         {
+                            "id": "name",
                             "type": "text",
                             "name": "Support Process Name",
                             "width": 2,
                             "required": true
                         },
                         {
+                            "id":   "maturityLevelSchema",
                             "type": "autocomplete",
                             "name": "Maturity Level Schema",
                             "wordSearchEnabled": false,
-                            "actions": [],
-                            "data": ["Maturity Level Schema 1", "Maturity Level Schema 2", "Maturity Level Schema 3"],
+                            "defaultKey": "maturityLevelSchemaKey",
+                            "readonly": true,
+                            "url": "/maturityLevelSchema",
                             "width": 2
                         },
                         {
@@ -600,12 +604,26 @@ export class GuiModel {
                 {
                     "id": "SubprocessForm",
                     "title": "Subprocess",
+                    "url": "/deepScanSubprocess",
                     "formFieldList": [
                         {
+                            "id": "name",
                             "type": "text",
                             "name": "Subprocess Name",
                             "width": 2,
                             "required": true
+                        },
+                        {
+                            "id": "deepScanSupportProcess",
+                            "type": "autocomplete",
+                            "name": "Support Process",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "deepScanSupportProcessKey",
+                            "actions": [],
+                            "url": "/deepScanSupportProcess",
+                            "width": 2
                         },
                         {
                             "type": "deleteButton",
@@ -1477,7 +1495,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "pumpkin",
                             "buttonhandler": "SupportProcessListButtonHandler",
-                            "data": [{"name": "Support Process S1"}, {"name": "Support Process S2"}, {"name": "Support Process S3"}, {"name": "Support Process S4"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S7"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
+                            "url": "/deepScanSupportProcess"
                         }
                     ]
                 },
@@ -2187,7 +2205,7 @@ export class GuiModel {
                             "color": "asbestos",
                             "search": true,
                             "page": "deepscansupportprocessconfigurationpage",
-                            "data": [{"name": "Support Process S1", "color": "pumpkin"}, {"name": "Support Process S2", "color": "pumpkin"}, {"name": "Support Process S3", "color": "pumpkin"}, {"name": "Support Process S4", "color": "pumpkin"}, {"name": "Support Process S5", "color": "pumpkin"}, {"name": "Support Process S6", "color": "pumpkin"}, {"name": "Support Process S7", "color": "pumpkin"}, {"name": "Support Process S8", "color": "pumpkin"}, {"name": "Support Process S9", "color": "pumpkin"}, {"name": "Support Process S10", "color": "pumpkin"}]
+                            "url": "/deepScanSupportProcess"
                         }
                     ]
                 },
@@ -2223,7 +2241,7 @@ export class GuiModel {
                             "color": "asbestos",
                             "page": "deepscansubprocessconfigurationpage",
                             "search": true,
-                            "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
+                            "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/deepScanSubprocess",
                         },
                         {
                             "type": "newButton",
