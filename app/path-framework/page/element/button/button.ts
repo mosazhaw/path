@@ -1,4 +1,5 @@
 import * as path from '../../../path';
+import {Key} from "../page-element";
 
 export class Button extends path.PageElement implements path.IButton {
     private _icon:string;
@@ -44,16 +45,16 @@ export class Button extends path.PageElement implements path.IButton {
         this.form = form;
     }
 
-    public setKey(key:number) {
-        this.key = key;
-    }
-
     public setFormHandler(formHandler:string) {
         this.formHandler = formHandler;
     }
 
     public setPage(page:string) {
         this.page = page;
+    }
+
+    public setKey(key:Key) {
+        this.key = key;
     }
 
     public getApp() {

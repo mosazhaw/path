@@ -1,6 +1,6 @@
 export interface IPathApp {
-    setCurrentForm(formId:string, key:number, handler:string, parentPageElement:IPageElement);
-    createForm(formId:string, key:number, handler:string, closeFunction: () => void, parentPageElement:IPageElement);
+    setCurrentForm(formId:string, key:IKey, handler:string, parentPageElement:IPageElement);
+    createForm(formId:string, key:IKey, handler:string, closeFunction: () => void, parentPageElement:IPageElement);
     setCurrentPage(pageId:string, parentPageElement:IPageElement);
     navigateBack();
     yesNo(text:string, yesHandler : () => void, noHandler : () => void);
@@ -10,8 +10,13 @@ export interface IPathApp {
 }
 
 export interface IPageElement {
-    getKey():number;
+    getKey():IKey;
     getParent():IPageElement;
+}
+
+export interface IKey {
+    getKey():number;
+    getName():string;
 }
 
 export interface IFormField {
@@ -21,7 +26,7 @@ export interface IFormField {
 export interface IForm {
     getApp():IPathApp;
     close(save:boolean, remove:boolean);
-    getKey():number;
+    getKey():IKey;
 }
 
 export interface IFormHandler {
@@ -52,12 +57,12 @@ export interface IAction {
 export interface IFormBean {
 }
 
-export interface IButton {
+export interface IButton extends IPageElement {
     setColor(color:string);
     getColor() : string;
     setIcon(icon:string);
     setForm(form:string);
-    setKey(key:number);
+    setKey(key:IKey);
     setFormHandler(formHandler:string);
     setPage(page:string);
     getName() : string;

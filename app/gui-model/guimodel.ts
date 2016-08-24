@@ -418,7 +418,7 @@ export class GuiModel {
                 {
                     "id": "ProjectIntervieweeForm",
                     "title": "Add Interviewee to Project",
-                    "url": "/project/:key/interviewee",
+                    "url": "/project/:projectKey/interviewee",
                     "formFieldList": [
                         {
                             "id": "personKey",
@@ -609,7 +609,7 @@ export class GuiModel {
                         {
                             "id": "level",
                             "type": "fieldList",
-                            "url": "/quickScanCategory/:parentKey/questionMaturityLevel"
+                            "url": "/quickScanCategory/:quickScanCategoryKey/questionMaturityLevel"
                         },
                         {
                             "type": "deleteButton",
@@ -1086,7 +1086,7 @@ export class GuiModel {
                 {
                     "id": "CapabilityQuestionAnswerForm",
                     "title": "Capability Question Answer",
-                    "url": "/questionAnswer/:parentParentKey/:parentKey/:key/:formKey",
+                    "url": "/questionAnswer/:projectKey/:personKey/:quickScanCategoryKey/:questionKey",
                     "formFieldList": [
                         {
                             "id": "progress",
@@ -1106,7 +1106,7 @@ export class GuiModel {
                             "name": "Actual",
                             "required": true,
                             "defaultKey": null,
-                            "url": "/quickScanCategory/:key/maturityLevelSchema",
+                            "url": "/quickScanCategory/:quickScanCategoryKey/maturityLevelSchema",
                             "width": 2
 
                         },
@@ -1116,14 +1116,14 @@ export class GuiModel {
                             "name": "Target",
                             "required": true,
                             "defaultKey": null,
-                            "url": "/quickScanCategory/:key/maturityLevelSchema",
+                            "url": "/quickScanCategory/:quickScanCategoryKey/maturityLevelSchema",
                             "width": 2
 
                         },
                         {
                             "id": "answerDescription",
                             "type": "fieldList",
-                            "url": "/question/:formKey/questionMaturityLevel",
+                            "url": "/question/:questionKey/questionMaturityLevel",
                             "width": 2
                         },
                         {
@@ -1282,7 +1282,7 @@ export class GuiModel {
                             "color": "blue",
                             "search": true,
                             "page": "quickscanintervieweecategoriespage",
-                            "url": "/project/:key/interviewee"
+                            "url": "/project/:projectKey/interviewee"
                         }
                     ]
                 },
@@ -1299,7 +1299,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "pumpkin",
                             "buttonhandler": "CategoryListButtonHandler",
-                            "url": "/quickScanProject/:key/quickScanCategory"
+                            "url": "/quickScanProject/:projectKey/quickScanCategory"
                         }
                     ]
                 },
@@ -1316,7 +1316,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "categorycapabilitiespage",
-                            "url": "/quickScanProject/:parentKey/quickScanCategory"
+                            "url": "/quickScanProject/:projectKey/quickScanCategory"
                         },
                         {
                             "type": "button",
@@ -1333,7 +1333,7 @@ export class GuiModel {
                         {
                             "type": "inlineForm",
                             "form": "CapabilityQuestionAnswerForm",
-                            "url": "/quickScanCategory/:key/capabilityQuestion"
+                            "url": "/quickScanCategory/:quickScanCategoryKey/capabilityQuestion"
                         }
                     ]
                 },
@@ -1424,7 +1424,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "page": "deepscanintervieweesupportprocessespage",
-                            "url": "/project/:key/interviewee"
+                            "url": "/project/:projectKey/interviewee"
                         }
                     ]
                 },
@@ -1642,7 +1642,7 @@ export class GuiModel {
                             "form": {
                                 "form": "PersonForm"
                             },
-                            "url": "/company/:key/person"
+                            "url": "/company/:companyKey/person"
                         }
                     ]
                 },
@@ -1981,7 +1981,7 @@ export class GuiModel {
                             "form": {
                                 "form": "MaturityLevelForm"
                             },
-                            "url": "/maturityLevelSchema/:key/maturityLevel"
+                            "url": "/maturityLevelSchema/:maturityLevelSchemaKey/maturityLevel"
                         }
                     ]
                 },
@@ -2044,7 +2044,7 @@ export class GuiModel {
                             "color": "asbestos",
                             "search": true,
                             "page": "quickscancategoryconfigurationpage",
-                            "url": "/quickScanCase/:key/quickScanCategory"
+                            "url": "/quickScanCase/:quickScanCaseKey/quickScanCategory"
                         },
                         {
                             "type": "button",
@@ -2088,7 +2088,7 @@ export class GuiModel {
                             "form": {
                                 "form": "CapabilityQuestionForm"
                             },
-                            "url": "/quickScanCategory/:key/capabilityQuestion"
+                            "url": "/quickScanCategory/:quickScanCategoryKey/capabilityQuestion"
                         },
                         {
                             "type": "button",

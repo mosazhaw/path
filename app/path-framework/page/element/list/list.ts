@@ -1,8 +1,9 @@
 import * as path from '../../../path';
-import {IListHandler, IList, IButtonHandler} from "../../../pathinterface";
+import {IListHandler, IList, IButtonHandler, IKey} from "../../../pathinterface";
 import {ButtonDetail} from "../button/button-detail";
 import {PathService} from "../../../service/path.service";
 import {Inject} from "@angular/core";
+import {Key} from "../page-element";
 
 export class List extends path.PageElement implements IList {
     private _buttons:path.Button[] = [];
@@ -32,13 +33,14 @@ export class List extends path.PageElement implements IList {
             let oldButtons = this.buttons;
             this.buttons = [];
             for (let item of data) {
-                let button:path.Button = this.findButton(item["key"], oldButtons);
+                let itemKey:Key = new Key(item["key"]["key"], item["key"]["name"]);
+                let button:path.Button = this.findButton(itemKey, oldButtons);
                 if (button == null) {
                     button = new path.Button(this.app);
                 }
                 // general attributes
                 button.id = item.id;
-                button.setKey(item["key"]);
+                button.setKey(itemKey);
                 button.handler = this._buttonHandler;
                 button.name = item.name;
                 button.setIcon(this.icon);
@@ -85,9 +87,9 @@ export class List extends path.PageElement implements IList {
         }
     }
 
-    private findButton(key:number, buttons:path.Button[]):path.Button {
+    private findButton(key:IKey, buttons:path.Button[]):path.Button {
         for (let button of buttons) {
-            if (button.key == key) {
+            if (button.key.getKey() == key.getKey() && button.key.getName() == key.getName()) {
                 return button;
             }
         }

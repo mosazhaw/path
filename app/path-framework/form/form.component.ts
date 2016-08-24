@@ -4,6 +4,7 @@ import {IForm, IPathApp, IFormHandler, IFormBean} from "../pathinterface";
 import {ValueField} from "./field/value-field";
 import {FormField} from "./field/form-field";
 import {FieldListField} from "./field/fieldList/field-list-field.component";
+import {Key} from "../page/element/page-element";
 
 @Component({
     selector: 'path-form',
@@ -20,7 +21,7 @@ export class FormComponent {
 }
 
 export class Form implements IForm {
-    private _key:number;
+    private _key:Key;
     private _title:string;
     private _fields:FormField[] = [];
     private _rows:FormRow[] = [];
@@ -36,15 +37,15 @@ export class Form implements IForm {
         return this.app;
     }
 
-    getKey():number {
+    getKey():Key {
         return this.key;
     }
 
-    get key():number {
+    get key():Key {
         return this._key;
     }
 
-    set key(value:number) {
+    set key(value:Key) {
         this._key = value;
     }
 

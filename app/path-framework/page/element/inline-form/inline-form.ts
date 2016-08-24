@@ -1,5 +1,5 @@
 import {Form} from "../../../form/form.component";
-import {PageElement} from "../page-element";
+import {PageElement, Key} from "../page-element";
 import {PathService} from "../../../service/path.service";
 import {Inject} from "@angular/core";
 import * as path from '../../../path';
@@ -8,7 +8,7 @@ export class InlineForm extends PageElement {
     private _formId:string;
     private _url:string;
     private _form:Form;
-    private _currentKey:any;
+    private _currentKey:Key;
 
     constructor(app:path.IPathApp, @Inject(PathService) private pathService:PathService) {
         super(app);
@@ -45,15 +45,15 @@ export class InlineForm extends PageElement {
                     let foundNewKey:boolean = false;
                     if (this._currentKey == null) {
                         let firstItem = data[0];
-                        this._currentKey = firstItem["key"];
+                        this._currentKey = new Key(firstItem["key"]["key"], firstItem["key"]["name"]);
                         foundNewKey = true;
                     } else {
                         let counter:number = 0;
                         for (let item of data) {
                             counter++;
-                            if (item["key"] == this._currentKey) {
+                            if (item["key"]["key"] == this._currentKey.getKey() && item["key"]["name"] == this._currentKey.getName()) {
                                 if (data.length > counter) {
-                                    this._currentKey = data[counter]["key"];
+                                    this._currentKey = new Key(data[counter]["key"]["key"], data[counter]["key"]["name"]);
                                     foundNewKey = true;
                                 }
                                 break;
@@ -61,7 +61,7 @@ export class InlineForm extends PageElement {
                         }
                     }
                     if (this._currentKey != null && foundNewKey) {
-                        console.log("load next inline form with key " + this._currentKey);
+                        console.log("load next inline form with key " + this._currentKey.getKey() + "/" + this._currentKey.getName());
                         let closeFunction = () => {
                             this.loadNextForm();
                         };

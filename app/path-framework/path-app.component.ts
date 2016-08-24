@@ -5,8 +5,10 @@ import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-f
 import {ValueField} from "./form/field/value-field";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
 import {LabelField} from "./form/field/label/label-field.component";
-import {IPathApp} from "./pathinterface";
+import {IPathApp, IKey} from "./pathinterface";
 import {RadioGroupField} from "./form/field/radio/radio-group.component";
+import {Key} from "./page/element/page-element";
+import {KeyUtility} from "./key-utility";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -157,8 +159,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "inlineForm":
                             let inlineForm = new path.InlineForm(this, this.pathService);
-                            let keyUrl:any = modelElement["url"];
-                            inlineForm.url = keyUrl.replace(":key",parentPageElement.key);
+                            inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), parentPageElement);
                             inlineForm.formId = modelElement["form"];
                             inlineForm.key = parentPageElement.key;
                             inlineForm.loadNextForm();
@@ -174,17 +175,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             if (modelElement["buttonhandler"] != null) {
                                 dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                             }
-                            dynamicList.url = modelElement["url"];
-                            if (parentPageElement != null) {
-                                dynamicList.key = parentPageElement.key;
-                                if (dynamicList.url != null) {
-                                    dynamicList.url = dynamicList.url.replace(":key",parentPageElement.key);
-                                    if (parentPageElement.parentPageElement != null) {
-                                        // TODO support unlimited number of hierarchical parentKeys
-                                        dynamicList.url = dynamicList.url.replace(":parentKey",parentPageElement.parentPageElement.key);
-                                    }
-                                }
-                            }
+                            dynamicList.url = KeyUtility.translateUrl(modelElement["url"], null, parentPageElement);
                             dynamicList.color = modelElement["color"];
                             if (modelElement["form"] != null) {
                                 dynamicList.form = modelElement["form"]["form"];
@@ -221,7 +212,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._pageStack.push(page);
     }
 
-    public setCurrentForm(formId:string, key:number, handler:string, parentPageElement:path.IPageElement) {
+    public setCurrentForm(formId:string, key:Key, handler:string, parentPageElement:path.IPageElement) {
         let closeFunction = () => {
             this.closeCurrentForm();
             this.refreshCurrentPage();
@@ -232,7 +223,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         }
     }
 
-    public createForm(formId:string, key:number, handler:string, closeFunction:()=>void, parentPageElement:path.IPageElement):path.Form {
+    public createForm(formId:string, key:Key, handler:string, closeFunction:()=>void, parentPageElement:path.IPageElement):path.Form {
         let form:path.Form = null;
         for (var modelForm of this.getGuiModel().application.formList) {
             if (modelForm.id === formId) {
@@ -264,18 +255,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.name = "list";
                             formField.fromJson(modelFormField);
                             if (modelFormField["url"] != null) {
-                                let fieldListUrl:any = modelFormField["url"];
+                                let fieldListUrl:any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), parentPageElement);
                                 let modelId:string = modelFormField["id"];
-                                if (parentPageElement != null && parentPageElement.getKey() != null) {
-                                    fieldListUrl = fieldListUrl.replace(":key",parentPageElement.getKey());
-                                }
-                                if (parentPageElement != null && parentPageElement.getParent() != null) {
-                                    // TODO support unlimited number of hierarchical parentKeys
-                                    fieldListUrl = fieldListUrl.replace(":parentKey",parentPageElement.getParent().getKey());
-                                }
-                                if (form.key != null) {
-                                    fieldListUrl = fieldListUrl.replace(":formKey",form.key);
-                                }
                                 this.pathService.serverGet(this.getBackendUrl(), fieldListUrl, (data:any) => {
                                     let counter:number = 1;
                                     for (let item of data) {
@@ -324,7 +305,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     let dynamicData = [];
                                     for (let item of data) {
                                         let entry = new AutoCompleteFieldEntry();
-                                        entry.key = item["key"];
+                                        entry.key = item["key"]["key"];
                                         entry.text = item["name"];
                                         dynamicData.push(entry);
                                     }
@@ -344,11 +325,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                         {
                             let radioGroupFormField = new path.RadioGroupField(form);
                             if (modelFormField["url"] != null) {
-                                let radiosUrl:any = modelFormField["url"];
-                                if (parentPageElement != null && parentPageElement.getKey() != null) {
-                                    radiosUrl = radiosUrl.replace(":key",parentPageElement.getKey());
-                                }
-                                let callback = (rgField:RadioGroupField) => (data:any) => {
+                                let radiosUrl:any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), parentPageElement);
+                                let radioLoader = (rgField:RadioGroupField) => (data:any) => {
                                     for (let item of data) {
                                         let radio = new path.Radio(form);
                                         radio.name = item["name"];
@@ -364,8 +342,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     rgField.created = true;
                                     console.log("radio group field created: " + rgField.id);
                                 }
-                                let callback2 = callback(radioGroupFormField);
-                                this.pathService.serverGet(this.getBackendUrl(), radiosUrl, callback2, null);
+                                let radioLoaderForField = radioLoader(radioGroupFormField);
+                                this.pathService.serverGet(this.getBackendUrl(), radiosUrl, radioLoaderForField, null);
                             } else {
                                 radioGroupFormField.created = true;
                             }
@@ -417,7 +395,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     // use parent value
                     if (formField instanceof ValueField && modelFormField["defaultParentKey"] == true) {
                         if (parentPageElement != null && parentPageElement.getParent() != null) {
-                            (<ValueField<any>>formField).setValue(parentPageElement.getParent().getKey());
+                            (<ValueField<any>>formField).setValue(parentPageElement.getParent().getKey().getKey());
                         }
                     }
                     // form field actions
@@ -433,30 +411,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     form.fields.push(formField);
                 }
-                form.updateRows(); // TODO check if this can be done automatically
+                form.updateRows();
 
                 // fetch data from backend
                 if (form.url != null && form.key != null) {
-                    let url:any = form.url;
-                    // TODO refactor :key replacement semantic and code
-                    // TODO idea: use named key/value pairs, e.g. :personKey instead of :parentKey
-                    console.log(url);
-                    if (url.indexOf(":key") < 0 && url.indexOf(":parentKey") < 0) {
-                        url = url + "/" + form.key;
-                    } else if (parentPageElement != null && parentPageElement.getKey() != null) {
-                        url = url.replace(":key",parentPageElement.getKey());
-                        url = url.replace(":formKey",form.key);
-                        if (parentPageElement.getParent() != null && parentPageElement.getParent().getKey() != null) {
-                            if (parentPageElement.getParent().getParent() != null && parentPageElement.getParent().getParent().getKey() != null) {
-                                url = url.replace(":parentKey",parentPageElement.getParent().getParent().getKey());
-                                if (parentPageElement.getParent().getParent().getParent() != null && parentPageElement.getParent().getParent().getParent().getKey() != null) {
-                                    url = url.replace(":parentParentKey",parentPageElement.getParent().getParent().getParent().getKey());
-                                }
-                            }
-                        }
-                    }
-                    form.url = url;
-                    this.pathService.serverGet(this.getBackendUrl(), url, (data:any) => {
+                    form.url = KeyUtility.translateUrl(form.url, form.getKey(), parentPageElement);
+                    this.pathService.serverGet(this.getBackendUrl(), form.url, (data:any) => {
                         for (let field of form.fields) {
                             if (data[field.id] != null && field instanceof path.ValueField) {
                                 if (field instanceof RadioGroupField) {

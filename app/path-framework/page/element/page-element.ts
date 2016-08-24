@@ -1,10 +1,10 @@
 import * as path from './../../path';
-import {IPageElement} from "../../pathinterface";
+import {IPageElement, IKey} from "../../pathinterface";
 
 export class PageElement implements IPageElement {
     private _app:path.IPathApp;
     private _id:string;
-    private _key:number;
+    private _key:Key;
     private _name:string;
     private _type:string;
     private _width:number;
@@ -50,20 +50,20 @@ export class PageElement implements IPageElement {
         this._width = value;
     }
 
-    get key(): number {
+    public getKey():IKey {
         return this._key;
     }
 
-    public getKey():number {
-        return this.key;
+    get key():Key {
+        return this._key;
+    }
+
+    set key(value: Key) {
+        this._key = value;
     }
 
     public getParent():IPageElement {
         return this.parentPageElement;
-    }
-
-    set key(value: number) {
-        this._key = value;
     }
 
     get parentPageElement(): PageElement {
@@ -72,5 +72,31 @@ export class PageElement implements IPageElement {
 
     set parentPageElement(value: PageElement) {
         this._parentPageElement = value;
+    }
+}
+
+export class Key implements IKey {
+    private _key:number;
+    private _name:string;
+
+    constructor(key: number, name: string) {
+        this._key = key;
+        this._name = name;
+    }
+
+    public getName(): string {
+        return this._name;
+    }
+
+    set key(value: number) {
+        this._key = value;
+    }
+
+    public getKey(): number {
+        return this._key;
+    }
+
+    set name(value: string) {
+        this._name = value;
     }
 }
