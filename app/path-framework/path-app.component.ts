@@ -171,7 +171,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), parentPageElement);
                             inlineForm.formId = modelElement["form"];
                             inlineForm.key = parentPageElement.key;
-                            inlineForm.loadNextForm();
+                            inlineForm.loadNextForm(true);
                             element = inlineForm;
                             break;
                         case "list":
@@ -229,6 +229,10 @@ export abstract class PathAppComponent implements path.IPathApp {
         };
         formFunction.cancel = () => {
             this.closeCurrentForm();
+        };
+        formFunction.delete = () => {
+            this.closeCurrentForm();
+            this.refreshCurrentPage();
         };
         let form:path.Form = this.createForm(formId,key,handler,formFunction, parentPageElement);
         if (form != null) {

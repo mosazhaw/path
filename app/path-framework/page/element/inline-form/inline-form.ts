@@ -39,7 +39,7 @@ export class InlineForm extends PageElement {
         this._form = value;
     }
 
-    public loadNextForm() {
+    public loadNextForm(forward:boolean) {
         if (this._url != null) {
             this.pathService.serverGet(this.app.getBackendUrl(), this.url, (data:any) => {
                 if (data != null && data["length"] != null) {
@@ -53,8 +53,11 @@ export class InlineForm extends PageElement {
                         for (let item of data) {
                             counter++;
                             if (item["key"]["key"] == this._currentKey.getKey() && item["key"]["name"] == this._currentKey.getName()) {
-                                if (data.length > counter) {
+                                if (forward && data.length > counter) {
                                     this._currentKey = new Key(data[counter]["key"]["key"], data[counter]["key"]["name"]);
+                                    foundNewKey = true;
+                                } else if (!forward && counter > 1) {
+                                    this._currentKey = new Key(data[counter - 2]["key"]["key"], data[counter - 2]["key"]["name"]);
                                     foundNewKey = true;
                                 }
                                 break;
@@ -65,17 +68,18 @@ export class InlineForm extends PageElement {
                         console.log("load next inline form with key " + this._currentKey.getKey() + "/" + this._currentKey.getName());
                         let formFunction:FormFunction = new FormFunction();
                         formFunction.save = () => {
-                            this.loadNextForm();
+                            this.loadNextForm(true);
                         };
                         formFunction.cancel = () => {
-                            this.loadNextForm();
+                            this.loadNextForm(true);
                         };
                         formFunction.delete = () => {
-                            this.loadNextForm();
+                            this.loadNextForm(false);
                         };
                         this._form = this.app.createForm(this._formId, this._currentKey, null, formFunction, this);
                     } else {
                         this._form = null;
+                        this.app.navigateBack();
                     }
                 }
             }, null);

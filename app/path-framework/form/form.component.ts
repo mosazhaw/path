@@ -151,17 +151,14 @@ export class Form implements IForm {
                     }
                 }
             }
-            let closeAndRefresh = () => {
-                this.formFunction.save();
-            };
             if (remove) {
-                this.pathService.serverDelete(this.app.getBackendUrl(), this.url, closeAndRefresh);
+                this.pathService.serverDelete(this.app.getBackendUrl(), this.url, this.formFunction.delete);
             } else if (this.key == null) {
                 // create
-                this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, closeAndRefresh);
+                this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, this.formFunction.save);
             } else {
                 // update (with key)
-                this.pathService.serverPut(this.app.getBackendUrl(), this.url, data, closeAndRefresh);
+                this.pathService.serverPut(this.app.getBackendUrl(), this.url, data, this.formFunction.save);
             }
         } else {
             this.formFunction.cancel();
