@@ -640,9 +640,9 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "CapabilityQuestionForm",
+                    "id": "QuickScanCapabilityQuestionForm",
                     "title": "Capability Question",
-                    "url": "/capabilityQuestion",
+                    "url": "/quickScanCapabilityQuestion",
                     "formFieldList": [
                         {
                             "id": "questionText",
@@ -684,50 +684,34 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "SupportProcessQualitativeQuestionForm",
-                    "title": "SupportProcess Qualitative Question",
+                    "id": "DeepScanSupportProcessQualitativeQuestionForm",
+                    "title": "Support Process Qualitative Question",
+                    "url": "/deepScanSupportProcessQualitativeQuestion",
                     "formFieldList": [
                         {
+                            "id": "questionText",
                             "type": "text",
-                            "name": "Question",
+                            "name": "Qualitative Question",
                             "height": 8,
                             "width": 2,
                             "required": true
                         },
                         {
-                            "type": "text",
-                            "name": "Awareness",
-                            "height": 4,
+                            "id": "deepScanSupportProcess",
+                            "type": "autocomplete",
+                            "name": "DeepScan Support Process",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "deepScanSupportProcessKey",
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/deepScanSupportProcess",
                             "width": 2,
                             "required": true
                         },
                         {
-                            "type": "text",
-                            "name": "Develop",
-                            "height": 4,
-                            "width": 2,
-                            "required": true
-                        },
-                        {
-                            "type": "text",
-                            "name": "Practice",
-                            "height": 4,
-                            "width": 2,
-                            "required": true
-                        },
-                        {
-                            "type": "text",
-                            "name": "Optimize",
-                            "height": 4,
-                            "width": 2,
-                            "required": true
-                        },
-                        {
-                            "type": "text",
-                            "name": "Best-In-Class",
-                            "height": 4,
-                            "width": 2,
-                            "required": true
+                            "id": "level",
+                            "type": "fieldList",
+                            "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/questionMaturityLevel"
                         },
                         {
                             "type": "deleteButton",
@@ -744,50 +728,34 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "SubprocessQualitativeQuestionForm",
+                    "id": "DeepScanSubprocessQualitativeQuestionForm",
                     "title": "Subprocess Qualitative Question",
+                    "url": "/deepScanSubprocessQualitativeQuestion",
                     "formFieldList": [
                         {
+                            "id": "questionText",
                             "type": "text",
-                            "name": "Question",
+                            "name": "Qualitative Question",
                             "height": 8,
                             "width": 2,
                             "required": true
                         },
                         {
-                            "type": "text",
-                            "name": "Awareness",
-                            "height": 4,
+                            "id": "deepScanSubprocess",
+                            "type": "autocomplete",
+                            "name": "DeepScan Subprocess",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "deepScanSubprocessKey",
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/deepScanSubprocess",
                             "width": 2,
                             "required": true
                         },
                         {
-                            "type": "text",
-                            "name": "Develop",
-                            "height": 4,
-                            "width": 2,
-                            "required": true
-                        },
-                        {
-                            "type": "text",
-                            "name": "Practice",
-                            "height": 4,
-                            "width": 2,
-                            "required": true
-                        },
-                        {
-                            "type": "text",
-                            "name": "Optimize",
-                            "height": 4,
-                            "width": 2,
-                            "required": true
-                        },
-                        {
-                            "type": "text",
-                            "name": "Best-In-Class",
-                            "height": 4,
-                            "width": 2,
-                            "required": true
+                            "id": "level",
+                            "type": "fieldList",
+                            "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/questionMaturityLevel"
                         },
                         {
                             "type": "deleteButton",
@@ -1387,7 +1355,7 @@ export class GuiModel {
                         {
                             "type": "inlineForm",
                             "form": "CapabilityQuestionAnswerForm",
-                            "url": "/quickScanCategory/:quickScanCategoryKey/capabilityQuestion"
+                            "url": "/quickScanCategory/:quickScanCategoryKey/quickScanCapabilityQuestion"
                         }
                     ]
                 },
@@ -2130,7 +2098,7 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "CapabilityQuestionForm"
+                                "form": "QuickScanCapabilityQuestionForm"
                             }
                         },
                         {
@@ -2140,9 +2108,9 @@ export class GuiModel {
                             "color": "lime",
                             "search": true,
                             "form": {
-                                "form": "CapabilityQuestionForm"
+                                "form": "QuickScanCapabilityQuestionForm"
                             },
-                            "url": "/quickScanCategory/:quickScanCategoryKey/capabilityQuestion"
+                            "url": "/quickScanCategory/:quickScanCategoryKey/quickScanCapabilityQuestion"
                         },
                         {
                             "type": "button",
@@ -2249,7 +2217,7 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "SupportProcessQualitativeQuestionForm"
+                                "form": "DeepScanSupportProcessQualitativeQuestionForm"
                             }
                         },
                         {
@@ -2258,9 +2226,9 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "lime",
                             "form": {
-                                "form": "SupportProcessQualitativeQuestionForm"
+                                "form": "DeepScanSupportProcessQualitativeQuestionForm"
                             },
-                            "data": [{"name": "Qualitative Question 1"}, {"name": "Qualitative Question 2"}, {"name": "Qualitative Question 3"}]
+                            "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/deepScanSupportProcessQualitativeQuestion"
                         },
                         {
                             "type": "button",
@@ -2292,7 +2260,7 @@ export class GuiModel {
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
-                                "form": "SubprocessQualitativeQuestionForm"
+                                "form": "DeepScanSubprocessQualitativeQuestionForm"
                             }
                         },
                         {
@@ -2301,9 +2269,9 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "lime",
                             "form": {
-                                "form": "SubprocessQualitativeQuestionForm"
+                                "form": "DeepScanSubprocessQualitativeQuestionForm"
                             },
-                            "data": [{"name": "Qualitative Question 1"}, {"name": "Qualitative Question 2"}, {"name": "Qualitative Question 3"}, {"name": "Qualitative Question 4"}]
+                            "url": "/deepScanSubprocess/:deepScanSubprocessKey/deepScanSubprocessQualitativeQuestion"
                         },
                         {
                             "type": "button",
