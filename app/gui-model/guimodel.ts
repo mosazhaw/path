@@ -1166,7 +1166,7 @@ export class GuiModel {
                             "name": "Actual",
                             "required": true,
                             "defaultKey": null,
-                            "url": "/quickScanCategory/:quickScanCategoryKey/maturityLevelSchema",
+                            "url": "/quickScanCategory/:quickScanCategoryKey/maturityLevel",
                             "width": 2
 
                         },
@@ -1176,7 +1176,67 @@ export class GuiModel {
                             "name": "Target",
                             "required": true,
                             "defaultKey": null,
-                            "url": "/quickScanCategory/:quickScanCategoryKey/maturityLevelSchema",
+                            "url": "/quickScanCategory/:quickScanCategoryKey/maturityLevel",
+                            "width": 2
+
+                        },
+                        {
+                            "id": "answerDescription",
+                            "type": "fieldList",
+                            "url": "/question/:questionKey/questionMaturityLevel",
+                            "width": 2
+                        },
+                        {
+                            "id": "deleteButton",
+                            "type": "deleteButton",
+                            "name": "Previous"
+                        },
+                        {
+                            "id": "cancelButton",
+                            "type": "cancelButton",
+                            "name": "Skip and Next"
+                        },
+                        {
+                            "id": "okButton",
+                            "type": "okButton",
+                            "name": "Save and Next"
+                        }
+                    ]
+                },
+                {
+                    "id": "DeepScanSubprocessQualitativeQuestionAnswerForm",
+                    "title": "DeepScan Subprocess Question Answer",
+                    "url": "/questionAnswer/:projectKey/:personKey/:deepScanSubprocessKey/:questionKey",
+                    "formFieldList": [
+                        {
+                            "id": "progress",
+                            "type": "ProgressBarField",
+                            "name": "Progress",
+                            "width": 2
+                        },
+                        {
+                            "id": "question",
+                            "type": "label",
+                            "name": "Question",
+                            "width": 2
+                        },
+                        {
+                            "id": "questionActualMaturityLevelKey",
+                            "type": "RadioGroupField",
+                            "name": "Actual",
+                            "required": true,
+                            "defaultKey": null,
+                            "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/maturityLevel",
+                            "width": 2
+
+                        },
+                        {
+                            "id": "questionTargetMaturityLevelKey",
+                            "type": "RadioGroupField",
+                            "name": "Target",
+                            "required": true,
+                            "defaultKey": null,
+                            "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/maturityLevel",
                             "width": 2
 
                         },
@@ -1546,7 +1606,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "subprocessquestionspage",
-                            "data": [{"name": "Subprocess S1"}, {"name": "Subprocess S2"}, {"name": "Subprocess S3"}, {"name": "Subprocess S4"}, {"name": "Subprocess S5"}, {"name": "Subprocess S6"}, {"name": "Subprocess S7"}, {"name": "Subprocess S8"}, {"name": "Subprocess S10"}, {"name": "Subprocess S11"}]
+                            "url": "/deepScanProject/:projectKey/person/:personKey/selectedDeepScanSupportProcess/:deepScanSupportProcessKey/deepScanSubprocess",
                         }
                     ]
                 },
@@ -1602,9 +1662,9 @@ export class GuiModel {
                     "title": "Questions",
                     "elementList": [
                         {
-                            "type": "form",
-                            "form": "QuestionForm",
-                            "handler": "DeepScanQuestionFormHandler"
+                            "type": "inlineForm",
+                            "form": "DeepScanSubprocessQualitativeQuestionAnswerForm",
+                            "url": "/deepScanSubprocess/:deepScanSubprocessKey/deepScanSubprocessQualitativeQuestion"
                         }
                     ]
                 },
