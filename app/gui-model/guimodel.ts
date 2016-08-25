@@ -602,6 +602,38 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "DeepScanSupportProcessSelectionForm",
+                    "url": "/deepScanProject/:projectKey/deepScanSupportProcess/:deepScanSupportProcessKey",
+                    "title": "Category Selection",
+                    "formFieldList": [
+                        {
+                            "type": "fieldList",
+                            "name": "Support Process",
+                            "url": "/deepScanProject/:projectKey/deepScanSupportProcess/:deepScanSupportProcessKey",
+                        },
+                        {
+                            "id": "deepScanSupportProcess",
+                            "type": "autocomplete",
+                            "name": "DeepScan Support Process",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "deepScanSupportProcessKey",
+                            "actions": [],
+                            "url": "/deepScanSupportProcess",
+                            "width": 2
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "SubprocessForm",
                     "title": "Subprocess",
                     "url": "/deepScanSubprocess",
@@ -1446,7 +1478,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "page": "deepscanintervieweesupportprocessespage",
-                            "url": "/project/:projectKey/interviewee"
+                            "url": "/project/:projectKey/interviewee",
                         }
                     ]
                 },
@@ -1462,8 +1494,10 @@ export class GuiModel {
                             "name": "Support Processes",
                             "icon": "fa-cube",
                             "color": "pumpkin",
-                            "buttonhandler": "SupportProcessListButtonHandler",
-                            "url": "/deepScanSupportProcess"
+                            "form": {
+                                "form": "DeepScanSupportProcessSelectionForm",
+                            },
+                            "url": "/deepScanProject/:projectKey/deepScanSupportProcess"
                         }
                     ]
                 },
@@ -1480,7 +1514,7 @@ export class GuiModel {
                             "icon": "fa-cube",
                             "color": "pumpkin",
                             "page": "deepscanintervieweesubprocessespage",
-                            "data": [{"name": "Support Process S2"}, {"name": "Support Process S5"}, {"name": "Support Process S6"}, {"name": "Support Process S8"}, {"name": "Support Process S9"}, {"name": "Support Process S10"}]
+                            "url" : "/deepScanProject/:projectKey/person/:personKey/selectedDeepScanSupportProcess"
                         },
                         {
                             "type": "button",
