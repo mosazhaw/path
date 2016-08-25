@@ -541,6 +541,7 @@ export class GuiModel {
                         {
                             "type": "fieldList",
                             "name": "Category Name",
+                            "width": 2,
                             "url": "/quickScanProject/:projectKey/quickScanCategory/:quickScanCategoryKey/label",
                         },
                         {
@@ -609,7 +610,8 @@ export class GuiModel {
                         {
                             "type": "fieldList",
                             "name": "Support Process",
-                            "url": "/deepScanProject/:projectKey/deepScanSupportProcess/:deepScanSupportProcessKey",
+                            "width": 2,
+                            "url": "/deepScanProject/:projectKey/deepScanSupportProcess/:deepScanSupportProcessKey/label",
                         },
                         {
                             "id": "deepScanSupportProcess",
