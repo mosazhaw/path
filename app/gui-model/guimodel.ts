@@ -808,53 +808,61 @@ export class GuiModel {
                 {
                     "id": "KpiForm",
                     "title": "Key Performance Indicator (KPI)",
+                    "url": "/kpi",
                     "formFieldList": [
                         {
+                            "id": "name",
                             "type": "text",
                             "name": "Key Performance Indicator Name",
                             "width": 2,
                             "required": true
                         },
                         {
+                            "id": "deepScanSupportProcess",
                             "type": "autocomplete",
                             "name": "Support Process",
                             "wordSearchEnabled": false,
-                            "data": ["Support Process S1","Support Process S2","Support Process S3","Support Process S4"],
+                            "url": "/deepScanSupportProcess",
                             "width": 1,
                             "newRow": true,
                             "required": true
                         },
                         {
+                            "id": "deepScanSubprocess",
                             "type": "autocomplete",
                             "name": "Subprocess",
                             "wordSearchEnabled": false,
-                            "data": ["Subprocess 1","Subprocess 2","Subprocess 3","Subprocess 4"],
+                            "url": "/deepScanSubprocess",
                             "width": 1
                         },
                         {
+                            "id": "kpiCategory",
                             "type": "autocomplete",
                             "name": "KPI Category",
                             "wordSearchEnabled": false,
-                            "data": ["KPI Category 1","KPI Category 2","KPI Category 3","KPI Category 4"],
+                            "url": "/kpiCategory",
                             "width": 2,
                             "newRow": true,
                             "required": true
                         },
                         {
+                            "id": "unit",
                             "type": "autocomplete",
                             "name": "Output Unit",
                             "wordSearchEnabled": false,
                             "actions": [{"name": "New..."}],
-                            "data": ["CHF", "FTE", "kg", "h", "Betten", "min"],
+                            "url": "/unit",
                             "width": 2
                         },
                         {
+                            "id": "formula",
                             "type": "text",
                             "name": "Formula",
                             "height": 8,
                             "width": 2
                         },
                         {
+                            "id": "comments",
                             "type": "text",
                             "name": "Comments",
                             "height": 8,
@@ -962,6 +970,32 @@ export class GuiModel {
                             "id": "name",
                             "type": "text",
                             "name": "KPI Category",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "UnitForm",
+                    "title": "Unit",
+                    "url": "/unit",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "Unit Name",
                             "width": 2,
                             "required": true
                         },
@@ -2324,6 +2358,13 @@ export class GuiModel {
                             "color": "pomegra",
                             "page": "kpicategoriesconfigurationpage"
                         },
+                        {
+                            "type": "button",
+                            "name": "Units",
+                            "icon": "fa-reorder",
+                            "color": "wisteria",
+                            "page": "unitsconfigurationpage"
+                        },
                     ]
                 },
                 {
@@ -2480,7 +2521,7 @@ export class GuiModel {
                             "color": "wet-asphalt",
                             "page": "kpiconfigurationpage",
                             "search": true,
-                            "data": [{"name": "Anteil extern erbrachte Beschaffungs-Leistungen"}, {"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch"}, {"name": "Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik"}, {"name": "Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung"}, {"name": "Anzahl FTE Beschaffung"}, {"name": "Kosten je Bestellung"}, {"name": "Gesamtkosten Beschaffung pro Fall stationär"}, {"name": "Gesamtkosten Beschaffung pro Fall ambulant"}]
+                            "url": "/kpi"
                         }
                     ]
                 },
@@ -2540,6 +2581,34 @@ export class GuiModel {
                                 "form": "KpiCategoryForm"
                             },
                             "url": "/kpiCategory"
+                        }
+                    ]
+                },
+                {
+                    "id": "unitsconfigurationpage",
+                    "title": "Units",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "New Unit",
+                            "icon": "fa-book",
+                            "color": "green",
+                            "form": {
+                                "form": "UnitForm"
+                            },
+                        },
+                        {
+                            "type": "list",
+                            "name": "Units",
+                            "icon": "fa-reorder",
+                            "color": "wisteria",
+                            "form": {
+                                "form": "UnitForm"
+                            },
+                            "url": "/unit"
                         }
                     ]
                 },
