@@ -1216,6 +1216,62 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "InputParameterAnswerForm",
+                    "title": "Input Parameter Answer",
+                    "url": "/inputParameterAnswer/:projectKey/:personKey/:inputParameterKey",
+                    "formFieldList": [
+                        {
+                            "id": "inputParameter",
+                            "type": "autocomplete",
+                            "name": "Input Parameter",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/inputParameter",
+                            "width": 2
+                        },
+                        {
+                            "id": "value",
+                            "type": "text",
+                            "name": "Value",
+                            "width": 2
+                        },
+                        {
+                            "id": "deepScanProject",
+                            "type": "autocomplete",
+                            "name": "DeepScan Project",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/deepScanProject",
+                            "width": 2
+                        },
+                        {
+                            "id": "person",
+                            "type": "autocomplete",
+                            "name": "Person",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/person",
+                            "width": 2
+                        },
+                        {
+                            "id": "cancelButton",
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "id": "okButton",
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "CapabilityQuestionAnswerForm",
                     "title": "Capability Question Answer",
                     "url": "/questionAnswer/:projectKey/:personKey/:quickScanCategoryKey/:questionKey",
@@ -1780,10 +1836,9 @@ export class GuiModel {
                             "icon": "fa-pencil",
                             "color": "alizarin",
                             "form": {
-                                "form": "QuestionForm",
-                                "handler": "InputParameterQuestionFormHandler"
+                                "form": "InputParameterAnswerForm",
                             },
-                            "url" : "/deepScanSupportProcess/:deepScanSupportProcessKey/inputParameter",
+                            "url" : "/deepScanProject/:projectKey/deepScanSupportProcess/:deepScanSupportProcessKey/inputParameter",
                         }
                     ]
                 },
