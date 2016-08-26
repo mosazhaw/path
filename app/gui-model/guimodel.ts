@@ -1204,6 +1204,66 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "DeepScanSupportProcessQualitativeQuestionAnswerForm",
+                    "title": "DeepScan Support Process Question Answer",
+                    "url": "/questionAnswer/:projectKey/:personKey/:deepScanSupportProcessKey/:questionKey",
+                    "formFieldList": [
+                        {
+                            "id": "progress",
+                            "type": "ProgressBarField",
+                            "name": "Progress",
+                            "width": 2
+                        },
+                        {
+                            "id": "question",
+                            "type": "label",
+                            "name": "Question",
+                            "width": 2
+                        },
+                        {
+                            "id": "questionActualMaturityLevelKey",
+                            "type": "RadioGroupField",
+                            "name": "Actual",
+                            "required": true,
+                            "defaultKey": null,
+                            "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/maturityLevel",
+                            "width": 2
+
+                        },
+                        {
+                            "id": "questionTargetMaturityLevelKey",
+                            "type": "RadioGroupField",
+                            "name": "Target",
+                            "required": true,
+                            "defaultKey": null,
+                            "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/maturityLevel",
+                            "width": 2
+
+                        },
+                        {
+                            "id": "answerDescription",
+                            "type": "fieldList",
+                            "url": "/question/:questionKey/questionMaturityLevel",
+                            "width": 2
+                        },
+                        {
+                            "id": "deleteButton",
+                            "type": "deleteButton",
+                            "name": "Previous"
+                        },
+                        {
+                            "id": "cancelButton",
+                            "type": "cancelButton",
+                            "name": "Skip and Next"
+                        },
+                        {
+                            "id": "okButton",
+                            "type": "okButton",
+                            "name": "Save and Next"
+                        }
+                    ]
+                },
+                {
                     "id": "DeepScanSubprocessQualitativeQuestionAnswerForm",
                     "title": "DeepScan Subprocess Question Answer",
                     "url": "/questionAnswer/:projectKey/:personKey/:deepScanSubprocessKey/:questionKey",
@@ -1601,12 +1661,30 @@ export class GuiModel {
                             "page": "deepscanintervieweeinputparameterspage"
                         },
                         {
+                            "type": "button",
+                            "name": "Questions",
+                            "icon": "fa-question",
+                            "color": "pumpkin",
+                            "page": "supportprocessquestionspage"
+                        },
+                        {
                             "type": "list",
                             "name": "Subprocesses",
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "page": "subprocessquestionspage",
                             "url": "/deepScanProject/:projectKey/person/:personKey/selectedDeepScanSupportProcess/:deepScanSupportProcessKey/deepScanSubprocess",
+                        }
+                    ]
+                },
+                {
+                    "id": "supportprocessquestionspage",
+                    "title": "Questions",
+                    "elementList": [
+                        {
+                            "type": "inlineForm",
+                            "form": "DeepScanSupportProcessQualitativeQuestionAnswerForm",
+                            "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/deepScanSupportProcessQualitativeQuestion"
                         }
                     ]
                 },
