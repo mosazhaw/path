@@ -1803,7 +1803,7 @@ export class GuiModel {
                                 "form": "QuestionForm",
                                 "handler": "KPIQuestionFormHandler"
                             },
-                            "data": [{"name": "Anteil extern erbrachte Beschaffungs-Leistungen", "color": "emerald"}, {"name": "Gesamtkosten Beschaffung im Verhältnis zu Aufwand Total Spital", "color": "emerald"}, {"name": "Verhältnis Gesamtkosten Beschaffung medizinisch vs. Beschaffung nicht-medizinisch", "color": "emerald"}, {"name": "Verhältnis Personal- zu Sachmittelkosten der Beschaffungslogistik", "color": "emerald"}, {"name": "Anteil Kosten nicht-medzinische Beschaffung an Gesamtkosten Beschaffung", "color": "emerald"}, {"name": "Anzahl FTE Beschaffung", "color": "emerald"}, {"name": "Kosten je Bestellung"}, {"name": "Gesamtkosten Beschaffung pro Fall stationär"}, {"name": "Gesamtkosten Beschaffung pro Fall ambulant"}]
+                            "url" : "/deepScanSupportProcess/:deepScanSupportProcessKey/kpi"
                         }
                     ]
                 },
