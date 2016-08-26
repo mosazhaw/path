@@ -1221,7 +1221,7 @@ export class GuiModel {
                     "url": "/inputParameterAnswer/:projectKey/:personKey/:inputParameterKey",
                     "formFieldList": [
                         {
-                            "id": "inputParameter",
+                            "id": "inputParameterKey",
                             "type": "autocomplete",
                             "name": "Input Parameter",
                             "wordSearchEnabled": false,
@@ -1238,7 +1238,18 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "deepScanProject",
+                            "id": "unitKey",
+                            "type": "autocomplete",
+                            "name": "Unit",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/unit",
+                            "width": 2
+                        },
+                        {
+                            "id": "deepScanProjectKey",
                             "type": "autocomplete",
                             "name": "DeepScan Project",
                             "wordSearchEnabled": false,
@@ -1249,7 +1260,7 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "person",
+                            "id": "personKey",
                             "type": "autocomplete",
                             "name": "Person",
                             "wordSearchEnabled": false,
