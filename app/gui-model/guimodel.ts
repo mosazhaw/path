@@ -988,6 +988,41 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "InputParameterForm",
+                    "title": "Input Parameter",
+                    "url": "/inputParameter",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "Input Parameter Name",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "unit",
+                            "type": "autocomplete",
+                            "name": "Output Unit",
+                            "wordSearchEnabled": false,
+                            "actions": [{"name": "New..."}],
+                            "url": "/unit",
+                            "width": 2
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "UnitForm",
                     "title": "Unit",
                     "url": "/unit",
@@ -2360,6 +2395,13 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "Input Parameters",
+                            "icon": "fa-arrow-circle-down",
+                            "color": "turquoise",
+                            "page": "inputparametersconfigurationpage"
+                        },
+                        {
+                            "type": "button",
                             "name": "Units",
                             "icon": "fa-reorder",
                             "color": "wisteria",
@@ -2581,6 +2623,34 @@ export class GuiModel {
                                 "form": "KpiCategoryForm"
                             },
                             "url": "/kpiCategory"
+                        }
+                    ]
+                },
+                {
+                    "id": "inputparametersconfigurationpage",
+                    "title": "Input Parameters",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "New Input Parameter",
+                            "icon": "fa-arrow-circle-down",
+                            "color": "green",
+                            "form": {
+                                "form": "InputParameterForm"
+                            },
+                        },
+                        {
+                            "type": "list",
+                            "name": "Input Parameters",
+                            "icon": "fa-arrow-circle-down",
+                            "color": "turquoise",
+                            "form": {
+                                "form": "InputParameterForm"
+                            },
+                            "url": "/inputParameter"
                         }
                     ]
                 },
