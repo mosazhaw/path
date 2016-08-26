@@ -585,6 +585,7 @@ export class GuiModel {
                             "wordSearchEnabled": false,
                             "defaultKey": "maturityLevelSchemaKey",
                             "readonly": true,
+                            "required": true,
                             "url": "/maturityLevelSchema",
                             "width": 2
                         },
@@ -1782,7 +1783,7 @@ export class GuiModel {
                                 "form": "QuestionForm",
                                 "handler": "InputParameterQuestionFormHandler"
                             },
-                            "data": [{"name": "Anzahl Betten", "color": "emerald"}, {"name": "Anzahl Mittagessen", "color": "emerald"}, {"name": "Anzahl Mitarbeiter", "color": "orange"}, {"name": "Bruttogeschossfläche"}, {"name": "Stromverbrauch"}]
+                            "url" : "/deepScanSupportProcess/:deepScanSupportProcessKey/inputParameter",
                         }
                     ]
                 },
@@ -2588,7 +2589,7 @@ export class GuiModel {
                             "name": "Input Parameter",
                             "icon": "fa-pencil",
                             "color": "pumpkin",
-                            "data": [{"name": "Anzahl Betten"}, {"name": "Anzahl Mittagessen"}]
+                            "url": "/kpi/:kpiKey/inputParameter"
                         },
                         {
                             "type": "button",
