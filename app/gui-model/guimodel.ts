@@ -956,8 +956,10 @@ export class GuiModel {
                 {
                     "id": "KpiCategoryForm",
                     "title": "KPI Category",
+                    "url": "/kpiCategory",
                     "formFieldList": [
                         {
+                            "id": "name",
                             "type": "text",
                             "name": "KPI Category",
                             "width": 2,
@@ -2537,7 +2539,7 @@ export class GuiModel {
                             "form": {
                                 "form": "KpiCategoryForm"
                             },
-                            "data": [{"name": "KPI Category 1"}, {"name": "KPI Category 2"}, {"name": "KPI Category 3"}, {"name": "KPI Category 4"}, {"name": "KPI Category 5"}, {"name": "KPI Category 6"}, {"name": "KPI Category 7"}, {"name": "KPI Category 8"}, {"name": "KPI Category 9"}, {"name": "KPI Category 10"}]
+                            "url": "/kpiCategory"
                         }
                     ]
                 },
