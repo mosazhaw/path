@@ -2,11 +2,11 @@ import {IPageElement, IKey} from "./pathinterface";
 
 export class KeyUtility {
 
-    public static translateUrl(url:string, formKey:IKey, parentPageElement:IPageElement):string {
+    public static translateUrl(url:string, formKey:IKey, crudFormUrl:boolean, parentPageElement:IPageElement):string {
         let translatedUrl:any = url;
 
         if (translatedUrl != null) {
-            if (translatedUrl.indexOf(":") < 0 && formKey != null) {
+            if (formKey != null && !(translatedUrl.indexOf(formKey.getName()) > 0) && crudFormUrl) {
                 translatedUrl = translatedUrl + "/" + formKey.getKey();
             }
             if (formKey != null) {

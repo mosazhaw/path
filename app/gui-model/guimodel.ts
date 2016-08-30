@@ -885,6 +885,47 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "KpiInputParameterForm",
+                    "title": "Add Input Parameter to KPI",
+                    "url": "/kpi/:kpiKey/inputParameter",
+                    "formFieldList": [
+                        {
+                            "id": "inputParameterKey",
+                            "type": "autocomplete",
+                            "name": "Input Parameter",
+                            "wordSearchEnabled": true,
+                            "actions": [],
+                            "url": "/inputParameter",
+                            "width": 2,
+                            "required": true,
+                            "defaultKey": "inputParameterKey"
+                        },
+                        {
+                            "id": "kpiKey",
+                            "type": "autocomplete",
+                            "name": "KPI",
+                            "wordSearchEnabled": true,
+                            "url": "/kpi",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "kpiKey"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "MaturityLevelSchemaForm",
                     "url": "/maturityLevelSchema",
                     "title": "Maturity Level Schema",
@@ -2565,12 +2606,21 @@ export class GuiModel {
                             }
                         },
                         {
+                            "type": "button",
+                            "name": "Add Input Parameter",
+                            "icon": "fa-pencil",
+                            "color": "green",
+                            "form": {
+                                "form": "KpiInputParameterForm"
+                            }
+                        },
+                        {
                             "type": "list",
                             "name": "Input Parameter",
                             "icon": "fa-pencil",
                             "color": "pumpkin",
                             "form": {
-                                "form": "InputParameterForm"
+                                "form": "KpiInputParameterForm"
                             },
                             "url": "/kpi/:kpiKey/inputParameter"
                         }

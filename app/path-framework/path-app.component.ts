@@ -168,7 +168,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "inlineForm":
                             let inlineForm = new path.InlineForm(this, this.pathService);
-                            inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), parentPageElement);
+                            inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), true, parentPageElement);
                             inlineForm.formId = modelElement["form"];
                             inlineForm.key = parentPageElement.key;
                             inlineForm.loadNextForm(true);
@@ -184,7 +184,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             if (modelElement["buttonhandler"] != null) {
                                 dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                             }
-                            dynamicList.url = KeyUtility.translateUrl(modelElement["url"], null, parentPageElement);
+                            dynamicList.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             dynamicList.color = modelElement["color"];
                             if (modelElement["form"] != null) {
                                 dynamicList.form = modelElement["form"]["form"];
@@ -284,7 +284,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.name = "list";
                             formField.fromJson(modelFormField);
                             if (modelFormField["url"] != null) {
-                                let fieldListUrl:any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), parentPageElement);
+                                let fieldListUrl:any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
                                 let modelId:string = modelFormField["id"];
                                 this.pathService.serverGet(this.getBackendUrl(), fieldListUrl, (data:any) => {
                                     let counter:number = 1;
@@ -356,7 +356,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                         {
                             let radioGroupFormField = new path.RadioGroupField(form);
                             if (modelFormField["url"] != null) {
-                                let radiosUrl:any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), parentPageElement);
+                                let radiosUrl:any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
                                 let radioLoader = (rgField:RadioGroupField) => (data:any) => {
                                     for (let item of data) {
                                         let radio = new path.Radio(form);
@@ -452,7 +452,7 @@ export abstract class PathAppComponent implements path.IPathApp {
 
                 // fetch data from backend
                 if (form.url != null && form.key != null) {
-                    form.url = KeyUtility.translateUrl(form.url, form.getKey(), parentPageElement);
+                    form.url = KeyUtility.translateUrl(form.url, form.getKey(), true, parentPageElement);
                     this.pathService.serverGet(this.getBackendUrl(), form.url, (data:any) => {
                         for (let field of form.fields) {
                             if (data[field.id] != null && field instanceof path.ValueField) {
