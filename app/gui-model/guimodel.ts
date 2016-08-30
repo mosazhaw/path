@@ -860,7 +860,8 @@ export class GuiModel {
                             "type": "text",
                             "name": "Formula",
                             "height": 8,
-                            "width": 2
+                            "width": 2,
+                            "required": true
                         },
                         {
                             "id": "comments",
@@ -1096,7 +1097,8 @@ export class GuiModel {
                             "type": "text",
                             "name": "KPI Formula",
                             "width": 2,
-                            "height": 8
+                            "height": 8,
+                            "readonly": true,
                         },
                         {
                             "id": "inputParameter",
@@ -2567,6 +2569,9 @@ export class GuiModel {
                             "name": "Input Parameter",
                             "icon": "fa-pencil",
                             "color": "pumpkin",
+                            "form": {
+                                "form": "InputParameterForm"
+                            },
                             "url": "/kpi/:kpiKey/inputParameter"
                         },
                         {
