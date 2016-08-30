@@ -1752,7 +1752,7 @@ export class GuiModel {
                                 "form": "KPIAnswerForm",
                                 "handler": "KPIQuestionFormHandler"
                             },
-                            "url" : "/deepScanSupportProcess/:deepScanSupportProcessKey/kpi"
+                            "url" : "/deepScanProject/:projectKey/deepScanSupportProcess/:deepScanSupportProcessKey/kpi"
                         }
                     ]
                 },
