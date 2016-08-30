@@ -232,7 +232,13 @@ export abstract class PathAppComponent implements path.IPathApp {
         };
         formFunction.delete = () => {
             this.closeCurrentForm();
-            this.refreshCurrentPage();
+            let parent:path.IPageElement = parentPageElement;
+            if (parent != null && parent instanceof path.Button && (<path.Button>parent).type == "listButton") {
+                this.refreshCurrentPage();
+            } else {
+                this.navigateBack();
+                this.refreshCurrentPage();
+            }
         };
         let form:path.Form = this.createForm(formId,key,handler,formFunction, parentPageElement);
         if (form != null) {

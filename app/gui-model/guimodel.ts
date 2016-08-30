@@ -2573,12 +2573,6 @@ export class GuiModel {
                                 "form": "InputParameterForm"
                             },
                             "url": "/kpi/:kpiKey/inputParameter"
-                        },
-                        {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red"
                         }
                     ]
                 },
