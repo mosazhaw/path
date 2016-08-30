@@ -1050,111 +1050,15 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "QuestionForm",
-                    "title": "Question",
+                    "id": "KPIAnswerForm",
+                    "title": "KPI Answer",
+                    "url": "/deepScanProject/:projectKey/person/:personKey/kpi/:kpiKey",
                     "formFieldList": [
                         {
                             "id": "progress",
                             "type": "ProgressBarField",
                             "name": "Progress",
                             "value": 10,
-                            "width": 2
-                        },
-                        {
-                            "id": "questionActual",
-                            "type": "RadioGroupField",
-                            "name": "Actual",
-                            "required": true,
-                            "defaultKey": null,
-                            "radios": [{
-                                type: "radio",
-                                name: "Isolated",
-                                key: 1
-                            }, {
-                                type: "radio",
-                                name: "Basic",
-                                key: 2
-                            }, {
-                                type: "radio",
-                                name: "Moderate",
-                                key: 3
-                            }, {
-                                type: "radio",
-                                name: "Advanced",
-                                key: 4
-                            }, {
-                                type: "radio",
-                                name: "World-Class",
-                                key: 5
-                            }
-                            ],
-                            "width": 2
-
-                        },
-                        {
-                            "id": "questionTarget",
-                            "type": "RadioGroupField",
-                            "name": "Target",
-                            "required": true,
-                            "defaultKey": null,
-                            "radios": [{
-                                type: "radio",
-                                name: "Isolated",
-                                key: 1
-                            }, {
-                                type: "radio",
-                                name: "Basic",
-                                key: 2
-                            }, {
-                                type: "radio",
-                                name: "Moderate",
-                                key: 3
-                            }, {
-                                type: "radio",
-                                name: "Advanced",
-                                key: 4
-                            }, {
-                                type: "radio",
-                                name: "World-Class",
-                                key: 5
-                            }
-                            ],
-                            "width": 2
-
-                        },
-                        {
-                            "id": "answer1",
-                            "type": "label",
-                            "name": "Isolated",
-                            "value": "Data Management process undocumented, unstructured and manual.",
-                            "width": 2
-                        },
-                        {
-                            "id": "answer2",
-                            "type": "label",
-                            "name": "Basic",
-                            "value": "Manual master data processing is in place. However, data cleansing is project based and there is no structured data archiving.",
-                            "width": 2
-                        },
-                        {
-                            "id": "answer3",
-                            "type": "label",
-                            "name": "Moderate",
-                            "value": "Most Data Management Process defined and implemented. Some validations steps or approval steps.",
-                            "width": 2
-                        },
-                        {
-                            "id": "answer4",
-                            "type": "label",
-                            "name": "Advanced",
-                            "value": "tbd.",
-                            "width": 2
-                        },
-                        {
-                            "id": "answer5",
-                            "type": "label",
-                            "name": "World Class",
-                            "value": "tbd.",
                             "width": 2
                         },
                         {
@@ -1165,30 +1069,9 @@ export class GuiModel {
                             "height": 8
                         },
                         {
-                            "id": "input1",
-                            "type": "text",
-                            "name": "Input Value 1",
-                            "newRow": true,
-                            "width": 1
-                        },
-                        {
-                            "id": "unit1",
-                            "type": "text",
-                            "name": "Unit 1",
-                            "width": 1
-                        },
-                        {
-                            "id": "input2",
-                            "type": "text",
-                            "name": "Input Value 2",
-                            "newRow": true,
-                            "width": 1
-                        },
-                        {
-                            "id": "unit2",
-                            "type": "text",
-                            "name": "Unit 2",
-                            "width": 1
+                            "id": "inputParameter",
+                            "type": "fieldList",
+                            "url": "/deepScanProject/:projectKey/kpi/:kpiKey/inputParameter/field"
                         },
                         {
                             "id": "comment",
@@ -1866,7 +1749,7 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "alizarin",
                             "form": {
-                                "form": "QuestionForm",
+                                "form": "KPIAnswerForm",
                                 "handler": "KPIQuestionFormHandler"
                             },
                             "url" : "/deepScanSupportProcess/:deepScanSupportProcessKey/kpi"
