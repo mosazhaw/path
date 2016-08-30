@@ -15,10 +15,11 @@ import {FormFieldLabelComponent} from "./path-framework/form/field/form-field-la
 import {ProgressBarComponent} from "./path-framework/form/field/progress-bar/progress-bar.component";
 import {LabelFieldComponent} from "./path-framework/form/field/label/label-field.component";
 import {FieldListFieldComponent} from "./path-framework/form/field/fieldList/field-list-field.component";
+import {NumberFieldComponent} from "./path-framework/form/field/number/number-field.component";
 
 @NgModule({
     imports:      [BrowserModule, HttpModule, FormsModule, CommonModule],
-    declarations: [AppComponent, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent],
+    declarations: [AppComponent, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent],
     bootstrap:    [AppComponent],
 })
 export class AppModule {}

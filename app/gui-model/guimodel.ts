@@ -1010,6 +1010,36 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "id": "min",
+                            "type": "number",
+                            "name": "Minimum Value",
+                            "width": 2,
+                            "min": -9223372036854775807,
+                            "max": 9223372036854775807,
+                            "digits": 0,
+                            "required": true
+                        },
+                        {
+                            "id": "max",
+                            "type": "number",
+                            "name": "Maximum Value",
+                            "width": 2,
+                            "min": -9223372036854775807,
+                            "max": 9223372036854775807,
+                            "digits": 0,
+                            "required": true
+                        },
+                        {
+                            "id": "digits",
+                            "type": "number",
+                            "name": "Number of Digits",
+                            "width": 2,
+                            "min": -9223372036854775807,
+                            "max": 9223372036854775807,
+                            "digits": 0,
+                            "required": true
+                        },
+                        {
                             "type": "deleteButton",
                             "name": "Delete"
                         },
@@ -1116,9 +1146,8 @@ export class GuiModel {
                         },
                         {
                             "id": "value",
-                            "type": "text",
-                            "name": "Value",
-                            "width": 2
+                            "type": "fieldList",
+                            "url": "/deepScanProject/:projectKey/inputParameter/:inputParameterKey/field"
                         },
                         {
                             "id": "unitKey",

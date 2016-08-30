@@ -260,6 +260,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.fromJson(modelFormField);
                             break;
                         }
+                        case "number":
+                        {
+                            formField = new path.NumberField(form);
+                            formField.fromJson(modelFormField);
+                            break;
+                        }
                         case "label":
                         {
                             formField = new path.LabelField(form);
@@ -282,6 +288,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                                             dynamicField = new LabelField(form);
                                         } else if (item["type"] == "text") {
                                             dynamicField = new path.TextField(form);
+                                        } else if (item["type"] == "number") {
+                                            dynamicField = new path.NumberField(form);
                                         }
                                         dynamicField.fromJson(item);
                                         dynamicField.id = modelId + counter;
