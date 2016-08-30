@@ -17,114 +17,22 @@ export class CompanyFormHandler implements path.IFormHandler {
 
 }
 
-export class DeepScanQuestionFormHandler implements path.IFormHandler {
-
-    public doLoad(form:forms.QuestionForm) {
-        console.log("loading question form");
-        form.formula.visible = false;
-        form.input1.visible = false;
-        form.input2.visible = false;
-        form.unit1.visible = false;
-        form.unit2.visible = false;
-        form.comment.visible = false;
-    }
-
-    public doSave(form:forms.QuestionForm) {
-        console.log("saving question form");
-        form.questionActual.visible = false;
-        form.questionTarget.visible = false;
-        form.answer1.visible = false;
-        form.answer2.visible = false;
-        form.answer3.visible = false;
-        form.answer4.visible = false;
-        form.answer5.visible = false;
-
-        form.formula.visible = true;
-        form.input1.visible = true;
-        form.input2.visible = true;
-        form.unit1.visible = true;
-        form.unit2.visible = true;
-        form.comment.visible = true;
-        form.progress.setValue(form.progress.value + 10);
-    }
-
-    public doValidate(form:forms.QuestionForm) {
-        console.log("validating question form");
-    }
-
-}
-
-export class InputParameterQuestionFormHandler implements path.IFormHandler {
-
-    public doLoad(form:forms.QuestionForm) {
-        console.log("loading question form");
-        form.cancelButton.name = 'Cancel';
-        form.okButton.name = 'OK';
-        form.deleteButton.visible = false;
-        form.questionActual.visible = false;
-        form.questionTarget.visible = false;
-        form.answer1.visible = false;
-        form.answer2.visible = false;
-        form.answer3.visible = false;
-        form.answer4.visible = false;
-        form.answer5.visible = false;
-        form.progress.visible = false;
-        form.formula.visible = false;
-        form.input2.visible = false;
-        form.unit2.visible = false;
-        form.comment.visible = false;
-    }
-
-    public doSave(form:forms.QuestionForm) {
-        console.log("saving question form");
-    }
-
-    public doValidate(form:forms.QuestionForm) {
-        console.log("validating question form");
-    }
-
-}
-
 export class KPIQuestionFormHandler implements path.IFormHandler {
 
-    public doLoad(form:forms.QuestionForm) {
+    public doLoad(form:forms.KPIAnswerForm) {
         form.cancelButton.name = 'Cancel';
         form.okButton.name = 'OK';
         form.deleteButton.visible = false;
         form.progress.visible = false;
-        form.questionActual.visible = false;
-        form.questionTarget.visible = false;
-        form.answer1.visible = false;
-        form.answer2.visible = false;
-        form.answer3.visible = false;
-        form.answer4.visible = false;
-        form.answer5.visible = false;
         console.log("loading question form");
     }
 
-    public doSave(form:forms.QuestionForm) {
+    public doSave(form:forms.KPIAnswerForm) {
         console.log("saving question form");
     }
 
-    public doValidate(form:forms.QuestionForm) {
+    public doValidate(form:forms.KPIAnswerForm) {
         console.log("validating question form");
-    }
-
-}
-
-export class SupportProcessListButtonHandler implements path.IButtonHandler {
-
-    public doClick(button:path.IButton) {
-        console.log("clicked " + button.getColor());
-        if (button.getColor() == "pumpkin") {
-            let yesHandler = () => {
-                button.setColor("asbestos");
-            };
-            let noHandler = () => {};
-            button.getApp().yesNo("Do you really want to deselect support process " + button.getName() + "?", yesHandler, noHandler);
-        } else {
-            button.setColor("pumpkin");
-        }
     }
 
 }

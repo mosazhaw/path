@@ -122,158 +122,59 @@ export class ProjectForm implements path.IFormBean {
     }
 }
 
-export class QuestionForm implements path.IFormBean {
-    private _questionActual:path.RadioGroupField;
-    private _questionTarget:path.RadioGroupField;
-    private _answer1:path.ValueField<string>;
-    private _answer2:path.ValueField<string>;
-    private _answer3:path.ValueField<string>;
-    private _answer4:path.ValueField<string>;
-    private _answer5:path.ValueField<string>;
+export class KPIAnswerForm implements path.IFormBean {
     private _progress:path.ProgressBarField;
     private _formula:path.TextField;
-    private _input1:path.TextField;
-    private _unit1:path.TextField;
-    private _input2:path.TextField;
-    private _unit2:path.TextField;
     private _comment:path.TextField;
     private _deleteButton:path.FormField;
     private _okButton:path.OkButton;
     private _cancelButton:path.CancelButton;
 
-    get questionActual():RadioGroupField {
-        return this._questionActual;
-    }
-
-    set questionActual(value:RadioGroupField) {
-        this._questionActual = value;
-    }
-
-    get questionTarget():RadioGroupField {
-        return this._questionTarget;
-    }
-
-    set questionTarget(value:RadioGroupField) {
-        this._questionTarget = value;
-    }
-
-    get answer1():ValueField<string> {
-        return this._answer1;
-    }
-
-    set answer1(value:ValueField<string>) {
-        this._answer1 = value;
-    }
-
-    get answer2():ValueField<string> {
-        return this._answer2;
-    }
-
-    set answer2(value:ValueField<string>) {
-        this._answer2 = value;
-    }
-
-    get answer3():ValueField<string> {
-        return this._answer3;
-    }
-
-    set answer3(value:ValueField<string>) {
-        this._answer3 = value;
-    }
-
-    get answer4():ValueField<string> {
-        return this._answer4;
-    }
-
-    set answer4(value:ValueField<string>) {
-        this._answer4 = value;
-    }
-
-    get answer5():ValueField<string> {
-        return this._answer5;
-    }
-
-    set answer5(value:ValueField<string>) {
-        this._answer5 = value;
-    }
-
-    get progress():ProgressBarField {
+    get progress(): ProgressBarField {
         return this._progress;
     }
 
-    set progress(value:ProgressBarField) {
+    set progress(value: ProgressBarField) {
         this._progress = value;
     }
 
-    get formula():TextField {
+    get formula(): TextField {
         return this._formula;
     }
 
-    set formula(value:TextField) {
+    set formula(value: TextField) {
         this._formula = value;
     }
 
-    get input1():TextField {
-        return this._input1;
-    }
-
-    set input1(value:TextField) {
-        this._input1 = value;
-    }
-
-    get unit1():TextField {
-        return this._unit1;
-    }
-
-    set unit1(value:TextField) {
-        this._unit1 = value;
-    }
-
-    get input2():TextField {
-        return this._input2;
-    }
-
-    set input2(value:TextField) {
-        this._input2 = value;
-    }
-
-    get unit2():TextField {
-        return this._unit2;
-    }
-
-    set unit2(value:TextField) {
-        this._unit2 = value;
-    }
-
-    get comment():TextField {
+    get comment(): TextField {
         return this._comment;
     }
 
-    set comment(value:TextField) {
+    set comment(value: TextField) {
         this._comment = value;
     }
 
-    get deleteButton():FormField {
+    get deleteButton(): FormField {
         return this._deleteButton;
     }
 
-    set deleteButton(value:FormField) {
+    set deleteButton(value: FormField) {
         this._deleteButton = value;
     }
 
-    get okButton():OkButton {
+    get okButton(): OkButton {
         return this._okButton;
     }
 
-    set okButton(value:OkButton) {
+    set okButton(value: OkButton) {
         this._okButton = value;
     }
 
-    get cancelButton():CancelButton {
+    get cancelButton(): CancelButton {
         return this._cancelButton;
     }
 
-    set cancelButton(value:CancelButton) {
+    set cancelButton(value: CancelButton) {
         this._cancelButton = value;
     }
 }
