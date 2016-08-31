@@ -1794,7 +1794,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanintervieweesubprocessespage",
-                    "title": "Interviewee Processes",
+                    "title": "Interviewee Subprocesses",
                     "elementList": [
                         {
                             "type": "backbutton",
