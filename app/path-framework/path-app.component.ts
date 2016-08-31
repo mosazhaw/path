@@ -160,11 +160,13 @@ export abstract class PathAppComponent implements path.IPathApp {
                             }
                             element = button;
                             break;
+                        case "deleteButton":
+                            let deleteButton = new path.PageDeleteButton(this.pathService, this);
+                            deleteButton.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
+                            element = deleteButton;
+                            break;
                         case "backbutton":
-                            let backButton:path.BackButton = new path.BackButton(this);
-                            backButton.icon = modelElement["icon"];
-                            backButton.color = modelElement["color"];
-                            element = backButton;
+                            element = new path.BackButton(this);
                             break;
                         case "inlineForm":
                             let inlineForm = new path.InlineForm(this, this.pathService);
@@ -410,7 +412,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                         case "deleteButton":
                         {
-                            formField = new path.DeleteButton(form);
+                            formField = new path.FormDeleteButton(form);
                             formField.fromJson(modelFormField);
                             if (form.key == null) {
                                 formField.visible = false;

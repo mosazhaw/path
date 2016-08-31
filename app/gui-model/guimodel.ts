@@ -1589,10 +1589,8 @@ export class GuiModel {
                             "url": "/quickScanProject/:projectKey/person/:personKey/selectedQuickScanCategory"
                         },
                         {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red"
+                            "type": "deleteButton",
+                            "url": "/project/:projectKey/interviewee/:personKey"
                         }
                     ]
                 },
