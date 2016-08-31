@@ -1804,7 +1804,7 @@ export class GuiModel {
                             "name": "Input Parameters",
                             "icon": "fa-pencil",
                             "color": "pumpkin",
-                            "page": "deepscanintervieweeinputparameterspage"
+                            "page": "deepscansupportprocessintervieweeinputparameterspage"
                         },
                         {
                             "type": "button",
@@ -1818,7 +1818,7 @@ export class GuiModel {
                             "name": "Subprocesses",
                             "icon": "fa-cube",
                             "color": "asbestos",
-                            "page": "subprocessquestionspage",
+                            "page": "deepscanintervieweesubprocesspage",
                             "url": "/deepScanProject/:projectKey/person/:personKey/selectedDeepScanSupportProcess/:deepScanSupportProcessKey/deepScanSubprocess",
                         }
                     ]
@@ -1835,7 +1835,7 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "deepscanintervieweeinputparameterspage",
+                    "id": "deepscansupportprocessintervieweeinputparameterspage",
                     "title": "Interviewee Input Parameters",
                     "elementList": [
                         {
@@ -1846,7 +1846,7 @@ export class GuiModel {
                             "name": "KPI List",
                             "icon": "fa-pencil",
                             "color": "wet-asphalt",
-                            "page": "deepscanintervieweekpispage"
+                            "page": "deepscansupportprocessintervieweekpispage"
                         },
                         {
                             "type": "list",
@@ -1861,7 +1861,7 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "deepscanintervieweekpispage",
+                    "id": "deepscansupportprocessintervieweekpispage",
                     "title": "Interviewee KPIs",
                     "elementList": [
                         {
@@ -1877,6 +1877,75 @@ export class GuiModel {
                                 "handler": "KPIQuestionFormHandler"
                             },
                             "url" : "/deepScanProject/:projectKey/deepScanSupportProcess/:deepScanSupportProcessKey/kpi"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanintervieweesubprocesspage",
+                    "title": "Intverviewee Subprocesses",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Input Parameters",
+                            "icon": "fa-pencil",
+                            "color": "pumpkin",
+                            "page": "deepscansubprocessintervieweeinputparameterspage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Questions",
+                            "icon": "fa-question",
+                            "color": "pumpkin",
+                            "page": "subprocessquestionspage"
+                        },
+                    ]
+                },
+                {
+                    "id": "deepscansubprocessintervieweeinputparameterspage",
+                    "title": "Interviewee Input Parameters",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "KPI List",
+                            "icon": "fa-pencil",
+                            "color": "wet-asphalt",
+                            "page": "deepscansubprocessintervieweekpispage"
+                        },
+                        {
+                            "type": "list",
+                            "name": "Input Parameter",
+                            "icon": "fa-pencil",
+                            "color": "alizarin",
+                            "form": {
+                                "form": "InputParameterAnswerForm",
+                            },
+                            "url" : "/deepScanProject/:projectKey/deepScanSubprocess/:deepScanSubprocessKey/inputParameter",
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscansubprocessintervieweekpispage",
+                    "title": "Interviewee KPIs",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Key Performance Indicator",
+                            "icon": "fa-tachometer",
+                            "color": "alizarin",
+                            "form": {
+                                "form": "KPIAnswerForm",
+                                "handler": "KPIQuestionFormHandler"
+                            },
+                            "url" : "/deepScanProject/:projectKey/deepScanSubprocess/:deepScanSubprocessKey/kpi"
                         }
                     ]
                 },
