@@ -2071,7 +2071,7 @@ export class GuiModel {
                             "color": "purple",
                             "search": true,
                             "page": "companyprojectspage",
-                            "data": [{"name": "Alpha Hospital"}, {"name": "Blue Hospital"}, {"name": "Charisma Hospital"}]
+                            "url": "/company"
                         }
                     ]
                 },
@@ -2088,7 +2088,7 @@ export class GuiModel {
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
                             "page": "reportspage",
-                            "data": [{"name": "QuickScan One", "details": [ "03/2017", "Alpha Hospital" ]}, {"name": "QuickScan Two", "details": [ "05/2017", "Alpha Hospital" ]}, {"name": "QuickScan Three", "details": [ "11/2017", "Alpha Hospital" ]}]
+                            "url": "/company/:companyKey/quickScanProject"
                         },
                         {
                             "type": "list",
@@ -2096,7 +2096,7 @@ export class GuiModel {
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
                             "page": "reportspage",
-                            "data": [{"name": "DeepScan One", "details": [ "10/2017", "Alpha Hospital" ]}, {"name": "DeepScan Two", "details": [ "01/2018", "Alpha Hospital" ]}]
+                            "url": "/company/:companyKey/deepScanProject"
                         }
                     ]
                 },
@@ -2129,11 +2129,11 @@ export class GuiModel {
                             "color": "pink"
                         },
                         {
-                            "type": "button",
+                            "type": "downloadButton",
                             "name": "Assessment Report",
                             "icon": "fa-file-word-o",
                             "color": "wisteria",
-                            "buttonhandler": "AssessmentReportDownloadButtonHandler"
+                            "url": "/project/:projectKey/assessmentreport"
                         },
                         {
                             "type": "button",

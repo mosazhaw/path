@@ -7,6 +7,7 @@ export * from './page/element/page-element';
 export * from './page/element/button/button';
 export * from './page/element/button/button-detail';
 export * from './page/element/button/back-button';
+export * from './page/element/button/download-button';
 export * from './page/element/button/page-delete-button';
 export * from './page/element/inline-form/inline-form';
 export * from './page/element/list/list';
