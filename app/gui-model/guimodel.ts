@@ -819,24 +819,6 @@ export class GuiModel {
                             "required": true
                         },
                         {
-                            "id": "deepScanSupportProcess",
-                            "type": "autocomplete",
-                            "name": "Support Process",
-                            "wordSearchEnabled": false,
-                            "url": "/deepScanSupportProcess",
-                            "width": 1,
-                            "newRow": true,
-                            "required": true
-                        },
-                        {
-                            "id": "deepScanSubprocess",
-                            "type": "autocomplete",
-                            "name": "Subprocess",
-                            "wordSearchEnabled": false,
-                            "url": "/deepScanSubprocess",
-                            "width": 1
-                        },
-                        {
                             "id": "kpiCategory",
                             "type": "autocomplete",
                             "name": "KPI Category",
@@ -856,7 +838,7 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "formula",
+                            "id": "replacedFormula",
                             "type": "text",
                             "name": "Formula",
                             "height": 8,
@@ -899,6 +881,86 @@ export class GuiModel {
                             "width": 2,
                             "required": true,
                             "defaultKey": "inputParameterKey"
+                        },
+                        {
+                            "id": "kpiKey",
+                            "type": "autocomplete",
+                            "name": "KPI",
+                            "wordSearchEnabled": true,
+                            "url": "/kpi",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "kpiKey"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "KpiDeepScanSupportProcessForm",
+                    "title": "Add KPI to DeepScan Support Process",
+                    "url": "/kpi/:kpiKey/deepScanSupportProcess",
+                    "formFieldList": [
+                        {
+                            "id": "deepScanSupportProcessKey",
+                            "type": "autocomplete",
+                            "name": "DeepScan Support Process",
+                            "wordSearchEnabled": true,
+                            "actions": [],
+                            "url": "/deepScanSupportProcess",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "kpiKey",
+                            "type": "autocomplete",
+                            "name": "KPI",
+                            "wordSearchEnabled": true,
+                            "url": "/kpi",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "kpiKey"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "KpiDeepScanSubprocessForm",
+                    "title": "Add KPI to DeepScan Subprocess",
+                    "url": "/kpi/:kpiKey/deepScanSubprocess",
+                    "formFieldList": [
+                        {
+                            "id": "deepScanSubprocessKey",
+                            "type": "autocomplete",
+                            "name": "DeepScan Subprocess",
+                            "wordSearchEnabled": true,
+                            "actions": [],
+                            "url": "/deepScanSubprocess",
+                            "width": 2,
+                            "required": true
                         },
                         {
                             "id": "kpiKey",
@@ -1134,7 +1196,7 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "formula",
+                            "id": "replacedFormula",
                             "type": "text",
                             "name": "KPI Formula",
                             "width": 2,
@@ -2589,6 +2651,44 @@ export class GuiModel {
                                 "form": "KpiInputParameterForm"
                             },
                             "url": "/kpi/:kpiKey/inputParameter"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Add Support Process",
+                            "icon": "fa-pencil",
+                            "color": "green",
+                            "form": {
+                                "form": "KpiDeepScanSupportProcessForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Support Process",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "form": {
+                                "form": "KpiDeepScanSupportProcessForm"
+                            },
+                            "url": "/kpi/:kpiKey/deepScanSupportProcess"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Add Subprocess",
+                            "icon": "fa-pencil",
+                            "color": "green",
+                            "form": {
+                                "form": "KpiDeepScanSubprocessForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Subprocess",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "form": {
+                                "form": "KpiDeepScanSubprocessForm"
+                            },
+                            "url": "/kpi/:kpiKey/deepScanSubprocess"
                         }
                     ]
                 },
