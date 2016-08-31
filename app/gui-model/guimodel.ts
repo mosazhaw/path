@@ -1661,12 +1661,6 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "page": "deepscanintervieweespage"
-                        },
-                        {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red"
                         }
                     ]
                 },
@@ -1731,10 +1725,8 @@ export class GuiModel {
                             "url" : "/deepScanProject/:projectKey/person/:personKey/selectedDeepScanSupportProcess"
                         },
                         {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red"
+                            "type": "deleteButton",
+                            "url": "/project/:projectKey/interviewee/:personKey"
                         }
                     ]
                 },
@@ -2332,12 +2324,6 @@ export class GuiModel {
                             "search": true,
                             "page": "quickscancategoryconfigurationpage",
                             "url": "/quickScanCase/:quickScanCaseKey/quickScanCategory"
-                        },
-                        {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red"
                         }
                     ]
                 },
@@ -2376,12 +2362,6 @@ export class GuiModel {
                                 "form": "QuickScanCapabilityQuestionForm"
                             },
                             "url": "/quickScanCategory/:quickScanCategoryKey/quickScanCapabilityQuestion"
-                        },
-                        {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red"
                         }
                     ]
                 },
@@ -2508,12 +2488,6 @@ export class GuiModel {
                                 "form": "DeepScanSupportProcessQualitativeQuestionForm"
                             },
                             "url": "/deepScanSupportProcess/:deepScanSupportProcessKey/deepScanSupportProcessQualitativeQuestion"
-                        },
-                        {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red"
                         }
                     ]
                 },
@@ -2551,12 +2525,6 @@ export class GuiModel {
                                 "form": "DeepScanSubprocessQualitativeQuestionForm"
                             },
                             "url": "/deepScanSubprocess/:deepScanSubprocessKey/deepScanSubprocessQualitativeQuestion"
-                        },
-                        {
-                            "type": "button",
-                            "name": "Delete",
-                            "icon": "fa-remove",
-                            "color": "red"
                         }
                     ]
                 },
