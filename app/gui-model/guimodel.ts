@@ -2133,7 +2133,7 @@ export class GuiModel {
                             "name": "Assessment Report",
                             "icon": "fa-file-word-o",
                             "color": "wisteria",
-                            "url": "/project/:projectKey/assessmentreport"
+                            "url": "/project/:projectKey/assessmentreport/word"
                         },
                         {
                             "type": "button",
