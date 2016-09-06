@@ -1053,6 +1053,16 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "id":   "level",
+                            "type": "number",
+                            "name": "Level",
+                            "width": 2,
+                            "min": 1,
+                            "max": 99999,
+                            "digits": 0,
+                            "required": true
+                        },
+                        {
                             "type": "deleteButton",
                             "name": "Delete"
                         },
