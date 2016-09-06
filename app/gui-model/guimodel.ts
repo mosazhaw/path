@@ -1353,8 +1353,15 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "deleteButton",
-                            "type": "deleteButton",
+                            "id": "comments",
+                            "type": "text",
+                            "name": "Comments",
+                            "height": 8,
+                            "width": 2
+                        },
+                        {
+                            "id": "previousButton",
+                            "type": "previousButton",
                             "name": "Previous"
                         },
                         {
@@ -1413,8 +1420,15 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "deleteButton",
-                            "type": "deleteButton",
+                            "id": "comments",
+                            "type": "text",
+                            "name": "Comments",
+                            "height": 8,
+                            "width": 2
+                        },
+                        {
+                            "id": "previousButton",
+                            "type": "previousButton",
                             "name": "Previous"
                         },
                         {
@@ -1473,8 +1487,15 @@ export class GuiModel {
                             "width": 2
                         },
                         {
-                            "id": "deleteButton",
-                            "type": "deleteButton",
+                            "id": "comments",
+                            "type": "text",
+                            "name": "Comments",
+                            "height": 8,
+                            "width": 2
+                        },
+                        {
+                            "id": "previousButton",
+                            "type": "previousButton",
                             "name": "Previous"
                         },
                         {

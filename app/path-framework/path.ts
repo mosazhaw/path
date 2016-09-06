@@ -22,6 +22,7 @@ export * from './form/field/checkbox/checkbox-group.component';
 export * from './form/field/button/action';
 export * from './form/field/button/cancel-button';
 export * from './form/field/button/form-delete-button';
+export * from './form/field/button/previous-button';
 export * from './form/field/button/ok-button';
 export * from './form/field/date/date-field.component';
 export * from './form/field/progress-bar/progress-bar.component';

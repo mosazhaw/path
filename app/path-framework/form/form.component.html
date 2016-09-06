@@ -44,6 +44,9 @@
                         <span *ngIf="field.type == 'deleteButton'">
                             <input [disabled]="field.isReadonly()" type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
                         </span>
+                        <span *ngIf="field.type == 'previousButton'">
+                            <input [disabled]="field.isReadonly()" type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
+                        </span>
                     </span>
 				</div>
 				<div class="col-md-10">

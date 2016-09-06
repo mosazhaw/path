@@ -18,8 +18,5 @@ export class FormDeleteButton extends path.FormField {
             }
             this.form.close(false, true);
         }, () => {} );
-
-
-
     }
 }

@@ -427,6 +427,15 @@ export abstract class PathAppComponent implements path.IPathApp {
                             }
                             break;
                         }
+                        case "previousButton":
+                        {
+                            formField = new path.PreviousButton(form);
+                            formField.fromJson(modelFormField);
+                            if (form.key == null) {
+                                formField.visible = false;
+                            }
+                            break;
+                        }
                         default:
                         {
                             formField = new path.FormField(form);
