@@ -29,6 +29,7 @@ export * from './form/field/progress-bar/progress-bar.component';
 export * from './form/field/radio/radio-group.component';
 export * from './form/field/radio/radio';
 export * from './form/field/text/text-field.component';
+export * from './form/field/translation/translation-field.component';
 export * from './form/field/number/number-field.component';
 export * from './form/field/value-field'
 export * from './form/field/label/label-field.component'

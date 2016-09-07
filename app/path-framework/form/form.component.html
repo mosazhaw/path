@@ -10,6 +10,9 @@
 					<div *ngIf="field.type == 'text'">
 						<path-textfield [field]="field"></path-textfield>
 					</div>
+					<div *ngIf="field.type == 'translation'">
+						<path-translationfield [field]="field"></path-translationfield>
+					</div>
 					<div *ngIf="field.type == 'number'">
 						<path-numberfield [field]="field"></path-numberfield>
 					</div>

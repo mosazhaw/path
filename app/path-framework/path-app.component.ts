@@ -276,6 +276,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.fromJson(modelFormField);
                             break;
                         }
+                        case "translation":
+                        {
+                            formField = new path.TranslationField(form, this.pathService);
+                            formField.fromJson(modelFormField);
+                            break;
+                        }
                         case "number":
                         {
                             formField = new path.NumberField(form);

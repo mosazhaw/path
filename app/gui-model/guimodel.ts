@@ -1083,7 +1083,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "KPI Category",
                             "width": 2,
                             "required": true
