@@ -402,7 +402,7 @@ export class GuiModel {
                             "name": "Closing Date"
                         },
                         {
-                            "date": "comments",
+                            "id": "comments",
                             "type": "text",
                             "name": "Comments",
                             "newRow": true,
@@ -1674,6 +1674,15 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
+                            "type": "button",
+                            "name": "Edit Interviewee",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": {
+                                "form": "PersonForm"
+                            }
+                        },
+                        {
                             "type": "list",
                             "name": "Categories",
                             "icon": "fa-cube",
@@ -1789,6 +1798,15 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Edit Interviewee",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": {
+                                "form": "PersonForm"
+                            }
                         },
                         {
                             "type": "list",

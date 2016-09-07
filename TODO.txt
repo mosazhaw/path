@@ -3,6 +3,15 @@ Fragen Einführungshandbuch
 - Pflege Stammdaten, Bewegungsdaten, OE-Strukturen im Admin Bereich?
 - Zuweisung zu QuickScan / DeepScan oder immer alle auflisten?
 
+Assessment App
+- User Verwaltung
+- *** Project: Industry Segment ***
+- IE: Select in AutoComplete füllt Wert nicht ab, AutoComplete Wert löschen
+- Reports: DeepScan Report, Completeness Check Report
+- Web Reports: Gap - Spider
+- generic crud unit tests frontend / backend
+- Einführungshandbuch
+
 Path Framework Prio1
 - Form Validation (field length)
 - DatePicker
@@ -17,7 +26,3 @@ Path Framework Prio2
 - Use Interfaces everywhere in generated beans and handlers (e.g. ITextField)
 - Unit Tests
 - Build
-
-Assessment App
-- generic crud unit tests frontend / backend
-- Tickets
