@@ -1,7 +1,7 @@
 <path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
     <div class="input-group">
-        <input readonly (click)="field.editTranslations()" [class.required-field]="!field.isValueSet() && !field.pristine && field.required" [required]="field.required" value="{{field.getDefaultTranslation()}}" type="text" class="form-control" placeholder="">
+        <input readonly #model="ngModel" (click)="field.editTranslations()" [class.required-field]="!model.valid && !field.pristine && field.required" [required]="field.required" [(ngModel)]="field.defaultTranslation" type="text" class="form-control" placeholder="">
         <span class="input-group-btn">
                 <button [disabled]="field.isReadonly()" (click)="field.editTranslations()" class="btn btn-default" type="button">Translations...</button>
         </span>
