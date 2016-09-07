@@ -3,10 +3,12 @@ Fragen Einführungshandbuch
 - Pflege Stammdaten, Bewegungsdaten, OE-Strukturen im Admin Bereich?
 - Zuweisung zu QuickScan / DeepScan oder immer alle auflisten?
 
-Assessment App
-- User Verwaltung
+Assessment App / Fragen
 - *** Project: Industry Segment ***
 - *** Interviewee hinzufügen: Nur Interviewee aus Company? ***
+- *** Land als Admin Stammdatensatz? ***
+- Deutsch/Englisch UI Language
+- User Verwaltung
 - IE: Select in AutoComplete füllt Wert nicht ab, AutoComplete Wert löschen
 - Reports: DeepScan Report, Completeness Check Report
 - Web Reports: Gap - Spider
