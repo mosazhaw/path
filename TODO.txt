@@ -6,6 +6,7 @@ Fragen Einführungshandbuch
 Assessment App
 - User Verwaltung
 - *** Project: Industry Segment ***
+- *** Interviewee hinzufügen: Nur Interviewee aus Company? ***
 - IE: Select in AutoComplete füllt Wert nicht ab, AutoComplete Wert löschen
 - Reports: DeepScan Report, Completeness Check Report
 - Web Reports: Gap - Spider
