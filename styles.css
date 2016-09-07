@@ -29,6 +29,10 @@
     width: 100%;
 }
 
+input[readonly-with-required] {
+    pointer-events: none;
+}
+
 .required {
     font-weight: bold;
 }
