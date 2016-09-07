@@ -20,18 +20,30 @@ export class TranslationFieldComponent {
 
 export class TranslationField extends ValueField<{[key:string]:string}> {
 
+    private languages:string[] = ["de", "en"];
+    private userLanguage:string = "en"; // TODO get user language
+
     constructor(form:Form, @Inject(PathService) private pathService:PathService) {
         super(form);
-        this.setValue({"de" : "", "en": ""})
+        let map:{[key:string]:string} = {};
+        for (let language of this.languages) {
+            map[language] = "";
+        }
+        this.setValue(map);
     }
 
     public isValueSet() {
-       return (this.value["de"] != null && this.value["en"] != null);
+        for (let language of this.languages) {
+            if (this.value[language] != null && this.value[language] != "") {
+                return true;
+            }
+        }
+       return false;
     }
 
     public getDefaultTranslation() {
         if (this.value != null) {
-            return this.value["en"];
+            return this.value[this.userLanguage];
         }
         return ""
     }
