@@ -813,7 +813,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Key Performance Indicator Name",
                             "width": 2,
                             "required": true
@@ -994,7 +994,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Maturity Level Schema",
                             "width": 2,
                             "required": true
@@ -1037,7 +1037,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id":   "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Maturity Level",
                             "width": 2,
                             "required": true
@@ -1109,7 +1109,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Input Parameter Name",
                             "width": 2,
                             "required": true
@@ -1174,7 +1174,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Unit Name",
                             "width": 2,
                             "required": true
