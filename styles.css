@@ -21,15 +21,15 @@
     top: 33px; /* TODO */
 }
 
-.path-textarea {
-    height: 70px !important;
-}
-
 .input-group {
     width: 100%;
 }
 
 input[readonly-with-required] {
+    pointer-events: none;
+}
+
+textarea[readonly-with-required] {
     pointer-events: none;
 }
 

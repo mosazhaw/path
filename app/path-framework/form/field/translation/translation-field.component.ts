@@ -74,9 +74,10 @@ export class TranslationField extends ValueField<any[][]> {
                 textField.visible = true;
                 textField.newRow = true;
                 textField.width = 2;
+                textField.height = this.height;
                 textField.labelVisible = true;
-                textField.setValue(key[1]);
                 textField.required = true;
+                textField.setValue(key[1]);
                 form.fields.push(textField);
                 translationFields.push(textField);
         }

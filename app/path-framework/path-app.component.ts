@@ -310,6 +310,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                                             dynamicField = new LabelField(form);
                                         } else if (item["type"] == "text") {
                                             dynamicField = new path.TextField(form);
+                                        } else if (item["type"] == "translation") {
+                                            dynamicField = new path.TranslationField(form, this.pathService);
                                         } else if (item["type"] == "number") {
                                             dynamicField = new path.NumberField(form);
                                         }

@@ -117,7 +117,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
-                            "height": 8,
+                            "height": 4,
                             "width": 2
                         },
                         {
@@ -237,7 +237,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
-                            "height": 8,
+                            "height": 4,
                             "width": 2
                         },
                         {
@@ -297,7 +297,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
-                            "height": 8,
+                            "height": 4,
                             "width": 2
                         },
                         {
@@ -406,7 +406,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Comments",
                             "newRow": true,
-                            "height": 8,
+                            "height": 4,
                             "width": 2
                         },
                         {
@@ -681,9 +681,9 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "questionText",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Capability Question",
-                            "height": 8,
+                            "height": 6,
                             "width": 2,
                             "required": true
                         },
@@ -725,9 +725,9 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "questionText",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Qualitative Question",
-                            "height": 8,
+                            "height": 6,
                             "width": 2,
                             "required": true
                         },
@@ -769,9 +769,9 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "questionText",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Qualitative Question",
-                            "height": 8,
+                            "height": 6,
                             "width": 2,
                             "required": true
                         },
@@ -841,7 +841,7 @@ export class GuiModel {
                             "id": "replacedFormula",
                             "type": "text",
                             "name": "Formula",
-                            "height": 8,
+                            "height": 4,
                             "width": 2,
                             "required": true
                         },
@@ -849,7 +849,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
-                            "height": 8,
+                            "height": 4,
                             "width": 2
                         },
                         {
@@ -1210,7 +1210,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "KPI Formula",
                             "width": 2,
-                            "height": 8,
+                            "height": 4,
                             "readonly": true,
                         },
                         {
@@ -1224,7 +1224,7 @@ export class GuiModel {
                             "name": "Comment",
                             "newRow": true,
                             "width": 2,
-                            "height": 8
+                            "height": 4
                         },
                         {
                             "id": "deleteButton",
@@ -1356,7 +1356,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
-                            "height": 8,
+                            "height": 2,
                             "width": 2
                         },
                         {
@@ -1423,7 +1423,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
-                            "height": 8,
+                            "height": 2,
                             "width": 2
                         },
                         {
@@ -1490,7 +1490,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
-                            "height": 8,
+                            "height": 2,
                             "width": 2
                         },
                         {

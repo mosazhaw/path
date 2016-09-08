@@ -2,6 +2,6 @@
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
     <div class="input-group">
         <input *ngIf="field.height == null || field.height <= 1" #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" [(ngModel)]=field._value type="text" class="form-control" placeholder="">
-        <textarea *ngIf="field.height != null && field.height > 1" #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" [(ngModel)]=field._value rows="{{field.height}}" type="text" class="form-control path-textarea" placeholder=""></textarea>
+        <textarea *ngIf="field.height != null && field.height > 1" #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" [(ngModel)]=field._value rows="{{field.height}}" type="text" class="form-control" placeholder=""></textarea>
     </div>
 </div>
