@@ -97,7 +97,10 @@ export class TranslationService {
             "NewCapability" : "Neue Fähigkeit",
             "CategorySelection": "Kategorie-Auswahl",
             "KPI": "KPI",
+            "NewKPI": "Neuer KPI",
+            "KPIName": "KPI Name",
             "KPICategories": "KPI-Kategorien",
+            "KPICategory": "KPI-Kategorie",
             "Units": "Einheiten",
             "SupportProcesses": "Support-Prozesse",
             "SupportProcess": "Support-Prozess",
@@ -108,7 +111,9 @@ export class TranslationService {
             "NewQualitativeQuestion": "Neue Qualitative Frage",
             "QualitativeQuestion": "Qualitative Frage",
             "SupportProcessName": "Support-Prozess Name",
-            "SubprocessName": "Teilprozess Name"
+            "SubprocessName": "Teilprozess Name",
+            "Subprocess": "Teilprozess",
+            "Formula": "Formel",
         };
     }
 

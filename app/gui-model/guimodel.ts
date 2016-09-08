@@ -778,7 +778,7 @@ export class GuiModel {
                         {
                             "id": "deepScanSubprocess",
                             "type": "autocomplete",
-                            "name": "DeepScan Subprocess",
+                            "name": "Subprocess",
                             "wordSearchEnabled": true,
                             "defaultKey": "deepScanSubprocessKey",
                             "readonly": true,
@@ -808,20 +808,20 @@ export class GuiModel {
                 },
                 {
                     "id": "KpiForm",
-                    "title": "Key Performance Indicator (KPI)",
+                    "title": "KPI",
                     "url": "/kpi",
                     "formFieldList": [
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "Key Performance Indicator Name",
+                            "name": "KPIName",
                             "width": 2,
                             "required": true
                         },
                         {
                             "id": "kpiCategory",
                             "type": "autocomplete",
-                            "name": "KPI Category",
+                            "name": "KPICategory",
                             "wordSearchEnabled": false,
                             "url": "/kpiCategory",
                             "width": 2,
@@ -2717,7 +2717,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New KPI",
+                            "name": "NewKPI",
                             "icon": "fa-tachometer",
                             "color": "green",
                             "form": {
