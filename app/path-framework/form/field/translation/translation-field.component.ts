@@ -18,7 +18,7 @@ export class TranslationFieldComponent {
     field:TranslationField;
 }
 
-export class TranslationField extends ValueField<{[key:string]:string}> {
+export class TranslationField extends ValueField<any[][]> {
 
     private languages:string[] = ["de", "en"];
     private userLanguage:string = "en"; // TODO get user language
@@ -26,22 +26,24 @@ export class TranslationField extends ValueField<{[key:string]:string}> {
 
     constructor(form:Form, @Inject(PathService) private pathService:PathService) {
         super(form);
-        let map:{[key:string]:string} = {};
+        let initialList:any[][] = [];
         for (let language of this.languages) {
-            map[language] = "";
+            initialList.push([{"code": language}, ""]);
         }
-        this.setValue(map);
+        this.setValue(initialList);
     }
 
-    public setValue(value:{[key:string]:string}) {
+    public setValue(value:any[][]) {
         super.setValue(value);
         this.defaultTranslation = this.getDefaultTranslation();
     }
 
-    private getDefaultTranslation() {
+    private getDefaultTranslation():string {
         if (this.value != null) {
-            if (this.value[this.userLanguage] != null && this.value[this.userLanguage] != "") {
-                return this.value[this.userLanguage];
+            for (let item of this.value) {
+                if (item[0] != null && item[0]["code"] == this.userLanguage) {
+                    return item[1];
+                }
             }
         }
         return null;
@@ -49,36 +51,34 @@ export class TranslationField extends ValueField<{[key:string]:string}> {
 
     public editTranslations() {
         let form:Form = new Form(this.pathService, this.form.getApp());
+        let translationFields:TextField[] = [];
         form.title = this.name + " Translations";
         form.formFunction = new FormFunction();
         form.formFunction.save = () => {
-            let map:{[key:string]:string} = {};
+            let resultList:any[][] = [];
             for (let field of translationFields) {
-                map[field.name] = field.value;
+                resultList.push([{"code": field.id}, field.value]);
             }
-            console.log(map);
-            this.setValue(map);
+            this.setValue(resultList);
             this.getForm().getApp().closeCurrentForm();
         };
         form.formFunction.cancel = () => {
             this.getForm().getApp().closeCurrentForm();
         };
         let translations = this.value;
-        let translationFields:TextField[] = [];
-        for (var key in translations) {
-            if (translations.hasOwnProperty(key)) {
-                let text:TextField = new TextField(form);
-                text.type = "text";
-                text.name = key;
-                text.visible = true;
-                text.newRow = true;
-                text.width = 2;
-                text.labelVisible = true;
-                text.setValue(translations[key]);
-                text.required = true;
-                form.fields.push(text);
-                translationFields.push(text);
-            }
+        for (let key of translations) {
+                let textField:TextField = new TextField(form);
+                textField.type = "text";
+                textField.id = key[0]["code"];
+                textField.name = key[0]["code"];
+                textField.visible = true;
+                textField.newRow = true;
+                textField.width = 2;
+                textField.labelVisible = true;
+                textField.setValue(key[1]);
+                textField.required = true;
+                form.fields.push(textField);
+                translationFields.push(textField);
         }
         let okButton:OkButton = new OkButton(form);
         okButton.type = "okButton";
