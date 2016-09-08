@@ -492,7 +492,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Category Name",
                             "width": 2,
                             "required": true
@@ -573,7 +573,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "id": "name",
-                            "type": "text",
+                            "type": "translation",
                             "name": "Support Process Name",
                             "width": 2,
                             "required": true
@@ -642,7 +642,7 @@ export class GuiModel {
                     "url": "/deepScanSubprocess",
                     "formFieldList": [
                         {
-                            "id": "name",
+                            "id": "translation",
                             "type": "text",
                             "name": "Subprocess Name",
                             "width": 2,
