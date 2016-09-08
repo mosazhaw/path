@@ -256,13 +256,13 @@ export class GuiModel {
                 },
                 {
                     "id": "CompanyForm",
-                    "title": "Company Details",
+                    "title": "Company",
                     "url": "/company",
                     "formFieldList": [
                         {
                             "id": "name",
                             "type": "text",
-                            "name": "Company Name",
+                            "name": "CompanyName",
                             "width": 2,
                             "required": true
                         },
@@ -276,7 +276,7 @@ export class GuiModel {
                         {
                             "id": "zipCode",
                             "type": "text",
-                            "name": "Postal Code",
+                            "name": "PostalCode",
                             "newRow": true
                         },
                         {
@@ -316,7 +316,7 @@ export class GuiModel {
                 },
                 {
                     "id": "PersonForm",
-                    "title": "Person Details",
+                    "title": "Person",
                     "url": "/person",
                     "formFieldList": [
                         {
@@ -327,20 +327,20 @@ export class GuiModel {
                         {
                             "id":   "lastName",
                             "type": "text",
-                            "name": "Family Name",
+                            "name": "FamilyName",
                             "newRow": true,
                             "required": true
                         },
                         {
                             "id":   "firstName",
                             "type": "text",
-                            "name": "First Name",
+                            "name": "FirstName",
                             "required": true
                         },
                         {
                             "id":   "employmentTitle",
                             "type": "text",
-                            "name": "Employment Title",
+                            "name": "EmploymentTitle",
                             "width": 2
                         },
                         {
@@ -358,7 +358,7 @@ export class GuiModel {
                         {
                             "id":   "email",
                             "type": "text",
-                            "name": "E-Mail",
+                            "name": "EMail",
                             "newRow": true
                         },
                         {
@@ -375,7 +375,7 @@ export class GuiModel {
                         {
                             "id":   "zipCode",
                             "type": "text",
-                            "name": "Postal Code",
+                            "name": "PostalCode",
                             "newRow": true
                         },
                         {
@@ -393,13 +393,13 @@ export class GuiModel {
                         {
                             "date": "evtCreationDate",
                             "type": "date",
-                            "name": "Creation Date",
+                            "name": "CreationDate",
                             "newRow": true
                         },
                         {
                             "date": "evtClosingDate",
                             "type": "date",
-                            "name": "Closing Date"
+                            "name": "ClosingDate"
                         },
                         {
                             "id": "comments",
@@ -2019,7 +2019,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Company",
+                            "name": "NewCompany",
                             "icon": "fa-home",
                             "color": "green",
                             "form": {
@@ -2047,7 +2047,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Person",
+                            "name": "NewPerson",
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
@@ -2076,7 +2076,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit Company",
+                            "name": "EditCompany",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
@@ -2085,7 +2085,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Person",
+                            "name": "NewPerson",
                             "icon": "fa-user",
                             "color": "green",
                             "form": {

@@ -47,7 +47,30 @@ export class TranslationService {
             "AddInterviewee": "Teilnehmer hinzufügen",
             "Interviewees": "Teilnehmer",
             "Categories": "Kategorien",
-            "Person": "Person"
+            "Person": "Person",
+            "Progress": "Fortschritt",
+            "Question": "Frage",
+            "Actual": "Ist-Wert",
+            "Target": "Soll-Wert",
+            "NewCompany": "Neue Firma",
+            "EditCompany": "Firma bearbeiten",
+            "NewPerson": "Neue Person",
+            "EditPerson": "Person bearbeiten",
+            "CompanyName": "Firmenname",
+            "Company": "Firma",
+            "Street": "Strasse",
+            "PostalCode": "PLZ",
+            "Country": "Land",
+            "City": "Ort",
+            "Salutation": "Anrede",
+            "FamilyName": "Nachname",
+            "FirstName": "Vorname",
+            "EmploymentTitle": "Stellenbeschrieb",
+            "EMail": "E-Mail",
+            "Phone": "Telefon",
+            "CreationDate": "Erstellungsdatum",
+            "ClosingDate": "Stilllegungsdatum",
+            "DeleteWarningQuestion": "Wollen Sie diesen Datensatz wirklich löschen?", // Do you really want to delete this item?
         };
     }
 

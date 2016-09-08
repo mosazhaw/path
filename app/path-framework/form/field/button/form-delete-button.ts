@@ -12,7 +12,7 @@ export class FormDeleteButton extends path.FormField {
     }
 
     public onClick() {
-        this.getForm().getApp().yesNo("Do you really want to delete this item?", () => {
+        this.getForm().getApp().yesNo(this.translationService.getText("DeleteWarningQuestion"), () => {
             if (this._handler != null) {
                 this._handler.doClick(null); // TODO
             }
