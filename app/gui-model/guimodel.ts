@@ -831,7 +831,7 @@ export class GuiModel {
                         {
                             "id": "unit",
                             "type": "autocomplete",
-                            "name": "Output Unit",
+                            "name": "Unit",
                             "wordSearchEnabled": false,
                             "actions": [{"name": "New..."}],
                             "url": "/unit",
@@ -868,7 +868,7 @@ export class GuiModel {
                 },
                 {
                     "id": "KpiInputParameterForm",
-                    "title": "Add Input Parameter to KPI",
+                    "title": "AddInputParameter",
                     "url": "/kpi/:kpiKey/inputParameter",
                     "formFieldList": [
                         {
@@ -909,13 +909,13 @@ export class GuiModel {
                 },
                 {
                     "id": "KpiDeepScanSupportProcessForm",
-                    "title": "Add KPI to DeepScan Support Process",
+                    "title": "AddSupportProcess",
                     "url": "/kpi/:kpiKey/deepScanSupportProcess",
                     "formFieldList": [
                         {
                             "id": "deepScanSupportProcessKey",
                             "type": "autocomplete",
-                            "name": "DeepScan Support Process",
+                            "name": "SupportProcess",
                             "wordSearchEnabled": true,
                             "actions": [],
                             "url": "/deepScanSupportProcess",
@@ -949,13 +949,13 @@ export class GuiModel {
                 },
                 {
                     "id": "KpiDeepScanSubprocessForm",
-                    "title": "Add KPI to DeepScan Subprocess",
+                    "title": "AddSubprocess",
                     "url": "/kpi/:kpiKey/deepScanSubprocess",
                     "formFieldList": [
                         {
                             "id": "deepScanSubprocessKey",
                             "type": "autocomplete",
-                            "name": "DeepScan Subprocess",
+                            "name": "Subprocess",
                             "wordSearchEnabled": true,
                             "actions": [],
                             "url": "/deepScanSubprocess",
@@ -990,19 +990,19 @@ export class GuiModel {
                 {
                     "id": "MaturityLevelSchemaForm",
                     "url": "/maturityLevelSchema",
-                    "title": "Maturity Level Schema",
+                    "title": "MaturityLevelSchema",
                     "formFieldList": [
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "Maturity Level Schema",
+                            "name": "MaturityLevelSchemaName",
                             "width": 2,
                             "required": true
                         },
                         {
                             "id": "projectType",
                             "type": "RadioGroupField",
-                            "name": "Scan",
+                            "name": "Project",
                             "required": true,
                             "readonly": true,
                             "radios": [{
@@ -1033,19 +1033,19 @@ export class GuiModel {
                 {
                     "id": "MaturityLevelForm",
                     "url": "/maturityLevel",
-                    "title": "Maturity Level",
+                    "title": "MaturityLevel",
                     "formFieldList": [
                         {
                             "id":   "name",
                             "type": "translation",
-                            "name": "Maturity Level",
+                            "name": "MaturityLevelName",
                             "width": 2,
                             "required": true
                         },
                         {
                             "id":   "maturityLevelSchema",
                             "type": "autocomplete",
-                            "name": "Maturity Level Schema",
+                            "name": "MaturityLevelSchema",
                             "wordSearchEnabled": false,
                             "defaultKey": "maturityLevelSchemaKey",
                             "readonly": true,
@@ -1078,13 +1078,13 @@ export class GuiModel {
                 },
                 {
                     "id": "KpiCategoryForm",
-                    "title": "KPI Category",
+                    "title": "KPICategory",
                     "url": "/kpiCategory",
                     "formFieldList": [
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "KPI Category",
+                            "name": "KPICategory",
                             "width": 2,
                             "required": true
                         },
@@ -1104,20 +1104,20 @@ export class GuiModel {
                 },
                 {
                     "id": "InputParameterForm",
-                    "title": "Input Parameter",
+                    "title": "InputParameter",
                     "url": "/inputParameter",
                     "formFieldList": [
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "Input Parameter Name",
+                            "name": "InputParameterName",
                             "width": 2,
                             "required": true
                         },
                         {
                             "id": "unit",
                             "type": "autocomplete",
-                            "name": "Output Unit",
+                            "name": "Unit",
                             "wordSearchEnabled": false,
                             "actions": [{"name": "New..."}],
                             "url": "/unit",
@@ -1126,7 +1126,7 @@ export class GuiModel {
                         {
                             "id": "min",
                             "type": "number",
-                            "name": "Minimum Value",
+                            "name": "MinimumValue",
                             "width": 2,
                             "min": -9223372036854775807,
                             "max": 9223372036854775807,
@@ -1136,7 +1136,7 @@ export class GuiModel {
                         {
                             "id": "max",
                             "type": "number",
-                            "name": "Maximum Value",
+                            "name": "MaximumValue",
                             "width": 2,
                             "min": -9223372036854775807,
                             "max": 9223372036854775807,
@@ -1146,7 +1146,7 @@ export class GuiModel {
                         {
                             "id": "digits",
                             "type": "number",
-                            "name": "Number of Digits",
+                            "name": "NumberOfDigits",
                             "width": 2,
                             "min": -9223372036854775807,
                             "max": 9223372036854775807,
@@ -1175,7 +1175,7 @@ export class GuiModel {
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "Unit Name",
+                            "name": "UnitName",
                             "width": 2,
                             "required": true
                         },
@@ -1251,7 +1251,7 @@ export class GuiModel {
                         {
                             "id": "inputParameterKey",
                             "type": "autocomplete",
-                            "name": "Input Parameter",
+                            "name": "InputParameter",
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,
@@ -2158,7 +2158,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Completeness Check",
+                            "name": "CompletenessCheck",
                             "icon": "fa-file-excel-o",
                             "color": "green",
                             "buttonhandler": "CompletenessCheckReportDownloadButtonHandler"
@@ -2179,14 +2179,14 @@ export class GuiModel {
                         },
                         {
                             "type": "downloadButton",
-                            "name": "Assessment Report",
+                            "name": "AssessmentReport",
                             "icon": "fa-file-word-o",
                             "color": "wisteria",
                             "url": "/project/:projectKey/assessmentreport/word"
                         },
                         {
                             "type": "button",
-                            "name": "Introduction Handbook",
+                            "name": "IntroductionHandbook",
                             "icon": "fa-file-word-o",
                             "color": "wisteria",
                             "buttonhandler": "IntroductionHandbookDownloadButtonHandler"
@@ -2385,7 +2385,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Maturity Level Schema",
+                            "name": "NewMaturityLevelSchema",
                             "icon": "fa-signal",
                             "color": "green",
                             "width": 2,
@@ -2413,7 +2413,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit Maturity Level Schema",
+                            "name": "EditMaturityLevelSchema",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "width": 2,
@@ -2423,7 +2423,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Maturity Level",
+                            "name": "NewMaturityLevel",
                             "icon": "fa-signal",
                             "color": "green",
                             "width": 2,
@@ -2744,7 +2744,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit KPI",
+                            "name": "EditKPI",
                             "icon": "fa-tachometer",
                             "color": "green",
                             "form": {
@@ -2753,7 +2753,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Add Input Parameter",
+                            "name": "AddInputParameter",
                             "icon": "fa-pencil",
                             "color": "green",
                             "form": {
@@ -2791,7 +2791,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Add Subprocess",
+                            "name": "AddSubprocess",
                             "icon": "fa-pencil",
                             "color": "green",
                             "form": {
@@ -2812,14 +2812,14 @@ export class GuiModel {
                 },
                 {
                     "id": "kpicategoriesconfigurationpage",
-                    "title": "KPI Categories",
+                    "title": "KPICategories",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "newButton",
-                            "name": "New KPI Category",
+                            "name": "NewKPICategory",
                             "icon": "fa-book",
                             "color": "green",
                             "form": {
@@ -2875,7 +2875,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Unit",
+                            "name": "NewUnit",
                             "icon": "fa-book",
                             "color": "green",
                             "form": {
@@ -2903,14 +2903,14 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Assessment Report",
+                            "name": "AssessmentReport",
                             "icon": "fa-file",
                             "color": "wisteria",
                             "page": "reportassessmentconfigurationpage"
                         },
                         {
                             "type": "button",
-                            "name": "Introduction Handbook",
+                            "name": "IntroductionHandbook",
                             "icon": "fa-file",
                             "color": "wisteria",
                             "page": "reporthandbookconfigurationpage"
