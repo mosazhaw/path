@@ -76,7 +76,6 @@ export class TranslationService {
             "Previous": "Zurück",
             "SkipAndNext": "Überspringen ohne Speichern",
             "SaveAndNext": "Speichern und Weiter",
-            "SupportProcesses": "Support-Prozesse",
             "InputParameter": "Eingabe-Parameter",
             "InputParameters": "Eingabe-Parameter",
             "NewInputParameter": "Neuer Eingabe-Parameter",
@@ -100,6 +99,16 @@ export class TranslationService {
             "KPI": "KPI",
             "KPICategories": "KPI-Kategorien",
             "Units": "Einheiten",
+            "SupportProcesses": "Support-Prozesse",
+            "SupportProcess": "Support-Prozess",
+            "NewSupportProcess": "Neuer Support-Prozess",
+            "EditSupportProcess": "Support-Prozess bearbeiten",
+            "NewSubprocess": "Neuer Teilprozess",
+            "EditSubprocess": "Teilprozess bearbeiten",
+            "NewQualitativeQuestion": "Neue Qualitative Frage",
+            "QualitativeQuestion": "Qualitative Frage",
+            "SupportProcessName": "Support-Prozess Name",
+            "SubprocessName": "Teilprozess Name"
         };
     }
 

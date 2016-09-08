@@ -568,20 +568,20 @@ export class GuiModel {
                 },
                 {
                     "id": "SupportProcessForm",
-                    "title": "Support Process",
+                    "title": "SupportProcess",
                     "url": "/deepScanSupportProcess",
                     "formFieldList": [
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "Support Process Name",
+                            "name": "SupportProcessName",
                             "width": 2,
                             "required": true
                         },
                         {
                             "id":   "maturityLevelSchema",
                             "type": "autocomplete",
-                            "name": "Maturity Level Schema",
+                            "name": "MaturityLevelSchema",
                             "wordSearchEnabled": false,
                             "defaultKey": "maturityLevelSchemaKey",
                             "readonly": true,
@@ -610,7 +610,7 @@ export class GuiModel {
                     "formFieldList": [
                         {
                             "type": "fieldList",
-                            "name": "Support Process",
+                            "name": "SupportProcess",
                             "width": 2,
                             "url": "/deepScanProject/:projectKey/deepScanSupportProcess/:deepScanSupportProcessKey/label",
                         },
@@ -644,14 +644,14 @@ export class GuiModel {
                         {
                             "id": "translation",
                             "type": "text",
-                            "name": "Subprocess Name",
+                            "name": "SubprocessName",
                             "width": 2,
                             "required": true
                         },
                         {
                             "id": "deepScanSupportProcess",
                             "type": "autocomplete",
-                            "name": "Support Process",
+                            "name": "SupportProcess",
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,
@@ -720,13 +720,13 @@ export class GuiModel {
                 },
                 {
                     "id": "DeepScanSupportProcessQualitativeQuestionForm",
-                    "title": "Support Process Qualitative Question",
+                    "title": "QualitativeQuestion",
                     "url": "/deepScanSupportProcessQualitativeQuestion",
                     "formFieldList": [
                         {
                             "id": "questionText",
                             "type": "translation",
-                            "name": "Qualitative Question",
+                            "name": "QualitativeQuestion",
                             "height": 6,
                             "width": 2,
                             "required": true
@@ -764,13 +764,13 @@ export class GuiModel {
                 },
                 {
                     "id": "DeepScanSubprocessQualitativeQuestionForm",
-                    "title": "Subprocess Qualitative Question",
+                    "title": "QualitativeQuestion",
                     "url": "/deepScanSubprocessQualitativeQuestion",
                     "formFieldList": [
                         {
                             "id": "questionText",
                             "type": "translation",
-                            "name": "Qualitative Question",
+                            "name": "QualitativeQuestion",
                             "height": 6,
                             "width": 2,
                             "required": true
@@ -2591,14 +2591,14 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansupportprocessesconfigurationpage",
-                    "title": "Support Processes",
+                    "title": "SupportProcesses",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "newButton",
-                            "name": "New Support Process",
+                            "name": "NewSupportProcess",
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
@@ -2618,14 +2618,14 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansupportprocessconfigurationpage",
-                    "title": "Support Processes",
+                    "title": "SupportProcesses",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "button",
-                            "name": "Edit Support Process",
+                            "name": "EditSupportProcess",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
@@ -2634,7 +2634,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Subprocess",
+                            "name": "NewSubprocess",
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
@@ -2652,7 +2652,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Qualitative Question",
+                            "name": "NewQualitativeQuestion",
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
@@ -2661,7 +2661,7 @@ export class GuiModel {
                         },
                         {
                             "type": "list",
-                            "name": "Qualitative Questions",
+                            "name": "QualitativeQuestions",
                             "icon": "fa-cube",
                             "color": "lime",
                             "form": {
@@ -2680,7 +2680,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit Subprocess",
+                            "name": "EditSubprocess",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
@@ -2689,7 +2689,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Qualitative Question",
+                            "name": "NewQualitativeQuestion",
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
@@ -2698,7 +2698,7 @@ export class GuiModel {
                         },
                         {
                             "type": "list",
-                            "name": "Qualitative Questions",
+                            "name": "QualitativeQuestions",
                             "icon": "fa-cube",
                             "color": "lime",
                             "form": {
@@ -2772,7 +2772,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Add Support Process",
+                            "name": "AddSupportProcess",
                             "icon": "fa-pencil",
                             "color": "green",
                             "form": {
@@ -2781,7 +2781,7 @@ export class GuiModel {
                         },
                         {
                             "type": "list",
-                            "name": "Support Process",
+                            "name": "SupportProcess",
                             "icon": "fa-cube",
                             "color": "asbestos",
                             "form": {
