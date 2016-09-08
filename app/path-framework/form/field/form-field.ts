@@ -1,5 +1,6 @@
 import {Action} from './../../form/field/button/action';
 import {IFormField, IForm} from "../../pathinterface";
+import {TranslationService} from "../../service/translation.service";
 
 export class FormField implements IFormField {
     private _id:string;
@@ -14,7 +15,7 @@ export class FormField implements IFormField {
     private _readonly:boolean;
     private _actions:Action[] = [];
 
-    constructor(protected form:IForm) {
+    constructor(protected form:IForm, protected translationService:TranslationService) {
     }
 
     getForm():IForm {
@@ -139,7 +140,7 @@ export class FormField implements IFormField {
             this.readonly = modelFormField["readonly"];
         }
         this.id = modelFormField["id"];
-        this.name = modelFormField.name;
+        this.name = this.translationService.getText(modelFormField.name);
         this.type = modelFormField.type;
         this.height = modelFormField["height"];
     }

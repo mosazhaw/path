@@ -63,7 +63,7 @@ export class RadioGroupField extends ValueField<any> {
         }
         if (modelFormField["radios"] != null) {
             for (var radioModel of modelFormField["radios"]) {
-                let radio = new Radio(this.getForm());
+                let radio = new Radio(this.getForm(), this.translationService);
                 radio.name = radioModel.name;
                 radio.key = radioModel.key;
                 if (radio.key == modelFormField["defaultKey"]) {

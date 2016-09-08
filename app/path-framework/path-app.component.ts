@@ -5,11 +5,12 @@ import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-f
 import {ValueField} from "./form/field/value-field";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
 import {LabelField} from "./form/field/label/label-field.component";
-import {IPathApp, IKey, IPageElement, IFormFunction} from "./pathinterface";
+import {IPageElement} from "./pathinterface";
 import {RadioGroupField} from "./form/field/radio/radio-group.component";
-import {Key, PageElement} from "./page/element/page-element";
+import {Key} from "./page/element/page-element";
 import {KeyUtility} from "./key-utility";
 import {FormFunction} from "./form/form-function";
+import {TranslationService} from "./service/translation.service";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -17,7 +18,7 @@ export abstract class PathAppComponent implements path.IPathApp {
     private _formStack:path.Form[] = [];
     private _userId:string;
 
-    constructor(private pathService:path.PathService) {
+    constructor(private pathService:path.PathService, private translationService:TranslationService) {
         this.pathService.serverGet(this.getBackendUrl(), "/ping", (data:any) => {
             if (data["userId"] != null && data["userId"] != "") {
                 this._userId = data["userId"];
@@ -100,15 +101,15 @@ export abstract class PathAppComponent implements path.IPathApp {
         form.formFunction.cancel = () => {
             this.closeCurrentForm();
         };
-        let message:path.TextField = new path.TextField(form);
+        let message:path.TextField = new path.TextField(form, this.translationService);
         message.type = "label";
         message.visible = true;
         message.labelVisible = false;
         message.setValue(text);
         form.fields.push(message);
-        let okButton:path.OkButton = new path.OkButton(form);
+        let okButton:path.OkButton = new path.OkButton(form, this.translationService);
         okButton.type = "okButton";
-        okButton.name = "Ok";
+        okButton.name = this.translationService.getText("Ok");
         okButton.visible = true;
         okButton.handler = {
             doClick(button:path.IButton) {
@@ -117,9 +118,9 @@ export abstract class PathAppComponent implements path.IPathApp {
         };
         form.fields.push(okButton);
 
-        let cancelButton:path.CancelButton = new path.CancelButton(form);
+        let cancelButton:path.CancelButton = new path.CancelButton(form, this.translationService);
         cancelButton.type = "cancelButton";
-        cancelButton.name = "Cancel";
+        cancelButton.name = this.translationService.getText("Cancel");
         cancelButton.visible = true;
         form.fields.push(cancelButton);
         form.updateRows();
@@ -134,7 +135,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             if (modelPage.id == pageId) {
                 page = new path.Page();
                 page.id = pageId;
-                page.title = modelPage.title;
+                page.title = this.translationService.getText(modelPage.title);
                 if (parentPageElement != null) {
                     page.title = parentPageElement.name;
                 }
@@ -158,10 +159,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                             if (parentPageElement != null && modelElement.type == "button") {
                                     button.key = parentPageElement.key;
                             }
+                            button.name = this.translationService.getText(modelElement["name"]);
                             element = button;
                             break;
                         case "deleteButton":
-                            let deleteButton = new path.PageDeleteButton(this.pathService, this);
+                            let deleteButton = new path.PageDeleteButton(this.pathService, this, this.translationService);
                             deleteButton.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             element = deleteButton;
                             break;
@@ -170,11 +172,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                             downloadButton.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             downloadButton.setIcon(modelElement["icon"]);
                             downloadButton.setColor(modelElement["color"]);
-                            console.log(parentPageElement);
+                            downloadButton.name = this.translationService.getText(modelElement["name"]);
                             element = downloadButton;
                             break;
                         case "backbutton":
-                            element = new path.BackButton(this);
+                            element = new path.BackButton(this, this.translationService);
                             break;
                         case "inlineForm":
                             let inlineForm = new path.InlineForm(this, this.pathService);
@@ -185,7 +187,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             element = inlineForm;
                             break;
                         case "list":
-                            let dynamicList:path.List = new path.List(this, this.pathService);
+                            let dynamicList:path.List = new path.List(this, this.pathService, this.translationService);
                             dynamicList.search = modelElement["search"];
                             // handler
                             if (modelElement["handler"] != null) {
@@ -203,6 +205,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             dynamicList.page = modelElement["page"];
                             dynamicList.icon = modelElement["icon"];
                             dynamicList.mockData = modelElement["data"];
+                            dynamicList.name = this.translationService.getText(modelElement["name"]);
                             dynamicList.refresh();
                             element = dynamicList;
                             break;
@@ -212,7 +215,6 @@ export abstract class PathAppComponent implements path.IPathApp {
                             element = chart;
                             break;
                     }
-                    element.name = modelElement["name"];
                     element.type = modelElement.type;
                     element.parentPageElement = parentPageElement;
                     if (modelElement["width"] != null) {
@@ -264,7 +266,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                 form = new path.Form(this.pathService, this);
                 form.key = key;
                 form.formFunction = formFunction;
-                form.title = modelForm.title;
+                form.title = this.translationService.getText(modelForm.title);
                 form.url = modelForm["url"];
                 for (var modelFormField of modelForm.formFieldList) {
                     // create form fields
@@ -272,31 +274,31 @@ export abstract class PathAppComponent implements path.IPathApp {
                     switch (modelFormField.type) {
                         case "text":
                         {
-                            formField = new path.TextField(form);
+                            formField = new path.TextField(form, this.translationService);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "translation":
                         {
-                            formField = new path.TranslationField(form, this.pathService);
+                            formField = new path.TranslationField(form, this.pathService, this.translationService);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "number":
                         {
-                            formField = new path.NumberField(form);
+                            formField = new path.NumberField(form, this.translationService);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "label":
                         {
-                            formField = new path.LabelField(form);
+                            formField = new path.LabelField(form, this.translationService);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "fieldList":
                         {
-                            formField = new path.FieldListField(form);
+                            formField = new path.FieldListField(form, this.translationService);
                             formField.name = "list";
                             formField.fromJson(modelFormField);
                             if (modelFormField["url"] != null) {
@@ -307,15 +309,16 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     for (let item of data) {
                                         let dynamicField:ValueField<any> = null;
                                         if (item["type"] == "label") {
-                                            dynamicField = new LabelField(form);
+                                            dynamicField = new LabelField(form, this.translationService);
                                         } else if (item["type"] == "text") {
-                                            dynamicField = new path.TextField(form);
+                                            dynamicField = new path.TextField(form, this.translationService);
                                         } else if (item["type"] == "translation") {
-                                            dynamicField = new path.TranslationField(form, this.pathService);
+                                            dynamicField = new path.TranslationField(form, this.pathService, this.translationService);
                                         } else if (item["type"] == "number") {
-                                            dynamicField = new path.NumberField(form);
+                                            dynamicField = new path.NumberField(form, this.translationService);
                                         }
                                         dynamicField.fromJson(item);
+                                        dynamicField.name = item["name"]; // do not use translation service
                                         dynamicField.id = modelId + counter;
                                         (<FieldListField>formField).subfields.push(dynamicField);
                                         counter++;
@@ -328,13 +331,13 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                         case "date":
                         {
-                            formField = new path.DateField(form);
+                            formField = new path.DateField(form, this.translationService);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "autocomplete":
                         {
-                            let autoCompleteFormField = new autocomplete.AutoCompleteField(form);
+                            let autoCompleteFormField = new autocomplete.AutoCompleteField(form, this.translationService);
                             if (modelFormField["data"] != null) {
                                 let data = [];
                                 let k:number = 0;
@@ -372,12 +375,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                         case "RadioGroupField":
                         {
-                            let radioGroupFormField = new path.RadioGroupField(form);
+                            let radioGroupFormField = new path.RadioGroupField(form, this.translationService);
                             if (modelFormField["url"] != null) {
                                 let radiosUrl:any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
                                 let radioLoader = (rgField:RadioGroupField) => (data:any) => {
                                     for (let item of data) {
-                                        let radio = new path.Radio(form);
+                                        let radio = new path.Radio(form, this.translationService);
                                         radio.name = item["name"];
                                         radio.key = item["key"];
                                         if (radio.key == item["defaultKey"]) {
@@ -402,33 +405,33 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                         case "CheckboxGroupField":
                         {
-                            let checkboxGroupField = new path.CheckboxGroupField(form);
+                            let checkboxGroupField = new path.CheckboxGroupField(form, this.translationService);
                             checkboxGroupField.fromJson(modelFormField);
                             formField = checkboxGroupField;
                             break;
                         }
                         case "ProgressBarField":
                         {
-                            let progressBarField = new path.ProgressBarField(form);
+                            let progressBarField = new path.ProgressBarField(form, this.translationService);
                             progressBarField.fromJson(modelFormField);
                             formField = progressBarField;
                             break;
                         }
                         case "okButton":
                         {
-                            formField = new path.OkButton(form);
+                            formField = new path.OkButton(form, this.translationService);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "cancelButton":
                         {
-                            formField = new path.CancelButton(form);
+                            formField = new path.CancelButton(form, this.translationService);
                             formField.fromJson(modelFormField);
                             break;
                         }
                         case "deleteButton":
                         {
-                            formField = new path.FormDeleteButton(form);
+                            formField = new path.FormDeleteButton(form, this.translationService);
                             formField.fromJson(modelFormField);
                             if (form.key == null) {
                                 formField.visible = false;
@@ -437,7 +440,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                         case "previousButton":
                         {
-                            formField = new path.PreviousButton(form);
+                            formField = new path.PreviousButton(form, this.translationService);
                             formField.fromJson(modelFormField);
                             if (form.key == null) {
                                 formField.visible = false;
@@ -446,7 +449,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                         default:
                         {
-                            formField = new path.FormField(form);
+                            formField = new path.FormField(form, this.translationService);
                             formField.fromJson(modelFormField);
                         }
                     }
@@ -486,8 +489,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 if (field instanceof RadioGroupField) {
                                     // TODO general solution
                                     let setValueOfRadioGroupFieldContextWrapper = () => {
-                                        let f:RadioGroupField = field;
+                                        let f:RadioGroupField = <RadioGroupField>field;
                                         let v:any = data[field.id];
+                                        //noinspection TypeScriptUnresolvedFunction
                                         setValueOfRadioGroupField(f, v);
                                     }
                                     let setValueOfRadioGroupField = (radioGroupField:RadioGroupField, value:any) => {
@@ -507,8 +511,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                             }
                             if (field instanceof FieldListField) {
                                 let setValueOfFieldListFieldContextWrapper = () => {
-                                    let f:FieldListField = field;
+                                    let f:FieldListField = <FieldListField>field;
                                     let d:any = data;
+                                    //noinspection TypeScriptUnresolvedFunction
                                     setValueOfFieldListField(f, d);
                                 }
                                 let setValueOfFieldListField = (fieldListField:FieldListField, value:any) => {

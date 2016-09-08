@@ -69,14 +69,14 @@
     <!-- Back Button -->
     <a *ngIf='pageElement.type == "backbutton"' (click)="pageElement.onClick()" class="fa-links">
         <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-silver col-md-3">
-            <div class="h3">Back</div>
+            <div class="h3">{{pageElement.name}}</div>
             <i class="fa fa-2x fa-backward"></i>
         </div>
     </a>
     <!-- Delete Button -->
     <a *ngIf='pageElement.type == "deleteButton"' (click)="pageElement.onClick()" class="fa-links">
         <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-red col-md-3">
-            <div class="h3">Delete</div>
+            <div class="h3">{{pageElement.name}}</div>
             <i class="fa fa-2x fa-remove"></i>
         </div>
     </a>
@@ -97,10 +97,10 @@
     <span *ngIf='pageElement.type == "list"'>
     <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green col-md-3">
         <div class="input-group input-group-sm">
-            <div class="h3">Search</div>
+            <div class="h3">{{pageElement._searchLabel}}</div>
             <i class="fa fa-2x fa-search"></i>
             <div class="h5"></div>
-            <input placeholder="Enter search text" class="form-control" type="text">
+            <input placeholder="{{pageElement._searchInputLabel}}" class="form-control" type="text">
         </div>
     </div>
         <a *ngFor='let listElement of pageElement.buttons' (click)="listElement.onClick()" class="fa-links">

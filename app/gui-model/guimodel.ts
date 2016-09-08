@@ -6,7 +6,7 @@ export class GuiModel {
             "formList": [
                 {
                     "id": "QuickScanProjectForm",
-                    "title": "QuickScan Project Details",
+                    "title": "QuickScan",
                     "url": "/quickScanProject",
                     "formFieldList": [
                         {
@@ -29,12 +29,12 @@ export class GuiModel {
                         {
                             "id": "evtStartDate",
                             "type": "date",
-                            "name": "Start Date",
+                            "name": "StartDate",
                         },
                         {
                             "id": "evtEndDate",
                             "type": "date",
-                            "name": "End Date"
+                            "name": "EndDate"
                         },
                         {
                             "id": "customer",
@@ -49,7 +49,7 @@ export class GuiModel {
                         {
                             "id": "customerProjectLeader",
                             "type": "autocomplete",
-                            "name": "Customer PL",
+                            "name": "CustomerPL",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "url": "/person",
@@ -58,7 +58,7 @@ export class GuiModel {
                         {
                             "id": "serviceProvider",
                             "type": "autocomplete",
-                            "name": "Service Provider",
+                            "name": "ServiceProvider",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "url": "/company",
@@ -68,7 +68,7 @@ export class GuiModel {
                         {
                             "id": "serviceProviderProjectLeader",
                             "type": "autocomplete",
-                            "name": "Service Provider PL",
+                            "name": "ServiceProviderPL",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "url": "/person",
@@ -77,7 +77,7 @@ export class GuiModel {
                         {
                             "id": "industrySegment",
                             "type": "CheckboxGroupField",
-                            "name": "Industry Segment",
+                            "name": "IndustrySegment",
                             "data": [{key: "OilAndGas", name: "Oil & Gas"}, {key: "BasicMaterials", name: "Basic Materials"}, {key: "Industrials", name: "Industrials"}, {key: "ConsumerServices", name: "Consumer Services"}, {key: "ConsumerGoods", name: "Consumer Goods"}, {key: "HealthCare", name: "Health Care"}, {key: "Financials", name: "Financials"}, {key: "Technology", name: "Technology"}, {key: "Telecommunications", name: "Telecommunications"}, {key: "Utilities", name: "Utilities"}],
                             "width": 2
                         },
@@ -100,7 +100,7 @@ export class GuiModel {
                         {
                             "id": "monitoring",
                             "type": "RadioGroupField",
-                            "name": "Monitoring (over Time)",
+                            "name": "Monitoring",
                             "defaultKey": false,
                             "radios": [{
                                 type: "radio",
@@ -136,7 +136,7 @@ export class GuiModel {
                 },
                 {
                     "id": "DeepScanProjectForm",
-                    "title": "DeepScan Project Details",
+                    "title": "DeepScan",
                     "url": "/deepScanProject",
                     "formFieldList": [
                         {
@@ -149,12 +149,12 @@ export class GuiModel {
                         {
                             "id": "evtStartDate",
                             "type": "date",
-                            "name": "Start Date",
+                            "name": "StartDate",
                         },
                         {
                             "id": "evtEndDate",
                             "type": "date",
-                            "name": "End Date"
+                            "name": "EndDate"
                         },
                         {
                             "id": "customer",
@@ -169,7 +169,7 @@ export class GuiModel {
                         {
                             "id": "customerProjectLeader",
                             "type": "autocomplete",
-                            "name": "Customer PL",
+                            "name": "CustomerPL",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "url": "/person",
@@ -178,7 +178,7 @@ export class GuiModel {
                         {
                             "id": "serviceProvider",
                             "type": "autocomplete",
-                            "name": "Service Provider",
+                            "name": "ServiceProvider",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
                             "url": "/company",
@@ -188,7 +188,7 @@ export class GuiModel {
                         {
                             "id": "serviceProviderProjectLeader",
                             "type": "autocomplete",
-                            "name": "Service Provider PL",
+                            "name": "ServiceProviderPL",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "url": "/person",
@@ -197,7 +197,7 @@ export class GuiModel {
                         {
                             "id": "industrySegment",
                             "type": "CheckboxGroupField",
-                            "name": "Industry Segment",
+                            "name": "IndustrySegment",
                             "data": [{key: "OilAndGas", name: "Oil & Gas"}, {key: "BasicMaterials", name: "Basic Materials"}, {key: "Industrials", name: "Industrials"}, {key: "ConsumerServices", name: "Consumer Services"}, {key: "ConsumerGoods", name: "Consumer Goods"}, {key: "HealthCare", name: "Health Care"}, {key: "Financials", name: "Financials"}, {key: "Technology", name: "Technology"}, {key: "Telecommunications", name: "Telecommunications"}, {key: "Utilities", name: "Utilities"}],
                             "width": 2
                         },
@@ -220,7 +220,7 @@ export class GuiModel {
                         {
                             "id": "monitoring",
                             "type": "RadioGroupField",
-                            "name": "Monitoring (over Time)",
+                            "name": "Monitoring",
                             "defaultKey": false,
                             "radios": [{
                                 type: "radio",
@@ -425,7 +425,7 @@ export class GuiModel {
                 },
                 {
                     "id": "ProjectIntervieweeForm",
-                    "title": "Add Interviewee to Project",
+                    "title": "AddInterviewee",
                     "url": "/project/:projectKey/interviewee",
                     "formFieldList": [
                         {
@@ -1514,7 +1514,7 @@ export class GuiModel {
             "pageList": [
                 {
                     "id": "mainmenu",
-                    "title": "Main Menu",
+                    "title": "MainMenu",
                     "elementList": [
                         {
                             "type": "button",
@@ -1569,7 +1569,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "New",
+                            "name": "NewQuickScan",
                             "icon": "fa-fast-forward",
                             "color": "green",
                             "form": {
@@ -1597,7 +1597,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit QuickScan",
+                            "name": "EditQuickScan",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
@@ -1629,7 +1629,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Add Interviewee",
+                            "name": "AddInterviewee",
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
@@ -1675,7 +1675,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit Interviewee",
+                            "name": "EditInterviewee",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
@@ -1716,7 +1716,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "New",
+                            "name": "NewDeepScan",
                             "icon": "fa-fast-forward",
                             "color": "green",
                             "form": {
@@ -1743,7 +1743,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit DeepScan",
+                            "name": "EditDeepScan",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
@@ -1775,7 +1775,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Add Interviewee",
+                            "name": "AddInterviewee",
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
@@ -1801,7 +1801,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit Interviewee",
+                            "name": "EditInterviewee",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {

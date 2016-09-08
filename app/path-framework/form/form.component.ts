@@ -6,6 +6,7 @@ import {FormField} from "./field/form-field";
 import {FieldListField} from "./field/fieldList/field-list-field.component";
 import {Key} from "../page/element/page-element";
 import {FormFunction} from "./form-function";
+import {TranslationService} from "../service/translation.service";
 
 @Component({
     selector: 'path-form',

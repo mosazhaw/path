@@ -4,10 +4,13 @@ import {ButtonDetail} from "../button/button-detail";
 import {PathService} from "../../../service/path.service";
 import {Inject} from "@angular/core";
 import {Key} from "../page-element";
+import {TranslationService} from "../../../service/translation.service";
 
 export class List extends path.PageElement implements IList {
     private _buttons:path.Button[] = [];
     private _search:boolean;
+    private _searchLabel:string;
+    private _searchInputLabel:string;
     private _handler:IListHandler;
     private _buttonHandler:IButtonHandler;
     private _icon:string;
@@ -18,8 +21,10 @@ export class List extends path.PageElement implements IList {
     private _mockData:any;
     private _url;
 
-    constructor(app:path.IPathApp, @Inject(PathService) private pathService:PathService) {
+    constructor(app:path.IPathApp, private pathService:PathService, private translationService:TranslationService) {
         super(app);
+        this._searchLabel = translationService.getText("Search");
+        this._searchInputLabel = translationService.getText("SearchInputLabel");
     }
 
     public getContent():path.IButton[] {

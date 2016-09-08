@@ -4,7 +4,7 @@
         <input *ngIf="field.height == null || field.height <= 1" #model="ngModel" readonly-with-required (keydown)="field.editTranslations()" (click)="field.editTranslations()" [class.required-field]="!model.valid && !field.pristine && field.required" [required]="field.required" [(ngModel)]="field.defaultTranslation" type="text" class="form-control" placeholder="">
         <textarea *ngIf="field.height != null && field.height > 1" #model="ngModel" readonly-with-required (keydown)="field.editTranslations()" (click)="field.editTranslations()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" [(ngModel)]=field.defaultTranslation rows="{{field.height}}" type="text" class="form-control" placeholder=""></textarea>
         <span class="input-group-btn">
-                <button [disabled]="field.isReadonly()" (click)="field.editTranslations()" class="btn btn-default" type="button">Translations...</button>
+                <button [disabled]="field.isReadonly()" (click)="field.editTranslations()" class="btn btn-default" type="button">{{field.translationLabel}}...</button>
         </span>
     </div>
 </div>

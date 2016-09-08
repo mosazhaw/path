@@ -6,19 +6,20 @@ import * as path from "./path-framework/path";
 import {GuiModel} from './gui-model/guimodel';
 import * as handler from './gui-model/form/handlers'
 import * as beans from './gui-model/generated/forms'
+import {TranslationService} from "./path-framework/service/translation.service";
 
 @Component({
     selector: 'path-application',
     templateUrl: 'app/path-framework/path-app.component.html',
     // providers: [{ provide: path.PathService, useClass: path.PathMockService }]
-    providers: [path.PathService]
+    providers: [path.PathService, TranslationService]
 })
 export class AppComponent extends path.PathAppComponent {
 
     private _appConfig;
 
-    constructor(pathService: path.PathService) {
-        super(pathService);
+    constructor(pathService: path.PathService, translationService: TranslationService) {
+        super(pathService, translationService);
         this._appConfig = new GuiModel();
         this.setCurrentPage("mainmenu", null); // set start page
     }
