@@ -467,7 +467,7 @@ export class GuiModel {
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "Case Name",
+                            "name": "CaseName",
                             "width": 2,
                             "required": true
                         },
@@ -493,14 +493,14 @@ export class GuiModel {
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "Category Name",
+                            "name": "CategoryName",
                             "width": 2,
                             "required": true
                         },
                         {
                             "id": "quickScanCase",
                             "type": "autocomplete",
-                            "name": "QuickScan Case",
+                            "name": "Case",
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,
@@ -512,7 +512,7 @@ export class GuiModel {
                         {
                             "id": "maturityLevelSchema",
                             "type": "autocomplete",
-                            "name": "Maturity Level Schema",
+                            "name": "MaturityLevelSchema",
                             "wordSearchEnabled": false,
                             "required": true,
                             "actions": [],
@@ -536,7 +536,7 @@ export class GuiModel {
                 {
                     "id": "QuickScanCategorySelectionForm",
                     "url": "/quickScanProject/:projectKey/quickScanCategory/:quickScanCategoryKey",
-                    "title": "Category Selection",
+                    "title": "CategorySelection",
                     "formFieldList": [
                         {
                             "type": "fieldList",
@@ -676,13 +676,13 @@ export class GuiModel {
                 },
                 {
                     "id": "QuickScanCapabilityQuestionForm",
-                    "title": "Capability Question",
+                    "title": "Capability",
                     "url": "/quickScanCapabilityQuestion",
                     "formFieldList": [
                         {
                             "id": "questionText",
                             "type": "translation",
-                            "name": "Capability Question",
+                            "name": "Capability",
                             "height": 6,
                             "width": 2,
                             "required": true
@@ -690,7 +690,7 @@ export class GuiModel {
                         {
                             "id": "quickScanCategory",
                             "type": "autocomplete",
-                            "name": "QuickScan Category",
+                            "name": "Category",
                             "wordSearchEnabled": true,
                             "defaultKey": "quickScanCategoryKey",
                             "readonly": true,
@@ -874,7 +874,7 @@ export class GuiModel {
                         {
                             "id": "inputParameterKey",
                             "type": "autocomplete",
-                            "name": "Input Parameter",
+                            "name": "InputParameter",
                             "wordSearchEnabled": true,
                             "actions": [],
                             "url": "/inputParameter",
@@ -1195,7 +1195,7 @@ export class GuiModel {
                 },
                 {
                     "id": "KPIAnswerForm",
-                    "title": "KPI Answer",
+                    "title": "Answer",
                     "url": "/deepScanProject/:projectKey/person/:personKey/kpi/:kpiKey",
                     "formFieldList": [
                         {
@@ -1234,18 +1234,18 @@ export class GuiModel {
                         {
                             "id": "cancelButton",
                             "type": "cancelButton",
-                            "name": "Skip and Next"
+                            "name": "SkipAndNext"
                         },
                         {
                             "id": "okButton",
                             "type": "okButton",
-                            "name": "Save and Next"
+                            "name": "SaveAndNext"
                         }
                     ]
                 },
                 {
                     "id": "InputParameterAnswerForm",
-                    "title": "Input Parameter Answer",
+                    "title": "Answer",
                     "url": "/inputParameterAnswer/:projectKey/:personKey/:inputParameterKey",
                     "formFieldList": [
                         {
@@ -1311,7 +1311,7 @@ export class GuiModel {
                 },
                 {
                     "id": "CapabilityQuestionAnswerForm",
-                    "title": "Capability Question Answer",
+                    "title": "Answer",
                     "url": "/questionAnswer/:projectKey/:personKey/:quickScanCategoryKey/:questionKey",
                     "formFieldList": [
                         {
@@ -1367,18 +1367,18 @@ export class GuiModel {
                         {
                             "id": "cancelButton",
                             "type": "cancelButton",
-                            "name": "Skip and Next"
+                            "name": "SkipAndNext"
                         },
                         {
                             "id": "okButton",
                             "type": "okButton",
-                            "name": "Save and Next"
+                            "name": "SaveAndNext"
                         }
                     ]
                 },
                 {
                     "id": "DeepScanSupportProcessQualitativeQuestionAnswerForm",
-                    "title": "DeepScan Support Process Question Answer",
+                    "title": "Answer",
                     "url": "/questionAnswer/:projectKey/:personKey/:deepScanSupportProcessKey/:questionKey",
                     "formFieldList": [
                         {
@@ -1434,18 +1434,18 @@ export class GuiModel {
                         {
                             "id": "cancelButton",
                             "type": "cancelButton",
-                            "name": "Skip and Next"
+                            "name": "SkipAndNext"
                         },
                         {
                             "id": "okButton",
                             "type": "okButton",
-                            "name": "Save and Next"
+                            "name": "SaveAndNext"
                         }
                     ]
                 },
                 {
                     "id": "DeepScanSubprocessQualitativeQuestionAnswerForm",
-                    "title": "DeepScan Subprocess Question Answer",
+                    "title": "Answer",
                     "url": "/questionAnswer/:projectKey/:personKey/:deepScanSubprocessKey/:questionKey",
                     "formFieldList": [
                         {
@@ -1501,12 +1501,12 @@ export class GuiModel {
                         {
                             "id": "cancelButton",
                             "type": "cancelButton",
-                            "name": "Skip and Next"
+                            "name": "SkipAndNext"
                         },
                         {
                             "id": "okButton",
                             "type": "okButton",
-                            "name": "Save and Next"
+                            "name": "SaveAndNext"
                         }
                     ]
                 }
@@ -1752,7 +1752,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Support Processes",
+                            "name": "SupportProcesses",
                             "icon": "fa-cube",
                             "color": "pumpkin",
                             "page": "deepscansupportprocessespage"
@@ -1794,7 +1794,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansupportprocessespage",
-                    "title": "Support Processes",
+                    "title": "SupportProcesses",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -1810,7 +1810,7 @@ export class GuiModel {
                         },
                         {
                             "type": "list",
-                            "name": "Support Processes",
+                            "name": "SupportProcesses",
                             "icon": "fa-cube",
                             "color": "pumpkin",
                             "form": {
@@ -1829,7 +1829,7 @@ export class GuiModel {
                         },
                         {
                             "type": "list",
-                            "name": "Support Processes",
+                            "name": "SupportProcesses",
                             "icon": "fa-cube",
                             "color": "pumpkin",
                             "page": "deepscanintervieweesubprocessespage",
@@ -1850,7 +1850,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Input Parameters",
+                            "name": "InputParameters",
                             "icon": "fa-pencil",
                             "color": "pumpkin",
                             "page": "deepscansupportprocessintervieweeinputparameterspage"
@@ -1938,7 +1938,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Input Parameters",
+                            "name": "InputParameters",
                             "icon": "fa-pencil",
                             "color": "pumpkin",
                             "page": "deepscansubprocessintervieweeinputparameterspage"
@@ -2298,7 +2298,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New User",
+                            "name": "NewUser",
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
@@ -2343,7 +2343,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Maturity Level Schemas",
+                            "name": "MaturityLevelSchemas",
                             "icon": "fa-signal",
                             "color": "carrot",
                             "width": 2,
@@ -2453,7 +2453,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Case",
+                            "name": "NewCase",
                             "icon": "fa-briefcase",
                             "color": "green",
                             "form": {
@@ -2480,7 +2480,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit Case",
+                            "name": "EditCase",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
@@ -2489,7 +2489,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Category",
+                            "name": "NewCategory",
                             "icon": "fa-cube",
                             "color": "green",
                             "form": {
@@ -2516,7 +2516,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Edit Category",
+                            "name": "EditCategory",
                             "icon": "fa-arrows-alt",
                             "color": "green",
                             "form": {
@@ -2525,7 +2525,7 @@ export class GuiModel {
                         },
                         {
                             "type": "newButton",
-                            "name": "New Capability",
+                            "name": "NewCapability",
                             "icon": "fa-question",
                             "color": "green",
                             "form": {
@@ -2554,7 +2554,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Support Processes",
+                            "name": "SupportProcesses",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
                             "page": "deepscansupportprocessesconfigurationpage"
@@ -2568,14 +2568,14 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "KPI Categories",
+                            "name": "KPICategories",
                             "icon": "fa-book",
                             "color": "pomegra",
                             "page": "kpicategoriesconfigurationpage"
                         },
                         {
                             "type": "button",
-                            "name": "Input Parameters",
+                            "name": "InputParameters",
                             "icon": "fa-arrow-circle-down",
                             "color": "turquoise",
                             "page": "inputparametersconfigurationpage"
@@ -2762,7 +2762,7 @@ export class GuiModel {
                         },
                         {
                             "type": "list",
-                            "name": "Input Parameter",
+                            "name": "InputParameter",
                             "icon": "fa-pencil",
                             "color": "pumpkin",
                             "form": {
@@ -2840,14 +2840,14 @@ export class GuiModel {
                 },
                 {
                     "id": "inputparametersconfigurationpage",
-                    "title": "Input Parameters",
+                    "title": "InputParameters",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "newButton",
-                            "name": "New Input Parameter",
+                            "name": "NewInputParameter",
                             "icon": "fa-arrow-circle-down",
                             "color": "green",
                             "form": {
@@ -2856,7 +2856,7 @@ export class GuiModel {
                         },
                         {
                             "type": "list",
-                            "name": "Input Parameters",
+                            "name": "InputParameters",
                             "icon": "fa-arrow-circle-down",
                             "color": "turquoise",
                             "form": {
