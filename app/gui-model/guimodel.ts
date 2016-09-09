@@ -429,13 +429,6 @@ export class GuiModel {
                     "url": "/user",
                     "formFieldList": [
                         {
-                            "id":   "password",
-                            "type": "text",
-                            "name": "Password",
-                            "newRow": true,
-                            "required": true
-                        },
-                        {
                             "id":   "person",
                             "type": "autocomplete",
                             "name": "Person",
@@ -444,6 +437,15 @@ export class GuiModel {
                             "readonly": true,
                             "actions": [],
                             "url": "/person",
+                            "width": 2,
+                            "newRow": true,
+                            "required": true
+                        },
+                        {
+                            "id":   "password",
+                            "type": "text",
+                            "name": "Password",
+                            "newRow": true,
                             "width": 2,
                             "required": true
                         },
@@ -457,17 +459,6 @@ export class GuiModel {
                             "url": "/language",
                             "width": 2,
                             "required": true
-                        },
-                        {
-                            "date": "evtCreationDate",
-                            "type": "date",
-                            "name": "CreationDate",
-                            "newRow": true
-                        },
-                        {
-                            "date": "evtClosingDate",
-                            "type": "date",
-                            "name": "ClosingDate"
                         },
                         {
                             "id": "comments",
