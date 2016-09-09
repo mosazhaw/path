@@ -83,6 +83,8 @@ export class TranslationService {
             "InputParameters": "Eingabe-Parameter",
             "NewInputParameter": "Neuer Eingabe-Parameter",
             "Users": "Benutzer",
+            "User": "Benutzer",
+            "Password": "Passwort",
             "NewUser": "Neuer Benutzer",
             "Configuration": "Konfiguration",
             "Cases": "Fälle",

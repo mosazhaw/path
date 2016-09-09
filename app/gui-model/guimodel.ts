@@ -424,6 +424,75 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "UserForm",
+                    "title": "User",
+                    "url": "/user",
+                    "formFieldList": [
+                        {
+                            "id":   "password",
+                            "type": "text",
+                            "name": "Password",
+                            "newRow": true,
+                            "required": true
+                        },
+                        {
+                            "id":   "person",
+                            "type": "autocomplete",
+                            "name": "Person",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "personKey",
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/person",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id":   "language",
+                            "type": "autocomplete",
+                            "name": "Language",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "languageKey",
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/language",
+                            "width": 2,
+                            "required": false
+                        },
+                        {
+                            "date": "evtCreationDate",
+                            "type": "date",
+                            "name": "CreationDate",
+                            "newRow": true
+                        },
+                        {
+                            "date": "evtClosingDate",
+                            "type": "date",
+                            "name": "ClosingDate"
+                        },
+                        {
+                            "id": "comments",
+                            "type": "text",
+                            "name": "Comments",
+                            "newRow": true,
+                            "height": 4,
+                            "width": 2
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "ProjectIntervieweeForm",
                     "title": "AddInterviewee",
                     "url": "/project/:projectKey/interviewee",
@@ -2302,7 +2371,7 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "green",
                             "form": {
-                                "form": "PersonForm"
+                                "form": "UserForm"
                             }
                         },
                         {
@@ -2312,9 +2381,9 @@ export class GuiModel {
                             "color": "orange",
                             "search": true,
                             "form": {
-                                "form": "PersonForm"
+                                "form": "UserForm"
                             },
-                            "data": [{"name": "Anton Amacker"}, {"name": "Beate Burkhardt"}, {"name": "Chris Connor"}, {"name": "Doris Dempster"}, {"name": "Edgar Evans"}]
+                            "url": "/user"
                         }
                     ]
                 },
