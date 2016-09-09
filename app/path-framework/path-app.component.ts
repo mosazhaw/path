@@ -22,6 +22,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         this.pathService.serverGet(this.getBackendUrl(), "/ping", (data:any) => {
             if (data["userId"] != null && data["userId"] != "") {
                 this._userId = data["userId"];
+                this.setCurrentPage(this.getStartPage(), null);
             }
         }, (err:any) => { console.error(err); });
     }
