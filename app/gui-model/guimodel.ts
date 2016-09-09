@@ -453,11 +453,10 @@ export class GuiModel {
                             "name": "Language",
                             "wordSearchEnabled": true,
                             "defaultKey": "languageKey",
-                            "readonly": true,
                             "actions": [],
                             "url": "/language",
                             "width": 2,
-                            "required": false
+                            "required": true
                         },
                         {
                             "date": "evtCreationDate",
@@ -1961,7 +1960,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "KPI List",
+                            "name": "KPIList",
                             "icon": "fa-pencil",
                             "color": "wet-asphalt",
                             "page": "deepscansupportprocessintervieweekpispage"
