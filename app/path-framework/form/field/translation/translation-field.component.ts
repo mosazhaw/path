@@ -30,7 +30,7 @@ export class TranslationField extends ValueField<any[][]> {
         super(form, translationService);
         let initialList:any[][] = [];
         for (let language of this.languages) {
-            initialList.push([{"code": language}, ""]);
+            initialList.push([{"key": language}, ""]);
         }
         this.setValue(initialList);
         this.translationLabel = translationService.getText("Translation");
@@ -44,7 +44,7 @@ export class TranslationField extends ValueField<any[][]> {
     private getDefaultTranslation():string {
         if (this.value != null) {
             for (let item of this.value) {
-                if (item[0] != null && item[0]["code"] == this.userLanguage) {
+                if (item[0] != null && item[0]["key"] == this.userLanguage) {
                     return item[1];
                 }
             }
@@ -60,7 +60,7 @@ export class TranslationField extends ValueField<any[][]> {
         form.formFunction.save = () => {
             let resultList:any[][] = [];
             for (let field of translationFields) {
-                resultList.push([{"code": field.id}, field.value]);
+                resultList.push([{"key": field.id}, field.value]);
             }
             this.setValue(resultList);
             this.getForm().getApp().closeCurrentForm();
@@ -72,8 +72,8 @@ export class TranslationField extends ValueField<any[][]> {
         for (let key of translations) {
                 let textField:TextField = new TextField(form, this.translationService);
                 textField.type = "text";
-                textField.id = key[0]["code"];
-                textField.name = this.translationService.getText(key[0]["code"]);
+                textField.id = key[0]["key"];
+                textField.name = this.translationService.getText(key[0]["key"]);
                 textField.visible = true;
                 textField.newRow = true;
                 textField.width = 2;
