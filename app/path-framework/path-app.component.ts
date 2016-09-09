@@ -26,6 +26,8 @@ export abstract class PathAppComponent implements path.IPathApp {
         }, (err:any) => { console.error(err); });
     }
 
+    protected abstract getStartPage();
+
     protected abstract getGuiModel();
 
     protected abstract getBeans();
@@ -40,8 +42,10 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     public login(event, userId:string, password:string) {
         this.pathService.serverGet(this.getBackendUrl(), "/login/" + userId + "/" + password, (data:any) => {
-            console.log("jwt: " + data["jwt"]);
+            console.log("login ok, language code: " + data["languageCode"] + ", jwt:" + data["jwt"]);
+            localStorage.setItem("languageCode", data["languageCode"]);
             this._userId = userId;
+            this.setCurrentPage(this.getStartPage(), null); // set start page
         }, (err:any) => {
             if (this.getBackendUrl().indexOf("heroku") > 0) {
                 alert("Login failed. Please try again after 30sec, because the Heroku backend server may be sleeping due to inactivity.")

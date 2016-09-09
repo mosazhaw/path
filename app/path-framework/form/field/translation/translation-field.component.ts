@@ -22,7 +22,7 @@ export class TranslationFieldComponent {
 export class TranslationField extends ValueField<any[][]> {
 
     private languages:string[] = ["de", "en"];
-    private userLanguage:string = "en"; // TODO get user language
+    private userLanguage:string = localStorage.getItem("languageCode");
     private defaultTranslation:string = null;
     private translationLabel:string;
 

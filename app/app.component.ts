@@ -21,7 +21,10 @@ export class AppComponent extends path.PathAppComponent {
     constructor(pathService: path.PathService, translationService: TranslationService) {
         super(pathService, translationService);
         this._appConfig = new GuiModel();
-        this.setCurrentPage("mainmenu", null); // set start page
+    }
+
+    protected getStartPage():string {
+        return "mainmenu";
     }
 
     protected getGuiModel() {
