@@ -2030,7 +2030,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "KPI List",
+                            "name": "KPIList",
                             "icon": "fa-pencil",
                             "color": "wet-asphalt",
                             "page": "deepscansubprocessintervieweekpispage"
