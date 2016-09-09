@@ -447,6 +447,16 @@ export class GuiModel {
                             "name": "Password",
                             "newRow": true,
                             "width": 2,
+                            "isPassword": true,
+                            "required": true
+                        },
+                        {
+                            "id":   "repeatPassword",
+                            "type": "text",
+                            "name": "RepeatPassword",
+                            "newRow": true,
+                            "width": 2,
+                            "isPassword": true,
                             "required": true
                         },
                         {

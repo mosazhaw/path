@@ -13,4 +13,22 @@ export class TextFieldComponent {
 }
 
 export class TextField extends ValueField<string> {
+
+    private _isPassword:boolean = false;
+
+    get isPassword(): boolean {
+        return this._isPassword;
+    }
+
+    set isPassword(value: boolean) {
+        this._isPassword = value;
+    }
+
+    public fromJson(modelFormField) {
+        super.fromJson(modelFormField);
+        if (modelFormField["isPassword"] != null) {
+            this.isPassword = (modelFormField["isPassword"]);
+        }
+    }
+
 }
