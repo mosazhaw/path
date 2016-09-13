@@ -1277,7 +1277,7 @@ export class GuiModel {
                         {
                             "id": "replacedFormula",
                             "type": "text",
-                            "name": "KPI Formula",
+                            "name": "Formula",
                             "width": 2,
                             "height": 4,
                             "readonly": true,
@@ -1288,9 +1288,9 @@ export class GuiModel {
                             "url": "/deepScanProject/:projectKey/kpi/:kpiKey/inputParameter/field"
                         },
                         {
-                            "id": "comment",
+                            "id": "comments",
                             "type": "text",
-                            "name": "Comment",
+                            "name": "Comments",
                             "newRow": true,
                             "width": 2,
                             "height": 4
@@ -1347,7 +1347,7 @@ export class GuiModel {
                         {
                             "id": "deepScanProjectKey",
                             "type": "autocomplete",
-                            "name": "DeepScan Project",
+                            "name": "Project",
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,
