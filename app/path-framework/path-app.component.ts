@@ -402,7 +402,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     for (let item of data) {
                                         let radio = new path.Radio(form, this.translationService);
                                         radio.name = item["name"];
-                                        radio.key = item["key"];
+                                        radio.key = item["key"]["key"].toString(); // force radio key type string for angular2
                                         if (radio.key == item["defaultKey"]) {
                                             radio.value = true;
                                             rgField.setValue(radio.key);
@@ -522,6 +522,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                                             return;
                                         }
                                         console.log("setting radiogroupfield value");
+                                        if (value != null) {
+                                            value = value.toString(); // force radio key type string for angular2
+                                        }
                                         radioGroupField.setValue(value);
                                     }
                                     setValueOfRadioGroupFieldContextWrapper();
