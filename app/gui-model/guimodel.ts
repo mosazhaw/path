@@ -75,13 +75,6 @@ export class GuiModel {
                             "required": true
                         },
                         {
-                            "id": "industrySegment",
-                            "type": "CheckboxGroupField",
-                            "name": "IndustrySegment",
-                            "data": [{key: "OilAndGas", name: "Oil & Gas"}, {key: "BasicMaterials", name: "Basic Materials"}, {key: "Industrials", name: "Industrials"}, {key: "ConsumerServices", name: "Consumer Services"}, {key: "ConsumerGoods", name: "Consumer Goods"}, {key: "HealthCare", name: "Health Care"}, {key: "Financials", name: "Financials"}, {key: "Technology", name: "Technology"}, {key: "Telecommunications", name: "Telecommunications"}, {key: "Utilities", name: "Utilities"}],
-                            "width": 2
-                        },
-                        {
                             "id": "benchmarking",
                             "type": "RadioGroupField",
                             "name": "Benchmarking",
@@ -193,13 +186,6 @@ export class GuiModel {
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
                             "url": "/person",
                             "required": true
-                        },
-                        {
-                            "id": "industrySegment",
-                            "type": "CheckboxGroupField",
-                            "name": "IndustrySegment",
-                            "data": [{key: "OilAndGas", name: "Oil & Gas"}, {key: "BasicMaterials", name: "Basic Materials"}, {key: "Industrials", name: "Industrials"}, {key: "ConsumerServices", name: "Consumer Services"}, {key: "ConsumerGoods", name: "Consumer Goods"}, {key: "HealthCare", name: "Health Care"}, {key: "Financials", name: "Financials"}, {key: "Technology", name: "Technology"}, {key: "Telecommunications", name: "Telecommunications"}, {key: "Utilities", name: "Utilities"}],
-                            "width": 2
                         },
                         {
                             "id": "benchmarking",
@@ -680,6 +666,39 @@ export class GuiModel {
                             "defaultKey": "quickScanCategoryKey",
                             "actions": [],
                             "url": "/quickScanCategory",
+                            "width": 2
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "ProjectIndustryClassificationForm",
+                    "url": "/project/:projectKey/industryClassification/:industryClassificationKey",
+                    "title": "IndustryClassification",
+                    "formFieldList": [
+                        {
+                            "type": "fieldList",
+                            "name": "Industry Classification Name",
+                            "width": 2,
+                            "url": "/project/:projectKey/industryClassification/:industryClassificationKey/label",
+                        },
+                        {
+                            "id": "industryClassification",
+                            "type": "autocomplete",
+                            "name": "IndustryClassification",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "industryClassificationKey",
+                            "actions": [],
+                            "url": "/industryClassification",
                             "width": 2
                         },
                         {
@@ -1732,6 +1751,13 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "IndustryClassification",
+                            "icon": "fa-industry",
+                            "color": "wisteria",
+                            "page": "projectindustryclassificationspage"
+                        },
+                        {
+                            "type": "button",
                             "name": "Categories",
                             "icon": "fa-cube",
                             "color": "pumpkin",
@@ -1743,6 +1769,25 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "blue",
                             "page": "quickscanintervieweespage"
+                        }
+                    ]
+                },
+                {
+                    "id": "projectindustryclassificationspage",
+                    "title": "IndustryClassifications",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "IndustryClassifications",
+                            "icon": "fa-industry",
+                            "color": "wisteria",
+                            "form": {
+                                "form": "ProjectIndustryClassificationForm"
+                            },
+                            "url": "/project/:projectKey/industryClassification"
                         }
                     ]
                 },
@@ -1875,6 +1920,13 @@ export class GuiModel {
                             "form": {
                                 "form": "DeepScanProjectForm"
                             }
+                        },
+                        {
+                            "type": "button",
+                            "name": "IndustryClassification",
+                            "icon": "fa-industry",
+                            "color": "wisteria",
+                            "page": "projectindustryclassificationspage"
                         },
                         {
                             "type": "button",

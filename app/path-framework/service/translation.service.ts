@@ -4,7 +4,6 @@ import {Injectable} from "@angular/core";
 export class TranslationService {
 
     public getText(key: string): string {
-        console.log("requesting translation for " + key);
         if (this.getTranslations()[key] == null) {
             return "{" + key + "}";
         }
@@ -68,7 +67,7 @@ export class TranslationService {
                 "FamilyName": "Nachname",
                 "FirstName": "Vorname",
                 "Formula": "Formel",
-                "IndustrySegment": "Industriebereich",
+                "IndustryClassification": "Industrie Segment",
                 "InputParameter": "Eingabe-Parameter",
                 "InputParameterName": "Eingabe-Parameter Name",
                 "InputParameters": "Eingabe-Parameter",
@@ -204,7 +203,7 @@ export class TranslationService {
                 "FamilyName": "Family Name",
                 "FirstName": "First Name",
                 "Formula": "Formula",
-                "IndustrySegment": "Industry Segment",
+                "IndustryClassification": "Industry Classification",
                 "InputParameter": "Input Parameter",
                 "InputParameterName": "Input Parameter Name",
                 "InputParameters": "Input Parameters",
@@ -218,7 +217,7 @@ export class TranslationService {
                 "Language": "Language",
                 "Level": "Level",
                 "Logout": "Logout",
-                "MainMenu": "MainMenu",
+                "MainMenu": "Main Menu",
                 "MaturityLevel": "Maturity Level",
                 "MaturityLevelName": "Maturity Level Name",
                 "MaturityLevelSchema": "Maturity Level Schema",
