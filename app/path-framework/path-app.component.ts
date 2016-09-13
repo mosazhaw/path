@@ -372,7 +372,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                 autoCompleteFormField.dataLoaded = true;
                             }
                             else if (modelFormField["url"] != null) {
-                                let autoCompleteFormFieldUrl:string = modelFormField["url"];
+                                let autoCompleteFormFieldUrl:string = KeyUtility.translateUrl(modelFormField["url"], form.key, false, parentPageElement);
                                 this.pathService.serverGet(this.getBackendUrl(), autoCompleteFormFieldUrl, (data:any) => {
                                     let dynamicData = [];
                                     for (let item of data) {

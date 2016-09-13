@@ -546,7 +546,7 @@ export class GuiModel {
                             "name": "Person",
                             "wordSearchEnabled": true,
                             "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
-                            "url": "/person",
+                            "url": "/project/:projectKey/customer/person",
                             "width": 2,
                             "required": true
                         },
