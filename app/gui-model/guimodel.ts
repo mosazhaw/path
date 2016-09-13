@@ -1133,6 +1133,32 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "IndustryClassificationForm",
+                    "url": "/industryClassification",
+                    "title": "IndustryClassification",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "translation",
+                            "name": "IndustryClassificationName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "MaturityLevelSchemaForm",
                     "url": "/maturityLevelSchema",
                     "title": "MaturityLevelSchema",
@@ -2521,6 +2547,14 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "IndustryClassifications",
+                            "icon": "fa-industry",
+                            "color": "pumpkin",
+                            "width": 2,
+                            "page": "industryclassificationsconfigurationpage"
+                        },
+                        {
+                            "type": "button",
                             "name": "MaturityLevelSchemas",
                             "icon": "fa-signal",
                             "color": "carrot",
@@ -2552,6 +2586,35 @@ export class GuiModel {
                             "width": 2,
                             "page": "quickscancasesconfigurationpage"
                         },
+                    ]
+                },
+                {
+                    "id": "industryclassificationsconfigurationpage",
+                    "title": "Industry Classification Configuration",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewIndustryClassification",
+                            "icon": "fa-signal",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "IndustryClassificationForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "icon": "fa-industry",
+                            "color": "pumpkin",
+                            "search": false,
+                            "form": {
+                                "form": "IndustryClassificationForm"
+                            },
+                            "url": "/industryClassification"
+                        }
                     ]
                 },
                 {
