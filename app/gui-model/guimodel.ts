@@ -493,6 +493,63 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "OwnUserForm",
+                    "title": "User",
+                    "url": "/user/own",
+                    "formFieldList": [
+                        {
+                            "id":   "person",
+                            "type": "autocomplete",
+                            "name": "Person",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "personKey",
+                            "readonly": true,
+                            "actions": [],
+                            "url": "/person",
+                            "width": 2,
+                            "newRow": true,
+                            "required": true
+                        },
+                        {
+                            "id":   "password",
+                            "type": "text",
+                            "name": "Password",
+                            "newRow": true,
+                            "width": 2,
+                            "isPassword": true,
+                            "required": true
+                        },
+                        {
+                            "id":   "repeatPassword",
+                            "type": "text",
+                            "name": "RepeatPassword",
+                            "newRow": true,
+                            "width": 2,
+                            "isPassword": true,
+                            "required": true
+                        },
+                        {
+                            "id":   "language",
+                            "type": "autocomplete",
+                            "name": "Language",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "languageKey",
+                            "actions": [],
+                            "url": "/language",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "ProjectIntervieweeForm",
                     "title": "AddInterviewee",
                     "url": "/project/:projectKey/interviewee",

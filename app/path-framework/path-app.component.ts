@@ -17,6 +17,7 @@ export abstract class PathAppComponent implements path.IPathApp {
     private _pageStack:path.Page[] = [];
     private _formStack:path.Form[] = [];
     private _userId:string;
+    private _texts:string[]= [];
 
     constructor(private pathService:path.PathService, private translationService:TranslationService) {
         this.pathService.serverGet(this.getBackendUrl(), "/ping", (data:any) => {
@@ -25,9 +26,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                 this.setCurrentPage(this.getStartPage(), null);
             }
         }, (err:any) => { console.error(err); });
+        this.loadApplicationTexts();
     }
 
-    protected abstract getStartPage();
+    protected abstract getStartPage():string;
+
+    protected abstract getOwnUserForm():string;
 
     protected abstract getGuiModel();
 
@@ -36,6 +40,12 @@ export abstract class PathAppComponent implements path.IPathApp {
     protected abstract getHandlers();
 
     public abstract getBackendUrl():string;
+
+    private loadApplicationTexts() {
+        this._texts["Logout"] = this.translationService.getText("Logout");
+        this._texts["NotSignedIn"] = this.translationService.getText("NotSignedIn");
+        this._texts["SignedInAs"] = this.translationService.getText("SignedInAs");
+    }
 
     public getUserId():string {
         return this._userId;
@@ -46,6 +56,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             console.log("login ok, language code: " + data["languageCode"] + ", jwt:" + data["jwt"]);
             localStorage.setItem("languageCode", data["languageCode"]);
             this._userId = userId;
+            this.loadApplicationTexts();
             this.setCurrentPage(this.getStartPage(), null); // set start page
         }, (err:any) => {
             if (this.getBackendUrl().indexOf("heroku") > 0) {
@@ -62,6 +73,10 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._userId == null;
         console.log("logout user " + this._userId);
         location.reload();
+    }
+
+    public showUserForm() {
+        this.setCurrentForm(this.getOwnUserForm(), new Key(0, "userId"), null, null); // TODO set correct key
     }
 
     public closeCurrentForm() {

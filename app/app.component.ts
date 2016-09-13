@@ -27,6 +27,10 @@ export class AppComponent extends path.PathAppComponent {
         return "mainmenu";
     }
 
+    protected getOwnUserForm():string {
+        return "OwnUserForm";
+    }
+
     protected getGuiModel() {
         return this._appConfig.guiModel;
     }
