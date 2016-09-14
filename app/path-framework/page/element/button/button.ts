@@ -4,6 +4,7 @@ import {Key} from "../page-element";
 export class Button extends path.PageElement implements path.IButton {
     private _icon:string;
     private _color:string;
+    private _visible:boolean = true;
     private _handler:path.IButtonHandler;
     private _details:path.ButtonDetail[] = [];
 
@@ -119,5 +120,13 @@ export class Button extends path.PageElement implements path.IButton {
 
     set formHandler(value:string) {
         this._formHandler = value;
+    }
+
+    get visible(): boolean {
+        return this._visible;
+    }
+
+    set visible(value: boolean) {
+        this._visible = value;
     }
 }

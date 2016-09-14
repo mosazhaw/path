@@ -2680,7 +2680,7 @@ export class GuiModel {
                             "type": "list",
                             "icon": "fa-industry",
                             "color": "pumpkin",
-                            "search": false,
+                            "search": true,
                             "form": {
                                 "form": "IndustryClassificationForm"
                             },
@@ -2710,7 +2710,7 @@ export class GuiModel {
                             "name": "Maturity Level Schemas",
                             "icon": "fa-signal",
                             "color": "carrot",
-                            "search": false,
+                            "search": true,
                             "page": "maturitylevelsconfigurationpage",
                             "url": "/maturityLevelSchema"
                         }
@@ -2748,7 +2748,7 @@ export class GuiModel {
                             "name": "Maturity Levels",
                             "icon": "fa-signal",
                             "color": "lime",
-                            "search": false,
+                            "search": true,
                             "form": {
                                 "form": "MaturityLevelForm"
                             },
@@ -3171,6 +3171,7 @@ export class GuiModel {
                             "name": "InputParameters",
                             "icon": "fa-arrow-circle-down",
                             "color": "turquoise",
+                            "search": true,
                             "form": {
                                 "form": "InputParameterForm"
                             },

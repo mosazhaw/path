@@ -100,11 +100,11 @@
             <div class="h3">{{pageElement._searchLabel}}</div>
             <i class="fa fa-2x fa-search"></i>
             <div class="h5"></div>
-            <input placeholder="{{pageElement._searchInputLabel}}" class="form-control" type="text">
+            <input [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
         </div>
     </div>
         <a *ngFor='let listElement of pageElement.buttons' (click)="listElement.onClick()" class="fa-links">
-            <div class="thumbnail tile tile-wide tile-{{listElement.color}} col-md-3">
+            <div *ngIf="listElement.visible" class="thumbnail tile tile-wide tile-{{listElement.color}} col-md-3">
                 <div class="h3 truncate">{{listElement.name}}</div>
                 <span *ngFor='let detail of listElement.details; let last = last;'>
                     <span class="h4 m-t-5 truncate">{{detail.text}}</span><small [hidden]="last">&nbsp;&bull;&nbsp;</small></span>

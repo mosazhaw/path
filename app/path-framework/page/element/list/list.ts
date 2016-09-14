@@ -11,6 +11,7 @@ export class List extends path.PageElement implements IList {
     private _search:boolean;
     private _searchLabel:string;
     private _searchInputLabel:string;
+    private _searchText:string;
     private _handler:IListHandler;
     private _buttonHandler:IButtonHandler;
     private _icon:string;
@@ -100,6 +101,25 @@ export class List extends path.PageElement implements IList {
             }
         }
         return null;
+    }
+
+    public filter() {
+        let searchText:string = this._searchText.toLowerCase();
+        for (let button of this._buttons) {
+            button.visible = true;
+            if (searchText.length > 0) {
+                let newVisible:boolean = button.name.toLowerCase().indexOf(searchText) != -1;
+                if (!newVisible) {
+                    for (let detail of button.details) {
+                        if (detail.text.toLowerCase().indexOf(searchText) != -1) {
+                            newVisible = true;
+                            break;
+                        }
+                    }
+                }
+                button.visible = newVisible;
+            }
+        }
     }
 
     get buttons():path.Button[] {
