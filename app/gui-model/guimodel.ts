@@ -991,6 +991,27 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "id": "optimalValue",
+                            "type": "RadioGroupField",
+                            "name": "OptimalValue",
+                            "required": true,
+                            "readonly": false,
+                            "radios": [{
+                                type: "radio",
+                                name: "Minimum",
+                                key: "Minimum"
+                            }, {
+                                type: "radio",
+                                name: "Maximum",
+                                key: "Maximum"
+                            }, {
+                                type: "radio",
+                                name: "Neutral",
+                                key: "Neutral"
+                            }
+                            ]
+                        },
+                        {
                             "id": "replacedFormula",
                             "type": "text",
                             "name": "Formula",
