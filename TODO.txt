@@ -4,11 +4,6 @@ Fragen Einführungshandbuch
 - Zuweisung zu QuickScan / DeepScan oder immer alle auflisten?
 
 Assessment App / Fragen
-- *** Project: Industry Segment ***
-- *** Interviewee hinzufügen: Nur Interviewee aus Company? ***
-- *** Land als Admin Stammdatensatz? ***
-- Deutsch/Englisch UI Language
-- User Verwaltung
 - IE: Select in AutoComplete füllt Wert nicht ab, AutoComplete Wert löschen
 - Reports: DeepScan Report, Completeness Check Report
 - Web Reports: Gap - Spider
@@ -18,7 +13,6 @@ Assessment App / Fragen
 Path Framework Prio1
 - Form Validation (field length)
 - DatePicker
-- Search
 - Actions auf AutoCompleteFields
 
 Path Framework Prio2
