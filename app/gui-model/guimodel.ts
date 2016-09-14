@@ -2441,7 +2441,7 @@ export class GuiModel {
                             "name": "AssessmentReport",
                             "icon": "fa-file-word-o",
                             "color": "wisteria",
-                            "url": "/project/:projectKey/assessmentreport/word"
+                            "url": "/quickScanProject/:projectKey/assessmentreport/word"
                         }
                     ]
                 },
@@ -2464,7 +2464,7 @@ export class GuiModel {
                             "name": "AssessmentReport",
                             "icon": "fa-file-word-o",
                             "color": "wisteria",
-                            "url": "/project/:projectKey/assessmentreport/word"
+                            "url": "/deepScanProject/:projectKey/assessmentreport/word"
                         },
                         {
                             "type": "button",
