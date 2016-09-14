@@ -2374,7 +2374,7 @@ export class GuiModel {
                             "name": "QuickScans List",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
-                            "page": "reportspage",
+                            "page": "quickscanreportspage",
                             "url": "/company/:companyKey/quickScanProject"
                         },
                         {
@@ -2382,13 +2382,13 @@ export class GuiModel {
                             "name": "DeepScans List",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
-                            "page": "reportspage",
+                            "page": "deepscanreportspage",
                             "url": "/company/:companyKey/deepScanProject"
                         }
                     ]
                 },
                 {
-                    "id": "reportspage",
+                    "id": "quickscanreportspage",
                     "title": "Reports",
                     "elementList": [
                         {
@@ -2414,6 +2414,29 @@ export class GuiModel {
                             "icon": "fa-first-order",
                             "page": "spiderreportpage",
                             "color": "pink"
+                        },
+                        {
+                            "type": "downloadButton",
+                            "name": "AssessmentReport",
+                            "icon": "fa-file-word-o",
+                            "color": "wisteria",
+                            "url": "/project/:projectKey/assessmentreport/word"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanreportspage",
+                    "title": "Reports",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "CompletenessCheck",
+                            "icon": "fa-file-excel-o",
+                            "color": "green",
+                            "buttonhandler": "CompletenessCheckReportDownloadButtonHandler"
                         },
                         {
                             "type": "downloadButton",
