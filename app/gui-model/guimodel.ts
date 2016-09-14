@@ -1474,7 +1474,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Unit",
                             "wordSearchEnabled": false,
-                            "required": true,
+                            "required": false,
                             "readonly": true,
                             "actions": [],
                             "url": "/unit",
