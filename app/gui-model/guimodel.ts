@@ -2416,17 +2416,19 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "downloadButton",
                             "name": "CompletenessCheck",
                             "icon": "fa-file-excel-o",
                             "color": "green",
-                            "buttonhandler": "CompletenessCheckReportDownloadButtonHandler"
+                            "width": 2,
+                            "url": "/quickScanProject/:projectKey/completenesscheck"
                         },
                         {
                             "type": "button",
                             "name": "Gap Analysis",
                             "icon": "fa-bar-chart",
                             "color": "carrot",
+                            "width": 2,
                             "page": "gapreportpage"
                         },
                         {
@@ -2434,6 +2436,7 @@ export class GuiModel {
                             "name": "Spider Graph",
                             "icon": "fa-first-order",
                             "page": "spiderreportpage",
+                            "width": 2,
                             "color": "pink"
                         },
                         {
@@ -2441,6 +2444,7 @@ export class GuiModel {
                             "name": "AssessmentReport",
                             "icon": "fa-file-word-o",
                             "color": "wisteria",
+                            "width": 2,
                             "url": "/quickScanProject/:projectKey/assessmentreport/word"
                         }
                     ]
@@ -2453,17 +2457,19 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
+                            "type": "downloadButton",
                             "name": "CompletenessCheck",
                             "icon": "fa-file-excel-o",
                             "color": "green",
-                            "buttonhandler": "CompletenessCheckReportDownloadButtonHandler"
+                            "width": 2,
+                            "url": "/deepScanProject/:projectKey/completenesscheck"
                         },
                         {
                             "type": "downloadButton",
                             "name": "AssessmentReport",
                             "icon": "fa-file-word-o",
                             "color": "wisteria",
+                            "width": 2,
                             "url": "/deepScanProject/:projectKey/assessmentreport/word"
                         },
                         {
@@ -2471,6 +2477,7 @@ export class GuiModel {
                             "name": "IntroductionHandbook",
                             "icon": "fa-file-word-o",
                             "color": "wisteria",
+                            "width": 2,
                             "buttonhandler": "IntroductionHandbookDownloadButtonHandler"
                         }
                     ]

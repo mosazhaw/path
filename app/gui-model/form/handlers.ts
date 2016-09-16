@@ -37,24 +37,6 @@ export class KPIQuestionFormHandler implements path.IFormHandler {
 
 }
 
-export class CompletenessCheckReportDownloadButtonHandler implements path.IButtonHandler {
-
-    public doClick(button:path.IButton) {
-        console.log("open excel doc");
-        window.location.assign(button.getApp().getBackendUrl() + "/report/completenesscheck" + "?token=" + localStorage.getItem("pathAppId"));
-    }
-
-}
-
-export class AssessmentReportDownloadButtonHandler implements path.IButtonHandler {
-
-    public doClick(button:path.IButton) {
-        console.log("open excel doc");
-        window.location.assign(button.getApp().getBackendUrl() + "/report/assessmentreport" + "?token=" + localStorage.getItem("pathAppId"));
-    }
-
-}
-
 export class IntroductionHandbookDownloadButtonHandler implements path.IButtonHandler {
 
     public doClick(button:path.IButton) {
