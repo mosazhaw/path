@@ -1,13 +1,23 @@
-<h3>{{chart.data?.name}}</h3>
-
 <div>
-	<span *ngFor="let category of chart.data?.categoryResults.list">
-		<h4>{{category.name}}</h4>
-		<p>
-			<img width="600" src="data:image/png;base64,{{category.spider}}" />
-		</p>
-		<span *ngFor="let question of category.questions.list">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{chart.data?.name}}</h3>
+		</div>
+		<div class="panel-body">
+			<p>{{chart.data?.customer}}</p>
+		</div>
+
+		<ul class="list-group" width="100%">
+			<li *ngFor="let category of chart.data?.categoryResults.list" class="list-group-item" width="100%">
+				<h4>{{category.name}}</h4>
+				<p>
+					<img width="600" src="data:image/png;base64,{{category.spider}}" />
+				</p>
+				<span *ngFor="let question of category.questions.list">
 			<div><b>{{question.name}}</b></div>
 		</span>
-	</span>
+			</li>
+		</ul>
+	</div>
+
 </div>
