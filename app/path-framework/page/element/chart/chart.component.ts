@@ -16,7 +16,6 @@ export class ChartComponent implements AfterViewInit {
 
     ngAfterViewInit() {
         this.chart.load((data:any) => {
-            console.log(data);
             this.chart.data = data;
         });
     }
