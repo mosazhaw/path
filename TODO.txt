@@ -6,6 +6,7 @@ Fragen Einführungshandbuch
 Assessment App / Fragen
 - IE: Select in AutoComplete füllt Wert nicht ab, AutoComplete Wert löschen
 - Web Reports: Gap
+- Show spinner while ajax request (http://stackoverflow.com/questions/15033195/showing-spinner-gif-during-http-request-in-angular)
 - generic crud unit tests frontend / backend
 - Einführungshandbuch
 
