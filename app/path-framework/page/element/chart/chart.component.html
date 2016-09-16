@@ -1,4 +1,13 @@
-<span>
-<canvas #canvasElement></canvas>
-</span>
+<h3>{{chart.data?.name}}</h3>
 
+<div>
+	<span *ngFor="let category of chart.data?.categoryResults.list">
+		<h4>{{category.name}}</h4>
+		<p>
+			<img width="600" src="data:image/png;base64,{{category.spider}}" />
+		</p>
+		<span *ngFor="let question of category.questions.list">
+			<div><b>{{question.name}}</b></div>
+		</span>
+	</span>
+</div>

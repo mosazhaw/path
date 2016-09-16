@@ -230,8 +230,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                             element = dynamicList;
                             break;
                         case "ChartElement":
-                            let chart = new path.ChartElement(this);
+                            let chart = new path.ChartElement(this.pathService, this);
                             chart.chartType = modelElement["chartType"];
+                            chart.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             element = chart;
                             break;
                     }
