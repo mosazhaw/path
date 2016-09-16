@@ -6,6 +6,19 @@
 		<div class="panel-body">
 			<p>{{chart.data?.customer}}</p>
 		</div>
+
+		<table class="table">
+			<tr>
+				<th>Salutation<th>
+				<th>Name<th>
+				<th>Employment Title<th>
+			</tr>
+			<tr *ngFor="let interviewee of chart.data?.interviewees.list">
+				<td>{{interviewee.salutation}}<td>
+				<td>{{interviewee.name}}<td>
+				<td>{{interviewee.employmentTitle}}<td>
+			</tr>
+		</table>
 	</div>
 
 	<div class="panel panel-default" *ngFor="let category of chart.data?.categoryResults.list" width="100%">
