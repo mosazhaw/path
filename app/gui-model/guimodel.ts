@@ -2446,6 +2446,14 @@ export class GuiModel {
                             "color": "wisteria",
                             "width": 2,
                             "url": "/quickScanProject/:projectKey/assessmentreport/word"
+                        },
+                        {
+                            "type": "downloadButton",
+                            "name": "AssessmentDetailReport",
+                            "icon": "fa-file-excel-o",
+                            "color": "wisteria",
+                            "width": 2,
+                            "url": "/quickScanProject/:projectKey/assessmentdetailreport"
                         }
                     ]
                 },
