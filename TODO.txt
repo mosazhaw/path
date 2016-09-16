@@ -5,7 +5,6 @@ Fragen Einführungshandbuch
 
 Assessment App / Fragen
 - IE: Select in AutoComplete füllt Wert nicht ab, AutoComplete Wert löschen
-- Reports: Completeness Check Report
 - Web Reports: Gap - Spider
 - generic crud unit tests frontend / backend
 - Einführungshandbuch
