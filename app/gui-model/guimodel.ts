@@ -2433,7 +2433,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Spider Graph",
+                            "name": "SpiderReport",
                             "icon": "fa-first-order",
                             "page": "spiderreportpage",
                             "width": 2,
@@ -2500,14 +2500,14 @@ export class GuiModel {
                         {
                             "type": "ChartElement",
                             "chartType": "radar",
-                            "name": "Spider Report",
+                            "name": "SpiderReport",
                             "url": "/quickScanProject/:projectKey/report"
                         }
                     ]
                 },
                 {
                     "id": "gapreportpage",
-                    "title": "Spider Report",
+                    "title": "Gap Report",
                     "elementList": [
                         {
                             "type": "backbutton",
