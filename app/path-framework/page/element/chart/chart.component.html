@@ -7,13 +7,13 @@
 			<p>{{chart.data?.customer}}</p>
 		</div>
 
-		<table class="table">
+		<table *ngIf="chart.data?.interviewees?.list.length > 0" class="table">
 			<tr>
 				<th>Salutation<th>
 				<th>Name<th>
 				<th>Employment Title<th>
 			</tr>
-			<tr *ngFor="let interviewee of chart.data?.interviewees.list">
+			<tr *ngFor="let interviewee of chart.data?.interviewees?.list">
 				<td>{{interviewee.salutation}}<td>
 				<td>{{interviewee.name}}<td>
 				<td>{{interviewee.employmentTitle}}<td>
@@ -21,7 +21,7 @@
 		</table>
 	</div>
 
-	<div class="panel panel-default" *ngFor="let category of chart.data?.categoryResults.list" width="100%">
+	<div class="panel panel-default" *ngFor="let category of chart.data?.categoryResults?.list" width="100%">
 		<div class="panel-heading">
 			<h3 class="panel-title">{{category.name}}</h3>
 		</div>

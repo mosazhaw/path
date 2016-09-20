@@ -2405,6 +2405,11 @@ export class GuiModel {
                             "search": true,
                             "page": "benchmarkingparameterpage",
                             "url": "/deepScanProject/:projectKey/benchmarking/parameter"
+                        },
+                        {
+                            "type": "ChartElement",
+                            "chartType": "kpi",
+                            "url": "/deepScanProject/:projectKey/benchmarking/report"
                         }
                     ]
                 },
