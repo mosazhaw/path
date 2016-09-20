@@ -63,7 +63,7 @@ textarea[readonly-with-required] {
 .loading {
     display : block;
     position : fixed;
-    z-index: 100;
+    z-index: 16777271;
     left : 50%;
     top : 50%;
     border-bottom: 6px solid rgba(0, 0, 0, .1);
