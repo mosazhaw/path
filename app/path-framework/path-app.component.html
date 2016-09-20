@@ -20,6 +20,8 @@
     </div>
 </nav>
 
+<div *ngIf="isLoading()" class="loading"></div>
+
 <!-- Login Form -->
 <div *ngIf="getUserId() == null" class="container-fluid">
 <div class="login jumbotron center-block">

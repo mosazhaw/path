@@ -41,6 +41,10 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     public abstract getBackendUrl():string;
 
+    public isLoading():boolean {
+        return this.pathService.isLoading();
+    }
+
     private loadApplicationTexts() {
         this._texts["Logout"] = this.translationService.getText("Logout");
         this._texts["NotSignedIn"] = this.translationService.getText("NotSignedIn");
