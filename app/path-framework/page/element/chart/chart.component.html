@@ -47,4 +47,29 @@
 
 	</div>
 
+	<div class="panel panel-default" *ngFor="let kpi of chart.data?.calculatedKPIs?.list" width="100%">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{kpi.name}}</h3>
+		</div>
+		<div class="panel-body">
+		</div>
+		<table class="table">
+			<tr>
+				<th>KPI<th>
+				<th class="text-right">Min<th>
+				<th class="text-right">Value<th>
+				<th class="text-right">Max<th>
+				<th class="text-right">Ranking<th>
+			</tr>
+			<tr>
+				<td>{{kpi.name}}<td>
+				<td class="text-right">0<td>
+				<td class="text-right">{{kpi.value}}<td>
+				<td class="text-right">999999<td>
+				<td class="text-right">3/7<td>
+			</tr>
+		</table>
+
+	</div>
+
 </div>
