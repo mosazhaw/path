@@ -169,7 +169,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     switch (modelElement.type) {
                         case "button":
                         case "newButton":
-                            let button = new path.Button(this);
+                            let button = new path.Button(this, this.pathService);
                             button.setIcon(modelElement["icon"]);
                             button.setColor(modelElement["color"]);
                             if (modelElement["form"] != null) {
@@ -187,12 +187,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                             element = button;
                             break;
                         case "deleteButton":
-                            let deleteButton = new path.PageDeleteButton(this.pathService, this, this.translationService);
+                            let deleteButton = new path.PageDeleteButton(this, this.pathService, this.translationService);
                             deleteButton.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             element = deleteButton;
                             break;
                         case "downloadButton":
-                            let downloadButton = new path.DownloadButton(this.pathService, this);
+                            let downloadButton = new path.DownloadButton(this, this.pathService);
                             downloadButton.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             downloadButton.setIcon(modelElement["icon"]);
                             downloadButton.setColor(modelElement["color"]);
@@ -200,7 +200,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             element = downloadButton;
                             break;
                         case "backbutton":
-                            element = new path.BackButton(this, this.translationService);
+                            element = new path.BackButton(this, this.pathService, this.translationService);
                             break;
                         case "inlineForm":
                             let inlineForm = new path.InlineForm(this, this.pathService);

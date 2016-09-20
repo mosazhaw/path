@@ -5,10 +5,8 @@ import {TranslationService} from "../../../service/translation.service";
 
 export class PageDeleteButton extends Button {
 
-    private _url:string;
-
-    constructor(private pathService:PathService, app:IPathApp, protected translationService:TranslationService) {
-        super(app);
+    constructor(app:IPathApp, pathService:PathService, protected translationService:TranslationService) {
+        super(app, pathService);
         this.name = translationService.getText("Delete");
     }
 
@@ -21,11 +19,4 @@ export class PageDeleteButton extends Button {
         }, () => {} );
     }
 
-    get url(): string {
-        return this._url;
-    }
-
-    set url(value: string) {
-        this._url = value;
-    }
 }

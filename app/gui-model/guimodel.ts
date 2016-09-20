@@ -1772,6 +1772,13 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "BenchmarkingAndSimulation",
+                            "icon": "fa-tachometer",
+                            "color": "lime",
+                            "page": "benchmarkingsimulationprojectspage"
+                        },
+                        {
+                            "type": "button",
                             "name": "Reports",
                             "icon": "fa-file",
                             "color": "blue",
@@ -2361,6 +2368,60 @@ export class GuiModel {
                                 "form": "PersonForm"
                             },
                             "url": "/company/:companyKey/person"
+                        }
+                    ]
+                },
+                /* benchmarking & simulation */
+                {
+                    "id": "benchmarkingsimulationprojectspage",
+                    "title": "Projects",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "DeepScan Project List",
+                            "icon": "fa-chevron-down",
+                            "color": "wet-asphalt",
+                            "search": true,
+                            "page": "benchmarkingpage",
+                            "url": "/deepScanProject"
+                        }
+                    ]
+                },
+                {
+                    "id": "benchmarkingpage",
+                    "title": "Benchmarking",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Parameter",
+                            "icon": "fa-chevron-down",
+                            "color": "wet-asphalt",
+                            "search": true,
+                            "page": "benchmarkingparameterpage",
+                            "url": "/deepScanProject/:projectKey/benchmarking/parameter"
+                        }
+                    ]
+                },
+                {
+                    "id": "benchmarkingparameterpage",
+                    "title": "Benchmarking Parameter",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Parameter",
+                            "icon": "fa-chevron-down",
+                            "color": "wet-asphalt",
+                            "search": true,
+                            "url": "/deepScanProject/:projectKey/benchmarking/parameter/:parameterType"
                         }
                     ]
                 },

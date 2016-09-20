@@ -108,8 +108,8 @@
         <a *ngFor='let listElement of pageElement.buttons' (click)="listElement.onClick()" class="fa-links">
             <div *ngIf="listElement.visible" class="thumbnail tile tile-wide tile-{{listElement.color}} col-md-3">
                 <div class="h3 truncate">{{listElement.name}}</div>
-                <span *ngFor='let detail of listElement.details; let last = last;'>
-                    <span class="h4 m-t-5 truncate">{{detail.text}}</span><small [hidden]="last">&nbsp;&bull;&nbsp;</small></span>
+                <span class="truncate" *ngFor='let detail of listElement.details; let last = last;'>
+                    <span class="h4 m-t-5">{{detail.text}}</span><small [hidden]="last">&nbsp;&bull;&nbsp;</small></span>
                 <div class="h4 m-t-5"></div>
                 <i class="fa fa-2x {{listElement.icon}}"></i>
             </div>

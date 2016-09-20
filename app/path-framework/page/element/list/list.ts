@@ -5,6 +5,7 @@ import {PathService} from "../../../service/path.service";
 import {Inject} from "@angular/core";
 import {Key} from "../page-element";
 import {TranslationService} from "../../../service/translation.service";
+import {KeyUtility} from "../../../key-utility";
 
 export class List extends path.PageElement implements IList {
     private _buttons:path.Button[] = [];
@@ -42,7 +43,7 @@ export class List extends path.PageElement implements IList {
                 let itemKey:Key = new Key(item["key"]["key"], item["key"]["name"]);
                 let button:path.Button = this.findButton(itemKey, oldButtons);
                 if (button == null) {
-                    button = new path.Button(this.app);
+                    button = new path.Button(this.app, this.pathService);
                 }
                 // general attributes
                 button.type = "listButton";
@@ -50,9 +51,10 @@ export class List extends path.PageElement implements IList {
                 button.setKey(itemKey);
                 button.handler = this._buttonHandler;
                 button.name = item.name;
-                button.setIcon(this.icon);
-                button.setColor(item["color"] != null ? item["color"] : (button.color == null ? this.color : button.color));
                 button.parentPageElement = this.parentPageElement;
+                button.url = KeyUtility.translateUrl(item["url"] != null ? item["url"] : button.url, null, false, button);
+                button.setIcon(item["icon"] != null ? item["icon"] : (button.icon == null ? this.icon : button.icon));
+                button.setColor(item["color"] != null ? item["color"] : (button.color == null ? this.color : button.color));
                 // button details
                 if (item["details"] != null) {
                     button.details = [];

@@ -1,5 +1,7 @@
 import * as path from '../../../path';
 import {Key} from "../page-element";
+import {PathService} from "../../../service/path.service";
+import {IPathApp} from "../../../pathinterface";
 
 export class Button extends path.PageElement implements path.IButton {
     private _icon:string;
@@ -9,14 +11,25 @@ export class Button extends path.PageElement implements path.IButton {
     private _details:path.ButtonDetail[] = [];
 
     // TODO refactor prototype stuff
+    private _url:string;
     private _page:string;
     private _form:string;
     private _formHandler:string;
+
+    constructor(app:IPathApp, protected pathService:PathService) {
+        super(app);
+    }
 
     public onClick() {
         if (this._handler != null) {
             this._handler.doClick(this);
             return;
+        }
+
+        if (this._url != null) {
+            this.pathService.serverGet(this.app.getBackendUrl(), this._url, () => {
+                this.app.refreshCurrentPage();
+            }, null);
         }
 
         if (this._page != null) {
@@ -128,5 +141,13 @@ export class Button extends path.PageElement implements path.IButton {
 
     set visible(value: boolean) {
         this._visible = value;
+    }
+
+    get url(): string {
+        return this._url;
+    }
+
+    set url(value: string) {
+        this._url = value;
     }
 }

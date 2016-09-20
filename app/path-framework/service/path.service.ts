@@ -139,6 +139,7 @@ export class PathService {
     }
 
     private handleError(err) {
+        this.hideLoading();
         if (err.status == 401) {
             alert("Unauthorized. Please login again.");
             location.reload();
