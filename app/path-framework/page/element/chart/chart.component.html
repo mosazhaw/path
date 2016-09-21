@@ -32,10 +32,10 @@
 		</div>
 		<table class="table">
 			<tr>
-				<th>Capability<th>
-				<th class="text-right">Actual<th>
-				<th class="text-right">Target<th>
-				<th class="text-right">Gap<th>
+				<th class="col-md-9">Capability<th>
+				<th class="col-md-1 text-right">Actual<th>
+				<th class="col-md-1 text-right">Target<th>
+				<th class="col-md-1 text-right">Gap<th>
 			</tr>
 			<tr *ngFor="let question of category.questions.list">
 				<td>{{question.name}}<td>
@@ -70,11 +70,11 @@
 		</div>
 		<table class="table">
 			<tr>
-				<th>KPI<th>
-				<th class="text-right">Min<th>
-				<th class="text-right">Value<th>
-				<th class="text-right">Max<th>
-				<th class="text-right">Ranking<th>
+				<th class="col-md-8" >KPI<th>
+				<th class="col-md-1" class="text-right">Min<th>
+				<th class="col-md-1" class="text-right">Value<th>
+				<th class="col-md-1" class="text-right">Max<th>
+				<th class="col-md-1" class="text-right">Ranking<th>
 			</tr>
 			<tr>
 				<td>{{kpi.name}}<td>
