@@ -5,6 +5,8 @@ import {IPathApp} from "../../../pathinterface";
 
 declare var Chart: any;
 
+// Note: Chart would be an example for a custom path element contributed by a path user
+
 @Component({
     selector: 'path-radar-chart',
     templateUrl: 'app/path-framework/page/element/chart/chart.component.html'
@@ -22,7 +24,6 @@ export class ChartComponent implements AfterViewInit {
 }
 
 export class ChartElement extends PageElement {
-    private _chartType:string;
     private _url:string;
     private _data:any;
 
@@ -34,14 +35,6 @@ export class ChartElement extends PageElement {
         this.pathService.serverGet(this.app.getBackendUrl(), this.url, loader, (err:any) => {
             console.log("error" + err);
         })
-    }
-
-    get chartType():string {
-        return this._chartType;
-    }
-
-    set chartType(value:string) {
-        this._chartType = value;
     }
 
     get url(): string {

@@ -27,7 +27,8 @@
 		</div>
 		<div class="panel-body">
 			<p align="center">
-				<img width="600" src="data:image/png;base64,{{category.spider}}"/>
+				<img *ngIf="category.spider != null" width="600" src="data:image/png;base64,{{category.spider}}"/>
+				<img *ngIf="category.stackedBar != null" width="600" src="data:image/png;base64,{{category.stackedBar}}"/>
 			</p>
 		</div>
 		<table class="table">

@@ -2415,7 +2415,6 @@ export class GuiModel {
                         },
                         {
                             "type": "ChartElement",
-                            "chartType": "kpi",
                             "url": "/deepScanProject/:projectKey/benchmarking/report"
                         }
                     ]
@@ -2560,7 +2559,7 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
-                            "name": "Gap Analysis",
+                            "name": "GapReport",
                             "icon": "fa-bar-chart",
                             "color": "carrot",
                             "width": 2,
@@ -2634,23 +2633,22 @@ export class GuiModel {
                         },
                         {
                             "type": "ChartElement",
-                            "chartType": "radar",
                             "name": "SpiderReport",
-                            "url": "/quickScanProject/:projectKey/report"
+                            "url": "/quickScanProject/:projectKey/report/spider"
                         }
                     ]
                 },
                 {
                     "id": "gapreportpage",
-                    "title": "Gap Report",
+                    "title": "GapReport",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "ChartElement",
-                            "chartType": "bar",
-                            "name": "Gap Report"
+                            "name": "GapReport",
+                            "url": "/quickScanProject/:projectKey/report/stackedBar"
                         }
                     ]
                 },
