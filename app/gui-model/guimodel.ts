@@ -2476,9 +2476,25 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "alizarin",
                             "url" : "/deepScanProject/:projectKey/simulation/kpi",
+                            "page": "simulationparameterpage"
+                        }
+                    ]
+                },
+                {
+                    "id": "simulationparameterpage",
+                    "title": "Simulation",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Key Performance Indicator",
+                            "icon": "fa-pencil",
+                            "color": "alizarin",
+                            "url" : "/deepScanProject/:projectKey/simulation/kpi/:kpiKey/inputParameter",
                             "form": {
-                                "form": "KPIAnswerForm",
-                                "handler": "KPIQuestionFormHandler"
+                                "form": "InputParameterAnswerForm",
                             },
                         }
                     ]
