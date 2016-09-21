@@ -2459,7 +2459,7 @@ export class GuiModel {
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
                             "page": "simulationkpipage",
-                            "url": "/deepScanProject"
+                            "url": "/deepScanProject/:projectKey/simulation"
                         }
                     ]
                 },
