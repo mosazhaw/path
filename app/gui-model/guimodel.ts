@@ -2475,7 +2475,11 @@ export class GuiModel {
                             "name": "Key Performance Indicator",
                             "icon": "fa-tachometer",
                             "color": "alizarin",
-                            "url" : "/deepScanProject/:projectKey/simulation/kpi"
+                            "url" : "/deepScanProject/:projectKey/simulation/kpi",
+                            "form": {
+                                "form": "KPIAnswerForm",
+                                "handler": "KPIQuestionFormHandler"
+                            },
                         }
                     ]
                 },
