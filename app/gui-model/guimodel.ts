@@ -2398,11 +2398,18 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
+                            "type": "button",
+                            "name": "Simulation",
+                            "icon": "fa-simplybuilt",
+                            "color": "orange",
+                            "page": "simulationpage",
+                        },
+                        {
                             "type": "list",
                             "name": "Parameter",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
-                            "search": true,
+                            "search": false,
                             "page": "benchmarkingparameterpage",
                             "url": "/deepScanProject/:projectKey/benchmarking/parameter"
                         },
@@ -2427,6 +2434,48 @@ export class GuiModel {
                             "color": "wet-asphalt",
                             "search": true,
                             "url": "/deepScanProject/:projectKey/benchmarking/parameter/:parameterType"
+                        }
+                    ]
+                },
+                {
+                    "id": "simulationpage",
+                    "title": "Simulation",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewSimulation",
+                            "icon": "fa-simplybuilt",
+                            "color": "green",
+                            "form": {
+                                "form": "DeepScanProjectForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "DeepScans List",
+                            "icon": "fa-chevron-down",
+                            "color": "wet-asphalt",
+                            "page": "simulationkpipage",
+                            "url": "/deepScanProject"
+                        }
+                    ]
+                },
+                {
+                    "id": "simulationkpipage",
+                    "title": "Simulation",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Key Performance Indicator",
+                            "icon": "fa-tachometer",
+                            "color": "alizarin",
+                            "url" : "/deepScanProject/:projectKey/simulation/kpi"
                         }
                     ]
                 },
