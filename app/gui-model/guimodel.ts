@@ -91,20 +91,18 @@ export class GuiModel {
                             ]
                         },
                         {
-                            "id": "monitoring",
-                            "type": "RadioGroupField",
-                            "name": "Monitoring",
-                            "defaultKey": false,
-                            "radios": [{
-                                type: "radio",
-                                name: "Yes",
-                                key: true
-                            }, {
-                                type: "radio",
-                                name: "No",
-                                key: false
-                            }
-                            ]
+                            "id": "background",
+                            "type": "text",
+                            "name": "Background",
+                            "height": 2,
+                            "width": 2
+                        },
+                        {
+                            "id": "target",
+                            "type": "text",
+                            "name": "Target",
+                            "height": 2,
+                            "width": 2
                         },
                         {
                             "id": "comments",
@@ -204,20 +202,18 @@ export class GuiModel {
                             ]
                         },
                         {
-                            "id": "monitoring",
-                            "type": "RadioGroupField",
-                            "name": "Monitoring",
-                            "defaultKey": false,
-                            "radios": [{
-                                type: "radio",
-                                name: "Yes",
-                                key: true
-                            }, {
-                                type: "radio",
-                                name: "No",
-                                key: false
-                            }
-                            ]
+                            "id": "background",
+                            "type": "text",
+                            "name": "Background",
+                            "height": 2,
+                            "width": 2
+                        },
+                        {
+                            "id": "target",
+                            "type": "text",
+                            "name": "ProjectTarget",
+                            "height": 2,
+                            "width": 2
                         },
                         {
                             "id": "comments",
