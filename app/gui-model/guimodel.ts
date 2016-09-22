@@ -1828,7 +1828,6 @@ export class GuiModel {
                             "color": "alizarin",
                             "search": true,
                             "page": "quickscanpage",
-                            "handler": "QuickScanListHandler",
                             "url": "/quickScanProject"
                         }
                     ]

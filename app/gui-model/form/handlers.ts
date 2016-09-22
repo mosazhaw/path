@@ -1,22 +1,6 @@
 import * as forms from './../generated/forms';
 import * as path from './../../path-framework/pathinterface';
 
-export class CompanyFormHandler implements path.IFormHandler {
-
-    public doLoad(form:forms.CompanyForm) {
-        console.log("loading company form");
-    }
-
-    public doSave(form:forms.CompanyForm) {
-        console.log("saving company form");
-    }
-
-    public doValidate(form:forms.CompanyForm) {
-        console.log("validating company form");
-    }
-
-}
-
 export class KPIQuestionFormHandler implements path.IFormHandler {
 
     public doLoad(form:forms.KPIAnswerForm) {
@@ -60,14 +44,6 @@ export class PersonActionHandler implements path.IActionHandler {
     doClick(field:path.IFormField, action:path.IAction) {
         console.log("action clicked " + field["name"]);
         field.getForm().getApp().setCurrentForm("PersonForm", null, null, null);
-    }
-
-}
-
-export class QuickScanListHandler implements path.IListHandler {
-
-    doLoad(list:path.IList) {
-        console.log("loading quickscan projects list");
     }
 
 }
