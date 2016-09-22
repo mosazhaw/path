@@ -2,7 +2,7 @@ export class GuiModel {
 
     private _guiModel = {
         "application": {
-            "title": "Assessment Tool",
+            "title": "Deloitte Assessment Tool",
             "formList": [
                 {
                     "id": "QuickScanProjectForm",

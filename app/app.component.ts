@@ -16,11 +16,10 @@ import {TranslationService} from "./path-framework/service/translation.service";
 })
 export class AppComponent extends path.PathAppComponent {
 
-    private _appConfig;
+    private _appConfig = new GuiModel();
 
     constructor(pathService: path.PathService, translationService: TranslationService) {
         super(pathService, translationService);
-        this._appConfig = new GuiModel();
     }
 
     protected getStartPage():string {
@@ -32,7 +31,10 @@ export class AppComponent extends path.PathAppComponent {
     }
 
     protected getGuiModel() {
-        return this._appConfig.guiModel;
+        if (this._appConfig != null) {
+            return this._appConfig.guiModel;
+        }
+        return null;
     }
 
     public getBackendUrl() {
