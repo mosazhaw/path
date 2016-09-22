@@ -159,9 +159,9 @@ export abstract class PathAppComponent implements path.IPathApp {
             if (modelPage.id == pageId) {
                 page = new path.Page();
                 page.id = pageId;
-                page.title = this.translationService.getText(modelPage.title);
+                page.name = this.translationService.getText(modelPage.name);
                 if (parentPageElement != null) {
-                    page.title = parentPageElement.name;
+                    page.name = parentPageElement.name;
                 }
                 for (var modelElement of modelPage.elementList) {
                     // element

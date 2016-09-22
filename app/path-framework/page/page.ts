@@ -1,16 +1,23 @@
 import * as path from './../path';
 
 export class Page {
-    private _title:string;
+    private _name:string;
     private _id:string;
     private _content:path.PageElement[] = [];
 
-    get title():string {
-        return this._title;
+    public getShortName():string {
+        if (this.name.length > 23) {
+            return this.name.substr(0, 20) + "...";
+        }
+        return this.name;
     }
 
-    set title(value:string) {
-        this._title = value;
+    get name():string {
+        return this._name;
+    }
+
+    set name(value:string) {
+        this._name = value;
     }
 
     get content():path.PageElement[] {

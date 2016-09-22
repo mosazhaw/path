@@ -1752,7 +1752,7 @@ export class GuiModel {
             "pageList": [
                 {
                     "id": "mainmenu",
-                    "title": "MainMenu",
+                    "name": "MainMenu",
                     "elementList": [
                         {
                             "type": "button",
@@ -1807,7 +1807,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanspage",
-                    "title": "QuickScan",
+                    "name": "QuickScan",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -1835,7 +1835,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanpage",
-                    "title": "QuickScan",
+                    "name": "QuickScan",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -1874,7 +1874,7 @@ export class GuiModel {
                 },
                 {
                     "id": "projectindustryclassificationspage",
-                    "title": "IndustryClassifications",
+                    "name": "IndustryClassifications",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -1893,7 +1893,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanintervieweespage",
-                    "title": "Interviewees",
+                    "name": "Interviewees",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -1920,7 +1920,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscancategoriespage",
-                    "title": "Categories",
+                    "name": "Categories",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -1939,7 +1939,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanintervieweecategoriespage",
-                    "title": "Interviewee Categories",
+                    "name": "Interviewee Categories",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -1969,7 +1969,7 @@ export class GuiModel {
                 },
                 {
                     "id": "categorycapabilitiespage",
-                    "title": "Capabilities",
+                    "name": "Capabilities",
                     "elementList": [
                         {
                             "type": "inlineForm",
@@ -1980,7 +1980,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanspage",
-                    "title": "DeepScan",
+                    "name": "DeepScan",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2007,7 +2007,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanpage",
-                    "title": "Interviewees",
+                    "name": "Interviewees",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2046,7 +2046,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanintervieweespage",
-                    "title": "Interviewees",
+                    "name": "Interviewees",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2072,7 +2072,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansupportprocessespage",
-                    "title": "SupportProcesses",
+                    "name": "SupportProcesses",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2100,7 +2100,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanintervieweesupportprocessespage",
-                    "title": "Interviewee Support Processes",
+                    "name": "Interviewee Support Processes",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2121,7 +2121,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanintervieweesubprocessespage",
-                    "title": "Interviewee Subprocesses",
+                    "name": "Interviewee Subprocesses",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2152,7 +2152,7 @@ export class GuiModel {
                 },
                 {
                     "id": "supportprocessquestionspage",
-                    "title": "Questions",
+                    "name": "Questions",
                     "elementList": [
                         {
                             "type": "inlineForm",
@@ -2163,7 +2163,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansupportprocessintervieweeinputparameterspage",
-                    "title": "Interviewee Input Parameters",
+                    "name": "Interviewee Input Parameters",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2189,7 +2189,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansupportprocessintervieweekpispage",
-                    "title": "Interviewee KPIs",
+                    "name": "Interviewee KPIs",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2209,7 +2209,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanintervieweesubprocesspage",
-                    "title": "Intverviewee Subprocesses",
+                    "name": "Intverviewee Subprocesses",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2232,7 +2232,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansubprocessintervieweeinputparameterspage",
-                    "title": "Interviewee Input Parameters",
+                    "name": "Interviewee Input Parameters",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2258,7 +2258,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansubprocessintervieweekpispage",
-                    "title": "Interviewee KPIs",
+                    "name": "Interviewee KPIs",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2278,7 +2278,7 @@ export class GuiModel {
                 },
                 {
                     "id": "subprocessquestionspage",
-                    "title": "Questions",
+                    "name": "Questions",
                     "elementList": [
                         {
                             "type": "inlineForm",
@@ -2290,7 +2290,7 @@ export class GuiModel {
                 /* companies */
                 {
                     "id": "companiespage",
-                    "title": "Companies",
+                    "name": "Companies",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2318,7 +2318,7 @@ export class GuiModel {
                 /* persons */
                 {
                     "id": "personspage",
-                    "title": "Persons",
+                    "name": "Persons",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2347,7 +2347,7 @@ export class GuiModel {
                 },
                 {
                     "id": "companypersonspage",
-                    "title": "Company - Persons",
+                    "name": "Company - Persons",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2386,7 +2386,7 @@ export class GuiModel {
                 /* benchmarking & simulation */
                 {
                     "id": "benchmarkingsimulationprojectspage",
-                    "title": "Projects",
+                    "name": "Projects",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2404,7 +2404,7 @@ export class GuiModel {
                 },
                 {
                     "id": "benchmarkingpage",
-                    "title": "Benchmarking",
+                    "name": "Benchmarking",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2433,7 +2433,7 @@ export class GuiModel {
                 },
                 {
                     "id": "benchmarkingparameterpage",
-                    "title": "Benchmarking Parameter",
+                    "name": "Benchmarking Parameter",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2450,7 +2450,7 @@ export class GuiModel {
                 },
                 {
                     "id": "simulationpage",
-                    "title": "Simulation",
+                    "name": "Simulation",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2476,7 +2476,7 @@ export class GuiModel {
                 },
                 {
                     "id": "simulationkpipage",
-                    "title": "Simulation",
+                    "name": "Simulation",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2493,7 +2493,7 @@ export class GuiModel {
                 },
                 {
                     "id": "simulationparameterpage",
-                    "title": "Simulation",
+                    "name": "Simulation",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2513,7 +2513,7 @@ export class GuiModel {
                 /* reports */
                 {
                     "id": "reportcompaniespage",
-                    "title": "Companies",
+                    "name": "Companies",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2531,7 +2531,7 @@ export class GuiModel {
                 },
                 {
                     "id": "companyprojectspage",
-                    "title": "Company Projects",
+                    "name": "Company Projects",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2556,7 +2556,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanreportspage",
-                    "title": "Reports",
+                    "name": "Reports",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2605,7 +2605,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanreportspage",
-                    "title": "Reports",
+                    "name": "Reports",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2646,7 +2646,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanspiderreportpage",
-                    "title": "Spider Report",
+                    "name": "Spider Report",
                     "elementList": [
                         {
                             "type": "ChartElement",
@@ -2657,7 +2657,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscangapreportpage",
-                    "title": "GapReport",
+                    "name": "GapReport",
                     "elementList": [
                         {
                             "type": "ChartElement",
@@ -2668,7 +2668,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanspiderreportpage",
-                    "title": "Spider Report",
+                    "name": "Spider Report",
                     "elementList": [
                         {
                             "type": "ChartElement",
@@ -2679,7 +2679,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscangapreportpage",
-                    "title": "GapReport",
+                    "name": "GapReport",
                     "elementList": [
                         {
                             "type": "ChartElement",
@@ -2691,7 +2691,7 @@ export class GuiModel {
                 /* admin */
                 {
                     "id": "adminpage",
-                    "title": "Administration",
+                    "name": "Administration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2716,7 +2716,7 @@ export class GuiModel {
                 },
                 {
                     "id": "userspage",
-                    "title": "User",
+                    "name": "User",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2745,7 +2745,7 @@ export class GuiModel {
                 },
                 {
                     "id": "configurationpage",
-                    "title": "Configuration",
+                    "name": "Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2794,7 +2794,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscanconfigurationpage",
-                    "title": "QuickScan Configuration",
+                    "name": "QuickScan Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2811,7 +2811,7 @@ export class GuiModel {
                 },
                 {
                     "id": "countriesconfigurationpage",
-                    "title": "Countries Configuration",
+                    "name": "Countries Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2840,7 +2840,7 @@ export class GuiModel {
                 },
                 {
                     "id": "industryclassificationsconfigurationpage",
-                    "title": "Industry Classification Configuration",
+                    "name": "Industry Classification Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2869,7 +2869,7 @@ export class GuiModel {
                 },
                 {
                     "id": "maturitylevelschemasconfigurationpage",
-                    "title": "Maturity Levels Schema Configuration",
+                    "name": "Maturity Levels Schema Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2897,7 +2897,7 @@ export class GuiModel {
                 },
                 {
                     "id": "maturitylevelsconfigurationpage",
-                    "title": "Maturity Levels Configuration",
+                    "name": "Maturity Levels Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2937,7 +2937,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscancasesconfigurationpage",
-                    "title": "QuickScan Cases",
+                    "name": "QuickScan Cases",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2964,7 +2964,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscancategoriesconfigurationpage",
-                    "title": "Categories",
+                    "name": "Categories",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3000,7 +3000,7 @@ export class GuiModel {
                 },
                 {
                     "id": "quickscancategoryconfigurationpage",
-                    "title": "Category",
+                    "name": "Category",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3038,7 +3038,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscanconfigurationpage",
-                    "title": "Configuration",
+                    "name": "Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3082,7 +3082,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansupportprocessesconfigurationpage",
-                    "title": "SupportProcesses",
+                    "name": "SupportProcesses",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3109,7 +3109,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansupportprocessconfigurationpage",
-                    "title": "SupportProcesses",
+                    "name": "SupportProcesses",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3164,7 +3164,7 @@ export class GuiModel {
                 },
                 {
                     "id": "deepscansubprocessconfigurationpage",
-                    "title": "Subprocess Configuration",
+                    "name": "Subprocess Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3201,7 +3201,7 @@ export class GuiModel {
                 },
                 {
                     "id": "kpisconfigurationpage",
-                    "title": "Key Performance Indicators",
+                    "name": "Key Performance Indicators",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3228,7 +3228,7 @@ export class GuiModel {
                 },
                 {
                     "id": "kpiconfigurationpage",
-                    "title": "Key Performance Indicators",
+                    "name": "Key Performance Indicators",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3303,7 +3303,7 @@ export class GuiModel {
                 },
                 {
                     "id": "kpicategoriesconfigurationpage",
-                    "title": "KPICategories",
+                    "name": "KPICategories",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3331,7 +3331,7 @@ export class GuiModel {
                 },
                 {
                     "id": "inputparametersconfigurationpage",
-                    "title": "InputParameters",
+                    "name": "InputParameters",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3360,7 +3360,7 @@ export class GuiModel {
                 },
                 {
                     "id": "unitsconfigurationpage",
-                    "title": "Units",
+                    "name": "Units",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3388,7 +3388,7 @@ export class GuiModel {
                 },
                 {
                     "id": "reportsconfigurationpage",
-                    "title": "Report Configuration",
+                    "name": "Report Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3411,7 +3411,7 @@ export class GuiModel {
                 },
                 {
                     "id": "reportassessmentconfigurationpage",
-                    "title": "Report Chapter Configuration",
+                    "name": "Report Chapter Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -3420,7 +3420,7 @@ export class GuiModel {
                 },
                 {
                     "id": "reporthandbookconfigurationpage",
-                    "title": "Report Chapter Configuration",
+                    "name": "Report Chapter Configuration",
                     "elementList": [
                         {
                             "type": "backbutton",

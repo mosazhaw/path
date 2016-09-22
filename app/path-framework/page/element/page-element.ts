@@ -14,6 +14,13 @@ export class PageElement implements IPageElement {
         this._app = app;
     }
 
+    public getShortName():string {
+        if (this.name.length > 23) {
+            return this.name.substr(0, 20) + "...";
+        }
+        return this.name;
+    }
+
     get app():path.IPathApp {
         return this._app;
     }
