@@ -15,6 +15,7 @@ export class TextFieldComponent {
 export class TextField extends ValueField<string> {
 
     private _isPassword:boolean = false;
+    private _maxLength:number = 250;
 
     get isPassword(): boolean {
         return this._isPassword;
@@ -24,10 +25,21 @@ export class TextField extends ValueField<string> {
         this._isPassword = value;
     }
 
+    get maxLength(): number {
+        return this._maxLength;
+    }
+
+    set maxLength(value: number) {
+        this._maxLength = value;
+    }
+
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
         if (modelFormField["isPassword"] != null) {
             this.isPassword = (modelFormField["isPassword"]);
+        }
+        if (modelFormField["maxLength"] != null) {
+            this.maxLength = (modelFormField["maxLength"]);
         }
     }
 

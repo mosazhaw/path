@@ -94,6 +94,7 @@ export class GuiModel {
                             "id": "background",
                             "type": "text",
                             "name": "Background",
+                            "maxLength": 4000,
                             "height": 2,
                             "width": 2
                         },
@@ -101,6 +102,7 @@ export class GuiModel {
                             "id": "target",
                             "type": "text",
                             "name": "Target",
+                            "maxLength": 4000,
                             "height": 2,
                             "width": 2
                         },
@@ -108,6 +110,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
+                            "maxLength": 4000,
                             "height": 4,
                             "width": 2
                         },
@@ -205,6 +208,7 @@ export class GuiModel {
                             "id": "background",
                             "type": "text",
                             "name": "Background",
+                            "maxLength": 4000,
                             "height": 2,
                             "width": 2
                         },
@@ -212,6 +216,7 @@ export class GuiModel {
                             "id": "target",
                             "type": "text",
                             "name": "ProjectTarget",
+                            "maxLength": 4000,
                             "height": 2,
                             "width": 2
                         },
@@ -219,6 +224,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
+                            "maxLength": 4000,
                             "height": 4,
                             "width": 2
                         },
@@ -282,6 +288,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
+                            "maxLength": 4000,
                             "height": 4,
                             "width": 2
                         },
@@ -396,6 +403,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Comments",
                             "newRow": true,
+                            "maxLength": 4000,
                             "height": 4,
                             "width": 2
                         },
@@ -465,6 +473,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Comments",
                             "newRow": true,
+                            "maxLength": 4000,
                             "height": 4,
                             "width": 2
                         },
@@ -1011,6 +1020,7 @@ export class GuiModel {
                             "id": "replacedFormula",
                             "type": "text",
                             "name": "Formula",
+                            "maxLength": 4000,
                             "height": 4,
                             "width": 2,
                             "required": true
@@ -1019,6 +1029,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
+                            "maxLength": 4000,
                             "height": 4,
                             "width": 2
                         },
@@ -1431,6 +1442,7 @@ export class GuiModel {
                             "id": "replacedFormula",
                             "type": "text",
                             "name": "Formula",
+                            "maxLength": 4000,
                             "width": 2,
                             "height": 4,
                             "readonly": true,
@@ -1445,6 +1457,7 @@ export class GuiModel {
                             "type": "text",
                             "name": "Comments",
                             "newRow": true,
+                            "maxLength": 4000,
                             "width": 2,
                             "height": 4
                         },
@@ -1578,6 +1591,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
+                            "maxLength": 4000,
                             "height": 2,
                             "width": 2
                         },
@@ -1645,6 +1659,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
+                            "maxLength": 4000,
                             "height": 2,
                             "width": 2
                         },
@@ -1712,6 +1727,7 @@ export class GuiModel {
                             "id": "comments",
                             "type": "text",
                             "name": "Comments",
+                            "maxLength": 4000,
                             "height": 2,
                             "width": 2
                         },
