@@ -118,7 +118,7 @@ export abstract class PathAppComponent implements path.IPathApp {
     public yesNo(text:string, yesHandler : () => void, noHandler : () => void) {
         let form:path.Form = new path.Form(this.pathService, this);
         form.formFunction = new FormFunction();
-        form.formFunction.save = () => {
+        form.formFunction.save = (data:any) => {
             this.closeCurrentForm();
             this.refreshCurrentPage();
         };
@@ -361,7 +361,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                         }
                         case "autocomplete":
                         {
-                            let autoCompleteFormField = new autocomplete.AutoCompleteField(form, this.translationService);
+                            let autoCompleteFormField = new autocomplete.AutoCompleteField(form, this.translationService, this.pathService);
+                            autoCompleteFormField.detailForm = modelFormField["form"];
+                            autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
                             if (modelFormField["data"] != null) {
                                 let data = [];
                                 let k:number = 0;
@@ -377,22 +379,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                             }
                             else if (modelFormField["url"] != null) {
                                 let autoCompleteFormFieldUrl:string = KeyUtility.translateUrl(modelFormField["url"], form.key, false, parentPageElement);
-                                this.pathService.serverGet(this.getBackendUrl(), autoCompleteFormFieldUrl, (data:any) => {
-                                    let dynamicData = [];
-                                    for (let item of data) {
-                                        let entry = new AutoCompleteFieldEntry();
-                                        entry.key = item["key"]["key"];
-                                        entry.text = item["name"];
-                                        dynamicData.push(entry);
-                                    }
-                                    autoCompleteFormField.data = dynamicData;
-                                    autoCompleteFormField.dataLoaded = true;
-                                }, null);
+                                autoCompleteFormField.url = autoCompleteFormFieldUrl;
+                                autoCompleteFormField.load();
                             }
                             else {
                                 autoCompleteFormField.dataLoaded = true;
                             }
-                            autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
                             formField = autoCompleteFormField;
                             formField.fromJson(modelFormField);
                             break;
@@ -487,17 +479,6 @@ export abstract class PathAppComponent implements path.IPathApp {
                             } else {
                                 pageElement = pageElement.getParent();
                             }
-                        }
-                    }
-                    // form field actions
-                    if (modelFormField["actions"] != null) {
-                        for (var actionModel of modelFormField["actions"]) {
-                            let action:path.Action = new path.Action();
-                            action.name = actionModel.name;
-                            if (actionModel["handler"] != null && this.getHandlers()[actionModel["handler"]] != null) {
-                                action.handler = new (this.getHandlers()[actionModel["handler"]]);
-                            }
-                            formField.actions.push(action);
                         }
                     }
                     form.fields.push(formField);

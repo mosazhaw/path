@@ -9,8 +9,8 @@
                 </div>
             </div>
             <!-- Action -->
-            <span class="input-group-btn" *ngFor='let action of field.actions'>
-                <button [disabled]="field.isReadonly()" (click)="action.handler == null ? {} : action.handler.doClick(field,action)" class="btn btn-default" type="button">{{action.name}}</button>
+            <span class="input-group-btn">
+                <button *ngIf="field.detailForm != null" (click)="field.showDetailForm()" class="btn btn-default" type="button">{{field.getDetailButtonName()}}</button>
             </span>
         </div>
 </div>

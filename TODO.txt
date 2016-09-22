@@ -9,7 +9,6 @@ Assessment App / Fragen
 
 Path Framework Prio1
 - DatePicker
-- Actions auf AutoCompleteFields
 
 Path Framework Prio2
 - Separation of Framework/Project Frontend

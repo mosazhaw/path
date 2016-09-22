@@ -57,7 +57,7 @@ export class TranslationField extends ValueField<any[][]> {
         let translationFields:TextField[] = [];
         form.title = this.name + " " + this.translationService.getText("Translations");
         form.formFunction = new FormFunction();
-        form.formFunction.save = () => {
+        form.formFunction.save = (data:any) => {
             let resultList:any[][] = [];
             for (let field of translationFields) {
                 resultList.push([{"key": field.id}, field.value]);

@@ -2,8 +2,8 @@ import {IFormFunction} from "../pathinterface";
 export class FormFunction implements IFormFunction {
 
     private _cancel:()=>void;
-    private _save:()=>void;
-    private _delete:()=>void;
+    private _save:(data:any)=>void;
+    private _delete:(data:any)=>void;
 
     get cancel(): ()=>void {
         return this._cancel;
@@ -13,19 +13,19 @@ export class FormFunction implements IFormFunction {
         this._cancel = value;
     }
 
-    get save(): ()=>void {
+    get save(): (data:any)=>void {
         return this._save;
     }
 
-    set save(value: ()=>void) {
+    set save(value: (data:any)=>void) {
         this._save = value;
     }
 
-    get delete(): ()=>void {
+    get delete(): (data:any)=>void {
         return this._delete;
     }
 
-    set delete(value: ()=>void) {
+    set delete(value: (data:any)=>void) {
         this._delete = value;
     }
 }

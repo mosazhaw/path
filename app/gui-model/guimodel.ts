@@ -21,7 +21,6 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Case",
                             "wordSearchEnabled": false,
-                            "actions": [],
                             "url": "/quickScanCase",
                             "width": 2,
                             "required": true
@@ -41,7 +40,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,
-                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
+                            "form": "CompanyForm",
                             "url": "/company",
                             "newRow": true,
                             "required": true
@@ -51,7 +50,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "CustomerPL",
                             "wordSearchEnabled": true,
-                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
+                            "form": "PersonForm",
                             "url": "/person",
                             "required": true
                         },
@@ -60,7 +59,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "ServiceProvider",
                             "wordSearchEnabled": true,
-                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
+                            "form": "CompanyForm",
                             "url": "/company",
                             "newRow": true,
                             "required": true
@@ -70,7 +69,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "ServiceProviderPL",
                             "wordSearchEnabled": true,
-                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
+                            "form": "PersonForm",
                             "url": "/person",
                             "required": true
                         },
@@ -155,7 +154,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Customer",
                             "wordSearchEnabled": true,
-                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
+                            "form": "CompanyForm",
                             "url": "/company",
                             "newRow": true,
                             "required": true
@@ -165,7 +164,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "CustomerPL",
                             "wordSearchEnabled": true,
-                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
+                            "form": "PersonForm",
                             "url": "/person",
                             "required": true
                         },
@@ -174,7 +173,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "ServiceProvider",
                             "wordSearchEnabled": true,
-                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
+                            "form": "CompanyForm",
                             "url": "/company",
                             "newRow": true,
                             "required": true
@@ -184,7 +183,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "ServiceProviderPL",
                             "wordSearchEnabled": true,
-                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
+                            "form": "PersonForm",
                             "url": "/person",
                             "required": true
                         },
@@ -279,7 +278,6 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "defaultKey": "countryKey",
                             "readonly": false,
-                            "actions": [],
                             "url": "/country",
                             "width": 2,
                             "required": true
@@ -338,11 +336,11 @@ export class GuiModel {
                         {
                             "id":   "company",
                             "type": "autocomplete",
-                            "name": "Customer",
+                            "name": "Company",
                             "wordSearchEnabled": true,
                             "defaultKey": "companyKey",
                             "readonly": true,
-                            "actions": [{"handler": "CompanyActionHandler", "name": "New..."}],
+                            "form": "CompanyForm",
                             "url": "/company",
                             "width": 2,
                             "required": true
@@ -382,7 +380,6 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "defaultKey": "countryKey",
                             "readonly": false,
-                            "actions": [],
                             "url": "/country",
                             "width": 2,
                             "required": true
@@ -432,8 +429,8 @@ export class GuiModel {
                             "name": "Person",
                             "wordSearchEnabled": true,
                             "defaultKey": "personKey",
+                            "form": "PersonForm",
                             "readonly": true,
-                            "actions": [],
                             "url": "/person",
                             "width": 2,
                             "newRow": true,
@@ -463,7 +460,6 @@ export class GuiModel {
                             "name": "Language",
                             "wordSearchEnabled": true,
                             "defaultKey": "languageKey",
-                            "actions": [],
                             "url": "/language",
                             "width": 2,
                             "required": true
@@ -503,7 +499,6 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "defaultKey": "personKey",
                             "readonly": true,
-                            "actions": [],
                             "url": "/person",
                             "width": 2,
                             "newRow": true,
@@ -533,7 +528,6 @@ export class GuiModel {
                             "name": "Language",
                             "wordSearchEnabled": true,
                             "defaultKey": "languageKey",
-                            "actions": [],
                             "url": "/language",
                             "width": 2,
                             "required": true
@@ -558,7 +552,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Person",
                             "wordSearchEnabled": true,
-                            "actions": [{"handler": "PersonActionHandler", "name": "New..."}],
+                            "form": "PersonForm",
                             "url": "/project/:projectKey/customer/person",
                             "width": 2,
                             "required": true
@@ -630,7 +624,6 @@ export class GuiModel {
                             "required": true,
                             "readonly": true,
                             "defaultKey": "quickScanCaseKey",
-                            "actions": [],
                             "url": "/quickScanCase",
                             "width": 2
                         },
@@ -640,7 +633,6 @@ export class GuiModel {
                             "name": "MaturityLevelSchema",
                             "wordSearchEnabled": false,
                             "required": true,
-                            "actions": [],
                             "url": "/maturityLevelSchema",
                             "width": 2
                         },
@@ -677,7 +669,6 @@ export class GuiModel {
                             "required": true,
                             "readonly": true,
                             "defaultKey": "quickScanCategoryKey",
-                            "actions": [],
                             "url": "/quickScanCategory",
                             "width": 2
                         },
@@ -710,7 +701,6 @@ export class GuiModel {
                             "required": true,
                             "readonly": true,
                             "defaultKey": "industryClassificationKey",
-                            "actions": [],
                             "url": "/industryClassification",
                             "width": 2
                         },
@@ -780,7 +770,6 @@ export class GuiModel {
                             "required": true,
                             "readonly": true,
                             "defaultKey": "deepScanSupportProcessKey",
-                            "actions": [],
                             "url": "/deepScanSupportProcess",
                             "width": 2
                         },
@@ -814,7 +803,6 @@ export class GuiModel {
                             "required": true,
                             "readonly": true,
                             "defaultKey": "deepScanSupportProcessKey",
-                            "actions": [],
                             "url": "/deepScanSupportProcess",
                             "width": 2
                         },
@@ -852,7 +840,6 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "defaultKey": "quickScanCategoryKey",
                             "readonly": true,
-                            "actions": [],
                             "url": "/quickScanCategory",
                             "width": 2,
                             "required": true
@@ -896,7 +883,6 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "defaultKey": "deepScanSupportProcessKey",
                             "readonly": true,
-                            "actions": [],
                             "url": "/deepScanSupportProcess",
                             "width": 2,
                             "required": true
@@ -940,7 +926,6 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "defaultKey": "deepScanSubprocessKey",
                             "readonly": true,
-                            "actions": [],
                             "url": "/deepScanSubprocess",
                             "width": 2,
                             "required": true
@@ -991,7 +976,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Unit",
                             "wordSearchEnabled": false,
-                            "actions": [{"name": "New..."}],
+                            "form": "UnitForm",
                             "url": "/unit",
                             "width": 2
                         },
@@ -1057,7 +1042,6 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "InputParameter",
                             "wordSearchEnabled": true,
-                            "actions": [],
                             "url": "/inputParameter",
                             "width": 2,
                             "required": true,
@@ -1098,7 +1082,6 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "SupportProcess",
                             "wordSearchEnabled": true,
-                            "actions": [],
                             "url": "/deepScanSupportProcess",
                             "width": 2,
                             "required": true
@@ -1138,7 +1121,6 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Subprocess",
                             "wordSearchEnabled": true,
-                            "actions": [],
                             "url": "/deepScanSubprocess",
                             "width": 2,
                             "required": true
@@ -1352,7 +1334,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Unit",
                             "wordSearchEnabled": false,
-                            "actions": [{"name": "New..."}],
+                            "form": "UnitForm",
                             "url": "/unit",
                             "width": 2
                         },
@@ -1490,7 +1472,6 @@ export class GuiModel {
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,
-                            "actions": [],
                             "url": "/inputParameter",
                             "width": 2
                         },
@@ -1506,7 +1487,6 @@ export class GuiModel {
                             "wordSearchEnabled": false,
                             "required": false,
                             "readonly": true,
-                            "actions": [],
                             "url": "/unit",
                             "width": 2
                         },
@@ -1517,7 +1497,6 @@ export class GuiModel {
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,
-                            "actions": [],
                             "url": "/deepScanProject",
                             "width": 2
                         },
@@ -1528,7 +1507,6 @@ export class GuiModel {
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,
-                            "actions": [],
                             "url": "/person",
                             "width": 2
                         },

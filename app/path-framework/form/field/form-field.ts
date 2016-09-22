@@ -1,4 +1,3 @@
-import {Action} from './../../form/field/button/action';
 import {IFormField, IForm} from "../../pathinterface";
 import {TranslationService} from "../../service/translation.service";
 
@@ -13,21 +12,12 @@ export class FormField implements IFormField {
     private _labelVisible:boolean;
     private _required:boolean;
     private _readonly:boolean;
-    private _actions:Action[] = [];
 
     constructor(protected form:IForm, protected translationService:TranslationService) {
     }
 
     getForm():IForm {
         return this.form;
-    }
-
-    get actions():Action[] {
-        return this._actions;
-    }
-
-    set actions(value:Action[]) {
-        this._actions = value;
     }
 
     get height():number {

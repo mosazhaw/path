@@ -67,13 +67,13 @@ export class InlineForm extends PageElement {
                     if (this._currentKey != null && foundNewKey) {
                         console.log("load next inline form with key " + this._currentKey.getKey() + "/" + this._currentKey.getName());
                         let formFunction:FormFunction = new FormFunction();
-                        formFunction.save = () => {
+                        formFunction.save = (data:any) => {
                             this.loadNextForm(true);
                         };
                         formFunction.cancel = () => {
                             this.loadNextForm(true);
                         };
-                        formFunction.delete = () => {
+                        formFunction.delete = (data:any) => {
                             this.loadNextForm(false);
                         };
                         this._form = this.app.createForm(this._formId, this._currentKey, null, formFunction, this);

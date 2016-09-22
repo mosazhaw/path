@@ -60,7 +60,7 @@ export class PathService {
 
     }
 
-    serverPost(server:string, url:string, data:any, processor:() => any) {
+    serverPost(server:string, url:string, data:any, processor:(data:any) => any) {
         if (url != null) {
             this.showLoading();
             this.http.post(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
@@ -68,7 +68,7 @@ export class PathService {
                     data => {
                         localStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
-                        processor();
+                        processor(data.json());
                     },
                     err => {
                         this.handleError(err);
@@ -81,11 +81,11 @@ export class PathService {
             );
         } else {
             // no url provided, therefore call processor without data
-            processor();
+            processor(null);
         }
     }
 
-    serverPut(server:string, url:string, data:any, processor:() => any) {
+    serverPut(server:string, url:string, data:any, processor:(data:any) => any) {
         if (url != null) {
             this.showLoading();
             this.http.put(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
@@ -93,7 +93,7 @@ export class PathService {
                     data => {
                         localStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
-                        processor();
+                        processor(data.json());
                     },
                     err => {
                         this.handleError(err);
@@ -106,11 +106,11 @@ export class PathService {
                 );
         } else {
             // no url provided, therefore call processor without data
-            processor();
+            processor(null);
         }
     }
 
-    serverDelete(server:string, url:string, processor:() => any) {
+    serverDelete(server:string, url:string, processor:(data:any) => any) {
         if (url != null) {
             this.showLoading();
             this.http.delete(server + url, { headers: this.appendHeaders() })
@@ -118,7 +118,7 @@ export class PathService {
                     data => {
                         localStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
-                        processor();
+                        processor(data.json());
                     },
                     err => {
                         if (err.status == 405) {
@@ -134,7 +134,7 @@ export class PathService {
                 );
         } else {
             // no url provided, therefore call processor without data
-            processor();
+            processor(null);
         }
     }
 

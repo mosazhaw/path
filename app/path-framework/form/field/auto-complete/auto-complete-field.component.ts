@@ -2,6 +2,12 @@ import {Component, Input, Output, ElementRef} from '@angular/core';
 import {FormFieldLabelComponent} from './../form-field-label.component';
 import {ValueField} from "../value-field";
 import {AutoCompleteFieldEntry} from "./auto-complete-field-entry";
+import {Key} from "../../../page/element/page-element";
+import {IForm} from "../../../pathinterface";
+import {TranslationService} from "../../../service/translation.service";
+import {PathService} from "../../../service/path.service";
+import {Form} from "../../form.component";
+import {FormFunction} from "../../form-function";
 
 @Component({
     selector: 'path-autocomplete',
@@ -48,6 +54,13 @@ export class AutoCompleteField extends ValueField<string> {
     private _dataLoaded:boolean = false;
     private _wordSearchEnabled:boolean;
     private _valueSet:boolean = false;
+    private _detailForm:string;
+    private _keyType:string;
+    private _url:string;
+
+    constructor(protected form:IForm, protected translationService:TranslationService, protected pathService:PathService) {
+        super(form, translationService);
+    }
 
     filter(query:string) {
         console.log("filter: " + query);
@@ -89,6 +102,7 @@ export class AutoCompleteField extends ValueField<string> {
         // accept key values and complex objects
         if (value != null && value["key"] != null) {
             value = value["key"];
+            this._keyType = value["name"];
         }
         this._valueSet = true;
         this.clearFilteredList();
@@ -108,6 +122,52 @@ export class AutoCompleteField extends ValueField<string> {
             }
         }
         displaySetter();
+    }
+
+    public load() {
+        this.pathService.serverGet(this.getForm().getApp().getBackendUrl(), this.url, (data:any) => {
+            let dynamicData = [];
+            for (let item of data) {
+                let entry = new AutoCompleteFieldEntry();
+                entry.key = item["key"]["key"];
+                entry.text = item["name"];
+                dynamicData.push(entry);
+            }
+            this.data = dynamicData;
+            this.dataLoaded = true;
+            this.setValue(this.value); // force display refresh
+        }, null);
+    }
+
+    public getDetailButtonName() {
+        if (this.value == null) {
+            return this.translationService.getText("New") + "...";
+        } else {
+            return this.translationService.getText("Detail") + "...";
+        }
+    }
+
+    public showDetailForm() {
+        let form:Form = null;
+
+        let formFunction = new FormFunction();
+        formFunction.save = (data:any) => {
+            this.getForm().getApp().closeCurrentForm();
+            if (data["key"] != null) {
+                this.setValue(data["key"]);
+            }
+            this.load();
+        };
+        formFunction.cancel = () => {
+            this.getForm().getApp().closeCurrentForm();
+        };
+
+        if (this.value == null) {
+            form = this.getForm().getApp().createForm(this.detailForm, null, null, formFunction, null);
+        } else {
+            form = this.getForm().getApp().createForm(this.detailForm, new Key(Number(this.value), this._keyType), null, formFunction, null);
+        }
+        this.form.getApp()["_formStack"].push(form); // TODO
     }
 
     public clearFilteredList() {
@@ -144,5 +204,21 @@ export class AutoCompleteField extends ValueField<string> {
 
     set dataLoaded(value: boolean) {
         this._dataLoaded = value;
+    }
+
+    get detailForm(): string {
+        return this._detailForm;
+    }
+
+    set detailForm(value: string) {
+        this._detailForm = value;
+    }
+
+    get url(): string {
+        return this._url;
+    }
+
+    set url(value: string) {
+        this._url = value;
     }
 }
