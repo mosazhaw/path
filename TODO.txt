@@ -8,7 +8,6 @@ Assessment App / Fragen
 - generic crud unit tests frontend / backend
 
 Path Framework Prio1
-- Form Validation (field length)
 - DatePicker
 - Actions auf AutoCompleteFields
 
