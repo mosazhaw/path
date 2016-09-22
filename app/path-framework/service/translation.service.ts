@@ -263,7 +263,7 @@ export class TranslationService {
                 "NewQuickScan": "New QuickScan",
                 "NewSimulation": "New Simulation",
                 "NewSubprocess": "New Subprocess",
-                "NewSupportProcess": "New SupportProcess",
+                "NewSupportProcess": "New Support Process",
                 "NewUnit": "New Unit",
                 "NewUser": "New User",
                 "NotSignedIn": "Not signed in",
