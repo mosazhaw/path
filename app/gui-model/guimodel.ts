@@ -2754,14 +2754,6 @@ export class GuiModel {
                             "width": 2,
                             "page": "maturitylevelschemasconfigurationpage"
                         },
-                        {
-                            "type": "button",
-                            "name": "Reports and Handbooks",
-                            "icon": "fa-file",
-                            "color": "wisteria",
-                            "page": "reportsconfigurationpage",
-                            "width": 2
-                        }
                     ]
                 },
                 {
