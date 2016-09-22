@@ -2563,13 +2563,13 @@ export class GuiModel {
                             "icon": "fa-bar-chart",
                             "color": "carrot",
                             "width": 2,
-                            "page": "gapreportpage"
+                            "page": "quickscangapreportpage"
                         },
                         {
                             "type": "button",
                             "name": "SpiderReport",
                             "icon": "fa-first-order",
-                            "page": "spiderreportpage",
+                            "page": "quickscanspiderreportpage",
                             "width": 2,
                             "color": "pink"
                         },
@@ -2607,6 +2607,22 @@ export class GuiModel {
                             "url": "/deepScanProject/:projectKey/completenesscheck"
                         },
                         {
+                            "type": "button",
+                            "name": "GapReport",
+                            "icon": "fa-bar-chart",
+                            "color": "carrot",
+                            "width": 2,
+                            "page": "deepscangapreportpage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "SpiderReport",
+                            "icon": "fa-first-order",
+                            "page": "deepscanspiderreportpage",
+                            "width": 2,
+                            "color": "pink"
+                        },
+                        {
                             "type": "downloadButton",
                             "name": "AssessmentReport",
                             "icon": "fa-file-word-o",
@@ -2614,23 +2630,12 @@ export class GuiModel {
                             "width": 2,
                             "url": "/deepScanProject/:projectKey/assessmentreport/word"
                         },
-                        {
-                            "type": "button",
-                            "name": "IntroductionHandbook",
-                            "icon": "fa-file-word-o",
-                            "color": "wisteria",
-                            "width": 2,
-                            "buttonhandler": "IntroductionHandbookDownloadButtonHandler"
-                        }
                     ]
                 },
                 {
-                    "id": "spiderreportpage",
+                    "id": "quickscanspiderreportpage",
                     "title": "Spider Report",
                     "elementList": [
-                        {
-                            "type": "backbutton",
-                        },
                         {
                             "type": "ChartElement",
                             "name": "SpiderReport",
@@ -2639,16 +2644,35 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "gapreportpage",
+                    "id": "quickscangapreportpage",
                     "title": "GapReport",
                     "elementList": [
-                        {
-                            "type": "backbutton",
-                        },
                         {
                             "type": "ChartElement",
                             "name": "GapReport",
                             "url": "/quickScanProject/:projectKey/report/stackedBar"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanspiderreportpage",
+                    "title": "Spider Report",
+                    "elementList": [
+                        {
+                            "type": "ChartElement",
+                            "name": "SpiderReport",
+                            "url": "/deepScanProject/:projectKey/report/spider"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscangapreportpage",
+                    "title": "GapReport",
+                    "elementList": [
+                        {
+                            "type": "ChartElement",
+                            "name": "GapReport",
+                            "url": "/deepScanProject/:projectKey/report/stackedBar"
                         }
                     ]
                 },

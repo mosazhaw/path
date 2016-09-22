@@ -115,12 +115,10 @@
             </div>
         </a>
     </span>
-    <!-- Radar Chart Element -->
-    <span *ngIf='pageElement.type == "ChartElement"'>
-	    <div class="col-md-10">
-	        <path-radar-chart [chart]="pageElement"></path-radar-chart>
-		</div>
-    </span>
+    <!-- Custom Chart Element -->
+    <div class="col-md-12" *ngIf='pageElement.type == "ChartElement"'>
+        <path-radar-chart [chart]="pageElement"></path-radar-chart>
+    </div>
     </span>
         </div>
     </div>
