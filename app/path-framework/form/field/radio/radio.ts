@@ -1,22 +1,13 @@
 import {FormField} from "../form-field";
 
 export class Radio extends FormField {
-    private _value:boolean;
-    private _key:any;
+    private _key:string;
 
-    get value():boolean {
-        return this._value;
-    }
-
-    set value(value:boolean) {
-        this._value = value;
-    }
-
-    get key():any {
+    get key():string {
         return this._key;
     }
 
-    set key(value:any) {
+    set key(value:string) {
         this._key = value;
     }
 }

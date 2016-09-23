@@ -664,7 +664,7 @@ export class GuiModel {
                         {
                             "id": "quickScanCategory",
                             "type": "autocomplete",
-                            "name": "QuickScan Category",
+                            "name": "Category",
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,

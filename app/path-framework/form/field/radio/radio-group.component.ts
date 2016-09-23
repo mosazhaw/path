@@ -13,7 +13,7 @@ export class RadioGroupComponent {
     field:RadioGroupField;
 }
 
-export class RadioGroupField extends ValueField<any> {
+export class RadioGroupField extends ValueField<string> {
     private _radios:Radio[] = [];
     private _horizontal:boolean;
 
@@ -33,24 +33,13 @@ export class RadioGroupField extends ValueField<any> {
         this._horizontal = value;
     }
 
-    public doClick(key:string) {
-        for (let radio of this.radios) {
-            if (radio.key == key) {
-                this.setValue(key);
-            }
-        }
+    public setValue(value:string) {
+        console.log("try to set value " + value);
+        super.setValue(value);
     }
 
-    public setValue(value:string) {
-        super.setValue(value);
-        for (let radio of this.radios) {
-            if (radio.key == value) {
-                console.log("setting radio value, key=" + radio.key + ", value=" + value);
-                radio.value = true;
-            } else {
-                radio.value = false;
-            }
-        }
+    public updateValueFromGui(value:string) {
+        this.setValue(value.toString());
     }
 
     public fromJson(modelFormField) {
@@ -67,10 +56,7 @@ export class RadioGroupField extends ValueField<any> {
                 radio.name = radioModel.name;
                 radio.key = radioModel.key;
                 if (radio.key == modelFormField["defaultKey"]) {
-                    radio.value = true;
                     this.setValue(radio.key);
-                } else {
-                    radio.value = false;
                 }
                 this.radios.push(radio);
             }

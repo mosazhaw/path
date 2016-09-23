@@ -9,8 +9,8 @@
                 </div>
             </div>
             <!-- Action -->
-            <span class="input-group-btn">
-                <button *ngIf="field.detailForm != null" (click)="field.showDetailForm()" class="btn btn-default" type="button">{{field.getDetailButtonName()}}</button>
+            <span *ngIf="field.detailForm != null" class="input-group-btn">
+                <button (click)="field.showDetailForm()" class="btn btn-default" type="button">{{field.getDetailButtonName()}}</button>
             </span>
         </div>
 </div>

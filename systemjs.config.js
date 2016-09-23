@@ -8,13 +8,16 @@
     'app':                        'app', // 'dist',
     '@angular':                   'node_modules/@angular',
     'angular2-in-memory-web-api': 'node_modules/angular2-in-memory-web-api',
-    'rxjs':                       'node_modules/rxjs'
+    'rxjs':                       'node_modules/rxjs',
+    'moment':                     'node_modules/moment/moment.js',
+    'ng2-bootstrap':              'node_modules/ng2-bootstrap',
   };
   // packages tells the System loader how to load when no filename and/or no extension
   var packages = {
     'app':                        { main: 'main.js',  defaultExtension: 'js' },
     'rxjs':                       { defaultExtension: 'js' },
     'angular2-in-memory-web-api': { defaultExtension: 'js' },
+    'ng2-bootstrap':              { defaultExtension: "js" },
   };
   var ngPackageNames = [
     'common',

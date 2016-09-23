@@ -3,15 +3,15 @@
 	<div class="input-group">
 		<span [hidden]="!field.horizontal" *ngFor='let radioElement of field.radios'>
             <label class="control radio">
-                <input name="{{field.id}}" [(ngModel)]="field.value" [value]="radioElement.key" [disabled]="field.isReadonly()" (click)="field.doClick(radioElement.key)" type="radio">
-                <!-- A2 RC5 Workaround for required and name --><input name="{{field.id}}2" [checked]="radioElement.value" [required]="field.required" type="radio" style="visibility: hidden;">
+                <input #radio name="{{field.id}}" [(ngModel)]="field.value" (click)="field.updateValueFromGui(radioElement.key)" [value]="radioElement.key.toString()" [disabled]="field.isReadonly()" type="radio">
+                <!-- A2 RC5 Workaround for required and name --><input name="{{field.id}}2" [checked]="field.value==radioElement.key" [required]="field.required" type="radio" style="visibility: hidden;">
                 <span class="radio-label"> {{radioElement.name}}</span>
             </label>
         </span>
 		<div [hidden]="field.horizontal" *ngFor='let radioElement of field.radios'>
             <label class="control radio">
-                <input name="{{field.id}}" [(ngModel)]="field.value" [value]="radioElement.key" [disabled]="field.isReadonly()" (click)="field.doClick(radioElement.key)" type="radio">
-	            <!-- A2 RC5 Workaround for required and name --><input name="{{field.id}}2" [checked]="radioElement.value" [required]="field.required" type="radio" style="visibility: hidden;">
+                <input #radio name="{{field.id}}" [(ngModel)]="field.value" (click)="field.updateValueFromGui(radioElement.key)" [value]="radioElement.key.toString()" [disabled]="field.isReadonly()" type="radio">
+	            <!-- A2 RC5 Workaround for required and name --><input name="{{field.id}}2" [checked]="field.value==radioElement.key" [required]="field.required" type="radio" style="visibility: hidden;">
                 <span class="radio-label"> {{radioElement.name}}</span>
             </label>
         </div>

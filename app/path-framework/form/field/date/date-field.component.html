@@ -1,6 +1,12 @@
 <path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
     <div class="input-group">
-        <input [(ngModel)]=field._value style="display: block; width: 100%" type="date" class="form-control" placeholder="">
+	    <span class="input-group-btn">
+		    <button (click)="field.toggleDatePicker()" class="btn btn-default" type="button"><i class="fa fa-calendar fa-fw"></i></button>
+	    </span>
+	    <input [ngModel]="field._formattedValue" (blur)="field.updateValueFromGui($event.target.value)" style="display: block; width: 100%" type="text" class="form-control" placeholder="">
+	    <div *ngIf="field._isDatePickerVisible" style="position: absolute; z-index:10; min-height:290px;">
+		    <datepicker [(ngModel)]="field._value" (selectionDone)="field.closeDatePicker()" [showWeeks]="false" style="display: block; width: 100%" class="form-control"></datepicker>
+	    </div>
     </div>
 </div>

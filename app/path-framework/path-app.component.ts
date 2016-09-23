@@ -400,10 +400,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                         radio.name = item["name"];
                                         radio.key = item["key"]["key"].toString(); // force radio key type string for angular2
                                         if (radio.key == item["defaultKey"]) {
-                                            radio.value = true;
                                             rgField.setValue(radio.key);
-                                        } else {
-                                            radio.value = false;
                                         }
                                         rgField.radios.push(radio);
                                     }

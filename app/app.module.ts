@@ -17,9 +17,10 @@ import {LabelFieldComponent} from "./path-framework/form/field/label/label-field
 import {FieldListFieldComponent} from "./path-framework/form/field/fieldList/field-list-field.component";
 import {NumberFieldComponent} from "./path-framework/form/field/number/number-field.component";
 import {TranslationFieldComponent} from "./path-framework/form/field/translation/translation-field.component";
+import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
 
 @NgModule({
-    imports:      [BrowserModule, HttpModule, FormsModule, CommonModule],
+    imports:      [BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule ],
     declarations: [AppComponent, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent],
     bootstrap:    [AppComponent],
 })
