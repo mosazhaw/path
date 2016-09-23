@@ -552,7 +552,6 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "Person",
                             "wordSearchEnabled": true,
-                            "form": "PersonForm",
                             "url": "/project/:projectKey/customer/person",
                             "width": 2,
                             "required": true
