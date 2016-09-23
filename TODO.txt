@@ -8,7 +8,7 @@ Assessment App / Fragen
 - generic crud unit tests frontend / backend
 
 Path Framework Prio1
-- DatePicker
+- Date validation
 
 Path Framework Prio2
 - Separation of Framework/Project Frontend
