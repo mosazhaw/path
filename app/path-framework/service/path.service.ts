@@ -1,12 +1,13 @@
 import {Injectable, Inject} from "@angular/core";
 import {Headers, Response, Http} from "@angular/http";
+import {TranslationService} from "./translation.service";
 
 @Injectable()
 export class PathService {
 
     private _requestCount:number;
 
-    constructor(@Inject(Http) private http:Http) {
+    constructor(@Inject(Http) private http:Http, private translationService:TranslationService) {
         this._requestCount = 0;
     }
 
@@ -121,11 +122,7 @@ export class PathService {
                         processor(data.json());
                     },
                     err => {
-                        if (err.status == 405) {
-                            alert('Could not delete item because it is in use.');
-                        } else {
-                            this.handleError(err);
-                        }
+                        this.handleError(err);
                     },
                     () => {
                         this.hideLoading();
@@ -140,7 +137,10 @@ export class PathService {
 
     private handleError(err) {
         this.hideLoading();
-        if (err.status == 401) {
+        if (err.status == 405 && err.json()["messageKey"] != null) {
+            alert(this.translationService.getText(err.json()["messageKey"]));
+        }
+        else if (err.status == 401) {
             alert("Unauthorized. Please login again.");
             location.reload();
         } else {
