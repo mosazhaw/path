@@ -84,17 +84,19 @@ export class TranslationField extends ValueField<any[][]> {
                 form.fields.push(textField);
                 translationFields.push(textField);
         }
-        let okButton:OkButton = new OkButton(form, this.translationService);
-        okButton.type = "okButton";
-        okButton.name = this.translationService.getText("Ok");
-        okButton.visible = true;
-        form.fields.push(okButton);
 
         let cancelButton:CancelButton = new CancelButton(form, this.translationService);
         cancelButton.type = "cancelButton";
         cancelButton.name = this.translationService.getText("Cancel");
         cancelButton.visible = true;
         form.fields.push(cancelButton);
+
+        let okButton:OkButton = new OkButton(form, this.translationService);
+        okButton.type = "okButton";
+        okButton.name = this.translationService.getText("Ok");
+        okButton.visible = true;
+        form.fields.push(okButton);
+
         form.updateRows();
 
         this.form.getApp()["_formStack"].push(form); // TODO
