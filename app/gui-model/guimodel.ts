@@ -788,8 +788,8 @@ export class GuiModel {
                     "url": "/deepScanSubprocess",
                     "formFieldList": [
                         {
-                            "id": "translation",
-                            "type": "text",
+                            "id": "name",
+                            "type": "translation",
                             "name": "SubprocessName",
                             "width": 2,
                             "required": true
