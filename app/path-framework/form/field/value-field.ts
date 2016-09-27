@@ -2,6 +2,7 @@ import {FormField} from "./form-field";
 
 export class ValueField<T> extends FormField {
     private _value:T;
+    private _isInitialValueSet:boolean = false;
     private _created:boolean = false;
 
     get value():T {
@@ -21,7 +22,15 @@ export class ValueField<T> extends FormField {
     }
 
     public isReadonly():boolean {
-        return this.readonly && this.form.getKey() != null;
+        return this.readonly;
+    }
+
+    get isInitialValueSet(): boolean {
+        return this._isInitialValueSet;
+    }
+
+    set isInitialValueSet(value: boolean) {
+        this._isInitialValueSet = value;
     }
 
     public fromJson(modelFormField) {

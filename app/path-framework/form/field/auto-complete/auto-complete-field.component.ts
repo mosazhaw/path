@@ -62,6 +62,10 @@ export class AutoCompleteField extends ValueField<string> {
         super(form, translationService);
     }
 
+    public isReadonly() {
+        return super.isReadonly() && this.isInitialValueSet;
+    }
+
     filter(query:string) {
         console.log("filter: " + query);
         this._valueSet = false;

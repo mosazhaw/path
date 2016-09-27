@@ -481,6 +481,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                         while (pageElement != null) {
                             if (pageElement.getKey() != null && pageElement.getKey().getName() == modelFormField["defaultKey"]) {
                                 (<ValueField<any>>formField).setValue(pageElement.getKey().getKey());
+                                (<ValueField<any>>formField).isInitialValueSet = true;
                                 pageElement = null;
                             } else {
                                 pageElement = pageElement.getParent();
@@ -521,6 +522,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     setValueOfRadioGroupFieldContextWrapper();
                                 } else {
                                     (<path.ValueField<any>>field).setValue(data[field.id]);
+                                    (<path.ValueField<any>>field).isInitialValueSet = true;
                                 }
                             }
                             if (field instanceof FieldListField) {
@@ -540,6 +542,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     for (let subfield of (<FieldListField>field).subfields) {
                                         if (data[subfield.id] != null) {
                                             subfield.setValue(data[subfield.id]);
+                                            subfield.isInitialValueSet = true;
                                         }
                                     }
                                 }
