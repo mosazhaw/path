@@ -18,9 +18,16 @@ export abstract class PathAppComponent implements path.IPathApp {
     private _formStack:path.Form[] = [];
     private _userId:string;
     private _texts:string[]= [];
+    private _version:string;
 
     constructor(private pathService:path.PathService, private translationService:TranslationService) {
         this.pathService.serverGet(this.getBackendUrl(), "/ping", (data:any) => {
+            let backendVersion = data["version"];
+            if (backendVersion != this.getFrontendVersion()) {
+                backendVersion = "Version mismatch: Backend (" + backendVersion + "), Frontend (" + this.getFrontendVersion() + "). Please clear cache or check server installation.";
+                window.alert(backendVersion);
+            }
+            this._version = backendVersion;
             if (data["userId"] != null && data["userId"] != "") {
                 this._userId = data["userId"];
                 this.setCurrentPage(this.getStartPage(), null);
@@ -40,6 +47,8 @@ export abstract class PathAppComponent implements path.IPathApp {
     protected abstract getHandlers();
 
     public abstract getBackendUrl():string;
+
+    protected abstract getFrontendVersion():string;
 
     public isLoading():boolean {
         return this.pathService.isLoading();

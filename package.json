@@ -1,6 +1,6 @@
 {
   "name": "assessment-tool",
-  "version": "1.0.0",
+  "version": "0.0.2",
   "engines": {
     "node": "5.4.1",
     "npm": "3.8.5"

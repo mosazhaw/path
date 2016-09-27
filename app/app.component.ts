@@ -22,6 +22,10 @@ export class AppComponent extends path.PathAppComponent {
         super(pathService, translationService);
     }
 
+    protected getFrontendVersion():string {
+        return "0.0.2-SNAPSHOT";
+    }
+
     protected getStartPage():string {
         return "mainmenu";
     }

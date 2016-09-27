@@ -22,6 +22,8 @@
 
 <div *ngIf="isLoading()" class="loading"></div>
 
+<div class="version badge">{{_version}}</div>
+
 <!-- Login Form -->
 <div *ngIf="getUserId() == null" class="container-fluid">
 <div class="login jumbotron center-block">
