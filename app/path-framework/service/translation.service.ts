@@ -58,7 +58,7 @@ export class TranslationService {
                 "Delete": "Löschen",
                 "DeleteWarningQuestion": "Wollen Sie diesen Datensatz wirklich löschen?", // Do you really want to delete this item?
                 "Detail": "Detail",
-                "DuplicateDataMessage": "Dieser Datensatz existiert bereits und kann nicht erstellt werden.",
+                "DuplicateDataError": "Dieser Datensatz existiert bereits und kann nicht erstellt werden.",
                 "EMail": "E-Mail",
                 "EditCase": "Fall bearbeiten",
                 "EditCategory": "Kategorie bearbeiten",
@@ -210,8 +210,8 @@ export class TranslationService {
                 "Customer": "Customer",
                 "CustomerPL": "Customer PL",
                 "DateOrderError": "The date order is wrong. Please check the dates.",
-                "DeepScan": "DeepScan",
                 "DataReferencedError": "Data is still referenced and cannot be deleted.",
+                "DeepScan": "DeepScan",
                 "Delete": "Delete",
                 "DeleteWarningQuestion": "Do you really want to delete this item?",
                 "Detail": "Detail",
