@@ -385,13 +385,14 @@ export class GuiModel {
                             "required": true
                         },
                         {
-                            "date": "evtCreationDate",
+                            "id": "evtCreationDate",
                             "type": "date",
                             "name": "CreationDate",
+                            "required": true,
                             "newRow": true
                         },
                         {
-                            "date": "evtClosingDate",
+                            "id": "evtClosingDate",
                             "type": "date",
                             "name": "ClosingDate"
                         },
@@ -463,6 +464,18 @@ export class GuiModel {
                             "url": "/language",
                             "width": 2,
                             "required": true
+                        },
+                        {
+                            "id": "evtCreationDate",
+                            "type": "date",
+                            "name": "CreationDate",
+                            "required": true,
+                            "newRow": true
+                        },
+                        {
+                            "id": "evtClosingDate",
+                            "type": "date",
+                            "name": "ClosingDate"
                         },
                         {
                             "id": "comments",
