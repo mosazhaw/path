@@ -74,6 +74,17 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id":   "country",
+                            "type": "autocomplete",
+                            "name": "Country",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "countryKey",
+                            "readonly": false,
+                            "url": "/country",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
                             "id": "benchmarking",
                             "type": "RadioGroupField",
                             "name": "Benchmarking",
@@ -185,6 +196,17 @@ export class GuiModel {
                             "wordSearchEnabled": true,
                             "form": "PersonForm",
                             "url": "/person",
+                            "required": true
+                        },
+                        {
+                            "id":   "country",
+                            "type": "autocomplete",
+                            "name": "Country",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "countryKey",
+                            "readonly": false,
+                            "url": "/country",
+                            "width": 2,
                             "required": true
                         },
                         {
