@@ -140,6 +140,13 @@ export abstract class PathAppComponent implements path.IPathApp {
         message.labelVisible = false;
         message.setValue(text);
         form.fields.push(message);
+
+        let cancelButton:path.CancelButton = new path.CancelButton(form, this.translationService);
+        cancelButton.type = "cancelButton";
+        cancelButton.name = this.translationService.getText("Cancel");
+        cancelButton.visible = true;
+        form.fields.push(cancelButton);
+
         let okButton:path.OkButton = new path.OkButton(form, this.translationService);
         okButton.type = "okButton";
         okButton.name = this.translationService.getText("Ok");
@@ -151,13 +158,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         };
         form.fields.push(okButton);
 
-        let cancelButton:path.CancelButton = new path.CancelButton(form, this.translationService);
-        cancelButton.type = "cancelButton";
-        cancelButton.name = this.translationService.getText("Cancel");
-        cancelButton.visible = true;
-        form.fields.push(cancelButton);
         form.updateRows();
-
         this._formStack.push(form);
     }
 
