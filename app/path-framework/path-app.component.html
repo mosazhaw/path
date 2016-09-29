@@ -24,6 +24,13 @@
 
 <div class="version badge">{{_version}}</div>
 
+<div *ngFor="let alert of pathService.getAlerts()" class="col-md-12">
+		<div class="alert alert-warning alert-dismissable">
+			<button (click)="pathService.clearAlert(alert.id)" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<p><strong>{{alert.title}}</strong></p><p style="white-space: pre-wrap;">{{alert.text}}</p>
+		</div>
+</div>
+
 <!-- Login Form -->
 <div *ngIf="getUserId() == null" class="container-fluid">
 <div class="login jumbotron center-block">

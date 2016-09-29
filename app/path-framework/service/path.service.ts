@@ -6,6 +6,7 @@ import {TranslationService} from "./translation.service";
 export class PathService {
 
     private _requestCount:number;
+    private _alertStack:Alert[] = [];
 
     constructor(@Inject(Http) private http:Http, private translationService:TranslationService) {
         this._requestCount = 0;
@@ -144,7 +145,8 @@ export class PathService {
             alert("Unauthorized. Please login again.");
             location.reload();
         } else {
-            alert(err.status);
+            // general error
+            this.addAlert(err.json()["title"], err.json()["error"]);
             console.error(err)
         }
     }
@@ -158,4 +160,51 @@ export class PathService {
         return headers;
     }
 
+    public getAlerts():Alert[] {
+        return this._alertStack;
+    }
+
+    public addAlert(title:string, text:string) {
+        let alert = new Alert();
+        alert.title = title;
+        alert.text = text;
+        this._alertStack.push(alert);
+    }
+
+    public clearAlert(id:number) {
+        for (let i=0; i < this._alertStack.length; i++) {
+            if (this._alertStack[i].id == id) {
+                this._alertStack.splice(i, 1);
+                break;
+            }
+        }
+    }
+
+}
+
+export class Alert {
+
+    private _title:string;
+    private _text:string;
+    private _id:number = Date.now();
+
+    get title(): string {
+        return this._title;
+    }
+
+    set title(value: string) {
+        this._title = value;
+    }
+
+    get text(): string {
+        return this._text;
+    }
+
+    set text(value: string) {
+        this._text = value;
+    }
+
+    get id(): number {
+        return this._id;
+    }
 }

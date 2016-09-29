@@ -261,9 +261,10 @@ export abstract class PathAppComponent implements path.IPathApp {
         }
 
         if (page == null && pageId != null) {
-            alert("Missing page: " + pageId);
+            this.pathService.addAlert("Missing page", pageId);
+        } else {
+            this._pageStack.push(page);
         }
-        this._pageStack.push(page);
     }
 
     public setCurrentForm(formId:string, key:Key, handler:string, parentPageElement:path.IPageElement) {
@@ -571,7 +572,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             }
         }
         if (form == null && formId != null) {
-            alert("Missing form: " + formId);
+            this.pathService.addAlert("Missing form", formId);
         }
         return form;
     }
