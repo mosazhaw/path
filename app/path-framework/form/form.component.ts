@@ -59,6 +59,10 @@ export class Form implements IForm {
         this._title = value;
     }
 
+    public getFields():FormField[] {
+        return this.fields;
+    }
+
     get fields():FormField[] {
         return this._fields;
     }

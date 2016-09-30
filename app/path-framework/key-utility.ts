@@ -24,4 +24,20 @@ export class KeyUtility {
         return translatedUrl;
     }
 
+    public static replaceVariable(url:string, variable:string, value:string):string {
+        // replace variables at line end
+        let regExp = new RegExp(":"+variable+"$",'g');
+        url = url.replace(regExp, value);
+        // replace variables in middle of line
+        regExp = new RegExp(":"+variable+"\/",'g');
+        url = url.replace(regExp, value + "/");
+        return url;
+    }
+
+    public static variableExists(url:string, variable:string):boolean {
+        let regExp = new RegExp(":"+variable+"$",'g');
+        let regExp2 = new RegExp(":"+variable+"\/",'g');
+        return url.search(regExp) != -1 || url.search(regExp2) != -1;
+    }
+
 }

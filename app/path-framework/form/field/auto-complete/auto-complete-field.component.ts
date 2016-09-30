@@ -3,11 +3,12 @@ import {FormFieldLabelComponent} from './../form-field-label.component';
 import {ValueField} from "../value-field";
 import {AutoCompleteFieldEntry} from "./auto-complete-field-entry";
 import {Key} from "../../../page/element/page-element";
-import {IForm} from "../../../pathinterface";
+import {IForm, IFormField} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 import {PathService} from "../../../service/path.service";
 import {Form} from "../../form.component";
 import {FormFunction} from "../../form-function";
+import {KeyUtility} from "../../../key-utility";
 
 @Component({
     selector: 'path-autocomplete',
@@ -30,8 +31,8 @@ export class AutoCompleteComponent {
         if (this.field.isReadonly()) {
             return;
         }
-        var clickedComponent = event.target;
-        var inside = false;
+        let clickedComponent = event.target;
+        let inside = false;
         do {
             if (clickedComponent === this._elementRef.nativeElement) {
                 inside = true;
@@ -43,6 +44,7 @@ export class AutoCompleteComponent {
         }
         if (!this.field.valueSet) {
             this.field.query = null;
+            this.field.setValue(null);
         }
     }
 }
@@ -75,6 +77,7 @@ export class AutoCompleteField extends ValueField<string> {
         }
         else if (query !== null && query !== "") {
             /* search term: filter */
+            query = query.trim();
             this._filteredList = this._data.filter(function (entry) {
                 let entryName:string = entry.text;
                 if (entryName.toLowerCase().indexOf(query.toLowerCase()) > -1) {
@@ -97,39 +100,71 @@ export class AutoCompleteField extends ValueField<string> {
     }
 
     select(item:AutoCompleteFieldEntry) {
-        this._valueSet = true;
         this.setValue(item.key);
-        this.clearFilteredList();
+    }
+
+    focusLost() {
+        window.setTimeout(() => {
+                if (!this.valueSet) {
+                    this.query = new AutoCompleteFieldEntry(); // force angular to update query.text value
+                }
+        }, 1);
     }
 
     public setValue(value:string) {
+        let oldValue:string = this.value;
+
         // accept key values and complex objects
         if (value != null && value["key"] != null) {
             value = value["key"];
             this._keyType = value["name"];
         }
-        this._valueSet = true;
+        this._valueSet = value != null;
         this.clearFilteredList();
         super.setValue(value);
         this.query = null;
         // must wait with display update until data is loaded
         let displaySetter = () => {
+            let keyValue = value;
             if (!this.dataLoaded) {
                 console.log("waiting...");
                 window.setTimeout(function() { displaySetter() }, 250);
             } else {
                 for (let item of this._data) {
-                    if (item.key == value) {
-                        this.query = item;
+                    if (item.key == keyValue) {
+                        window.setTimeout(() => { this.query = item; },1);
+                        break;
                     }
                 }
             }
         }
         displaySetter();
+        // reload dependent autocomplete fields
+        if (oldValue != this.value) {
+            for (let field of this.getForm().getFields()) {
+                if (field instanceof AutoCompleteField) {
+                    if (field.id != this.id) {
+                        let autoCompleteField = <AutoCompleteField>field;
+                        if (KeyUtility.variableExists(autoCompleteField.url, this.id)) {
+                            autoCompleteField.load();
+                        }
+                    }
+                }
+            }
+        }
     }
 
     public load() {
-        this.pathService.serverGet(this.getForm().getApp().getBackendUrl(), this.url, (data:any) => {
+        this.dataLoaded = false;
+        let url:string = this.url;
+        for (let field of this.getForm().getFields()) {
+            if (field instanceof ValueField) {
+                let valueField = <ValueField<any>>field;
+                url = KeyUtility.replaceVariable(url, valueField.id, valueField.value);
+                console.log(url);
+            }
+        }
+        this.pathService.serverGet(this.getForm().getApp().getBackendUrl(), url, (data:any) => {
             let dynamicData = [];
             for (let item of data) {
                 let entry = new AutoCompleteFieldEntry();

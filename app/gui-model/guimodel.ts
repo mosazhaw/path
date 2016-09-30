@@ -41,7 +41,7 @@ export class GuiModel {
                             "name": "Customer",
                             "wordSearchEnabled": true,
                             "form": "CompanyForm",
-                            "url": "/company",
+                            "url": "/person/:customerProjectLeader/company",
                             "newRow": true,
                             "required": true
                         },
@@ -51,7 +51,7 @@ export class GuiModel {
                             "name": "CustomerPL",
                             "wordSearchEnabled": true,
                             "form": "PersonForm",
-                            "url": "/person",
+                            "url": "/company/:customer/person",
                             "required": true
                         },
                         {
@@ -60,7 +60,7 @@ export class GuiModel {
                             "name": "ServiceProvider",
                             "wordSearchEnabled": true,
                             "form": "CompanyForm",
-                            "url": "/company",
+                            "url": "/person/:serviceProviderProjectLeader/company",
                             "newRow": true,
                             "required": true
                         },
@@ -70,7 +70,7 @@ export class GuiModel {
                             "name": "ServiceProviderPL",
                             "wordSearchEnabled": true,
                             "form": "PersonForm",
-                            "url": "/person",
+                            "url": "/company/:serviceProvider/person",
                             "required": true
                         },
                         {

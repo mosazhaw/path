@@ -25,6 +25,7 @@ export interface IFormField {
 
 export interface IForm {
     getApp():IPathApp;
+    getFields():IFormField[];
     close(save:boolean, remove:boolean);
     getKey():IKey;
 }
