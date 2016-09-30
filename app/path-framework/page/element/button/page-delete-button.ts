@@ -11,7 +11,7 @@ export class PageDeleteButton extends Button {
     }
 
     public onClick() {
-        this.getApp().yesNo(this.translationService.getText("Do you really want to delete this item?"), () => {
+        this.getApp().yesNo(this.translationService.getText("DeleteWarningQuestion"), () => {
             this.pathService.serverDelete(this.getApp().getBackendUrl(), this.url, () => {
                 this.getApp().navigateBack();
                 this.getApp().refreshCurrentPage();
