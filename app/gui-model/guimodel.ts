@@ -667,7 +667,8 @@ export class GuiModel {
                             "name": "MaturityLevelSchema",
                             "wordSearchEnabled": false,
                             "required": true,
-                            "url": "/maturityLevelSchema",
+                            "readonly": true,
+                            "url": "/maturityLevelSchema/projectType/QuickScan",
                             "width": 2
                         },
                         {
@@ -768,7 +769,7 @@ export class GuiModel {
                             "defaultKey": "maturityLevelSchemaKey",
                             "readonly": true,
                             "required": true,
-                            "url": "/maturityLevelSchema",
+                            "url": "/maturityLevelSchema/projectType/DeepScan",
                             "width": 2
                         },
                         {

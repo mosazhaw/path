@@ -520,6 +520,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                             value = value.toString(); // force radio key type string for angular2
                                         }
                                         radioGroupField.setValue(value);
+                                        radioGroupField.isInitialValueSet = true;
                                     }
                                     setValueOfRadioGroupFieldContextWrapper();
                                 } else {

@@ -42,6 +42,10 @@ export class RadioGroupField extends ValueField<string> {
         this.setValue(value.toString());
     }
 
+    public isReadonly() {
+        return super.isReadonly() && this.isInitialValueSet;
+    }
+
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
         this._horizontal = true;
