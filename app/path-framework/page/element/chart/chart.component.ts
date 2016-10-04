@@ -2,6 +2,7 @@ import {Component, ViewChild, AfterViewInit, Input, Output} from '@angular/core'
 import {PageElement} from "../page-element";
 import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
+import {TranslationService} from "../../../service/translation.service";
 
 declare var Chart: any;
 
@@ -27,7 +28,7 @@ export class ChartElement extends PageElement {
     private _url:string;
     private _data:any;
 
-    constructor(private pathService:PathService, app:IPathApp) {
+    constructor(app:IPathApp, private pathService:PathService, private translationService:TranslationService) {
         super(app);
     }
 

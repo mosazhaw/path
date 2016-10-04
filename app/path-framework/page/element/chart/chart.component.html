@@ -9,9 +9,9 @@
 
 		<table *ngIf="chart.data?.interviewees?.list.length > 0" class="table">
 			<tr>
-				<th>Salutation<th>
-				<th>Name<th>
-				<th>Employment Title<th>
+				<th>{{chart.translationService.getText("Salutation")}}<th>
+				<th>{{chart.translationService.getText("Interviewees")}}<th>
+				<th>{{chart.translationService.getText("EmploymentTitle")}}<th>
 			</tr>
 			<tr *ngFor="let interviewee of chart.data?.interviewees?.list">
 				<td>{{interviewee.salutation}}<td>
@@ -33,9 +33,9 @@
 		</div>
 		<table class="table">
 			<tr>
-				<th class="col-md-9">Question<th>
-				<th class="col-md-1 text-right">Actual<th>
-				<th class="col-md-1 text-right">Target<th>
+				<th class="col-md-9">{{chart.translationService.getText("Question")}}<th>
+				<th class="col-md-1 text-right">{{chart.translationService.getText("Actual")}}<th>
+				<th class="col-md-1 text-right">{{chart.translationService.getText("Target")}}<th>
 				<th class="col-md-1 text-right">Gap<th>
 			</tr>
 			<tr *ngFor="let question of category.questions.list">
