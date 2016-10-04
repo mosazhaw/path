@@ -2434,8 +2434,8 @@ export class GuiModel {
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
                             "search": false,
-                            "page": "benchmarkingparameterpage",
-                            "url": "/deepScanProject/:projectKey/benchmarking/parameter"
+                            "page": "benchmarkingfilterpage",
+                            "url": "/deepScanProject/:projectKey/benchmarking/filter"
                         },
                         {
                             "type": "ChartElement",
@@ -2444,8 +2444,8 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "benchmarkingparameterpage",
-                    "name": "Benchmarking Parameter",
+                    "id": "benchmarkingfilterpage",
+                    "name": "Benchmarking Filter",
                     "elementList": [
                         {
                             "type": "backbutton",
@@ -2456,7 +2456,7 @@ export class GuiModel {
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
                             "search": true,
-                            "url": "/deepScanProject/:projectKey/benchmarking/parameter/:parameterType"
+                            "url": "/deepScanProject/:projectKey/benchmarking/filter/:filterType"
                         }
                     ]
                 },
