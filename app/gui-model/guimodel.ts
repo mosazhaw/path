@@ -1421,6 +1421,22 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "benchmarking",
+                            "type": "RadioGroupField",
+                            "name": "Benchmarking",
+                            "defaultKey": false,
+                            "radios": [{
+                                type: "radio",
+                                name: "Yes",
+                                key: true
+                            }, {
+                                type: "radio",
+                                name: "No",
+                                key: false
+                            }
+                            ]
+                        },
+                        {
                             "type": "deleteButton",
                             "name": "Delete"
                         },
@@ -3455,6 +3471,13 @@ export class GuiModel {
                             },
                         },
                         {
+                            "type": "newButton",
+                            "name": "BenchmarkingRange",
+                            "icon": "fa-tachometer",
+                            "color": "sun-flower",
+                            "page": "benchmarkinginputparametersconfigurationpage",
+                        },
+                        {
                             "type": "list",
                             "name": "InputParameters",
                             "icon": "fa-arrow-circle-down",
@@ -3464,6 +3487,51 @@ export class GuiModel {
                                 "form": "InputParameterForm"
                             },
                             "url": "/inputParameter"
+                        }
+                    ]
+                },
+                {
+                    "id": "benchmarkinginputparametersconfigurationpage",
+                    "name": "InputParameters",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Units",
+                            "icon": "fa-tachometer",
+                            "color": "sun-flower",
+                            "page": "benchmarkinginputparameterconfigurationpage",
+                            "url": "/benchmarking/inputParameter"
+                        }
+                    ]
+                },
+                {
+                    "id": "benchmarkinginputparameterconfigurationpage",
+                    "name": "InputParameters",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewBenchmarkingInputParameterRange",
+                            "icon": "fa-tachometer",
+                            "color": "green",
+                            "form": {
+                                "form": "BenchmarkingRangeForm"
+                            },
+                        },
+                        {
+                            "type": "list",
+                            "name": "Units",
+                            "icon": "fa-tachometer",
+                            "color": "sun-flower",
+                            "form": {
+                                "form": "BenchmarkingRangeForm"
+                            },
+                            "url": "/benchmarking/inputParameter/:inputParameterKey/range"
                         }
                     ]
                 },

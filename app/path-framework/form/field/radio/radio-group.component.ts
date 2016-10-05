@@ -34,7 +34,9 @@ export class RadioGroupField extends ValueField<string> {
     }
 
     public setValue(value:string) {
-        console.log("try to set value " + value);
+        if (value != null) {
+            value = value.toString();
+        }
         super.setValue(value);
     }
 
