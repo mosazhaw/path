@@ -1444,6 +1444,58 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "DeepScanProjectLegalFormForm",
+                    "title": "DeepScanProjectLegalForm",
+                    "url": "/deepScanProjectLegalForm",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "translation",
+                            "name": "DeepScanProjectLegalForm",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "DeepScanProjectTypeForm",
+                    "title": "DeepScanProjectType",
+                    "url": "/deepScanProjectType",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "translation",
+                            "name": "DeepScanProjectType",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "KPIAnswerForm",
                     "title": "Answer",
                     "url": "/deepScanProject/:projectKey/person/:personKey/kpi/:kpiKey",
@@ -3104,6 +3156,20 @@ export class GuiModel {
                             "color": "wisteria",
                             "page": "unitsconfigurationpage"
                         },
+                        {
+                            "type": "button",
+                            "name": "DeepScanProjectLegalForms",
+                            "icon": "fa-balance-scale",
+                            "color": "lime",
+                            "page": "deepscanprojectlegalformsconfigurationpage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "DeepScanProjectTypes",
+                            "icon": "fa-h-square",
+                            "color": "sun-flower",
+                            "page": "deepscanprojecttypesconfigurationpage"
+                        },
                     ]
                 },
                 {
@@ -3409,6 +3475,62 @@ export class GuiModel {
                                 "form": "UnitForm"
                             },
                             "url": "/unit"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanprojectlegalformsconfigurationpage",
+                    "name": "DeepScanProjectLegalForms",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewDeepScanProjectLegalForm",
+                            "icon": "fa-book",
+                            "color": "green",
+                            "form": {
+                                "form": "DeepScanProjectLegalFormForm"
+                            },
+                        },
+                        {
+                            "type": "list",
+                            "name": "DeepScanProjectLegalForms",
+                            "icon": "fa-balance-scale",
+                            "color": "lime",
+                            "form": {
+                                "form": "DeepScanProjectLegalFormForm"
+                            },
+                            "url": "/deepScanProjectLegalForm"
+                        }
+                    ]
+                },
+                {
+                    "id": "deepscanprojecttypesconfigurationpage",
+                    "name": "DeepScanProjectTypes",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewDeepScanProjectType",
+                            "icon": "fa-book",
+                            "color": "green",
+                            "form": {
+                                "form": "DeepScanProjectTypeForm"
+                            },
+                        },
+                        {
+                            "type": "list",
+                            "name": "DeepScanProjectTypes",
+                            "icon": "fa-h-square",
+                            "color": "sun-flower",
+                            "form": {
+                                "form": "DeepScanProjectTypeForm"
+                            },
+                            "url": "/deepScanProjectType"
                         }
                     ]
                 },
