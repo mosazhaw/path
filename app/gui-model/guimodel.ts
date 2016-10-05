@@ -2052,7 +2052,7 @@ export class GuiModel {
                         {
                             "type": "button",
                             "name": "NewDeepScan",
-                            "icon": "fa-fast-forward",
+                            "icon": "fa-chevron-down",
                             "color": "green",
                             "form": {
                                 "form": "DeepScanProjectForm"
@@ -3460,7 +3460,7 @@ export class GuiModel {
                         {
                             "type": "newButton",
                             "name": "NewUnit",
-                            "icon": "fa-book",
+                            "icon": "fa-reorder",
                             "color": "green",
                             "form": {
                                 "form": "UnitForm"
@@ -3488,7 +3488,7 @@ export class GuiModel {
                         {
                             "type": "newButton",
                             "name": "NewDeepScanProjectLegalForm",
-                            "icon": "fa-book",
+                            "icon": "fa-balance-scale",
                             "color": "green",
                             "form": {
                                 "form": "DeepScanProjectLegalFormForm"
@@ -3516,7 +3516,7 @@ export class GuiModel {
                         {
                             "type": "newButton",
                             "name": "NewDeepScanProjectType",
-                            "icon": "fa-book",
+                            "icon": "fa-h-square",
                             "color": "green",
                             "form": {
                                 "form": "DeepScanProjectTypeForm"
