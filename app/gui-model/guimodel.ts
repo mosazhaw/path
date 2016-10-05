@@ -2481,25 +2481,9 @@ export class GuiModel {
                             "name": "DeepScans List",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
-                            "page": "simulationkpipage",
+                            "search": true,
+                            "page": "simulationparameterpage",
                             "url": "/deepScanProject/:projectKey/simulation"
-                        }
-                    ]
-                },
-                {
-                    "id": "simulationkpipage",
-                    "name": "Simulation",
-                    "elementList": [
-                        {
-                            "type": "backbutton",
-                        },
-                        {
-                            "type": "list",
-                            "name": "Key Performance Indicator",
-                            "icon": "fa-tachometer",
-                            "color": "alizarin",
-                            "url" : "/deepScanProject/:projectKey/simulation/kpi",
-                            "page": "simulationparameterpage"
                         }
                     ]
                 },
@@ -2515,9 +2499,39 @@ export class GuiModel {
                             "name": "Key Performance Indicator",
                             "icon": "fa-pencil",
                             "color": "alizarin",
-                            "url" : "/deepScanProject/:projectKey/simulation/kpi/:kpiKey/inputParameter",
+                            "search": true,
+                            "url" : "/deepScanProject/:projectKey/simulation/inputParameter",
+                            "page": "simulationkpipage",
+                        }
+                    ]
+                },
+                {
+                    "id": "simulationkpipage",
+                    "name": "Simulation",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "list",
+                            "name": "Edit",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "url" : "/deepScanProject/:projectKey/simulation/inputParameter/:inputParameterKey/edit",
                             "form": {
-                                "form": "InputParameterAnswerForm",
+                                "form": "InputParameterAnswerForm"
+                            },
+                        },
+                        {
+                            "type": "list",
+                            "name": "Key Performance Indicator",
+                            "icon": "fa-tachometer",
+                            "color": "alizarin",
+                            "search": true,
+                            "url" : "/deepScanProject/:projectKey/simulation/inputParameter/:inputParameterKey/kpi",
+                            "form": {
+                                "form": "KPIAnswerForm",
+                                "handler": "KPIQuestionFormHandler"
                             },
                         }
                     ]
