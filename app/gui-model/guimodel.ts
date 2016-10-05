@@ -2899,7 +2899,7 @@ export class GuiModel {
                             "name": "NewCountry",
                             "icon": "fa-globe",
                             "color": "green",
-                            "width": 2,
+                            "width": 1,
                             "form": {
                                 "form": "CountryForm"
                             }
