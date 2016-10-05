@@ -199,6 +199,23 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "deepScanProjectLegalForm",
+                            "type": "autocomplete",
+                            "name": "DeepScanProjectLegalForm",
+                            "wordSearchEnabled": true,
+                            "url": "/deepScanProjectLegalForm",
+                            "required": true,
+                            "newRow": true,
+                        },
+                        {
+                            "id": "deepScanProjectType",
+                            "type": "autocomplete",
+                            "name": "DeepScanProjectType",
+                            "wordSearchEnabled": true,
+                            "url": "/deepScanProjectType",
+                            "required": true
+                        },
+                        {
                             "id":   "country",
                             "type": "autocomplete",
                             "name": "Country",
