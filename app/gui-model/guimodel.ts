@@ -3488,10 +3488,37 @@ export class GuiModel {
                             "icon": "fa-arrow-circle-down",
                             "color": "turquoise",
                             "search": true,
+                            "page": "inputparameterconfigurationpage",
+                            "url": "/inputParameter"
+                        }
+                    ]
+                },
+                {
+                    "id": "inputparameterconfigurationpage",
+                    "name": "InputParameter",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditInputParameter",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
                             "form": {
                                 "form": "InputParameterForm"
                             },
-                            "url": "/inputParameter"
+                        },
+                        {
+                            "type": "list",
+                            "name": "KPIs",
+                            "icon": "fa-tachometer",
+                            "color": "wet-asphalt",
+                            "search": true,
+                            "form": {
+                                "form": "KpiForm"
+                            },
+                            "url": "/inputParameter/:inputParameterKey/kpi"
                         }
                     ]
                 },
