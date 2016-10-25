@@ -69,7 +69,10 @@ export class AutoCompleteField extends ValueField<string> {
     }
 
     filter(query:string) {
-        console.log("filter: " + query);
+        if (this.isReadonly()) {
+            return;
+        }
+
         this._valueSet = false;
         if (query !== null && query.length > 0 && query.replace(/\s/g, '').length == 0) {
             /* space: all */
