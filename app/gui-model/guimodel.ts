@@ -1098,6 +1098,7 @@ export class GuiModel {
                             "type": "autocomplete",
                             "name": "InputParameter",
                             "wordSearchEnabled": true,
+                            "form": "InputParameterForm",
                             "url": "/inputParameter",
                             "width": 2,
                             "required": true,
