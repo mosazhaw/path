@@ -29,11 +29,13 @@ export class GuiModel {
                             "id": "evtStartDate",
                             "type": "date",
                             "name": "StartDate",
+                            "required": true
                         },
                         {
                             "id": "evtEndDate",
                             "type": "date",
-                            "name": "EndDate"
+                            "name": "EndDate",
+                            "required": true
                         },
                         {
                             "id": "customer",
@@ -154,11 +156,13 @@ export class GuiModel {
                             "id": "evtStartDate",
                             "type": "date",
                             "name": "StartDate",
+                            "required": true
                         },
                         {
                             "id": "evtEndDate",
                             "type": "date",
-                            "name": "EndDate"
+                            "name": "EndDate",
+                            "required": true
                         },
                         {
                             "id": "customer",
