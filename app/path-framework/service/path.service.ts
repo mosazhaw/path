@@ -139,7 +139,7 @@ export class PathService {
     private handleError(err) {
         this.hideLoading();
         if (err.status == 405 && err.json()["messageKey"] != null) {
-            alert(this.translationService.getText(err.json()["messageKey"]));
+            alert(this.translationService.getText(err.json()["messageKey"], err.json()["parameters"]));
         }
         else if (err.status == 401) {
             alert("Unauthorized. Please login again.");

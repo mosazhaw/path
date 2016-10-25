@@ -3,11 +3,17 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class TranslationService {
 
-    public getText(key: string): string {
+    public getText(key: string, ...parameters: string[]): string {
         if (this.getTranslations()[key] == null) {
             return "{" + key + "}";
         }
-        return this.getTranslations()[key];
+        let result: string = this.getTranslations()[key];
+        let k: number = 0;
+        for (let parameter of parameters) {
+            result = result.replace("{" + k + "}", parameter);
+            k++;
+        }
+        return result;
     }
 
     protected getTranslations() {
@@ -94,6 +100,7 @@ export class TranslationService {
                 "KPICategory": "KPI-Kategorie",
                 "KPIList": "KPI Liste",
                 "KPIName": "KPI Name",
+                "KPIFormulaError": "Fehlerhafte Formel: {0}",
                 "Language": "Sprache",
                 "Level": "Grad",
                 "Logout": "Abmelden",
@@ -258,6 +265,7 @@ export class TranslationService {
                 "KPICategory": "KPI Category",
                 "KPIList": "KPI List",
                 "KPIName": "KPI Name",
+                "KPIFormulaError": "Error in formula: {0}",
                 "Language": "Language",
                 "Level": "Level",
                 "Logout": "Logout",
