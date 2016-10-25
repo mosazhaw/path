@@ -810,7 +810,7 @@ export class GuiModel {
                 {
                     "id": "DeepScanSupportProcessSelectionForm",
                     "url": "/deepScanProject/:projectKey/deepScanSupportProcess/:deepScanSupportProcessKey",
-                    "title": "Category Selection",
+                    "title": "SupportProcessSelection",
                     "formFieldList": [
                         {
                             "type": "fieldList",
@@ -821,7 +821,7 @@ export class GuiModel {
                         {
                             "id": "deepScanSupportProcess",
                             "type": "autocomplete",
-                            "name": "DeepScan Support Process",
+                            "name": "SupportProcess",
                             "wordSearchEnabled": false,
                             "required": true,
                             "readonly": true,
@@ -2180,15 +2180,6 @@ export class GuiModel {
                             "type": "backbutton",
                         },
                         {
-                            "type": "button",
-                            "name": "EditInterviewee",
-                            "icon": "fa-arrows-alt",
-                            "color": "green",
-                            "form": {
-                                "form": "PersonForm"
-                            }
-                        },
-                        {
                             "type": "list",
                             "name": "SupportProcesses",
                             "icon": "fa-cube",
@@ -2206,6 +2197,15 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditInterviewee",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "form": {
+                                "form": "PersonForm"
+                            }
                         },
                         {
                             "type": "list",
