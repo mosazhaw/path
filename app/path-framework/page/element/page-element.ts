@@ -15,10 +15,14 @@ export class PageElement implements IPageElement {
     }
 
     public getShortName():string {
-        if (this.name.length > 23) {
-            return this.name.substr(0, 20) + "...";
+        return PageElement.buildShortName(this.name);
+    }
+
+    public static buildShortName(str:string) {
+        if (str.length > 63) {
+            return str.substr(0, 60) + "...";
         }
-        return this.name;
+        return str;
     }
 
     get app():path.IPathApp {

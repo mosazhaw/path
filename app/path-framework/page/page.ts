@@ -6,10 +6,7 @@ export class Page {
     private _content:path.PageElement[] = [];
 
     public getShortName():string {
-        if (this.name.length > 23) {
-            return this.name.substr(0, 20) + "...";
-        }
-        return this.name;
+        return path.PageElement.buildShortName(this.name);
     }
 
     get name():string {
