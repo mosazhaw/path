@@ -1028,13 +1028,23 @@ export class GuiModel {
                             "required": true
                         },
                         {
+                            "id": "digits",
+                            "type": "number",
+                            "name": "NumberOfDigits",
+                            "width": 1,
+                            "min": -9223372036854775807,
+                            "max": 9223372036854775807,
+                            "digits": 0,
+                            "required": true
+                        },
+                        {
                             "id": "unit",
                             "type": "autocomplete",
                             "name": "Unit",
                             "wordSearchEnabled": false,
                             "form": "UnitForm",
                             "url": "/unit",
-                            "width": 2
+                            "width": 1
                         },
                         {
                             "id": "optimalValue",
