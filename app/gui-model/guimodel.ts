@@ -1436,20 +1436,54 @@ export class GuiModel {
                             "required": true
                         },
                         {
-                            "id": "benchmarking",
-                            "type": "RadioGroupField",
-                            "name": "Benchmarking",
-                            "defaultKey": false,
-                            "radios": [{
-                                type: "radio",
-                                name: "Yes",
-                                key: true
-                            }, {
-                                type: "radio",
-                                name: "No",
-                                key: false
-                            }
-                            ]
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "BenchmarkingInputParameterRangeForm",
+                    "title": "BenchmarkingInputParameterRange",
+                    "url": "/benchmarkingInputParameterRange",
+                    "formFieldList": [
+                        {
+                            "id": "inputParameter",
+                            "type": "autocomplete",
+                            "name": "InputParameter",
+                            "wordSearchEnabled": false,
+                            "url": "/inputParameter",
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "inputParameterKey",
+                            "width": 2
+                        },
+                        {
+                            "id": "fromValue",
+                            "type": "number",
+                            "name": "From",
+                            "width": 2,
+                            "min": -9223372036854775807,
+                            "max": 9223372036854775807,
+                            "digits": 0,
+                            "required": true
+                        },
+                        {
+                            "id": "toValue",
+                            "type": "number",
+                            "name": "To",
+                            "width": 2,
+                            "min": -9223372036854775807,
+                            "max": 9223372036854775807,
+                            "digits": 0,
+                            "required": true
                         },
                         {
                             "type": "deleteButton",
@@ -3486,13 +3520,6 @@ export class GuiModel {
                             },
                         },
                         {
-                            "type": "newButton",
-                            "name": "BenchmarkingRange",
-                            "icon": "fa-tachometer",
-                            "color": "sun-flower",
-                            "page": "benchmarkinginputparametersconfigurationpage",
-                        },
-                        {
                             "type": "list",
                             "name": "InputParameters",
                             "icon": "fa-arrow-circle-down",
@@ -3529,40 +3556,15 @@ export class GuiModel {
                                 "form": "KpiForm"
                             },
                             "url": "/inputParameter/:inputParameterKey/kpi"
-                        }
-                    ]
-                },
-                {
-                    "id": "benchmarkinginputparametersconfigurationpage",
-                    "name": "InputParameters",
-                    "elementList": [
-                        {
-                            "type": "backbutton",
-                        },
-                        {
-                            "type": "list",
-                            "name": "Units",
-                            "icon": "fa-tachometer",
-                            "color": "sun-flower",
-                            "page": "benchmarkinginputparameterconfigurationpage",
-                            "url": "/benchmarking/inputParameter"
-                        }
-                    ]
-                },
-                {
-                    "id": "benchmarkinginputparameterconfigurationpage",
-                    "name": "InputParameters",
-                    "elementList": [
-                        {
-                            "type": "backbutton",
                         },
                         {
                             "type": "newButton",
                             "name": "NewBenchmarkingInputParameterRange",
                             "icon": "fa-tachometer",
                             "color": "green",
+                            "width": 2,
                             "form": {
-                                "form": "BenchmarkingRangeForm"
+                                "form": "BenchmarkingInputParameterRangeForm"
                             },
                         },
                         {
@@ -3571,7 +3573,7 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "sun-flower",
                             "form": {
-                                "form": "BenchmarkingRangeForm"
+                                "form": "BenchmarkingInputParameterRangeForm"
                             },
                             "url": "/benchmarking/inputParameter/:inputParameterKey/range"
                         }
