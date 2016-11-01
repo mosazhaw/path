@@ -1473,7 +1473,7 @@ export class GuiModel {
                             "min": -9223372036854775807,
                             "max": 9223372036854775807,
                             "digits": 0,
-                            "required": true
+                            "required": false
                         },
                         {
                             "id": "toValue",
@@ -1483,7 +1483,7 @@ export class GuiModel {
                             "min": -9223372036854775807,
                             "max": 9223372036854775807,
                             "digits": 0,
-                            "required": true
+                            "required": false
                         },
                         {
                             "type": "deleteButton",
