@@ -285,6 +285,52 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "SimulationForm",
+                    "title": "Simulation",
+                    "url": "/simulation",
+                    "formFieldList": [
+                        {
+                            "id":   "originalDeepScanProject",
+                            "type": "autocomplete",
+                            "name": "Project",
+                            "wordSearchEnabled": true,
+                            "defaultKey": "projectKey",
+                            "readonly": true,
+                            "url": "/project",
+                            "form": "DeepScanProjectForm",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "name",
+                            "type": "text",
+                            "name": "SimulationName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "comments",
+                            "type": "text",
+                            "name": "Comments",
+                            "maxLength": 4000,
+                            "height": 4,
+                            "width": 2
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "CompanyForm",
                     "title": "Company",
                     "url": "/company",
@@ -2607,7 +2653,7 @@ export class GuiModel {
                             "icon": "fa-simplybuilt",
                             "color": "green",
                             "form": {
-                                "form": "DeepScanProjectForm"
+                                "form": "SimulationForm"
                             }
                         },
                         {
@@ -2627,6 +2673,16 @@ export class GuiModel {
                     "elementList": [
                         {
                             "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditSimulation",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "width": 1,
+                            "form": {
+                                "form": "SimulationForm"
+                            }
                         },
                         {
                             "type": "list",
