@@ -5,6 +5,7 @@
 		</div>
 		<div class="panel-body">
 			<p>{{chart.data?.customer}}</p>
+			<p>Referenced Projects: {{chart.data?.referenceProjectCount}}</p>
 		</div>
 
 		<table *ngIf="chart.data?.interviewees?.list.length > 0" class="table">
