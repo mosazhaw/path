@@ -87,22 +87,6 @@ export class GuiModel {
                             "required": true
                         },
                         {
-                            "id": "benchmarking",
-                            "type": "RadioGroupField",
-                            "name": "Benchmarking",
-                            "defaultKey": true,
-                            "radios": [{
-                                type: "radio",
-                                name: "Yes",
-                                key: true
-                            }, {
-                                type: "radio",
-                                name: "No",
-                                key: false
-                            }
-                            ]
-                        },
-                        {
                             "id": "background",
                             "type": "text",
                             "name": "Background",
