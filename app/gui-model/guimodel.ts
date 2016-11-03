@@ -2693,7 +2693,7 @@ export class GuiModel {
                             "type": "button",
                             "name": "Simulation",
                             "icon": "fa-simplybuilt",
-                            "color": "orange",
+                            "color": "belize hole",
                             "page": "simulationpage",
                         },
                         {
