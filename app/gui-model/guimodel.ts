@@ -1676,6 +1676,42 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "SimulationKPIAnswerForm",
+                    "title": "Answer",
+                    "url": "/deepScanProject/:simulationKey/person/:personKey/kpi/:kpiKey",
+                    "formFieldList": [
+                        {
+                            "id": "replacedFormula",
+                            "type": "text",
+                            "name": "Formula",
+                            "maxLength": 4000,
+                            "width": 2,
+                            "height": 4,
+                            "readonly": true,
+                        },
+                        {
+                            "id": "inputParameter",
+                            "type": "fieldList",
+                            "url": "/deepScanProject/:simulationKey/kpi/:kpiKey/inputParameter/field"
+                        },
+                        {
+                            "id": "deleteButton",
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "id": "cancelButton",
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "id": "okButton",
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "InputParameterAnswerForm",
                     "title": "Answer",
                     "url": "/inputParameterAnswer/:projectKey/:personKey/:inputParameterKey",
@@ -1723,6 +1759,58 @@ export class GuiModel {
                             "required": true,
                             "readonly": true,
                             "url": "/person",
+                            "width": 2
+                        },
+                        {
+                            "id": "cancelButton",
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "id": "okButton",
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "SimulationInputParameterAnswerForm",
+                    "title": "Answer",
+                    "url": "/inputParameterAnswer/:simulationKey/:personKey/:inputParameterKey",
+                    "formFieldList": [
+                        {
+                            "id": "inputParameterKey",
+                            "type": "autocomplete",
+                            "name": "InputParameter",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "url": "/inputParameter",
+                            "width": 2
+                        },
+                        {
+                            "id": "value",
+                            "type": "fieldList",
+                            "url": "/deepScanProject/:simulationKey/inputParameter/:inputParameterKey/field"
+                        },
+                        {
+                            "id": "unitKey",
+                            "type": "autocomplete",
+                            "name": "Unit",
+                            "wordSearchEnabled": false,
+                            "required": false,
+                            "readonly": true,
+                            "url": "/unit",
+                            "width": 2
+                        },
+                        {
+                            "id": "deepScanProjectKey",
+                            "type": "autocomplete",
+                            "name": "Project",
+                            "wordSearchEnabled": false,
+                            "required": true,
+                            "readonly": true,
+                            "url": "/deepScanProject",
                             "width": 2
                         },
                         {
@@ -2193,7 +2281,7 @@ export class GuiModel {
                             "color": "wet-asphalt",
                             "search": true,
                             "page": "deepscanpage",
-                            "url": "/deepScanProject"
+                            "url": "/deepScanProject/noSimulation"
                         }
                     ]
                 },
@@ -2590,7 +2678,7 @@ export class GuiModel {
                             "color": "wet-asphalt",
                             "search": true,
                             "page": "benchmarkingpage",
-                            "url": "/deepScanProject"
+                            "url": "/deepScanProject/noSimulation"
                         }
                     ]
                 },
@@ -2690,7 +2778,7 @@ export class GuiModel {
                             "icon": "fa-pencil",
                             "color": "alizarin",
                             "search": true,
-                            "url" : "/deepScanProject/:projectKey/simulation/inputParameter",
+                            "url" : "/deepScanProject/:simulationKey/simulation/inputParameter",
                             "page": "simulationkpipage",
                         }
                     ]
@@ -2707,9 +2795,9 @@ export class GuiModel {
                             "name": "Edit",
                             "icon": "fa-arrows-alt",
                             "color": "green",
-                            "url" : "/deepScanProject/:projectKey/simulation/inputParameter/:inputParameterKey/edit",
+                            "url" : "/deepScanProject/:simulationKey/simulation/inputParameter/:inputParameterKey/edit",
                             "form": {
-                                "form": "InputParameterAnswerForm"
+                                "form": "SimulationInputParameterAnswerForm"
                             },
                         },
                         {
@@ -2718,10 +2806,9 @@ export class GuiModel {
                             "icon": "fa-tachometer",
                             "color": "alizarin",
                             "search": true,
-                            "url" : "/deepScanProject/:projectKey/simulation/inputParameter/:inputParameterKey/kpi",
+                            "url" : "/deepScanProject/:simulationKey/simulation/inputParameter/:inputParameterKey/kpi",
                             "form": {
-                                "form": "KPIAnswerForm",
-                                "handler": "KPIQuestionFormHandler"
+                                "form": "SimulationKPIAnswerForm"
                             },
                         }
                     ]
