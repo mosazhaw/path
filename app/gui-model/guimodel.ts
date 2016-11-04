@@ -1798,6 +1798,11 @@ export class GuiModel {
                             "width": 2
                         },
                         {
+                            "id": "deleteButton",
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
                             "id": "cancelButton",
                             "type": "cancelButton",
                             "name": "Cancel"
