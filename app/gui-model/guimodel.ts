@@ -1679,11 +1679,6 @@ export class GuiModel {
                             "url": "/deepScanProject/:simulationKey/kpi/:kpiKey/inputParameter/field"
                         },
                         {
-                            "id": "deleteButton",
-                            "type": "deleteButton",
-                            "name": "Delete"
-                        },
-                        {
                             "id": "cancelButton",
                             "type": "cancelButton",
                             "name": "Cancel"
