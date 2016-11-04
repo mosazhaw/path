@@ -43,9 +43,9 @@ export class AppComponent extends path.PathAppComponent {
 
     public getBackendUrl() {
         if (window.location.hostname.indexOf("dev.herokuapp") != -1) {
-            return "https://assessment-backend-dev.herokuapp.com/services";
+            return location.protocol + "//assessment-backend-dev.herokuapp.com/services";
         } else if (window.location.hostname.indexOf("test.herokuapp") != -1) {
-            return "https://assessment-backend-test.herokuapp.com/services";
+            return location.protocol + "//assessment-backend-test.herokuapp.com/services";
         }
         return "http://localhost:4567/services";
     }
