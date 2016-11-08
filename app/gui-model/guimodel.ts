@@ -97,7 +97,7 @@ export class GuiModel {
                         {
                             "id": "target",
                             "type": "text",
-                            "name": "Target",
+                            "name": "ProjectTarget",
                             "maxLength": 4000,
                             "height": 2,
                             "width": 2
