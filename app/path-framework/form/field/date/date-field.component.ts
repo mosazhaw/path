@@ -30,15 +30,22 @@ export class DateField extends ValueField<Date> {
             value = moment(value).toDate();
             console.log("setting date " + value);
         }
+        if (value != null && Object.prototype.toString.call(value) === "[object Date]") {
+            // it is a date
+            if ( isNaN( value.getTime() ) ) {
+                value = null;
+            }
+        }
+        else {
+            value = null;
+        }
         super.setValue(value);
         this.formatDate();
     }
 
     public updateValueFromGui(value:string) {
-        console.log(value);
         let dateValue:Date = moment(value, "DD.MM.YYYY").toDate();
         this.setValue(dateValue);
-        console.log(dateValue);
     }
 
     public toggleDatePicker() {
@@ -60,13 +67,13 @@ export class DateField extends ValueField<Date> {
     }
 
     private formatDate() {
-        if (this.value == null) {
-            this._formattedValue = null;
-        }
-        try {
-            this._formattedValue = new Intl.DateTimeFormat().format(this.value);
-        } catch (e) {
-            console.log("failed formatting date " + this.value);
+        this._formattedValue = "";
+        if (this.value != null) {
+            try {
+                this._formattedValue = new Intl.DateTimeFormat().format(this.value);
+            } catch (e) {
+                console.log("failed formatting date " + this.value);
+            }
         }
     }
 }
