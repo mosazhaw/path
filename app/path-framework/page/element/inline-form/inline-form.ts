@@ -42,7 +42,7 @@ export class InlineForm extends PageElement {
     public loadNextForm(forward:boolean) {
         if (this._url != null) {
             this.pathService.serverGet(this.app.getBackendUrl(), this.url, (data:any) => {
-                if (data != null && data["length"] != null) {
+                if (data != null && data["length"] != null && data.length > 0) {
                     let foundNewKey:boolean = false;
                     if (this._currentKey == null) {
                         let firstItem = data[0];
