@@ -629,6 +629,73 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "UserPermissionRoleForm",
+                    "title": "UserPermissionRole",
+                    "url": "/user/:userKey/permissionRole",
+                    "formFieldList": [
+                        {
+                            "id": "permissionRoleKey",
+                            "type": "autocomplete",
+                            "name": "PermissionRole",
+                            "wordSearchEnabled": true,
+                            "url": "/permissionRole",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                        },
+                        {
+                            "id": "userKey",
+                            "type": "autocomplete",
+                            "name": "User",
+                            "wordSearchEnabled": true,
+                            "url": "/user",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "userKey"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "PermissionRoleForm",
+                    "title": "PermissionRole",
+                    "url": "/permissionRole",
+                    "formFieldList": [
+                        {
+                            "id":   "name",
+                            "type": "text",
+                            "name": "PermissionRoleName",
+                            "newRow": true,
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "ProjectIntervieweeForm",
                     "title": "AddInterviewee",
                     "url": "/project/:projectKey/interviewee",
@@ -2993,6 +3060,14 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "PermissionRoles",
+                            "icon": "fa-check-circle",
+                            "color": "belize hole",
+                            "page": "permissionrolespage",
+                            "width": 2
+                        },
+                        {
+                            "type": "button",
                             "name": "Configuration",
                             "icon": "fa-gear",
                             "color": "wet-asphalt",
@@ -3023,10 +3098,47 @@ export class GuiModel {
                             "icon": "fa-user",
                             "color": "orange",
                             "search": true,
+                            "page": "userpage",
+                            "url": "/user"
+                        }
+                    ]
+                },
+                {
+                    "id": "userpage",
+                    "name": "User",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditUser",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
                             "form": {
                                 "form": "UserForm"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "name": "AddPermissionRole",
+                            "icon": "fa-check-circle",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "UserPermissionRoleForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Permission Role List",
+                            "icon": "fa-check-circle",
+                            "color": "belize hole",
+                            "search": true,
+                            "form": {
+                                "form": "UserPermissionRoleForm"
                             },
-                            "url": "/user"
+                            "url": "/user/:userKey/permissionRole"
                         }
                     ]
                 },
@@ -3077,6 +3189,61 @@ export class GuiModel {
                             "width": 2,
                             "page": "maturitylevelschemasconfigurationpage"
                         },
+                    ]
+                },
+                {
+                    "id": "permissionrolespage",
+                    "name": "Permission Roles",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewPermissionRole",
+                            "icon": "fa-check-circle",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "PermissionRoleForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Permission Role List",
+                            "icon": "fa-check-circle",
+                            "color": "belize hole",
+                            "search": true,
+                            "page": "permissionrolepage",
+                            "url": "/permissionRole"
+                        }
+                    ]
+                },
+                {
+                    "id": "permissionrolepage",
+                    "name": "Permission Role",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditPermissionRole",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "PermissionRoleForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Permission Function List",
+                            "icon": "fa-cutlery",
+                            "color": "belize hole",
+                            "search": true,
+                            "url": "/permissionRole/:permissionRoleKey/permissionFunction"
+                        }
                     ]
                 },
                 {
