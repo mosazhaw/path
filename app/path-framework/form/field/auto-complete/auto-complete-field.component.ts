@@ -68,7 +68,7 @@ export class AutoCompleteField extends ValueField<string> {
         return super.isReadonly() && this.isInitialValueSet;
     }
 
-    filter(query:string, event:event) {
+    filter(query:string, event) {
         // do not filter readonly fields
         if (this.isReadonly()) {
             return;
