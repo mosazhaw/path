@@ -1,7 +1,7 @@
 <path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
         <div class="input-group">
-            <input #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value) (blur)="field.focusLost()" class="form-control" placeholder="">
+            <input #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value,$event) (blur)="field.focusLost()" class="form-control" placeholder="">
             <!-- Auto Complete -->
             <div *ngIf="field.filteredList.length > 0 && !field.isReadonly()">
                 <div class="path-autocomplete list-group">

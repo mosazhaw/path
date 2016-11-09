@@ -68,8 +68,13 @@ export class AutoCompleteField extends ValueField<string> {
         return super.isReadonly() && this.isInitialValueSet;
     }
 
-    filter(query:string) {
+    filter(query:string, event:event) {
+        // do not filter readonly fields
         if (this.isReadonly()) {
+            return;
+        }
+        // do not filter on simple tab focus change
+        if (event.keyCode == 9) {
             return;
         }
 
@@ -108,9 +113,10 @@ export class AutoCompleteField extends ValueField<string> {
 
     focusLost() {
         window.setTimeout(() => {
-                if (!this.valueSet) {
-                    this.query = new AutoCompleteFieldEntry(); // force angular to update query.text value
-                }
+        if (!this.valueSet) {
+            // force angular to update query.text value
+            this.resetDisplay(this.value["key"]);
+        }
         }, 1);
     }
 
@@ -126,22 +132,7 @@ export class AutoCompleteField extends ValueField<string> {
         this.clearFilteredList();
         super.setValue(value);
         this.query = null;
-        // must wait with display update until data is loaded
-        let displaySetter = () => {
-            let keyValue = value;
-            if (!this.dataLoaded) {
-                console.log("waiting...");
-                window.setTimeout(function() { displaySetter() }, 250);
-            } else {
-                for (let item of this._data) {
-                    if (item.key == keyValue) {
-                        window.setTimeout(() => { this.query = item; },1);
-                        break;
-                    }
-                }
-            }
-        }
-        displaySetter();
+        this.resetDisplay(value);
         // reload dependent autocomplete fields
         if (oldValue != this.value) {
             for (let field of this.getForm().getFields()) {
@@ -214,6 +205,25 @@ export class AutoCompleteField extends ValueField<string> {
 
     public clearFilteredList() {
         this._filteredList = [];
+    }
+
+    private resetDisplay(value:string) {
+        // must wait with display update until data is loaded
+        let displaySetter = () => {
+            let keyValue = value;
+            if (!this.dataLoaded) {
+                console.log("waiting...");
+                window.setTimeout(function() { displaySetter() }, 250);
+            } else {
+                for (let item of this._data) {
+                    if (item.key == keyValue) {
+                        window.setTimeout(() => { this.query = item; },1);
+                        break;
+                    }
+                }
+            }
+        }
+        displaySetter();
     }
 
     get query():AutoCompleteFieldEntry {
