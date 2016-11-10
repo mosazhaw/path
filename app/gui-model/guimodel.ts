@@ -3173,6 +3173,14 @@ export class GuiModel {
                             "width": 2,
                             "url": "/deepScanProject/:projectKey/assessmentreport/word"
                         },
+                        {
+                            "type": "downloadButton",
+                            "name": "IntroductionHandbook",
+                            "icon": "fa-file-word-o",
+                            "color": "blue",
+                            "width": 2,
+                            "url": "/deepScanProject/:projectKey/introductionhandbook"
+                        },
                     ]
                 },
                 {
