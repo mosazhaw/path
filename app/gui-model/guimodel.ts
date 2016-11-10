@@ -2149,6 +2149,7 @@ export class GuiModel {
                             "name": "NewQuickScan",
                             "icon": "fa-fast-forward",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/createQuickScan/check",
                             "form": {
                                 "form": "QuickScanProjectForm"
                             }

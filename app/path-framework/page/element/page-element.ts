@@ -8,6 +8,7 @@ export class PageElement implements IPageElement {
     private _name:string;
     private _type:string;
     private _width:number;
+    private _visible:boolean = true;
     private _parentPageElement:PageElement;
 
     constructor(app:path.IPathApp) {
@@ -75,6 +76,14 @@ export class PageElement implements IPageElement {
 
     public getParent():IPageElement {
         return this.parentPageElement;
+    }
+
+    get visible(): boolean {
+        return this._visible;
+    }
+
+    set visible(value: boolean) {
+        this._visible = value;
     }
 
     get parentPageElement(): PageElement {

@@ -67,6 +67,7 @@
     <div class="row">
         <div class="col-md-12">
     <span *ngFor='let pageElement of _pageStack[_pageStack.length - 1].content'>
+	    <span *ngIf="pageElement.visible">
     <!-- Button -->
     <a *ngIf='pageElement.type == "button" || pageElement.type == "newButton"' (click)="pageElement.onClick()" class="fa-links">
         <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{pageElement.color}} col-md-3">
@@ -125,6 +126,7 @@
     <div class="col-md-12" *ngIf='pageElement.type == "ChartElement"'>
         <path-radar-chart [chart]="pageElement"></path-radar-chart>
     </div>
+	</span>
     </span>
         </div>
     </div>

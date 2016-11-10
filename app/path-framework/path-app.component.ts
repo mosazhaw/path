@@ -249,6 +249,14 @@ export abstract class PathAppComponent implements path.IPathApp {
                             element = chart;
                             break;
                     }
+                    if (modelElement["permissionUrl"] != null) {
+                        element.visible = false;
+                        let permissionUrl:string = KeyUtility.translateUrl(modelElement["permissionUrl"], null, false, parentPageElement);
+                        let permissionHandler = (permissionElement:path.PageElement) => (data:any) => {
+                            permissionElement.visible = data["permission"];
+                        }
+                        this.pathService.serverGet(this.getBackendUrl(), permissionUrl, permissionHandler(element), null);
+                    }
                     element.type = modelElement.type;
                     element.parentPageElement = parentPageElement;
                     if (modelElement["width"] != null) {
