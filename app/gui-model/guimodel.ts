@@ -1319,6 +1319,74 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "OrganisationUnitForm",
+                    "title": "OrganisationUnit",
+                    "url": "/organisationUnit",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "translation",
+                            "name": "OrganisationUnitName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "definition",
+                            "type": "translation",
+                            "name": "Definition",
+                            "width": 2,
+                            "height": 3,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "MasterDataObjectForm",
+                    "title": "MasterDataObject",
+                    "url": "/masterDataObject",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "translation",
+                            "name": "OrganisationUnitName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "definition",
+                            "type": "translation",
+                            "name": "Definition",
+                            "width": 2,
+                            "height": 3,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "CountryForm",
                     "url": "/country",
                     "title": "Country",
@@ -3577,6 +3645,13 @@ export class GuiModel {
                             "color": "sun-flower",
                             "page": "deepscanprojecttypesconfigurationpage"
                         },
+                        {
+                            "type": "button",
+                            "name": "IntroductionHandbook",
+                            "icon": "fa-file-word-o",
+                            "color": "green sea",
+                            "page": "introductionhandbookconfigurationpage"
+                        },
                     ]
                 },
                 {
@@ -3989,44 +4064,120 @@ export class GuiModel {
                     ]
                 },
                 {
-                    "id": "reportsconfigurationpage",
-                    "name": "Report Configuration",
+                    "id": "introductionhandbookconfigurationpage",
+                    "name": "IntroductionHandbook",
                     "elementList": [
                         {
                             "type": "backbutton",
                         },
                         {
                             "type": "button",
-                            "name": "AssessmentReport",
-                            "icon": "fa-file",
-                            "color": "wisteria",
-                            "page": "reportassessmentconfigurationpage"
+                            "name": "OrganisationUnit",
+                            "icon": "fa-sitemap",
+                            "color": "belize hole",
+                            "width": 2,
+                            "page": "organisationunitsconfigurationpage"
                         },
                         {
                             "type": "button",
-                            "name": "IntroductionHandbook",
-                            "icon": "fa-file",
-                            "color": "wisteria",
-                            "page": "reporthandbookconfigurationpage"
+                            "name": "MasterDataObject",
+                            "icon": "fa-database",
+                            "color": "pumpkin",
+                            "width": 2,
+                            "page": "masterdataobjectsconfigurationpage"
+                        },
+                    ]
+                },
+                {
+                    "id": "organisationunitsconfigurationpage",
+                    "name": "OrganisationUnits",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewOrganisationUnit",
+                            "icon": "fa-sitemap",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "OrganisationUnitForm"
+                            },
+                        },
+                        {
+                            "type": "list",
+                            "name": "OrganisationUnits",
+                            "icon": "fa-sitemap",
+                            "color": "belize hole",
+                            "page": "organisationunitconfigurationpage",
+                            "url": "/organisationUnit"
                         }
                     ]
                 },
                 {
-                    "id": "reportassessmentconfigurationpage",
-                    "name": "Report Chapter Configuration",
+                    "id": "organisationunitconfigurationpage",
+                    "name": "OrganisationUnit",
                     "elementList": [
                         {
                             "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditOrganisationUnit",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "OrganisationUnitForm"
+                            }
+                        },
+                    ]
+                },
+                {
+                    "id": "masterdataobjectsconfigurationpage",
+                    "name": "MasterDataObjects",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewMasterDataObject",
+                            "icon": "fa-database",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "MasterDataObjectForm"
+                            },
+                        },
+                        {
+                            "type": "list",
+                            "name": "MasterDataObjects",
+                            "icon": "fa-database",
+                            "color": "pumpkin",
+                            "page": "masterdataobjectconfigurationpage",
+                            "url": "/masterDataObject"
                         }
                     ]
                 },
                 {
-                    "id": "reporthandbookconfigurationpage",
-                    "name": "Report Chapter Configuration",
+                    "id": "masterdataobjectconfigurationpage",
+                    "name": "MasterDataObject",
                     "elementList": [
                         {
                             "type": "backbutton",
-                        }
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditMasterDataObject",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "MasterDataObjectForm"
+                            }
+                        },
                     ]
                 }
             ]
