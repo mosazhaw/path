@@ -8,6 +8,7 @@ export class GuiModel {
                     "id": "QuickScanProjectForm",
                     "title": "QuickScan",
                     "url": "/quickScanProject",
+                    "permissionUrl": "/permissionFunction/check/quickScan",
                     "formFieldList": [
                         {
                             "id": "name",
@@ -128,6 +129,7 @@ export class GuiModel {
                     "id": "DeepScanProjectForm",
                     "title": "DeepScan",
                     "url": "/deepScanProject",
+                    "permissionUrl": "/permissionFunction/check/deepScan",
                     "formFieldList": [
                         {
                             "id": "name",
@@ -318,6 +320,7 @@ export class GuiModel {
                     "id": "CompanyForm",
                     "title": "Company",
                     "url": "/company",
+                    "permissionUrl": "/permissionFunction/check/company",
                     "formFieldList": [
                         {
                             "id": "name",
@@ -381,6 +384,7 @@ export class GuiModel {
                     "id": "PersonForm",
                     "title": "Person",
                     "url": "/person",
+                    "permissionUrl": "/permissionFunction/check/person",
                     "formFieldList": [
                         {
                             "id":   "salutation",
@@ -2091,6 +2095,7 @@ export class GuiModel {
                             "name": "QuickScan",
                             "icon": "fa-fast-forward",
                             "color": "alizarin",
+                            "permissionUrl": "/permissionFunction/check/quickScan/update",
                             "page": "quickscanspage"
                         },
                         {
@@ -2098,6 +2103,7 @@ export class GuiModel {
                             "name": "DeepScan",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
+                            "permissionUrl": "/permissionFunction/check/deepScan/update",
                             "page": "deepscanspage",
                         },
                         {
@@ -2105,6 +2111,7 @@ export class GuiModel {
                             "name": "Companies",
                             "icon": "fa-home",
                             "color": "purple",
+                            "permissionUrl": "/permissionFunction/check/company/update",
                             "page": "companiespage",
                         },
                         {
@@ -2112,6 +2119,7 @@ export class GuiModel {
                             "name": "Persons",
                             "icon": "fa-user",
                             "color": "orange",
+                            "permissionUrl": "/permissionFunction/check/person/update",
                             "page": "personspage",
                         },
                         {
@@ -2119,6 +2127,7 @@ export class GuiModel {
                             "name": "BenchmarkingAndSimulation",
                             "icon": "fa-tachometer",
                             "color": "lime",
+                            "permissionUrl": "/permissionFunction/check/benchmarkingSimulation/read",
                             "page": "benchmarkingsimulationprojectspage"
                         },
                         {
@@ -2126,6 +2135,7 @@ export class GuiModel {
                             "name": "Reports",
                             "icon": "fa-file",
                             "color": "blue",
+                            "permissionUrl": "/permissionFunction/check/report/read",
                             "page": "reportcompaniespage"
                         },
                         {
@@ -2133,6 +2143,7 @@ export class GuiModel {
                             "name": "Admin",
                             "icon": "fa-gear",
                             "color": "concrete",
+                            "permissionUrl": "/permissionFunction/check/administration/read",
                             "page": "adminpage"
                         }
                     ]
@@ -2149,7 +2160,7 @@ export class GuiModel {
                             "name": "NewQuickScan",
                             "icon": "fa-fast-forward",
                             "color": "green",
-                            "permissionUrl": "/permissionFunction/check/createQuickScan",
+                            "permissionUrl": "/permissionFunction/check/quickScan/create",
                             "form": {
                                 "form": "QuickScanProjectForm"
                             }
@@ -2177,6 +2188,7 @@ export class GuiModel {
                             "name": "EditQuickScan",
                             "icon": "fa-arrows-alt",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/quickScan/update",
                             "form": {
                                 "form": "QuickScanProjectForm"
                             }
@@ -2186,6 +2198,7 @@ export class GuiModel {
                             "name": "IndustryClassification",
                             "icon": "fa-industry",
                             "color": "wisteria",
+                            "permissionUrl": "/permissionFunction/check/quickScan/update",
                             "page": "projectindustryclassificationspage"
                         },
                         {
@@ -2193,6 +2206,7 @@ export class GuiModel {
                             "name": "Categories",
                             "icon": "fa-cube",
                             "color": "pumpkin",
+                            "permissionUrl": "/permissionFunction/check/quickScan/update",
                             "page": "quickscancategoriespage"
                         },
                         {
@@ -2200,6 +2214,7 @@ export class GuiModel {
                             "name": "Interviewees",
                             "icon": "fa-user",
                             "color": "blue",
+                            "permissionUrl": "/permissionFunction/check/quickScan/update",
                             "page": "quickscanintervieweespage"
                         }
                     ]
@@ -2235,6 +2250,7 @@ export class GuiModel {
                             "name": "AddInterviewee",
                             "icon": "fa-user",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/projectInterviewee/create",
                             "form": {
                                 "form": "ProjectIntervieweeForm"
                             }
@@ -2281,6 +2297,7 @@ export class GuiModel {
                             "name": "EditInterviewee",
                             "icon": "fa-arrows-alt",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/person/update",
                             "form": {
                                 "form": "PersonForm"
                             }
@@ -2295,7 +2312,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "url": "/project/:projectKey/interviewee/:personKey"
+                            "url": "/project/:projectKey/interviewee/:personKey",
+                            "permissionUrl": "/permissionFunction/check/projectInterviewee/delete",
                         }
                     ]
                 },
@@ -2322,6 +2340,7 @@ export class GuiModel {
                             "name": "NewDeepScan",
                             "icon": "fa-chevron-down",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/deepScan/create",
                             "form": {
                                 "form": "DeepScanProjectForm"
                             }
@@ -2349,6 +2368,7 @@ export class GuiModel {
                             "name": "EditDeepScan",
                             "icon": "fa-arrows-alt",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/deepScan/update",
                             "form": {
                                 "form": "DeepScanProjectForm"
                             }
@@ -2358,6 +2378,7 @@ export class GuiModel {
                             "name": "IndustryClassification",
                             "icon": "fa-industry",
                             "color": "wisteria",
+                            "permissionUrl": "/permissionFunction/check/deepScan/update",
                             "page": "projectindustryclassificationspage"
                         },
                         {
@@ -2365,6 +2386,7 @@ export class GuiModel {
                             "name": "SupportProcesses",
                             "icon": "fa-cube",
                             "color": "pumpkin",
+                            "permissionUrl": "/permissionFunction/check/deepScan/update",
                             "page": "deepscansupportprocessespage"
                         },
                         {
@@ -2372,6 +2394,7 @@ export class GuiModel {
                             "name": "Interviewees",
                             "icon": "fa-user",
                             "color": "blue",
+                            "permissionUrl": "/permissionFunction/check/deepScan/update",
                             "page": "deepscanintervieweespage"
                         }
                     ]
@@ -2388,6 +2411,7 @@ export class GuiModel {
                             "name": "AddInterviewee",
                             "icon": "fa-user",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/projectInterviewee/create",
                             "form": {
                                 "form": "ProjectIntervieweeForm"
                             }
@@ -2433,6 +2457,7 @@ export class GuiModel {
                             "name": "EditInterviewee",
                             "icon": "fa-arrows-alt",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/person/update",
                             "form": {
                                 "form": "PersonForm"
                             }
@@ -2447,7 +2472,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "url": "/project/:projectKey/interviewee/:personKey"
+                            "url": "/project/:projectKey/interviewee/:personKey",
+                            "permissionUrl": "/permissionFunction/check/projectInterviewee/delete",
                         }
                     ]
                 },
@@ -2632,6 +2658,7 @@ export class GuiModel {
                             "name": "NewCompany",
                             "icon": "fa-home",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/company/create",
                             "form": {
                                 "form": "CompanyForm"
                             }
@@ -2660,6 +2687,7 @@ export class GuiModel {
                             "name": "NewPerson",
                             "icon": "fa-user",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/person/create",
                             "form": {
                                 "form": "PersonForm"
                             }
@@ -2689,6 +2717,7 @@ export class GuiModel {
                             "name": "EditCompany",
                             "icon": "fa-arrows-alt",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/company/update",
                             "form": {
                                 "form": "CompanyForm"
                             }
@@ -2698,6 +2727,7 @@ export class GuiModel {
                             "name": "NewPerson",
                             "icon": "fa-user",
                             "color": "green",
+                            "permissionUrl": "/permissionFunction/check/person/create",
                             "form": {
                                 "form": "PersonForm"
                             }

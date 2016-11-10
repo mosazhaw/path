@@ -277,34 +277,69 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public setCurrentForm(formId:string, key:Key, handler:string, parentPageElement:path.IPageElement) {
-        let formFunction:FormFunction  = new FormFunction();
-        formFunction.save = () => {
-            this.closeCurrentForm();
-            this.refreshCurrentPage();
-        };
-        formFunction.cancel = () => {
-            this.closeCurrentForm();
-        };
-        formFunction.delete = () => {
-            this.closeCurrentForm();
-            let parent:path.IPageElement = parentPageElement;
-            if (parent != null && parent instanceof path.Button && (<path.Button>parent).type == "listButton") {
+        let setCurrentForm = () => {
+            // build form function
+            let formFunction:FormFunction  = new FormFunction();
+            formFunction.save = () => {
+                this.closeCurrentForm();
                 this.refreshCurrentPage();
-            } else {
-                this.navigateBack();
-                this.refreshCurrentPage();
+            };
+            formFunction.cancel = () => {
+                this.closeCurrentForm();
+            };
+            formFunction.delete = () => {
+                this.closeCurrentForm();
+                let parent:path.IPageElement = parentPageElement;
+                if (parent != null && parent instanceof path.Button && (<path.Button>parent).type == "listButton") {
+                    this.refreshCurrentPage();
+                } else {
+                    this.navigateBack();
+                    this.refreshCurrentPage();
+                }
+            };
+            let form:path.Form = this.createForm(formId,key,handler,formFunction, parentPageElement);
+            if (form != null) {
+                this._formStack.push(form);
             }
-        };
-        let form:path.Form = this.createForm(formId,key,handler,formFunction, parentPageElement);
-        if (form != null) {
-            this._formStack.push(form);
         }
+
+        // check permission
+        let modelForm = this.getModelForm(formId);
+        if (modelForm != null && modelForm["permissionUrl"] != null) {
+            let suffix:string = "/update";
+            if (key == null) {
+                suffix = "/create";
+            }
+            let permissionUrl:string = KeyUtility.translateUrl(modelForm["permissionUrl"] + suffix, key, false, parentPageElement);
+                this.pathService.serverGet(this.getBackendUrl(), permissionUrl, (data:any) => {
+                    if (!data["permission"]) {
+                        window.alert("No permission");
+                    } else {
+                        setCurrentForm();
+                    }
+                }, null);
+        } else {
+            setCurrentForm();
+        }
+    }
+
+    private getModelForm(formId:string) {
+        let result = null;
+        for (var modelForm of this.getGuiModel().application.formList) {
+            if (modelForm.id === formId) {
+                result = modelForm;
+            }
+        }
+        if (result == null && formId != null) {
+            this.pathService.addAlert("Missing form", formId);
+        }
+        return result;
     }
 
     public createForm(formId:string, key:Key, handler:string, formFunction:FormFunction, parentPageElement:path.IPageElement):path.Form {
         let form:path.Form = null;
-        for (var modelForm of this.getGuiModel().application.formList) {
-            if (modelForm.id === formId) {
+        let modelForm = this.getModelForm(formId);
+            if (modelForm != null) {
                 // create form
                 form = new path.Form(this.pathService, this);
                 form.key = key;
@@ -580,10 +615,6 @@ export abstract class PathAppComponent implements path.IPathApp {
                     form.handler = formHandler;
                 }
             }
-        }
-        if (form == null && formId != null) {
-            this.pathService.addAlert("Missing form", formId);
-        }
         return form;
     }
 
