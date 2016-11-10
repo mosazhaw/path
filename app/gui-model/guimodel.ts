@@ -1353,6 +1353,45 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "OrganisationUnitDeepScanSubprocessForm",
+                    "title": "AddSubprocess",
+                    "url": "/organisationUnit/:organisationUnitKey/deepScanSubprocess",
+                    "formFieldList": [
+                        {
+                            "id": "deepScanSubprocessKey",
+                            "type": "autocomplete",
+                            "name": "Subprocess",
+                            "wordSearchEnabled": true,
+                            "url": "/deepScanSubprocess",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "organisationUnitKey",
+                            "type": "autocomplete",
+                            "name": "OrganisationUnit",
+                            "wordSearchEnabled": true,
+                            "url": "/organisationUnit",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "organisationUnitKey"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "MasterDataObjectForm",
                     "title": "MasterDataObject",
                     "url": "/masterDataObject",
@@ -1371,6 +1410,45 @@ export class GuiModel {
                             "width": 2,
                             "height": 3,
                             "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "MasterDataObjectDeepScanSubprocessForm",
+                    "title": "AddSubprocess",
+                    "url": "/masterDataObject/:masterDataObjectKey/deepScanSubprocess",
+                    "formFieldList": [
+                        {
+                            "id": "deepScanSubprocessKey",
+                            "type": "autocomplete",
+                            "name": "Subprocess",
+                            "wordSearchEnabled": true,
+                            "url": "/deepScanSubprocess",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "masterDataObjectKey",
+                            "type": "autocomplete",
+                            "name": "MasterDataObject",
+                            "wordSearchEnabled": true,
+                            "url": "/masterDataObject",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "masterDataObjectKey"
                         },
                         {
                             "type": "deleteButton",
@@ -4132,6 +4210,25 @@ export class GuiModel {
                                 "form": "OrganisationUnitForm"
                             }
                         },
+                        {
+                            "type": "button",
+                            "name": "AddSubprocess",
+                            "icon": "fa-pencil",
+                            "color": "green",
+                            "form": {
+                                "form": "OrganisationUnitDeepScanSubprocessForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Subprocess",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "form": {
+                                "form": "OrganisationUnitDeepScanSubprocessForm"
+                            },
+                            "url": "/organisationUnit/:organisationUnitKey/deepScanSubprocess"
+                        }
                     ]
                 },
                 {
@@ -4178,6 +4275,25 @@ export class GuiModel {
                                 "form": "MasterDataObjectForm"
                             }
                         },
+                        {
+                            "type": "button",
+                            "name": "AddSubprocess",
+                            "icon": "fa-pencil",
+                            "color": "green",
+                            "form": {
+                                "form": "MasterDataObjectDeepScanSubprocessForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Subprocess",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "form": {
+                                "form": "MasterDataObjectDeepScanSubprocessForm"
+                            },
+                            "url": "/masterDataObject/:masterDataObjectKey/deepScanSubprocess"
+                        }
                     ]
                 }
             ]
