@@ -1036,7 +1036,7 @@ export class GuiModel {
                         {
                             "id": "deepScanSupportProcess",
                             "type": "autocomplete",
-                            "name": "DeepScan Support Process",
+                            "name": "SupportProcess",
                             "wordSearchEnabled": true,
                             "defaultKey": "deepScanSupportProcessKey",
                             "readonly": true,
