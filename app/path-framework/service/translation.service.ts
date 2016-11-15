@@ -28,6 +28,7 @@ export class TranslationService {
                 "AddSubprocess": "Teilprozess hinzufügen",
                 "AddSupportProcess": "Support-Prozess hinzufügen",
                 "AddPermissionRole": "Rolle hinzufügen",
+                "AddProject": "Projekt hinzufügen",
                 "Admin": "Admin",
                 "Answer": "Antwort",
                 "AssessmentReport": "Assessment-Bericht",
@@ -210,6 +211,7 @@ export class TranslationService {
                 "Units": "Einheiten",
                 "User": "Benutzer",
                 "Users": "Benutzer",
+                "UserProject": "Benutzer - Projekt",
                 "de": "Deutsch",
                 "en": "Englisch",
             }
@@ -221,6 +223,7 @@ export class TranslationService {
                 "AddSubprocess": "Add Subprocess",
                 "AddSupportProcess": "Add Support Process",
                 "AddPermissionRole": "Add Role",
+                "AddProject": "Add Project",
                 "Admin": "Admin",
                 "Answer": "Answer",
                 "AssessmentReport": "Assessment Report",
@@ -403,6 +406,7 @@ export class TranslationService {
                 "Units": "Units",
                 "User": "User",
                 "Users": "Users",
+                "UserProject": "User - Project",
                 "de": "German",
                 "en": "English",
             };

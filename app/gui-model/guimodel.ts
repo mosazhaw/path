@@ -633,6 +633,46 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "UserProjectForm",
+                    "title": "UserProject",
+                    "url": "/user/:userKey/project",
+                    "formFieldList": [
+                        {
+                            "id": "projectKey",
+                            "type": "autocomplete",
+                            "name": "Project",
+                            "wordSearchEnabled": true,
+                            "url": "/project/noSimulation",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                        },
+                        {
+                            "id": "userKey",
+                            "type": "autocomplete",
+                            "name": "User",
+                            "wordSearchEnabled": true,
+                            "url": "/user",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "userKey"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "UserPermissionRoleForm",
                     "title": "UserPermissionRole",
                     "url": "/user/:userKey/permissionRole",
@@ -3324,6 +3364,27 @@ export class GuiModel {
                                 "form": "UserPermissionRoleForm"
                             },
                             "url": "/user/:userKey/permissionRole"
+                        },
+                        {
+                            "type": "button",
+                            "name": "AddProject",
+                            "icon": "fa-tasks",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "UserProjectForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Project List",
+                            "icon": "fa-tasks",
+                            "color": "wisteria",
+                            "search": true,
+                            "form": {
+                                "form": "UserProjectForm"
+                            },
+                            "url": "/user/:userKey/project"
                         }
                     ]
                 },
