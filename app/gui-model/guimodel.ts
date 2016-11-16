@@ -1505,6 +1505,79 @@ export class GuiModel {
                     ]
                 },
                 {
+                    "id": "TransactionalDataObjectForm",
+                    "title": "TransactionalDataObject",
+                    "url": "/transactionalDataObject",
+                    "formFieldList": [
+                        {
+                            "id": "name",
+                            "type": "translation",
+                            "name": "OrganisationUnitName",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "definition",
+                            "type": "translation",
+                            "name": "Definition",
+                            "width": 2,
+                            "height": 3,
+                            "required": true
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
+                    "id": "TransactionalDataObjectDeepScanSubprocessForm",
+                    "title": "AddSubprocess",
+                    "url": "/transactionalDataObject/:transactionalDataObjectKey/deepScanSubprocess",
+                    "formFieldList": [
+                        {
+                            "id": "deepScanSubprocessKey",
+                            "type": "autocomplete",
+                            "name": "Subprocess",
+                            "wordSearchEnabled": true,
+                            "url": "/deepScanSubprocess",
+                            "width": 2,
+                            "required": true
+                        },
+                        {
+                            "id": "transactionalDataObjectKey",
+                            "type": "autocomplete",
+                            "name": "TransactionalDataObject",
+                            "wordSearchEnabled": true,
+                            "url": "/transactionalDataObject",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true,
+                            "defaultKey": "transactionalDataObjectKey"
+                        },
+                        {
+                            "type": "deleteButton",
+                            "name": "Delete"
+                        },
+                        {
+                            "type": "cancelButton",
+                            "name": "Cancel"
+                        },
+                        {
+                            "type": "okButton",
+                            "name": "Ok"
+                        }
+                    ]
+                },
+                {
                     "id": "CountryForm",
                     "url": "/country",
                     "title": "Country",
@@ -2436,7 +2509,7 @@ export class GuiModel {
                             "name": "AddInterviewee",
                             "icon": "fa-user",
                             "color": "green",
-                            "permissionUrl": "/permissionFunction/check/projectInterviewee/create",
+                            "permissionUrl": "/permissionFunction/check/quickScan/create",
                             "form": {
                                 "form": "ProjectIntervieweeForm"
                             }
@@ -2499,7 +2572,7 @@ export class GuiModel {
                         {
                             "type": "deleteButton",
                             "url": "/project/:projectKey/interviewee/:personKey",
-                            "permissionUrl": "/permissionFunction/check/projectInterviewee/delete",
+                            "permissionUrl": "/permissionFunction/check/quickScan/delete",
                         }
                     ]
                 },
@@ -2597,7 +2670,7 @@ export class GuiModel {
                             "name": "AddInterviewee",
                             "icon": "fa-user",
                             "color": "green",
-                            "permissionUrl": "/permissionFunction/check/projectInterviewee/create",
+                            "permissionUrl": "/permissionFunction/check/deepScan/create",
                             "form": {
                                 "form": "ProjectIntervieweeForm"
                             }
@@ -2659,7 +2732,7 @@ export class GuiModel {
                         {
                             "type": "deleteButton",
                             "url": "/project/:projectKey/interviewee/:personKey",
-                            "permissionUrl": "/permissionFunction/check/projectInterviewee/delete",
+                            "permissionUrl": "/permissionFunction/check/deepScan/delete",
                         }
                     ]
                 },
@@ -4233,6 +4306,14 @@ export class GuiModel {
                             "width": 2,
                             "page": "masterdataobjectsconfigurationpage"
                         },
+                        {
+                            "type": "button",
+                            "name": "TransactionalDataObject",
+                            "icon": "fa-plane",
+                            "color": "lime",
+                            "width": 2,
+                            "page": "transactionaldataobjectsconfigurationpage"
+                        },
                     ]
                 },
                 {
@@ -4321,7 +4402,7 @@ export class GuiModel {
                             "type": "list",
                             "name": "MasterDataObjects",
                             "icon": "fa-database",
-                            "color": "pumpkin",
+                            "color": "lime",
                             "page": "masterdataobjectconfigurationpage",
                             "url": "/masterDataObject"
                         }
@@ -4362,6 +4443,71 @@ export class GuiModel {
                                 "form": "MasterDataObjectDeepScanSubprocessForm"
                             },
                             "url": "/masterDataObject/:masterDataObjectKey/deepScanSubprocess"
+                        }
+                    ]
+                },
+                {
+                    "id": "transactionaldataobjectsconfigurationpage",
+                    "name": "TransactionalDataObjects",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "newButton",
+                            "name": "NewTransactionalDataObject",
+                            "icon": "fa-database",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "TransactionalDataObjectForm"
+                            },
+                        },
+                        {
+                            "type": "list",
+                            "name": "TransactionalDataObjects",
+                            "icon": "fa-database",
+                            "color": "lime",
+                            "page": "transactionaldataobjectconfigurationpage",
+                            "url": "/transactionalDataObject"
+                        }
+                    ]
+                },
+                {
+                    "id": "transactionaldataobjectconfigurationpage",
+                    "name": "TransactionalDataObject",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "EditTransactionalDataObject",
+                            "icon": "fa-arrows-alt",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "TransactionalDataObjectForm"
+                            }
+                        },
+                        {
+                            "type": "button",
+                            "name": "AddSubprocess",
+                            "icon": "fa-pencil",
+                            "color": "green",
+                            "form": {
+                                "form": "TransactionalDataObjectDeepScanSubprocessForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "Subprocess",
+                            "icon": "fa-cube",
+                            "color": "asbestos",
+                            "form": {
+                                "form": "TransactionalDataObjectDeepScanSubprocessForm"
+                            },
+                            "url": "/transactionalDataObject/:transactionalDataObjectKey/deepScanSubprocess"
                         }
                     ]
                 }
