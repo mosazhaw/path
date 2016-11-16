@@ -72,6 +72,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             this.loadApplicationTexts();
             this.setCurrentPage(this.getStartPage(), null); // set start page
         }, (err:any) => {
+            this.pathService.hideLoading();
             if (this.getBackendUrl().indexOf("heroku") > 0) {
                 alert("Login failed. Please try again after 30sec, because the Heroku backend server may be sleeping due to inactivity.")
             } else {

@@ -22,7 +22,7 @@ export class PathService {
         }, 1);
     }
 
-    private hideLoading() {
+    public hideLoading() {
         window.setTimeout(() => {
             this._requestCount--;
         }, 1);
