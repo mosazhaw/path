@@ -137,7 +137,7 @@ export class AutoCompleteField extends ValueField<string> {
         if (oldValue != this.value) {
             for (let field of this.getForm().getFields()) {
                 if (field instanceof AutoCompleteField) {
-                    if (field.id != this.id) {
+                    if ((<AutoCompleteField>field).id != this.id) {
                         let autoCompleteField = <AutoCompleteField>field;
                         if (KeyUtility.variableExists(autoCompleteField.url, this.id)) {
                             autoCompleteField.load();
