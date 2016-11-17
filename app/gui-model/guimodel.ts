@@ -3169,7 +3169,7 @@ export class GuiModel {
                             "color": "purple",
                             "search": true,
                             "page": "companyprojectspage",
-                            "url": "/company"
+                            "url": "/currentUser/company"
                         }
                     ]
                 },
