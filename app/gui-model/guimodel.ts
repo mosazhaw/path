@@ -44,6 +44,7 @@ export class GuiModel {
                             "name": "Customer",
                             "wordSearchEnabled": true,
                             "form": "CompanyForm",
+                            "permissionUrl": "/permissionFunction/check/company/update",
                             "url": "/person/:customerProjectLeader/company",
                             "newRow": true,
                             "required": true
@@ -54,6 +55,7 @@ export class GuiModel {
                             "name": "CustomerPL",
                             "wordSearchEnabled": true,
                             "form": "PersonForm",
+                            "permissionUrl": "/permissionFunction/check/person/update",
                             "url": "/company/:customer/person",
                             "required": true
                         },
@@ -63,6 +65,7 @@ export class GuiModel {
                             "name": "ServiceProvider",
                             "wordSearchEnabled": true,
                             "form": "CompanyForm",
+                            "permissionUrl": "/permissionFunction/check/company/update",
                             "url": "/person/:serviceProviderProjectLeader/company",
                             "newRow": true,
                             "required": true
@@ -73,6 +76,7 @@ export class GuiModel {
                             "name": "ServiceProviderPL",
                             "wordSearchEnabled": true,
                             "form": "PersonForm",
+                            "permissionUrl": "/permissionFunction/check/person/update",
                             "url": "/company/:serviceProvider/person",
                             "required": true
                         },
@@ -156,6 +160,7 @@ export class GuiModel {
                             "name": "Customer",
                             "wordSearchEnabled": true,
                             "form": "CompanyForm",
+                            "permissionUrl": "/permissionFunction/check/company/update",
                             "url": "/person/:customerProjectLeader/company",
                             "newRow": true,
                             "required": true
@@ -166,6 +171,7 @@ export class GuiModel {
                             "name": "CustomerPL",
                             "wordSearchEnabled": true,
                             "form": "PersonForm",
+                            "permissionUrl": "/permissionFunction/check/person/update",
                             "url": "/company/:customer/person",
                             "required": true
                         },
@@ -175,6 +181,7 @@ export class GuiModel {
                             "name": "ServiceProvider",
                             "wordSearchEnabled": true,
                             "form": "CompanyForm",
+                            "permissionUrl": "/permissionFunction/check/company/update",
                             "url": "/person/:serviceProviderProjectLeader/company",
                             "newRow": true,
                             "required": true
@@ -185,6 +192,7 @@ export class GuiModel {
                             "name": "ServiceProviderPL",
                             "wordSearchEnabled": true,
                             "form": "PersonForm",
+                            "permissionUrl": "/permissionFunction/check/person/update",
                             "url": "/company/:serviceProvider/person",
                             "required": true
                         },

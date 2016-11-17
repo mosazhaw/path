@@ -521,6 +521,15 @@ export abstract class PathAppComponent implements path.IPathApp {
                             formField.fromJson(modelFormField);
                         }
                     }
+                    // Field permission (move code to FormField)
+                    if (modelFormField["permissionUrl"] != null) {
+                        formField.readonly = false;
+                        let permissionUrl:string = KeyUtility.translateUrl(modelFormField["permissionUrl"], formField.getForm().getKey(), false, null);
+                        let permissionHandler = (permissionElement:path.FormField) => (data:any) => {
+                            permissionElement.readonly = !data["permission"];
+                        }
+                        this.pathService.serverGet(formField.getForm().getApp().getBackendUrl(), permissionUrl, permissionHandler(formField), null);
+                    }
                     // search parents for defaultKey
                     if (formField instanceof ValueField && modelFormField["defaultKey"] != null) {
                         let pageElement:IPageElement = parentPageElement;

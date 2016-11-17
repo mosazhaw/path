@@ -25,10 +25,8 @@ export class DateField extends ValueField<Date> {
     }
 
     public setValue(value:Date) {
-        console.log("setting value " + value);
         if (typeof value === "string") {
             value = moment(value).toDate();
-            console.log("setting date " + value);
         }
         if (value != null && Object.prototype.toString.call(value) === "[object Date]") {
             // it is a date
