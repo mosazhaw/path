@@ -146,7 +146,11 @@ export class PathService {
             location.reload();
         } else {
             // general error
-            this.addAlert(err.json()["title"], err.json()["error"]);
+            if (err.json()["error"] == null && err.json()["title"] == null) {
+                this.addAlert("Unkwown Error", "Please check server and internet connection: " + err.json());
+            } else {
+                this.addAlert(err.json()["title"], err.json()["error"]);
+            }
             console.error(err)
         }
     }
