@@ -314,7 +314,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             let permissionUrl:string = KeyUtility.translateUrl(modelForm["permissionUrl"] + suffix, key, false, parentPageElement);
                 this.pathService.serverGet(this.getBackendUrl(), permissionUrl, (data:any) => {
                     if (!data["permission"]) {
-                        window.alert("No permission");
+                        window.alert(this.translationService.getText("NoPermissionError"));
                     } else {
                         setCurrentForm();
                     }
