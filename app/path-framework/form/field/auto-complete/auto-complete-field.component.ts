@@ -81,12 +81,17 @@ export class AutoCompleteField extends ValueField<string> {
         this._valueSet = false;
         if (query !== null && query.length > 0 && query.replace(/\s/g, '').length == 0) {
             /* space: all */
-            this._filteredList = this._data;
+            this._filteredList = this._data.filter(function (entry) {
+                return entry.active;
+            }.bind(this));
         }
         else if (query !== null && query !== "") {
             /* search term: filter */
             query = query.trim();
             this._filteredList = this._data.filter(function (entry) {
+                if (!entry.active) {
+                    return false;
+                }
                 let entryName:string = entry.text;
                 if (entryName.toLowerCase().indexOf(query.toLowerCase()) > -1) {
                     return true;
@@ -164,6 +169,11 @@ export class AutoCompleteField extends ValueField<string> {
                 let entry = new AutoCompleteFieldEntry();
                 entry.key = item["key"]["key"];
                 entry.text = item["name"];
+                if (item["active"] != null) {
+                    entry.active = item["active"];
+                } else {
+                    entry.active = true;
+                }
                 dynamicData.push(entry);
             }
             this.data = dynamicData;
