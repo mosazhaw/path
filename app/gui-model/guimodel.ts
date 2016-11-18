@@ -1520,7 +1520,7 @@ export class GuiModel {
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "OrganisationUnitName",
+                            "name": "TransactionalDataObjectName",
                             "width": 2,
                             "required": true
                         },
