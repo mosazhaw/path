@@ -4,6 +4,7 @@ import {PathService} from "../../../service/path.service";
 import {Inject} from "@angular/core";
 import * as path from '../../../path';
 import {FormFunction} from "../../../form/form-function";
+import {TranslationService} from "../../../service/translation.service";
 
 export class InlineForm extends PageElement {
     private _formId:string;
@@ -11,7 +12,7 @@ export class InlineForm extends PageElement {
     private _form:Form;
     private _currentKey:Key;
 
-    constructor(app:path.IPathApp, @Inject(PathService) private pathService:PathService) {
+    constructor(app:path.IPathApp, @Inject(PathService) private pathService:PathService, @Inject(TranslationService) private translationService:TranslationService) {
         super(app);
     }
 
@@ -81,6 +82,9 @@ export class InlineForm extends PageElement {
                         this._form = null;
                         this.app.navigateBack();
                     }
+                } else {
+                    window.alert(this.translationService.getText("NoDataError"));
+                    this.app.navigateBack();
                 }
             }, null);
         }

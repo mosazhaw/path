@@ -217,7 +217,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             element = new path.BackButton(this, this.pathService, this.translationService);
                             break;
                         case "inlineForm":
-                            let inlineForm = new path.InlineForm(this, this.pathService);
+                            let inlineForm = new path.InlineForm(this, this.pathService, this.translationService);
                             inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), true, parentPageElement);
                             inlineForm.formId = modelElement["form"];
                             inlineForm.key = parentPageElement.key;
