@@ -4464,7 +4464,7 @@ export class GuiModel {
                         {
                             "type": "newButton",
                             "name": "NewTransactionalDataObject",
-                            "icon": "fa-database",
+                            "icon": "fa-plane",
                             "color": "green",
                             "width": 2,
                             "form": {
@@ -4474,7 +4474,7 @@ export class GuiModel {
                         {
                             "type": "list",
                             "name": "TransactionalDataObjects",
-                            "icon": "fa-database",
+                            "icon": "fa-plane",
                             "color": "lime",
                             "page": "transactionaldataobjectconfigurationpage",
                             "url": "/transactionalDataObject"
