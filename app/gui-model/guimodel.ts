@@ -1447,7 +1447,7 @@ export class GuiModel {
                         {
                             "id": "name",
                             "type": "translation",
-                            "name": "OrganisationUnitName",
+                            "name": "MasterDataObjectName",
                             "width": 2,
                             "required": true
                         },
