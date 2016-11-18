@@ -65,9 +65,9 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public login(event, userId:string, password:string) {
-        let credentials = {};
-        credentials.username = userId;
-        credentials.password = password;
+        let credentials:any = {};
+        credentials["username"] = userId;
+        credentials["password"] = password;
         this.pathService.serverPost(this.getBackendUrl(), "/login", credentials, (data:any) => {
             console.log("login ok, language code: " + data["languageCode"] + ", jwt:" + data["jwt"]);
             localStorage.setItem("languageCode", data["languageCode"]);

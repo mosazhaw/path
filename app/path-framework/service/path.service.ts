@@ -62,7 +62,7 @@ export class PathService {
 
     }
 
-    serverPost(server:string, url:string, data:any, processor:(data:any) => any) {
+    serverPost(server:string, url:string, data:any, processor:(data:any) => any, errorHandler:(err:any) => any) {
         if (url != null) {
             this.showLoading();
             this.http.post(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
@@ -73,7 +73,11 @@ export class PathService {
                         processor(data.json());
                     },
                     err => {
-                        this.handleError(err);
+                        if (errorHandler == null) {
+                            this.handleError(err);
+                        } else {
+                            errorHandler(err);
+                        }
                     },
                     () => {
                         this.hideLoading();
