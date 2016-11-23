@@ -74,14 +74,14 @@
 			<tr>
 				<th class="col-md-8" >KPI<th>
 				<th class="col-md-1" class="text-right">
-					<span *ngIf="kpi.optimalValue == 'Maximum'">Worst value</span>
-					<span *ngIf="kpi.optimalValue == 'Minimum'">Best value</span>
+					<span *ngIf="kpi.optimalValue == 'Maximum'">{{chart.translationService.getText("WorstValue")}}</span>
+					<span *ngIf="kpi.optimalValue == 'Minimum'">{{chart.translationService.getText("BestValue")}}</span>
 					<span *ngIf="kpi.optimalValue == 'Neutral'">Min</span>
 				<th>
-				<th class="col-md-1" class="text-right">Value<th>
+				<th class="col-md-1" class="text-right">{{chart.translationService.getText("OwnValue")}}<th>
 				<th class="col-md-1" class="text-right">
-					<span *ngIf="kpi.optimalValue == 'Maximum'">Best value</span>
-					<span *ngIf="kpi.optimalValue == 'Minimum'">Worst value</span>
+				<span *ngIf="kpi.optimalValue == 'Maximum'">{{chart.translationService.getText("BestValue")}}</span>
+				<span *ngIf="kpi.optimalValue == 'Minimum'">{{chart.translationService.getText("WorstValue")}}</span>
 					<span *ngIf="kpi.optimalValue == 'Neutral'">Max</span>
 				<th>
 				<th class="col-md-1" class="text-right">Ranking<th>
