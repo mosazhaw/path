@@ -198,6 +198,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                                     button.key = parentPageElement.key;
                             }
                             button.name = this.translationService.getText(modelElement["name"]);
+                            button.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             element = button;
                             break;
                         case "deleteButton":

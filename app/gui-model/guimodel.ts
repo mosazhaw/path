@@ -2367,11 +2367,27 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "QuickScan",
+                            "icon": "fa-fast-forward",
+                            "color": "alizarin",
+                            "permissionUrl": "/permissionFunction/check/quickScan/!update",
+                            "url": "/permissionFunction/check/noAccess"
+                        },
+                        {
+                            "type": "button",
                             "name": "DeepScan",
                             "icon": "fa-chevron-down",
                             "color": "wet-asphalt",
                             "permissionUrl": "/permissionFunction/check/deepScan/update",
                             "page": "deepscanspage",
+                        },
+                        {
+                            "type": "button",
+                            "name": "DeepScan",
+                            "icon": "fa-chevron-down",
+                            "color": "wet-asphalt",
+                            "permissionUrl": "/permissionFunction/check/deepScan/!update",
+                            "url": "/permissionFunction/check/noAccess"
                         },
                         {
                             "type": "button",
@@ -2383,11 +2399,27 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "Companies",
+                            "icon": "fa-home",
+                            "color": "purple",
+                            "permissionUrl": "/permissionFunction/check/company/!update",
+                            "url": "/permissionFunction/check/noAccess"
+                        },
+                        {
+                            "type": "button",
                             "name": "Persons",
                             "icon": "fa-user",
                             "color": "orange",
                             "permissionUrl": "/permissionFunction/check/person/update",
                             "page": "personspage",
+                        },
+                        {
+                            "type": "button",
+                            "name": "Persons",
+                            "icon": "fa-user",
+                            "color": "orange",
+                            "permissionUrl": "/permissionFunction/check/person/!update",
+                            "url": "/permissionFunction/check/noAccess"
                         },
                         {
                             "type": "button",
@@ -2399,11 +2431,27 @@ export class GuiModel {
                         },
                         {
                             "type": "button",
+                            "name": "BenchmarkingAndSimulation",
+                            "icon": "fa-tachometer",
+                            "color": "lime",
+                            "permissionUrl": "/permissionFunction/check/benchmarkingSimulation/!read",
+                            "url": "/permissionFunction/check/noAccess"
+                        },
+                        {
+                            "type": "button",
                             "name": "Reports",
                             "icon": "fa-file",
                             "color": "blue",
                             "permissionUrl": "/permissionFunction/check/report/read",
                             "page": "reportcompaniespage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Reports",
+                            "icon": "fa-file",
+                            "color": "blue",
+                            "permissionUrl": "/permissionFunction/check/report/!read",
+                            "url": "/permissionFunction/check/noAccess"
                         },
                         {
                             "type": "button",
