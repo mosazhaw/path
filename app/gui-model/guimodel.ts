@@ -643,8 +643,18 @@ export class GuiModel {
                 {
                     "id": "UserProjectForm",
                     "title": "UserProject",
-                    "url": "/user/:userKey/project",
+                    "url": "/project/:projectKey/user",
                     "formFieldList": [
+                        {
+                            "id": "userKey",
+                            "type": "autocomplete",
+                            "name": "User",
+                            "wordSearchEnabled": true,
+                            "url": "/user",
+                            "width": 2,
+                            "required": true,
+                            "readonly": true
+                        },
                         {
                             "id": "projectKey",
                             "type": "autocomplete",
@@ -654,17 +664,7 @@ export class GuiModel {
                             "width": 2,
                             "required": true,
                             "readonly": true,
-                        },
-                        {
-                            "id": "userKey",
-                            "type": "autocomplete",
-                            "name": "User",
-                            "wordSearchEnabled": true,
-                            "url": "/user",
-                            "width": 2,
-                            "required": true,
-                            "readonly": true,
-                            "defaultKey": "userKey"
+                            "defaultKey": "projectKey"
                         },
                         {
                             "type": "deleteButton",
@@ -2531,6 +2531,44 @@ export class GuiModel {
                             "color": "blue",
                             "permissionUrl": "/permissionFunction/check/quickScan/update",
                             "page": "quickscanintervieweespage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Users",
+                            "icon": "fa-user",
+                            "color": "orange",
+                            "permissionUrl": "/permissionFunction/check/administration/read",
+                            "page": "projectuserspage"
+                        }
+                    ]
+                },
+                {
+                    "id": "projectuserspage",
+                    "name": "Users",
+                    "elementList": [
+                        {
+                            "type": "backbutton",
+                        },
+                        {
+                            "type": "button",
+                            "name": "AddUser",
+                            "icon": "fa-user",
+                            "color": "green",
+                            "width": 2,
+                            "form": {
+                                "form": "UserProjectForm"
+                            }
+                        },
+                        {
+                            "type": "list",
+                            "name": "User List",
+                            "icon": "fa-user",
+                            "color": "orange",
+                            "search": true,
+                            "form": {
+                                "form": "UserProjectForm"
+                            },
+                            "url": "/project/:projectKey/user"
                         }
                     ]
                 },
@@ -2711,6 +2749,14 @@ export class GuiModel {
                             "color": "blue",
                             "permissionUrl": "/permissionFunction/check/deepScan/update",
                             "page": "deepscanintervieweespage"
+                        },
+                        {
+                            "type": "button",
+                            "name": "Users",
+                            "icon": "fa-user",
+                            "color": "alizarin",
+                            "permissionUrl": "/permissionFunction/check/administration/read",
+                            "page": "projectuserspage"
                         }
                     ]
                 },
@@ -3495,24 +3541,11 @@ export class GuiModel {
                             "url": "/user/:userKey/permissionRole"
                         },
                         {
-                            "type": "button",
-                            "name": "AddProject",
-                            "icon": "fa-tasks",
-                            "color": "green",
-                            "width": 2,
-                            "form": {
-                                "form": "UserProjectForm"
-                            }
-                        },
-                        {
                             "type": "list",
                             "name": "Project List",
                             "icon": "fa-tasks",
                             "color": "wisteria",
                             "search": true,
-                            "form": {
-                                "form": "UserProjectForm"
-                            },
                             "url": "/user/:userKey/project"
                         }
                     ]
