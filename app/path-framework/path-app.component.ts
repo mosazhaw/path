@@ -528,7 +528,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     // Field permission (move code to FormField)
                     if (modelFormField["permissionUrl"] != null) {
                         formField.readonly = false;
-                        let permissionUrl:string = KeyUtility.translateUrl(modelFormField["permissionUrl"], formField.getForm().getKey(), false, null);
+                        let permissionUrl:string = KeyUtility.translateUrl(modelFormField["permissionUrl"], formField.getForm().getKey(), false, parentPageElement);
                         let permissionHandler = (permissionElement:path.FormField) => (data:any) => {
                             permissionElement.readonly = !data["permission"];
                         }

@@ -668,7 +668,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "name": "Delete"
+                            "name": "Delete",
+                            "permissionUrl": "/permissionFunction/parameterCheck/:projectKey/:userKey",
                         },
                         {
                             "type": "cancelButton",
@@ -708,7 +709,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "name": "Delete"
+                            "name": "Delete",
+                            "permissionUrl": "/permissionFunction/parameterCheck/:permissionRoleKey/:userKey",
                         },
                         {
                             "type": "cancelButton",
@@ -1276,7 +1278,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "name": "Delete"
+                            "name": "Delete",
+                            "permissionUrl": "/permissionFunction/parameterCheck/:inputParameterKey/:kpiKey",
                         },
                         {
                             "type": "cancelButton",
@@ -1315,7 +1318,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "name": "Delete"
+                            "name": "Delete",
+                            "permissionUrl": "/permissionFunction/parameterCheck/:deepScanSupportProcessKey/:kpiKey",
                         },
                         {
                             "type": "cancelButton",
@@ -1354,7 +1358,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "name": "Delete"
+                            "name": "Delete",
+                            "permissionUrl": "/permissionFunction/parameterCheck/:deepScanSubprocessKey/:kpiKey",
                         },
                         {
                             "type": "cancelButton",
@@ -1427,7 +1432,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "name": "Delete"
+                            "name": "Delete",
+                            "permissionUrl": "/permissionFunction/parameterCheck/:deepScanSubprocessKey/:organisationUnitKey",
                         },
                         {
                             "type": "cancelButton",
@@ -1500,7 +1506,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "name": "Delete"
+                            "name": "Delete",
+                            "permissionUrl": "/permissionFunction/parameterCheck/:deepScanSubprocessKey/:masterDataObjectKey",
                         },
                         {
                             "type": "cancelButton",
@@ -1573,7 +1580,8 @@ export class GuiModel {
                         },
                         {
                             "type": "deleteButton",
-                            "name": "Delete"
+                            "name": "Delete",
+                            "permissionUrl": "/permissionFunction/parameterCheck/:deepScanSubprocessKey/:transactionalDataObjectKey",
                         },
                         {
                             "type": "cancelButton",
