@@ -230,7 +230,7 @@ export class AutoCompleteField extends ValueField<string> {
                 window.setTimeout(function() { displaySetter() }, 250);
             } else {
                 if (keyValue == null) {
-                    window.setTimeout(() => { this.query = ''; },1);
+                    window.setTimeout(() => { this.query = new AutoCompleteFieldEntry(); },1);
                 } else {
                     for (let item of this._data) {
                         if (item.key == keyValue) {
