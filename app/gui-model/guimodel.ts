@@ -3403,6 +3403,7 @@ export class GuiModel {
                             "icon": "fa-file-word-o",
                             "color": "blue",
                             "width": 2,
+                            "permissionUrl": "/permissionFunction/check/administration/read",
                             "url": "/deepScanProject/:projectKey/introductionhandbook"
                         },
                     ]
