@@ -653,7 +653,8 @@ export class GuiModel {
                             "url": "/user",
                             "width": 2,
                             "required": true,
-                            "readonly": true
+                            "readonly": true,
+                            "defaultKey": "userKey"
                         },
                         {
                             "id": "projectKey",
