@@ -6,7 +6,7 @@
 	    </span>
 	    <input [(ngModel)]="field._formattedValue" (blur)="field.updateValueFromGui($event.target.value)" #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" style="display: block; width: 100%" type="text" class="form-control" placeholder="">
 	    <div *ngIf="field._isDatePickerVisible" style="position: absolute; z-index:10; min-height:290px;">
-		    <datepicker [(ngModel)]="field._value" (selectionDone)="field.closeDatePicker()" [showWeeks]="false" style="display: block; width: 100%" class="form-control"></datepicker>
+		    <datepicker [(ngModel)]="field._datePickerValue" (selectionDone)="field.closeDatePicker()" [showWeeks]="false" style="display: block; width: 100%" class="form-control"></datepicker>
 	    </div>
     </div>
 </div>

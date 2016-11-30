@@ -120,7 +120,11 @@ export class AutoCompleteField extends ValueField<string> {
         window.setTimeout(() => {
         if (!this.valueSet) {
             // force angular to update query.text value
-            this.resetDisplay(this.value["key"]);
+            if (this.value == null) {
+                this.resetDisplay(null);
+            } else {
+                this.resetDisplay(this.value["key"]);
+            }
         }
         }, 1);
     }
@@ -225,10 +229,19 @@ export class AutoCompleteField extends ValueField<string> {
                 console.log("waiting...");
                 window.setTimeout(function() { displaySetter() }, 250);
             } else {
-                for (let item of this._data) {
-                    if (item.key == keyValue) {
-                        window.setTimeout(() => { this.query = item; },1);
-                        break;
+                if (keyValue == null) {
+                    window.setTimeout(() => {
+                        // check value again, may have changed since reset was triggered
+                        if (this.value == null) {
+                            this.query = new AutoCompleteFieldEntry();
+                        }
+                    },1);
+                } else {
+                    for (let item of this._data) {
+                        if (item.key == keyValue) {
+                            window.setTimeout(() => { this.query = item; },1);
+                            break;
+                        }
                     }
                 }
             }

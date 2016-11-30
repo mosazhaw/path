@@ -19,6 +19,7 @@ export class DateField extends ValueField<Date> {
 
     private _isDatePickerVisible:boolean = false;
     private _formattedValue:string;
+    private _datePickerValue:Date;
 
     constructor(protected form:IForm, protected translationService:TranslationService) {
         super(form, translationService);
@@ -32,12 +33,16 @@ export class DateField extends ValueField<Date> {
             // it is a date
             if ( isNaN( value.getTime() ) ) {
                 value = null;
+            } else {
+                // cut off local timezone
+                value = new Date(value.toDateString() + ' 00:00:00 GMT');
             }
         }
         else {
             value = null;
         }
         super.setValue(value);
+        this._datePickerValue = value;
         this.formatDate();
     }
 
@@ -60,6 +65,7 @@ export class DateField extends ValueField<Date> {
         this._isDatePickerVisible = false;
         // need to wait for updated model
         window.setTimeout(() => {
+            this.setValue(this._datePickerValue);
             this.formatDate();
         }, 1);
     }
