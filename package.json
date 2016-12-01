@@ -1,6 +1,6 @@
 {
   "name": "path-framework",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Path Application Framework",
   "keywords": ["GUI", "JSON", "REST", "Rapid Application Development", "Rapid Application Manufacturing"],
   "homepage": "https://github.com/innovad/path/",
@@ -18,17 +18,6 @@
   "engines": {
     "node": "5.4.1",
     "npm": "3.8.5"
-  },
-  "scripts": {
-    "start": "node server.js",
-    "start-dev": "tsc && concurrently \"npm run tsc:w\" \"npm run lite\" ",
-    "heroku-postbuild": "tsc --project tsconfig.json",
-    "lite": "lite-server",
-    "test": "karma start karma.conf.js",
-    "postinstall": "typings install",
-    "tsc": "tsc",
-    "tsc:w": "tsc -w",
-    "typings": "typings"
   },
   "dependencies": {
     "@angular/common": "2.0.0",
