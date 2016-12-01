@@ -10,8 +10,9 @@ import {IButton} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 
 @Component({
+    moduleId: module.id,
     selector: 'path-translationfield',
-    templateUrl: 'app/path-framework/form/field/translation/translation-field.component.html'
+    templateUrl: 'translation-field.component.html'
 })
 export class TranslationFieldComponent {
     @Input('field')

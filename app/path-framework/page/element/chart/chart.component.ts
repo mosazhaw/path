@@ -9,8 +9,9 @@ declare var Chart: any;
 // Note: Chart would be an example for a custom path element contributed by a path user
 
 @Component({
+    moduleId: module.id,
     selector: 'path-radar-chart',
-    templateUrl: 'app/path-framework/page/element/chart/chart.component.html'
+    templateUrl: 'chart.component.html'
 })
 export class ChartComponent implements AfterViewInit {
     @Input('chart')

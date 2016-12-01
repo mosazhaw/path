@@ -1,8 +1,9 @@
 import {Component, Input, Output, ElementRef} from '@angular/core';
 
 @Component({
+    moduleId: module.id,
     selector: 'path-form-field-label',
-    templateUrl: 'app/path-framework/form/field/form-field-label.component.html'
+    templateUrl: 'form-field-label.component.html'
 })
 export class FormFieldLabelComponent {
     @Input('label')

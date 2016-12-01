@@ -11,11 +11,12 @@ import {FormFunction} from "../../form-function";
 import {KeyUtility} from "../../../key-utility";
 
 @Component({
+    moduleId: module.id,
     selector: 'path-autocomplete',
     host: {
         '(document:click)': 'handleClick($event)',
     },
-    templateUrl: 'app/path-framework/form/field/auto-complete/auto-complete-field.component.html'
+    templateUrl: 'auto-complete-field.component.html'
 })
 export class AutoCompleteComponent {
     @Input('field')

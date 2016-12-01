@@ -4,8 +4,9 @@ import {FormFieldLabelComponent} from './../form-field-label.component';
 import {ValueField} from "../value-field";
 
 @Component({
+    moduleId: module.id,
     selector: 'path-radio-group',
-    templateUrl: 'app/path-framework/form/field/radio/radio-group.component.html'
+    templateUrl: 'radio-group.component.html'
 })
 export class RadioGroupComponent {
     @Input('field')

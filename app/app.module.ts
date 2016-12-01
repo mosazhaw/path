@@ -3,7 +3,6 @@ import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {CommonModule} from '@angular/common';
-import {AppComponent} from './app.component';
 import {FormComponent} from './path-framework/form/form.component';
 import {ChartComponent} from './path-framework/page/element/chart/chart.component';
 import {AutoCompleteComponent} from "./path-framework/form/field/auto-complete/auto-complete-field.component";
@@ -21,7 +20,7 @@ import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
 
 @NgModule({
     imports:      [BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule ],
-    declarations: [AppComponent, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent],
-    bootstrap:    [AppComponent],
+    declarations: [LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent],
+    exports:      [BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent]
 })
 export class AppModule {}

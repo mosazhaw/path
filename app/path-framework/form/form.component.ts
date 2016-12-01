@@ -9,8 +9,9 @@ import {FormFunction} from "./form-function";
 import {TranslationService} from "../service/translation.service";
 
 @Component({
+    moduleId: module.id,
     selector: 'path-form',
-    templateUrl: 'app/path-framework/form/form.component.html',
+    templateUrl: 'form.component.html',
 })
 export class FormComponent {
     @Input('form')

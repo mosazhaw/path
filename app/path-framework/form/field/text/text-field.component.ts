@@ -3,8 +3,9 @@ import {FormFieldLabelComponent} from './../form-field-label.component';
 import {ValueField} from "../value-field";
 
 @Component({
+    moduleId: module.id,
     selector: 'path-textfield',
-    templateUrl: 'app/path-framework/form/field/text/text-field.component.html'
+    templateUrl: 'text-field.component.html'
 })
 export class TextFieldComponent {
     @Input('field')

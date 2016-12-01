@@ -2,8 +2,9 @@ import {Component, Input, Output, ElementRef} from '@angular/core';
 import {ValueField} from "../value-field";
 
 @Component({
+    moduleId: module.id,
     selector: 'path-numberfield',
-    templateUrl: 'app/path-framework/form/field/number/number-field.component.html'
+    templateUrl: 'number-field.component.html'
 })
 export class NumberFieldComponent {
     @Input('field')

@@ -6,8 +6,9 @@ import {TranslationService} from "../../../service/translation.service";
 import moment = require("moment");
 
 @Component({
+    moduleId: module.id,
     selector: 'path-datefield',
-    templateUrl: 'app/path-framework/form/field/date/date-field.component.html'
+    templateUrl: 'date-field.component.html'
 })
 export class DateFieldComponent {
     @Input('field')
