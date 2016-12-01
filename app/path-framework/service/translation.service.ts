@@ -4,10 +4,10 @@ import {Injectable} from "@angular/core";
 export class TranslationService {
 
     public getText(key: string, ...parameters: string[]): string {
-        if (this.getTranslations()[key] == null) {
+        if (this.getTranslation(key) == null) {
             return "{" + key + "}";
         }
-        let result: string = this.getTranslations()[key];
+        let result: string = this.getTranslation(key);
         let k: number = 0;
         for (let parameter of parameters) {
             result = result.replace("{" + k + "}", parameter);
@@ -16,10 +16,30 @@ export class TranslationService {
         return result;
     }
 
-    protected getTranslations() {
-        // TODO move to separate json file, split into path and app-texts
-        let languageCode: string = localStorage.getItem("languageCode");
+    protected getTranslation(key:string) : string {
+        return this.createTranslationMap(this.getTranslations()).get(key);
+    }
 
+    protected createTranslationMap(data:any) : Map<string, string> {
+        let result:Map<string,string> = new Map<string, string>();
+        console.log("data");
+        console.log(data);
+        for (var item in data) {
+            result.set(item, data[item]);
+        }
+        console.log(result.size);
+        return result;
+    }
+
+    protected getUserLanguage() : string {
+        let languageCode: string = localStorage.getItem("languageCode");
+        return languageCode;
+    }
+
+    private getTranslations() {
+        let languageCode: string = this.getUserLanguage();
+
+        // TODO remove unneeded strings
         if (languageCode == "de") {
             return {
                 "Actual": "Ist-Wert",
