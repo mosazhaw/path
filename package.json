@@ -1,6 +1,6 @@
 {
   "name": "path-framework",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Path Application Framework",
   "keywords": ["GUI", "JSON", "REST", "Rapid Application Development", "Rapid Application Manufacturing"],
   "homepage": "https://github.com/innovad/path/",
@@ -18,6 +18,11 @@
   "engines": {
     "node": "5.4.1",
     "npm": "3.8.5"
+  },
+  "scripts": {
+    "test": "karma start karma.conf.js",
+    "tsc": "tsc",
+    "typings": "typings"
   },
   "dependencies": {
     "@angular/common": "2.0.0",
