@@ -161,6 +161,7 @@ export class PathService {
 
     private appendHeaders():Headers {
         let headers = new Headers();
+        headers.append("Content-Type", "application/json");
         let jwt:string = localStorage.getItem("pathAppId");
         if (jwt != null) {
             headers.append("Authorization", jwt);
