@@ -1,0 +1,114 @@
+/* custom css styles */
+.row {
+    padding-top: 20px;
+}
+
+.breadcrumb {
+    background-color: #fff;
+}
+
+/* probably to be removed with bootstrap v4 */
+.m-t-5 {
+    margin-top: 5px !important;
+}
+
+
+/* modal and form*/
+.path-autocomplete {
+    position:absolute;
+    z-index: 99;
+    width: 100%;
+    top: 33px; /* TODO */
+}
+
+.input-group {
+    width: 100%;
+}
+
+input[readonly-with-required] {
+    pointer-events: none;
+}
+
+textarea[readonly-with-required] {
+    pointer-events: none;
+}
+
+.required {
+    font-weight: bold;
+}
+
+.required-field {
+    border-color: #ff6666;
+}
+
+.modal-dialog {
+    width: 70%;
+}
+
+.modal-body {
+    max-height: calc(100vh - 212px);
+    overflow-y: auto;
+}
+
+.list-group-item {
+    padding: 3px 10px
+}
+
+.truncate {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.loadingNoClicks {
+    pointer-events: none;
+    z-index: 16777270;
+    background: #fff;
+    opacity: 0.6;
+    transition: 1s;
+    cursor: wait;
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+}
+
+.loading {
+    display : block;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 16777271;
+    border-bottom: 6px solid rgba(0, 0, 0, .1);
+    border-left: 6px solid rgba(0, 0, 0, .1);
+    border-right: 6px solid rgba(0, 0, 0, .1);
+    border-top: 6px solid rgba(0, 0, 0, .4);
+    border-radius: 100%;
+    height: 50px;
+    width: 50px;
+    animation: rotate .6s infinite linear;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+}
+@keyframes rotate {
+    from {transform: rotate(0deg);}
+    to {transform: rotate(359deg);}
+}
+
+/* fix metro-bootrap error */
+@font-face {
+    font-family:'Glyphicons Halflings';
+    src:url(node_modules/metro-bootstrap/dist/fonts/glyphicons/e56f39cb.glyphicons-halflings-regular.eot);
+    src:url(node_modules/metro-bootstrap/dist/fonts/glyphicons/e56f39cb.glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(node_modules/metro-bootstrap/dist/fonts/glyphicons/deae260a.glyphicons-halflings-regular.woff) format('woff'),url(node_modules/metro-bootstrap/dist/fonts/glyphicons/38e827a0.glyphicons-halflings-regular.ttf) format('truetype'),url(node_modules/metro-bootstrap/dist/fonts/glyphicons/32941d63.glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')
+}
+
+.version {
+    position: fixed;
+    bottom: 2px;
+    right: 2px;
+    z-index: 999;
+}

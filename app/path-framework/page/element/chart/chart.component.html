@@ -1,0 +1,100 @@
+<div>
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{chart.data?.name}}</h3>
+		</div>
+		<div class="panel-body">
+			<p>{{chart.data?.customer}}</p>
+			<p>Referenced Projects: {{chart.data?.referenceProjectCount}}</p>
+		</div>
+
+		<table *ngIf="chart.data?.interviewees?.list.length > 0" class="table">
+			<tr>
+				<th>{{chart.translationService.getText("Salutation")}}<th>
+				<th>{{chart.translationService.getText("Interviewees")}}<th>
+				<th>{{chart.translationService.getText("EmploymentTitle")}}<th>
+			</tr>
+			<tr *ngFor="let interviewee of chart.data?.interviewees?.list">
+				<td>{{interviewee.salutation}}<td>
+				<td>{{interviewee.name}}<td>
+				<td>{{interviewee.employmentTitle}}<td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="panel panel-default" *ngFor="let category of chart.data?.categoryResults?.list" width="100%">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{category.name}}</h3>
+		</div>
+		<div class="panel-body">
+			<p align="center">
+				<img *ngIf="category.spider != null" width="600" src="data:image/png;base64,{{category.spider}}"/>
+				<img *ngIf="category.stackedBar != null" width="600" src="data:image/png;base64,{{category.stackedBar}}"/>
+			</p>
+		</div>
+		<table class="table">
+			<tr>
+				<th class="col-md-9">{{chart.translationService.getText("Question")}}<th>
+				<th class="col-md-1 text-right">{{chart.translationService.getText("Actual")}}<th>
+				<th class="col-md-1 text-right">{{chart.translationService.getText("Target")}}<th>
+				<th class="col-md-1 text-right">Gap<th>
+			</tr>
+			<tr *ngFor="let question of category.questions.list">
+				<td>{{question.name}}<td>
+				<td class="text-right">{{question.actualValue}}<td>
+				<td class="text-right">{{question.targetValue}}<td>
+				<td class="text-right">{{question.gap}}<td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div *ngIf="chart.data?.notCalculatedKPIs?.list.length > 0" class="panel panel-default" width="100%">
+		<div class="panel-heading">
+			<h3 class="panel-title">Not calculated KPIs</h3>
+		</div>
+		<table class="table">
+			<tr *ngFor="let kpi of chart.data?.notCalculatedKPIs?.list">
+				<td>{{kpi.name}}<td>
+			</tr>
+		</table>
+
+	</div>
+
+	<div class="panel panel-default" *ngFor="let kpi of chart.data?.calculatedKPIs?.list" width="100%">
+		<div class="panel-heading">
+			<h3 class="panel-title">{{kpi.name}}</h3>
+		</div>
+		<div class="panel-body">
+			<p align="center">
+				<img width="300" src="data:image/png;base64,{{kpi.dial}}"/>
+			</p>
+		</div>
+		<table class="table">
+			<tr>
+				<th class="col-md-8" >KPI<th>
+				<th class="col-md-1" class="text-right">
+					<span *ngIf="kpi.optimalValue == 'Maximum'">{{chart.translationService.getText("WorstValue")}}</span>
+					<span *ngIf="kpi.optimalValue == 'Minimum'">{{chart.translationService.getText("BestValue")}}</span>
+					<span *ngIf="kpi.optimalValue == 'Neutral'">Min</span>
+				<th>
+				<th class="col-md-1" class="text-right">{{chart.translationService.getText("OwnValue")}}<th>
+				<th class="col-md-1" class="text-right">
+				<span *ngIf="kpi.optimalValue == 'Maximum'">{{chart.translationService.getText("BestValue")}}</span>
+				<span *ngIf="kpi.optimalValue == 'Minimum'">{{chart.translationService.getText("WorstValue")}}</span>
+					<span *ngIf="kpi.optimalValue == 'Neutral'">Max</span>
+				<th>
+				<th class="col-md-1" class="text-right">Ranking<th>
+			</tr>
+			<tr>
+				<td>{{kpi.name}}<td>
+				<td class="text-right">{{kpi.min}}<td>
+				<td class="text-right">{{kpi.value}}<td>
+				<td class="text-right">{{kpi.max}}<td>
+				<td class="text-right">{{kpi.ranking}}<td>
+			</tr>
+		</table>
+
+	</div>
+
+</div>

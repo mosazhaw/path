@@ -1,0 +1,8 @@
+<path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
+<div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
+    <div class="input-group">
+        <input *ngIf="!field.isPassword && (field.height == null || field.height <= 1)" #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" [(ngModel)]=field._value [attr.maxlength]="field.maxLength" type="text" class="form-control" placeholder="">
+        <textarea *ngIf="!field.isPassword && (field.height != null && field.height > 1)" #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" [(ngModel)]=field._value rows="{{field.height}}" [attr.maxlength]="field.maxLength" type="text" class="form-control" placeholder=""></textarea>
+        <input *ngIf="field.isPassword" #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!field.pristine && field.required)" [required]="field.required" [(ngModel)]=field._value [attr.maxlength]="field.maxLength" type="password" class="form-control" placeholder="">
+    </div>
+</div>

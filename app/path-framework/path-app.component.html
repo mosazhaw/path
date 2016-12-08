@@ -1,0 +1,152 @@
+<div [class.loadingNoClicks]="isLoading()">
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" (click)="navigateToPage(0)"><img *ngIf="getApplicationLogo() != null" height="28" style="vertical-align: middle" src="{{getApplicationLogo()}}" /> {{getGuiModel()["application"]["title"]}}</a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <div class="nav navbar-nav navbar-right">
+            <p class="navbar-text pull-right">
+                <a *ngIf="getUserId() == null" (click)="logout()" href="#" class="navbar-link">{{_texts["NotSignedIn"]}}</a>
+                <a *ngIf="getUserId() != null" (click)="showUserForm()" href="#" class="navbar-link">{{_texts["SignedInAs"]}} {{getUserId()}}</a>&nbsp;&nbsp;
+                <a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link">{{_texts["Logout"]}}</a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+<div *ngFor="let alert of pathService.getAlerts()" class="col-md-12">
+		<div class="alert alert-warning alert-dismissable">
+			<button (click)="pathService.clearAlert(alert.id)" type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+			<p><strong>{{alert.title}}</strong></p><p style="white-space: pre-wrap;">{{alert.text}}</p>
+		</div>
+</div>
+
+<!-- Login Form -->
+<div *ngIf="getUserId() == null" class="container-fluid">
+<div class="login jumbotron center-block">
+    <h1>Login</h1>
+    <form role="form" (submit)="login($event, username.value, password.value)">
+        <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" #username class="form-control" id="username" placeholder="Username">
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" #password class="form-control" id="password" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+</div>
+</div>
+
+<!-- Breadcrumb Path -->
+<div *ngIf="getUserId() != null">
+<div class="col-md-12">
+    <h3>
+        <ol class="breadcrumb">
+            <li *ngFor='let page of _pageStack; let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
+                <a href="#" *ngIf='!last && page.parentPageElement == null' (click)="navigateToPage(currentIndex)">{{page.getShortName()}}</a><!-- First element has no parent-->
+                <a href="#" *ngIf='!last && page.parentPageElement != null' (click)="navigateToPage(currentIndex)">{{page.parentPageElement?.getShortName()}}</a><!-- Element 2 to n -->
+                {{last && page.parentPageElement == null ? page.getShortName() : ''}}<!-- First element has no parent-->
+                {{last && page.parentPageElement != null ? page.parentPageElement?.getShortName() : ''}}<!-- Element 2 to n -->
+                &nbsp;
+            </li>
+        </ol>
+    </h3>
+</div>
+
+<!-- Page Elements -->
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+    <span *ngFor='let pageElement of _pageStack[_pageStack.length - 1].content'>
+	    <span *ngIf="pageElement.visible">
+    <!-- Button -->
+    <a *ngIf='pageElement.type == "button" || pageElement.type == "newButton"' (click)="pageElement.onClick()" class="fa-links">
+        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{pageElement.color}} col-md-3">
+            <div class="h3">{{pageElement.name}}</div>
+            <i class="fa fa-2x {{pageElement.icon}}"></i>
+        </div>
+    </a>
+    <!-- Back Button -->
+    <a *ngIf='pageElement.type == "backbutton"' (click)="pageElement.onClick()" class="fa-links">
+        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-silver col-md-3">
+            <div class="h3">{{pageElement.name}}</div>
+            <i class="fa fa-2x fa-backward"></i>
+        </div>
+    </a>
+    <!-- Delete Button -->
+    <a *ngIf='pageElement.type == "deleteButton"' (click)="pageElement.onClick()" class="fa-links">
+        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-red col-md-3">
+            <div class="h3">{{pageElement.name}}</div>
+            <i class="fa fa-2x fa-remove"></i>
+        </div>
+    </a>
+    <!-- Download Button -->
+    <a *ngIf='pageElement.type == "downloadButton"' (click)="pageElement.onClick()" class="fa-links">
+        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{pageElement.color}} col-md-3">
+            <div class="h3">{{pageElement.name}}</div>
+            <i class="fa fa-2x {{pageElement.icon}}"></i>
+        </div>
+    </a>
+	<!-- Inline Form -->
+    <span *ngIf='pageElement.type == "inlineForm"'>
+	    <div class="col-md-12">
+	        <path-form *ngIf="pageElement.form != null" [form]="pageElement.form"></path-form>
+		</div>
+    </span>
+    <!-- List -->
+    <span *ngIf='pageElement.type == "list"'>
+    <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green col-md-3">
+        <div class="input-group input-group-sm">
+            <div class="h3">{{pageElement._searchLabel}}</div>
+            <i class="fa fa-2x fa-search"></i>
+            <div class="h5"></div>
+            <input [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
+        </div>
+    </div>
+        <a *ngFor='let listElement of pageElement.buttons' (click)="listElement.onClick()" class="fa-links">
+            <div *ngIf="listElement.visible" class="thumbnail tile tile-wide tile-{{listElement.color}} col-md-3">
+                <div class="h3 truncate">{{listElement.name}}</div>
+                <span class="truncate" *ngFor='let detail of listElement.details; let last = last;'>
+                    <span class="h4 m-t-5">{{detail.text}}</span><small [hidden]="last">&nbsp;&bull;&nbsp;</small></span>
+                <div class="h4 m-t-5"></div>
+                <i class="fa fa-2x {{listElement.icon}}"></i>
+            </div>
+        </a>
+    </span>
+    <!-- Custom Chart Element -->
+    <div class="col-md-12" *ngIf='pageElement.type == "ChartElement"'>
+        <path-radar-chart [chart]="pageElement"></path-radar-chart>
+    </div>
+	</span>
+    </span>
+        </div>
+    </div>
+</div>
+
+<!-- Forms -->
+<div class="col-sm-6 col-md-3">
+    <div class="col-sm-6 col-md-3">
+        <!-- TODO listen to escape only, not to all keystrokes -->
+        <div (window:keyup)="form.onKey($event)" *ngFor="let form of _formStack">
+            <div class="modal fade show in danger" id="myModal" role="dialog">
+                <div class="modal-dialog">
+	                <path-form [form]="form"></path-form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div class="version badge">{{_version}}</div>
+<div *ngIf="isLoading()" class="loading"></div>
+</div>

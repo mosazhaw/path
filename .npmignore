@@ -1,0 +1,6 @@
+*.tgz
+
+node_modules
+typings
+
+.idea
