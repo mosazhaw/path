@@ -112,3 +112,8 @@ textarea[readonly-with-required] {
     right: 2px;
     z-index: 999;
 }
+
+.path-app-logo {
+    height: 20px;
+    vertical-align: middle;
+}
