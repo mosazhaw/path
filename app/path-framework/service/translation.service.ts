@@ -31,7 +31,7 @@ export class TranslationService {
     }
 
     protected getUserLanguage() : string {
-        let languageCode: string = localStorage.getItem("languageCode");
+        let languageCode: string = sessionStorage.getItem("languageCode");
         return languageCode;
     }
 
