@@ -38,6 +38,10 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     protected abstract getStartPage():string;
 
+    protected getApplicationLogo():string {
+        return null;
+    }
+
     protected abstract getOwnUserForm():string;
 
     protected abstract getGuiModel();
@@ -70,7 +74,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         credentials["password"] = password;
         this.pathService.serverPost(this.getBackendUrl(), "/login", credentials, (data:any) => {
             console.log("login ok, language code: " + data["languageCode"] + ", jwt:" + data["jwt"]);
-            localStorage.setItem("languageCode", data["languageCode"]);
+            sessionStorage.setItem("languageCode", data["languageCode"]);
             this._userId = userId;
             this.loadApplicationTexts();
             this.setCurrentPage(this.getStartPage(), null); // set start page
@@ -86,7 +90,7 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public logout() {
-        localStorage.clear();
+        sessionStorage.clear();
         this._userId == null;
         console.log("logout user " + this._userId);
         location.reload();

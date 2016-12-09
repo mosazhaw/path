@@ -37,9 +37,9 @@ export class PathService {
                     data => {
                         let jwt = data.headers.get("Authorization");
                         if (jwt != null && jwt != "") {
-                            localStorage.setItem("pathAppId", data.headers.get("Authorization"));
+                            sessionStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         } else {
-                            localStorage.clear();
+                            sessionStorage.clear();
                         }
                         processor(data.json());
                     },
@@ -68,7 +68,7 @@ export class PathService {
             this.http.post(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
                 .subscribe(
                     data => {
-                        localStorage.setItem("pathAppId", data.headers.get("Authorization"));
+                        sessionStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
                         processor(data.json());
                     },
@@ -97,7 +97,7 @@ export class PathService {
             this.http.put(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
                 .subscribe(
                     data => {
-                        localStorage.setItem("pathAppId", data.headers.get("Authorization"));
+                        sessionStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
                         processor(data.json());
                     },
@@ -122,7 +122,7 @@ export class PathService {
             this.http.delete(server + url, { headers: this.appendHeaders() })
                 .subscribe(
                     data => {
-                        localStorage.setItem("pathAppId", data.headers.get("Authorization"));
+                        sessionStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
                         processor(data.json());
                     },
@@ -162,7 +162,7 @@ export class PathService {
     private appendHeaders():Headers {
         let headers = new Headers();
         headers.append("Content-Type", "application/json");
-        let jwt:string = localStorage.getItem("pathAppId");
+        let jwt:string = sessionStorage.getItem("pathAppId");
         if (jwt != null) {
             headers.append("Authorization", jwt);
         }

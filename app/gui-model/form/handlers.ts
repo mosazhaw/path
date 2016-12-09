@@ -25,7 +25,7 @@ export class IntroductionHandbookDownloadButtonHandler implements path.IButtonHa
 
     public doClick(button:path.IButton) {
         console.log("open excel doc");
-        window.location.assign(button.getApp().getBackendUrl() + "/report/introductionhandbook" + "?token=" + localStorage.getItem("pathAppId"));
+        window.location.assign(button.getApp().getBackendUrl() + "/report/introductionhandbook" + "?token=" + sessionStorage.getItem("pathAppId"));
     }
 
 }

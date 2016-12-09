@@ -9,7 +9,7 @@ export class DownloadButton extends Button {
     }
 
     public onClick() {
-        window.location.assign(this.getApp().getBackendUrl() + this.url + "?token=" + localStorage.getItem("pathAppId"));
+        window.location.assign(this.getApp().getBackendUrl() + this.url + "?token=" + sessionStorage.getItem("pathAppId"));
     }
 
 }
