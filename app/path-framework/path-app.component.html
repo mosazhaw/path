@@ -138,13 +138,13 @@
         <!-- TODO listen to escape only, not to all keystrokes -->
         <div (window:keyup)="form.onKey($event)" *ngFor="let form of _formStack">
             <div class="modal fade show in danger" id="myModal" role="dialog">
-                <div class="modal-dialog">
+                <div [path-draggable] class="modal-dialog">
 	                <path-form [form]="form"></path-form>
                 </div>
             </div>
+            </div>
         </div>
     </div>
-</div>
 </div>
 
 <div class="version badge">{{_version}}</div>
