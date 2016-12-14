@@ -103,7 +103,7 @@ textarea[readonly-with-required] {
 @font-face {
     font-family:'Glyphicons Halflings';
     src:url(../metro-bootstrap/dist/fonts/glyphicons/e56f39cb.glyphicons-halflings-regular.eot);
-    src:url(../metro-bootstrap/dist/fonts/glyphicons/e56f39cb.glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(node_modules/metro-bootstrap/dist/fonts/glyphicons/deae260a.glyphicons-halflings-regular.woff) format('woff'),url(node_modules/metro-bootstrap/dist/fonts/glyphicons/38e827a0.glyphicons-halflings-regular.ttf) format('truetype'),url(node_modules/metro-bootstrap/dist/fonts/glyphicons/32941d63.glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')
+    src:url(../metro-bootstrap/dist/fonts/glyphicons/e56f39cb.glyphicons-halflings-regular.eot?#iefix) format('embedded-opentype'),url(../metro-bootstrap/dist/fonts/glyphicons/deae260a.glyphicons-halflings-regular.woff) format('woff'),url(../metro-bootstrap/dist/fonts/glyphicons/38e827a0.glyphicons-halflings-regular.ttf) format('truetype'),url(../metro-bootstrap/dist/fonts/glyphicons/32941d63.glyphicons-halflings-regular.svg#glyphicons_halflingsregular) format('svg')
 }
 
 .version {
