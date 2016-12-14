@@ -1,6 +1,7 @@
 import {Directive, ElementRef, HostListener, Input, OnInit} from '@angular/core';
 
 // Initially by https://github.com/cedvdb/ng2draggable
+// MIT License: https://github.com/cedvdb/ng2draggable/blob/master/LICENSE
 
 @Directive({
     selector: '[path-draggable]'

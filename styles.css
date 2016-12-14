@@ -117,3 +117,15 @@ textarea[readonly-with-required] {
     height: 20px;
     vertical-align: middle;
 }
+
+.cursor-draggable {
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
+}
+
+.cursor-draggable:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+}
