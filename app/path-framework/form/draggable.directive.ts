@@ -34,6 +34,10 @@ export class DraggableDirective implements OnInit{
 
     @HostListener('mousedown', ['$event'])
     onMouseDown(event:MouseEvent) {
+        let eventTargetTag:string = event.target['tagName'].toLowerCase();
+        if (eventTargetTag == "input" || eventTargetTag == "button" || eventTargetTag == "textarea") {
+            return;
+        }
         if(event.button === 2)
             return; // prevents right click drag, remove his if you don't want it
         this.md = true;
