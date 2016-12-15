@@ -98,10 +98,10 @@ export class PageElement implements IPageElement {
 }
 
 export class Key implements IKey {
-    private _key:number;
+    private _key:any;
     private _name:string;
 
-    constructor(key: number, name: string) {
+    constructor(key: any, name: string) {
         this._key = key;
         this._name = name;
     }
@@ -110,11 +110,11 @@ export class Key implements IKey {
         return this._name;
     }
 
-    set key(value: number) {
+    set key(value: any) {
         this._key = value;
     }
 
-    public getKey(): number {
+    public getKey(): any {
         return this._key;
     }
 

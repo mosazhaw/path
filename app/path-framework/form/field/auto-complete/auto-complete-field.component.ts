@@ -213,7 +213,7 @@ export class AutoCompleteField extends ValueField<string> {
         if (this.value == null) {
             form = this.getForm().getApp().createForm(this.detailForm, null, null, formFunction, null);
         } else {
-            form = this.getForm().getApp().createForm(this.detailForm, new Key(Number(this.value), this._keyType), null, formFunction, null);
+            form = this.getForm().getApp().createForm(this.detailForm, new Key(this.value, this._keyType), null, formFunction, null);
         }
         this.form.getApp()["_formStack"].push(form); // TODO
     }
