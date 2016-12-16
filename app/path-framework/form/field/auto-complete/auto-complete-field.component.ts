@@ -209,6 +209,11 @@ export class AutoCompleteField extends ValueField<string> {
         formFunction.cancel = () => {
             this.getForm().getApp().closeCurrentForm();
         };
+        formFunction.delete = (data:any) => {
+            this.getForm().getApp().closeCurrentForm();
+            this.setValue(null);
+            this.load();
+        };
 
         if (this.value == null) {
             form = this.getForm().getApp().createForm(this.detailForm, null, null, formFunction, null);
