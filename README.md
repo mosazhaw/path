@@ -33,8 +33,9 @@ A page consists of a list of page elements. Page elements may be either page but
 }
 ```
 
+#### Page Elements
 
-#### Page Buttons
+##### Page Buttons
 
 Page buttons may either open another page, open a form or open an url.
 This example links to another page:
@@ -49,7 +50,7 @@ This example links to another page:
 }
 ```
 
-#### Lists
+##### Lists
 
 A list is a dynamic set of buttons, either loaded from an url or from mock data.
 This example loads data from an url, and each button opens a form.
@@ -69,3 +70,60 @@ This example loads data from an url, and each button opens a form.
 ```
 
 ### Forms<a name="forms"></a>
+
+Forms are usually opened from page buttons. A form contains a list of form fields.
+
+```json
+{
+    "id": "HobbyForm",
+    "title": "Hobby",
+    "url": "/hobby",
+    "formFieldList": [
+        {
+            "id": "name",
+            "type": "text",
+            "name": "HobbyName",
+            "width": 2,
+            "required": true
+        },
+        {
+            "type": "deleteButton",
+            "name": "Delete"
+        },
+        {
+            "type": "cancelButton",
+            "name": "Cancel"
+        },
+        {
+            "type": "okButton",
+            "name": "Ok"
+        }
+    ]
+}
+```
+
+#### Form fields
+
+The followings form fields can be used on a form:
+
+##### Auto Complete
+
+##### Button
+
+##### Checkbox
+
+##### Date
+
+##### Fieldlist
+
+##### Label
+
+##### Number
+
+##### Progress Bar
+
+##### Radio
+
+##### Text
+
+##### Translation
