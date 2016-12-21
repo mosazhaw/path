@@ -5,3 +5,67 @@ This is an application framework that renders your application based on a techno
 ## Live Example
 Live example on Heroku Free (please wait for wakeup): https://path-example.herokuapp.com/<br/>
 Source code: https://github.com/innovad/path-example
+
+## GUI Model
+
+A Path application consists of a [page](#pages) and [form](#forms) list:
+
+```json
+{
+    "application": {
+        "title": "Path Example",
+        "formList": [],
+        "pageList": []
+    }
+}
+```
+
+### Pages<a name="pages"></a>
+
+A page consists of a list of page elements. Page elements may be either page buttons or lists.
+
+```json
+{
+    "id": "mainmenu",
+    "name": "MainMenu",
+    "elementList": [
+    ]
+}
+```
+
+
+#### Page Buttons
+
+Page buttons may either open another page, open a form or open an url.
+This example links to another page:
+
+```json
+{
+    "type": "button",
+    "name": "Contacts",
+    "icon": "fa-user",
+    "color": "blue",
+    "page": "contactspage"
+}
+```
+
+#### Lists
+
+A list is a dynamic set of buttons, either loaded from an url or from mock data.
+This example loads data from an url, and each button opens a form.
+
+```json
+{
+    "type": "list",
+    "name": "TaskList",
+    "icon": "fa-tasks",
+    "color": "wisteria",
+    "search": true,
+    "url": "/task",
+    "form": {
+        "form": "TaskForm"
+    }
+}
+```
+
+### Forms<a name="forms"></a>
