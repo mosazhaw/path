@@ -1,10 +1,16 @@
 # Path Framework
 
-This is an application framework that renders your application based on a technology-independent GUI model stored in JSON format. Either mock data or any backend REST service (node, Java) may be used with Path Framework.
+This is an application framework and rendering engine that renders your application based on a technology-independent GUI model stored in JSON format. Either mock data or any backend REST service (node, Java) may be used with Path Framework.
 <br>
 <br>
 
 ![Path Architecture](https://github.com/innovad/path/blob/master/path-architecture.png)
+
+Pros:
+* Technology independent GUI development, rendering engine may be replaced (iOS, Android, Web)
+* Extremely rapid application prototyping and development
+* GUI-based requirements engineering
+* Focus on business logic programming and GUI prototyping, not GUI programming
 
 ## Live Example
 Live example on Heroku Free (please wait for wakeup): https://path-example.herokuapp.com/<br/>
