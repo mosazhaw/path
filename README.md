@@ -18,10 +18,11 @@ Source code: https://github.com/innovad/path-example
 
 ## QuickStart
 
-1. Clone the Path Example from https://github.com/innovad/path-example
+Run a Path example application with 4 steps:
+1. Clone the Path example from https://github.com/innovad/path-example
 2. Open console in project folder, run <code>npm install</code> (requires npm: https://www.npmjs.com/)
 3. Run <code>npm run start-dev</code> and open web application in browser: <code>http://localhost:8080</code>
-4. Play around with the sample GUI model in <code>app/gui-model/guimodel.ts</code> and reload browser window to view changes, e.g. use the following HelloWorld model which displays a single HelloWorld button showing a HelloWorld form.
+4. Play around with the sample GUI model in <code>app/gui-model/guimodel.ts</code> and reload browser window to view changes, e.g. use the following HelloWorld model which displays a single HelloWorld button showing <code>HelloWorldForm</code>.
 
 ```json
 {
