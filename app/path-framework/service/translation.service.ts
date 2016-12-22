@@ -53,6 +53,8 @@ export class TranslationService {
                 "Search": "Suche",
                 "SearchInputLabel": "Suchbegriff",
                 "SignedInAs": "Angemeldet als",
+                "Translation": "Übersetzung",
+                "Translations": "Übersetzungen",
                 "de": "Deutsch",
                 "en": "Englisch",
             }
@@ -71,6 +73,8 @@ export class TranslationService {
                 "Search": "Search",
                 "SearchInputLabel": "Enter search text",
                 "SignedInAs": "Signed in as",
+                "Translation": "Translation",
+                "Translations": "Translations",
                 "de": "German",
                 "en": "English",
             };

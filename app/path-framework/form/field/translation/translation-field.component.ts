@@ -6,7 +6,6 @@ import {OkButton} from "../button/ok-button";
 import {CancelButton} from "../button/cancel-button";
 import {PathService} from "../../../service/path.service";
 import {TextField} from "../text/text-field.component";
-import {IButton} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 
 @Component({
@@ -23,7 +22,7 @@ export class TranslationFieldComponent {
 export class TranslationField extends ValueField<any[][]> {
 
     private languages:string[] = ["de", "en"];
-    private userLanguage:string = sessionStorage.getItem("languageCode");
+    private userLanguage:string = sessionStorage.getItem("languageCode") == null ? "en" : sessionStorage.getItem("languageCode");
     private defaultTranslation:string = null;
     private translationLabel:string;
 
