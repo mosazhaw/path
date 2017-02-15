@@ -1,6 +1,6 @@
 {
   "name": "path-framework",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Path Application Framework",
   "keywords": [
     "GUI",
@@ -45,7 +45,7 @@
     "bootstrap": "3.3.6",
     "core-js": "2.4.0",
     "express": "4.14.0",
-    "font-awesome": "4.6.3",
+    "font-awesome": "4.7.0",
     "metro-bootstrap": "https://github.com/TalksLab/metro-bootstrap.git",
     "ng2-bootstrap": "1.1.5",
     "moment": "2.13.0",
