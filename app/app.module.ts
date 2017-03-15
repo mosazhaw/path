@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
@@ -24,4 +24,8 @@ import {DraggableDirective} from "./path-framework/form/draggable.directive";
     declarations: [DraggableDirective, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent],
     exports:      [DraggableDirective, BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent]
 })
-export class AppModule {}
+export class AppModule {
+    static forRoot(): ModuleWithProviders {
+        return {ngModule: AppModule, providers: []};
+    }
+}

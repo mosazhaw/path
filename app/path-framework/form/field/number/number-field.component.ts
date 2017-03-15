@@ -2,7 +2,6 @@ import {Component, Input, Output, ElementRef} from '@angular/core';
 import {ValueField} from "../value-field";
 
 @Component({
-    moduleId: module.id,
     selector: 'path-numberfield',
     templateUrl: 'number-field.component.html'
 })
