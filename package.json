@@ -39,7 +39,7 @@
     "@angular/platform-browser-dynamic": "2.4.9",
     "@angular/router": "3.4.9",
     "@angular/upgrade": "2.4.9",
-    "@types/node": "^7.0.8",
+    "@types/node": "7.0.8",
     "basic-auth": "1.0.4",
     "bootstrap": "3.3.6",
     "core-js": "2.4.0",
