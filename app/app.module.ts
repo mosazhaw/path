@@ -1,4 +1,4 @@
-import {NgModule} from '@angular/core';
+import {NgModule, ModuleWithProviders} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
@@ -16,12 +16,16 @@ import {LabelFieldComponent} from "./path-framework/form/field/label/label-field
 import {FieldListFieldComponent} from "./path-framework/form/field/fieldList/field-list-field.component";
 import {NumberFieldComponent} from "./path-framework/form/field/number/number-field.component";
 import {TranslationFieldComponent} from "./path-framework/form/field/translation/translation-field.component";
-import {Ng2BootstrapModule} from "ng2-bootstrap/ng2-bootstrap";
+import {Ng2BootstrapModule} from "ng2-bootstrap";
 import {DraggableDirective} from "./path-framework/form/draggable.directive";
 
 @NgModule({
-    imports:      [BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule ],
+    imports:      [BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule.forRoot() ],
     declarations: [DraggableDirective, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent],
     exports:      [DraggableDirective, BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent]
 })
-export class AppModule {}
+export class AppModule {
+    static forRoot(): ModuleWithProviders {
+        return {ngModule: AppModule, providers: []};
+    }
+}

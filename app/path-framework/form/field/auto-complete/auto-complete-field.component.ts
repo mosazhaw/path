@@ -11,7 +11,6 @@ import {FormFunction} from "../../form-function";
 import {KeyUtility} from "../../../key-utility";
 
 @Component({
-    moduleId: module.id,
     selector: 'path-autocomplete',
     host: {
         '(document:click)': 'handleClick($event)',

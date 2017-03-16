@@ -9,7 +9,6 @@ import {TextField} from "../text/text-field.component";
 import {TranslationService} from "../../../service/translation.service";
 
 @Component({
-    moduleId: module.id,
     selector: 'path-translationfield',
     templateUrl: 'translation-field.component.html'
 })

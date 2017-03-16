@@ -1,8 +1,10 @@
 app/**/*.js
 tests/**/*.js
+dist
 *.js.map
 *.tgz
 
 node_modules
 
 .idea
+*.log

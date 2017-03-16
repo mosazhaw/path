@@ -3,10 +3,9 @@ import {FormFieldLabelComponent} from './../form-field-label.component';
 import {ValueField} from "../value-field";
 import {IForm} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
-import moment = require("moment");
+import * as moment from "moment";
 
 @Component({
-    moduleId: module.id,
     selector: 'path-datefield',
     templateUrl: 'date-field.component.html'
 })
