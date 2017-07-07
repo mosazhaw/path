@@ -16,7 +16,7 @@ import {LabelFieldComponent} from "./path-framework/form/field/label/label-field
 import {FieldListFieldComponent} from "./path-framework/form/field/fieldList/field-list-field.component";
 import {NumberFieldComponent} from "./path-framework/form/field/number/number-field.component";
 import {TranslationFieldComponent} from "./path-framework/form/field/translation/translation-field.component";
-import {Ng2BootstrapModule} from "ng2-bootstrap";
+import {Ng2BootstrapModule} from "ngx-bootstrap";
 import {DraggableDirective} from "./path-framework/form/draggable.directive";
 
 @NgModule({
