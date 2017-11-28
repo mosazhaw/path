@@ -288,3 +288,28 @@ Single or multi-line text input fields.
 ##### Translation
 
 Like text fields, but with built-in support for translated text.
+
+## Path Framework Development
+
+Read this chapter if you want to contribute to the Path Framework. If you only want to create applications using Path Framework, the following steps are *not* necessary.
+
+* Create a directory where you will put your development code
+* Clone the framework and the example application in two separate folders inside this directory:
+```
+git clone https://github.com/innovad/path.git
+git clone https://github.com/innovad/path-example.git
+```
+* Run npm install on both projects (path and path-example)
+* Unfortunately we cannot use npm link to create a local dependency from path-example to path since it is not supported by TypeScript/Angular. We use npm-link-copy to make path-example use our local path project:
+```
+npm install -g laggingreflex/npm-link-copy
+```
+* Execute the following command in the path (framework) directory:
+```
+npm-link-copy
+```
+* Now we can use path-framework in the path-example project. Using the -w option, it will watch for changes on the path-framework and update automatically. Execute the following command in the path-example directory:
+```
+npm-link-copy path-framework -w
+```
+* Finally you can test your development cycle. First, change some code in the framework. Run 'npm run tsc' to compile it to TypeScript (may be done by your IDE). Now the browser (showing path-example) should automatically reload and show your changes.
