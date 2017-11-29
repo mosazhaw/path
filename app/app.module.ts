@@ -20,11 +20,12 @@ import {Ng2BootstrapModule} from "ngx-bootstrap";
 import {DraggableDirective} from "./path-framework/form/draggable.directive";
 import {BackButtonComponent} from "./path-framework/page/element/button/back-button.component";
 import {LinkButtonComponent} from "./path-framework/page/element/button/link-button.component";
+import {PageDeleteButtonComponent} from "./path-framework/page/element/button/page-delete-button.component";
 
 @NgModule({
     imports:      [BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule.forRoot() ],
-    declarations: [DraggableDirective, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent],
-    exports:      [DraggableDirective, BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent]
+    declarations: [DraggableDirective, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent],
+    exports:      [DraggableDirective, BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent]
 })
 export class AppModule {
     static forRoot(): ModuleWithProviders {

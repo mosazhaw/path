@@ -80,12 +80,9 @@
         <path-back-button [button]="pageElement"></path-back-button>
     </span>
     <!-- Delete Button -->
-    <a *ngIf='pageElement.type == "deleteButton"' (click)="pageElement.onClick()" class="fa-links">
-        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-red col-md-3">
-            <div class="h3">{{pageElement.name}}</div>
-            <i class="fa fa-2x fa-remove"></i>
-        </div>
-    </a>
+    <span *ngIf='pageElement.type == "deleteButton"'>
+        <path-page-delete-button [button]="pageElement"></path-page-delete-button>
+    </span>
     <!-- Link Button (deprecated: DownloadButton -->
     <span *ngIf='pageElement.type == "linkButton" || pageElement.type == "downloadButton"'>
         <path-link-button [button]="pageElement"></path-link-button>
