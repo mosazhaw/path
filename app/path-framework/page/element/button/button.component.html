@@ -1,6 +1,9 @@
 <a (click)="button.onClick()" class="fa-links">
-	<div class="thumbnail tile {{(button.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{button.color}} col-md-3">
-		<div class="h3">{{button.name}}</div>
+	<div *ngIf="button.visible" class="thumbnail tile {{(button.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{button.color}} col-md-3">
+		<div class="h3 truncate">{{button.name}}</div>
+		<span class="truncate" *ngFor='let detail of button.details; let last = last;'>
+                    <span class="h4 m-t-5" [innerHTML]="detail.text"></span><small [hidden]="last">&nbsp;&bull;&nbsp;</small></span>
+		<div class="h4 m-t-5"></div>
 		<i class="fa fa-2x {{button.icon}}"></i>
 	</div>
 </a>

@@ -55,6 +55,9 @@ export class List extends path.PageElement implements IList {
                 button.url = KeyUtility.translateUrl(item["url"] != null ? item["url"] : button.url, null, false, button);
                 button.setIcon(item["icon"] != null ? item["icon"] : (button.icon == null ? this.icon : button.icon));
                 button.setColor(item["color"] != null ? item["color"] : (button.color == null ? this.color : button.color));
+                if (item["width"] == null) {
+                    button.width = 2; // default for list is 2
+                }
                 // button details
                 if (item["details"] != null) {
                     button.details = [];
