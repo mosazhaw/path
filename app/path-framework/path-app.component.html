@@ -76,9 +76,9 @@
         </div>
     </a>
     <!-- Back Button -->
-    <a *ngIf='pageElement.type == "backbutton"' (click)="pageElement.onClick()" class="fa-links">
+    <span *ngIf='pageElement.type == "backbutton"'>
         <path-back-button [button]="pageElement"></path-back-button>
-    </a>
+    </span>
     <!-- Delete Button -->
     <a *ngIf='pageElement.type == "deleteButton"' (click)="pageElement.onClick()" class="fa-links">
         <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-red col-md-3">
@@ -87,9 +87,9 @@
         </div>
     </a>
     <!-- Link Button (deprecated: DownloadButton -->
-    <a *ngIf='pageElement.type == "linkButton" || pageElement.type == "downloadButton"' (click)="pageElement.onClick()" class="fa-links">
+    <span *ngIf='pageElement.type == "linkButton" || pageElement.type == "downloadButton"'>
         <path-link-button [button]="pageElement"></path-link-button>
-    </a>
+    </span>
 	<!-- Inline Form -->
     <span *ngIf='pageElement.type == "inlineForm"'>
 	    <div class="col-md-12">

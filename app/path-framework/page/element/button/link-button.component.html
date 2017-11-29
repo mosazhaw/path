@@ -1,4 +1,8 @@
-<div class="thumbnail tile {{(button.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{button.color}} col-md-3">
-	<div class="h3">{{button.name}}</div>
-	<i class="fa fa-2x {{button.icon}}"></i>
-</div>
+<a (click)="button.onClick()" class="fa-links">
+	<div class="thumbnail tile {{(button.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{button.color}} col-md-3">
+		<div class="h3">{{button.name}}</div>
+		<i class="fa fa-2x {{button.icon}}"></i>
+	</div>
+</a>
+
+
