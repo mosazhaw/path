@@ -9,6 +9,7 @@ export class PageElement implements IPageElement {
     private _type:string;
     private _width:number;
     private _visible:boolean = true;
+    private _listElement:boolean = false;
     private _parentPageElement:PageElement;
 
     constructor(app:path.IPathApp) {
@@ -94,7 +95,13 @@ export class PageElement implements IPageElement {
         this._parentPageElement = value;
     }
 
+    get listElement(): boolean {
+        return this._listElement;
+    }
 
+    set listElement(value: boolean) {
+        this._listElement = value;
+    }
 }
 
 export class Key implements IKey {

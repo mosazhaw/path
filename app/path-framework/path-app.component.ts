@@ -300,7 +300,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             formFunction.delete = () => {
                 this.closeCurrentForm();
                 let parent:path.IPageElement = parentPageElement;
-                if (parent != null && parent instanceof path.Button && (<path.Button>parent).type == "listButton") {
+                if (parent != null && parent instanceof path.PageElement && (<path.PageElement>parent).listElement) {
                     this.refreshCurrentPage();
                 } else {
                     this.navigateBack();

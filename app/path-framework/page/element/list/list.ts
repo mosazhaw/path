@@ -46,7 +46,8 @@ export class List extends path.PageElement implements IList {
                     button = new path.Button(this.app, this.pathService);
                 }
                 // general attributes
-                button.type = "listButton";
+                button.type = "button";
+                button.listElement = true;
                 button.id = item.id;
                 button.setKey(itemKey);
                 button.handler = this._buttonHandler;
