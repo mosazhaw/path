@@ -210,8 +210,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                             deleteButton.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             element = deleteButton;
                             break;
-                        case "downloadButton":
-                            let downloadButton = new path.DownloadButton(this, this.pathService);
+                        case "downloadButton": // deprecated
+                        case "linkButton":
+                            let downloadButton = new path.LinkButton(this, this.pathService);
                             downloadButton.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             downloadButton.setIcon(modelElement["icon"]);
                             downloadButton.setColor(modelElement["color"]);
