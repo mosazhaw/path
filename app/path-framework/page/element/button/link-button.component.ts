@@ -1,6 +1,17 @@
 import {Button} from "./button";
 import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
+import {Component, Input, Output} from "@angular/core";
+
+@Component({
+    selector: 'path-link-button',
+    templateUrl: 'link-button.component.html'
+})
+export class LinkButtonComponent {
+    @Input('button')
+    @Output('button')
+    button:LinkButton;
+}
 
 export class LinkButton extends Button {
 

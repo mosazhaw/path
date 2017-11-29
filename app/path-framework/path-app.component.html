@@ -86,12 +86,9 @@
             <i class="fa fa-2x fa-remove"></i>
         </div>
     </a>
-    <!-- Download Button -->
+    <!-- Link Button (deprecated: DownloadButton -->
     <a *ngIf='pageElement.type == "linkButton" || pageElement.type == "downloadButton"' (click)="pageElement.onClick()" class="fa-links">
-        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{pageElement.color}} col-md-3">
-            <div class="h3">{{pageElement.name}}</div>
-            <i class="fa fa-2x {{pageElement.icon}}"></i>
-        </div>
+        <path-link-button [button]="pageElement"></path-link-button>
     </a>
 	<!-- Inline Form -->
     <span *ngIf='pageElement.type == "inlineForm"'>
