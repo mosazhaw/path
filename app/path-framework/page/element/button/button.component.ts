@@ -2,6 +2,17 @@ import * as path from '../../../path';
 import {Key} from "../page-element";
 import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
+import {Input, Output, Component} from "@angular/core";
+
+@Component({
+    selector: 'path-button',
+    templateUrl: 'button.component.html'
+})
+export class ButtonComponent {
+    @Input('button')
+    @Output('button')
+    button:Button;
+}
 
 export class Button extends path.PageElement implements path.IButton {
     private _icon:string;

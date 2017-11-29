@@ -69,12 +69,9 @@
     <span *ngFor='let pageElement of _pageStack[_pageStack.length - 1].content'>
 	    <span *ngIf="pageElement.visible">
     <!-- Button -->
-    <a *ngIf='pageElement.type == "button" || pageElement.type == "newButton"' (click)="pageElement.onClick()" class="fa-links">
-        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-{{pageElement.color}} col-md-3">
-            <div class="h3">{{pageElement.name}}</div>
-            <i class="fa fa-2x {{pageElement.icon}}"></i>
-        </div>
-    </a>
+    <span *ngIf='pageElement.type == "button" || pageElement.type == "newButton"'>
+        <path-button [button]="pageElement"></path-button>
+    </span>
     <!-- Back Button -->
     <span *ngIf='pageElement.type == "backbutton"'>
         <path-back-button [button]="pageElement"></path-back-button>

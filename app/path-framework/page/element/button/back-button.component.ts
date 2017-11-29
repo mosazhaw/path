@@ -1,4 +1,4 @@
-import {Button} from './button';
+import {Button} from './button.component';
 import {IPathApp} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 import {PathService} from "../../../service/path.service";
