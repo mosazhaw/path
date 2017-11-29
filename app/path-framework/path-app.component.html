@@ -77,10 +77,7 @@
     </a>
     <!-- Back Button -->
     <a *ngIf='pageElement.type == "backbutton"' (click)="pageElement.onClick()" class="fa-links">
-        <div class="thumbnail tile {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile-medium tile-silver col-md-3">
-            <div class="h3">{{pageElement.name}}</div>
-            <i class="fa fa-2x fa-backward"></i>
-        </div>
+        <path-back-button [button]="pageElement"></path-back-button>
     </a>
     <!-- Delete Button -->
     <a *ngIf='pageElement.type == "deleteButton"' (click)="pageElement.onClick()" class="fa-links">
