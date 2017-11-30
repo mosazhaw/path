@@ -102,6 +102,16 @@ export class PageElement implements IPageElement {
     set listElement(value: boolean) {
         this._listElement = value;
     }
+
+    public fromJson(modelFormField) {
+        this.visible = true;
+        if (modelFormField["id"] != null) {
+            this.id = modelFormField["id"];
+        }
+        if (modelFormField["visible"] != null) {
+            this.visible = modelFormField["visible"];
+        }
+    }
 }
 
 export class Key implements IKey {

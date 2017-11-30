@@ -187,37 +187,23 @@ export abstract class PathAppComponent implements path.IPathApp {
                     switch (modelElement.type) {
                         case "button":
                         case "newButton":
-                            let button = new path.Button(this, this.pathService);
-                            button.setIcon(modelElement["icon"]);
-                            button.setColor(modelElement["color"]);
-                            if (modelElement["form"] != null) {
-                                button.setForm(modelElement["form"]["form"]);
-                                button.setFormHandler(modelElement["form"]["handler"]);
-                            }
-                            button.setPage(modelElement["page"]);
+                            element = new path.Button(this, this.pathService, this.translationService);
+                            element.parentPageElement = parentPageElement;
+                            element.fromJson(modelElement);
                             if (modelElement["buttonhandler"] != null) {
-                                button.handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
+                                (<path.Button>element).handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                             }
-                            if (parentPageElement != null && modelElement.type == "button") {
-                                    button.key = parentPageElement.key;
-                            }
-                            button.name = this.translationService.getText(modelElement["name"]);
-                            button.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
-                            element = button;
                             break;
                         case "deleteButton":
-                            let deleteButton = new path.PageDeleteButton(this, this.pathService, this.translationService);
-                            deleteButton.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
-                            element = deleteButton;
+                            element = new path.PageDeleteButton(this, this.pathService, this.translationService);
+                            element.parentPageElement = parentPageElement;
+                            element.fromJson(modelElement);
                             break;
                         case "downloadButton": // deprecated
                         case "linkButton":
-                            let downloadButton = new path.LinkButton(this, this.pathService);
-                            downloadButton.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
-                            downloadButton.setIcon(modelElement["icon"]);
-                            downloadButton.setColor(modelElement["color"]);
-                            downloadButton.name = this.translationService.getText(modelElement["name"]);
-                            element = downloadButton;
+                            element = new path.LinkButton(this, this.pathService, this.translationService);
+                            element.parentPageElement = parentPageElement;
+                            element.fromJson(modelElement);
                             break;
                         case "backbutton":
                             element = new path.BackButton(this, this.pathService, this.translationService);

@@ -3,6 +3,7 @@ import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 import {Output, Input, Component} from "@angular/core";
+import {KeyUtility} from "../../../key-utility";
 
 @Component({
     selector: 'path-page-delete-button',
@@ -16,8 +17,8 @@ export class PageDeleteButtonComponent {
 
 export class PageDeleteButton extends Button {
 
-    constructor(app:IPathApp, pathService:PathService, protected translationService:TranslationService) {
-        super(app, pathService);
+    constructor(app: IPathApp, pathService: PathService, translationService: TranslationService) {
+        super(app, pathService, translationService);
         this.name = translationService.getText("Delete");
     }
 
@@ -27,7 +28,13 @@ export class PageDeleteButton extends Button {
                 this.getApp().navigateBack();
                 this.getApp().refreshCurrentPage();
             });
-        }, () => {} );
+        }, () => {
+        });
     }
 
+    public fromJson(modelElement) {
+        super.fromJson(modelElement);
+        this.type = "deleteButton";
+        this.url = KeyUtility.translateUrl(modelElement["url"], null, false, this.parentPageElement);
+    }
 }

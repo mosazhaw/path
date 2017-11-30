@@ -3,6 +3,9 @@ import {Key} from "../page-element";
 import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
 import {Input, Output, Component} from "@angular/core";
+import {TranslationService} from "../../../service/translation.service";
+import {KeyUtility} from "../../../key-utility";
+import {ButtonDetail} from "./button-detail";
 
 @Component({
     selector: 'path-button',
@@ -26,7 +29,7 @@ export class Button extends path.PageElement implements path.IButton {
     private _form:string;
     private _formHandler:string;
 
-    constructor(app:IPathApp, protected pathService:PathService) {
+    constructor(app:IPathApp, protected pathService:PathService, protected translationService:TranslationService) {
         super(app);
     }
 
@@ -151,5 +154,34 @@ export class Button extends path.PageElement implements path.IButton {
 
     set url(value: string) {
         this._url = value;
+    }
+
+    public fromJson(modelElement) {
+        super.fromJson(modelElement);
+
+        // general attributes
+        this.type = "button";
+        this.setIcon(modelElement["icon"]);
+        this.setColor(modelElement["color"]);
+        if (modelElement["form"] != null) {
+            this.setForm(modelElement["form"]["form"]);
+            this.setFormHandler(modelElement["form"]["handler"]);
+        }
+        this.setPage(modelElement["page"]);
+        if (this.parentPageElement != null && modelElement.type == "button") {
+            this.key = this.parentPageElement.key;
+        }
+        this.name = this.translationService.getText(modelElement["name"]);
+        this.url = KeyUtility.translateUrl(modelElement["url"], null, false, this.parentPageElement);
+
+        // button details
+        if (modelElement["details"] != null) {
+            this.details = [];
+            for (let detail of modelElement["details"]) {
+                let bd:path.ButtonDetail = new ButtonDetail();
+                bd.text = detail;
+                this.details.push(bd);
+            }
+        }
     }
 }

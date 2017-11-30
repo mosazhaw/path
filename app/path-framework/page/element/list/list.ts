@@ -43,30 +43,28 @@ export class List extends path.PageElement implements IList {
                 let itemKey:Key = new Key(item["key"]["key"], item["key"]["name"]);
                 let button:path.Button = this.findButton(itemKey, oldButtons);
                 if (button == null) {
-                    button = new path.Button(this.app, this.pathService);
+                    // create button
+                    if (item["type"] == null || item["type"] == "button") {
+                        button = new path.Button(this.app, this.pathService, this.translationService);
+                    } else if (item["type"] == "linkButton") {
+                        button = new path.LinkButton(this.app, this.pathService, this.translationService);
+                    }
                 }
-                // general attributes
-                button.type = "button";
+                // build button from json
+                button.parentPageElement = this.parentPageElement;
                 button.listElement = true;
-                button.id = item.id;
+                button.fromJson(item);
+
+                // special defaults for list buttons
                 button.setKey(itemKey);
                 button.handler = this._buttonHandler;
-                button.name = item.name;
-                button.parentPageElement = this.parentPageElement;
+                button.name = item.name; // no translation
                 button.url = KeyUtility.translateUrl(item["url"] != null ? item["url"] : button.url, null, false, button);
                 button.setIcon(item["icon"] != null ? item["icon"] : (button.icon == null ? this.icon : button.icon));
                 button.setColor(item["color"] != null ? item["color"] : (button.color == null ? this.color : button.color));
+                // special default width (2 instead of 1) for buttons in list
                 if (item["width"] == null) {
-                    button.width = 2; // default for list is 2
-                }
-                // button details
-                if (item["details"] != null) {
-                    button.details = [];
-                    for (let detail of item["details"]) {
-                        let bd:path.ButtonDetail = new ButtonDetail();
-                        bd.text = detail;
-                        button.details.push(bd);
-                    }
+                    button.width = 2;
                 }
                 // form button
                 if (this.form != null) {
