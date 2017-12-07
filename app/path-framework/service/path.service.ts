@@ -39,7 +39,7 @@ export class PathService {
                         if (jwt != null && jwt != "") {
                             sessionStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         } else {
-                            sessionStorage.clear();
+                            sessionStorage.removeItem("pathAppId");
                         }
                         processor(data.json());
                     },
