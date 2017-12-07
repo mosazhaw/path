@@ -35,6 +35,10 @@ export class TranslationService {
         return languageCode;
     }
 
+    public getSupportedLanguageCodes() : string[] {
+        return ["de", "en"];
+    }
+
     private getTranslations() {
         let languageCode: string = this.getUserLanguage();
 

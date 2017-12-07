@@ -20,13 +20,14 @@ export class TranslationFieldComponent {
 
 export class TranslationField extends ValueField<any[][]> {
 
-    private languages:string[] = ["de", "en"];
+    private languages:string[];
     private userLanguage:string = sessionStorage.getItem("languageCode") == null ? "en" : sessionStorage.getItem("languageCode");
     private defaultTranslation:string = null;
     private translationLabel:string;
 
     constructor(form:Form, private pathService:PathService, protected translationService:TranslationService) {
         super(form, translationService);
+        this.languages = translationService.getSupportedLanguageCodes();
         let initialList:any[][] = [];
         for (let language of this.languages) {
             initialList.push([{"key": language}, ""]);
