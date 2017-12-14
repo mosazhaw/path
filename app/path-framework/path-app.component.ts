@@ -338,10 +338,10 @@ export abstract class PathAppComponent implements path.IPathApp {
             if (modelForm != null) {
                 // create form
                 form = new path.Form(this.pathService, this);
+                form.fromJson(modelForm);
                 form.key = key;
                 form.formFunction = formFunction;
                 form.title = this.translationService.getText(modelForm.title);
-                form.url = modelForm["url"];
                 for (var modelFormField of modelForm.formFieldList) {
                     // create form fields
                     let formField:path.FormField = null;

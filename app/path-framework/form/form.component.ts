@@ -31,6 +31,9 @@ export class Form implements IForm {
     private _url:string;
     private _bean:IFormBean;
     private _formFunction: FormFunction;
+    private _headerVisible:boolean;
+    private _footerVisible:boolean;
+    private _borderStyle:BorderStyle;
 
     constructor(private pathService:PathService, private app:IPathApp) {
     }
@@ -109,6 +112,47 @@ export class Form implements IForm {
 
     set formFunction(value: FormFunction) {
         this._formFunction = value;
+    }
+
+    get headerVisible(): boolean {
+        return this._headerVisible;
+    }
+
+    set headerVisible(value: boolean) {
+        this._headerVisible = value;
+    }
+
+    get footerVisible(): boolean {
+        return this._footerVisible;
+    }
+
+    set footerVisible(value: boolean) {
+        this._footerVisible = value;
+    }
+
+    get borderStyle(): BorderStyle {
+        return this._borderStyle;
+    }
+
+    set borderStyle(value: BorderStyle) {
+        this._borderStyle = value;
+    }
+
+    public fromJson(modelForm) {
+        this.url = modelForm["url"];
+        this.headerVisible = true;
+        if (modelForm["headerVisible"] != null) {
+            this.headerVisible = modelForm["headerVisible"];
+        }
+        this.footerVisible = true;
+        if (modelForm["footerVisible"] != null) {
+            this.footerVisible = modelForm["footerVisible"];
+        }
+        this.borderStyle = BorderStyle.Shadow;
+        if (modelForm["borderStyle"] != null) {
+            let borderStyleString:string = modelForm["borderStyle"];
+            this.borderStyle = BorderStyle[borderStyleString];
+        }
     }
 
     public updateRows() {
@@ -204,4 +248,10 @@ class FormRow {
         }
         return false;
     }
+}
+
+enum BorderStyle {
+    // TODO use string enum after TS upgrade, then use enum in template (with member)
+    None = 1,
+    Shadow = 2
 }

@@ -1,6 +1,6 @@
-<div class="modal-content">
+<div [ngClass]="form.borderStyle == 2 ? 'modal-content' : ''">
 	<form (ngSubmit)="onSubmit()" #pathForm="ngForm" autocomplete="off">
-		<div class="modal-header">
+		<div *ngIf="form.headerVisible" class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" (click)="form.close(false)">&times;</button>
 			<h5 class="modal-title">{{form.title}}</h5>
 		</div>
@@ -40,7 +40,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="modal-footer">
+		<div *ngIf="form.footerVisible" class="modal-footer">
 			<div class="row">
 				<div class="col-md-2">
 					<span *ngFor='let field of form.fields' class="pull-left" [hidden]="!field.visible">
