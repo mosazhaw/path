@@ -20,6 +20,10 @@ export class FormComponent {
     public onSubmit() {
         this.form.close(true, false);
     }
+
+    ngAfterViewInit() {
+        this.form.focusFirstField();
+    }
 }
 
 export class Form implements IForm {
@@ -218,6 +222,17 @@ export class Form implements IForm {
         if (event.keyCode == 27) { // esc
             this.close(false, false);
         }
+    }
+
+    public focusFirstField() {
+        window.setTimeout(() => {
+            for (let element of <any>document.forms[0].elements) {
+                if (element instanceof HTMLInputElement && (<HTMLInputElement>element).type == "text") {
+                    (<HTMLInputElement>element).focus();
+                    break;
+                }
+            }
+        }, 1)
     }
 }
 

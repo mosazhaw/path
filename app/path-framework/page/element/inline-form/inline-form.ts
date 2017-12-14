@@ -78,6 +78,7 @@ export class InlineForm extends PageElement {
                             this.loadNextForm(false);
                         };
                         this._form = this.app.createForm(this._formId, this._currentKey, null, formFunction, this);
+                        this._form.focusFirstField();
                     } else {
                         this._form = null;
                         this.app.navigateBack();
