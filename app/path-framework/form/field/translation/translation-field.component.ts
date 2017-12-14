@@ -100,6 +100,7 @@ export class TranslationField extends ValueField<any[][]> {
         form.updateRows();
 
         this.form.getApp()["_formStack"].push(form); // TODO
+        form.focusFirstField();
     }
 
 }

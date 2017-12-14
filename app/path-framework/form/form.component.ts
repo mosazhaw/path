@@ -35,9 +35,9 @@ export class Form implements IForm {
     private _url:string;
     private _bean:IFormBean;
     private _formFunction: FormFunction;
-    private _headerVisible:boolean;
-    private _footerVisible:boolean;
-    private _borderStyle:BorderStyle;
+    private _headerVisible:boolean = true;
+    private _footerVisible:boolean = true;
+    private _borderStyle:BorderStyle = BorderStyle.Shadow;
 
     constructor(private pathService:PathService, private app:IPathApp) {
     }
@@ -226,10 +226,15 @@ export class Form implements IForm {
 
     public focusFirstField() {
         window.setTimeout(() => {
-            for (let element of <any>document.forms[0].elements) {
-                if (element instanceof HTMLInputElement && (<HTMLInputElement>element).type == "text") {
-                    (<HTMLInputElement>element).focus();
-                    break;
+            for (let form of <any>document.forms) {
+                for (let element of <any>form.elements) {
+                    if (element instanceof HTMLInputElement && (<HTMLInputElement>element).type == "text") {
+                        let input = <HTMLInputElement>element;
+                        if (input.outerHTML.indexOf('readonly-with-required') < 0) { // no focus on readonly fields
+                            input.focus();
+                        }
+                        break;
+                    }
                 }
             }
         }, 1)
