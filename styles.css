@@ -123,3 +123,7 @@ textarea[readonly-with-required] {
     cursor: -moz-grabbing;
     cursor: -webkit-grabbing;
 }
+
+.inlineForm {
+    margin-bottom: 20px;
+}
