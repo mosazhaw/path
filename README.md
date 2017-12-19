@@ -306,7 +306,7 @@ npm install -g laggingreflex/npm-link-copy
 ```
 * Execute the following command in the path (framework) directory:
 ```
-npm-link-copy
+npm link
 ```
 * Now we can use path-framework in the path-example project. Using the -w option, it will watch for changes on the path-framework and update automatically. Execute the following command in the path-example directory:
 ```
