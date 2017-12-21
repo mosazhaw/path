@@ -21,6 +21,9 @@ export class PageElement implements IPageElement {
     }
 
     public static buildShortName(str:string) {
+        if (str == null || str.length == 0) {
+            return "";
+        }
         if (str.length > 63) {
             return str.substr(0, 60) + "...";
         }

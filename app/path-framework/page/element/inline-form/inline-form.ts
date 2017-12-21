@@ -11,6 +11,7 @@ export class InlineForm extends PageElement {
     private _url:string;
     private _form:Form;
     private _currentKey:Key;
+    private _page:string;
 
     constructor(app:path.IPathApp, @Inject(PathService) private pathService:PathService, @Inject(TranslationService) private translationService:TranslationService) {
         super(app);
@@ -38,6 +39,20 @@ export class InlineForm extends PageElement {
 
     set form(value: Form) {
         this._form = value;
+    }
+
+    get page(): string {
+        return this._page;
+    }
+
+    set page(value: string) {
+        this._page = value;
+    }
+
+    public fromJson(modelFormField) {
+        super.fromJson(modelFormField);
+        this.formId = modelFormField["form"];
+        this.page = modelFormField["page"];
     }
 
     public loadNextForm(forward:boolean) {
@@ -78,10 +93,15 @@ export class InlineForm extends PageElement {
                             this.loadNextForm(false);
                         };
                         this._form = this.app.createForm(this._formId, this._currentKey, null, formFunction, this);
+                        this.name = this._form.title;
                         this._form.focusFirstField();
                     } else {
                         this._form = null;
-                        this.app.navigateBack();
+                        if (this.page == null) {
+                            this.app.navigateBack();
+                        } else {
+                            this.app.setCurrentPage(this.page, this);
+                        }
                     }
                 } else {
                     window.alert(this.translationService.getText("NoDataError"));

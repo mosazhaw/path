@@ -72,7 +72,7 @@ export class List extends path.PageElement implements IList {
                     button.setFormHandler(this.formHandler);
                 }
                 // page button
-                button.setPage(this.page);
+                button.setPage(item["page"] != null ? item["page"] : this.page);
                 this.buttons.push(button);
             }
             if (this.handler != null) {
