@@ -1,6 +1,6 @@
 {
   "name": "path-framework",
-  "version": "0.2.13",
+  "version": "0.2.14",
   "description": "Path Application Framework",
   "keywords": [
     "GUI",
@@ -47,7 +47,7 @@
     "moment": "2.18.1",
     "ngx-bootstrap": "1.7.1",
     "reflect-metadata": "0.1.10",
-    "rxjs": "5.4.2",
+    "rxjs": "5.5.3",
     "zone.js": "0.8.12"
   },
   "devDependencies": {
