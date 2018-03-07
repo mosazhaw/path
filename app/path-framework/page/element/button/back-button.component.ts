@@ -18,7 +18,6 @@ export class BackButton extends Button {
 
     constructor(app:IPathApp, pathService:PathService, translationService:TranslationService) {
         super(app, pathService,translationService);
-        this.name = translationService.getText("Back");
     }
 
     public onClick() {
@@ -28,5 +27,7 @@ export class BackButton extends Button {
     public fromJson(modelElement) {
         super.fromJson(modelElement);
         this.type = "backButton";
+        this.name = this.translationService.getText("Back");
     }
+
 }

@@ -11,6 +11,7 @@ import {Key} from "./page/element/page-element";
 import {KeyUtility} from "./key-utility";
 import {FormFunction} from "./form/form-function";
 import {TranslationService} from "./service/translation.service";
+import {PageLabel, PageLabelComponent} from "./page/element/label/page-label.component";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -210,6 +211,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "backbutton":
                             element = new path.BackButton(this, this.pathService, this.translationService);
+                            element.fromJson(modelElement);
                             break;
                         case "inlineForm":
                             let inlineForm = new path.InlineForm(this, this.pathService, this.translationService);
@@ -246,6 +248,11 @@ export abstract class PathAppComponent implements path.IPathApp {
                             let chart = new path.ChartElement(this, this.pathService, this.translationService);
                             chart.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             element = chart;
+                            break;
+                        case "pageLabel":
+                            let pageLabel = new PageLabel(this, this.pathService, this.translationService);
+                            pageLabel.fromJson(modelElement);
+                            element = pageLabel;
                             break;
                     }
                     if (modelElement["permissionUrl"] != null) {

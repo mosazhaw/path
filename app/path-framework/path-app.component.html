@@ -113,6 +113,10 @@
     <div class="col-md-12" *ngIf='pageElement.type == "ChartElement"'>
         <path-radar-chart [chart]="pageElement"></path-radar-chart>
     </div>
+    <!-- Page Label -->
+    <span *ngIf='pageElement.type == "pageLabel"'>
+        <path-page-label [pageLabel]="pageElement"></path-page-label>
+    </span>
 	</span>
     </span>
         </div>
