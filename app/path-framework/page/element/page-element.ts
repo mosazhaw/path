@@ -9,6 +9,7 @@ export class PageElement implements IPageElement {
     private _type:string;
     private _width:number;
     private _visible:boolean = true;
+    private _newRow:boolean = false;
     private _listElement:boolean = false;
     private _parentPageElement:PageElement;
 
@@ -90,6 +91,14 @@ export class PageElement implements IPageElement {
         this._visible = value;
     }
 
+    get newRow(): boolean {
+        return this._newRow;
+    }
+
+    set newRow(value: boolean) {
+        this._newRow = value;
+    }
+
     get parentPageElement(): PageElement {
         return this._parentPageElement;
     }
@@ -113,6 +122,9 @@ export class PageElement implements IPageElement {
         }
         if (modelFormField["visible"] != null) {
             this.visible = modelFormField["visible"];
+        }
+        if (modelFormField["newRow"] != null) {
+            this.newRow = modelFormField["newRow"];
         }
     }
 }

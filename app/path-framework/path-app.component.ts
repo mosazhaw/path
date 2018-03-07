@@ -265,6 +265,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     page.content.push(element);
                 }
+                page.updateRows();
             }
         }
 
