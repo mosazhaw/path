@@ -105,6 +105,8 @@ A page consists of a list of page elements. Page elements may be either page but
 
 #### Page Elements
 
+Path displays one or more page elements on a single web page. Each element has several properties.
+
 | Property | Description |
 | ------------- | ------------- |
 | id  | The page element id |
