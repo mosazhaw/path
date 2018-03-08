@@ -1,0 +1,16 @@
+<div *ngIf='list.search' class="thumbnail {{(list.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green col-md-3">
+	<div class="input-group input-group-sm">
+		<div class="h3">{{list._searchLabel}}</div>
+		<i class="fa fa-2x fa-search"></i>
+		<div class="h5"></div>
+		<input [(ngModel)]="list._searchText" placeholder="{{list._searchInputLabel}}" (keyup)="list.filter()" class="form-control" type="text">
+	</div>
+</div>
+<span *ngFor='let button of list.buttons'>
+            <span *ngIf='button.type == "button" || button.type == "newButton"'>
+                <path-button [button]="button"></path-button>
+            </span>
+            <span *ngIf='button.type == "linkButton" || button.type == "downloadButton"'>
+                <path-link-button [button]="button"></path-link-button>
+            </span>
+</span>

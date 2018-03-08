@@ -1,14 +1,24 @@
-import * as path from '../../../path';
-import {IListHandler, IList, IButtonHandler, IKey} from "../../../pathinterface";
-import {ButtonDetail} from "../button/button-detail";
+import {IListHandler, IList, IButtonHandler, IKey, IPathApp, IButton} from "../../../pathinterface";
 import {PathService} from "../../../service/path.service";
-import {Inject} from "@angular/core";
-import {Key} from "../page-element";
+import {Component, Input, Output} from "@angular/core";
+import {Key, PageElement} from "../page-element";
 import {TranslationService} from "../../../service/translation.service";
 import {KeyUtility} from "../../../key-utility";
+import {Button} from "../button/button.component";
+import {LinkButton} from "../button/link-button.component";
 
-export class List extends path.PageElement implements IList {
-    private _buttons:path.Button[] = [];
+@Component({
+    selector: 'path-list',
+    templateUrl: 'list.component.html'
+})
+export class ListComponent {
+    @Input('list')
+    @Output('list')
+    list:List;
+}
+
+export class List extends PageElement implements IList {
+    private _buttons:Button[] = [];
     private _search:boolean;
     private _searchLabel:string;
     private _searchInputLabel:string;
@@ -23,13 +33,13 @@ export class List extends path.PageElement implements IList {
     private _mockData:any;
     private _url;
 
-    constructor(app:path.IPathApp, private pathService:PathService, private translationService:TranslationService) {
+    constructor(app:IPathApp, private pathService:PathService, private translationService:TranslationService) {
         super(app);
         this._searchLabel = translationService.getText("Search");
         this._searchInputLabel = translationService.getText("SearchInputLabel");
     }
 
-    public getContent():path.IButton[] {
+    public getContent():IButton[] {
         return this.buttons;
     }
 
@@ -41,13 +51,13 @@ export class List extends path.PageElement implements IList {
             this.buttons = [];
             for (let item of data) {
                 let itemKey:Key = new Key(item["key"]["key"], item["key"]["name"]);
-                let button:path.Button = this.findButton(itemKey, oldButtons);
+                let button:Button = this.findButton(itemKey, oldButtons);
                 if (button == null) {
                     // create button
                     if (item["type"] == null || item["type"] == "button") {
-                        button = new path.Button(this.app, this.pathService, this.translationService);
+                        button = new Button(this.app, this.pathService, this.translationService);
                     } else if (item["type"] == "linkButton") {
-                        button = new path.LinkButton(this.app, this.pathService, this.translationService);
+                        button = new LinkButton(this.app, this.pathService, this.translationService);
                     }
                 }
                 // build button from json
@@ -79,7 +89,7 @@ export class List extends path.PageElement implements IList {
                 this.handler.doLoad(this); // TODO useful?
             }
         }
-        let listHandlerDoLoad = (list:path.IList) => (data:any) => dataHandler(data);
+        let listHandlerDoLoad = (list:IList) => (data:any) => dataHandler(data);
         // backend data
         if (this._url != null) {
             this.pathService.serverGet(this.app.getBackendUrl(), this.url, listHandlerDoLoad(this), null);
@@ -98,7 +108,7 @@ export class List extends path.PageElement implements IList {
         }
     }
 
-    private findButton(key:IKey, buttons:path.Button[]):path.Button {
+    private findButton(key:IKey, buttons:Button[]):Button {
         for (let button of buttons) {
             if (button.key.getKey() == key.getKey() && button.key.getName() == key.getName()) {
                 return button;
@@ -126,11 +136,11 @@ export class List extends path.PageElement implements IList {
         }
     }
 
-    get buttons():path.Button[] {
+    get buttons():Button[] {
         return this._buttons;
     }
 
-    set buttons(value:path.Button[]) {
+    set buttons(value:Button[]) {
         this._buttons = value;
     }
 
