@@ -115,16 +115,21 @@ export class PageElement implements IPageElement {
         this._listElement = value;
     }
 
-    public fromJson(modelFormField) {
+    public fromJson(modelElement) {
         this.visible = true;
-        if (modelFormField["id"] != null) {
-            this.id = modelFormField["id"];
+        if (modelElement["id"] != null) {
+            this.id = modelElement["id"];
         }
-        if (modelFormField["visible"] != null) {
-            this.visible = modelFormField["visible"];
+        if (modelElement["visible"] != null) {
+            this.visible = modelElement["visible"];
         }
-        if (modelFormField["newRow"] != null) {
-            this.newRow = modelFormField["newRow"];
+        if (modelElement["newRow"] != null) {
+            this.newRow = modelElement["newRow"];
+        }
+        if (modelElement["width"] != null) {
+            this.width = modelElement["width"];
+        } else {
+            this.width = 1;
         }
     }
 }

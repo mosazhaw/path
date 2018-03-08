@@ -223,6 +223,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "list":
                             let dynamicList:path.List = new path.List(this, this.pathService, this.translationService);
+                            dynamicList.fromJson(modelElement);
                             dynamicList.search = modelElement["search"];
                             // handler
                             if (modelElement["handler"] != null) {
@@ -246,6 +247,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "ChartElement":
                             let chart = new path.ChartElement(this, this.pathService, this.translationService);
+                            chart.fromJson(modelElement);
                             chart.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             element = chart;
                             break;
@@ -265,11 +267,6 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     element.type = modelElement.type;
                     element.parentPageElement = parentPageElement;
-                    if (modelElement["width"] != null) {
-                        element.width = modelElement["width"];
-                    } else {
-                        element.width = 1;
-                    }
                     page.content.push(element);
                 }
                 page.updateRows();
