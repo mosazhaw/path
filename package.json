@@ -1,6 +1,6 @@
 {
-  "name": "path-framework",
-  "version": "0.2.15",
+  "name": "path-framework-weberm16",
+  "version": "1.0.0",
   "description": "Path Application Framework",
   "keywords": [
     "GUI",
@@ -9,9 +9,9 @@
     "Rapid Application Development",
     "Rapid Application Manufacturing"
   ],
-  "homepage": "https://github.com/innovad/path/",
+  "homepage": "https://github.com/zhaw-weberm16/path",
   "bugs": {
-    "url": "https://github.com/innovad/path/issues"
+    "url": "https://github.com/zhaw-weberm16/path/issues"
   },
   "license": "LGPL-3.0",
   "author": {
