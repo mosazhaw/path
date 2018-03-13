@@ -7,6 +7,7 @@ import {CancelButton} from "../button/cancel-button";
 import {PathService} from "../../../service/path.service";
 import {TextField} from "../text/text-field.component";
 import {TranslationService} from "../../../service/translation.service";
+import {FocusUtility} from "../../focus-utility";
 
 @Component({
     selector: 'path-translationfield',
@@ -100,7 +101,7 @@ export class TranslationField extends ValueField<any[][]> {
         form.updateRows();
 
         this.form.getApp()["_formStack"].push(form); // TODO
-        form.focusFirstField();
+        FocusUtility.focusFirstField(form);
     }
 
 }

@@ -5,6 +5,7 @@ import {Inject} from "@angular/core";
 import * as path from '../../../path';
 import {FormFunction} from "../../../form/form-function";
 import {TranslationService} from "../../../service/translation.service";
+import {FocusUtility} from "../../../form/focus-utility";
 
 export class InlineForm extends PageElement {
     private _formId:string;
@@ -94,7 +95,7 @@ export class InlineForm extends PageElement {
                         };
                         this._form = this.app.createForm(this._formId, this._currentKey, null, formFunction, this);
                         this.name = this._form.title;
-                        this._form.focusFirstField();
+                        FocusUtility.focusFirstField(this.form);
                     } else {
                         this._form = null;
                         if (this.page == null) {

@@ -7,6 +7,7 @@ import {FieldListField} from "./field/fieldList/field-list-field.component";
 import {Key} from "../page/element/page-element";
 import {FormFunction} from "./form-function";
 import {TranslationService} from "../service/translation.service";
+import {FocusUtility} from "./focus-utility";
 
 @Component({
     selector: 'path-form',
@@ -22,7 +23,7 @@ export class FormComponent {
     }
 
     ngAfterViewInit() {
-        this.form.focusFirstField();
+        FocusUtility.focusFirstField(this.form);
     }
 }
 
@@ -222,27 +223,6 @@ export class Form implements IForm {
         if (event.keyCode == 27) { // esc
             this.close(false, false);
         }
-    }
-
-    public focusFirstField() {
-        window.setTimeout(() => {
-            let focusDone:boolean = false;
-            for (let form of <any>document.forms) {
-                for (let element of <any>form.elements) {
-                    if (element instanceof HTMLInputElement && (<HTMLInputElement>element).type == "text") {
-                        let input = <HTMLInputElement>element;
-                        if (input.outerHTML.indexOf('readonly-with-required') < 0) { // no focus on readonly fields
-                            input.focus();
-                            focusDone = true;
-                        }
-                        break;
-                    }
-                }
-                if (focusDone) {
-                    break;
-                }
-            }
-        }, 1)
     }
 }
 

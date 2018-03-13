@@ -3,7 +3,9 @@
 		<div class="h3">{{list._searchLabel}}</div>
 		<i class="fa fa-2x fa-search"></i>
 		<div class="h5"></div>
-		<input [(ngModel)]="list._searchText" placeholder="{{list._searchInputLabel}}" (keyup)="list.filter()" class="form-control" type="text">
+        <form>
+		    <input name="search" [(ngModel)]="list._searchText" placeholder="{{list._searchInputLabel}}" (keyup)="list.filter()" class="form-control" type="text">
+        </form>
 	</div>
 </div>
 <span *ngFor='let button of list.buttons'>
