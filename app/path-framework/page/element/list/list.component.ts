@@ -36,7 +36,8 @@ export class List extends PageElement implements IList {
     private _formHandler:string;
     private _page:string;
     private _mockData:any;
-    private _url;
+    private _url:string;
+    private _limit:number;
 
     constructor(app:IPathApp, private pathService:PathService, private translationService:TranslationService) {
         super(app);
@@ -48,7 +49,7 @@ export class List extends PageElement implements IList {
         return this.buttons;
     }
 
-    public refresh() {
+    public refresh(searchText:string) {
         // callback function for data
         console.log("refresh list");
         let dataHandler = (data:any) => {
@@ -93,11 +94,18 @@ export class List extends PageElement implements IList {
             if (this.handler != null) {
                 this.handler.doLoad(this); // TODO useful?
             }
+            if (this.limit) {
+                this.setSearchResultsCountMessage();
+            }
         }
         let listHandlerDoLoad = (list:IList) => (data:any) => dataHandler(data);
         // backend data
         if (this._url != null) {
-            this.pathService.serverGet(this.app.getBackendUrl(), this.url, listHandlerDoLoad(this), null);
+            let urlParameters = '';
+            if (searchText || this.limit) {
+                urlParameters = '?search=' + (searchText == null ? "" : encodeURI(searchText)) + "&limit=" + this.limit;
+            }
+            this.pathService.serverGet(this.app.getBackendUrl(), this.url + urlParameters, listHandlerDoLoad(this), null);
         }
         // mock data
         if (this._mockData != null) {
@@ -123,22 +131,55 @@ export class List extends PageElement implements IList {
     }
 
     public filter() {
-        let searchText:string = this._searchText.toLowerCase();
-        for (let button of this._buttons) {
-            button.visible = true;
-            if (searchText.length > 0) {
-                let newVisible:boolean = button.name.toLowerCase().indexOf(searchText) != -1;
-                if (!newVisible) {
-                    for (let detail of button.details) {
-                        if (detail.text.toLowerCase().indexOf(searchText) != -1) {
-                            newVisible = true;
-                            break;
+        this._searchLabel = this.translationService.getText("Search");
+        if (this._searchText == "*") {
+            this.refresh(null);
+        } else if (this.limit) {
+            // call server to filter data
+            if (!this._searchText) {
+                this._buttons = [];
+            } else if (this._searchText == "*") {
+                this.refresh(null);
+            } else if (this._searchText && this._searchText.length >= 2) {
+                this.refresh(this._searchText);
+            } else {
+                this._searchLabel = this.translationService.getText("SearchTextTooShort");
+                this._buttons = [];
+            }
+        } else {
+            // filter loaded data only
+            let searchText:string = this._searchText.toLowerCase();
+            for (let button of this._buttons) {
+                button.visible = true;
+                if (searchText.length > 0) {
+                    let newVisible:boolean = button.name.toLowerCase().indexOf(searchText) != -1;
+                    if (!newVisible) {
+                        for (let detail of button.details) {
+                            if (detail.text.toLowerCase().indexOf(searchText) != -1) {
+                                newVisible = true;
+                                break;
+                            }
                         }
                     }
+                    button.visible = newVisible;
+                    this.setSearchResultsCountMessage();
                 }
-                button.visible = newVisible;
             }
         }
+    }
+
+    private setSearchResultsCountMessage() {
+        this._searchLabel = this.visibleItemSize() + " " + (this.visibleItemSize() == 1 ? this.translationService.getText("Result") : this.translationService.getText("Results"));
+    }
+
+    private visibleItemSize() : number {
+        let result:number = 0;
+        for (let button of this.buttons) {
+            if (button.visible) {
+                result++;
+            }
+        }
+        return result;
     }
 
     get buttons():Button[] {
@@ -221,11 +262,52 @@ export class List extends PageElement implements IList {
         this._mockData = value;
     }
 
-    get url() {
+    get url() : string {
         return this._url;
     }
 
-    set url(value) {
+    set url(value: string) {
         this._url = value;
+    }
+
+    get limit(): number {
+        return this._limit;
+    }
+
+    set limit(value: number) {
+        this._limit = value;
+    }
+
+    public fromJson(modelElement) {
+        super.fromJson(modelElement);
+        if (modelElement["search"] != null) {
+            this.search = modelElement["search"];
+        }
+        if (modelElement["color"] != null) {
+            this.color = modelElement["color"];
+        }
+        if (modelElement["form"] != null) {
+            this.form = modelElement["form"]["form"];
+            this.formHandler = modelElement["form"]["handler"];
+        }
+        if (modelElement["page"] != null) {
+            this.page = modelElement["page"];
+        }
+        if (modelElement["icon"] != null) {
+            this.icon = modelElement["icon"];
+        }
+        if (modelElement["data"] != null) {
+            this.mockData = modelElement["data"];
+        }
+        if (modelElement["name"] != null) {
+            this.name = this.translationService.getText(modelElement["name"]);
+        }
+        if (modelElement["url"] != null) {
+            let urlString:string = modelElement["url"];
+            this.url = KeyUtility.translateUrl(urlString, null, false, this.parentPageElement);
+        }
+        if (modelElement["limit"] != null) {
+            this.limit = modelElement["limit"];
+        }
     }
 }

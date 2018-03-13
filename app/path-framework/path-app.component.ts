@@ -111,14 +111,14 @@ export abstract class PathAppComponent implements path.IPathApp {
     public refreshCurrentPage() {
         for (let element of this._pageStack[this._pageStack.length - 1].content) {
             if (element instanceof path.List) {
-                (<path.List>element).refresh();
+                (<path.List>element).refresh(null);
             }
         }
         // breadcrumbs
         if (this._pageStack[this._pageStack.length - 2] != null) {
             for (let element of this._pageStack[this._pageStack.length - 2].content) {
                 if (element instanceof path.List) {
-                    (<path.List>element).refresh();
+                    (<path.List>element).refresh(null);
                 }
             }
         }
@@ -223,8 +223,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "list":
                             let dynamicList:path.List = new path.List(this, this.pathService, this.translationService);
+                            dynamicList.parentPageElement = parentPageElement;
                             dynamicList.fromJson(modelElement);
-                            dynamicList.search = modelElement["search"];
                             // handler
                             if (modelElement["handler"] != null) {
                                 dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
@@ -232,17 +232,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                             if (modelElement["buttonhandler"] != null) {
                                 dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                             }
-                            dynamicList.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
-                            dynamicList.color = modelElement["color"];
-                            if (modelElement["form"] != null) {
-                                dynamicList.form = modelElement["form"]["form"];
-                                dynamicList.formHandler = modelElement["form"]["handler"];
+                            if (!dynamicList.limit) {
+                                dynamicList.refresh(null);
                             }
-                            dynamicList.page = modelElement["page"];
-                            dynamicList.icon = modelElement["icon"];
-                            dynamicList.mockData = modelElement["data"];
-                            dynamicList.name = this.translationService.getText(modelElement["name"]);
-                            dynamicList.refresh();
                             element = dynamicList;
                             break;
                         case "ChartElement":
