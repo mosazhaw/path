@@ -132,8 +132,9 @@ textarea[readonly-with-required] {
 
 
 /* Ab hier CSS-Erweiterung von weberm16 */
+
 /* Schriftfarbe der Navigation */
-.navbar-brand, .navbar-link {
+.navbar-brand, .navbar-link,.navbar-brand:hover, .navbar-link:hover, .navbar-brand:visited {
     color: #ffffff;
 }
 /* Navigationsbalken*/
@@ -142,10 +143,11 @@ textarea[readonly-with-required] {
     background-color: #222222;
     border-color: #222222;
 }
-/* keine runden Ecken bei den Formularen*/
-.modal-content {
+/* keine runden Ecken bei den Formularen und Buttons*/
+.modal-content, .form-control, .btn {
     border-radius: 0;
 }
+
 /* Folgender CSS-Teil ersetzt das CSS-Framework "metro-bootstrap" für die Elemente, die nicht von Bootstrap gelöst werden
  (Tiles) */
 /* Quelle: https://github.com/TalksLab/metro-bootstrap/blob/master/dist/css/metro-bootstrap.css */
