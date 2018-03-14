@@ -155,6 +155,20 @@ textarea[readonly-with-required] {
 body{
     font-family: "Segoe UI Light", "Segoe UI", "Segoe WP", "Helvetica Neue", sans-serif;
 }
+
+@media only screen and (max-width: 768px) {
+    /* Breadcrumb zentrieren auf dem Smartphone */
+    .breadcrumb {
+        text-align: center;
+        font-weight: bold;
+    }
+
+    /*Breadcrum-Pfad wird auf Smartphone nicht angezeigt*/
+    .invisibleSP, li::before {
+        display: none;
+    }
+}
+
 /* Allgemeine Eigenschaften von tiles*/
 .tile {
     display: block;
@@ -193,7 +207,6 @@ body{
         width: 33.33%;
     }
 }
-
 /* Farbe der Tiles */
 .tile.tile-blue {
     background-color: #2e8bcc;
