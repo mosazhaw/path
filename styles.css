@@ -155,8 +155,7 @@ textarea[readonly-with-required] {
 body{
     font-family: "Segoe UI Light", "Segoe UI", "Segoe WP", "Helvetica Neue", sans-serif;
 }
-/* Allgemeine Eigenschaften von tiles
- ACHTUNG: Tiles überschreiben Grid-Layout (auf volle Breite strecken sobald Bildschirm < Xpx)*/
+/* Allgemeine Eigenschaften von tiles*/
 .tile {
     display: block;
     cursor: pointer;
@@ -164,8 +163,7 @@ body{
     -webkit-transform-style: preserve-3d;
     -webkit-transition: -webkit-transform 0.2s;
     float: left;
-    min-width: 75px;
-    min-height: 75px;
+
     text-align: center;
     opacity: 0.75;
     background-color: #2e8bcc;
@@ -173,16 +171,29 @@ body{
     border: 4px #ffffff solid;
     color: #ffffff;
 }
-/* Verschiedene Breite der Tiles */
+/* Breite der Tiles für Smartphones*/
 .tile.tile-medium {
     height: 150px;
-    width: 150px;
+    width: 100%;
 }
 .tile.tile-wide,
 .tile.tile-double {
     height: 150px;
-    width: 310px;
+    width: 100%;
 }
+/* Breite der Tiles für Desktop und Tablets*/
+@media only screen and (min-width: 768px) {
+    .tile.tile-medium {
+        height: 150px;
+        width: 16.66%;
+    }
+    .tile.tile-wide,
+    .tile.tile-double {
+        height: 150px;
+        width: 33.33%;
+    }
+}
+
 /* Farbe der Tiles */
 .tile.tile-blue {
     background-color: #2e8bcc;
