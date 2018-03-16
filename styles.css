@@ -134,14 +134,13 @@ textarea[readonly-with-required] {
 /* Ab hier CSS-Erweiterung von weberm16 */
 
 /* Schriftfarbe der Navigation */
-.navbar-brand, .navbar-link,.navbar-brand:hover, .navbar-link:hover, .navbar-brand:visited {
-    color: #ffffff;
+.navbar-inverse, .navbar-link,.navbar-brand:hover, .navbar-link:hover, .navbar-brand:visited {
+    color: #ffffff !important;
 }
 /* Navigationsbalken*/
 .navbar {
     border-radius: 0px;
-    background-color: #222222;
-    border-color: #222222;
+
 }
 /* keine runden Ecken bei den Formularen und Buttons*/
 .modal-content, .form-control, .btn {
