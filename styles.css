@@ -142,6 +142,9 @@ textarea[readonly-with-required] {
     border-radius: 0px;
 
 }
+.navbar-nav {
+    margin: 0px 0px;
+}
 /* keine runden Ecken bei den Formularen und Buttons*/
 .modal-content, .form-control, .btn {
     border-radius: 0;
@@ -193,6 +196,12 @@ body{
 .tile.tile-double {
     height: 150px;
     width: 100%;
+}
+
+@media only screen and (max-width: 768px){
+    .backbutton {
+        width: 50% !important;
+    }
 }
 /* Breite der Tiles für Desktop und Tablets*/
 @media only screen and (min-width: 768px) {
