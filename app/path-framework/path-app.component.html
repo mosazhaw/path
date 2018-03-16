@@ -94,14 +94,18 @@
     </span>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
-    <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green col-md-3">
-        <div class="input-group input-group-sm">
-            <div class="h3">{{pageElement._searchLabel}}</div>
-            <i class="fa fa-2x fa-search"></i>
-            <div class="h5"></div>
-            <input [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
+        <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green search-desktop">
+            <div class="input-group input-group-sm">
+                <div class="h3">{{pageElement._searchLabel}}</div>
+                <i class="fa fa-2x fa-search"></i>
+                <div class="h5"></div>
+                <input [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
+            </div>
         </div>
-    </div>
+        <div *ngIf='pageElement.search' class="search-mobile">
+            <label for="search-mobile">Search</label>
+            <input id="search-mobile" [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
+        </div>
         <span *ngFor='let button of pageElement.buttons'>
             <span *ngIf='button.type == "button" || button.type == "newButton"'>
                 <path-button [button]="button"></path-button>
