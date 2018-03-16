@@ -14,9 +14,9 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <div class="nav navbar-nav navbar-right">
                     <p class="navbar-text pull-right">
-                        <li class="nav-item"><a *ngIf="getUserId() == null" (click)="logout()" href="#" class="navbar-link">{{_texts["NotSignedIn"]}}</a></li>
-                        <li class="nav-item"><a *ngIf="getUserId() != null" (click)="showUserForm()" href="#" class="navbar-link">{{_texts["SignedInAs"]}} {{getUserId()}}</a>&nbsp;&nbsp;</li>
-                        <li class="nav-item"><a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link"><span class="glyphicon glyphicon-log-out"></span>"{{_texts["Logout"]}}</a></li>
+                        <a *ngIf="getUserId() == null" (click)="logout()" href="#" class="navbar-link">{{_texts["NotSignedIn"]}}</a>
+                        <a *ngIf="getUserId() != null" (click)="showUserForm()" href="#" class="navbar-link">{{_texts["SignedInAs"]}} {{getUserId()}}</a>&nbsp;&nbsp;
+                        <a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link"><span class="glyphicon glyphicon-log-out"></span>"{{_texts["Logout"]}}</a>
                     </p>
                 </div>
             </div>
