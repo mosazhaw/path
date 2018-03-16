@@ -202,6 +202,9 @@ body{
     .backbutton {
         width: 50% !important;
     }
+    .newButton {
+        width: 50% !important;
+    }
 }
 /* Breite der Tiles für Desktop und Tablets*/
 @media only screen and (min-width: 768px) {
