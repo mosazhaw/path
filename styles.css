@@ -167,6 +167,7 @@ textarea[readonly-with-required] {
     margin-bottom: 5%;
     text-align: center;
 }
+/*Styles nur für Smartphone*/
 @media only screen and (max-width: 768px) {
     /* Breadcrumb zentrieren auf dem Smartphone */
     .breadcrumb {
@@ -188,7 +189,30 @@ textarea[readonly-with-required] {
     .search-desktop {
         display: none !important;
     }
+    .search-mobile {
+        clear: both;
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+    /*Formular über ganze Seite */
+    .modal-dialog {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+    }
+    .modal-title {
+        font-size: 150%;
+    }
+    .modal-content {
+        height: 100%;
+    }
+    /*Formular-Buttons vergrössern und untereinander*/
+    .btn-footer {
+        font-size: 30px;
+    }
 }
+/*Styles nur für Desktop*/
 @media only screen and (min-width: 768px) {
     /* Breite der Tiles für Desktop und Tablets*/
     .tile.tile-medium {

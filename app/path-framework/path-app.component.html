@@ -103,8 +103,10 @@
             </div>
         </div>
         <div *ngIf='pageElement.search' class="search-mobile">
-            <label for="search-mobile">Search</label>
-            <input id="search-mobile" [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
+            <div class="row">
+                <label for="search-mobile">Search</label>
+                <input id="search-mobile" [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
+            </div>
         </div>
         <span *ngFor='let button of pageElement.buttons'>
             <span *ngIf='button.type == "button" || button.type == "newButton"'>
