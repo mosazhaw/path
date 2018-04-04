@@ -11,7 +11,10 @@ import {Key} from "./page/element/page-element";
 import {KeyUtility} from "./key-utility";
 import {FormFunction} from "./form/form-function";
 import {TranslationService} from "./service/translation.service";
-import {PageLabel, PageLabelComponent} from "./page/element/label/page-label.component";
+import {PageLabel} from "./page/element/label/page-label.component";
+import {Type} from "@angular/core";
+import {CustomContainerPageElement} from "./page/element/custom/custom-container-page-element";
+import {CustomPageElement} from "./page/element/custom/custom-container.component";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -174,6 +177,11 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._formStack.push(form);
     }
 
+    protected getCustomComponentClass(componentType:string):Type<CustomPageElement> {
+        console.log("Please define a type mapping for " + componentType + " in your App-Component.");
+        return null;
+    }
+
     public setCurrentPage(pageId:string, parentPageElement:path.PageElement) {
         let page:path.Page = null;
 
@@ -248,6 +256,13 @@ export abstract class PathAppComponent implements path.IPathApp {
                             pageLabel.fromJson(modelElement);
                             element = pageLabel;
                             break;
+                        default: {
+                            // call method to get custom component class
+                            let customContainerPageElement = new CustomContainerPageElement(this);
+                            customContainerPageElement.fromJson(modelElement);
+                            customContainerPageElement.typeClass = this.getCustomComponentClass(modelElement.type);
+                            element = customContainerPageElement;
+                        }
                     }
                     if (modelElement["permissionUrl"] != null) {
                         element.visible = false;

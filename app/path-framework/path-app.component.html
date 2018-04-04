@@ -102,6 +102,10 @@
     <span *ngIf='pageElement.type == "pageLabel"'>
         <path-page-label [pageLabel]="pageElement"></path-page-label>
     </span>
+    <!-- Custom Directive for custom components -->
+    <span *ngIf='pageElement.typeClass'>
+        <path-custom-container-component [pageElement]="pageElement"></path-custom-container-component>
+    </span>
 	</span>
     </span>
         </div>
