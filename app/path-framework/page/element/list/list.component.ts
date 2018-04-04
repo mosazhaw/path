@@ -75,6 +75,7 @@ export class List extends PageElement implements IList {
                 button.setKey(itemKey);
                 button.handler = this._buttonHandler;
                 button.name = item.name; // no translation
+                button.tooltip = item.tooltip; // no translation
                 button.url = KeyUtility.translateUrl(item["url"] != null ? item["url"] : button.url, null, false, button);
                 button.setIcon(item["icon"] != null ? item["icon"] : (button.icon == null ? this.icon : button.icon));
                 button.setColor(item["color"] != null ? item["color"] : (button.color == null ? this.color : button.color));
