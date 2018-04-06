@@ -181,7 +181,7 @@ textarea[readonly-with-required] {
     .invisibleSP, li::before {
         display: none;
     }
-    /*Search für mobile Version ist nur das Inputfeld, nicht ein ganzes Tile*/
+    /*Elemente, die auf der mobilen Version nicht angezeigt werden sollen*/
     .hide-on-mobile {
         display: none !important;
     }
@@ -222,23 +222,23 @@ textarea[readonly-with-required] {
     }
 
 }
+
 /*Styles nur für Desktop*/
 @media only screen and (min-width: 768px) {
-    /* Breite der Tiles für Desktop und Tablets*/
+    /* Breite der Tiles für Desktop*/
     .tile.tile-medium {
-        height: 150px;
-        width: 16.66%;
+        width: 12.5%;
     }
     .tile.tile-wide,
     .tile.tile-double {
-        height: 150px;
-        width: 33.33%;
+        width: 25%;
     }
-    /*Search-Button für Desktop-Version*/
+    /*Elemente die auf dem Desktop und dem Tablet nicht angezeigt werden sollen*/
     .hide-on-desktop {
-    display: none;
+        display: none;
     }
 }
+
 
 /* Folgender CSS-Teil ersetzt das CSS-Framework "metro-bootstrap" für die Elemente, die nicht von Bootstrap gelöst werden
  (Tiles) */
