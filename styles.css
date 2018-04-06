@@ -170,8 +170,8 @@ textarea[readonly-with-required] {
 .thumbnail {
     margin-bottom: 0;
 }
-/*Styles nur für Smartphone*/
-@media only screen and (max-width: 768px) {
+/*Styles nur für Smartphones und Tablets*/
+@media only screen and (max-width: 1100px) {
     /* Breadcrumb zentrieren auf dem Smartphone */
     .breadcrumb {
         text-align: center;
@@ -224,7 +224,7 @@ textarea[readonly-with-required] {
 }
 
 /*Styles nur für Desktop*/
-@media only screen and (min-width: 768px) {
+@media only screen and (min-width: 1100px) {
     /* Breite der Tiles für Desktop*/
     .tile.tile-medium {
         width: 12.5%;
