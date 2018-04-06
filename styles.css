@@ -220,6 +220,10 @@ textarea[readonly-with-required] {
     .col-md-12.inlineForm{
         padding: 0;
     }
+    /*Buttons auf dem Smartphone sollen rechts bleiben (wie auf Desktop)*/
+    .buttons-smartphone-right {
+        float: right;
+    }
 
 }
 
