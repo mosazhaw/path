@@ -98,6 +98,7 @@
     </span>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
+        <!-- Suche auf Desktopversion-->
         <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green hide-on-mobile">
             <div class="input-group input-group-sm">
                 <div class="h3">{{pageElement._searchLabel}}</div>
@@ -106,6 +107,7 @@
                 <input [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
             </div>
         </div>
+        <!-- Suche auf mobiler Version-->
         <div *ngIf='pageElement.search' class="search-mobile hide-on-desktop">
             <div class="row">
                 <label for="search-mobile">Search</label>

@@ -44,7 +44,7 @@
 			<div [hidden]="!form.footerVisible" class="hide-on-desktop">
 				<div class="row">
                     <div class="col-md-12">
-					<div class="col-md-2">
+					<div class="col-md-2 buttons-smartphone-left">
 					<span *ngFor='let field of form.fields' class="pull-left" [hidden]="!field.visible">
 						<span *ngIf="field.type == 'deleteButton'">
 							<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>

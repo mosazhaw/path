@@ -223,6 +223,11 @@ textarea[readonly-with-required] {
     /*Buttons auf dem Smartphone sollen rechts bleiben (wie auf Desktop)*/
     .buttons-smartphone-right {
         float: right;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .buttons-smartphone-left {
+        padding-left: 0;
     }
 
 }
