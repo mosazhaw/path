@@ -16,7 +16,7 @@ export class DraggableDirective implements OnInit{
 
 
     ngOnInit(){
-        // draggable only for desktop version
+        // draggable only for desktop version (768px is bootstrap 'small devices'
         if (window.innerWidth < 768){
             this._allowDrag=false;
         }

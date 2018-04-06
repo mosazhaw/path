@@ -104,7 +104,7 @@ textarea[readonly-with-required] {
     bottom: 2px;
     right: 2px;
     z-index: 999;
-    border-radius: 0px; /* Von weberm16 hinzugefügt */
+    border-radius: 0; /* Von weberm16 hinzugefügt */
 }
 
 .path-app-logo {
@@ -139,11 +139,10 @@ textarea[readonly-with-required] {
 }
 /* Navigationsbalken*/
 .navbar {
-    border-radius: 0px;
-
+    border-radius: 0;
 }
 .navbar-nav {
-    margin: 0px 0px;
+    margin: 0 0;
 }
 /* keine runden Ecken bei den Formularen und Buttons*/
 .modal-content, .form-control, .btn {
@@ -152,7 +151,7 @@ textarea[readonly-with-required] {
 /* Breite der Tiles für Smartphones*/
 .tile.tile-medium {
     height: 150px;
-    width: 100%;
+    width: 50%;
 }
 .tile.tile-wide,
 .tile.tile-double {
@@ -167,6 +166,10 @@ textarea[readonly-with-required] {
     margin-bottom: 5%;
     text-align: center;
 }
+/*Untere Margin unter Tails*/
+.thumbnail {
+    margin-bottom: 0;
+}
 /*Styles nur für Smartphone*/
 @media only screen and (max-width: 768px) {
     /* Breadcrumb zentrieren auf dem Smartphone */
@@ -178,15 +181,8 @@ textarea[readonly-with-required] {
     .invisibleSP, li::before {
         display: none;
     }
-    /*Back-Button und New-Button für mobile Version*/
-    .backbutton {
-        width: 50% !important;
-    }
-    .little-button {
-        width: 50% !important;
-    }
     /*Search für mobile Version ist nur das Inputfeld, nicht ein ganzes Tile*/
-    .search-desktop {
+    .hide-on-mobile {
         display: none !important;
     }
     .search-mobile {
@@ -201,16 +197,30 @@ textarea[readonly-with-required] {
         height: 100%;
         margin: 0;
     }
+    .modal-content {
+        height: 100%;
+        box-shadow: none;
+        border: none;
+    }
+    /* Labels vergrössern */
     .modal-title {
         font-size: 150%;
     }
-    .modal-content {
-        height: 100%;
-    }
     /*Formular-Buttons vergrössern und untereinander*/
     .btn-footer {
-        font-size: 30px;
+        font-size: 25px;
     }
+    /*Inline-Formular über ganze Breite und somit unterhalb von Buttons,
+    Max Höhe so berechnen, dass auf Smartphone bis zu underst gescrollt werden kann*/
+    .modal-body {
+        width: 100%;
+        max-height: calc(100vh - 60px);
+    }
+    /*kein doppeltes Padding bei Inline-Forms*/
+    .col-md-12.inlineForm{
+        padding: 0;
+    }
+
 }
 /*Styles nur für Desktop*/
 @media only screen and (min-width: 768px) {
@@ -225,7 +235,7 @@ textarea[readonly-with-required] {
         width: 33.33%;
     }
     /*Search-Button für Desktop-Version*/
-    .search-mobile {
+    .hide-on-desktop {
     display: none;
     }
 }
