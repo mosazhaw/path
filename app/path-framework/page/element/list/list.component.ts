@@ -7,6 +7,7 @@ import {KeyUtility} from "../../../key-utility";
 import {Button} from "../button/button.component";
 import {LinkButton} from "../button/link-button.component";
 import {FocusUtility} from "../../../form/focus-utility";
+import {Subject} from "rxjs/Subject";
 
 @Component({
     selector: 'path-list',
@@ -28,6 +29,7 @@ export class List extends PageElement implements IList {
     private _searchLabel:string;
     private _searchInputLabel:string;
     private _searchText:string;
+    private _searchTextChanged: Subject<string> = new Subject<string>();
     private _handler:IListHandler;
     private _buttonHandler:IButtonHandler;
     private _icon:string;
@@ -129,6 +131,10 @@ export class List extends PageElement implements IList {
             }
         }
         return null;
+    }
+
+    public filterChanged(text: string) {
+        this._searchTextChanged.next(text);
     }
 
     public filter() {
@@ -310,5 +316,13 @@ export class List extends PageElement implements IList {
         if (modelElement["limit"] != null) {
             this.limit = modelElement["limit"];
         }
+        // delay for search field
+        let debounceTime:number = this.limit ? 300 : 30;
+        this._searchTextChanged
+            .debounceTime(debounceTime) // wait after the last event before emitting last event
+            .subscribe(_searchText => {
+                this._searchText = _searchText;
+                this.filter();
+            });
     }
 }

@@ -4,7 +4,7 @@
 		<i class="fa fa-2x fa-search"></i>
 		<div class="h5"></div>
         <form>
-		    <input name="search" [(ngModel)]="list._searchText" placeholder="{{list._searchInputLabel}}" (keyup)="list.filter()" class="form-control" type="text">
+		    <input name="search" [(ngModel)]="list._searchText" placeholder="{{list._searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' class="form-control" type="text">
         </form>
 	</div>
 </div>
