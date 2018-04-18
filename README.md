@@ -310,6 +310,6 @@ npm link
 ```
 * Now we can use path-framework in the path-example project. Using the -w option, it will watch for changes on the path-framework and update automatically. Execute the following command in the path-example directory:
 ```
-npm-link-copy path-framework-weberm16 -w
+npm-link-copy path-framework -w
 ```
 * Finally you can test your development cycle. First, change some code in the framework. Run 'npm run tsc' to compile it to TypeScript (may be done by your IDE). Now the browser (showing path-example) should automatically reload and show your changes.
