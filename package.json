@@ -1,6 +1,6 @@
 {
-  "name": "path-framework",
-  "version": "0.2.15",
+  "name": "path-framework-weberm16",
+  "version": "1.1.4",
   "description": "Path Application Framework",
   "keywords": [
     "GUI",
@@ -9,9 +9,9 @@
     "Rapid Application Development",
     "Rapid Application Manufacturing"
   ],
-  "homepage": "https://github.com/innovad/path/",
+  "homepage": "https://github.com/zhaw-weberm16/path",
   "bugs": {
-    "url": "https://github.com/innovad/path/issues"
+    "url": "https://github.com/zhaw-weberm16/path/issues"
   },
   "license": "LGPL-3.0",
   "author": {
@@ -43,7 +43,6 @@
     "bootstrap": "3.3.7",
     "core-js": "2.4.1",
     "font-awesome": "4.7.0",
-    "metro-bootstrap": "3.2.1",
     "moment": "2.18.1",
     "ngx-bootstrap": "1.7.1",
     "reflect-metadata": "0.1.10",

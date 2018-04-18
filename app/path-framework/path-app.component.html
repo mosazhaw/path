@@ -1,24 +1,26 @@
 <div [class.loadingNoClicks]="isLoading()">
-    <nav class="navbar navbar-default navbar-inverse" role="navigation">
-    <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#" (click)="navigateToPage(0)"><img *ngIf="getApplicationLogo() != null" class="path-app-logo" src="{{getApplicationLogo()}}" /> {{getGuiModel()["application"]["title"]}}</a>
-    </div>
+    <nav class="navbar navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button (click)="toggleCollapse()" type="button" class="navbar-toggle">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" (click)="navigateToPage(0)"><img *ngIf="getApplicationLogo() != null" class="path-app-logo" src="{{getApplicationLogo()}}" /> {{getGuiModel()["application"]["title"]}}</a>
+            </div>
 
-    <div class="collapse navbar-collapse navbar-ex1-collapse">
-        <div class="nav navbar-nav navbar-right">
-            <p class="navbar-text pull-right">
-                <a *ngIf="getUserId() == null" (click)="logout()" href="#" class="navbar-link">{{_texts["NotSignedIn"]}}</a>
-                <a *ngIf="getUserId() != null" (click)="showUserForm()" href="#" class="navbar-link">{{_texts["SignedInAs"]}} {{getUserId()}}</a>&nbsp;&nbsp;
-                <a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link">{{_texts["Logout"]}}</a>
-            </p>
+            <div class="collapse navbar-collapse" [class.show]="show">
+                <div class="nav navbar-nav navbar-right">
+                    <p class="navbar-text pull-right">
+                        <a *ngIf="getUserId() == null" (click)="logout()" href="#" class="navbar-link">{{_texts["NotSignedIn"]}}</a>
+                        <a *ngIf="getUserId() != null" (click)="showUserForm()" href="#" class="navbar-link">{{_texts["SignedInAs"]}} {{getUserId()}}</a>&nbsp;&nbsp;
+                        <a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link"><span class="glyphicon glyphicon-log-out"></span>"{{_texts["Logout"]}}</a>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>
 </nav>
 
 <div *ngFor="let alert of pathService.getAlerts()" class="col-md-12">
@@ -52,7 +54,7 @@
     <h3>
         <ol class="breadcrumb">
             <li *ngFor='let page of _pageStack; let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
-                <a href="#" *ngIf='!last && page.parentPageElement == null' (click)="navigateToPage(currentIndex)">{{page.getShortName()}}</a><!-- First element has no parent-->
+                <a class="invisibleSP" href="#" *ngIf='!last && page.parentPageElement == null' (click)="navigateToPage(currentIndex)">{{page.getShortName()}}</a><!-- First element has no parent-->
                 <a href="#" *ngIf='!last && page.parentPageElement != null' (click)="navigateToPage(currentIndex)">{{page.parentPageElement?.getShortName()}}</a><!-- Element 2 to n -->
                 {{last && page.parentPageElement == null ? page.getShortName() : ''}}<!-- First element has no parent-->
                 {{last && page.parentPageElement != null ? page.parentPageElement?.getShortName() : ''}}<!-- Element 2 to n -->
@@ -86,28 +88,44 @@
     </span>
 	<!-- Inline Form -->
     <span *ngIf='pageElement.type == "inlineForm"'>
-	    <div class="col-md-12 inlineForm">
-	        <path-form *ngIf="pageElement.form != null" [form]="pageElement.form"></path-form>
-		</div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-12 inlineForm">
+                    <path-form *ngIf="pageElement.form != null" [form]="pageElement.form"></path-form>
+                </div>
+             </div>
+        </div>
     </span>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
-    <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green col-md-3">
-        <div class="input-group input-group-sm">
-            <div class="h3">{{pageElement._searchLabel}}</div>
-            <i class="fa fa-2x fa-search"></i>
-            <div class="h5"></div>
-            <input [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
+        <!-- Suche auf Desktopversion-->
+        <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green hide-on-mobile">
+            <div class="input-group input-group-sm">
+                <div class="h3">{{pageElement._searchLabel}}</div>
+                <i class="fa fa-2x fa-search"></i>
+                <div class="h5"></div>
+                <input [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
+            </div>
         </div>
-    </div>
-        <span *ngFor='let button of pageElement.buttons'>
-            <span *ngIf='button.type == "button" || button.type == "newButton"'>
-                <path-button [button]="button"></path-button>
-            </span>
-            <span *ngIf='button.type == "linkButton" || button.type == "downloadButton"'>
-                <path-link-button [button]="button"></path-link-button>
-            </span>
-        </span>
+        <!-- Suche auf mobiler Version-->
+        <div *ngIf='pageElement.search' class="search-mobile hide-on-desktop">
+            <div class="row">
+                <label for="search-mobile">Search</label>
+                <input id="search-mobile" [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <span *ngFor='let button of pageElement.buttons'>
+                    <span *ngIf='button.type == "button" || button.type == "newButton"'>
+                        <path-button [button]="button"></path-button>
+                    </span>
+                    <span *ngIf='button.type == "linkButton" || button.type == "downloadButton"'>
+                        <path-link-button [button]="button"></path-link-button>
+                    </span>
+                </span>
+            </div>
+        </div>
     </span>
     <!-- Custom Chart Element -->
     <div class="col-md-12" *ngIf='pageElement.type == "ChartElement"'>
