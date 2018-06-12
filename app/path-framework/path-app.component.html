@@ -66,9 +66,9 @@
 
 <!-- Page Elements -->
 <div class="container-fluid">
-    <div class="row">
+    <div *ngFor='let pageRow of _pageStack[_pageStack.length - 1].rows' class="row" [hidden]="!pageRow.isVisible()">
         <div class="col-md-12">
-    <span *ngFor='let pageElement of _pageStack[_pageStack.length - 1].content'>
+        <span *ngFor='let pageElement of pageRow.pageElements'>
 	    <span *ngIf="pageElement.visible">
     <!-- Button -->
     <span *ngIf='pageElement.type == "button" || pageElement.type == "newButton"'>
@@ -98,39 +98,20 @@
     </span>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>
-        <!-- Suche auf Desktopversion-->
-        <div *ngIf='pageElement.search' class="thumbnail {{(pageElement.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green hide-on-mobile">
-            <div class="input-group input-group-sm">
-                <div class="h3">{{pageElement._searchLabel}}</div>
-                <i class="fa fa-2x fa-search"></i>
-                <div class="h5"></div>
-                <input [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
-            </div>
-        </div>
-        <!-- Suche auf mobiler Version-->
-        <div *ngIf='pageElement.search' class="search-mobile hide-on-desktop">
-            <div class="row">
-                <label for="search-mobile">Search</label>
-                <input id="search-mobile" [(ngModel)]="pageElement._searchText" placeholder="{{pageElement._searchInputLabel}}" (keyup)="pageElement.filter()" class="form-control" type="text">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <span *ngFor='let button of pageElement.buttons'>
-                    <span *ngIf='button.type == "button" || button.type == "newButton"'>
-                        <path-button [button]="button"></path-button>
-                    </span>
-                    <span *ngIf='button.type == "linkButton" || button.type == "downloadButton"'>
-                        <path-link-button [button]="button"></path-link-button>
-                    </span>
-                </span>
-            </div>
-        </div>
+        <path-list [list]="pageElement"></path-list>
     </span>
     <!-- Custom Chart Element -->
     <div class="col-md-12" *ngIf='pageElement.type == "ChartElement"'>
         <path-radar-chart [chart]="pageElement"></path-radar-chart>
     </div>
+    <!-- Page Label -->
+    <span *ngIf='pageElement.type == "pageLabel"'>
+        <path-page-label [pageLabel]="pageElement"></path-page-label>
+    </span>
+    <!-- Custom Directive for custom components -->
+    <span *ngIf='pageElement.typeClass'>
+        <path-custom-container-component [pageElement]="pageElement"></path-custom-container-component>
+    </span>
 	</span>
     </span>
         </div>

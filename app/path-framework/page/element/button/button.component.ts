@@ -22,6 +22,7 @@ export class Button extends path.PageElement implements path.IButton {
     private _color:string;
     private _handler:path.IButtonHandler;
     private _details:path.ButtonDetail[] = [];
+    private _tooltip:string;
 
     // TODO refactor prototype stuff
     private _url:string;
@@ -156,6 +157,14 @@ export class Button extends path.PageElement implements path.IButton {
         this._url = value;
     }
 
+    get tooltip(): string {
+        return this._tooltip;
+    }
+
+    set tooltip(value: string) {
+        this._tooltip = value;
+    }
+
     public fromJson(modelElement) {
         super.fromJson(modelElement);
 
@@ -173,7 +182,9 @@ export class Button extends path.PageElement implements path.IButton {
         }
         this.name = this.translationService.getText(modelElement["name"]);
         this.url = KeyUtility.translateUrl(modelElement["url"], null, false, this.parentPageElement);
-
+        if (modelElement["tooltip"] != null) {
+            this.tooltip = this.translationService.getText(modelElement["tooltip"]);
+        }
         // button details
         if (modelElement["details"] != null) {
             this.details = [];

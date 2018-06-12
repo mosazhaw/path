@@ -11,6 +11,10 @@ import {Key} from "./page/element/page-element";
 import {KeyUtility} from "./key-utility";
 import {FormFunction} from "./form/form-function";
 import {TranslationService} from "./service/translation.service";
+import {PageLabel} from "./page/element/label/page-label.component";
+import {Type} from "@angular/core";
+import {CustomContainerPageElement} from "./page/element/custom/custom-container-page-element";
+import {CustomPageElement} from "./page/element/custom/custom-container.component";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -84,11 +88,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             this.setCurrentPage(this.getStartPage(), null); // set start page
         }, (err:any) => {
             this.pathService.hideLoading();
-            if (this.getBackendUrl().indexOf("heroku") > 0) {
-                alert("Login failed. Please try again after 30sec, because the Heroku backend server may be sleeping due to inactivity.")
-            } else {
-                alert("Login failed.")
-            }
+            alert("Login failed.");
             console.error("failed login");
         });
     }
@@ -111,14 +111,14 @@ export abstract class PathAppComponent implements path.IPathApp {
     public refreshCurrentPage() {
         for (let element of this._pageStack[this._pageStack.length - 1].content) {
             if (element instanceof path.List) {
-                (<path.List>element).refresh();
+                (<path.List>element).refresh(null);
             }
         }
         // breadcrumbs
         if (this._pageStack[this._pageStack.length - 2] != null) {
             for (let element of this._pageStack[this._pageStack.length - 2].content) {
                 if (element instanceof path.List) {
-                    (<path.List>element).refresh();
+                    (<path.List>element).refresh(null);
                 }
             }
         }
@@ -174,6 +174,11 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._formStack.push(form);
     }
 
+    protected getCustomComponentClass(componentType:string):Type<CustomPageElement> {
+        console.log("Please define a type mapping for " + componentType + " in your App-Component.");
+        return null;
+    }
+
     public setCurrentPage(pageId:string, parentPageElement:path.PageElement) {
         let page:path.Page = null;
 
@@ -211,6 +216,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "backbutton":
                             element = new path.BackButton(this, this.pathService, this.translationService);
+                            element.fromJson(modelElement);
                             break;
                         case "inlineForm":
                             let inlineForm = new path.InlineForm(this, this.pathService, this.translationService);
@@ -222,7 +228,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                             break;
                         case "list":
                             let dynamicList:path.List = new path.List(this, this.pathService, this.translationService);
-                            dynamicList.search = modelElement["search"];
+                            dynamicList.parentPageElement = parentPageElement;
+                            dynamicList.fromJson(modelElement);
                             // handler
                             if (modelElement["handler"] != null) {
                                 dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
@@ -230,24 +237,29 @@ export abstract class PathAppComponent implements path.IPathApp {
                             if (modelElement["buttonhandler"] != null) {
                                 dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                             }
-                            dynamicList.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
-                            dynamicList.color = modelElement["color"];
-                            if (modelElement["form"] != null) {
-                                dynamicList.form = modelElement["form"]["form"];
-                                dynamicList.formHandler = modelElement["form"]["handler"];
+                            if (!dynamicList.limit) {
+                                dynamicList.refresh(null);
                             }
-                            dynamicList.page = modelElement["page"];
-                            dynamicList.icon = modelElement["icon"];
-                            dynamicList.mockData = modelElement["data"];
-                            dynamicList.name = this.translationService.getText(modelElement["name"]);
-                            dynamicList.refresh();
                             element = dynamicList;
                             break;
                         case "ChartElement":
                             let chart = new path.ChartElement(this, this.pathService, this.translationService);
+                            chart.fromJson(modelElement);
                             chart.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                             element = chart;
                             break;
+                        case "pageLabel":
+                            let pageLabel = new PageLabel(this, this.pathService, this.translationService);
+                            pageLabel.fromJson(modelElement);
+                            element = pageLabel;
+                            break;
+                        default: {
+                            // call method to get custom component class
+                            let customContainerPageElement = new CustomContainerPageElement(this);
+                            customContainerPageElement.fromJson(modelElement);
+                            customContainerPageElement.typeClass = this.getCustomComponentClass(modelElement.type);
+                            element = customContainerPageElement;
+                        }
                     }
                     if (modelElement["permissionUrl"] != null) {
                         element.visible = false;
@@ -259,13 +271,9 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     element.type = modelElement.type;
                     element.parentPageElement = parentPageElement;
-                    if (modelElement["width"] != null) {
-                        element.width = modelElement["width"];
-                    } else {
-                        element.width = 1;
-                    }
                     page.content.push(element);
                 }
+                page.updateRows();
             }
         }
 

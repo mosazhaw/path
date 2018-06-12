@@ -10,7 +10,7 @@ export * from './page/element/button/back-button.component';
 export * from './page/element/button/link-button.component';
 export * from './page/element/button/page-delete-button.component';
 export * from './page/element/inline-form/inline-form';
-export * from './page/element/list/list';
+export * from './page/element/list/list.component';
 export * from './page/element/chart/chart.component';
 
 export * from './form/form.component'

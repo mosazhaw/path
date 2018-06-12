@@ -105,6 +105,14 @@ A page consists of a list of page elements. Page elements may be either page but
 
 #### Page Elements
 
+Path displays one or more page elements on a single web page. Each element has several properties.
+
+| Property | Description |
+| ------------- | ------------- |
+| id  | The page element id |
+| type | The page element type (e.g. button, list, ...) |
+| newRow | Force the layout manager to place the page element on a new row (false by default) |
+
 ##### Page Buttons
 
 Page buttons may either open another page, open a form or open an url.
@@ -136,6 +144,17 @@ This example loads data from an url, and each button opens a form.
     "form": {
         "form": "TaskForm"
     }
+}
+```
+
+##### Label
+
+A label may contain text or HTML snippets. A label is always shown with full page width.
+
+```json
+{
+    "type": "pageLabel",
+    "value": "Example <b>Text</b>"
 }
 ```
 
