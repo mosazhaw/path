@@ -39,8 +39,7 @@
 					</div>
 				</div>
 			</div>
-			<!--Auf mobiler Version werden die Buttons im Modal-Body angezeigt, da ansonsten der Modal-Footer zu viel
-			Platz einnimmt, wenn die Tastatur geöffnet ist-->
+			<!-- show form buttons on modal-body in mobile version, otherwise they are taking up too much space when the keyboard is shown -->
 			<div [hidden]="!form.footerVisible" class="hide-on-desktop">
 				<div class="row">
                     <div class="col-md-12">
@@ -68,7 +67,7 @@
                 </div>
 			</div>
 		</div>
-		<!-- Auf der Desktop-Version wird der Modal-Footer normal angezeigt -->
+		<!-- default version for desktop devices -->
 		<div class="hide-on-mobile">
 			<div [hidden]="!form.footerVisible" class="modal-footer">
 			<div class="row">

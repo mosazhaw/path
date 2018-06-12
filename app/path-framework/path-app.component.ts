@@ -635,8 +635,8 @@ export abstract class PathAppComponent implements path.IPathApp {
         return form;
     }
 
-    /*Show und Hide der Navigation (Toggle)
-    Quelle: https://angularfirebase.com/lessons/bootstrap-4-collapsable-navbar-work-with-angular*/
+    /* toggle navigation
+    inspired by: https://angularfirebase.com/lessons/bootstrap-4-collapsable-navbar-work-with-angular */
     show:boolean = false;
 
     toggleCollapse() {

@@ -104,7 +104,7 @@ textarea[readonly-with-required] {
     bottom: 2px;
     right: 2px;
     z-index: 999;
-    border-radius: 0; /* Von weberm16 hinzugefügt */
+    border-radius: 0; /* added by weberm16 */
 }
 
 .path-app-logo {
@@ -139,24 +139,24 @@ textarea[readonly-with-required] {
     width: 630px;
 }
 
-/* Ab hier CSS-Erweiterung von weberm16 */
+/* added for mobile device support, weberm16 */
 
-/* Schriftfarbe der Navigation */
+/* navigation font color */
 .navbar-inverse, .navbar-link,.navbar-brand:hover, .navbar-link:hover, .navbar-brand:visited {
     color: #ffffff !important;
 }
-/* Navigationsbalken*/
+/* navigation bar */
 .navbar {
     border-radius: 0;
 }
 .navbar-nav {
     margin: 0 0;
 }
-/* keine runden Ecken bei den Formularen und Buttons*/
+/* no rounded corners for form and buttons */
 .modal-content, .form-control, .btn {
     border-radius: 0;
 }
-/* Breite der Tiles für Smartphones*/
+/* mobile device tile width */
 .tile.tile-medium {
     height: 150px;
     width: 50%;
@@ -166,7 +166,7 @@ textarea[readonly-with-required] {
     height: 150px;
     width: 100%;
 }
-/*Search-Field für mobile Version*/
+/* mobile device search field */
 .search-mobile {
     font-size: 150%;
     font-weight: bold;
@@ -174,22 +174,22 @@ textarea[readonly-with-required] {
     margin-bottom: 5%;
     text-align: center;
 }
-/*Untere Margin unter Tails*/
+/* tiles bottom margin */
 .thumbnail {
     margin-bottom: 0;
 }
-/*Styles nur für Smartphones und Tablets*/
+/* only for mobile devices */
 @media only screen and (max-width: 1100px) {
-    /* Breadcrumb zentrieren auf dem Smartphone */
+    /* center breadcrumb */
     .breadcrumb {
         text-align: center;
         font-weight: bold;
     }
-    /*Breadcrum-Pfad wird auf Smartphone nicht angezeigt*/
+    /* hide breadcrumb path */
     .invisibleSP, li::before {
         display: none;
     }
-    /*Elemente, die auf der mobilen Version nicht angezeigt werden sollen*/
+    /* hidden elements on mobile version */
     .hide-on-mobile {
         display: none !important;
     }
@@ -198,7 +198,7 @@ textarea[readonly-with-required] {
         padding-left: 15px;
         padding-right: 15px;
     }
-    /*Formular über ganze Seite */
+    /* full width forms */
     .modal-dialog {
         position: absolute;
         width: 100%;
@@ -210,25 +210,25 @@ textarea[readonly-with-required] {
         box-shadow: none;
         border: none;
     }
-    /* Labels vergrössern */
+    /* increase label font size */
     .modal-title {
         font-size: 150%;
     }
-    /*Formular-Buttons vergrössern und untereinander*/
+    /* increase form buttons, use line breaks */
     .btn-footer {
         font-size: 25px;
     }
-    /*Inline-Formular über ganze Breite und somit unterhalb von Buttons,
-    Max Höhe so berechnen, dass auf Smartphone bis zu underst gescrollt werden kann*/
+    /* show inline forms full width and below buttons
+    calculate max heigth to allow scrolling on mobile devices */
     .modal-body {
         width: 100%;
         max-height: calc(100vh - 60px);
     }
-    /*kein doppeltes Padding bei Inline-Forms*/
+    /* no double padding for inline forms */
     .col-md-12.inlineForm{
         padding: 0;
     }
-    /*Buttons auf dem Smartphone sollen rechts bleiben (wie auf Desktop)*/
+    /* show buttons on the right side on mobile devices */
     .buttons-smartphone-right {
         float: right;
         padding-left: 0;
@@ -240,9 +240,9 @@ textarea[readonly-with-required] {
 
 }
 
-/*Styles nur für Desktop*/
+/* desktop only styles */
 @media only screen and (min-width: 1100px) {
-    /* Breite der Tiles für Desktop*/
+    /* tile width */
     .tile.tile-medium {
         width: 12.5%;
     }
@@ -250,21 +250,20 @@ textarea[readonly-with-required] {
     .tile.tile-double {
         width: 25%;
     }
-    /*Elemente die auf dem Desktop und dem Tablet nicht angezeigt werden sollen*/
+    /* hidden elements on desktop and tablet */
     .hide-on-desktop {
         display: none;
     }
 }
 
 
-/* Folgender CSS-Teil ersetzt das CSS-Framework "metro-bootstrap" für die Elemente, die nicht von Bootstrap gelöst werden
- (Tiles) */
-/* Quelle: https://github.com/TalksLab/metro-bootstrap/blob/master/dist/css/metro-bootstrap.css */
-/* Allgemeine Styling-Optionen */
+/* replacement css for "metro-bootstrap" specific styles (e.g. tiles) */
+/* Source: https://github.com/TalksLab/metro-bootstrap/blob/master/dist/css/metro-bootstrap.css */
+/* general styles */
 body{
     font-family: "Segoe UI Light", "Segoe UI", "Segoe WP", "Helvetica Neue", sans-serif;
 }
-/* Allgemeine Eigenschaften von tiles*/
+/* common tile styles */
 .tile {
     display: block;
     cursor: pointer;
@@ -280,7 +279,7 @@ body{
     border: 4px #ffffff solid;
     color: #ffffff;
 }
-/* Farbe der Tiles */
+/* tile colors */
 .tile.tile-blue {
     background-color: #2e8bcc;
 }
@@ -392,7 +391,7 @@ body{
 .tile.tile-success {
     background-color: #2ecc71;
 }
-/* Hover-Animation*/
+/* hover animation */
 .tile:hover {
     opacity: 1;
 }
