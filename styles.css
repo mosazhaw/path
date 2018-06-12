@@ -127,3 +127,13 @@ textarea[readonly-with-required] {
 .inlineForm {
     margin-bottom: 20px;
 }
+
+/* button width x3 x4 */
+.tile.tile-wide-3 {
+    height: 150px;
+    width: 470px;
+}
+.tile.tile-wide-4 {
+    height: 150px;
+    width: 630px;
+}
