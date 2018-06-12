@@ -83,7 +83,7 @@ export class List extends PageElement implements IList {
                 button.setColor(item["color"] != null ? item["color"] : (button.color == null ? this.color : button.color));
                 // special default width (2 instead of 1) for buttons in list
                 if (item["width"] == null) {
-                    button.width = 2;
+                    button.width = this.width;
                 }
                 // form button
                 if (this.form != null) {
@@ -315,6 +315,12 @@ export class List extends PageElement implements IList {
         }
         if (modelElement["limit"] != null) {
             this.limit = modelElement["limit"];
+        }
+        // override from PageElement
+        if (modelElement["width"] != null) {
+            this.width = modelElement["width"];
+        } else {
+            this.width = 2; // special default for list
         }
         // delay for search field
         let debounceTime:number = this.limit ? 300 : 30;
