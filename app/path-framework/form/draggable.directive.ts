@@ -17,7 +17,7 @@ export class DraggableDirective implements OnInit{
 
     ngOnInit(){
         // draggable only for desktop version (styles for desktop are added when innerWidth>1100)
-        if (window.innerWidth < 1100){
+        if (window.innerWidth < 768){
             this._allowDrag=false;
         }
         // css changes

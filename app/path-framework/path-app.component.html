@@ -16,7 +16,7 @@
                     <p class="navbar-text pull-right">
                         <a *ngIf="getUserId() == null" (click)="logout()" href="#" class="navbar-link">{{_texts["NotSignedIn"]}}</a>
                         <a *ngIf="getUserId() != null" (click)="showUserForm()" href="#" class="navbar-link">{{_texts["SignedInAs"]}} {{getUserId()}}</a>&nbsp;&nbsp;
-                        <a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link"><span class="glyphicon glyphicon-log-out"></span>"{{_texts["Logout"]}}</a>
+                        <a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link"><span class="glyphicon glyphicon-log-out hide-on-desktop"></span>{{_texts["Logout"]}}</a>
                     </p>
                 </div>
             </div>

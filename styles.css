@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
 /* custom css styles */
 .row {
     padding-top: 20px;
@@ -129,16 +131,6 @@ textarea[readonly-with-required] {
     margin-bottom: 20px;
 }
 
-/* button width x3 x4 */
-.tile.tile-wide-3 {
-    height: 150px;
-    width: 470px;
-}
-.tile.tile-wide-4 {
-    height: 150px;
-    width: 630px;
-}
-
 /* added for mobile device support, weberm16 */
 
 /* navigation font color */
@@ -157,15 +149,27 @@ textarea[readonly-with-required] {
     border-radius: 0;
 }
 /* mobile device tile width */
+/* button width x1 */
 .tile.tile-medium {
     height: 150px;
     width: 50%;
 }
-.tile.tile-wide,
-.tile.tile-double {
+/* button width x2 */
+.tile.tile-wide {
     height: 150px;
     width: 100%;
 }
+/* button width x3 */
+.tile.tile-wide-3 {
+    height: 150px;
+    width: 100%;
+}
+/* button width x4 */
+.tile.tile-wide-4 {
+    height: 150px;
+    width: 100%;
+}
+
 /* mobile device search field */
 .search-mobile {
     font-size: 150%;
@@ -179,7 +183,7 @@ textarea[readonly-with-required] {
     margin-bottom: 0;
 }
 /* only for mobile devices */
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 768px) {
     /* center breadcrumb */
     .breadcrumb {
         text-align: center;
@@ -241,14 +245,26 @@ textarea[readonly-with-required] {
 }
 
 /* desktop only styles */
-@media only screen and (min-width: 1100px) {
-    /* tile width */
+@media only screen and (min-width: 768px) {
+    /* button width x1 */
     .tile.tile-medium {
-        width: 12.5%;
+        height: 150px;
+        width: 150px;
     }
-    .tile.tile-wide,
-    .tile.tile-double {
-        width: 25%;
+    /* button width x2 */
+    .tile.tile-wide {
+        height: 150px;
+        width: 310px;
+    }
+    /* button width x3 */
+    .tile.tile-wide-3 {
+        height: 150px;
+        width: 470px;
+    }
+    /* button width x4 */
+    .tile.tile-wide-4 {
+        height: 150px;
+        width: 630px;
     }
     /* hidden elements on desktop and tablet */
     .hide-on-desktop {
@@ -260,9 +276,16 @@ textarea[readonly-with-required] {
 /* replacement css for "metro-bootstrap" specific styles (e.g. tiles) */
 /* Source: https://github.com/TalksLab/metro-bootstrap/blob/master/dist/css/metro-bootstrap.css */
 /* general styles */
-body{
-    font-family: "Segoe UI Light", "Segoe UI", "Segoe WP", "Helvetica Neue", sans-serif;
+html body {
+    /* try to use futura, fall back on nunito */
+    font-family: Futura, Futura-Medium, "Futura Medium", 'Nunito', sans-serif;
 }
+
+h3, .h3, h4, .h4, h5, .h5 {
+    /* try to use futura, fall back on nunito */
+    font-family: Futura, Futura-Medium, "Futura Medium", 'Nunito', sans-serif;
+}
+
 /* common tile styles */
 .tile {
     display: block;
