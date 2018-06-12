@@ -18,6 +18,7 @@ import {CustomPageElement} from "./page/element/custom/custom-container.componen
 
 export abstract class PathAppComponent implements path.IPathApp {
 
+
     private _pageStack:path.Page[] = [];
     private _formStack:path.Form[] = [];
     private _userId:string;
@@ -633,5 +634,15 @@ export abstract class PathAppComponent implements path.IPathApp {
             }
         return form;
     }
+
+    /* toggle navigation
+    inspired by: https://angularfirebase.com/lessons/bootstrap-4-collapsable-navbar-work-with-angular */
+    show:boolean = false;
+
+    toggleCollapse() {
+        this.show = !this.show}
+
+
+
 
 }

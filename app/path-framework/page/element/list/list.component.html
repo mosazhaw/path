@@ -1,4 +1,5 @@
-<div *ngIf='list.search' class="thumbnail {{(list.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green col-md-3">
+<!-- default search (tablet, desktop) -->
+<div *ngIf='list.search' class="thumbnail {{(list.width > 1 ? 'tile-wide' : '')}} tile tile-medium tile-green hide-on-mobile">
 	<div class="input-group input-group-sm">
 		<div class="h3">{{list._searchLabel}}</div>
 		<i class="fa fa-2x fa-search"></i>
@@ -8,6 +9,14 @@
         </form>
 	</div>
 </div>
+<!-- search on mobile devices -->
+<div *ngIf='list.search' class="search-mobile hide-on-desktop">
+    <div class="row">
+        <label for="search-mobile">Search</label>
+        <input id="search-mobile" name="search" [(ngModel)]="list._searchText" placeholder="{{list._searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' class="form-control" type="text">
+    </div>
+</div>
+<!-- list -->
 <span *ngFor='let button of list.buttons'>
             <span *ngIf='button.type == "button" || button.type == "newButton"'>
                 <path-button [button]="button"></path-button>

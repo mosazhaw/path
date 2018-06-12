@@ -39,29 +39,59 @@
 					</div>
 				</div>
 			</div>
+			<!-- show form buttons on modal-body in mobile version, otherwise they are taking up too much space when the keyboard is shown -->
+			<div [hidden]="!form.footerVisible" class="hide-on-desktop">
+				<div class="row">
+                    <div class="col-md-12">
+					<div class="col-md-2 buttons-smartphone-left">
+					<span *ngFor='let field of form.fields' class="pull-left" [hidden]="!field.visible">
+						<span *ngIf="field.type == 'deleteButton'">
+							<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+						</span>
+						<span *ngIf="field.type == 'previousButton'">
+							<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+						</span>
+					</span>
+					</div>
+					<div class="col-md-10 buttons-smartphone-right">
+					<span *ngFor='let field of form.fields' [hidden]="!field.visible">
+						<span *ngIf="field.type == 'okButton'">
+							<input [disabled]="field.isReadonly()" type="submit" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+						</span>
+						<span *ngIf="field.type == 'cancelButton'">
+							<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+						</span>
+					</span>
+					</div>
+				</div>
+                </div>
+			</div>
 		</div>
-		<div [hidden]="!form.footerVisible" class="modal-footer">
+		<!-- default version for desktop devices -->
+		<div class="hide-on-mobile">
+			<div [hidden]="!form.footerVisible" class="modal-footer">
 			<div class="row">
 				<div class="col-md-2">
-					<span *ngFor='let field of form.fields' class="pull-left" [hidden]="!field.visible">
-                        <span *ngIf="field.type == 'deleteButton'">
-                            <input [disabled]="field.isReadonly()" type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
-                        </span>
-                        <span *ngIf="field.type == 'previousButton'">
-                            <input [disabled]="field.isReadonly()" type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
-                        </span>
-                    </span>
+						<span *ngFor='let field of form.fields' class="pull-left" [hidden]="!field.visible">
+							<span *ngIf="field.type == 'deleteButton'">
+								<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+							</span>
+							<span *ngIf="field.type == 'previousButton'">
+								<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+							</span>
+						</span>
 				</div>
 				<div class="col-md-10">
-                    <span *ngFor='let field of form.fields' [hidden]="!field.visible">
-                        <span *ngIf="field.type == 'okButton'">
-                            <input [disabled]="field.isReadonly()" type="submit" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
-                        </span>
-                        <span *ngIf="field.type == 'cancelButton'">
-                            <input [disabled]="field.isReadonly()" type="button" class="btn btn-default" (click)="field.onClick()" value="{{field.name}}"/>
-                        </span>
-                    </span>
+						<span *ngFor='let field of form.fields' [hidden]="!field.visible">
+							<span *ngIf="field.type == 'okButton'">
+								<input [disabled]="field.isReadonly()" type="submit" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+							</span>
+							<span *ngIf="field.type == 'cancelButton'">
+								<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+							</span>
+						</span>
 				</div>
+			</div>
 			</div>
 		</div>
 	</form>

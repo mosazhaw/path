@@ -14,12 +14,18 @@ export class DraggableDirective implements OnInit{
 
     constructor(public element: ElementRef) {}
 
+
     ngOnInit(){
+        // draggable only for desktop version (styles for desktop are added when innerWidth>1100)
+        if (window.innerWidth < 768){
+            this._allowDrag=false;
+        }
         // css changes
         if(this._allowDrag){
             this.element.nativeElement.style.position = 'relative';
             this.element.nativeElement.className += ' cursor-draggable';
         }
+
     }
 
     @Input('path-draggable')
