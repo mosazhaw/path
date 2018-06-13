@@ -1,4 +1,4 @@
-import {NgModule, ModuleWithProviders} from '@angular/core';
+import {NgModule, ModuleWithProviders, Injector} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
@@ -16,7 +16,7 @@ import {LabelFieldComponent} from "./path-framework/form/field/label/label-field
 import {FieldListFieldComponent} from "./path-framework/form/field/fieldList/field-list-field.component";
 import {NumberFieldComponent} from "./path-framework/form/field/number/number-field.component";
 import {TranslationFieldComponent} from "./path-framework/form/field/translation/translation-field.component";
-import {Ng2BootstrapModule} from "ngx-bootstrap";
+import {BsDatepickerModule, TooltipModule} from "ngx-bootstrap";
 import {DraggableDirective} from "./path-framework/form/draggable.directive";
 import {BackButtonComponent} from "./path-framework/page/element/button/back-button.component";
 import {LinkButtonComponent} from "./path-framework/page/element/button/link-button.component";
@@ -28,9 +28,9 @@ import {CustomDirective} from "./path-framework/page/element/custom/custom.direc
 import {CustomContainerComponent} from "./path-framework/page/element/custom/custom-container.component";
 
 @NgModule({
-    imports:      [BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule.forRoot()],
+    imports:      [BrowserModule, HttpModule, FormsModule, CommonModule, BsDatepickerModule.forRoot(), TooltipModule.forRoot()],
     declarations: [DraggableDirective, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent, ButtonComponent, PageLabelComponent, ListComponent, CustomDirective, CustomContainerComponent],
-    exports:      [DraggableDirective, BrowserModule, HttpModule, FormsModule, CommonModule, Ng2BootstrapModule, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent, ButtonComponent, PageLabelComponent, ListComponent, CustomDirective, CustomContainerComponent],
+    exports:      [DraggableDirective, BrowserModule, HttpModule, FormsModule, CommonModule, BsDatepickerModule, TooltipModule, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent, ButtonComponent, PageLabelComponent, ListComponent, CustomDirective, CustomContainerComponent],
 })
 export class AppModule {
     static forRoot(): ModuleWithProviders {

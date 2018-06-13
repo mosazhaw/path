@@ -139,7 +139,7 @@ export class List extends PageElement implements IList {
 
     public filter() {
         this._searchLabel = this.translationService.getText("Search");
-        if (this._searchText == "*") {
+        if (this._searchText && this._searchText == "*") {
             this.refresh(null);
         } else if (this.limit) {
             // call server to filter data
@@ -155,7 +155,7 @@ export class List extends PageElement implements IList {
             }
         } else {
             // filter loaded data only
-            let searchText:string = this._searchText.toLowerCase();
+            let searchText:string = this._searchText ? this._searchText.toLowerCase() : "";
             for (let button of this._buttons) {
                 button.visible = true;
                 if (searchText.length > 0) {

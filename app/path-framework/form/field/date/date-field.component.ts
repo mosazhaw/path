@@ -1,5 +1,4 @@
-import {Component, Input, Output, ElementRef} from '@angular/core';
-import {FormFieldLabelComponent} from './../form-field-label.component';
+import {Component, Input, Output} from '@angular/core';
 import {ValueField} from "../value-field";
 import {IForm} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
@@ -17,12 +16,14 @@ export class DateFieldComponent {
 
 export class DateField extends ValueField<Date> {
 
-    private _isDatePickerVisible:boolean = false;
-    private _formattedValue:string;
-    private _datePickerValue:Date;
+    private datePickerValue:Date;
+    private initialValueSet:boolean = false;
+    private datePickerInitialValue:Date;
+    private dateInputFormat:string;
 
     constructor(protected form:IForm, protected translationService:TranslationService) {
         super(form, translationService);
+        this.dateInputFormat = translationService.getUserDateFormat();
     }
 
     public setValue(value:Date) {
@@ -41,43 +42,23 @@ export class DateField extends ValueField<Date> {
         else {
             value = null;
         }
+        // update ui
+        this.datePickerValue = value;
         super.setValue(value);
-        this._datePickerValue = value;
-        this.formatDate();
-    }
-
-    public updateValueFromGui(value:string) {
-        let dateValue:Date = moment(value, "DD.MM.YYYY").toDate();
-        this.setValue(dateValue);
-    }
-
-    public toggleDatePicker() {
-        if (!this._isDatePickerVisible) {
-            let date = moment(this.value);
-            if(date == null || !date.isValid()) {
-                this.setValue(new Date());
-            }
+        if (!this.initialValueSet) {
+            this.datePickerInitialValue = value;
+            this.initialValueSet = true;
         }
-        this._isDatePickerVisible = !this._isDatePickerVisible;
     }
 
-    public closeDatePicker() {
-        this._isDatePickerVisible = false;
-        // need to wait for updated model
-        window.setTimeout(() => {
-            this.setValue(this._datePickerValue);
-            this.formatDate();
-        }, 1);
-    }
-
-    private formatDate() {
-        this._formattedValue = "";
-        if (this.value != null) {
-            try {
-                this._formattedValue = new Intl.DateTimeFormat().format(this.value);
-            } catch (e) {
-                console.log("failed formatting date " + this.value);
-            }
+    public updateValueFromGui(value:Date) {
+        if(value != null && isNaN(value.getDate())) {
+            value == null;
+            //this.datePickerValue = null;
+        }
+        if (value != null) {
+            this.setValue(value);
+            this.datePickerValue = this.value;
         }
     }
 }

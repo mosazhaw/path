@@ -32,7 +32,18 @@ export class TranslationService {
 
     protected getUserLanguage() : string {
         let languageCode: string = sessionStorage.getItem("languageCode");
-        return languageCode;
+        if (languageCode) {
+            return languageCode;
+        }
+        return 'en';
+    }
+
+    public getUserDateFormat() {
+        // TODO: add locale support
+        if (this.getUserLanguage() == 'de') {
+            return 'DD.MM.YYYY';
+        }
+        return 'MM/DD/YYYY';
     }
 
     public getSupportedLanguageCodes() : string[] {
