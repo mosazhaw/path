@@ -111,14 +111,16 @@ export abstract class PathAppComponent implements path.IPathApp {
     public refreshCurrentPage() {
         for (let element of this._pageStack[this._pageStack.length - 1].content) {
             if (element instanceof path.List) {
-                (<path.List>element).refresh(null);
+                let list:path.List = <path.List>element;
+                list.filter();
             }
         }
         // breadcrumbs
         if (this._pageStack[this._pageStack.length - 2] != null) {
             for (let element of this._pageStack[this._pageStack.length - 2].content) {
                 if (element instanceof path.List) {
-                    (<path.List>element).refresh(null);
+                    let list:path.List = <path.List>element;
+                    list.filter();
                 }
             }
         }
