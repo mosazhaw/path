@@ -285,6 +285,10 @@ export class List extends PageElement implements IList {
         this._limit = value;
     }
 
+    get searchText(): string {
+        return this._searchText;
+    }
+
     public fromJson(modelElement) {
         super.fromJson(modelElement);
         if (modelElement["search"] != null) {

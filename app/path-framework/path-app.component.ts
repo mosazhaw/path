@@ -112,7 +112,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         for (let element of this._pageStack[this._pageStack.length - 1].content) {
             if (element instanceof path.List) {
                 let list:path.List = <path.List>element;
-                list.filter();
+                list.refresh(list.searchText);
             }
         }
         // breadcrumbs
@@ -120,7 +120,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             for (let element of this._pageStack[this._pageStack.length - 2].content) {
                 if (element instanceof path.List) {
                     let list:path.List = <path.List>element;
-                    list.filter();
+                    list.refresh(list.searchText);
                 }
             }
         }
