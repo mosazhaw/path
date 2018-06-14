@@ -109,18 +109,31 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public refreshCurrentPage() {
-        for (let element of this._pageStack[this._pageStack.length - 1].content) {
-            if (element instanceof path.List) {
+        let refresh: (element:path.PageElement) => void;
+        if (this._pageStack[this._pageStack.length - 1].id === this.getStartPage()) {
+            // refresh clean, without search text
+            refresh = (element:path.PageElement) => {
+                let list:path.List = <path.List>element;
+                list.filterChanged(null);
+                list.refresh(null);
+            };
+        } else {
+            // refresh with search text
+            refresh = (element:path.PageElement) => {
                 let list:path.List = <path.List>element;
                 list.refresh(list.searchText);
+            };
+        }
+        for (let element of this._pageStack[this._pageStack.length - 1].content) {
+            if (element instanceof path.List) {
+                refresh(element);
             }
         }
         // breadcrumbs
         if (this._pageStack[this._pageStack.length - 2] != null) {
             for (let element of this._pageStack[this._pageStack.length - 2].content) {
                 if (element instanceof path.List) {
-                    let list:path.List = <path.List>element;
-                    list.refresh(list.searchText);
+                    refresh(element);
                 }
             }
         }
@@ -133,7 +146,6 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     public navigateToPage(pageNumber:number) {
         for (let k = this._pageStack.length - 1; k > pageNumber; k--) {
-            console.log("back");
             this.navigateBack();
         }
     }
