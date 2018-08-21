@@ -5,8 +5,17 @@ export class TranslationService {
 
     private translationMap:Map<string, string> = this.createTranslationMap(this.getTranslations());
 
-    public getText(key: string, ...parameters: string[]): string {
-        if (this.getTranslation(key) == null) {
+    public getText(key: any, ...parameters: string[]): string {
+        if (key == null) {
+            return "";
+        }
+        else if (key[this.getUserLanguage()] != null) {
+            return key[this.getUserLanguage()];
+        }
+        else if (key["default"] != null) {
+            return key["default"];
+        }
+        else if (this.getTranslation(key) == null) {
             return "{" + key + "}";
         }
         let result: string = this.getTranslation(key);
