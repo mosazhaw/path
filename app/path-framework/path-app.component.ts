@@ -15,6 +15,7 @@ import {PageLabel} from "./page/element/label/page-label.component";
 import {Type} from "@angular/core";
 import {CustomContainerPageElement} from "./page/element/custom/custom-container-page-element";
 import {CustomPageElement} from "./page/element/custom/custom-container.component";
+import {ElementList} from "./page/element/element-list/element-list.component";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -205,87 +206,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     page.name = parentPageElement.name;
                 }
                 for (var modelElement of modelPage.elementList) {
-                    // element
-                    let element:path.PageElement = null;
-                    switch (modelElement.type) {
-                        case "button":
-                        case "newButton":
-                            element = new path.Button(this, this.pathService, this.translationService);
-                            element.parentPageElement = parentPageElement;
-                            element.fromJson(modelElement);
-                            if (modelElement["buttonhandler"] != null) {
-                                (<path.Button>element).handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
-                            }
-                            break;
-                        case "deleteButton":
-                            element = new path.PageDeleteButton(this, this.pathService, this.translationService);
-                            element.parentPageElement = parentPageElement;
-                            element.fromJson(modelElement);
-                            break;
-                        case "downloadButton": // deprecated
-                        case "linkButton":
-                            element = new path.LinkButton(this, this.pathService, this.translationService);
-                            element.parentPageElement = parentPageElement;
-                            element.fromJson(modelElement);
-                            break;
-                        case "backbutton":
-                            element = new path.BackButton(this, this.pathService, this.translationService);
-                            element.fromJson(modelElement);
-                            break;
-                        case "inlineForm":
-                            let inlineForm = new path.InlineForm(this, this.pathService, this.translationService);
-                            inlineForm.fromJson(modelElement);
-                            inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), true, parentPageElement);
-                            inlineForm.key = parentPageElement != null ? parentPageElement.key : null;
-                            inlineForm.loadNextForm(true);
-                            element = inlineForm;
-                            break;
-                        case "list":
-                            let dynamicList:path.List = new path.List(this, this.pathService, this.translationService);
-                            dynamicList.parentPageElement = parentPageElement;
-                            dynamicList.fromJson(modelElement);
-                            // handler
-                            if (modelElement["handler"] != null) {
-                                dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
-                            }
-                            if (modelElement["buttonhandler"] != null) {
-                                dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
-                            }
-                            if (!dynamicList.limit) {
-                                dynamicList.refresh(null);
-                            }
-                            element = dynamicList;
-                            break;
-                        case "ChartElement":
-                            let chart = new path.ChartElement(this, this.pathService, this.translationService);
-                            chart.fromJson(modelElement);
-                            chart.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
-                            element = chart;
-                            break;
-                        case "pageLabel":
-                            let pageLabel = new PageLabel(this, this.pathService, this.translationService);
-                            pageLabel.fromJson(modelElement);
-                            element = pageLabel;
-                            break;
-                        default: {
-                            // call method to get custom component class
-                            let customContainerPageElement = new CustomContainerPageElement(this);
-                            customContainerPageElement.fromJson(modelElement);
-                            customContainerPageElement.typeClass = this.getCustomComponentClass(modelElement.type);
-                            element = customContainerPageElement;
-                        }
-                    }
-                    if (modelElement["permissionUrl"] != null) {
-                        element.visible = false;
-                        let permissionUrl:string = KeyUtility.translateUrl(modelElement["permissionUrl"], null, false, parentPageElement);
-                        let permissionHandler = (permissionElement:path.PageElement) => (data:any) => {
-                            permissionElement.visible = data["permission"];
-                        }
-                        this.pathService.serverGet(this.getBackendUrl(), permissionUrl, permissionHandler(element), null);
-                    }
-                    element.type = modelElement.type;
-                    element.parentPageElement = parentPageElement;
-                    page.content.push(element);
+                    this.addPageElement(page, modelElement, parentPageElement);
                 }
                 page.updateRows();
             }
@@ -296,6 +217,101 @@ export abstract class PathAppComponent implements path.IPathApp {
         } else {
             this._pageStack.push(page);
         }
+    }
+
+    private addPageElement(page: path.Page, modelElement, parentPageElement: path.PageElement) : void {
+        let element: path.PageElement = null;
+        switch (modelElement.type) {
+            case "button":
+            case "newButton":
+                element = new path.Button(this, this.pathService, this.translationService);
+                element.parentPageElement = parentPageElement;
+                element.fromJson(modelElement);
+                if (modelElement["buttonhandler"] != null) {
+                    (<path.Button>element).handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
+                }
+                break;
+            case "deleteButton":
+                element = new path.PageDeleteButton(this, this.pathService, this.translationService);
+                element.parentPageElement = parentPageElement;
+                element.fromJson(modelElement);
+                break;
+            case "downloadButton": // deprecated
+            case "linkButton":
+                element = new path.LinkButton(this, this.pathService, this.translationService);
+                element.parentPageElement = parentPageElement;
+                element.fromJson(modelElement);
+                break;
+            case "backbutton":
+                element = new path.BackButton(this, this.pathService, this.translationService);
+                element.fromJson(modelElement);
+                break;
+            case "inlineForm":
+                let inlineForm = new path.InlineForm(this, this.pathService, this.translationService);
+                inlineForm.fromJson(modelElement);
+                inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), true, parentPageElement);
+                inlineForm.key = parentPageElement != null ? parentPageElement.key : null;
+                inlineForm.loadNextForm(true);
+                element = inlineForm;
+                break;
+            case "list":
+                let dynamicList: path.List = new path.List(this, this.pathService, this.translationService);
+                dynamicList.parentPageElement = parentPageElement;
+                dynamicList.fromJson(modelElement);
+                // handler
+                if (modelElement["handler"] != null) {
+                    dynamicList.handler = new (this.getHandlers()[modelElement["handler"]]);
+                }
+                if (modelElement["buttonhandler"] != null) {
+                    dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
+                }
+                if (!dynamicList.limit) {
+                    dynamicList.refresh(null);
+                }
+                element = dynamicList;
+                break;
+            case "ChartElement":
+                let chart = new path.ChartElement(this, this.pathService, this.translationService);
+                chart.fromJson(modelElement);
+                chart.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
+                element = chart;
+                break;
+            case "pageLabel":
+                let pageLabel = new PageLabel(this, this.pathService, this.translationService);
+                pageLabel.fromJson(modelElement);
+                element = pageLabel;
+                break;
+            case "elementList":
+                let elementList = new ElementList(this, this.pathService, this.translationService);
+                elementList.fromJson(modelElement);
+                let elementListUrl:any = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
+                this.pathService.serverGet(this.getBackendUrl(), elementListUrl, (data:any) => {
+                    for (let element of data) {
+                        this.addPageElement(page, element, parentPageElement);
+                        page.updateRows();
+                    }
+                }, null);
+                element = elementList;
+                break;
+            default: {
+                // call method to get custom component class
+                let customContainerPageElement = new CustomContainerPageElement(this);
+                customContainerPageElement.fromJson(modelElement);
+                customContainerPageElement.typeClass = this.getCustomComponentClass(modelElement.type);
+                element = customContainerPageElement;
+            }
+        }
+        if (modelElement["permissionUrl"] != null) {
+            element.visible = false;
+            let permissionUrl: string = KeyUtility.translateUrl(modelElement["permissionUrl"], null, false, parentPageElement);
+            let permissionHandler = (permissionElement: path.PageElement) => (data: any) => {
+                permissionElement.visible = data["permission"];
+            }
+            this.pathService.serverGet(this.getBackendUrl(), permissionUrl, permissionHandler(element), null);
+        }
+        element.type = modelElement.type;
+        element.parentPageElement = parentPageElement;
+        page.content.push(element);
     }
 
     public setCurrentForm(formId:string, key:Key, handler:string, parentPageElement:path.IPageElement) {

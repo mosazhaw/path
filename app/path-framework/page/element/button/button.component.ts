@@ -177,7 +177,7 @@ export class Button extends path.PageElement implements path.IButton {
             this.setFormHandler(modelElement["form"]["handler"]);
         }
         this.setPage(modelElement["page"]);
-        if (this.parentPageElement != null && modelElement.type == "button") {
+        if (this.key == null && this.parentPageElement != null && modelElement.type == "button") {
             this.key = this.parentPageElement.key;
         }
         this.name = this.translationService.getText(modelElement["name"]);

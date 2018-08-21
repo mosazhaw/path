@@ -120,6 +120,9 @@ export class PageElement implements IPageElement {
         if (modelElement["id"] != null) {
             this.id = modelElement["id"];
         }
+        if (modelElement["key"] != null) {
+            this.key = new Key(modelElement["key"]["key"], modelElement["key"]["name"]);
+        }
         if (modelElement["visible"] != null) {
             this.visible = modelElement["visible"];
         }
