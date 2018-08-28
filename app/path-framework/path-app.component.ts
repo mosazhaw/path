@@ -16,6 +16,7 @@ import {Type} from "@angular/core";
 import {CustomContainerPageElement} from "./page/element/custom/custom-container-page-element";
 import {CustomPageElement} from "./page/element/custom/custom-container.component";
 import {ElementList} from "./page/element/element-list/element-list.component";
+import {FormField} from "./form/field/form-field";
 
 export abstract class PathAppComponent implements path.IPathApp {
 
@@ -384,201 +385,8 @@ export abstract class PathAppComponent implements path.IPathApp {
                 form.formFunction = formFunction;
                 form.title = this.translationService.getText(modelForm.title);
                 for (var modelFormField of modelForm.formFieldList) {
-                    // create form fields
-                    let formField:path.FormField = null;
-                    switch (modelFormField.type) {
-                        case "text":
-                        {
-                            formField = new path.TextField(form, this.translationService);
-                            formField.fromJson(modelFormField);
-                            break;
-                        }
-                        case "translation":
-                        {
-                            formField = new path.TranslationField(form, this.pathService, this.translationService);
-                            formField.fromJson(modelFormField);
-                            break;
-                        }
-                        case "number":
-                        {
-                            formField = new path.NumberField(form, this.translationService);
-                            formField.fromJson(modelFormField);
-                            break;
-                        }
-                        case "label":
-                        {
-                            formField = new path.LabelField(form, this.translationService);
-                            formField.fromJson(modelFormField);
-                            break;
-                        }
-                        case "fieldList":
-                        {
-                            formField = new path.FieldListField(form, this.translationService);
-                            formField.name = "list";
-                            formField.fromJson(modelFormField);
-                            if (modelFormField["url"] != null) {
-                                let fieldListUrl:any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
-                                let modelId:string = modelFormField["id"];
-                                this.pathService.serverGet(this.getBackendUrl(), fieldListUrl, (data:any) => {
-                                    let counter:number = 1;
-                                    for (let item of data) {
-                                        let dynamicField:ValueField<any> = null;
-                                        if (item["type"] == "label") {
-                                            dynamicField = new LabelField(form, this.translationService);
-                                        } else if (item["type"] == "text") {
-                                            dynamicField = new path.TextField(form, this.translationService);
-                                        } else if (item["type"] == "translation") {
-                                            dynamicField = new path.TranslationField(form, this.pathService, this.translationService);
-                                        } else if (item["type"] == "number") {
-                                            dynamicField = new path.NumberField(form, this.translationService);
-                                        }
-                                        dynamicField.fromJson(item);
-                                        dynamicField.name = item["name"]; // do not use translation service
-                                        dynamicField.id = modelId + counter;
-                                        (<FieldListField>formField).subfields.push(dynamicField);
-                                        counter++;
-                                    }
-                                    form.updateRows();
-                                    (<FieldListField>formField).created = true;
-                                }, null);
-                            }
-                            break;
-                        }
-                        case "date":
-                        {
-                            formField = new path.DateField(form, this.translationService);
-                            formField.fromJson(modelFormField);
-                            break;
-                        }
-                        case "autocomplete":
-                        {
-                            let autoCompleteFormField = new autocomplete.AutoCompleteField(form, this.translationService, this.pathService);
-                            autoCompleteFormField.detailForm = modelFormField["form"];
-                            autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
-                            if (modelFormField["data"] != null) {
-                                let data = [];
-                                let k:number = 0;
-                                for (let item of modelFormField["data"]) {
-                                    let entry = new AutoCompleteFieldEntry();
-                                    entry.text = item;
-                                    entry.key = k;
-                                    data.push(entry);
-                                    k++;
-                                }
-                                autoCompleteFormField.data = data;
-                                autoCompleteFormField.dataLoaded = true;
-                            }
-                            else if (modelFormField["url"] != null) {
-                                let autoCompleteFormFieldUrl:string = KeyUtility.translateUrl(modelFormField["url"], form.key, false, parentPageElement);
-                                autoCompleteFormField.url = autoCompleteFormFieldUrl;
-                                autoCompleteFormField.load();
-                            }
-                            else {
-                                autoCompleteFormField.dataLoaded = true;
-                            }
-                            formField = autoCompleteFormField;
-                            formField.fromJson(modelFormField);
-                            break;
-                        }
-                        case "RadioGroupField":
-                        {
-                            let radioGroupFormField = new path.RadioGroupField(form, this.translationService);
-                            if (modelFormField["url"] != null) {
-                                let radiosUrl:any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
-                                let radioLoader = (rgField:RadioGroupField) => (data:any) => {
-                                    for (let item of data) {
-                                        let radio = new path.Radio(form, this.translationService);
-                                        radio.name = item["name"];
-                                        radio.key = item["key"]["key"].toString(); // force radio key type string for angular2
-                                        if (radio.key == item["defaultKey"]) {
-                                            rgField.setValue(radio.key);
-                                        }
-                                        rgField.radios.push(radio);
-                                    }
-                                    rgField.created = true;
-                                    console.log("radio group field created: " + rgField.id);
-                                }
-                                let radioLoaderForField = radioLoader(radioGroupFormField);
-                                this.pathService.serverGet(this.getBackendUrl(), radiosUrl, radioLoaderForField, null);
-                            } else {
-                                radioGroupFormField.created = true;
-                            }
-                            radioGroupFormField.fromJson(modelFormField);
-                            formField = radioGroupFormField;
-                            break;
-                        }
-                        case "CheckboxGroupField":
-                        {
-                            let checkboxGroupField = new path.CheckboxGroupField(form, this.translationService);
-                            checkboxGroupField.fromJson(modelFormField);
-                            formField = checkboxGroupField;
-                            break;
-                        }
-                        case "ProgressBarField":
-                        {
-                            let progressBarField = new path.ProgressBarField(form, this.translationService);
-                            progressBarField.fromJson(modelFormField);
-                            formField = progressBarField;
-                            break;
-                        }
-                        case "okButton":
-                        {
-                            formField = new path.OkButton(form, this.translationService);
-                            formField.fromJson(modelFormField);
-                            break;
-                        }
-                        case "cancelButton":
-                        {
-                            formField = new path.CancelButton(form, this.translationService);
-                            formField.fromJson(modelFormField);
-                            break;
-                        }
-                        case "deleteButton":
-                        {
-                            formField = new path.FormDeleteButton(form, this.translationService);
-                            formField.fromJson(modelFormField);
-                            if (form.key == null) {
-                                formField.visible = false;
-                            }
-                            break;
-                        }
-                        case "previousButton":
-                        {
-                            formField = new path.PreviousButton(form, this.translationService);
-                            formField.fromJson(modelFormField);
-                            if (form.key == null) {
-                                formField.visible = false;
-                            }
-                            break;
-                        }
-                        default:
-                        {
-                            formField = new path.FormField(form, this.translationService);
-                            formField.fromJson(modelFormField);
-                        }
-                    }
-                    // Field permission (move code to FormField)
-                    if (modelFormField["permissionUrl"] != null) {
-                        formField.readonly = false;
-                        let permissionUrl:string = KeyUtility.translateUrl(modelFormField["permissionUrl"], formField.getForm().getKey(), false, parentPageElement);
-                        let permissionHandler = (permissionElement:path.FormField) => (data:any) => {
-                            permissionElement.readonly = !data["permission"];
-                        }
-                        this.pathService.serverGet(formField.getForm().getApp().getBackendUrl(), permissionUrl, permissionHandler(formField), null);
-                    }
-                    // search parents for defaultKey
-                    if (formField instanceof ValueField && modelFormField["defaultKey"] != null) {
-                        let pageElement:IPageElement = parentPageElement;
-                        while (pageElement != null) {
-                            if (pageElement.getKey() != null && pageElement.getKey().getName() == modelFormField["defaultKey"]) {
-                                (<ValueField<any>>formField).setValue(pageElement.getKey().getKey());
-                                (<ValueField<any>>formField).isInitialValueSet = true;
-                                pageElement = null;
-                            } else {
-                                pageElement = pageElement.getParent();
-                            }
-                        }
-                    }
+                    // create form field
+                    let formField = this.createFormField(modelFormField, form, parentPageElement);
                     form.fields.push(formField);
                 }
                 form.updateRows();
@@ -662,6 +470,179 @@ export abstract class PathAppComponent implements path.IPathApp {
                 }
             }
         return form;
+    }
+
+    private createFormField(modelFormField, form: path.Form, parentPageElement: IPageElement) : FormField {
+        let formField: path.FormField = null;
+        switch (modelFormField.type) {
+            case "text": {
+                formField = new path.TextField(form, this.translationService);
+                formField.fromJson(modelFormField);
+                break;
+            }
+            case "translation": {
+                formField = new path.TranslationField(form, this.pathService, this.translationService);
+                formField.fromJson(modelFormField);
+                break;
+            }
+            case "number": {
+                formField = new path.NumberField(form, this.translationService);
+                formField.fromJson(modelFormField);
+                break;
+            }
+            case "label": {
+                formField = new path.LabelField(form, this.translationService);
+                formField.fromJson(modelFormField);
+                break;
+            }
+            case "fieldList": {
+                formField = new path.FieldListField(form, this.translationService);
+                formField.name = "list";
+                formField.fromJson(modelFormField);
+                if (modelFormField["url"] != null) {
+                    let fieldListUrl: any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
+                    let modelId: string = modelFormField["id"];
+                    this.pathService.serverGet(this.getBackendUrl(), fieldListUrl, (data: any) => {
+                        let counter: number = 1;
+                        for (let item of data) {
+                            let dynamicField = this.createFormField(item, form, parentPageElement);
+                            dynamicField.name = item["name"]; // do not use translation service
+                            dynamicField.id = modelId + counter;
+                            (<FieldListField>formField).subfields.push(<ValueField<any>>dynamicField);
+                            counter++;
+                        }
+                        form.updateRows();
+                        (<FieldListField>formField).created = true;
+                    }, null);
+                }
+                break;
+            }
+            case "date": {
+                formField = new path.DateField(form, this.translationService);
+                formField.fromJson(modelFormField);
+                break;
+            }
+            case "autocomplete": {
+                let autoCompleteFormField = new autocomplete.AutoCompleteField(form, this.translationService, this.pathService);
+                autoCompleteFormField.detailForm = modelFormField["form"];
+                autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
+                if (modelFormField["data"] != null) {
+                    let data = [];
+                    let k: number = 0;
+                    for (let item of modelFormField["data"]) {
+                        let entry = new AutoCompleteFieldEntry();
+                        entry.text = item;
+                        entry.key = k;
+                        data.push(entry);
+                        k++;
+                    }
+                    autoCompleteFormField.data = data;
+                    autoCompleteFormField.dataLoaded = true;
+                }
+                else if (modelFormField["url"] != null) {
+                    let autoCompleteFormFieldUrl: string = KeyUtility.translateUrl(modelFormField["url"], form.key, false, parentPageElement);
+                    autoCompleteFormField.url = autoCompleteFormFieldUrl;
+                    autoCompleteFormField.load();
+                }
+                else {
+                    autoCompleteFormField.dataLoaded = true;
+                }
+                formField = autoCompleteFormField;
+                formField.fromJson(modelFormField);
+                break;
+            }
+            case "RadioGroupField": {
+                let radioGroupFormField = new path.RadioGroupField(form, this.translationService);
+                if (modelFormField["url"] != null) {
+                    let radiosUrl: any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
+                    let radioLoader = (rgField: RadioGroupField) => (data: any) => {
+                        for (let item of data) {
+                            let radio = new path.Radio(form, this.translationService);
+                            radio.name = item["name"];
+                            radio.key = item["key"]["key"].toString(); // force radio key type string for angular2
+                            if (radio.key == item["defaultKey"]) {
+                                rgField.setValue(radio.key);
+                            }
+                            rgField.radios.push(radio);
+                        }
+                        rgField.created = true;
+                        console.log("radio group field created: " + rgField.id);
+                    }
+                    let radioLoaderForField = radioLoader(radioGroupFormField);
+                    this.pathService.serverGet(this.getBackendUrl(), radiosUrl, radioLoaderForField, null);
+                } else {
+                    radioGroupFormField.created = true;
+                }
+                radioGroupFormField.fromJson(modelFormField);
+                formField = radioGroupFormField;
+                break;
+            }
+            case "CheckboxGroupField": {
+                let checkboxGroupField = new path.CheckboxGroupField(form, this.translationService);
+                checkboxGroupField.fromJson(modelFormField);
+                formField = checkboxGroupField;
+                break;
+            }
+            case "ProgressBarField": {
+                let progressBarField = new path.ProgressBarField(form, this.translationService);
+                progressBarField.fromJson(modelFormField);
+                formField = progressBarField;
+                break;
+            }
+            case "okButton": {
+                formField = new path.OkButton(form, this.translationService);
+                formField.fromJson(modelFormField);
+                break;
+            }
+            case "cancelButton": {
+                formField = new path.CancelButton(form, this.translationService);
+                formField.fromJson(modelFormField);
+                break;
+            }
+            case "deleteButton": {
+                formField = new path.FormDeleteButton(form, this.translationService);
+                formField.fromJson(modelFormField);
+                if (form.key == null) {
+                    formField.visible = false;
+                }
+                break;
+            }
+            case "previousButton": {
+                formField = new path.PreviousButton(form, this.translationService);
+                formField.fromJson(modelFormField);
+                if (form.key == null) {
+                    formField.visible = false;
+                }
+                break;
+            }
+            default: {
+                formField = new path.FormField(form, this.translationService);
+                formField.fromJson(modelFormField);
+            }
+        }
+        // Field permission (move code to FormField)
+        if (modelFormField["permissionUrl"] != null) {
+            formField.readonly = false;
+            let permissionUrl: string = KeyUtility.translateUrl(modelFormField["permissionUrl"], formField.getForm().getKey(), false, parentPageElement);
+            let permissionHandler = (permissionElement: path.FormField) => (data: any) => {
+                permissionElement.readonly = !data["permission"];
+            }
+            this.pathService.serverGet(formField.getForm().getApp().getBackendUrl(), permissionUrl, permissionHandler(formField), null);
+        }
+        // search parents for defaultKey
+        if (formField instanceof ValueField && modelFormField["defaultKey"] != null) {
+            let pageElement: IPageElement = parentPageElement;
+            while (pageElement != null) {
+                if (pageElement.getKey() != null && pageElement.getKey().getName() == modelFormField["defaultKey"]) {
+                    (<ValueField<any>>formField).setValue(pageElement.getKey().getKey());
+                    (<ValueField<any>>formField).isInitialValueSet = true;
+                    pageElement = null;
+                } else {
+                    pageElement = pageElement.getParent();
+                }
+            }
+        }
+        return formField;
     }
 
     /* toggle navigation
