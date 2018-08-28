@@ -250,7 +250,6 @@ export abstract class PathAppComponent implements path.IPathApp {
                 let inlineForm = new path.InlineForm(this, this.pathService, this.translationService);
                 inlineForm.fromJson(modelElement);
                 inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), true, parentPageElement);
-                inlineForm.key = parentPageElement != null ? parentPageElement.key : null;
                 inlineForm.loadNextForm(true);
                 element = inlineForm;
                 break;

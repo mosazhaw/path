@@ -52,8 +52,16 @@ export class InlineForm extends PageElement {
 
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
-        this.formId = modelFormField["form"];
-        this.page = modelFormField["page"];
+        if (modelFormField["form"] != null) {
+            this.formId = modelFormField["form"];
+        }
+        if (modelFormField["page"] != null) {
+            this.page = modelFormField["page"];
+        }
+        if (modelFormField["key"] == null) {
+            // only set key if not set by model
+            this.key = this.parentPageElement != null ? this.parentPageElement.key : null;
+        }
     }
 
     public loadNextForm(forward:boolean) {
