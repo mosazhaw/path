@@ -86,7 +86,7 @@ export class List extends PageElement implements IList {
                     button.width = this.width;
                 }
                 // form button
-                if (item["form"] == null && this.form != null) {
+                if ((item["form"] == null || item["form"]["form"] == null) && this.form != null) {
                     button.setForm(this.form);
                     button.setFormHandler(this.formHandler);
                 }
