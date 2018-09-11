@@ -4,7 +4,7 @@ Path Framework is developed at <a href="https://www.zhaw.ch/de/sml/institute-zen
 <br>
 <br>
 
-![Path Architecture](https://github.com/innovad/path/blob/master/path-architecture.png)
+[![Alt text](https://img.youtube.com/vi/WxLKdviTm7A/0.jpg)](https://www.youtube.com/watch?v=WxLKdviTm7A)
 
 Pros:
 * Technology independent GUI development, rendering engine may be replaced (iOS, Android, Web)
@@ -309,6 +309,8 @@ Single or multi-line text input fields.
 Like text fields, but with built-in support for translated text.
 
 ## Path Framework Development
+
+![Path Architecture](https://github.com/innovad/path/blob/master/path-architecture.png)
 
 Read this chapter if you want to contribute to the Path Framework. If you only want to create applications using Path Framework, the following steps are *not* necessary.
 
