@@ -6,6 +6,7 @@ import {Input, Output, Component} from "@angular/core";
 import {TranslationService} from "../../../service/translation.service";
 import {KeyUtility} from "../../../key-utility";
 import {ButtonDetail} from "./button-detail";
+import {StringUtility} from "../../../string-utility";
 
 @Component({
     selector: 'path-button',
@@ -40,18 +41,18 @@ export class Button extends path.PageElement implements path.IButton {
             return;
         }
 
-        if (this._url != null) {
+        if (!StringUtility.isEmpty(this._url)) {
             this.pathService.serverGet(this.app.getBackendUrl(), this._url, () => {
                 this.app.refreshCurrentPage();
             }, null);
         }
 
-        if (this._page != null) {
+        if (!StringUtility.isEmpty(this._page)) {
             this.app.setCurrentPage(this._page, this);
             return;
         }
 
-        if (this._form != null) {
+        if (!StringUtility.isEmpty(this._form)) {
             this.app.setCurrentForm(this._form, this.key, this._formHandler, this);
             return;
         }
@@ -163,6 +164,15 @@ export class Button extends path.PageElement implements path.IButton {
 
     set tooltip(value: string) {
         this._tooltip = value;
+    }
+
+    public isClickableButton():boolean {
+        if (this.type == "button") {
+            if (StringUtility.isEmpty(this.form) && StringUtility.isEmpty(this.page)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public fromJson(modelElement) {

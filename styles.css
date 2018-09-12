@@ -289,7 +289,6 @@ h3, .h3, h4, .h4, h5, .h5 {
 /* common tile styles */
 .tile {
     display: block;
-    cursor: pointer;
     -webkit-perspective: 0;
     -webkit-transform-style: preserve-3d;
     -webkit-transition: -webkit-transform 0.2s;
@@ -302,6 +301,14 @@ h3, .h3, h4, .h4, h5, .h5 {
     border: 4px #ffffff solid;
     color: #ffffff;
 }
+.tile-button {
+    cursor: pointer;
+}
+/* hover animation */
+.tile-button:hover {
+    opacity: 1;
+}
+
 /* tile colors */
 .tile.tile-blue {
     background-color: #2e8bcc;
@@ -414,8 +421,3 @@ h3, .h3, h4, .h4, h5, .h5 {
 .tile.tile-success {
     background-color: #2ecc71;
 }
-/* hover animation */
-.tile:hover {
-    opacity: 1;
-}
-
