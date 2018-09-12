@@ -7,6 +7,7 @@ import {TranslationService} from "../../../service/translation.service";
 import {KeyUtility} from "../../../utility/key-utility";
 import {ButtonDetail} from "./button-detail";
 import {StringUtility} from "../../../utility/string-utility";
+import {ColorUtility} from "../../../utility/color-utility";
 
 @Component({
     selector: 'path-button',
@@ -24,6 +25,10 @@ export class Button extends path.PageElement implements path.IButton {
     private _handler:path.IButtonHandler;
     private _details:path.ButtonDetail[] = [];
     private _tooltip:string;
+
+    private _htmlHasButtonTarget:boolean = true;
+    private _cssBackgroundColor:string = "blue";
+    private _cssColor:string = "black";
 
     // TODO refactor prototype stuff
     private _url:string;
@@ -166,13 +171,37 @@ export class Button extends path.PageElement implements path.IButton {
         this._tooltip = value;
     }
 
-    public isClickableButton():boolean {
+    get htmlHasButtonTarget(): boolean {
+        return this._htmlHasButtonTarget;
+    }
+
+    get cssBackgroundColor(): string {
+        return this._cssBackgroundColor;
+    }
+
+    get cssColor(): string {
+        return this._cssColor;
+    }
+
+    public initModel() {
+        // button target
+        this._htmlHasButtonTarget = true;
         if (this.type == "button") {
-            if (StringUtility.isEmpty(this.form) && StringUtility.isEmpty(this.page)) {
-                return false;
+            if (StringUtility.isEmpty(this.form) && StringUtility.isEmpty(this.page) && StringUtility.isEmpty(this.url)) {
+                this._htmlHasButtonTarget = false;
             }
         }
-        return true;
+
+        // background color
+        let cssColorCode:string = ColorUtility.getColorByName(this.color);
+        if (StringUtility.isEmpty(cssColorCode)) {
+            // custom color from model
+            cssColorCode = this.color;
+        }
+        this._cssBackgroundColor = cssColorCode;
+
+        // text color
+        this._cssColor = ColorUtility.getReadableTextColor(this._cssBackgroundColor);
     }
 
     public fromJson(modelElement) {
@@ -204,5 +233,6 @@ export class Button extends path.PageElement implements path.IButton {
                 this.details.push(bd);
             }
         }
+        this.initModel();
     }
 }

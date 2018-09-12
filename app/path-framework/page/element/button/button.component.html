@@ -1,5 +1,5 @@
 <a (click)="button.onClick()" class="fa-links">
-	<div tooltip="{{button.tooltip}}" *ngIf="button.visible" class="thumbnail tile {{button.isClickableButton() ? 'tile-button' : ''}} {{(button.width <= 1 ? 'tile-medium' : (button.width == 2 ? 'tile-wide' : (button.width == 3 ? 'tile-wide-3' : (button.width >= 4 ? 'tile-wide-4' : ''))))}} tile-{{button.color}} ">
+	<div tooltip="{{button.tooltip}}" *ngIf="button.visible" class="thumbnail tile {{button.htmlHasButtonTarget ? 'tile-button' : ''}} {{(button.width <= 1 ? 'tile-medium' : (button.width == 2 ? 'tile-wide' : (button.width == 3 ? 'tile-wide-3' : (button.width >= 4 ? 'tile-wide-4' : ''))))}}" [style.background-color]="button.cssBackgroundColor" [style.color]="button.cssColor" [style.color]="button.cssColor">
 		<div class="h3 truncate">{{button.name}}</div>
 		<span class="truncate" *ngFor='let detail of button.details; let last = last;'>
                     <span class="h4 m-t-5" [innerHTML]="detail.text"></span><small [hidden]="last">&nbsp;&bull;&nbsp;</small></span>

@@ -92,6 +92,7 @@ export class List extends PageElement implements IList {
                 }
                 // page button
                 button.setPage(item["page"] != null ? item["page"] : this.page);
+                button.initModel();
                 this.buttons.push(button);
             }
             if (this.handler != null) {

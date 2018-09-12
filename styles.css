@@ -272,7 +272,6 @@ textarea[readonly-with-required] {
     }
 }
 
-
 /* replacement css for "metro-bootstrap" specific styles (e.g. tiles) */
 /* Source: https://github.com/TalksLab/metro-bootstrap/blob/master/dist/css/metro-bootstrap.css */
 /* general styles */
@@ -308,116 +307,7 @@ h3, .h3, h4, .h4, h5, .h5 {
 .tile-button:hover {
     opacity: 1;
 }
-
-/* tile colors */
-.tile.tile-blue {
-    background-color: #2e8bcc;
-}
-.tile.tile-green {
+.search-tile {
     background-color: #339933;
-}
-.tile.tile-red {
-    background-color: #e51400;
-}
-.tile.tile-yellow {
-    background-color: #ffc40d;
-}
-.tile.tile-orange {
-    background-color: #f39c12;
-}
-.tile.tile-pink {
-    background-color: #e671b8;
-}
-.tile.tile-purple {
-    background-color: #7b4f9d;
-}
-.tile.tile-lime {
-    background-color: #8cbf26;
-}
-.tile.tile-magenta {
-    background-color: #ff0097;
-}
-.tile.tile-teal {
-    background-color: #00aba9;
-}
-.tile.tile-turquoise {
-    background-color: #1abc9c;
-}
-.tile.tile-green-sea {
-    background-color: #16a085;
-}
-.tile.tile-emerald {
-    background-color: #2ecc71;
-}
-.tile.tile-nephritis {
-    background-color: #27ae60;
-}
-.tile.tile-peter-river {
-    background-color: #3498db;
-}
-.tile.tile-belize-hole {
-    background-color: #2980b9;
-}
-.tile.tile-amethyst {
-    background-color: #9b59b6;
-}
-.tile.tile-wisteria {
-    background-color: #8e44ad;
-}
-.tile.tile-wet-asphalt {
-    background-color: #34495e;
-}
-.tile.tile-midnight-blue {
-    background-color: #2c3e50;
-}
-.tile.tile-sun-flower {
-    background-color: #f1c40f;
-}
-.tile.tile-carrot {
-    background-color: #e67e22;
-}
-.tile.tile-pumpkin {
-    background-color: #d35400;
-}
-.tile.tile-alizarin {
-    background-color: #e74c3c;
-}
-.tile.tile-pomegranate {
-    background-color: #c0392b;
-}
-.tile.tile-clouds {
-    background-color: #ecf0f1;
-    color: #34495e;
-}
-.tile.tile-clouds h1,
-.tile.tile-clouds h2,
-.tile.tile-clouds h3,
-.tile.tile-clouds h4,
-.tile.tile-clouds h5,
-.tile.tile-clouds h6 {
-    color: #34495e;
-}
-.tile.tile-clouds .tile-label {
-    color: #34495e;
-}
-.tile.tile-silver {
-    background-color: #bdc3c7;
-}
-.tile.tile-concrete {
-    background-color: #95a5a6;
-}
-.tile.tile-asbestos {
-    background-color: #7f8c8d;
-}
-.tile.tile-info {
-    background-color: #3498db;
-}
-.tile.tile-danger {
-    background-color: #e74c3c;
-}
-.tile.tile-warning {
-    background-color: #f1c40f;
-}
-.tile.tile-success {
-    background-color: #2ecc71;
+    color: white;
 }
