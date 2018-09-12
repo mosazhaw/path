@@ -4,9 +4,9 @@ import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
 import {Input, Output, Component} from "@angular/core";
 import {TranslationService} from "../../../service/translation.service";
-import {KeyUtility} from "../../../key-utility";
+import {KeyUtility} from "../../../utility/key-utility";
 import {ButtonDetail} from "./button-detail";
-import {StringUtility} from "../../../string-utility";
+import {StringUtility} from "../../../utility/string-utility";
 
 @Component({
     selector: 'path-button',

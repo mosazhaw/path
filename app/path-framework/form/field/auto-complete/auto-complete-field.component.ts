@@ -8,7 +8,7 @@ import {TranslationService} from "../../../service/translation.service";
 import {PathService} from "../../../service/path.service";
 import {Form} from "../../form.component";
 import {FormFunction} from "../../form-function";
-import {KeyUtility} from "../../../key-utility";
+import {KeyUtility} from "../../../utility/key-utility";
 
 @Component({
     selector: 'path-autocomplete',

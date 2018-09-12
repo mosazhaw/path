@@ -3,7 +3,7 @@ import {PathService} from "../../../service/path.service";
 import {Component, Input, Output} from "@angular/core";
 import {Key, PageElement} from "../page-element";
 import {TranslationService} from "../../../service/translation.service";
-import {KeyUtility} from "../../../key-utility";
+import {KeyUtility} from "../../../utility/key-utility";
 import {Button} from "../button/button.component";
 import {LinkButton} from "../button/link-button.component";
 import {FocusUtility} from "../../../form/focus-utility";

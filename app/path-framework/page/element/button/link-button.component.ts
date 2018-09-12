@@ -3,7 +3,7 @@ import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
 import {Component, Input, Output} from "@angular/core";
 import {TranslationService} from "../../../service/translation.service";
-import {KeyUtility} from "../../../key-utility";
+import {KeyUtility} from "../../../utility/key-utility";
 
 @Component({
     selector: 'path-link-button',

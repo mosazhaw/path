@@ -3,7 +3,7 @@ import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 import {Output, Input, Component} from "@angular/core";
-import {KeyUtility} from "../../../key-utility";
+import {KeyUtility} from "../../../utility/key-utility";
 
 @Component({
     selector: 'path-page-delete-button',

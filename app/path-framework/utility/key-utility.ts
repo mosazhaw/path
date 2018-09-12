@@ -1,4 +1,4 @@
-import {IPageElement, IKey} from "./pathinterface";
+import {IPageElement, IKey} from "../pathinterface";
 
 export class KeyUtility {
 
