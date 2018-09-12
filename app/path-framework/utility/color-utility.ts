@@ -42,6 +42,12 @@ export class ColorUtility {
         if (StringUtility.isEmpty(backgroundColor)) {
             return "black";
         }
+        // support css variables
+        if (backgroundColor.startsWith("var(")) {
+            let varName:string = backgroundColor.replace("var(","");
+            varName = varName.replace(")","");
+            backgroundColor = window.getComputedStyle(document.body).getPropertyValue(varName);
+        }
         backgroundColor = backgroundColor.trim();
 
         // https://stackoverflow.com/questions/12043187/how-to-check-if-hex-color-is-too-black
@@ -53,7 +59,7 @@ export class ColorUtility {
 
         let luma = 0.2126 * r + 0.7152 * g + 0.0722 * b; // per ITU-R BT.709
 
-        if (luma > 200) {
+        if (luma > 199) {
             // pick a different colour
             return "black";
         }

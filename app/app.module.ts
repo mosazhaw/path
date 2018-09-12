@@ -27,10 +27,11 @@ import {ListComponent} from "./path-framework/page/element/list/list.component";
 import {CustomDirective} from "./path-framework/page/element/custom/custom.directive";
 import {CustomContainerComponent} from "./path-framework/page/element/custom/custom-container.component";
 import {ElementListComponent} from "./path-framework/page/element/element-list/element-list.component";
+import {SafePipe} from "./path-framework/utility/safe-pipe";
 
 @NgModule({
     imports:      [BrowserModule, HttpModule, FormsModule, CommonModule, BsDatepickerModule.forRoot(), TooltipModule.forRoot()],
-    declarations: [DraggableDirective, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent, ButtonComponent, PageLabelComponent, ListComponent, CustomDirective, CustomContainerComponent, ElementListComponent],
+    declarations: [DraggableDirective, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent, ButtonComponent, PageLabelComponent, ListComponent, CustomDirective, CustomContainerComponent, ElementListComponent, SafePipe],
     exports:      [DraggableDirective, BrowserModule, HttpModule, FormsModule, CommonModule, BsDatepickerModule, TooltipModule, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent, ButtonComponent, PageLabelComponent, ListComponent, CustomDirective, CustomContainerComponent, ElementListComponent],
 })
 export class AppModule {
