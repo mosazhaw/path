@@ -58,6 +58,7 @@ export class List extends PageElement implements IList {
             let oldButtons = this.buttons;
             this.buttons = [];
             for (let item of data) {
+                // create button or find existing button
                 let itemKey:Key = new Key(item["key"]["key"], item["key"]["name"]);
                 let button:Button = this.findButton(itemKey, oldButtons);
                 if (button == null) {
@@ -67,10 +68,11 @@ export class List extends PageElement implements IList {
                     } else if (item["type"] == "linkButton") {
                         button = new LinkButton(this.app, this.pathService, this.translationService);
                     }
+                    button.setKey(itemKey);
+                    button.parentPageElement = this.parentPageElement;
+                    button.listElement = true;
                 }
                 // build button from json
-                button.parentPageElement = this.parentPageElement;
-                button.listElement = true;
                 if (item["icon"] == null) {
                     item["icon"] = this.icon;
                 }
@@ -85,18 +87,16 @@ export class List extends PageElement implements IList {
                     item.form["form"] = this.form;
                     item.form["handler"] = this.formHandler;
                 }
+                // special default width (2 instead of 1) for buttons in list
+                if (item["width"] == null) {
+                    item["width"] = this.width;
+                }
                 button.fromJson(item);
 
-                // special defaults for list buttons
-                button.setKey(itemKey);
+                // special values for list buttons
                 button.handler = this._buttonHandler;
                 button.name = item.name; // no translation
                 button.tooltip = item.tooltip; // no translation
-                //button.url = KeyUtility.translateUrl(item["url"] != null ? item["url"] : button.url, null, false, button);
-                // special default width (2 instead of 1) for buttons in list
-                if (item["width"] == null) {
-                    button.width = this.width;
-                }
                 this.buttons.push(button);
             }
             if (this.handler != null) {
@@ -320,7 +320,7 @@ export class List extends PageElement implements IList {
         }
         if (modelElement["url"] != null) {
             let urlString:string = modelElement["url"];
-            this.url = KeyUtility.translateUrl(urlString, null, false, this.parentPageElement);
+            this.url = KeyUtility.translateUrl(urlString, null, false, this);
         }
         if (modelElement["limit"] != null) {
             this.limit = modelElement["limit"];

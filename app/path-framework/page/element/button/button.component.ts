@@ -192,7 +192,7 @@ export class Button extends path.PageElement implements path.IButton {
             this.key = this.parentPageElement.key;
         }
         this.name = this.translationService.getText(modelElement["name"]);
-        this.url = KeyUtility.translateUrl(modelElement["url"], null, false, this.parentPageElement);
+        this.url = KeyUtility.translateUrl(modelElement["url"], null, false, this);
         if (modelElement["tooltip"] != null) {
             this.tooltip = this.translationService.getText(modelElement["tooltip"]);
         }
