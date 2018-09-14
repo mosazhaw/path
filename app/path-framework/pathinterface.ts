@@ -62,8 +62,6 @@ export interface IFormBean {
 }
 
 export interface IButton extends IPageElement {
-    setColor(color:string);
-    getColor() : string;
     setIcon(icon:string);
     setForm(form:string);
     setKey(key:IKey);

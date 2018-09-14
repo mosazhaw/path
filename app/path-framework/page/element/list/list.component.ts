@@ -71,6 +71,20 @@ export class List extends PageElement implements IList {
                 // build button from json
                 button.parentPageElement = this.parentPageElement;
                 button.listElement = true;
+                if (item["icon"] == null) {
+                    item["icon"] = this.icon;
+                }
+                if (item["color"] == null) {
+                    item["color"] = this.color;
+                }
+                if (item["page"] == null) {
+                    item["page"] = this.page;
+                }
+                if ((item["form"] == null  || item["form"]["form"] == null) && this.form != null) {
+                    item["form"] = {};
+                    item.form["form"] = this.form;
+                    item.form["handler"] = this.formHandler;
+                }
                 button.fromJson(item);
 
                 // special defaults for list buttons
@@ -78,21 +92,11 @@ export class List extends PageElement implements IList {
                 button.handler = this._buttonHandler;
                 button.name = item.name; // no translation
                 button.tooltip = item.tooltip; // no translation
-                button.url = KeyUtility.translateUrl(item["url"] != null ? item["url"] : button.url, null, false, button);
-                button.setIcon(item["icon"] != null ? item["icon"] : (button.icon == null ? this.icon : button.icon));
-                button.setColor(item["color"] != null ? item["color"] : (button.color == null ? this.color : button.color));
+                //button.url = KeyUtility.translateUrl(item["url"] != null ? item["url"] : button.url, null, false, button);
                 // special default width (2 instead of 1) for buttons in list
                 if (item["width"] == null) {
                     button.width = this.width;
                 }
-                // form button
-                if ((item["form"] == null || item["form"]["form"] == null) && this.form != null) {
-                    button.setForm(this.form);
-                    button.setFormHandler(this.formHandler);
-                }
-                // page button
-                button.setPage(item["page"] != null ? item["page"] : this.page);
-                button.initModel();
                 this.buttons.push(button);
             }
             if (this.handler != null) {

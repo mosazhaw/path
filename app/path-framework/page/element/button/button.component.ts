@@ -21,14 +21,12 @@ export class ButtonComponent {
 
 export class Button extends path.PageElement implements path.IButton {
     private _icon:string;
-    private _color:string;
+    private _cssStyle:Object;
+    private _cssClass:string;
+    private _cssButtonTarget:boolean;
     private _handler:path.IButtonHandler;
     private _details:path.ButtonDetail[] = [];
     private _tooltip:string;
-
-    private _htmlHasButtonTarget:boolean = true;
-    private _cssBackgroundColor:string = "blue";
-    private _cssColor:string = "black";
 
     // TODO refactor prototype stuff
     private _url:string;
@@ -61,14 +59,6 @@ export class Button extends path.PageElement implements path.IButton {
             this.app.setCurrentForm(this._form, this.key, this._formHandler, this);
             return;
         }
-    }
-
-    public setColor(color:string) {
-        this.color = color;
-    }
-
-    public getColor() {
-        return this.color;
     }
 
     public setIcon(icon:string) {
@@ -107,12 +97,16 @@ export class Button extends path.PageElement implements path.IButton {
         this._icon = value;
     }
 
-    get color():string {
-        return this._color;
+    get cssStyle(): Object {
+        return this._cssStyle;
     }
 
-    set color(value:string) {
-        this._color = value;
+    get cssClass(): string {
+        return this._cssClass;
+    }
+
+    get cssButtonTarget(): boolean {
+        return this._cssButtonTarget;
     }
 
     get handler():path.IButtonHandler {
@@ -171,46 +165,24 @@ export class Button extends path.PageElement implements path.IButton {
         this._tooltip = value;
     }
 
-    get htmlHasButtonTarget(): boolean {
-        return this._htmlHasButtonTarget;
-    }
-
-    get cssBackgroundColor(): string {
-        return this._cssBackgroundColor;
-    }
-
-    get cssColor(): string {
-        return this._cssColor;
-    }
-
-    public initModel() {
-        // button target
-        this._htmlHasButtonTarget = true;
-        if (this.type == "button") {
-            if (StringUtility.isEmpty(this.form) && StringUtility.isEmpty(this.page) && StringUtility.isEmpty(this.url)) {
-                this._htmlHasButtonTarget = false;
-            }
-        }
-
-        // background color
-        let cssColorCode:string = ColorUtility.getColorByName(this.color);
-        if (StringUtility.isEmpty(cssColorCode)) {
-            // custom color from model
-            cssColorCode = this.color;
-        }
-        this._cssBackgroundColor = cssColorCode;
-
-        // text color
-        this._cssColor = ColorUtility.getReadableTextColor(this._cssBackgroundColor);
-    }
-
     public fromJson(modelElement) {
         super.fromJson(modelElement);
 
         // general attributes
         this.type = "button";
         this.setIcon(modelElement["icon"]);
-        this.setColor(modelElement["color"]);
+        if (modelElement["color"] != null) {
+            let color = modelElement["color"];
+            if (typeof color === 'object') {
+                this._cssStyle = color;
+            } else if (typeof color === 'string') {
+                if (ColorUtility.isPathDefaultColor(color)) {
+                    this._cssClass = 'tile-' + color;
+                } else {
+                    this._cssClass = color;
+                }
+            }
+        }
         if (modelElement["form"] != null) {
             this.setForm(modelElement["form"]["form"]);
             this.setFormHandler(modelElement["form"]["handler"]);
@@ -233,6 +205,12 @@ export class Button extends path.PageElement implements path.IButton {
                 this.details.push(bd);
             }
         }
-        this.initModel();
+        // button target
+        this._cssButtonTarget = true;
+        if (this.type == "button") {
+            if (StringUtility.isEmpty(this.form) && StringUtility.isEmpty(this.page) && StringUtility.isEmpty(this.url)) {
+                this._cssButtonTarget = false;
+            }
+        }
     }
 }
