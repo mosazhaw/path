@@ -307,10 +307,6 @@ h3, .h3, h4, .h4, h5, .h5 {
 .tile-button:hover {
     opacity: 1;
 }
-.search-tile {
-    background-color: #339933;
-    color: white;
-}
 
 /* predefined tile colors */
 .tile.tile-blue {
