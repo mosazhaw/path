@@ -73,6 +73,7 @@ export class List extends PageElement implements IList {
                     button.listElement = true;
                 }
                 // build button from json
+                // use list defaults if button does not specify model
                 if (item["icon"] == null) {
                     item["icon"] = this.icon;
                 }
