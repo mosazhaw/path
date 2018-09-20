@@ -26,6 +26,9 @@ export class ListComponent {
 export class List extends PageElement implements IList {
     private _buttons:Button[] = [];
     private _search:boolean;
+    private _limit:number;
+    private _searchRequired:boolean;
+    private _searchRequest:boolean;
     private _searchLabel:string;
     private _searchInputLabel:string;
     private _searchText:string;
@@ -39,7 +42,6 @@ export class List extends PageElement implements IList {
     private _page:string;
     private _mockData:any;
     private _url:string;
-    private _limit:number;
 
     constructor(app:IPathApp, private pathService:PathService, private translationService:TranslationService) {
         super(app);
@@ -147,11 +149,11 @@ export class List extends PageElement implements IList {
         this._searchLabel = this.translationService.getText("Search");
         if (this._searchText && this._searchText == "*") {
             this.refresh(null);
-        } else if (this.limit) {
+        } else if (this.searchRequest) {
             // call server to filter data
-            if (!this._searchText) {
+            if (!this._searchText && this.searchRequired) {
                 this._buttons = [];
-            } else if (this._searchText == "*") {
+            } else if (this._searchText == "*" || (!this._searchText && !this.searchRequired)) {
                 this.refresh(null);
             } else if (this._searchText && this._searchText.length >= 2) {
                 this.refresh(this._searchText);
@@ -291,6 +293,14 @@ export class List extends PageElement implements IList {
         this._limit = value;
     }
 
+    get searchRequired(): boolean {
+        return this._searchRequired;
+    }
+
+    get searchRequest(): boolean {
+        return this._searchRequest;
+    }
+
     get searchText(): string {
         return this._searchText;
     }
@@ -299,6 +309,15 @@ export class List extends PageElement implements IList {
         super.fromJson(modelElement);
         if (modelElement["search"] != null) {
             this.search = modelElement["search"];
+        }
+        if (modelElement["searchRequired"] != null) {
+            this._searchRequired = modelElement["searchRequired"];
+        }
+        if (modelElement["searchRequest"] != null) {
+            this._searchRequest = modelElement["searchRequest"];
+        }
+        if (modelElement["limit"] != null) {
+            this.limit = modelElement["limit"];
         }
         if (modelElement["color"] != null) {
             this.color = modelElement["color"];
@@ -323,9 +342,6 @@ export class List extends PageElement implements IList {
             let urlString:string = modelElement["url"];
             this.url = KeyUtility.translateUrl(urlString, null, false, this);
         }
-        if (modelElement["limit"] != null) {
-            this.limit = modelElement["limit"];
-        }
         // override from PageElement
         if (modelElement["width"] != null) {
             this.width = modelElement["width"];
@@ -333,7 +349,7 @@ export class List extends PageElement implements IList {
             this.width = 2; // special default for list
         }
         // delay for search field
-        let debounceTime:number = this.limit ? 300 : 30;
+        let debounceTime:number = this.searchRequest ? 300 : 30;
         this._searchTextChanged
             .debounceTime(debounceTime) // wait after the last event before emitting last event
             .subscribe(_searchText => {

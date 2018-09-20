@@ -265,7 +265,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                 if (modelElement["buttonhandler"] != null) {
                     dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                 }
-                if (!dynamicList.limit) {
+                if (!dynamicList.searchRequired) {
                     dynamicList.refresh(null);
                 }
                 element = dynamicList;
