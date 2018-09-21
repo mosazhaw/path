@@ -319,6 +319,16 @@ export class List extends PageElement implements IList {
         if (modelElement["limit"] != null) {
             this.limit = modelElement["limit"];
         }
+        // verify valid search combinations
+        if (!this.search && this.searchRequired) {
+            console.log("Configuration Error: search=false requires searchRequired=false")
+            this._searchRequired = false;
+        }
+        if (this.searchRequired && !this.searchRequest) {
+            console.log("Configuration Error: searchRequired=true requires searchRequest=true")
+            this._searchRequest = true;
+        }
+        // other model attributes
         if (modelElement["color"] != null) {
             this.color = modelElement["color"];
         }
