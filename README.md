@@ -113,10 +113,10 @@ Path displays one or more page elements on a single web page. Each element has s
 | type | The page element type (e.g. button, list, ...) |
 | newRow | Force the layout manager to place the page element on a new row (false by default) |
 
-##### Page Buttons
+##### Buttons and Tiles
 
-Page buttons may either open another page, open a form or open an url.
-This example links to another page:
+Buttons may either open another page, open a form or open an url. A tile cannot be clicked.
+This example links to another page (type <b>button</b>):
 
 ```json
 {
@@ -128,10 +128,42 @@ This example links to another page:
 }
 ```
 
+Another example opens a path form (type <b>button</b>):
+
+```json
+{
+    "type": "button",
+    "name": "Contacts",
+    "form": {
+        "form": "ContactForm"
+    }
+}
+```
+
+And this example opens an external link (type <b>linkButton</b>):
+
+```json
+{
+    "type": "linkButton",
+    "name": "www.google.com",
+    "icon": "fa-google",
+    "url": "http://www.google.com"
+}
+```
+
 ##### Lists
 
 A list is a dynamic set of buttons, either loaded from an url or from mock data.
 This example loads data from an url, and each button opens a form.
+
+| Property | Description |
+| ------------- | ------------- |
+| icon  | the default icon for list buttons, may be overwritten by server data |
+| color  | the default color for list buttons, may be overwritten by server data |
+| search  | show (true) or hide (false) search box |
+| searchRequired  | automatically load results when the list is displayed (false) or require the user to search (true, recommended for large lists) |
+| searchRequest  | search filter is client side (false) or create new request with every search (true) |
+| limit | limit the number of results, parameter may be used by server service |
 
 ```json
 {
@@ -155,6 +187,17 @@ A label may contain text or HTML snippets. A label is always shown with full pag
 {
     "type": "pageLabel",
     "value": "Example <b>Text</b>"
+}
+```
+
+##### Element List
+
+The URL returns a dynamic set of path elements in JSON format. Use this element to dynamically create page elements.
+
+```json
+{
+    "type": "elementList",
+    "url": "/example/elements"
 }
 ```
 
