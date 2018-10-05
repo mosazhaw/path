@@ -2,7 +2,7 @@ import {Component, Input, Output} from '@angular/core';
 import {ValueField} from "../value-field";
 import {IForm} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
-import * as moment from "moment";
+import * as momentImported from 'moment'; const moment = momentImported;
 
 @Component({
     selector: 'path-datefield',

@@ -5,7 +5,7 @@
 			<h5 class="modal-title">{{form.title}}</h5>
 		</div>
 		<div class="modal-body">
-			<div *ngFor='let row of form.rows;' class="row" [hidden]="!row.isVisible()">
+			<div *ngFor='let row of form._rows;' class="row" [hidden]="!row.isVisible()">
 				<div *ngFor='let field of row.fields;' [hidden]="!field.visible">
 					<div *ngIf="field.type == 'text'">
 						<path-textfield [field]="field"></path-textfield>

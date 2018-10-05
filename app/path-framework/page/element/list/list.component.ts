@@ -8,6 +8,7 @@ import {Button} from "../button/button.component";
 import {LinkButton} from "../button/link-button.component";
 import {FocusUtility} from "../../../form/focus-utility";
 import {Subject} from "rxjs/Subject";
+import {debounceTime} from "rxjs/operators";
 
 @Component({
     selector: 'path-list',
@@ -359,9 +360,9 @@ export class List extends PageElement implements IList {
             this.width = 2; // special default for list
         }
         // delay for search field
-        let debounceTime:number = this.searchRequest ? 300 : 30;
-        this._searchTextChanged
-            .debounceTime(debounceTime) // wait after the last event before emitting last event
+        let debounceTimeValue:number = this.searchRequest ? 300 : 30;
+        this._searchTextChanged.pipe(
+            debounceTime(debounceTimeValue)) // wait after the last event before emitting last event
             .subscribe(_searchText => {
                 this._searchText = _searchText;
                 this.filter();

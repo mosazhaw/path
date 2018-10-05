@@ -79,14 +79,6 @@ export class Form implements IForm {
         this._fields = value;
     }
 
-    get rows():FormRow[] {
-        return this._rows;
-    }
-
-    set rows(value:FormRow[]) {
-        this._rows = value;
-    }
-
     get handler():IFormHandler {
         return this._handler;
     }
@@ -255,7 +247,7 @@ class FormRow {
     }
 }
 
-enum BorderStyle {
+export enum BorderStyle {
     // TODO use string enum after TS upgrade, then use enum in template (with member)
     None = 1,
     Shadow = 2

@@ -1,6 +1,7 @@
 {
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "path-framework",
-  "version": "0.3.17",
+  "version": "0.3.18",
   "description": "Path Application Framework",
   "keywords": [
     "GUI",
@@ -26,19 +27,29 @@
     "npm": "5.4.2"
   },
   "scripts": {
+    "build": "ng-packagr -p package.json",
     "test": "karma start karma.conf.js",
     "tsc": "tsc"
   },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "app/app.module.ts"
+    },
+    "whitelistedNonPeerDependencies": [
+      "."
+    ]
+  },
   "dependencies": {
-    "@angular/common": "4.4.7",
-    "@angular/compiler": "4.4.7",
-    "@angular/core": "4.4.7",
-    "@angular/forms": "4.4.7",
-    "@angular/http": "4.4.7",
-    "@angular/platform-browser": "4.4.7",
-    "@angular/platform-browser-dynamic": "4.4.7",
-    "@angular/router": "4.4.7",
-    "@angular/upgrade": "4.4.7",
+    "@angular/common": "5.2.0",
+    "@angular/compiler": "5.2.0",
+    "@angular/compiler-cli": "5.2.0",
+    "@angular/core": "5.2.0",
+    "@angular/forms": "5.2.0",
+    "@angular/http": "5.2.0",
+    "@angular/platform-browser": "5.2.0",
+    "@angular/platform-browser-dynamic": "5.2.0",
+    "@angular/router": "5.2.0",
+    "@angular/upgrade": "5.2.0",
     "@types/node": "7.0.8",
     "bootstrap": "3.3.7",
     "core-js": "2.4.1",
@@ -57,8 +68,9 @@
     "karma-browserify": "5.0.5",
     "karma-chrome-launcher": "1.0.1",
     "karma-jasmine": "1.0.2",
+    "ng-packagr": "2.4.2",
     "requirejs": "2.2.0",
-    "typescript": "2.1.5",
+    "typescript": "2.4.2",
     "watchify": "3.7.0"
   }
 }
