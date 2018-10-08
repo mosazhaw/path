@@ -306,6 +306,26 @@ export class List extends PageElement implements IList {
         return this._searchText;
     }
 
+    get searchLabel(): string {
+        return this._searchLabel;
+    }
+
+    get searchInputLabel(): string {
+        return this._searchInputLabel;
+    }
+
+    set searchLabel(value: string) {
+        this._searchLabel = value;
+    }
+
+    set searchInputLabel(value: string) {
+        this._searchInputLabel = value;
+    }
+
+    set searchText(value: string) {
+        this._searchText = value;
+    }
+
     public fromJson(modelElement) {
         super.fromJson(modelElement);
         if (modelElement["search"] != null) {

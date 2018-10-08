@@ -16,14 +16,34 @@ export class DateFieldComponent {
 
 export class DateField extends ValueField<Date> {
 
-    private datePickerValue:Date;
-    private initialValueSet:boolean = false;
-    private datePickerInitialValue:Date;
-    private dateInputFormat:string;
+    private _datePickerValue:Date;
+    private _initialValueSet:boolean = false;
+    private _datePickerInitialValue:Date;
+    private _dateInputFormat:string;
 
     constructor(protected form:IForm, protected translationService:TranslationService) {
         super(form, translationService);
-        this.dateInputFormat = translationService.getUserDateFormat();
+        this._dateInputFormat = translationService.getUserDateFormat();
+    }
+
+    get datePickerValue(): Date {
+        return this._datePickerValue;
+    }
+
+    set datePickerValue(value: Date) {
+        this._datePickerValue = value;
+    }
+
+    get initialValueSet(): boolean {
+        return this._initialValueSet;
+    }
+
+    get datePickerInitialValue(): Date {
+        return this._datePickerInitialValue;
+    }
+
+    get dateInputFormat(): string {
+        return this._dateInputFormat;
     }
 
     public setValue(value:Date) {
@@ -43,11 +63,11 @@ export class DateField extends ValueField<Date> {
             value = null;
         }
         // update ui
-        this.datePickerValue = value;
+        this._datePickerValue = value;
         super.setValue(value);
-        if (!this.initialValueSet) {
-            this.datePickerInitialValue = value;
-            this.initialValueSet = true;
+        if (!this._initialValueSet) {
+            this._datePickerInitialValue = value;
+            this._initialValueSet = true;
         }
     }
 
@@ -58,7 +78,7 @@ export class DateField extends ValueField<Date> {
         }
         if (value != null) {
             this.setValue(value);
-            this.datePickerValue = this.value;
+            this._datePickerValue = this.value;
         }
     }
 }

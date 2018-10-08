@@ -222,7 +222,7 @@ export class Form implements IForm {
     }
 }
 
-class FormRow {
+export class FormRow {
     private _fields:FormField[] = [];
 
     get fields():FormField[] {

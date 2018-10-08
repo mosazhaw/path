@@ -23,7 +23,7 @@ export class CheckboxGroupField extends ValueField<any[]> {
         this._entries = value;
     }
 
-    public doClick(key:any) {
+    public doClick() {
         let values:any[] = [];
         for (let entry of this.entries) {
             if (entry.selected) {
