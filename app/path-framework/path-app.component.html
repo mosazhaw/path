@@ -66,7 +66,7 @@
 
 <!-- Page Elements -->
 <div class="container-fluid">
-    <div *ngFor='let pageRow of _pageStack[_pageStack.length - 1].rows' class="row" [hidden]="!pageRow.isVisible()">
+    <div *ngFor='let pageRow of _pageStack[_pageStack.length - 1]._rows' class="row" [hidden]="!pageRow.isVisible()">
         <div class="col-md-12">
         <span *ngFor='let pageElement of pageRow.pageElements'>
 	    <span *ngIf="pageElement.visible">

@@ -35,14 +35,6 @@ export class Page {
         this._id = value;
     }
 
-    get rows(): PageRow[] {
-        return this._rows;
-    }
-
-    set rows(value: PageRow[]) {
-        this._rows = value;
-    }
-
     public updateRows() {
         let rows:PageRow[] = [];
 

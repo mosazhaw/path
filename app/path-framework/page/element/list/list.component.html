@@ -1,11 +1,11 @@
 <!-- default search (tablet, desktop) -->
 <div *ngIf='list.search' class="thumbnail {{(list.width > 1 ? 'tile-wide' : '')}} tile tile-button tile-medium hide-on-mobile tile-green">
 	<div class="input-group input-group-sm">
-		<div class="h3">{{list._searchLabel}}</div>
+		<div class="h3">{{list.searchLabel}}</div>
 		<i class="fa fa-2x fa-search"></i>
 		<div class="h5"></div>
         <form>
-		    <input name="search" [(ngModel)]="list._searchText" placeholder="{{list._searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' class="form-control" type="text">
+		    <input name="search" [(ngModel)]="list.searchText" placeholder="{{list.searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' class="form-control" type="text">
         </form>
 	</div>
 </div>
@@ -13,7 +13,7 @@
 <div *ngIf='list.search' class="search-mobile hide-on-desktop">
     <div class="row">
         <label for="search-mobile">Search</label>
-        <input id="search-mobile" name="search" [(ngModel)]="list._searchText" placeholder="{{list._searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' class="form-control" type="text">
+        <input id="search-mobile" name="search" [(ngModel)]="list.searchText" placeholder="{{list.searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' class="form-control" type="text">
     </div>
 </div>
 <!-- list -->

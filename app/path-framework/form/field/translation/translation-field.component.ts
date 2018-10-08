@@ -23,10 +23,10 @@ export class TranslationField extends ValueField<any[][]> {
 
     private languages:string[];
     private userLanguage:string = sessionStorage.getItem("languageCode") == null ? "en" : sessionStorage.getItem("languageCode");
-    private defaultTranslation:string = null;
-    private translationLabel:string;
+    private _defaultTranslation:string = null;
+    private _translationLabel:string;
 
-    constructor(form:Form, private pathService:PathService, protected translationService:TranslationService) {
+    constructor(form:Form, private pathService:PathService, public translationService:TranslationService) {
         super(form, translationService);
         this.languages = translationService.getSupportedLanguageCodes();
         let initialList:any[][] = [];
@@ -34,12 +34,24 @@ export class TranslationField extends ValueField<any[][]> {
             initialList.push([{"key": language}, ""]);
         }
         this.setValue(initialList);
-        this.translationLabel = translationService.getText("Translation");
+        this._translationLabel = translationService.getText("Translation");
+    }
+
+    get defaultTranslation(): string {
+        return this._defaultTranslation;
+    }
+
+    set defaultTranslation(value: string) {
+        this._defaultTranslation = value;
+    }
+
+    get translationLabel(): string {
+        return this._translationLabel;
     }
 
     public setValue(value:any[][]) {
         super.setValue(value);
-        this.defaultTranslation = this.getDefaultTranslation();
+        this._defaultTranslation = this.getDefaultTranslation();
     }
 
     private getDefaultTranslation():string {

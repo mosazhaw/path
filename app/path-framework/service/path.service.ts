@@ -1,6 +1,6 @@
 import {Injectable, Inject} from "@angular/core";
-import {Headers, Response, Http} from "@angular/http";
 import {TranslationService} from "./translation.service";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 @Injectable()
 export class PathService {
@@ -8,7 +8,7 @@ export class PathService {
     private _requestCount:number;
     private _alertStack:Alert[] = [];
 
-    constructor(@Inject(Http) private http:Http, private translationService:TranslationService) {
+    constructor(@Inject(HttpClient) private http:HttpClient, private translationService:TranslationService) {
         this._requestCount = 0;
     }
 
@@ -32,7 +32,7 @@ export class PathService {
         if (url != null) {
             // fetch json data from url
             this.showLoading();
-            this.http.get(server + url, { headers: this.appendHeaders() })
+            this.http.get(server + url, { observe: 'response', headers: this.appendHeaders() })
                 .subscribe(
                     data => {
                         let jwt = data.headers.get("Authorization");
@@ -41,7 +41,7 @@ export class PathService {
                         } else {
                             sessionStorage.removeItem("pathAppId");
                         }
-                        processor(data.json());
+                        processor(data.body);
                     },
                     err => {
                         if (errorHandler == null) {
@@ -65,12 +65,12 @@ export class PathService {
     serverPost(server:string, url:string, data:any, processor:(data:any) => any, errorHandler:(err:any) => any) {
         if (url != null) {
             this.showLoading();
-            this.http.post(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
+            this.http.post(server + url, data, { observe: 'response', headers: this.appendHeaders() })
                 .subscribe(
                     data => {
                         sessionStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
-                        processor(data.json());
+                        processor(data.body);
                     },
                     err => {
                         if (errorHandler == null) {
@@ -94,12 +94,12 @@ export class PathService {
     serverPut(server:string, url:string, data:any, processor:(data:any) => any) {
         if (url != null) {
             this.showLoading();
-            this.http.put(server + url, JSON.stringify(data), { headers: this.appendHeaders() })
+            this.http.put(server + url, data, { observe: 'response', headers: this.appendHeaders() })
                 .subscribe(
                     data => {
                         sessionStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
-                        processor(data.json());
+                        processor(data.body);
                     },
                     err => {
                         this.handleError(err);
@@ -119,12 +119,12 @@ export class PathService {
     serverDelete(server:string, url:string, processor:(data:any) => any) {
         if (url != null) {
             this.showLoading();
-            this.http.delete(server + url, { headers: this.appendHeaders() })
+            this.http.delete(server + url, { observe: 'response', headers: this.appendHeaders() })
                 .subscribe(
                     data => {
                         sessionStorage.setItem("pathAppId", data.headers.get("Authorization"));
                         console.log(data);
-                        processor(data.json());
+                        processor(data.body);
                     },
                     err => {
                         this.handleError(err);
@@ -159,8 +159,8 @@ export class PathService {
         }
     }
 
-    private appendHeaders():Headers {
-        let headers = new Headers();
+    private appendHeaders(): HttpHeaders {
+        let headers = new HttpHeaders();
         headers.append("Content-Type", "application/json");
         let jwt:string = sessionStorage.getItem("pathAppId");
         if (jwt != null) {

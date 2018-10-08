@@ -59,6 +59,10 @@ export class Form implements IForm {
         this._key = value;
     }
 
+    get rows(): FormRow[] {
+        return this._rows;
+    }
+
     get title():string {
         return this._title;
     }
@@ -77,14 +81,6 @@ export class Form implements IForm {
 
     set fields(value:FormField[]) {
         this._fields = value;
-    }
-
-    get rows():FormRow[] {
-        return this._rows;
-    }
-
-    set rows(value:FormRow[]) {
-        this._rows = value;
     }
 
     get handler():IFormHandler {
@@ -226,7 +222,7 @@ export class Form implements IForm {
     }
 }
 
-class FormRow {
+export class FormRow {
     private _fields:FormField[] = [];
 
     get fields():FormField[] {
@@ -255,7 +251,7 @@ class FormRow {
     }
 }
 
-enum BorderStyle {
+export enum BorderStyle {
     // TODO use string enum after TS upgrade, then use enum in template (with member)
     None = 1,
     Shadow = 2

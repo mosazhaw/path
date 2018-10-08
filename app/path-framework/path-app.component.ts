@@ -1,10 +1,8 @@
 import * as path from './path';
 import * as autocomplete from './form/field/auto-complete/auto-complete-field.component';
-import 'rxjs/add/operator/map';
 import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
 import {ValueField} from "./form/field/value-field";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
-import {LabelField} from "./form/field/label/label-field.component";
 import {IPageElement} from "./pathinterface";
 import {RadioGroupField} from "./form/field/radio/radio-group.component";
 import {Key} from "./page/element/page-element";

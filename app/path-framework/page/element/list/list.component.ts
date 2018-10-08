@@ -7,7 +7,8 @@ import {KeyUtility} from "../../../utility/key-utility";
 import {Button} from "../button/button.component";
 import {LinkButton} from "../button/link-button.component";
 import {FocusUtility} from "../../../form/focus-utility";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
+import {debounceTime} from "rxjs/operators";
 
 @Component({
     selector: 'path-list',
@@ -305,6 +306,26 @@ export class List extends PageElement implements IList {
         return this._searchText;
     }
 
+    get searchLabel(): string {
+        return this._searchLabel;
+    }
+
+    get searchInputLabel(): string {
+        return this._searchInputLabel;
+    }
+
+    set searchLabel(value: string) {
+        this._searchLabel = value;
+    }
+
+    set searchInputLabel(value: string) {
+        this._searchInputLabel = value;
+    }
+
+    set searchText(value: string) {
+        this._searchText = value;
+    }
+
     public fromJson(modelElement) {
         super.fromJson(modelElement);
         if (modelElement["search"] != null) {
@@ -359,9 +380,9 @@ export class List extends PageElement implements IList {
             this.width = 2; // special default for list
         }
         // delay for search field
-        let debounceTime:number = this.searchRequest ? 300 : 30;
-        this._searchTextChanged
-            .debounceTime(debounceTime) // wait after the last event before emitting last event
+        let debounceTimeValue:number = this.searchRequest ? 300 : 30;
+        this._searchTextChanged.pipe(
+            debounceTime(debounceTimeValue)) // wait after the last event before emitting last event
             .subscribe(_searchText => {
                 this._searchText = _searchText;
                 this.filter();
