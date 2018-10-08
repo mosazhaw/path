@@ -142,18 +142,18 @@ export class PathService {
 
     private handleError(err) {
         this.hideLoading();
-        if (err.status == 405 && err.json()["messageKey"] != null) {
-            alert(this.translationService.getText(err.json()["messageKey"], err.json()["parameters"]));
+        if (err.status == 405 && err.error["messageKey"] != null) {
+            alert(this.translationService.getText(err.error["messageKey"], err.error["parameters"]));
         }
         else if (err.status == 401) {
             alert("Unauthorized. Please login again.");
             location.reload();
         } else {
             // general error
-            if (err.json()["error"] == null && err.json()["title"] == null) {
-                this.addAlert("Unkwown Error", "Please check server and internet connection: " + err.json());
+            if (err.error["error"] == null && err.error["title"] == null) {
+                this.addAlert("Unkwown Error", "Please check server and internet connection: " + err.error);
             } else {
-                this.addAlert(err.json()["title"], err.json()["error"]);
+                this.addAlert(err.error["title"], err.error["error"]);
             }
             console.error(err)
         }
@@ -161,10 +161,10 @@ export class PathService {
 
     private appendHeaders(): HttpHeaders {
         let headers = new HttpHeaders();
-        headers.append("Content-Type", "application/json");
+        headers = headers.append("Content-Type", "application/json");
         let jwt:string = sessionStorage.getItem("pathAppId");
         if (jwt != null) {
-            headers.append("Authorization", jwt);
+            headers = headers.append("Authorization", jwt);
         }
         return headers;
     }
