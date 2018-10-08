@@ -28,7 +28,7 @@ export class ChartElement extends PageElement {
     private _url:string;
     private _data:any;
 
-    constructor(app:IPathApp, private pathService:PathService, private translationService:TranslationService) {
+    constructor(app:IPathApp, private pathService:PathService, public translationService:TranslationService) {
         super(app);
     }
 

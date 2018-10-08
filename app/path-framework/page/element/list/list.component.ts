@@ -7,7 +7,7 @@ import {KeyUtility} from "../../../utility/key-utility";
 import {Button} from "../button/button.component";
 import {LinkButton} from "../button/link-button.component";
 import {FocusUtility} from "../../../form/focus-utility";
-import {Subject} from "rxjs/Subject";
+import {Subject} from "rxjs";
 import {debounceTime} from "rxjs/operators";
 
 @Component({

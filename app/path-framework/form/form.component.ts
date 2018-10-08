@@ -59,6 +59,10 @@ export class Form implements IForm {
         this._key = value;
     }
 
+    get rows(): FormRow[] {
+        return this._rows;
+    }
+
     get title():string {
         return this._title;
     }
