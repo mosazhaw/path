@@ -1,5 +1,7 @@
 # Path Framework
 
+[![Build Status](https://travis-ci.org/innovad/path.svg?branch=master)](https://travis-ci.org/innovad/path)
+
 Path Framework is developed at <a href="https://www.zhaw.ch/de/sml/institute-zentren/iwi/">Zurich University of Applied Sciences</a> (ZHAW) and used in several projects. It is an application framework and rendering engine that renders your application based on a technology-independent GUI model stored in JSON format. Either mock data or any backend REST service (node, Java) may be used with Path Framework.
 <br>
 <br>
