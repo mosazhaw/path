@@ -3,66 +3,63 @@ import {Injectable} from "@angular/core";
 @Injectable()
 export class TranslationService {
 
-    private translationMap:Map<string, string> = this.createTranslationMap(this.getTranslations());
+    private translationMap: Map<string, string> = this.createTranslationMap(this.getTranslations());
 
     public getText(key: any, ...parameters: string[]): string {
         if (key == null) {
             return "";
-        }
-        else if (key[this.getUserLanguage()] != null) {
+        } else if (key[this.getUserLanguage()] != null) {
             return key[this.getUserLanguage()];
-        }
-        else if (key["default"] != null) {
+        } else if (key["default"] != null) {
             return key["default"];
-        }
-        else if (this.getTranslation(key) == null) {
+        } else if (this.getTranslation(key) == null) {
             return "{" + key + "}";
         }
         let result: string = this.getTranslation(key);
-        let k: number = 0;
-        for (let parameter of parameters) {
+        let k = 0;
+        for (const parameter of parameters) {
             result = result.replace("{" + k + "}", parameter);
             k++;
         }
         return result;
     }
 
-    protected getTranslation(key:string) : string {
+    protected getTranslation(key: string): string {
         return this.translationMap.get(key);
     }
 
-    protected createTranslationMap(data:any) : Map<string, string> {
-        let result:Map<string,string> = new Map<string, string>();
-        for (var item in data) {
+    protected createTranslationMap(data: any): Map<string, string> {
+        const result: Map<string, string> = new Map<string, string>();
+        for (const item of Object.keys(data)) {
             result.set(item, data[item]);
         }
         return result;
     }
 
-    protected getUserLanguage() : string {
-        let languageCode: string = sessionStorage.getItem("languageCode");
+    protected getUserLanguage(): string {
+        const languageCode: string = sessionStorage.getItem("languageCode");
         if (languageCode) {
             return languageCode;
         }
-        return 'en';
+        return "en";
     }
 
     public getUserDateFormat() {
         // TODO: add locale support
-        if (this.getUserLanguage() == 'de') {
-            return 'DD.MM.YYYY';
+        if (this.getUserLanguage() === "de") {
+            return "DD.MM.YYYY";
         }
-        return 'MM/DD/YYYY';
+        return "MM/DD/YYYY";
     }
 
-    public getSupportedLanguageCodes() : string[] {
+    public getSupportedLanguageCodes(): string[] {
         return ["de", "en"];
     }
 
     private getTranslations() {
-        let languageCode: string = this.getUserLanguage();
+        const languageCode: string = this.getUserLanguage();
 
-        if (languageCode == "de") {
+        if (languageCode === "de") {
             return {
                 "Back": "Zurück",
                 "Cancel": "Abbrechen",
@@ -84,7 +81,7 @@ export class TranslationService {
                 "Translations": "Übersetzungen",
                 "de": "Deutsch",
                 "en": "Englisch",
-            }
+            };
         } else {
             return {
                 "Back": "Back",

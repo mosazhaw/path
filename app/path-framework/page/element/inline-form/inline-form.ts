@@ -2,19 +2,21 @@ import {Form} from "../../../form/form.component";
 import {PageElement, Key} from "../page-element";
 import {PathService} from "../../../service/path.service";
 import {Inject} from "@angular/core";
-import * as path from '../../../path';
+import * as path from "../../../path";
 import {FormFunction} from "../../../form/form-function";
 import {TranslationService} from "../../../service/translation.service";
 import {FocusUtility} from "../../../form/focus-utility";
 
 export class InlineForm extends PageElement {
-    private _formId:string;
-    private _url:string;
-    private _form:Form;
-    private _currentKey:Key;
-    private _page:string;
+    private _formId: string;
+    private _url: string;
+    private _form: Form;
+    private _currentKey: Key;
+    private _page: string;
 
-    constructor(app:path.IPathApp, @Inject(PathService) private pathService:PathService, @Inject(TranslationService) private translationService:TranslationService) {
+    constructor(app: path.IPathApp,
+                @Inject(PathService) private pathService: PathService,
+                @Inject(TranslationService) private translationService: TranslationService) {
         super(app);
     }
 
@@ -64,20 +66,20 @@ export class InlineForm extends PageElement {
         }
     }
 
-    public loadNextForm(forward:boolean) {
+    public loadNextForm(forward: boolean) {
         if (this._url != null) {
-            this.pathService.serverGet(this.app.getBackendUrl(), this.url, (data:any) => {
+            this.pathService.serverGet(this.app.getBackendUrl(), this.url, (data: any) => {
                 if (data != null && data["length"] != null && data.length > 0) {
-                    let foundNewKey:boolean = false;
+                    let foundNewKey = false;
                     if (this._currentKey == null) {
-                        let firstItem = data[0];
+                        const firstItem = data[0];
                         this._currentKey = new Key(firstItem["key"]["key"], firstItem["key"]["name"]);
                         foundNewKey = true;
                     } else {
-                        let counter:number = 0;
-                        for (let item of data) {
+                        let counter = 0;
+                        for (const item of data) {
                             counter++;
-                            if (item["key"]["key"] == this._currentKey.getKey() && item["key"]["name"] == this._currentKey.getName()) {
+                            if (item["key"]["key"] === this._currentKey.getKey() && item["key"]["name"] === this._currentKey.getName()) {
                                 if (forward && data.length > counter) {
                                     this._currentKey = new Key(data[counter]["key"]["key"], data[counter]["key"]["name"]);
                                     foundNewKey = true;
@@ -91,14 +93,14 @@ export class InlineForm extends PageElement {
                     }
                     if (this._currentKey != null && foundNewKey) {
                         console.log("load next inline form with key " + this._currentKey.getKey() + "/" + this._currentKey.getName());
-                        let formFunction:FormFunction = new FormFunction();
-                        formFunction.save = (data:any) => {
+                        const formFunction: FormFunction = new FormFunction();
+                        formFunction.save = (formdata: any) => {
                             this.loadNextForm(true);
                         };
                         formFunction.cancel = () => {
                             this.loadNextForm(true);
                         };
-                        formFunction.delete = (data:any) => {
+                        formFunction.delete = (formdata: any) => {
                             this.loadNextForm(false);
                         };
                         this._form = this.app.createForm(this._formId, this._currentKey, null, formFunction, this);

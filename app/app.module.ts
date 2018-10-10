@@ -1,10 +1,10 @@
-import {NgModule, ModuleWithProviders, Injector} from '@angular/core';
-import {BrowserModule} from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
-import {FormsModule} from '@angular/forms';
-import {CommonModule} from '@angular/common';
-import {FormComponent} from './path-framework/form/form.component';
-import {ChartComponent} from './path-framework/page/element/chart/chart.component';
+import {NgModule, ModuleWithProviders, Injector} from "@angular/core";
+import {BrowserModule} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
+import {FormsModule} from "@angular/forms";
+import {CommonModule} from "@angular/common";
+import {FormComponent} from "./path-framework/form/form.component";
+import {ChartComponent} from "./path-framework/page/element/chart/chart.component";
 import {AutoCompleteComponent} from "./path-framework/form/field/auto-complete/auto-complete-field.component";
 import {TextFieldComponent} from "./path-framework/form/field/text/text-field.component";
 import {DateFieldComponent} from "./path-framework/form/field/date/date-field.component";
@@ -30,9 +30,70 @@ import {CustomContainerComponent} from "./path-framework/page/element/custom/cus
 import {ElementListComponent} from "./path-framework/page/element/element-list/element-list.component";
 
 @NgModule({
-    imports:      [BrowserModule, HttpClientModule, FormsModule, CommonModule, BsDatepickerModule.forRoot(), TooltipModule.forRoot()],
-    declarations: [DraggableDirective, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent, ButtonComponent, PageLabelComponent, ListComponent, CustomDirective, CustomContainerComponent, ElementListComponent],
-    exports:      [DraggableDirective, BrowserModule, HttpClientModule, FormsModule, CommonModule, BsDatepickerModule, TooltipModule, LabelFieldComponent, FieldListFieldComponent, FormComponent, ChartComponent, AutoCompleteComponent, ProgressBarComponent, TextFieldComponent, TranslationFieldComponent, NumberFieldComponent, DateFieldComponent, RadioGroupComponent, CheckboxGroupComponent, FormFieldLabelComponent, BackButtonComponent, LinkButtonComponent, PageDeleteButtonComponent, ButtonComponent, PageLabelComponent, ListComponent, CustomDirective, CustomContainerComponent, ElementListComponent],
+    imports:      [
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        CommonModule,
+        BsDatepickerModule.forRoot(),
+        TooltipModule.forRoot()
+    ],
+    declarations: [
+        DraggableDirective,
+        LabelFieldComponent,
+        FieldListFieldComponent,
+        FormComponent,
+        ChartComponent,
+        AutoCompleteComponent,
+        ProgressBarComponent,
+        TextFieldComponent,
+        TranslationFieldComponent,
+        NumberFieldComponent,
+        DateFieldComponent,
+        RadioGroupComponent,
+        CheckboxGroupComponent,
+        FormFieldLabelComponent,
+        BackButtonComponent,
+        LinkButtonComponent,
+        PageDeleteButtonComponent,
+        ButtonComponent,
+        PageLabelComponent,
+        ListComponent,
+        CustomDirective,
+        CustomContainerComponent,
+        ElementListComponent
+    ],
+    exports:      [
+        DraggableDirective,
+        BrowserModule,
+        HttpClientModule,
+        FormsModule,
+        CommonModule,
+        BsDatepickerModule,
+        TooltipModule,
+        LabelFieldComponent,
+        FieldListFieldComponent,
+        FormComponent,
+        ChartComponent,
+        AutoCompleteComponent,
+        ProgressBarComponent,
+        TextFieldComponent,
+        TranslationFieldComponent,
+        NumberFieldComponent,
+        DateFieldComponent,
+        RadioGroupComponent,
+        CheckboxGroupComponent,
+        FormFieldLabelComponent,
+        BackButtonComponent,
+        LinkButtonComponent,
+        PageDeleteButtonComponent,
+        ButtonComponent,
+        PageLabelComponent,
+        ListComponent,
+        CustomDirective,
+        CustomContainerComponent,
+        ElementListComponent
+    ],
 })
 export class AppModule {
     static forRoot(): ModuleWithProviders {

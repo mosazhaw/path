@@ -4,12 +4,13 @@ import {CustomContainerPageElement} from "./custom-container-page-element";
 import {PageElement} from "../page-element";
 
 @Component({
-    selector: 'path-custom-container-component',
-    template: `<ng-template custom-directive></ng-template>`
+    selector: "path-custom-container-component",
+    template: `
+        <ng-template path-custom-directive></ng-template>`
 })
 
 export class CustomContainerComponent implements OnInit, OnDestroy {
-    @Input() pageElement:CustomContainerPageElement;
+    @Input() pageElement: CustomContainerPageElement;
     @ViewChild(CustomDirective) customDirective: CustomDirective;
 
     constructor(private componentFactoryResolver: ComponentFactoryResolver) {
@@ -23,18 +24,18 @@ export class CustomContainerComponent implements OnInit, OnDestroy {
     }
 
     loadComponent() {
-        let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.pageElement.typeClass);
+        const componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.pageElement.typeClass);
 
-        let viewContainerRef = this.customDirective.viewContainerRef;
+        const viewContainerRef = this.customDirective.viewContainerRef;
         viewContainerRef.clear();
 
-        let componentRef = viewContainerRef.createComponent(componentFactory);
+        const componentRef = viewContainerRef.createComponent(componentFactory);
         componentRef.instance.pageElement = this.pageElement;
     }
 }
 
 export class CustomPageElement {
-    private _pageElement:PageElement;
+    private _pageElement: PageElement;
 
     get pageElement(): PageElement {
         return this._pageElement;

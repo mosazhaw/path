@@ -1,4 +1,4 @@
-import {Component, Input, Output, ElementRef, Inject} from '@angular/core';
+import {Component, Input, Output} from "@angular/core";
 import {ValueField} from "../value-field";
 import {FormFunction} from "../../form-function";
 import {Form} from "../../form.component";
@@ -10,27 +10,27 @@ import {TranslationService} from "../../../service/translation.service";
 import {FocusUtility} from "../../focus-utility";
 
 @Component({
-    selector: 'path-translationfield',
-    templateUrl: 'translation-field.component.html'
+    selector: "path-translationfield",
+    templateUrl: "translation-field.component.html"
 })
 export class TranslationFieldComponent {
-    @Input('field')
-    @Output('field')
-    field:TranslationField;
+    @Input("field")
+    @Output("field")
+    field: TranslationField;
 }
 
 export class TranslationField extends ValueField<any[][]> {
 
-    private languages:string[];
-    private userLanguage:string = sessionStorage.getItem("languageCode") == null ? "en" : sessionStorage.getItem("languageCode");
-    private _defaultTranslation:string = null;
-    private _translationLabel:string;
+    private languages: string[];
+    private userLanguage: string = sessionStorage.getItem("languageCode") == null ? "en" : sessionStorage.getItem("languageCode");
+    private _defaultTranslation: string = null;
+    private _translationLabel: string;
 
-    constructor(form:Form, private pathService:PathService, public translationService:TranslationService) {
+    constructor(form: Form, private pathService: PathService, public translationService: TranslationService) {
         super(form, translationService);
         this.languages = translationService.getSupportedLanguageCodes();
-        let initialList:any[][] = [];
-        for (let language of this.languages) {
+        const initialList: any[][] = [];
+        for (const language of this.languages) {
             initialList.push([{"key": language}, ""]);
         }
         this.setValue(initialList);
@@ -49,15 +49,15 @@ export class TranslationField extends ValueField<any[][]> {
         return this._translationLabel;
     }
 
-    public setValue(value:any[][]) {
+    public setValue(value: any[][]) {
         super.setValue(value);
         this._defaultTranslation = this.getDefaultTranslation();
     }
 
-    private getDefaultTranslation():string {
+    private getDefaultTranslation(): string {
         if (this.value != null) {
-            for (let item of this.value) {
-                if (item[0] != null && item[0]["key"] == this.userLanguage) {
+            for (const item of this.value) {
+                if (item[0] != null && item[0]["key"] === this.userLanguage) {
                     return item[1];
                 }
             }
@@ -66,13 +66,13 @@ export class TranslationField extends ValueField<any[][]> {
     }
 
     public editTranslations() {
-        let form:Form = new Form(this.pathService, this.form.getApp());
-        let translationFields:TextField[] = [];
+        const form: Form = new Form(this.pathService, this.form.getApp());
+        const translationFields: TextField[] = [];
         form.title = this.name + " " + this.translationService.getText("Translations");
         form.formFunction = new FormFunction();
-        form.formFunction.save = (data:any) => {
-            let resultList:any[][] = [];
-            for (let field of translationFields) {
+        form.formFunction.save = (data: any) => {
+            const resultList: any[][] = [];
+            for (const field of translationFields) {
                 resultList.push([{"key": field.id}, field.value]);
             }
             this.setValue(resultList);
@@ -81,30 +81,30 @@ export class TranslationField extends ValueField<any[][]> {
         form.formFunction.cancel = () => {
             this.getForm().getApp().closeCurrentForm();
         };
-        let translations = this.value;
-        for (let key of translations) {
-                let textField:TextField = new TextField(form, this.translationService);
-                textField.type = "text";
-                textField.id = key[0]["key"];
-                textField.name = this.translationService.getText(key[0]["key"]);
-                textField.visible = true;
-                textField.newRow = true;
-                textField.width = 2;
-                textField.height = this.height;
-                textField.labelVisible = true;
-                textField.required = true;
-                textField.setValue(key[1]);
-                form.fields.push(textField);
-                translationFields.push(textField);
+        const translations = this.value;
+        for (const key of translations) {
+            const textField: TextField = new TextField(form, this.translationService);
+            textField.type = "text";
+            textField.id = key[0]["key"];
+            textField.name = this.translationService.getText(key[0]["key"]);
+            textField.visible = true;
+            textField.newRow = true;
+            textField.width = 2;
+            textField.height = this.height;
+            textField.labelVisible = true;
+            textField.required = true;
+            textField.setValue(key[1]);
+            form.fields.push(textField);
+            translationFields.push(textField);
         }
 
-        let cancelButton:CancelButton = new CancelButton(form, this.translationService);
+        const cancelButton: CancelButton = new CancelButton(form, this.translationService);
         cancelButton.type = "cancelButton";
         cancelButton.name = this.translationService.getText("Cancel");
         cancelButton.visible = true;
         form.fields.push(cancelButton);
 
-        let okButton:OkButton = new OkButton(form, this.translationService);
+        const okButton: OkButton = new OkButton(form, this.translationService);
         okButton.type = "okButton";
         okButton.name = this.translationService.getText("Ok");
         okButton.visible = true;
@@ -119,8 +119,8 @@ export class TranslationField extends ValueField<any[][]> {
 }
 
 export class TranslationEntry {
-    private _text:string;
-    private _code:string;
+    private _text: string;
+    private _code: string;
 
     get text(): string {
         return this._text;

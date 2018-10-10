@@ -36,9 +36,9 @@ export class ColorUtility {
         "danger",
         "warning",
         "success"
-    ]
+    ];
 
-    public static isPathDefaultColor(color:string) : boolean {
+    public static isPathDefaultColor(color: string): boolean {
         return this.colors.indexOf(color) > 0;
     }
 

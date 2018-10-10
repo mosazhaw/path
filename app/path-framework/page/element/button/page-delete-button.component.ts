@@ -6,13 +6,13 @@ import {Output, Input, Component} from "@angular/core";
 import {KeyUtility} from "../../../utility/key-utility";
 
 @Component({
-    selector: 'path-page-delete-button',
-    templateUrl: 'page-delete-button.component.html'
+    selector: "path-page-delete-button",
+    templateUrl: "page-delete-button.component.html"
 })
 export class PageDeleteButtonComponent {
-    @Input('button')
-    @Output('button')
-    button:PageDeleteButton;
+    @Input("button")
+    @Output("button")
+    button: PageDeleteButton;
 }
 
 export class PageDeleteButton extends Button {

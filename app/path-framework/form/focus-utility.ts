@@ -4,17 +4,17 @@ export class FocusUtility {
 
     public static focusFirstField(currentForm: IForm) {
         window.setTimeout(() => {
-            let focusDone: boolean = false;
+            let focusDone = false;
 
             let forms = <any>document.forms;
             if (currentForm != null) {
                 forms = [forms[forms.length - 1]]; // only last form on form stack
             }
-            for (let form of forms) {
-                for (let element of <any>form.elements) {
-                    if (element instanceof HTMLInputElement && (<HTMLInputElement>element).type == "text") {
-                        let input = <HTMLInputElement>element;
-                        if (input.outerHTML.indexOf('readonly-with-required') < 0) { // no focus on readonly fields
+            for (const form of forms) {
+                for (const element of <any>form.elements) {
+                    if (element instanceof HTMLInputElement && (<HTMLInputElement>element).type === "text") {
+                        const input = <HTMLInputElement>element;
+                        if (input.outerHTML.indexOf("readonly-with-required") < 0) { // no focus on readonly fields
                             input.focus();
                             focusDone = true;
                         }
@@ -25,7 +25,7 @@ export class FocusUtility {
                     break;
                 }
             }
-        }, 1)
+        }, 1);
     }
 
 }

@@ -1,4 +1,4 @@
-import {Component, ViewChild, AfterViewInit, Input, Output} from '@angular/core';
+import {Component, AfterViewInit, Input, Output} from "@angular/core";
 import {PageElement} from "../page-element";
 import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
@@ -9,33 +9,33 @@ declare var Chart: any;
 // Note: Chart would be an example for a custom path element contributed by a path user
 
 @Component({
-    selector: 'path-radar-chart',
-    templateUrl: 'chart.component.html'
+    selector: "path-radar-chart",
+    templateUrl: "chart.component.html"
 })
 export class ChartComponent implements AfterViewInit {
-    @Input('chart')
-    @Output('chart')
-    chart:ChartElement;
+    @Input("chart")
+    @Output("chart")
+    chart: ChartElement;
 
     ngAfterViewInit() {
-        this.chart.load((data:any) => {
+        this.chart.load((data: any) => {
             this.chart.data = data;
         });
     }
 }
 
 export class ChartElement extends PageElement {
-    private _url:string;
-    private _data:any;
+    private _url: string;
+    private _data: any;
 
-    constructor(app:IPathApp, private pathService:PathService, public translationService:TranslationService) {
+    constructor(app: IPathApp, private pathService: PathService, public translationService: TranslationService) {
         super(app);
     }
 
-    public load(loader:(data:any) => any) {
-        this.pathService.serverGet(this.app.getBackendUrl(), this.url, loader, (err:any) => {
+    public load(loader: (data: any) => any) {
+        this.pathService.serverGet(this.app.getBackendUrl(), this.url, loader, (err: any) => {
             console.log("error" + err);
-        })
+        });
     }
 
     get url(): string {

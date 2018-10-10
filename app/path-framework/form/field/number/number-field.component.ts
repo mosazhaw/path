@@ -1,20 +1,20 @@
-import {Component, Input, Output, ElementRef} from '@angular/core';
+import {Component, Input, Output} from "@angular/core";
 import {ValueField} from "../value-field";
 
 @Component({
-    selector: 'path-numberfield',
-    templateUrl: 'number-field.component.html'
+    selector: "path-numberfield",
+    templateUrl: "number-field.component.html"
 })
 export class NumberFieldComponent {
-    @Input('field')
-    @Output('field')
-    field:NumberField;
+    @Input("field")
+    @Output("field")
+    field: NumberField;
 }
 
 export class NumberField extends ValueField<number> {
-    private _min:number;
-    private _max:number;
-    private _digits:number;
+    private _min: number;
+    private _max: number;
+    private _digits: number;
 
     get min(): number {
         return this._min;
@@ -40,15 +40,15 @@ export class NumberField extends ValueField<number> {
         this._digits = value;
     }
 
-    public getStep():string {
+    public getStep(): string {
         if (this._digits == null) {
             return "";
-        } else if (this._digits == 0) {
+        } else if (this._digits === 0) {
             return "0";
         }
         // e.g. 3 => 0.001
-        let step:string = "0.";
-        for (let k=0; k<this._digits-1;k++) {
+        let step = "0.";
+        for (let k = 0; k < this._digits - 1; k++) {
             step = step + "0";
         }
         return step + "1";

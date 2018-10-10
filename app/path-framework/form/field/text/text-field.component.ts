@@ -1,21 +1,20 @@
-import {Component, Input, Output, ElementRef} from '@angular/core';
-import {FormFieldLabelComponent} from './../form-field-label.component';
+import {Component, Input, Output} from "@angular/core";
 import {ValueField} from "../value-field";
 
 @Component({
-    selector: 'path-textfield',
-    templateUrl: 'text-field.component.html'
+    selector: "path-textfield",
+    templateUrl: "text-field.component.html"
 })
 export class TextFieldComponent {
-    @Input('field')
-    @Output('field')
-    field:TextField;
+    @Input("field")
+    @Output("field")
+    field: TextField;
 }
 
 export class TextField extends ValueField<string> {
 
-    private _isPassword:boolean = false;
-    private _maxLength:number = 250;
+    private _isPassword = false;
+    private _maxLength = 250;
 
     get isPassword(): boolean {
         return this._isPassword;

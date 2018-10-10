@@ -1,27 +1,29 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, Input, Output} from "@angular/core";
 import {ValueField} from "../value-field";
 import {IForm} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
-import * as momentImported from 'moment'; const moment = momentImported;
+import * as momentImported from "moment";
+
+const moment = momentImported;
 
 @Component({
-    selector: 'path-datefield',
-    templateUrl: 'date-field.component.html'
+    selector: "path-datefield",
+    templateUrl: "date-field.component.html"
 })
 export class DateFieldComponent {
-    @Input('field')
-    @Output('field')
-    field:DateField;
+    @Input("field")
+    @Output("field")
+    field: DateField;
 }
 
 export class DateField extends ValueField<Date> {
 
-    private _datePickerValue:Date;
-    private _initialValueSet:boolean = false;
-    private _datePickerInitialValue:Date;
-    private _dateInputFormat:string;
+    private _datePickerValue: Date;
+    private _initialValueSet = false;
+    private _datePickerInitialValue: Date;
+    private _dateInputFormat: string;
 
-    constructor(protected form:IForm, protected translationService:TranslationService) {
+    constructor(protected form: IForm, protected translationService: TranslationService) {
         super(form, translationService);
         this._dateInputFormat = translationService.getUserDateFormat();
     }
@@ -46,20 +48,19 @@ export class DateField extends ValueField<Date> {
         return this._dateInputFormat;
     }
 
-    public setValue(value:Date) {
+    public setValue(value: Date) {
         if (typeof value === "string") {
             value = moment(value).toDate();
         }
         if (value != null && Object.prototype.toString.call(value) === "[object Date]") {
             // it is a date
-            if ( isNaN( value.getTime() ) ) {
+            if (isNaN(value.getTime())) {
                 value = null;
             } else {
                 // cut off local timezone
-                value = new Date(value.toDateString() + ' 00:00:00 GMT');
+                value = new Date(value.toDateString() + " 00:00:00 GMT");
             }
-        }
-        else {
+        } else {
             value = null;
         }
         // update ui
@@ -71,10 +72,9 @@ export class DateField extends ValueField<Date> {
         }
     }
 
-    public updateValueFromGui(value:Date) {
-        if(value != null && isNaN(value.getDate())) {
-            value == null;
-            //this.datePickerValue = null;
+    public updateValueFromGui(value: Date) {
+        if (value != null && isNaN(value.getDate())) {
+            value = null;
         }
         if (value != null) {
             this.setValue(value);

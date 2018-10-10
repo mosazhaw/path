@@ -1,5 +1,4 @@
-import {Component, Input, Output, ElementRef} from '@angular/core';
-import {FormFieldLabelComponent} from './../form-field-label.component';
+import {Component, Input, Output, ElementRef} from "@angular/core";
 import {ValueField} from "../value-field";
 import {AutoCompleteFieldEntry} from "./auto-complete-field-entry";
 import {Key} from "../../../page/element/page-element";
@@ -11,19 +10,19 @@ import {FormFunction} from "../../form-function";
 import {KeyUtility} from "../../../utility/key-utility";
 
 @Component({
-    selector: 'path-autocomplete',
+    selector: "path-autocomplete",
     host: {
-        '(document:click)': 'handleClick($event)',
+        "(document:click)": "handleClick($event)",
     },
-    templateUrl: 'auto-complete-field.component.html'
+    templateUrl: "auto-complete-field.component.html"
 })
 export class AutoCompleteComponent {
-    @Input('field')
-    @Output('field')
-    field:AutoCompleteField;
+    @Input("field")
+    @Output("field")
+    field: AutoCompleteField;
     private _elementRef;
 
-    constructor(myElement:ElementRef) {
+    constructor(myElement: ElementRef) {
         this._elementRef = myElement;
     }
 
@@ -50,17 +49,17 @@ export class AutoCompleteComponent {
 }
 
 export class AutoCompleteField extends ValueField<string> {
-    private _query:AutoCompleteFieldEntry;
-    private _filteredList:AutoCompleteFieldEntry[] = [];
-    private _data:AutoCompleteFieldEntry[] = [];
-    private _dataLoaded:boolean = false;
-    private _wordSearchEnabled:boolean;
-    private _valueSet:boolean = false;
-    private _detailForm:string;
-    private _keyType:string;
-    private _url:string;
+    private _query: AutoCompleteFieldEntry;
+    private _filteredList: AutoCompleteFieldEntry[] = [];
+    private _data: AutoCompleteFieldEntry[] = [];
+    private _dataLoaded = false;
+    private _wordSearchEnabled: boolean;
+    private _valueSet = false;
+    private _detailForm: string;
+    private _keyType: string;
+    private _url: string;
 
-    constructor(protected form:IForm, protected translationService:TranslationService, protected pathService:PathService) {
+    constructor(protected form: IForm, protected translationService: TranslationService, protected pathService: PathService) {
         super(form, translationService);
     }
 
@@ -68,36 +67,35 @@ export class AutoCompleteField extends ValueField<string> {
         return super.isReadonly() && this.isInitialValueSet;
     }
 
-    filter(query:string, event) {
+    filter(query: string, event) {
         // do not filter readonly fields
         if (this.isReadonly()) {
             return;
         }
         // do not filter on simple tab focus change
-        if (event.keyCode == 9) {
+        if (event.keyCode === 9) {
             return;
         }
 
         this._valueSet = false;
-        if (query !== null && query.length > 0 && query.replace(/\s/g, '').length == 0) {
+        if (query !== null && query.length > 0 && query.replace(/\s/g, "").length === 0) {
             /* space: all */
             this._filteredList = this._data.filter(function (entry) {
                 return entry.active;
             }.bind(this));
-        }
-        else if (query !== null && query !== "") {
+        } else if (query !== null && query !== "") {
             /* search term: filter */
             query = query.trim();
             this._filteredList = this._data.filter(function (entry) {
                 if (!entry.active) {
                     return false;
                 }
-                let entryName:string = entry.text;
+                const entryName: string = entry.text;
                 if (entryName.toLowerCase().indexOf(query.toLowerCase()) > -1) {
                     return true;
                 } else if (this._wordSearchEnabled) {
-                    let tokens:string[] = entryName.toLowerCase().split(" ");
-                    for (let token of tokens) {
+                    const tokens: string[] = entryName.toLowerCase().split(" ");
+                    for (const token of tokens) {
                         if (token.startsWith(query.toLowerCase())) {
                             return true;
                         }
@@ -112,25 +110,25 @@ export class AutoCompleteField extends ValueField<string> {
         this._filteredList.sort();
     }
 
-    select(item:AutoCompleteFieldEntry) {
+    select(item: AutoCompleteFieldEntry) {
         this.setValue(item.key);
     }
 
     focusLost() {
         window.setTimeout(() => {
-        if (!this.valueSet) {
-            // force angular to update query.text value
-            if (this.value == null) {
-                this.resetDisplay(null);
-            } else {
-                this.resetDisplay(this.value["key"]);
+            if (!this.valueSet) {
+                // force angular to update query.text value
+                if (this.value == null) {
+                    this.resetDisplay(null);
+                } else {
+                    this.resetDisplay(this.value["key"]);
+                }
             }
-        }
         }, 1);
     }
 
-    public setValue(value:string) {
-        let oldValue:string = this.value;
+    public setValue(value: string) {
+        const oldValue: string = this.value;
 
         // accept key values and complex objects
         if (value != null && value["key"] != null) {
@@ -143,11 +141,11 @@ export class AutoCompleteField extends ValueField<string> {
         this.query = null;
         this.resetDisplay(value);
         // reload dependent autocomplete fields
-        if (oldValue != this.value) {
-            for (let field of this.getForm().getFields()) {
+        if (oldValue !== this.value) {
+            for (const field of this.getForm().getFields()) {
                 if (field instanceof AutoCompleteField) {
-                    if ((<AutoCompleteField>field).id != this.id) {
-                        let autoCompleteField = <AutoCompleteField>field;
+                    if ((<AutoCompleteField>field).id !== this.id) {
+                        const autoCompleteField = <AutoCompleteField>field;
                         if (KeyUtility.variableExists(autoCompleteField.url, this.id)) {
                             autoCompleteField.load();
                         }
@@ -159,18 +157,18 @@ export class AutoCompleteField extends ValueField<string> {
 
     public load() {
         this.dataLoaded = false;
-        let url:string = this.url;
-        for (let field of this.getForm().getFields()) {
+        let url: string = this.url;
+        for (const field of this.getForm().getFields()) {
             if (field instanceof ValueField) {
-                let valueField = <ValueField<any>>field;
+                const valueField = <ValueField<any>>field;
                 url = KeyUtility.replaceVariable(url, valueField.id, valueField.value);
                 console.log(url);
             }
         }
-        this.pathService.serverGet(this.getForm().getApp().getBackendUrl(), url, (data:any) => {
-            let dynamicData = [];
-            for (let item of data) {
-                let entry = new AutoCompleteFieldEntry();
+        this.pathService.serverGet(this.getForm().getApp().getBackendUrl(), url, (data: any) => {
+            const dynamicData = [];
+            for (const item of data) {
+                const entry = new AutoCompleteFieldEntry();
                 entry.key = item["key"]["key"];
                 entry.text = item["name"];
                 if (item["active"] != null) {
@@ -195,10 +193,10 @@ export class AutoCompleteField extends ValueField<string> {
     }
 
     public showDetailForm() {
-        let form:Form = null;
+        let form: Form = null;
 
-        let formFunction = new FormFunction();
-        formFunction.save = (data:any) => {
+        const formFunction = new FormFunction();
+        formFunction.save = (data: any) => {
             this.getForm().getApp().closeCurrentForm();
             if (data["key"] != null) {
                 this.setValue(data["key"]);
@@ -208,7 +206,7 @@ export class AutoCompleteField extends ValueField<string> {
         formFunction.cancel = () => {
             this.getForm().getApp().closeCurrentForm();
         };
-        formFunction.delete = (data:any) => {
+        formFunction.delete = (data: any) => {
             this.getForm().getApp().closeCurrentForm();
             this.setValue(null);
             this.load();
@@ -226,13 +224,15 @@ export class AutoCompleteField extends ValueField<string> {
         this._filteredList = [];
     }
 
-    private resetDisplay(value:string) {
+    private resetDisplay(value: string) {
         // must wait with display update until data is loaded
-        let displaySetter = () => {
-            let keyValue = value;
+        const displaySetter = () => {
+            const keyValue = value;
             if (!this.dataLoaded) {
                 console.log("waiting...");
-                window.setTimeout(function() { displaySetter() }, 250);
+                window.setTimeout(function () {
+                    displaySetter();
+                }, 250);
             } else {
                 if (keyValue == null) {
                     window.setTimeout(() => {
@@ -240,41 +240,43 @@ export class AutoCompleteField extends ValueField<string> {
                         if (this.value == null) {
                             this.query = new AutoCompleteFieldEntry();
                         }
-                    },1);
+                    }, 1);
                 } else {
-                    for (let item of this._data) {
-                        if (item.key == keyValue) {
-                            window.setTimeout(() => { this.query = item; },1);
+                    for (const item of this._data) {
+                        if (item.key === keyValue) {
+                            window.setTimeout(() => {
+                                this.query = item;
+                            }, 1);
                             break;
                         }
                     }
                 }
             }
-        }
+        };
         displaySetter();
     }
 
-    get query():AutoCompleteFieldEntry {
+    get query(): AutoCompleteFieldEntry {
         return this._query;
     }
 
-    set query(value:AutoCompleteFieldEntry) {
+    set query(value: AutoCompleteFieldEntry) {
         this._query = value;
     }
 
-    set data(value:AutoCompleteFieldEntry[]) {
+    set data(value: AutoCompleteFieldEntry[]) {
         this._data = value;
     }
 
-    get filteredList():AutoCompleteFieldEntry[] {
+    get filteredList(): AutoCompleteFieldEntry[] {
         return this._filteredList;
     }
 
-    set wordSearchEnabled(value:boolean) {
+    set wordSearchEnabled(value: boolean) {
         this._wordSearchEnabled = value;
     }
 
-    get valueSet():boolean {
+    get valueSet(): boolean {
         return this._valueSet;
     }
 

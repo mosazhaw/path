@@ -1,6 +1,6 @@
 import {IListHandler, IList, IButtonHandler, IKey, IPathApp, IButton} from "../../../pathinterface";
 import {PathService} from "../../../service/path.service";
-import {Component, Input, Output} from "@angular/core";
+import {AfterViewInit, Component, Input, Output} from "@angular/core";
 import {Key, PageElement} from "../page-element";
 import {TranslationService} from "../../../service/translation.service";
 import {KeyUtility} from "../../../utility/key-utility";
@@ -11,13 +11,13 @@ import {Subject} from "rxjs";
 import {debounceTime} from "rxjs/operators";
 
 @Component({
-    selector: 'path-list',
-    templateUrl: 'list.component.html'
+    selector: "path-list",
+    templateUrl: "list.component.html"
 })
-export class ListComponent {
-    @Input('list')
-    @Output('list')
-    list:List;
+export class ListComponent implements AfterViewInit {
+    @Input("list")
+    @Output("list")
+    list: List;
 
     ngAfterViewInit() {
         FocusUtility.focusFirstField(null);
@@ -25,50 +25,50 @@ export class ListComponent {
 }
 
 export class List extends PageElement implements IList {
-    private _buttons:Button[] = [];
-    private _search:boolean;
-    private _limit:number;
-    private _searchRequired:boolean;
-    private _searchRequest:boolean;
-    private _searchLabel:string;
-    private _searchInputLabel:string;
-    private _searchText:string;
+    private _buttons: Button[] = [];
+    private _search: boolean;
+    private _limit: number;
+    private _searchRequired: boolean;
+    private _searchRequest: boolean;
+    private _searchLabel: string;
+    private _searchInputLabel: string;
+    private _searchText: string;
     private _searchTextChanged: Subject<string> = new Subject<string>();
-    private _handler:IListHandler;
-    private _buttonHandler:IButtonHandler;
-    private _icon:string;
-    private _color:string;
-    private _form:string;
-    private _formHandler:string;
-    private _page:string;
-    private _mockData:any;
-    private _url:string;
+    private _handler: IListHandler;
+    private _buttonHandler: IButtonHandler;
+    private _icon: string;
+    private _color: string;
+    private _form: string;
+    private _formHandler: string;
+    private _page: string;
+    private _mockData: any;
+    private _url: string;
 
-    constructor(app:IPathApp, private pathService:PathService, private translationService:TranslationService) {
+    constructor(app: IPathApp, private pathService: PathService, private translationService: TranslationService) {
         super(app);
         this._searchLabel = translationService.getText("Search");
         this._searchInputLabel = translationService.getText("SearchInputLabel");
     }
 
-    public getContent():IButton[] {
+    public getContent(): IButton[] {
         return this.buttons;
     }
 
-    public refresh(searchText:string) {
+    public refresh(searchText: string) {
         // callback function for data
         console.log("refresh list");
-        let dataHandler = (data:any) => {
-            let oldButtons = this.buttons;
+        const dataHandler = (data: any) => {
+            const oldButtons = this.buttons;
             this.buttons = [];
-            for (let item of data) {
+            for (const item of data) {
                 // create button or find existing button
-                let itemKey:Key = new Key(item["key"]["key"], item["key"]["name"]);
-                let button:Button = this.findButton(itemKey, oldButtons);
+                const itemKey: Key = new Key(item["key"]["key"], item["key"]["name"]);
+                let button: Button = this.findButton(itemKey, oldButtons);
                 if (button == null) {
                     // create button
-                    if (item["type"] == null || item["type"] == "button") {
+                    if (item["type"] == null || item["type"] === "button") {
                         button = new Button(this.app, this.pathService, this.translationService);
-                    } else if (item["type"] == "linkButton") {
+                    } else if (item["type"] === "linkButton") {
                         button = new LinkButton(this.app, this.pathService, this.translationService);
                     }
                     button.setKey(itemKey);
@@ -86,7 +86,7 @@ export class List extends PageElement implements IList {
                 if (item["page"] == null) {
                     item["page"] = this.page;
                 }
-                if ((item["form"] == null  || item["form"]["form"] == null) && this.form != null) {
+                if ((item["form"] == null || item["form"]["form"] == null) && this.form != null) {
                     item["form"] = {};
                     item.form["form"] = this.form;
                     item.form["handler"] = this.formHandler;
@@ -109,21 +109,21 @@ export class List extends PageElement implements IList {
             if (this.limit) {
                 this.setSearchResultsCountMessage();
             }
-        }
-        let listHandlerDoLoad = (list:IList) => (data:any) => dataHandler(data);
+        };
+        const listHandlerDoLoad = (list: IList) => (data: any) => dataHandler(data);
         // backend data
         if (this._url != null) {
-            let urlParameters = '';
+            let urlParameters = "";
             if (searchText || this.limit) {
-                urlParameters = '?search=' + (searchText == null ? "" : encodeURI(searchText)) + "&limit=" + this.limit;
+                urlParameters = "?search=" + (searchText == null ? "" : encodeURI(searchText)) + "&limit=" + this.limit;
             }
             this.pathService.serverGet(this.app.getBackendUrl(), this.url + urlParameters, listHandlerDoLoad(this), null);
         }
         // mock data
         if (this._mockData != null) {
-            let count:number = 0;
+            let count = 0;
             // fake a key for mock data
-            for (let mock of this.mockData) {
+            for (const mock of this.mockData) {
                 count++;
                 if (mock["key"] == null) {
                     mock["key"] = count;
@@ -133,9 +133,9 @@ export class List extends PageElement implements IList {
         }
     }
 
-    private findButton(key:IKey, buttons:Button[]):Button {
-        for (let button of buttons) {
-            if (button.key.getKey() == key.getKey() && button.key.getName() == key.getName()) {
+    private findButton(key: IKey, buttons: Button[]): Button {
+        for (const button of buttons) {
+            if (button.key.getKey() === key.getKey() && button.key.getName() === key.getName()) {
                 return button;
             }
         }
@@ -148,13 +148,13 @@ export class List extends PageElement implements IList {
 
     public filter() {
         this._searchLabel = this.translationService.getText("Search");
-        if (this._searchText && this._searchText == "*") {
+        if (this._searchText && this._searchText === "*") {
             this.refresh(null);
         } else if (this.searchRequest) {
             // call server to filter data
             if (!this._searchText && this.searchRequired) {
                 this._buttons = [];
-            } else if (this._searchText == "*" || (!this._searchText && !this.searchRequired)) {
+            } else if (this._searchText === "*" || (!this._searchText && !this.searchRequired)) {
                 this.refresh(null);
             } else if (this._searchText && this._searchText.length >= 2) {
                 this.refresh(this._searchText);
@@ -164,14 +164,14 @@ export class List extends PageElement implements IList {
             }
         } else {
             // filter loaded data only
-            let searchText:string = this._searchText ? this._searchText.toLowerCase() : "";
-            for (let button of this._buttons) {
+            const searchText: string = this._searchText ? this._searchText.toLowerCase() : "";
+            for (const button of this._buttons) {
                 button.visible = true;
                 if (searchText.length > 0) {
-                    let newVisible:boolean = button.name.toLowerCase().indexOf(searchText) != -1;
+                    let newVisible: boolean = button.name.toLowerCase().indexOf(searchText) !== -1;
                     if (!newVisible) {
-                        for (let detail of button.details) {
-                            if (detail.text.toLowerCase().indexOf(searchText) != -1) {
+                        for (const detail of button.details) {
+                            if (detail.text.toLowerCase().indexOf(searchText) !== -1) {
                                 newVisible = true;
                                 break;
                             }
@@ -185,12 +185,13 @@ export class List extends PageElement implements IList {
     }
 
     private setSearchResultsCountMessage() {
-        this._searchLabel = this.visibleItemSize() + " " + (this.visibleItemSize() == 1 ? this.translationService.getText("Result") : this.translationService.getText("Results"));
+        this._searchLabel = this.visibleItemSize() + " " +
+            (this.visibleItemSize() === 1 ? this.translationService.getText("Result") : this.translationService.getText("Results"));
     }
 
-    private visibleItemSize() : number {
-        let result:number = 0;
-        for (let button of this.buttons) {
+    private visibleItemSize(): number {
+        let result = 0;
+        for (const button of this.buttons) {
             if (button.visible) {
                 result++;
             }
@@ -198,87 +199,87 @@ export class List extends PageElement implements IList {
         return result;
     }
 
-    get buttons():Button[] {
+    get buttons(): Button[] {
         return this._buttons;
     }
 
-    set buttons(value:Button[]) {
+    set buttons(value: Button[]) {
         this._buttons = value;
     }
 
-    get search():boolean {
+    get search(): boolean {
         return this._search;
     }
 
-    set search(value:boolean) {
+    set search(value: boolean) {
         this._search = value;
     }
 
-    get handler():IListHandler {
+    get handler(): IListHandler {
         return this._handler;
     }
 
-    set handler(value:IListHandler) {
+    set handler(value: IListHandler) {
         this._handler = value;
     }
 
-    get buttonHandler():IButtonHandler {
+    get buttonHandler(): IButtonHandler {
         return this._buttonHandler;
     }
 
-    set buttonHandler(value:IButtonHandler) {
+    set buttonHandler(value: IButtonHandler) {
         this._buttonHandler = value;
     }
 
-    get icon():string {
+    get icon(): string {
         return this._icon;
     }
 
-    set icon(value:string) {
+    set icon(value: string) {
         this._icon = value;
     }
 
-    get color():string {
+    get color(): string {
         return this._color;
     }
 
-    set color(value:string) {
+    set color(value: string) {
         this._color = value;
     }
 
-    get form():string {
+    get form(): string {
         return this._form;
     }
 
-    set form(value:string) {
+    set form(value: string) {
         this._form = value;
     }
 
-    get formHandler():string {
+    get formHandler(): string {
         return this._formHandler;
     }
 
-    set formHandler(value:string) {
+    set formHandler(value: string) {
         this._formHandler = value;
     }
 
-    get page():string {
+    get page(): string {
         return this._page;
     }
 
-    set page(value:string) {
+    set page(value: string) {
         this._page = value;
     }
 
-    get mockData():any {
+    get mockData(): any {
         return this._mockData;
     }
 
-    set mockData(value:any) {
+    set mockData(value: any) {
         this._mockData = value;
     }
 
-    get url() : string {
+    get url(): string {
         return this._url;
     }
 
@@ -342,11 +343,11 @@ export class List extends PageElement implements IList {
         }
         // verify valid search combinations
         if (!this.search && this.searchRequired) {
-            console.log("Configuration Error: search=false requires searchRequired=false")
+            console.log("Configuration Error: search=false requires searchRequired=false");
             this._searchRequired = false;
         }
         if (this.searchRequired && !this.searchRequest) {
-            console.log("Configuration Error: searchRequired=true requires searchRequest=true")
+            console.log("Configuration Error: searchRequired=true requires searchRequest=true");
             this._searchRequest = true;
         }
         // other model attributes
@@ -370,7 +371,7 @@ export class List extends PageElement implements IList {
             this.name = this.translationService.getText(modelElement["name"]);
         }
         if (modelElement["url"] != null) {
-            let urlString:string = modelElement["url"];
+            const urlString: string = modelElement["url"];
             this.url = KeyUtility.translateUrl(urlString, null, false, this);
         }
         // override from PageElement
@@ -380,7 +381,7 @@ export class List extends PageElement implements IList {
             this.width = 2; // special default for list
         }
         // delay for search field
-        let debounceTimeValue:number = this.searchRequest ? 300 : 30;
+        const debounceTimeValue: number = this.searchRequest ? 300 : 30;
         this._searchTextChanged.pipe(
             debounceTime(debounceTimeValue)) // wait after the last event before emitting last event
             .subscribe(_searchText => {

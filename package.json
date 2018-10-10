@@ -27,8 +27,9 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "build": "ng-packagr -p package.json",
+    "build": "npm run lint && ng-packagr -p package.json",
     "test": "karma start karma.conf.js",
+    "lint": "tslint --project .",
     "tsc": "tsc"
   },
   "ngPackage": {
@@ -70,6 +71,8 @@
     "karma-jasmine": "1.0.2",
     "ng-packagr": "4.2.0",
     "requirejs": "2.2.0",
+    "tslint": "5.11.0",
+    "tslint-angular": "1.1.2",
     "typescript": "2.7.2",
     "watchify": "3.7.0"
   }

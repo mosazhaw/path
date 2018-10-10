@@ -1,4 +1,4 @@
-import {Button} from './button.component';
+import {Button} from "./button.component";
 import {IPathApp} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 import {PathService} from "../../../service/path.service";
@@ -7,19 +7,19 @@ import {StringUtility} from "../../../utility/string-utility";
 import {ColorUtility} from "../../../utility/color-utility";
 
 @Component({
-    selector: 'path-back-button',
-    templateUrl: 'back-button.component.html'
+    selector: "path-back-button",
+    templateUrl: "back-button.component.html"
 })
 export class BackButtonComponent {
-    @Input('button')
-    @Output('button')
-    button:BackButton;
+    @Input("button")
+    @Output("button")
+    button: BackButton;
 }
 
 export class BackButton extends Button {
 
-    constructor(app:IPathApp, pathService:PathService, translationService:TranslationService) {
-        super(app, pathService,translationService);
+    constructor(app: IPathApp, pathService: PathService, translationService: TranslationService) {
+        super(app, pathService, translationService);
     }
 
     public onClick() {

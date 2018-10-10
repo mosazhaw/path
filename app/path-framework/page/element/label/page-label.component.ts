@@ -5,20 +5,20 @@ import {Component, Input, Output} from "@angular/core";
 import {PageElement} from "../page-element";
 
 @Component({
-    selector: 'path-page-label',
-    templateUrl: 'page-label.component.html'
+    selector: "path-page-label",
+    templateUrl: "page-label.component.html"
 })
 export class PageLabelComponent {
-    @Input('pageLabel')
-    @Output('pageLabel')
-    pageLabel:PageLabel;
+    @Input("pageLabel")
+    @Output("pageLabel")
+    pageLabel: PageLabel;
 }
 
 export class PageLabel extends PageElement {
 
-    private _value:string;
+    private _value: string;
 
-    constructor(app:IPathApp, pathService:PathService, translationService:TranslationService) {
+    constructor(app: IPathApp, pathService: PathService, translationService: TranslationService) {
         super(app);
     }
 

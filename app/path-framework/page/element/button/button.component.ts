@@ -1,4 +1,4 @@
-import * as path from '../../../path';
+import * as path from "../../../path";
 import {Key} from "../page-element";
 import {PathService} from "../../../service/path.service";
 import {IPathApp} from "../../../pathinterface";
@@ -10,31 +10,31 @@ import {StringUtility} from "../../../utility/string-utility";
 import {ColorUtility} from "../../../utility/color-utility";
 
 @Component({
-    selector: 'path-button',
-    templateUrl: 'button.component.html'
+    selector: "path-button",
+    templateUrl: "button.component.html"
 })
 export class ButtonComponent {
-    @Input('button')
-    @Output('button')
-    button:Button;
+    @Input("button")
+    @Output("button")
+    button: Button;
 }
 
 export class Button extends path.PageElement implements path.IButton {
-    private _icon:string;
-    private _cssStyle:Object;
-    private _cssClass:string;
-    private _cssButtonTarget:boolean;
-    private _handler:path.IButtonHandler;
-    private _details:path.ButtonDetail[] = [];
-    private _tooltip:string;
+    private _icon: string;
+    private _cssStyle: Object;
+    private _cssClass: string;
+    private _cssButtonTarget: boolean;
+    private _handler: path.IButtonHandler;
+    private _details: path.ButtonDetail[] = [];
+    private _tooltip: string;
 
     // TODO refactor prototype stuff
-    private _url:string;
-    private _page:string;
-    private _form:string;
-    private _formHandler:string;
+    private _url: string;
+    private _page: string;
+    private _form: string;
+    private _formHandler: string;
 
-    constructor(app:IPathApp, protected pathService:PathService, protected translationService:TranslationService) {
+    constructor(app: IPathApp, protected pathService: PathService, protected translationService: TranslationService) {
         super(app);
     }
 
@@ -61,23 +61,23 @@ export class Button extends path.PageElement implements path.IButton {
         }
     }
 
-    public setIcon(icon:string) {
+    public setIcon(icon: string) {
         this.icon = icon;
     }
 
-    public setForm(form:string) {
+    public setForm(form: string) {
         this.form = form;
     }
 
-    public setFormHandler(formHandler:string) {
+    public setFormHandler(formHandler: string) {
         this.formHandler = formHandler;
     }
 
-    public setPage(page:string) {
+    public setPage(page: string) {
         this.page = page;
     }
 
-    public setKey(key:Key) {
+    public setKey(key: Key) {
         this.key = key;
     }
 
@@ -89,11 +89,11 @@ export class Button extends path.PageElement implements path.IButton {
         return this.name;
     }
 
-    get icon():string {
+    get icon(): string {
         return this._icon;
     }
 
-    set icon(value:string) {
+    set icon(value: string) {
         this._icon = value;
     }
 
@@ -109,43 +109,43 @@ export class Button extends path.PageElement implements path.IButton {
         return this._cssButtonTarget;
     }
 
-    get handler():path.IButtonHandler {
+    get handler(): path.IButtonHandler {
         return this._handler;
     }
 
-    set handler(value:path.IButtonHandler) {
+    set handler(value: path.IButtonHandler) {
         this._handler = value;
     }
 
-    get details():path.ButtonDetail[] {
+    get details(): path.ButtonDetail[] {
         return this._details;
     }
 
-    set details(value:path.ButtonDetail[]) {
+    set details(value: path.ButtonDetail[]) {
         this._details = value;
     }
 
-    get page():string {
+    get page(): string {
         return this._page;
     }
 
-    set page(value:string) {
+    set page(value: string) {
         this._page = value;
     }
 
-    get form():string {
+    get form(): string {
         return this._form;
     }
 
-    set form(value:string) {
+    set form(value: string) {
         this._form = value;
     }
 
-    get formHandler():string {
+    get formHandler(): string {
         return this._formHandler;
     }
 
-    set formHandler(value:string) {
+    set formHandler(value: string) {
         this._formHandler = value;
     }
 
@@ -172,12 +172,12 @@ export class Button extends path.PageElement implements path.IButton {
         this.type = "button";
         this.setIcon(modelElement["icon"]);
         if (modelElement["color"] != null) {
-            let color = modelElement["color"];
-            if (typeof color === 'object') {
+            const color = modelElement["color"];
+            if (typeof color === "object") {
                 this._cssStyle = color;
-            } else if (typeof color === 'string') {
+            } else if (typeof color === "string") {
                 if (ColorUtility.isPathDefaultColor(color)) {
-                    this._cssClass = 'tile-' + color;
+                    this._cssClass = "tile-" + color;
                 } else {
                     this._cssClass = color;
                 }
@@ -188,7 +188,7 @@ export class Button extends path.PageElement implements path.IButton {
             this.setFormHandler(modelElement["form"]["handler"]);
         }
         this.setPage(modelElement["page"]);
-        if (this.key == null && this.parentPageElement != null && modelElement.type == "button") {
+        if (this.key == null && this.parentPageElement != null && modelElement.type === "button") {
             this.key = this.parentPageElement.key;
         }
         this.name = this.translationService.getText(modelElement["name"]);
@@ -199,15 +199,15 @@ export class Button extends path.PageElement implements path.IButton {
         // button details
         if (modelElement["details"] != null) {
             this.details = [];
-            for (let detail of modelElement["details"]) {
-                let bd:path.ButtonDetail = new ButtonDetail();
+            for (const detail of modelElement["details"]) {
+                const bd: path.ButtonDetail = new ButtonDetail();
                 bd.text = detail;
                 this.details.push(bd);
             }
         }
         // button target
         this._cssButtonTarget = true;
-        if (this.type == "button") {
+        if (this.type === "button") {
             if (StringUtility.isEmpty(this.form) && StringUtility.isEmpty(this.page) && StringUtility.isEmpty(this.url)) {
                 this._cssButtonTarget = false;
             }

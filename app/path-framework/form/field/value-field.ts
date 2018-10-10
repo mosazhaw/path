@@ -1,11 +1,11 @@
 import {FormField} from "./form-field";
 
 export class ValueField<T> extends FormField {
-    private _value:T;
-    private _isInitialValueSet:boolean = false;
-    private _created:boolean = false;
+    private _value: T;
+    private _isInitialValueSet = false;
+    private _created = false;
 
-    get value():T {
+    get value(): T {
         return this._value;
     }
 
@@ -13,7 +13,7 @@ export class ValueField<T> extends FormField {
         this._value = value;
     }
 
-    public setValue(value:T) {
+    public setValue(value: T) {
         this._value = value;
     }
 
@@ -25,7 +25,7 @@ export class ValueField<T> extends FormField {
         this._created = value;
     }
 
-    public isReadonly():boolean {
+    public isReadonly(): boolean {
         return this.readonly;
     }
 

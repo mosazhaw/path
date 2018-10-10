@@ -1,18 +1,18 @@
-import {Component, Input, Output, ElementRef} from '@angular/core';
+import {Component, Input, Output, ElementRef} from "@angular/core";
 import {ValueField} from "../value-field";
 
 @Component({
-    selector: 'path-field-list',
-    templateUrl: 'field-list-field.component.html'
+    selector: "path-field-list",
+    templateUrl: "field-list-field.component.html"
 })
 export class FieldListFieldComponent {
-    @Input('field')
-    @Output('field')
-    field:FieldListField;
+    @Input("field")
+    @Output("field")
+    field: FieldListField;
 }
 
 export class FieldListField extends ValueField<string[]> {
-    private _subfields:ValueField<any>[] = [];
+    private _subfields: ValueField<any>[] = [];
 
     get subfields(): ValueField<any>[] {
         return this._subfields;

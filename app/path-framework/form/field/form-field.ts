@@ -2,61 +2,61 @@ import {IFormField, IForm} from "../../pathinterface";
 import {TranslationService} from "../../service/translation.service";
 
 export class FormField implements IFormField {
-    private _id:string;
-    private _name:string;
-    private _type:string;
-    private _height:number;
-    private _width:number;
-    private _newRow:boolean;
-    private _visible:boolean;
-    private _labelVisible:boolean;
-    private _required:boolean;
-    private _readonly:boolean;
+    private _id: string;
+    private _name: string;
+    private _type: string;
+    private _height: number;
+    private _width: number;
+    private _newRow: boolean;
+    private _visible: boolean;
+    private _labelVisible: boolean;
+    private _required: boolean;
+    private _readonly: boolean;
 
-    constructor(protected form:IForm, protected translationService:TranslationService) {
+    constructor(protected form: IForm, protected translationService: TranslationService) {
     }
 
-    getForm():IForm {
+    getForm(): IForm {
         return this.form;
     }
 
-    get height():number {
+    get height(): number {
         return this._height;
     }
 
-    set height(value:number) {
+    set height(value: number) {
         this._height = value;
     }
 
-    get visible():boolean {
+    get visible(): boolean {
         return this._visible;
     }
 
-    set visible(value:boolean) {
+    set visible(value: boolean) {
         this._visible = value;
     }
 
-    get width():number {
+    get width(): number {
         return this._width;
     }
 
-    set width(value:number) {
+    set width(value: number) {
         this._width = value;
     }
 
-    get newRow():boolean {
+    get newRow(): boolean {
         return this._newRow;
     }
 
-    set newRow(value:boolean) {
+    set newRow(value: boolean) {
         this._newRow = value;
     }
 
-    get required():boolean {
+    get required(): boolean {
         return this._required;
     }
 
-    set required(value:boolean) {
+    set required(value: boolean) {
         this._required = value;
     }
 
@@ -68,39 +68,39 @@ export class FormField implements IFormField {
         this._readonly = value;
     }
 
-    get id():string {
+    get id(): string {
         return this._id;
     }
 
-    set id(value:string) {
+    set id(value: string) {
         this._id = value;
     }
 
-    get name():string {
+    get name(): string {
         return this._name;
     }
 
-    set name(value:string) {
+    set name(value: string) {
         this._name = value;
     }
 
-    get type():string {
+    get type(): string {
         return this._type;
     }
 
-    set type(value:string) {
+    set type(value: string) {
         this._type = value;
     }
 
-    get labelVisible():boolean {
+    get labelVisible(): boolean {
         return this._labelVisible;
     }
 
-    set labelVisible(value:boolean) {
+    set labelVisible(value: boolean) {
         this._labelVisible = value;
     }
 
-    public isReadonly():boolean {
+    public isReadonly(): boolean {
         return this.readonly;
     }
 

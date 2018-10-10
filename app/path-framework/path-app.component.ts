@@ -1,5 +1,5 @@
-import * as path from './path';
-import * as autocomplete from './form/field/auto-complete/auto-complete-field.component';
+import * as path from "./path";
+import * as autocomplete from "./form/field/auto-complete/auto-complete-field.component";
 import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
 import {ValueField} from "./form/field/value-field";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
@@ -19,38 +19,44 @@ import {FormField} from "./form/field/form-field";
 export abstract class PathAppComponent implements path.IPathApp {
 
 
-    private _pageStack:path.Page[] = [];
-    private _formStack:path.Form[] = [];
-    private _userId:string;
-    private _texts:string[]= [];
-    private _version:string;
+    private _pageStack: path.Page[] = [];
+    private _formStack: path.Form[] = [];
+    private _userId: string;
+    private _texts: string[] = [];
+    private _version: string;
+    /* toggle navigation
+    inspired by: https://angularfirebase.com/lessons/bootstrap-4-collapsable-navbar-work-with-angular */
+    show = false;
 
-    constructor(private pathService:path.PathService, private translationService:TranslationService) {
-        this.pathService.serverGet(this.getBackendUrl(), "/ping", (data:any) => {
+    constructor(private pathService: path.PathService, private translationService: TranslationService) {
+        this.pathService.serverGet(this.getBackendUrl(), "/ping", (data: any) => {
             let backendVersion = data["version"];
-            if (backendVersion != this.getFrontendVersion()) {
-                backendVersion = "Version mismatch: Backend (" + backendVersion + "), Frontend (" + this.getFrontendVersion() + "). Please clear cache or check server installation.";
+            if (backendVersion !== this.getFrontendVersion()) {
+                backendVersion = "Version mismatch: Backend (" + backendVersion + "), Frontend (" + this.getFrontendVersion() + "). " +
+                    "Please clear cache or check server installation.";
                 window.alert(backendVersion);
             }
             this._version = backendVersion;
-            if (data["userId"] != null && data["userId"] != "") {
+            if (data["userId"] !== null && data["userId"] !== "") {
                 this._userId = data["userId"];
                 this.setCurrentPage(this.getStartPage(), null);
             }
-            if (data["languageCode"] != null && data["languageCode"] != "") {
+            if (data["languageCode"] !== null && data["languageCode"] !== "") {
                 sessionStorage.setItem("languageCode", data["languageCode"]);
             }
-        }, (err:any) => { console.error(err); });
+        }, (err: any) => {
+            console.error(err);
+        });
         this.loadApplicationTexts();
     }
 
-    protected abstract getStartPage():string;
+    protected abstract getStartPage(): string;
 
-    protected getApplicationLogo():string {
+    protected getApplicationLogo(): string {
         return null;
     }
 
-    protected abstract getOwnUserForm():string;
+    protected abstract getOwnUserForm(): string;
 
     protected abstract getGuiModel();
 
@@ -58,11 +64,11 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     protected abstract getHandlers();
 
-    public abstract getBackendUrl():string;
+    public abstract getBackendUrl(): string;
 
-    protected abstract getFrontendVersion():string;
+    protected abstract getFrontendVersion(): string;
 
-    public isLoading():boolean {
+    public isLoading(): boolean {
         return this.pathService.isLoading();
     }
 
@@ -72,21 +78,21 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._texts["SignedInAs"] = this.translationService.getText("SignedInAs");
     }
 
-    public getUserId():string {
+    public getUserId(): string {
         return this._userId;
     }
 
-    public login(event, userId:string, password:string) {
-        let credentials:any = {};
+    public login(event, userId: string, password: string) {
+        const credentials: any = {};
         credentials["username"] = userId;
         credentials["password"] = password;
-        this.pathService.serverPost(this.getBackendUrl(), "/login", credentials, (data:any) => {
+        this.pathService.serverPost(this.getBackendUrl(), "/login", credentials, (data: any) => {
             console.log("login ok, language code: " + data["languageCode"] + ", jwt:" + data["jwt"]);
             sessionStorage.setItem("languageCode", data["languageCode"]);
             this._userId = userId;
             this.loadApplicationTexts();
             this.setCurrentPage(this.getStartPage(), null); // set start page
-        }, (err:any) => {
+        }, (err: any) => {
             this.pathService.hideLoading();
             alert("Login failed.");
             console.error("failed login");
@@ -95,8 +101,8 @@ export abstract class PathAppComponent implements path.IPathApp {
 
     public logout() {
         sessionStorage.clear();
-        this._userId == null;
         console.log("logout user " + this._userId);
+        this._userId = null;
         location.reload();
     }
 
@@ -109,29 +115,29 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public refreshCurrentPage() {
-        let refresh: (element:path.PageElement) => void;
+        let refresh: (element: path.PageElement) => void;
         if (this._pageStack[this._pageStack.length - 1].id === this.getStartPage()) {
             // refresh clean, without search text
-            refresh = (element:path.PageElement) => {
-                let list:path.List = <path.List>element;
+            refresh = (element: path.PageElement) => {
+                const list: path.List = <path.List>element;
                 list.filterChanged(null);
                 list.refresh(null);
             };
         } else {
             // refresh with search text
-            refresh = (element:path.PageElement) => {
-                let list:path.List = <path.List>element;
+            refresh = (element: path.PageElement) => {
+                const list: path.List = <path.List>element;
                 list.refresh(list.searchText);
             };
         }
-        for (let element of this._pageStack[this._pageStack.length - 1].content) {
+        for (const element of this._pageStack[this._pageStack.length - 1].content) {
             if (element instanceof path.List) {
                 refresh(element);
             }
         }
         // breadcrumbs
         if (this._pageStack[this._pageStack.length - 2] != null) {
-            for (let element of this._pageStack[this._pageStack.length - 2].content) {
+            for (const element of this._pageStack[this._pageStack.length - 2].content) {
                 if (element instanceof path.List) {
                     refresh(element);
                 }
@@ -144,41 +150,41 @@ export abstract class PathAppComponent implements path.IPathApp {
         this.refreshCurrentPage();
     }
 
-    public navigateToPage(pageNumber:number) {
+    public navigateToPage(pageNumber: number) {
         for (let k = this._pageStack.length - 1; k > pageNumber; k--) {
             this.navigateBack();
         }
     }
 
-    public yesNo(text:string, yesHandler : () => void, noHandler : () => void) {
-        let form:path.Form = new path.Form(this.pathService, this);
+    public yesNo(text: string, yesHandler: () => void, noHandler: () => void) {
+        const form: path.Form = new path.Form(this.pathService, this);
         form.formFunction = new FormFunction();
-        form.formFunction.save = (data:any) => {
+        form.formFunction.save = (data: any) => {
             this.closeCurrentForm();
             this.refreshCurrentPage();
         };
         form.formFunction.cancel = () => {
             this.closeCurrentForm();
         };
-        let message:path.TextField = new path.TextField(form, this.translationService);
+        const message: path.TextField = new path.TextField(form, this.translationService);
         message.type = "label";
         message.visible = true;
         message.labelVisible = false;
         message.setValue(text);
         form.fields.push(message);
 
-        let cancelButton:path.CancelButton = new path.CancelButton(form, this.translationService);
+        const cancelButton: path.CancelButton = new path.CancelButton(form, this.translationService);
         cancelButton.type = "cancelButton";
         cancelButton.name = this.translationService.getText("Cancel");
         cancelButton.visible = true;
         form.fields.push(cancelButton);
 
-        let okButton:path.OkButton = new path.OkButton(form, this.translationService);
+        const okButton: path.OkButton = new path.OkButton(form, this.translationService);
         okButton.type = "okButton";
         okButton.name = this.translationService.getText("Ok");
         okButton.visible = true;
         okButton.handler = {
-            doClick(button:path.IButton) {
+            doClick(button: path.IButton) {
                 yesHandler();
             }
         };
@@ -188,23 +194,23 @@ export abstract class PathAppComponent implements path.IPathApp {
         this._formStack.push(form);
     }
 
-    protected getCustomComponentClass(componentType:string):Type<CustomPageElement> {
+    protected getCustomComponentClass(componentType: string): Type<CustomPageElement> {
         console.log("Please define a type mapping for " + componentType + " in your App-Component.");
         return null;
     }
 
-    public setCurrentPage(pageId:string, parentPageElement:path.PageElement) {
-        let page:path.Page = null;
+    public setCurrentPage(pageId: string, parentPageElement: path.PageElement) {
+        let page: path.Page = null;
 
-        for (var modelPage of this.getGuiModel().application.pageList) {
-            if (modelPage.id == pageId) {
+        for (const modelPage of this.getGuiModel().application.pageList) {
+            if (modelPage.id === pageId) {
                 page = new path.Page();
                 page.id = pageId;
                 page.name = this.translationService.getText(modelPage.name);
                 if (parentPageElement != null) {
                     page.name = parentPageElement.name;
                 }
-                for (var modelElement of modelPage.elementList) {
+                for (const modelElement of modelPage.elementList) {
                     this.addPageElement(page, modelElement, parentPageElement);
                 }
                 page.updateRows();
@@ -218,7 +224,7 @@ export abstract class PathAppComponent implements path.IPathApp {
         }
     }
 
-    private addPageElement(page: path.Page, modelElement, parentPageElement: path.PageElement) : void {
+    private addPageElement(page: path.Page, modelElement, parentPageElement: path.PageElement): void {
         let element: path.PageElement = null;
         switch (modelElement.type) {
             case "button":
@@ -246,14 +252,14 @@ export abstract class PathAppComponent implements path.IPathApp {
                 element.fromJson(modelElement);
                 break;
             case "inlineForm":
-                let inlineForm = new path.InlineForm(this, this.pathService, this.translationService);
+                const inlineForm = new path.InlineForm(this, this.pathService, this.translationService);
                 inlineForm.fromJson(modelElement);
                 inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), true, parentPageElement);
                 inlineForm.loadNextForm(true);
                 element = inlineForm;
                 break;
             case "list":
-                let dynamicList: path.List = new path.List(this, this.pathService, this.translationService);
+                const dynamicList: path.List = new path.List(this, this.pathService, this.translationService);
                 dynamicList.parentPageElement = parentPageElement;
                 dynamicList.fromJson(modelElement);
                 // handler
@@ -269,23 +275,23 @@ export abstract class PathAppComponent implements path.IPathApp {
                 element = dynamicList;
                 break;
             case "ChartElement":
-                let chart = new path.ChartElement(this, this.pathService, this.translationService);
+                const chart = new path.ChartElement(this, this.pathService, this.translationService);
                 chart.fromJson(modelElement);
                 chart.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                 element = chart;
                 break;
             case "pageLabel":
-                let pageLabel = new PageLabel(this, this.pathService, this.translationService);
+                const pageLabel = new PageLabel(this, this.pathService, this.translationService);
                 pageLabel.fromJson(modelElement);
                 element = pageLabel;
                 break;
             case "elementList":
-                let elementList = new ElementList(this, this.pathService, this.translationService);
+                const elementList = new ElementList(this, this.pathService, this.translationService);
                 elementList.fromJson(modelElement);
-                let elementListUrl:any = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
-                this.pathService.serverGet(this.getBackendUrl(), elementListUrl, (data:any) => {
-                    for (let element of data) {
-                        this.addPageElement(page, element, parentPageElement);
+                const elementListUrl: any = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
+                this.pathService.serverGet(this.getBackendUrl(), elementListUrl, (data: any) => {
+                    for (const dynamicElement of data) {
+                        this.addPageElement(page, dynamicElement, parentPageElement);
                         page.updateRows();
                     }
                 }, null);
@@ -293,7 +299,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                 break;
             default: {
                 // call method to get custom component class
-                let customContainerPageElement = new CustomContainerPageElement(this);
+                const customContainerPageElement = new CustomContainerPageElement(this);
                 customContainerPageElement.fromJson(modelElement);
                 customContainerPageElement.typeClass = this.getCustomComponentClass(modelElement.type);
                 element = customContainerPageElement;
@@ -301,10 +307,10 @@ export abstract class PathAppComponent implements path.IPathApp {
         }
         if (modelElement["permissionUrl"] != null) {
             element.visible = false;
-            let permissionUrl: string = KeyUtility.translateUrl(modelElement["permissionUrl"], null, false, parentPageElement);
-            let permissionHandler = (permissionElement: path.PageElement) => (data: any) => {
+            const permissionUrl: string = KeyUtility.translateUrl(modelElement["permissionUrl"], null, false, parentPageElement);
+            const permissionHandler = (permissionElement: path.PageElement) => (data: any) => {
                 permissionElement.visible = data["permission"];
-            }
+            };
             this.pathService.serverGet(this.getBackendUrl(), permissionUrl, permissionHandler(element), null);
         }
         element.type = modelElement.type;
@@ -312,10 +318,10 @@ export abstract class PathAppComponent implements path.IPathApp {
         page.content.push(element);
     }
 
-    public setCurrentForm(formId:string, key:Key, handler:string, parentPageElement:path.IPageElement) {
-        let setCurrentForm = () => {
+    public setCurrentForm(formId: string, key: Key, handler: string, parentPageElement: path.IPageElement) {
+        const setCurrentForm = () => {
             // build form function
-            let formFunction:FormFunction  = new FormFunction();
+            const formFunction: FormFunction = new FormFunction();
             formFunction.save = () => {
                 this.closeCurrentForm();
                 this.refreshCurrentPage();
@@ -325,7 +331,7 @@ export abstract class PathAppComponent implements path.IPathApp {
             };
             formFunction.delete = () => {
                 this.closeCurrentForm();
-                let parent:path.IPageElement = parentPageElement;
+                const parent: path.IPageElement = parentPageElement;
                 if (parent != null && parent instanceof path.PageElement && (<path.PageElement>parent).listElement) {
                     this.refreshCurrentPage();
                 } else {
@@ -333,35 +339,35 @@ export abstract class PathAppComponent implements path.IPathApp {
                     this.refreshCurrentPage();
                 }
             };
-            let form:path.Form = this.createForm(formId,key,handler,formFunction, parentPageElement);
+            const form: path.Form = this.createForm(formId, key, handler, formFunction, parentPageElement);
             if (form != null) {
                 this._formStack.push(form);
             }
-        }
+        };
 
         // check permission
-        let modelForm = this.getModelForm(formId);
+        const modelForm = this.getModelForm(formId);
         if (modelForm != null && modelForm["permissionUrl"] != null) {
-            let suffix:string = "/update";
+            let suffix = "/update";
             if (key == null) {
                 suffix = "/create";
             }
-            let permissionUrl:string = KeyUtility.translateUrl(modelForm["permissionUrl"] + suffix, key, false, parentPageElement);
-                this.pathService.serverGet(this.getBackendUrl(), permissionUrl, (data:any) => {
-                    if (!data["permission"]) {
-                        window.alert(this.translationService.getText("NoPermissionError"));
-                    } else {
-                        setCurrentForm();
-                    }
-                }, null);
+            const permissionUrl: string = KeyUtility.translateUrl(modelForm["permissionUrl"] + suffix, key, false, parentPageElement);
+            this.pathService.serverGet(this.getBackendUrl(), permissionUrl, (data: any) => {
+                if (!data["permission"]) {
+                    window.alert(this.translationService.getText("NoPermissionError"));
+                } else {
+                    setCurrentForm();
+                }
+            }, null);
         } else {
             setCurrentForm();
         }
     }
 
-    private getModelForm(formId:string) {
+    private getModelForm(formId: string) {
         let result = null;
-        for (var modelForm of this.getGuiModel().application.formList) {
+        for (const modelForm of this.getGuiModel().application.formList) {
             if (modelForm.id === formId) {
                 result = modelForm;
             }
@@ -372,105 +378,108 @@ export abstract class PathAppComponent implements path.IPathApp {
         return result;
     }
 
-    public createForm(formId:string, key:Key, handler:string, formFunction:FormFunction, parentPageElement:path.IPageElement):path.Form {
-        let form:path.Form = null;
-        let modelForm = this.getModelForm(formId);
-            if (modelForm != null) {
-                // create form
-                form = new path.Form(this.pathService, this);
-                form.fromJson(modelForm);
-                form.key = key;
-                form.formFunction = formFunction;
-                form.title = this.translationService.getText(modelForm.title);
-                for (var modelFormField of modelForm.formFieldList) {
-                    // create form field
-                    let formField = this.createFormField(modelFormField, form, parentPageElement);
-                    form.fields.push(formField);
-                }
-                form.updateRows();
+    public createForm(formId: string,
+                      key: Key, handler: string,
+                      formFunction: FormFunction,
+                      parentPageElement: path.IPageElement): path.Form {
+        let form: path.Form = null;
+        const modelForm = this.getModelForm(formId);
+        if (modelForm != null) {
+            // create form
+            form = new path.Form(this.pathService, this);
+            form.fromJson(modelForm);
+            form.key = key;
+            form.formFunction = formFunction;
+            form.title = this.translationService.getText(modelForm.title);
+            for (const modelFormField of modelForm.formFieldList) {
+                // create form field
+                const formField = this.createFormField(modelFormField, form, parentPageElement);
+                form.fields.push(formField);
+            }
+            form.updateRows();
 
-                // fetch data from backend
-                if (form.url != null && form.key != null) {
-                    form.url = KeyUtility.translateUrl(form.url, form.getKey(), true, parentPageElement);
-                    this.pathService.serverGet(this.getBackendUrl(), form.url, (data:any) => {
-                        for (let field of form.fields) {
-                            if (data[field.id] != null && field instanceof path.ValueField) {
-                                if (field instanceof RadioGroupField) {
-                                    // TODO general solution
-                                    let setValueOfRadioGroupFieldContextWrapper = () => {
-                                        let f:RadioGroupField = <RadioGroupField>field;
-                                        let v:any = data[field.id];
-                                        //noinspection TypeScriptUnresolvedFunction
-                                        setValueOfRadioGroupField(f, v);
-                                    }
-                                    let setValueOfRadioGroupField = (radioGroupField:RadioGroupField, value:any) => {
-                                        if(!radioGroupField.created) {
-                                            console.log("Waiting for RadioGroupField " + radioGroupField.id);
-                                            console.log(radioGroupField.created);
-                                            window.setTimeout(setValueOfRadioGroupFieldContextWrapper, 50); // wait then try again
-                                            return;
-                                        }
-                                        console.log("setting radiogroupfield value");
-                                        if (value != null) {
-                                            value = value.toString(); // force radio key type string for angular2
-                                        }
-                                        radioGroupField.setValue(value);
-                                        radioGroupField.isInitialValueSet = true;
-                                    }
-                                    setValueOfRadioGroupFieldContextWrapper();
-                                } else {
-                                    (<path.ValueField<any>>field).setValue(data[field.id]);
-                                    (<path.ValueField<any>>field).isInitialValueSet = true;
-                                }
-                            }
-                            if (field instanceof FieldListField) {
-                                let setValueOfFieldListFieldContextWrapper = () => {
-                                    let f:FieldListField = <FieldListField>field;
-                                    let d:any = data;
+            // fetch data from backend
+            if (form.url != null && form.key != null) {
+                form.url = KeyUtility.translateUrl(form.url, form.getKey(), true, parentPageElement);
+                this.pathService.serverGet(this.getBackendUrl(), form.url, (data: any) => {
+                    for (const field of form.fields) {
+                        if (data[field.id] != null && field instanceof path.ValueField) {
+                            if (field instanceof RadioGroupField) {
+                                // TODO general solution
+                                const setValueOfRadioGroupFieldContextWrapper = () => {
+                                    const f: RadioGroupField = <RadioGroupField>field;
+                                    const v: any = data[field.id];
                                     //noinspection TypeScriptUnresolvedFunction
-                                    setValueOfFieldListField(f, d);
-                                }
-                                let setValueOfFieldListField = (fieldListField:FieldListField, value:any) => {
-                                    if(!(<FieldListField>field).created) {
-                                        console.log("Waiting for FieldListField... ");
-                                        setTimeout(setValueOfFieldListFieldContextWrapper, 50); // wait then try again
+                                    setValueOfRadioGroupField(f, v);
+                                };
+                                const setValueOfRadioGroupField = (radioGroupField: RadioGroupField, value: any) => {
+                                    if (!radioGroupField.created) {
+                                        console.log("Waiting for RadioGroupField " + radioGroupField.id);
+                                        console.log(radioGroupField.created);
+                                        window.setTimeout(setValueOfRadioGroupFieldContextWrapper, 50); // wait then try again
                                         return;
                                     }
-                                    // update fields
-                                    for (let subfield of (<FieldListField>field).subfields) {
-                                        if (data[subfield.id] != null) {
-                                            subfield.setValue(data[subfield.id]);
-                                            subfield.isInitialValueSet = true;
-                                        }
+                                    console.log("setting radiogroupfield value");
+                                    if (value != null) {
+                                        value = value.toString(); // force radio key type string for angular2
                                     }
-                                }
-                                setValueOfFieldListFieldContextWrapper();
+                                    radioGroupField.setValue(value);
+                                    radioGroupField.isInitialValueSet = true;
+                                };
+                                setValueOfRadioGroupFieldContextWrapper();
+                            } else {
+                                (<path.ValueField<any>>field).setValue(data[field.id]);
+                                (<path.ValueField<any>>field).isInitialValueSet = true;
                             }
                         }
-                    }, null)
-                }
-                // execute handler
-                let handlerName = handler;
-                if (handlerName == null) {
-                    handlerName = formId + 'Handler';
-                }
-                if (this.getBeans()[formId] != null && this.getHandlers()[handlerName] != null) {
-                    let formBean:path.IForm = new (this.getBeans()[formId]);
-                    let formHandler:path.IFormHandler = new (this.getHandlers()[handlerName]);
-                    for (let a = 0; a < form.fields.length; a++) {
-                        if (form.fields[a].id != null) {
-                            formBean[form.fields[a].id] = form.fields[a];
+                        if (field instanceof FieldListField) {
+                            const setValueOfFieldListFieldContextWrapper = () => {
+                                const f: FieldListField = <FieldListField>field;
+                                const d: any = data;
+                                //noinspection TypeScriptUnresolvedFunction
+                                setValueOfFieldListField(f, d);
+                            };
+                            const setValueOfFieldListField = (fieldListField: FieldListField, value: any) => {
+                                if (!(<FieldListField>field).created) {
+                                    console.log("Waiting for FieldListField... ");
+                                    setTimeout(setValueOfFieldListFieldContextWrapper, 50); // wait then try again
+                                    return;
+                                }
+                                // update fields
+                                for (const subfield of (<FieldListField>field).subfields) {
+                                    if (data[subfield.id] != null) {
+                                        subfield.setValue(data[subfield.id]);
+                                        subfield.isInitialValueSet = true;
+                                    }
+                                }
+                            };
+                            setValueOfFieldListFieldContextWrapper();
                         }
                     }
-                    form.bean = formBean;
-                    formHandler.doLoad(form.bean);
-                    form.handler = formHandler;
-                }
+                }, null);
             }
+            // execute handler
+            let handlerName = handler;
+            if (handlerName == null) {
+                handlerName = formId + "Handler";
+            }
+            if (this.getBeans()[formId] != null && this.getHandlers()[handlerName] != null) {
+                const formBean: path.IForm = new (this.getBeans()[formId]);
+                const formHandler: path.IFormHandler = new (this.getHandlers()[handlerName]);
+                for (let a = 0; a < form.fields.length; a++) {
+                    if (form.fields[a].id != null) {
+                        formBean[form.fields[a].id] = form.fields[a];
+                    }
+                }
+                form.bean = formBean;
+                formHandler.doLoad(form.bean);
+                form.handler = formHandler;
+            }
+        }
         return form;
     }
 
-    private createFormField(modelFormField, form: path.Form, parentPageElement: IPageElement) : FormField {
+    private createFormField(modelFormField, form: path.Form, parentPageElement: IPageElement): FormField {
         let formField: path.FormField = null;
         switch (modelFormField.type) {
             case "text": {
@@ -498,12 +507,12 @@ export abstract class PathAppComponent implements path.IPathApp {
                 formField.name = "list";
                 formField.fromJson(modelFormField);
                 if (modelFormField["url"] != null) {
-                    let fieldListUrl: any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
-                    let modelId: string = modelFormField["id"];
+                    const fieldListUrl: any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
+                    const modelId: string = modelFormField["id"];
                     this.pathService.serverGet(this.getBackendUrl(), fieldListUrl, (data: any) => {
-                        let counter: number = 1;
-                        for (let item of data) {
-                            let dynamicField = this.createFormField(item, form, parentPageElement);
+                        let counter = 1;
+                        for (const item of data) {
+                            const dynamicField = this.createFormField(item, form, parentPageElement);
                             dynamicField.name = item["name"]; // do not use translation service
                             dynamicField.id = modelId + counter;
                             (<FieldListField>formField).subfields.push(<ValueField<any>>dynamicField);
@@ -521,14 +530,14 @@ export abstract class PathAppComponent implements path.IPathApp {
                 break;
             }
             case "autocomplete": {
-                let autoCompleteFormField = new autocomplete.AutoCompleteField(form, this.translationService, this.pathService);
+                const autoCompleteFormField = new autocomplete.AutoCompleteField(form, this.translationService, this.pathService);
                 autoCompleteFormField.detailForm = modelFormField["form"];
                 autoCompleteFormField.wordSearchEnabled = modelFormField["wordSearchEnabled"];
                 if (modelFormField["data"] != null) {
-                    let data = [];
-                    let k: number = 0;
-                    for (let item of modelFormField["data"]) {
-                        let entry = new AutoCompleteFieldEntry();
+                    const data = [];
+                    let k = 0;
+                    for (const item of modelFormField["data"]) {
+                        const entry = new AutoCompleteFieldEntry();
                         entry.text = item;
                         entry.key = k;
                         data.push(entry);
@@ -536,13 +545,14 @@ export abstract class PathAppComponent implements path.IPathApp {
                     }
                     autoCompleteFormField.data = data;
                     autoCompleteFormField.dataLoaded = true;
-                }
-                else if (modelFormField["url"] != null) {
-                    let autoCompleteFormFieldUrl: string = KeyUtility.translateUrl(modelFormField["url"], form.key, false, parentPageElement);
+                } else if (modelFormField["url"] != null) {
+                    const autoCompleteFormFieldUrl: string = KeyUtility.translateUrl(modelFormField["url"],
+                        form.key,
+                        false,
+                        parentPageElement);
                     autoCompleteFormField.url = autoCompleteFormFieldUrl;
                     autoCompleteFormField.load();
-                }
-                else {
+                } else {
                     autoCompleteFormField.dataLoaded = true;
                 }
                 formField = autoCompleteFormField;
@@ -550,23 +560,23 @@ export abstract class PathAppComponent implements path.IPathApp {
                 break;
             }
             case "RadioGroupField": {
-                let radioGroupFormField = new path.RadioGroupField(form, this.translationService);
+                const radioGroupFormField = new path.RadioGroupField(form, this.translationService);
                 if (modelFormField["url"] != null) {
-                    let radiosUrl: any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
-                    let radioLoader = (rgField: RadioGroupField) => (data: any) => {
-                        for (let item of data) {
-                            let radio = new path.Radio(form, this.translationService);
+                    const radiosUrl: any = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
+                    const radioLoader = (rgField: RadioGroupField) => (data: any) => {
+                        for (const item of data) {
+                            const radio = new path.Radio(form, this.translationService);
                             radio.name = item["name"];
                             radio.key = item["key"]["key"].toString(); // force radio key type string for angular2
-                            if (radio.key == item["defaultKey"]) {
+                            if (radio.key === item["defaultKey"]) {
                                 rgField.setValue(radio.key);
                             }
                             rgField.radios.push(radio);
                         }
                         rgField.created = true;
                         console.log("radio group field created: " + rgField.id);
-                    }
-                    let radioLoaderForField = radioLoader(radioGroupFormField);
+                    };
+                    const radioLoaderForField = radioLoader(radioGroupFormField);
                     this.pathService.serverGet(this.getBackendUrl(), radiosUrl, radioLoaderForField, null);
                 } else {
                     radioGroupFormField.created = true;
@@ -576,13 +586,13 @@ export abstract class PathAppComponent implements path.IPathApp {
                 break;
             }
             case "CheckboxGroupField": {
-                let checkboxGroupField = new path.CheckboxGroupField(form, this.translationService);
+                const checkboxGroupField = new path.CheckboxGroupField(form, this.translationService);
                 checkboxGroupField.fromJson(modelFormField);
                 formField = checkboxGroupField;
                 break;
             }
             case "ProgressBarField": {
-                let progressBarField = new path.ProgressBarField(form, this.translationService);
+                const progressBarField = new path.ProgressBarField(form, this.translationService);
                 progressBarField.fromJson(modelFormField);
                 formField = progressBarField;
                 break;
@@ -621,17 +631,20 @@ export abstract class PathAppComponent implements path.IPathApp {
         // Field permission (move code to FormField)
         if (modelFormField["permissionUrl"] != null) {
             formField.readonly = false;
-            let permissionUrl: string = KeyUtility.translateUrl(modelFormField["permissionUrl"], formField.getForm().getKey(), false, parentPageElement);
-            let permissionHandler = (permissionElement: path.FormField) => (data: any) => {
+            const permissionUrl: string = KeyUtility.translateUrl(modelFormField["permissionUrl"],
+                formField.getForm().getKey(),
+                false,
+                parentPageElement);
+            const permissionHandler = (permissionElement: path.FormField) => (data: any) => {
                 permissionElement.readonly = !data["permission"];
-            }
+            };
             this.pathService.serverGet(formField.getForm().getApp().getBackendUrl(), permissionUrl, permissionHandler(formField), null);
         }
         // search parents for defaultKey
         if (formField instanceof ValueField && modelFormField["defaultKey"] != null) {
             let pageElement: IPageElement = parentPageElement;
             while (pageElement != null) {
-                if (pageElement.getKey() != null && pageElement.getKey().getName() == modelFormField["defaultKey"]) {
+                if (pageElement.getKey() != null && pageElement.getKey().getName() === modelFormField["defaultKey"]) {
                     (<ValueField<any>>formField).setValue(pageElement.getKey().getKey());
                     (<ValueField<any>>formField).isInitialValueSet = true;
                     pageElement = null;
@@ -643,14 +656,8 @@ export abstract class PathAppComponent implements path.IPathApp {
         return formField;
     }
 
-    /* toggle navigation
-    inspired by: https://angularfirebase.com/lessons/bootstrap-4-collapsable-navbar-work-with-angular */
-    show:boolean = false;
-
     toggleCollapse() {
-        this.show = !this.show}
-
-
-
+        this.show = !this.show;
+    }
 
 }

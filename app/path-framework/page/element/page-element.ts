@@ -1,28 +1,20 @@
-import * as path from './../../path';
+import * as path from "./../../path";
 import {IPageElement, IKey} from "../../pathinterface";
 
 export class PageElement implements IPageElement {
-    private _app:path.IPathApp;
-    private _id:string;
-    private _key:Key;
-    private _name:string;
-    private _type:string;
-    private _width:number;
-    private _visible:boolean = true;
-    private _newRow:boolean = false;
-    private _listElement:boolean = false;
-    private _parentPageElement:PageElement;
+    private _app: path.IPathApp;
+    private _id: string;
+    private _key: Key;
+    private _name: string;
+    private _type: string;
+    private _width: number;
+    private _visible = true;
+    private _newRow = false;
+    private _listElement = false;
+    private _parentPageElement: PageElement;
 
-    constructor(app:path.IPathApp) {
-        this._app = app;
-    }
-
-    public getShortName():string {
-        return PageElement.buildShortName(this.name);
-    }
-
-    public static buildShortName(str:string) {
-        if (str == null || str.length == 0) {
+    public static buildShortName(str: string) {
+        if (str == null || str.length === 0) {
             return "";
         }
         if (str.length > 63) {
@@ -31,47 +23,55 @@ export class PageElement implements IPageElement {
         return str;
     }
 
-    get app():path.IPathApp {
+    constructor(app: path.IPathApp) {
+        this._app = app;
+    }
+
+    public getShortName(): string {
+        return PageElement.buildShortName(this.name);
+    }
+
+    get app(): path.IPathApp {
         return this._app;
     }
 
-    get name():string {
+    get name(): string {
         return this._name;
     }
 
-    set name(value:string) {
+    set name(value: string) {
         this._name = value;
     }
 
-    get type():string {
+    get type(): string {
         return this._type;
     }
 
-    set type(value:string) {
+    set type(value: string) {
         this._type = value;
     }
 
-    get id():string {
+    get id(): string {
         return this._id;
     }
 
-    set id(value:string) {
+    set id(value: string) {
         this._id = value;
     }
 
-    get width():number {
+    get width(): number {
         return this._width;
     }
 
-    set width(value:number) {
+    set width(value: number) {
         this._width = value;
     }
 
-    public getKey():IKey {
+    public getKey(): IKey {
         return this._key;
     }
 
-    get key():Key {
+    get key(): Key {
         return this._key;
     }
 
@@ -79,7 +79,7 @@ export class PageElement implements IPageElement {
         this._key = value;
     }
 
-    public getParent():IPageElement {
+    public getParent(): IPageElement {
         return this.parentPageElement;
     }
 
@@ -138,8 +138,8 @@ export class PageElement implements IPageElement {
 }
 
 export class Key implements IKey {
-    private _key:any;
-    private _name:string;
+    private _key: any;
+    private _name: string;
 
     constructor(key: any, name: string) {
         this._key = key;

@@ -5,18 +5,18 @@ import {Component, Input, Output} from "@angular/core";
 import {PageElement} from "../page-element";
 
 @Component({
-    selector: 'path-element-list',
-    templateUrl: 'element-list.component.html'
+    selector: "path-element-list",
+    templateUrl: "element-list.component.html"
 })
 export class ElementListComponent {
-    @Input('elementList')
-    @Output('elementList')
-    elementList:ElementList;
+    @Input("elementList")
+    @Output("elementList")
+    elementList: ElementList;
 }
 
 export class ElementList extends PageElement {
 
-    constructor(app:IPathApp, pathService:PathService, translationService:TranslationService) {
+    constructor(app: IPathApp, pathService: PathService, translationService: TranslationService) {
         super(app);
     }
 

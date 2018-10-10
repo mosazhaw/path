@@ -1,16 +1,20 @@
 <path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
-        <div class="input-group">
-            <input #model="ngModel" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!model.pristine && field.required)" [required]="field.required" #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value,$event) (blur)="field.focusLost()" class="form-control" placeholder="">
-            <!-- Auto Complete -->
-            <div *ngIf="field.filteredList.length > 0 && !field.isReadonly()">
-                <div class="path-autocomplete list-group">
-                    <a *ngFor="let item of field.filteredList" class="list-group-item" href="#" (click)="field.select(item)"><h5>{{item.text}}</h5></a>
-                </div>
+    <div class="input-group">
+        <input #model="ngModel" [readonly]="field.isReadonly()"
+               [class.required-field]="(!model.valid &&!model.pristine && field.required)" [required]="field.required"
+               #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value,$event)
+               (blur)="field.focusLost()" class="form-control" placeholder="">
+        <!-- Auto Complete -->
+        <div *ngIf="field.filteredList.length > 0 && !field.isReadonly()">
+            <div class="path-autocomplete list-group">
+                <a *ngFor="let item of field.filteredList" class="list-group-item" href="#"
+                   (click)="field.select(item)"><h5>{{item.text}}</h5></a>
             </div>
-            <!-- Action -->
-            <span *ngIf="field.detailForm != null" class="input-group-btn">
+        </div>
+        <!-- Action -->
+        <span *ngIf="field.detailForm != null" class="input-group-btn">
                 <button (click)="field.showDetailForm()" class="btn btn-default" type="button">{{field.getDetailButtonName()}}</button>
             </span>
-        </div>
+    </div>
 </div>

@@ -4,7 +4,7 @@ import {CustomPageElement} from "./custom-container.component";
 
 export class CustomContainerPageElement extends PageElement {
 
-    private _typeClass:Type<CustomPageElement>;
+    private _typeClass: Type<CustomPageElement>;
 
     get typeClass(): Type<CustomPageElement> {
         return this._typeClass;

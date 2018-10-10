@@ -1,31 +1,30 @@
-import {Component, Input, Output} from '@angular/core';
-import {FormFieldLabelComponent} from './../form-field-label.component';
+import {Component, Input, Output} from "@angular/core";
 import {ValueField} from "../value-field";
 
 @Component({
-    selector: 'path-checkbox-group',
-    templateUrl: 'checkbox-group.component.html'
+    selector: "path-checkbox-group",
+    templateUrl: "checkbox-group.component.html"
 })
 export class CheckboxGroupComponent {
-    @Input('field')
-    @Output('field')
-    field:CheckboxGroupField;
+    @Input("field")
+    @Output("field")
+    field: CheckboxGroupField;
 }
 
 export class CheckboxGroupField extends ValueField<any[]> {
-    private _entries:CheckboxGroupEntry[] = [];
+    private _entries: CheckboxGroupEntry[] = [];
 
-    get entries():CheckboxGroupEntry[] {
+    get entries(): CheckboxGroupEntry[] {
         return this._entries;
     }
 
-    set entries(value:CheckboxGroupEntry[]) {
+    set entries(value: CheckboxGroupEntry[]) {
         this._entries = value;
     }
 
     public doClick() {
-        let values:any[] = [];
-        for (let entry of this.entries) {
+        const values: any[] = [];
+        for (const entry of this.entries) {
             if (entry.selected) {
                 values.push(entry.key);
             }
@@ -33,14 +32,14 @@ export class CheckboxGroupField extends ValueField<any[]> {
         this.setValue(values);
     }
 
-    public setValue(values:any[]) {
+    public setValue(values: any[]) {
         super.setValue(values);
-        for (let entry of this.entries) {
+        for (const entry of this.entries) {
             entry.selected = false;
         }
-        for (let value of values) {
-            for (let entry of this.entries) {
-                if (entry.key == value) {
+        for (const value of values) {
+            for (const entry of this.entries) {
+                if (entry.key === value) {
                     entry.selected = true;
                 }
             }
@@ -49,8 +48,8 @@ export class CheckboxGroupField extends ValueField<any[]> {
 
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
-        for (var entryModel of modelFormField["data"]) {
-            let entry = new CheckboxGroupEntry();
+        for (const entryModel of modelFormField["data"]) {
+            const entry = new CheckboxGroupEntry();
             entry.name = entryModel.name;
             entry.key = entryModel.key;
             entry.selected = false;
@@ -60,31 +59,31 @@ export class CheckboxGroupField extends ValueField<any[]> {
 }
 
 export class CheckboxGroupEntry {
-    private _key:any;
-    private _name:string;
-    private _selected:boolean;
+    private _key: any;
+    private _name: string;
+    private _selected: boolean;
 
-    get key():any {
+    get key(): any {
         return this._key;
     }
 
-    set key(value:any) {
+    set key(value: any) {
         this._key = value;
     }
 
-    get name():string {
+    get name(): string {
         return this._name;
     }
 
-    set name(value:string) {
+    set name(value: string) {
         this._name = value;
     }
 
-    get selected():boolean {
+    get selected(): boolean {
         return this._selected;
     }
 
-    set selected(value:boolean) {
+    set selected(value: boolean) {
         this._selected = value;
     }
 }
