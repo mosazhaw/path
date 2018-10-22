@@ -243,7 +243,8 @@ export class AutoCompleteField extends ValueField<string> {
                     }, 1);
                 } else {
                     for (const item of this._data) {
-                        if (item.key === keyValue) {
+                        // tslint:disable:triple-equals
+                        if (item.key == keyValue) {
                             window.setTimeout(() => {
                                 this.query = item;
                             }, 1);
