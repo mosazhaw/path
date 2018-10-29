@@ -54,7 +54,7 @@ export class List extends PageElement implements IList {
         return this.buttons;
     }
 
-    public refresh(searchText: string) {
+    public refresh(searchText: string, afterRefreshHandler: () => void) {
         // callback function for data
         console.log("refresh list");
         const dataHandler = (data: any) => {
@@ -109,6 +109,11 @@ export class List extends PageElement implements IList {
             if (this.limit) {
                 this.setSearchResultsCountMessage();
             }
+            if (afterRefreshHandler != null) {
+                window.setTimeout(() => {
+                    afterRefreshHandler();
+                }, 1);
+            }
         };
         const listHandlerDoLoad = (list: IList) => (data: any) => dataHandler(data);
         // backend data
@@ -149,15 +154,15 @@ export class List extends PageElement implements IList {
     public filter() {
         this._searchLabel = this.translationService.getText("Search");
         if (this._searchText && this._searchText === "*") {
-            this.refresh(null);
+            this.refresh(null, null);
         } else if (this.searchRequest) {
             // call server to filter data
             if (!this._searchText && this.searchRequired) {
                 this._buttons = [];
             } else if (this._searchText === "*" || (!this._searchText && !this.searchRequired)) {
-                this.refresh(null);
+                this.refresh(null, null);
             } else if (this._searchText && this._searchText.length >= 2) {
-                this.refresh(this._searchText);
+                this.refresh(this._searchText, null);
             } else {
                 this._searchLabel = this.translationService.getText("SearchTextTooShort");
                 this._buttons = [];

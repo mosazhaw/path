@@ -115,29 +115,38 @@ export abstract class PathAppComponent implements path.IPathApp {
     }
 
     public refreshCurrentPage() {
+        this.refreshPageStack(this._pageStack.length - 1, false, null);
+    }
+
+    private refreshPageStack(index: number, clearSearch, afterRefreshHandler: () => void) {
         let refresh: (element: path.PageElement) => void;
-        if (this._pageStack[this._pageStack.length - 1].id === this.getStartPage()) {
+        if (this._pageStack[index].id === this.getStartPage() && clearSearch) {
             // refresh clean, without search text
             refresh = (element: path.PageElement) => {
                 const list: path.List = <path.List>element;
                 list.filterChanged(null);
-                list.refresh(null);
+                list.refresh(null, afterRefreshHandler);
             };
         } else {
             // refresh with search text
             refresh = (element: path.PageElement) => {
                 const list: path.List = <path.List>element;
-                list.refresh(list.searchText);
+                list.refresh(list.searchText, afterRefreshHandler);
             };
         }
-        for (const element of this._pageStack[this._pageStack.length - 1].content) {
+        let pageHasList = false;
+        for (const element of this._pageStack[index].content) {
             if (element instanceof path.List) {
                 refresh(element);
+                pageHasList = true;
             }
         }
+        if (!pageHasList) {
+            afterRefreshHandler();
+        }
         // breadcrumbs
-        if (this._pageStack[this._pageStack.length - 2] != null) {
-            for (const element of this._pageStack[this._pageStack.length - 2].content) {
+        if (this._pageStack[index - 1] != null) {
+            for (const element of this._pageStack[index - 1].content) {
                 if (element instanceof path.List) {
                     refresh(element);
                 }
@@ -145,15 +154,22 @@ export abstract class PathAppComponent implements path.IPathApp {
         }
     }
 
-    public navigateBack() {
-        this._pageStack.pop();
-        this.refreshCurrentPage();
+    public navigateBack(clearSearch = false) {
+        const currentPageLength = this._pageStack.length;
+        const afterRefreshHandler = () => {
+            if (this._pageStack.length === currentPageLength) {
+                this._pageStack.pop();
+            }
+        };
+        this.refreshPageStack(this._pageStack.length - 2, clearSearch, afterRefreshHandler);
     }
 
     public navigateToPage(pageNumber: number) {
-        for (let k = this._pageStack.length - 1; k > pageNumber; k--) {
-            this.navigateBack();
+        console.log(pageNumber);
+        for (let k = this._pageStack.length - 1; k > pageNumber + 1; k--) {
+            this._pageStack.pop();
         }
+        this.navigateBack(true);
     }
 
     public yesNo(text: string, yesHandler: () => void, noHandler: () => void) {
@@ -270,7 +286,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                     dynamicList.buttonHandler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                 }
                 if (!dynamicList.searchRequired) {
-                    dynamicList.refresh(null);
+                    dynamicList.refresh(null, null);
                 }
                 element = dynamicList;
                 break;
