@@ -141,7 +141,7 @@ export abstract class PathAppComponent implements path.IPathApp {
                 pageHasList = true;
             }
         }
-        if (!pageHasList) {
+        if (!pageHasList && afterRefreshHandler) {
             afterRefreshHandler();
         }
         // breadcrumbs
