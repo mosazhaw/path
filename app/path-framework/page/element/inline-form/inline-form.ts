@@ -2,10 +2,10 @@ import {Form} from "../../../form/form.component";
 import {PageElement, Key} from "../page-element";
 import {PathService} from "../../../service/path.service";
 import {Inject} from "@angular/core";
-import * as path from "../../../path";
 import {FormFunction} from "../../../form/form-function";
 import {TranslationService} from "../../../service/translation.service";
 import {FocusUtility} from "../../../form/focus-utility";
+import {IPathApp} from "../../../pathinterface";
 
 export class InlineForm extends PageElement {
     private _formId: string;
@@ -14,7 +14,7 @@ export class InlineForm extends PageElement {
     private _currentKey: Key;
     private _page: string;
 
-    constructor(app: path.IPathApp,
+    constructor(app: IPathApp,
                 @Inject(PathService) private pathService: PathService,
                 @Inject(TranslationService) private translationService: TranslationService) {
         super(app);

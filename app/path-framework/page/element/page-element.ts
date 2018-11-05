@@ -1,8 +1,7 @@
-import * as path from "./../../path";
-import {IPageElement, IKey} from "../../pathinterface";
+import {IPageElement, IKey, IPathApp} from "../../pathinterface";
 
 export class PageElement implements IPageElement {
-    private _app: path.IPathApp;
+    private _app: IPathApp;
     private _id: string;
     private _key: Key;
     private _name: string;
@@ -23,7 +22,7 @@ export class PageElement implements IPageElement {
         return str;
     }
 
-    constructor(app: path.IPathApp) {
+    constructor(app: IPathApp) {
         this._app = app;
     }
 
@@ -31,7 +30,7 @@ export class PageElement implements IPageElement {
         return PageElement.buildShortName(this.name);
     }
 
-    get app(): path.IPathApp {
+    get app(): IPathApp {
         return this._app;
     }
 

@@ -1,7 +1,6 @@
-import * as path from "../../../path";
-import {Key} from "../page-element";
+import {Key, PageElement} from "../page-element";
 import {PathService} from "../../../service/path.service";
-import {IPathApp} from "../../../pathinterface";
+import {IButton, IButtonHandler, IPathApp} from "../../../pathinterface";
 import {Input, Output, Component} from "@angular/core";
 import {TranslationService} from "../../../service/translation.service";
 import {KeyUtility} from "../../../utility/key-utility";
@@ -19,13 +18,13 @@ export class ButtonComponent {
     button: Button;
 }
 
-export class Button extends path.PageElement implements path.IButton {
+export class Button extends PageElement implements IButton {
     private _icon: string;
     private _cssStyle: Object;
     private _cssClass: string;
     private _cssButtonTarget: boolean;
-    private _handler: path.IButtonHandler;
-    private _details: path.ButtonDetail[] = [];
+    private _handler: IButtonHandler;
+    private _details: ButtonDetail[] = [];
     private _tooltip: string;
 
     // TODO refactor prototype stuff
@@ -109,19 +108,19 @@ export class Button extends path.PageElement implements path.IButton {
         return this._cssButtonTarget;
     }
 
-    get handler(): path.IButtonHandler {
+    get handler(): IButtonHandler {
         return this._handler;
     }
 
-    set handler(value: path.IButtonHandler) {
+    set handler(value: IButtonHandler) {
         this._handler = value;
     }
 
-    get details(): path.ButtonDetail[] {
+    get details(): ButtonDetail[] {
         return this._details;
     }
 
-    set details(value: path.ButtonDetail[]) {
+    set details(value: ButtonDetail[]) {
         this._details = value;
     }
 
@@ -200,7 +199,7 @@ export class Button extends path.PageElement implements path.IButton {
         if (modelElement["details"] != null) {
             this.details = [];
             for (const detail of modelElement["details"]) {
-                const bd: path.ButtonDetail = new ButtonDetail();
+                const bd: ButtonDetail = new ButtonDetail();
                 bd.text = detail;
                 this.details.push(bd);
             }

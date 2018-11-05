@@ -1,14 +1,13 @@
-import * as path from "./../path";
 import {PageElement} from "./element/page-element";
 
 export class Page {
     private _name: string;
     private _id: string;
-    private _content: path.PageElement[] = [];
+    private _content: PageElement[] = [];
     private _rows: PageRow[] = [];
 
     public getShortName(): string {
-        return path.PageElement.buildShortName(this.name);
+        return PageElement.buildShortName(this.name);
     }
 
     get name(): string {
@@ -19,11 +18,11 @@ export class Page {
         this._name = value;
     }
 
-    get content(): path.PageElement[] {
+    get content(): PageElement[] {
         return this._content;
     }
 
-    set content(value: path.PageElement[]) {
+    set content(value: PageElement[]) {
         this._content = value;
     }
 

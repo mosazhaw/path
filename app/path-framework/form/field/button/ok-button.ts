@@ -1,13 +1,14 @@
-import * as path from "./../../../path";
+import {FormField} from "../form-field";
+import {IButtonHandler} from "../../../pathinterface";
 
-export class OkButton extends path.FormField {
-    private _handler: path.IButtonHandler;
+export class OkButton extends FormField {
+    private _handler: IButtonHandler;
 
-    get handler(): path.IButtonHandler {
+    get handler(): IButtonHandler {
         return this._handler;
     }
 
-    set handler(value: path.IButtonHandler) {
+    set handler(value: IButtonHandler) {
         this._handler = value;
     }
 
