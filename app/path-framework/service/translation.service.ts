@@ -36,12 +36,16 @@ export class TranslationService {
         return result;
     }
 
-    protected getUserLanguage(): string {
+    public getUserLanguage(): string {
         const languageCode: string = sessionStorage.getItem("languageCode");
-        if (languageCode) {
+        if (languageCode && this.getSupportedLanguageCodes().indexOf(languageCode) > 0) {
             return languageCode;
         }
-        return "en";
+        if (this.getSupportedLanguageCodes().length <= 0) {
+            console.log("No supported language codes defined. Please check translation service.");
+            return "en";
+        }
+        return this.getSupportedLanguageCodes()[0];
     }
 
     public getUserDateFormat() {
@@ -53,7 +57,7 @@ export class TranslationService {
     }
 
     public getSupportedLanguageCodes(): string[] {
-        return ["de", "en"];
+        return ["en", "de"];
     }
 
     private getTranslations() {
