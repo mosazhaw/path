@@ -267,27 +267,31 @@ export abstract class PathAppComponent implements IPathApp {
         switch (modelElement.type) {
             case "button":
             case "newButton":
-                element = new Button(this, this.pathService, this.translationService);
-                element.parentPageElement = parentPageElement;
-                element.fromJson(modelElement);
+                const button = new Button(this, this.pathService, this.translationService);
+                button.parentPageElement = parentPageElement;
+                button.fromJson(modelElement);
                 if (modelElement["buttonhandler"] != null) {
                     (<Button>element).handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                 }
+                element = this.wrapSingleButton(button);
                 break;
             case "deleteButton":
-                element = new PageDeleteButton(this, this.pathService, this.translationService);
-                element.parentPageElement = parentPageElement;
-                element.fromJson(modelElement);
+                const deleteButton = new PageDeleteButton(this, this.pathService, this.translationService);
+                deleteButton.parentPageElement = parentPageElement;
+                deleteButton.fromJson(modelElement);
+                element = this.wrapSingleButton(deleteButton);
                 break;
             case "downloadButton": // deprecated
             case "linkButton":
-                element = new LinkButton(this, this.pathService, this.translationService);
-                element.parentPageElement = parentPageElement;
-                element.fromJson(modelElement);
+                const linkButton = new LinkButton(this, this.pathService, this.translationService);
+                linkButton.parentPageElement = parentPageElement;
+                linkButton.fromJson(modelElement);
+                element = this.wrapSingleButton(linkButton);
                 break;
             case "backbutton":
-                element = new BackButton(this, this.pathService, this.translationService);
-                element.fromJson(modelElement);
+                const backButton = new BackButton(this, this.pathService, this.translationService);
+                backButton.fromJson(modelElement);
+                element = this.wrapSingleButton(backButton);
                 break;
             case "inlineForm":
                 const inlineForm = new InlineForm(this, this.pathService, this.translationService);
@@ -339,10 +343,11 @@ export abstract class PathAppComponent implements IPathApp {
                 const buttonGroup = new ButtonGroup(this);
                 buttonGroup.fromJson(modelElement);
                 if (modelElement["buttons"]) {
-                    for (const button of modelElement["buttons"]) {
-                        this.addPageElement(page, button, parentPageElement);
-                        buttonGroup.addButton(<any>page.content[page.content.length - 1]); // TODO
-                        page.updateRows();
+                    for (const buttonItem of modelElement["buttons"]) {
+                        const dummy: Page = new Page();
+                        this.addPageElement(dummy, buttonItem, parentPageElement);
+                        const firstElement = <ButtonGroup>dummy.content[dummy.content.length - 1];
+                        buttonGroup.addButton(firstElement.buttons[0]); // TODO create service for element creation
                     }
                     buttonGroup.updateButtonBorders();
                 }
@@ -364,9 +369,19 @@ export abstract class PathAppComponent implements IPathApp {
             };
             this.pathService.serverGet(this.getBackendUrl(), permissionUrl, permissionHandler(element), null);
         }
-        element.type = modelElement.type;
+        if (!element.type) {
+            element.type = modelElement.type;
+        }
         element.parentPageElement = parentPageElement;
         page.content.push(element);
+    }
+
+    private wrapSingleButton(button: Button): ButtonGroup {
+        const buttonGroup = new ButtonGroup(this);
+        buttonGroup.type = "buttonGroup";
+        buttonGroup.addButton(button);
+        buttonGroup.updateButtonBorders();
+        return buttonGroup;
     }
 
     public setCurrentForm(formId: string, key: Key, handler: string, parentPageElement: IPageElement) {

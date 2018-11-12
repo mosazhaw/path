@@ -4,6 +4,7 @@ import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {FormComponent} from "./path-framework/form/form.component";
+import {ButtonGroupComponent} from "./path-framework/page/element/button-group/button-group.component";
 import {ChartComponent} from "./path-framework/page/element/chart/chart.component";
 import {AutoCompleteComponent} from "./path-framework/form/field/auto-complete/auto-complete-field.component";
 import {TextFieldComponent} from "./path-framework/form/field/text/text-field.component";
@@ -61,7 +62,8 @@ import {ElementListComponent} from "./path-framework/page/element/element-list/e
         ListComponent,
         CustomDirective,
         CustomContainerComponent,
-        ElementListComponent
+        ElementListComponent,
+        ButtonGroupComponent
     ],
     exports:      [
         DraggableDirective,
@@ -92,7 +94,8 @@ import {ElementListComponent} from "./path-framework/page/element/element-list/e
         ListComponent,
         CustomDirective,
         CustomContainerComponent,
-        ElementListComponent
+        ElementListComponent,
+        ButtonGroupComponent
     ],
 })
 export class AppModule {

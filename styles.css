@@ -266,6 +266,9 @@ textarea[readonly-with-required] {
         height: 150px;
         width: 630px;
     }
+    .tile-group {
+        display: inline-block; white-space: nowrap;
+    }
     /* hidden elements on desktop and tablet */
     .hide-on-desktop {
         display: none;

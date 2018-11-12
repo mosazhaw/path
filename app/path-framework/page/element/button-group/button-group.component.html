@@ -1,1 +1,22 @@
-<span></span>
+<span>
+    <div class="tile-group">
+            <span *ngFor='let pageElement of buttonGroup.buttons'>
+            <!-- Button -->
+            <span *ngIf='pageElement.type == "button" || pageElement.type == "newButton"'>
+                <path-button [button]="pageElement"></path-button>
+            </span>
+            <!-- Back Button -->
+            <span *ngIf='pageElement.type == "backbutton"'>
+                <path-back-button [button]="pageElement"></path-back-button>
+            </span>
+            <!-- Delete Button -->
+            <span *ngIf='pageElement.type == "deleteButton"'>
+                <path-page-delete-button [button]="pageElement"></path-page-delete-button>
+            </span>
+            <!-- Link Button (deprecated: DownloadButton -->
+            <span *ngIf='pageElement.type == "linkButton" || pageElement.type == "downloadButton"'>
+                <path-link-button [button]="pageElement"></path-link-button>
+            </span>
+        </span>
+    </div>
+</span>

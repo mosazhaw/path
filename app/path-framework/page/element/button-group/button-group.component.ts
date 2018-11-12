@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, Input, Output} from "@angular/core";
 import {IPathApp} from "../../../pathinterface";
 import {Button} from "../button/button.component";
 import {PageElement} from "../page-element";
@@ -8,6 +8,9 @@ import {PageElement} from "../page-element";
     templateUrl: "button-group.component.html"
 })
 export class ButtonGroupComponent {
+    @Input("buttonGroup")
+    @Output("buttonGroup")
+    buttonGroup: ButtonGroup;
 }
 
 export class ButtonGroup extends PageElement {
@@ -18,17 +21,27 @@ export class ButtonGroup extends PageElement {
         super(app);
     }
 
+    get buttons(): Button[] {
+        return this._buttons;
+    }
+
     public addButton(button: Button): void {
         this._buttons.push(button);
     }
 
     public updateButtonBorders(): void {
-        for (const button of this._buttons) {
-            button.cssGroupBorder = "tile-grouped-middle";
-        }
-        if (this._buttons.length >= 1) {
-            this._buttons[0].cssGroupBorder = "tile-grouped-left";
-            this._buttons[this._buttons.length - 1].cssGroupBorder = "tile-grouped-right";
+        if (this._buttons.length === 1) {
+            // single button has no special border
+            this._buttons[0].cssGroupBorder = "";
+        } else {
+            for (const button of this._buttons) {
+                button.cssGroupBorder = "tile-grouped-middle";
+            }
+            if (this._buttons.length >= 1) {
+                // set first and last button border
+                this._buttons[0].cssGroupBorder = "tile-grouped-left";
+                this._buttons[this._buttons.length - 1].cssGroupBorder = "tile-grouped-right";
+            }
         }
     }
 

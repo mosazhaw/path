@@ -70,22 +70,6 @@
         <div class="col-md-12">
         <span *ngFor='let pageElement of pageRow.pageElements'>
 	    <span *ngIf="pageElement.visible">
-    <!-- Button -->
-    <span *ngIf='pageElement.type == "button" || pageElement.type == "newButton"'>
-        <path-button [button]="pageElement"></path-button>
-    </span>
-    <!-- Back Button -->
-    <span *ngIf='pageElement.type == "backbutton"'>
-        <path-back-button [button]="pageElement"></path-back-button>
-    </span>
-    <!-- Delete Button -->
-    <span *ngIf='pageElement.type == "deleteButton"'>
-        <path-page-delete-button [button]="pageElement"></path-page-delete-button>
-    </span>
-    <!-- Link Button (deprecated: DownloadButton -->
-    <span *ngIf='pageElement.type == "linkButton" || pageElement.type == "downloadButton"'>
-        <path-link-button [button]="pageElement"></path-link-button>
-    </span>
 	<!-- Inline Form -->
     <span *ngIf='pageElement.type == "inlineForm"'>
         <div class="row">
@@ -111,6 +95,10 @@
     <!-- Element List -->
     <span *ngIf='pageElement.type == "elementList"'>
         <path-element-list [elementList]="pageElement"></path-element-list>
+    </span>
+    <!-- Button Group -->
+    <span *ngIf='pageElement.type == "buttonGroup"'>
+        <path-button-group [buttonGroup]="pageElement"></path-button-group>
     </span>
     <!-- Custom Directive for custom components -->
     <span *ngIf='pageElement.typeClass'>
