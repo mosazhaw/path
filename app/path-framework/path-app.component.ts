@@ -1,41 +1,42 @@
-import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
-import {ValueField} from "./form/field/value-field";
-import {FieldListField} from "./form/field/fieldList/field-list-field.component";
-import {IButton, IForm, IFormHandler, IPageElement, IPathApp} from "./pathinterface";
-import {RadioGroupField} from "./form/field/radio/radio-group.component";
-import {Key, PageElement} from "./page/element/page-element";
-import {KeyUtility} from "./utility/key-utility";
-import {FormFunction} from "./form/form-function";
-import {TranslationService} from "./service/translation.service";
-import {PageLabel} from "./page/element/label/page-label.component";
 import {Type} from "@angular/core";
+import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
+import {AutoCompleteField} from "./form/field/auto-complete/auto-complete-field.component";
+import {CancelButton} from "./form/field/button/cancel-button";
+import {FormDeleteButton} from "./form/field/button/form-delete-button";
+import {OkButton} from "./form/field/button/ok-button";
+import {PreviousButton} from "./form/field/button/previous-button";
+import {CheckboxGroupField} from "./form/field/checkbox/checkbox-group.component";
+import {DateField} from "./form/field/date/date-field.component";
+import {FieldListField} from "./form/field/fieldList/field-list-field.component";
+import {FormField} from "./form/field/form-field";
+import {LabelField} from "./form/field/label/label-field.component";
+import {NumberField} from "./form/field/number/number-field.component";
+import {ProgressBarField} from "./form/field/progress-bar/progress-bar.component";
+import {Radio} from "./form/field/radio/radio";
+import {RadioGroupField} from "./form/field/radio/radio-group.component";
+import {TextField} from "./form/field/text/text-field.component";
+import {TranslationField} from "./form/field/translation/translation-field.component";
+import {ValueField} from "./form/field/value-field";
+import {FormFunction} from "./form/form-function";
+import {Form} from "./form/form.component";
+import {ButtonGroup} from "./page/element/button-group/button-group.component";
+import {BackButton} from "./page/element/button/back-button.component";
+import {Button} from "./page/element/button/button.component";
+import {LinkButton} from "./page/element/button/link-button.component";
+import {PageDeleteButton} from "./page/element/button/page-delete-button.component";
+import {ChartElement} from "./page/element/chart/chart.component";
 import {CustomContainerPageElement} from "./page/element/custom/custom-container-page-element";
 import {CustomPageElement} from "./page/element/custom/custom-container.component";
 import {ElementList} from "./page/element/element-list/element-list.component";
-import {FormField} from "./form/field/form-field";
-import {Page} from "./page/page";
-import {Form} from "./form/form.component";
-import {PathService} from "./service/path.service";
-import {List} from "./page/element/list/list.component";
-import {TextField} from "./form/field/text/text-field.component";
-import {CancelButton} from "./form/field/button/cancel-button";
-import {OkButton} from "./form/field/button/ok-button";
-import {Button} from "./page/element/button/button.component";
-import {PageDeleteButton} from "./page/element/button/page-delete-button.component";
-import {LinkButton} from "./page/element/button/link-button.component";
-import {BackButton} from "./page/element/button/back-button.component";
 import {InlineForm} from "./page/element/inline-form/inline-form";
-import {ChartElement} from "./page/element/chart/chart.component";
-import {TranslationField} from "./form/field/translation/translation-field.component";
-import {NumberField} from "./form/field/number/number-field.component";
-import {LabelField} from "./form/field/label/label-field.component";
-import {AutoCompleteField} from "./form/field/auto-complete/auto-complete-field.component";
-import {DateField} from "./form/field/date/date-field.component";
-import {CheckboxGroupField} from "./form/field/checkbox/checkbox-group.component";
-import {ProgressBarField} from "./form/field/progress-bar/progress-bar.component";
-import {FormDeleteButton} from "./form/field/button/form-delete-button";
-import {PreviousButton} from "./form/field/button/previous-button";
-import {Radio} from "./form/field/radio/radio";
+import {PageLabel} from "./page/element/label/page-label.component";
+import {List} from "./page/element/list/list.component";
+import {Key, PageElement} from "./page/element/page-element";
+import {Page} from "./page/page";
+import {IButton, IForm, IFormHandler, IPageElement, IPathApp} from "./pathinterface";
+import {PathService} from "./service/path.service";
+import {TranslationService} from "./service/translation.service";
+import {KeyUtility} from "./utility/key-utility";
 
 export abstract class PathAppComponent implements IPathApp {
 
@@ -333,6 +334,19 @@ export abstract class PathAppComponent implements IPathApp {
                     }
                 }, null);
                 element = elementList;
+                break;
+            case "buttonGroup":
+                const buttonGroup = new ButtonGroup(this);
+                buttonGroup.fromJson(modelElement);
+                if (modelElement["buttons"]) {
+                    for (const button of modelElement["buttons"]) {
+                        this.addPageElement(page, button, parentPageElement);
+                        buttonGroup.addButton(<any>page.content[page.content.length - 1]); // TODO
+                        page.updateRows();
+                    }
+                    buttonGroup.updateButtonBorders();
+                }
+                element = buttonGroup;
                 break;
             default: {
                 // call method to get custom component class

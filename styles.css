@@ -297,12 +297,24 @@ h3, .h3, h4, .h4, h5, .h5 {
     opacity: 0.75;
     background-color: #2e8bcc;
     z-index: 1;
+    border-radius: 0px;
     border: 4px #ffffff solid;
     color: #ffffff;
+}
+.tile-grouped-left {
+    border-right: 0;
+}
+.tile-grouped-middle {
+    border-left: 0;
+    border-right: 0;
+}
+.tile-grouped-right {
+    border-left: 0;
 }
 .tile-button {
     cursor: pointer;
 }
+
 /* hover animation */
 .tile-button:hover {
     opacity: 1;

@@ -23,6 +23,7 @@ export class Button extends PageElement implements IButton {
     private _cssStyle: Object;
     private _cssClass: string;
     private _cssButtonTarget: boolean;
+    private _cssGroupBorder: string;
     private _handler: IButtonHandler;
     private _details: ButtonDetail[] = [];
     private _tooltip: string;
@@ -106,6 +107,14 @@ export class Button extends PageElement implements IButton {
 
     get cssButtonTarget(): boolean {
         return this._cssButtonTarget;
+    }
+
+    get cssGroupBorder(): string {
+        return this._cssGroupBorder;
+    }
+
+    set cssGroupBorder(value: string) {
+        this._cssGroupBorder = value;
     }
 
     get handler(): IButtonHandler {
