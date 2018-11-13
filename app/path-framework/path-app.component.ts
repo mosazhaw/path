@@ -388,6 +388,7 @@ export abstract class PathAppComponent implements IPathApp {
         buttonGroup.type = "buttonGroup";
         buttonGroup.addButton(button);
         buttonGroup.updateButtonBorders();
+        buttonGroup.newRow = button.newRow;
         return buttonGroup;
     }
 
