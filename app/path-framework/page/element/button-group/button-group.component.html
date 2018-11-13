@@ -1,5 +1,5 @@
 <span>
-    <div class="tile-group">
+    <div *ngIf='buttonGroup.visible' class="tile-group">
             <span *ngFor='let pageElement of buttonGroup.buttons'>
             <!-- Button -->
             <span *ngIf='pageElement.type == "button" || pageElement.type == "newButton"'>
