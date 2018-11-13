@@ -209,10 +209,12 @@ export class List extends PageElement implements IList {
     private visibleItemSize(): number {
         let result = 0;
         for (const buttonGroup of this.buttonGroups) {
-            for (const button of buttonGroup.buttons) {
-                if (button.visible) {
-                    result++;
-                    break;
+            if (buttonGroup.visible) {
+                for (const button of buttonGroup.buttons) {
+                    if (button.visible) {
+                        result++;
+                        break;
+                    }
                 }
             }
         }
