@@ -70,43 +70,63 @@ export class List extends PageElement implements IList {
                 const itemKey: Key = new Key(item["key"]["key"], item["key"]["name"]);
                 let buttonGroup: ButtonGroup = this.findButtonGroup(itemKey, oldButtonGroups);
                 if (buttonGroup == null) {
-                    // create button
-                    if (item["type"] == null) {
-                        item["type"] = "button";
+                    // set default types if server does not set type (button or buttonGroup)
+                    const itemIsButtonGroup: boolean = item.hasOwnProperty("buttons");
+                    if (itemIsButtonGroup) {
+                        item["type"] = "buttonGroup";
+                        for (const button of item.buttons) {
+                            if (button["type"] == null) {
+                                button["type"] = "button";
+                            }
+                        }
+                    } else {
+                        if (item["type"] == null) {
+                            item["type"] = "button";
+                        }
                     }
                     const pageElements = this.app.createPageElement(item, this.parentPageElement);
                     buttonGroup = <ButtonGroup>pageElements[0];
+                    let buttonCounter = 0;
                     for (const button of buttonGroup.buttons) {
                         button.listElement = true;
-                    }
-                }
-                // build button from json
-                // use list defaults if button does not specify model
-                for (const button of buttonGroup.buttons) {
-                    if (item["icon"] == null) {
-                        item["icon"] = this.icon;
-                    }
-                    if (item["color"] == null) {
-                        item["color"] = this.color;
-                    }
-                    if (item["page"] == null) {
-                        item["page"] = this.page;
-                    }
-                    if ((item["form"] == null || item["form"]["form"] == null) && this.form != null) {
-                        item["form"] = {};
-                        item.form["form"] = this.form;
-                        item.form["handler"] = this.formHandler;
-                    }
-                    // special default width (2 instead of 1) for buttons in list
-                    if (item["width"] == null) {
-                        item["width"] = this.width;
-                    }
-                    button.fromJson(item);
 
-                    // special values for list buttons
-                    button.handler = this._buttonHandler;
-                    button.name = item.name; // no translation
-                    button.tooltip = item.tooltip; // no translation
+                        // model is either simple button or button of a group
+                        let buttonModel = item;
+                        if (itemIsButtonGroup) {
+                            buttonModel = item.buttons[buttonCounter];
+                        }
+
+                        // build button from json
+                        // use list defaults if button does not specify model
+                        if (buttonModel["icon"] == null) {
+                            buttonModel["icon"] = this.icon;
+                        }
+                        if (buttonModel["color"] == null) {
+                            buttonModel["color"] = this.color;
+                        }
+                        if (buttonModel["page"] == null && (buttonModel["form"] == null || buttonModel["form"]["form"] == null)) {
+                            // service does not return page or form, use static model
+                            if (this.page != null) {
+                                buttonModel["page"] = this.page;
+                            }
+                            if (this.form != null) {
+                                buttonModel["form"] = {};
+                                buttonModel.form["form"] = this.form;
+                                buttonModel.form["handler"] = this.formHandler;
+                            }
+                        }
+                        // special default width (2 instead of 1) for buttons in list
+                        if (buttonModel["width"] == null) {
+                            buttonModel["width"] = this.width;
+                        }
+                        button.fromJson(buttonModel);
+
+                        // special values for list buttons
+                        button.handler = this._buttonHandler;
+                        button.name = buttonModel.name; // no translation
+                        button.tooltip = buttonModel.tooltip; // no translation
+                        buttonCounter++;
+                    }
                 }
                 this.buttonGroups.push(buttonGroup);
             }

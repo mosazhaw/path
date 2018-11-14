@@ -344,10 +344,12 @@ export abstract class PathAppComponent implements IPathApp {
                 buttonGroup.fromJson(modelElement);
                 if (modelElement["buttons"]) {
                     for (const buttonItem of modelElement["buttons"]) {
-                        const dummy: Page = new Page();
-                        this.addPageElement(dummy, buttonItem, parentPageElement);
-                        const firstElement = <ButtonGroup>dummy.content[dummy.content.length - 1];
-                        buttonGroup.addButton(firstElement.buttons[0]); // TODO create service for element creation
+                        const buttonGroups: ButtonGroup[] = <ButtonGroup[]>this.createPageElement(buttonItem, parentPageElement);
+                        if (buttonGroups.length > 0) {
+                            for (const item of buttonGroups[0].buttons) {
+                                buttonGroup.addButton(item);
+                            }
+                        }
                     }
                     buttonGroup.updateButtonBorders();
                 }
