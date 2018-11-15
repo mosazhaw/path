@@ -9,7 +9,7 @@ import {Button} from "../button/button.component";
 import {LinkButton} from "../button/link-button.component";
 import {FocusUtility} from "../../../form/focus-utility";
 import {Subject} from "rxjs";
-import {debounceTime} from "rxjs/operators";
+import {bufferToggle, debounceTime} from "rxjs/operators";
 
 @Component({
     selector: "path-list",
@@ -61,31 +61,31 @@ export class List extends PageElement implements IList {
 
     public refresh(searchText: string, afterRefreshHandler: () => void) {
         // callback function for data
-        console.log("refresh list");
+        console.log("refresh list (searchText: " + searchText + ")");
         const dataHandler = (data: any) => {
-            const oldButtonGroups = this.buttonGroups;
             this.buttonGroups = [];
             for (const item of data) {
-                // create button or find existing button
-                const itemKey: Key = new Key(item["key"]["key"], item["key"]["name"]);
-                let buttonGroup: ButtonGroup = this.findButtonGroup(itemKey, oldButtonGroups);
-                if (buttonGroup == null) {
-                    // set default types if server does not set type (button or buttonGroup)
-                    const itemIsButtonGroup: boolean = item.hasOwnProperty("buttons");
-                    if (itemIsButtonGroup) {
-                        item["type"] = "buttonGroup";
-                        for (const button of item.buttons) {
-                            if (button["type"] == null) {
-                                button["type"] = "button";
-                            }
-                        }
-                    } else {
-                        if (item["type"] == null) {
-                            item["type"] = "button";
+                // create button group and buttons
+                // set default types if server does not set type (button or buttonGroup)
+                const itemIsButtonGroup: boolean = item.hasOwnProperty("buttons");
+                if (itemIsButtonGroup) {
+                    item["type"] = "buttonGroup";
+                    for (const button of item.buttons) {
+                        if (button["type"] == null) {
+                            button["type"] = "button";
                         }
                     }
-                    const pageElements = this.app.createPageElement(item, this.parentPageElement);
-                    buttonGroup = <ButtonGroup>pageElements[0];
+                } else {
+                    if (item["type"] == null) {
+                        item["type"] = "button";
+                    }
+                }
+                const pageElements = this.app.createPageElement(item, this.parentPageElement);
+                if (pageElements.length !== 1) {
+                    console.log("error creating button group from: ");
+                    console.log(item);
+                } else {
+                    const buttonGroup = <ButtonGroup>pageElements[0];
                     let buttonCounter = 0;
                     for (const button of buttonGroup.buttons) {
                         button.listElement = true;
@@ -127,11 +127,14 @@ export class List extends PageElement implements IList {
                         button.tooltip = buttonModel.tooltip; // no translation
                         buttonCounter++;
                     }
+                    this.buttonGroups.push(buttonGroup);
                 }
-                this.buttonGroups.push(buttonGroup);
             }
             if (this.handler != null) {
                 this.handler.doLoad(this); // TODO useful?
+            }
+            if (searchText) {
+                this.filter();
             }
             if (this.limit) {
                 this.setSearchResultsCountMessage();
@@ -146,7 +149,7 @@ export class List extends PageElement implements IList {
         // backend data
         if (this._url != null) {
             let urlParameters = "";
-            if (searchText || this.limit) {
+            if (this.searchRequest || this.limit) {
                 urlParameters = "?search=" + (searchText == null ? "" : encodeURI(searchText)) + "&limit=" + this.limit;
             }
             this.pathService.serverGet(this.app.getBackendUrl(), this.url + urlParameters, listHandlerDoLoad(this), null);
@@ -163,17 +166,6 @@ export class List extends PageElement implements IList {
             }
             dataHandler(this.mockData);
         }
-    }
-
-    private findButtonGroup(key: IKey, buttonGroups: ButtonGroup[]): ButtonGroup {
-        for (const buttonGroup of buttonGroups) {
-            for (const button of buttonGroup.buttons) {
-                if (button.key.getKey() === key.getKey() && button.key.getName() === key.getName()) {
-                    return buttonGroup;
-                }
-            }
-        }
-        return null;
     }
 
     public filterChanged(text: string) {
@@ -200,24 +192,26 @@ export class List extends PageElement implements IList {
             // filter loaded data only
             const searchText: string = this._searchText ? this._searchText.toLowerCase() : "";
             for (const buttonGroup of this._buttonGroups) {
-                buttonGroup.visible = true;
-                for (const button of buttonGroup.buttons) {
-                    if (searchText.length > 0) {
-                        let newVisible: boolean = button.name.toLowerCase().indexOf(searchText) !== -1;
-                        if (!newVisible) {
-                            for (const detail of button.details) {
-                                if (detail.text.toLowerCase().indexOf(searchText) !== -1) {
-                                    newVisible = true;
-                                    break;
+                if (searchText.length <= 0) {
+                    buttonGroup.visible = true;
+                } else {
+                    buttonGroup.visible = false;
+                    for (const button of buttonGroup.buttons) {
+                        if (!buttonGroup.visible) {
+                            buttonGroup.visible = button.name.toLowerCase().indexOf(searchText) !== -1;
+                            if (!buttonGroup.visible) {
+                                for (const detail of button.details) {
+                                    if (detail.text.toLowerCase().indexOf(searchText) !== -1) {
+                                        buttonGroup.visible = true;
+                                        break;
+                                    }
                                 }
                             }
                         }
-                        buttonGroup.visible = newVisible;
-                        this.setSearchResultsCountMessage();
-                        break;
                     }
                 }
             }
+            this.setSearchResultsCountMessage();
         }
     }
 
