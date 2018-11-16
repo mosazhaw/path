@@ -292,7 +292,6 @@ export abstract class PathAppComponent implements IPathApp {
                 const backButton = new BackButton(this, this.pathService, this.translationService);
                 backButton.fromJson(modelElement);
                 elements.push(this.wrapSingleButton(backButton));
-                console.log(backButton);
                 break;
             case "inlineForm":
                 const inlineForm = new InlineForm(this, this.pathService, this.translationService);
