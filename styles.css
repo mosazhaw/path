@@ -288,7 +288,7 @@ h3, .h3, h4, .h4, h5, .h5 {
     font-family: Futura, Futura-Medium, "Futura Medium", 'Nunito', sans-serif;
 }
 
-/* common tile styles */
+/* tiles and buttons */
 .tile {
     display: block;
     -webkit-perspective: 0;
@@ -317,13 +317,11 @@ h3, .h3, h4, .h4, h5, .h5 {
 .tile-button {
     cursor: pointer;
 }
-
-/* hover animation */
 .tile-button:hover {
     opacity: 1;
 }
 
-/* predefined tile colors */
+/* predefined tile colors - you may add your own colors in your path application css file */
 .tile.tile-blue {
     background-color: #2e8bcc;
 }
