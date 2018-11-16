@@ -139,20 +139,21 @@ export abstract class PathAppComponent implements IPathApp {
 
     public refreshCurrentPage() {
         const pageStack = this._pageStack;
-        let afterRefreshHandler = () => {
+        const afterRefreshHandler = () => {
             // refresh all breadcrumb texts
-            for (let page of pageStack) {
-                for (let element of page.content) {
+            for (const page of pageStack) {
+                for (const element of page.content) {
                     if (element instanceof List) {
-                        let list = <List>element;
+                        const list = <List>element;
                         for (const buttonGroup of list.buttonGroups) {
                             for (const button of buttonGroup.buttons) {
                                 // a button that might have been updated
                                 // compare button key to complete breadcrumb path
-                                for (let otherPage of pageStack) {
+                                for (const otherPage of pageStack) {
                                     if (otherPage.parentPageElement && otherPage.parentPageElement.getKey()) {
                                         // button is used in key, update page name
-                                        if (otherPage.parentPageElement.getKey().getKey() === button.getKey().getKey() && otherPage.parentPageElement.getKey().getName() === button.getKey().getName()) {
+                                        if (otherPage.parentPageElement.getKey().getKey() === button.getKey().getKey() &&
+                                            otherPage.parentPageElement.getKey().getName() === button.getKey().getName()) {
                                             otherPage.name = PageElement.buildShortName(button.name);
                                         }
                                     }
@@ -534,7 +535,7 @@ export abstract class PathAppComponent implements IPathApp {
     }
 
     private populateForm(form: Form, key: Key, parentPageElement: IPageElement) {
-        let url = KeyUtility.translateUrl(form.url, key, true, parentPageElement);
+        const url = KeyUtility.translateUrl(form.url, key, true, parentPageElement);
         this.pathService.serverGet(this.getBackendUrl(), url, (data: any) => {
             for (const field of form.fields) {
                 if (data[field.id] != null && field instanceof ValueField) {
