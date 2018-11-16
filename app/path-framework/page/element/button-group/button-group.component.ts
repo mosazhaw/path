@@ -33,8 +33,8 @@ export class ButtonGroup extends PageElement {
     public addButton(button: Button): void {
         this._buttons.push(button);
         let length = 0;
-        for (const button of this.buttons) {
-            length += (button.width >= 2 ? 2 : 1);
+        for (const currentButton of this.buttons) {
+            length += (currentButton.width >= 2 ? 2 : 1);
         }
         this._mobilePageBreak = length > 1 && this.buttons.length >= 2;
     }
