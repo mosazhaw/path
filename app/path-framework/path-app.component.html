@@ -50,17 +50,7 @@
 
 <!-- Breadcrumb Path -->
 <div *ngIf="getUserId() != null">
-<div class="col-md-12">
-    <h3>
-        <ol class="breadcrumb">
-            <li *ngFor='let page of _pageStack; let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
-                <a class="invisibleSP" href="#" *ngIf='!last' (click)="navigateToPage(currentIndex)">{{page.getShortName()}}</a>
-                {{last ? page.getShortName() : ''}}
-                &nbsp;
-            </li>
-        </ol>
-    </h3>
-</div>
+<path-breadcrumb [app]="this"></path-breadcrumb>
 
 <!-- Page Elements -->
 <div class="container-fluid">
@@ -97,6 +87,12 @@
     <!-- Button Group -->
     <span *ngIf='pageElement.type == "buttonGroup"'>
         <path-button-group [buttonGroup]="pageElement"></path-button-group>
+    </span>
+    <!-- Breadcrumb -->
+    <span *ngIf='pageElement.type == "breadcrumb"'>
+        <div class="row">
+            <path-breadcrumb [app]="this"></path-breadcrumb>
+        </div>
     </span>
     <!-- Custom Directive for custom components -->
     <span *ngIf='pageElement.typeClass'>

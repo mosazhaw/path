@@ -37,6 +37,7 @@ import {IButton, IForm, IFormHandler, IPageElement, IPathApp} from "./pathinterf
 import {PathService} from "./service/path.service";
 import {TranslationService} from "./service/translation.service";
 import {KeyUtility} from "./utility/key-utility";
+import {Breadcrumb} from "./page/element/breadcrumb/breadcrumb.component";
 
 export abstract class PathAppComponent implements IPathApp {
 
@@ -378,6 +379,11 @@ export abstract class PathAppComponent implements IPathApp {
                     buttonGroup.updateButtonBorders();
                 }
                 elements.push(buttonGroup);
+                break;
+            case "breadcrumb":
+                const breadcrumb = new Breadcrumb(this);
+                breadcrumb.fromJson(modelElement);
+                elements.push(breadcrumb);
                 break;
             default: {
                 // call method to get custom component class

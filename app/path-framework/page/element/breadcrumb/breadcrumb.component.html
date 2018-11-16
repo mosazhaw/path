@@ -1,0 +1,12 @@
+<div class="col-md-12">
+    <h3>
+        <ol class="breadcrumb">
+            <li *ngFor='let page of app["_pageStack"]; let currentIndex = index; let last = last'
+                class="{{last ? 'active': ''}}">
+                <a class="invisibleSP" href="#" *ngIf='!last' (click)="app.navigateToPage(currentIndex)">{{page.getShortName()}}</a>
+                {{last ? page.getShortName() : ''}}
+                &nbsp;
+            </li>
+        </ol>
+    </h3>
+</div>

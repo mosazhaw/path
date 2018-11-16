@@ -29,6 +29,7 @@ import {ListComponent} from "./path-framework/page/element/list/list.component";
 import {CustomDirective} from "./path-framework/page/element/custom/custom.directive";
 import {CustomContainerComponent} from "./path-framework/page/element/custom/custom-container.component";
 import {ElementListComponent} from "./path-framework/page/element/element-list/element-list.component";
+import {BreadcrumbComponent} from "./path-framework/page/element/breadcrumb/breadcrumb.component";
 
 @NgModule({
     imports:      [
@@ -63,7 +64,8 @@ import {ElementListComponent} from "./path-framework/page/element/element-list/e
         CustomDirective,
         CustomContainerComponent,
         ElementListComponent,
-        ButtonGroupComponent
+        ButtonGroupComponent,
+        BreadcrumbComponent
     ],
     exports:      [
         DraggableDirective,
@@ -95,7 +97,8 @@ import {ElementListComponent} from "./path-framework/page/element/element-list/e
         CustomDirective,
         CustomContainerComponent,
         ElementListComponent,
-        ButtonGroupComponent
+        ButtonGroupComponent,
+        BreadcrumbComponent
     ],
 })
 export class AppModule {
