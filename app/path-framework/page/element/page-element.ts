@@ -1,7 +1,7 @@
 import {IPageElement, IKey, IPathApp} from "../../pathinterface";
 
 export class PageElement implements IPageElement {
-    private _app: IPathApp;
+    private readonly _app: IPathApp;
     private _id: string;
     private _key: Key;
     private _name: string;
