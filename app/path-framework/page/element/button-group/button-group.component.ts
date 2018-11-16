@@ -16,6 +16,7 @@ export class ButtonGroupComponent {
 export class ButtonGroup extends PageElement {
 
     private _buttons: Button[] = [];
+    private _mobilePageBreak = false;
 
     constructor(app: IPathApp) {
         super(app);
@@ -25,8 +26,17 @@ export class ButtonGroup extends PageElement {
         return this._buttons;
     }
 
+    get mobilePageBreak(): boolean {
+        return this._mobilePageBreak;
+    }
+
     public addButton(button: Button): void {
         this._buttons.push(button);
+        let length = 0;
+        for (const button of this.buttons) {
+            length += (button.width >= 2 ? 2 : 1);
+        }
+        this._mobilePageBreak = length > 1 && this.buttons.length >= 2;
     }
 
     public updateButtonBorders(): void {
