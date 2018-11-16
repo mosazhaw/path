@@ -500,63 +500,11 @@ export abstract class PathAppComponent implements IPathApp {
 
             // fetch data from backend
             if (form.url != null && form.key != null) {
-                form.url = KeyUtility.translateUrl(form.url, form.getKey(), true, parentPageElement);
-                this.pathService.serverGet(this.getBackendUrl(), form.url, (data: any) => {
-                    for (const field of form.fields) {
-                        if (data[field.id] != null && field instanceof ValueField) {
-                            if (field instanceof RadioGroupField) {
-                                // TODO general solution
-                                const setValueOfRadioGroupFieldContextWrapper = () => {
-                                    const f: RadioGroupField = <RadioGroupField>field;
-                                    const v: any = data[field.id];
-                                    //noinspection TypeScriptUnresolvedFunction
-                                    setValueOfRadioGroupField(f, v);
-                                };
-                                const setValueOfRadioGroupField = (radioGroupField: RadioGroupField, value: any) => {
-                                    if (!radioGroupField.created) {
-                                        console.log("Waiting for RadioGroupField " + radioGroupField.id);
-                                        console.log(radioGroupField.created);
-                                        window.setTimeout(setValueOfRadioGroupFieldContextWrapper, 50); // wait then try again
-                                        return;
-                                    }
-                                    console.log("setting radiogroupfield value");
-                                    if (value != null) {
-                                        value = value.toString(); // force radio key type string for angular2
-                                    }
-                                    radioGroupField.setValue(value);
-                                    radioGroupField.isInitialValueSet = true;
-                                };
-                                setValueOfRadioGroupFieldContextWrapper();
-                            } else {
-                                (<ValueField<any>>field).setValue(data[field.id]);
-                                (<ValueField<any>>field).isInitialValueSet = true;
-                            }
-                        }
-                        if (field instanceof FieldListField) {
-                            const setValueOfFieldListFieldContextWrapper = () => {
-                                const f: FieldListField = <FieldListField>field;
-                                const d: any = data;
-                                //noinspection TypeScriptUnresolvedFunction
-                                setValueOfFieldListField(f, d);
-                            };
-                            const setValueOfFieldListField = (fieldListField: FieldListField, value: any) => {
-                                if (!(<FieldListField>field).created) {
-                                    console.log("Waiting for FieldListField... ");
-                                    setTimeout(setValueOfFieldListFieldContextWrapper, 50); // wait then try again
-                                    return;
-                                }
-                                // update fields
-                                for (const subfield of (<FieldListField>field).subfields) {
-                                    if (data[subfield.id] != null) {
-                                        subfield.setValue(data[subfield.id]);
-                                        subfield.isInitialValueSet = true;
-                                    }
-                                }
-                            };
-                            setValueOfFieldListFieldContextWrapper();
-                        }
-                    }
-                }, null);
+                this.populateForm(form, form.getKey(), parentPageElement);
+                form.url = KeyUtility.translateUrl(form.url, key, true, parentPageElement);
+            } else if (form.urlDefaults) {
+                const nullKey = new Key("null", "nullKey");
+                this.populateForm(form, nullKey, parentPageElement);
             }
             // execute handler
             let handlerName = handler;
@@ -577,6 +525,66 @@ export abstract class PathAppComponent implements IPathApp {
             }
         }
         return form;
+    }
+
+    private populateForm(form: Form, key: Key, parentPageElement: IPageElement) {
+        let url = KeyUtility.translateUrl(form.url, key, true, parentPageElement);
+        this.pathService.serverGet(this.getBackendUrl(), url, (data: any) => {
+            for (const field of form.fields) {
+                if (data[field.id] != null && field instanceof ValueField) {
+                    if (field instanceof RadioGroupField) {
+                        // TODO general solution
+                        const setValueOfRadioGroupFieldContextWrapper = () => {
+                            const f: RadioGroupField = <RadioGroupField>field;
+                            const v: any = data[field.id];
+                            //noinspection TypeScriptUnresolvedFunction
+                            setValueOfRadioGroupField(f, v);
+                        };
+                        const setValueOfRadioGroupField = (radioGroupField: RadioGroupField, value: any) => {
+                            if (!radioGroupField.created) {
+                                console.log("Waiting for RadioGroupField " + radioGroupField.id);
+                                console.log(radioGroupField.created);
+                                window.setTimeout(setValueOfRadioGroupFieldContextWrapper, 50); // wait then try again
+                                return;
+                            }
+                            console.log("setting radiogroupfield value");
+                            if (value != null) {
+                                value = value.toString(); // force radio key type string for angular2
+                            }
+                            radioGroupField.setValue(value);
+                            radioGroupField.isInitialValueSet = true;
+                        };
+                        setValueOfRadioGroupFieldContextWrapper();
+                    } else {
+                        (<ValueField<any>>field).setValue(data[field.id]);
+                        (<ValueField<any>>field).isInitialValueSet = true;
+                    }
+                }
+                if (field instanceof FieldListField) {
+                    const setValueOfFieldListFieldContextWrapper = () => {
+                        const f: FieldListField = <FieldListField>field;
+                        const d: any = data;
+                        //noinspection TypeScriptUnresolvedFunction
+                        setValueOfFieldListField(f, d);
+                    };
+                    const setValueOfFieldListField = (fieldListField: FieldListField, value: any) => {
+                        if (!(<FieldListField>field).created) {
+                            console.log("Waiting for FieldListField... ");
+                            setTimeout(setValueOfFieldListFieldContextWrapper, 50); // wait then try again
+                            return;
+                        }
+                        // update fields
+                        for (const subfield of (<FieldListField>field).subfields) {
+                            if (data[subfield.id] != null) {
+                                subfield.setValue(data[subfield.id]);
+                                subfield.isInitialValueSet = true;
+                            }
+                        }
+                    };
+                    setValueOfFieldListFieldContextWrapper();
+                }
+            }
+        }, null);
     }
 
     private createFormField(modelFormField, form: Form, parentPageElement: IPageElement): FormField {
