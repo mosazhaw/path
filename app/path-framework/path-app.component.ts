@@ -137,7 +137,33 @@ export abstract class PathAppComponent implements IPathApp {
     }
 
     public refreshCurrentPage() {
-        this.refreshPageStack(this._pageStack.length - 1, false, null);
+        const pageStack = this._pageStack;
+        let afterRefreshHandler = () => {
+            // refresh all breadcrumb texts
+            for (let page of pageStack) {
+                for (let element of page.content) {
+                    if (element instanceof List) {
+                        let list = <List>element;
+                        for (const buttonGroup of list.buttonGroups) {
+                            for (const button of buttonGroup.buttons) {
+                                // a button that might have been updated
+                                // compare button key to complete breadcrumb path
+                                for (let otherPage of pageStack) {
+                                    if (otherPage.parentPageElement && otherPage.parentPageElement.getKey()) {
+                                        // button is used in key, update page name
+                                        if (otherPage.parentPageElement.getKey().getKey() === button.getKey().getKey() && otherPage.parentPageElement.getKey().getName() === button.getKey().getName()) {
+                                            otherPage.name = PageElement.buildShortName(button.name);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        this.refreshPageStack(this._pageStack.length - 1, false, afterRefreshHandler);
     }
 
     private refreshPageStack(index: number, clearSearch, afterRefreshHandler: () => void) {
@@ -187,7 +213,6 @@ export abstract class PathAppComponent implements IPathApp {
     }
 
     public navigateToPage(pageNumber: number) {
-        console.log(pageNumber);
         for (let k = this._pageStack.length - 1; k > pageNumber + 1; k--) {
             this._pageStack.pop();
         }
@@ -242,7 +267,7 @@ export abstract class PathAppComponent implements IPathApp {
 
         for (const modelPage of this.getGuiModel().application.pageList) {
             if (modelPage.id === pageId) {
-                page = new Page();
+                page = new Page(parentPageElement);
                 page.id = pageId;
                 page.name = this.translationService.getText(modelPage.name);
                 if (parentPageElement != null) {

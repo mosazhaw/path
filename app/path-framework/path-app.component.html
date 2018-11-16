@@ -54,10 +54,8 @@
     <h3>
         <ol class="breadcrumb">
             <li *ngFor='let page of _pageStack; let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
-                <a class="invisibleSP" href="#" *ngIf='!last && page.parentPageElement == null' (click)="navigateToPage(currentIndex)">{{page.getShortName()}}</a><!-- First element has no parent-->
-                <a href="#" *ngIf='!last && page.parentPageElement != null' (click)="navigateToPage(currentIndex)">{{page.parentPageElement?.getShortName()}}</a><!-- Element 2 to n -->
-                {{last && page.parentPageElement == null ? page.getShortName() : ''}}<!-- First element has no parent-->
-                {{last && page.parentPageElement != null ? page.parentPageElement?.getShortName() : ''}}<!-- Element 2 to n -->
+                <a class="invisibleSP" href="#" *ngIf='!last' (click)="navigateToPage(currentIndex)">{{page.getShortName()}}</a>
+                {{last ? page.getShortName() : ''}}
                 &nbsp;
             </li>
         </ol>

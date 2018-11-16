@@ -1,15 +1,14 @@
-import {IListHandler, IList, IButtonHandler, IKey, IPathApp, IButton} from "../../../pathinterface";
+import {IButton, IButtonHandler, IList, IListHandler, IPathApp} from "../../../pathinterface";
 import {PathService} from "../../../service/path.service";
 import {AfterViewInit, Component, Input, Output} from "@angular/core";
 import {ButtonGroup} from "../button-group/button-group.component";
-import {Key, PageElement} from "../page-element";
+import {PageElement} from "../page-element";
 import {TranslationService} from "../../../service/translation.service";
 import {KeyUtility} from "../../../utility/key-utility";
 import {Button} from "../button/button.component";
-import {LinkButton} from "../button/link-button.component";
 import {FocusUtility} from "../../../form/focus-utility";
 import {Subject} from "rxjs";
-import {bufferToggle, debounceTime} from "rxjs/operators";
+import {debounceTime} from "rxjs/operators";
 
 @Component({
     selector: "path-list",
@@ -133,6 +132,7 @@ export class List extends PageElement implements IList {
             if (this.handler != null) {
                 this.handler.doLoad(this); // TODO useful?
             }
+            // refresh search
             this.filterVisibleButtonGroups();
             if (this.limit) {
                 this.setSearchResultsCountMessage();
@@ -214,7 +214,9 @@ export class List extends PageElement implements IList {
                 }
             }
         }
-        this.setSearchResultsCountMessage();
+        if (this.visibleItemSize() !== this.buttonGroups.length) {
+            this.setSearchResultsCountMessage();
+        }
     }
 
     private setSearchResultsCountMessage() {
