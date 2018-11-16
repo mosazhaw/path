@@ -133,9 +133,7 @@ export class List extends PageElement implements IList {
             if (this.handler != null) {
                 this.handler.doLoad(this); // TODO useful?
             }
-            if (searchText) {
-                this.filter();
-            }
+            this.filterVisibleButtonGroups();
             if (this.limit) {
                 this.setSearchResultsCountMessage();
             }
@@ -190,29 +188,33 @@ export class List extends PageElement implements IList {
             }
         } else {
             // filter loaded data only
-            const searchText: string = this._searchText ? this._searchText.toLowerCase() : "";
-            for (const buttonGroup of this._buttonGroups) {
-                if (searchText.length <= 0) {
-                    buttonGroup.visible = true;
-                } else {
-                    buttonGroup.visible = false;
-                    for (const button of buttonGroup.buttons) {
+            this.filterVisibleButtonGroups();
+        }
+    }
+
+    private filterVisibleButtonGroups() {
+        const searchText: string = this._searchText ? this._searchText.toLowerCase() : "";
+        for (const buttonGroup of this._buttonGroups) {
+            if (searchText.length <= 0) {
+                buttonGroup.visible = true;
+            } else {
+                buttonGroup.visible = false;
+                for (const button of buttonGroup.buttons) {
+                    if (!buttonGroup.visible) {
+                        buttonGroup.visible = button.name.toLowerCase().indexOf(searchText) !== -1;
                         if (!buttonGroup.visible) {
-                            buttonGroup.visible = button.name.toLowerCase().indexOf(searchText) !== -1;
-                            if (!buttonGroup.visible) {
-                                for (const detail of button.details) {
-                                    if (detail.text.toLowerCase().indexOf(searchText) !== -1) {
-                                        buttonGroup.visible = true;
-                                        break;
-                                    }
+                            for (const detail of button.details) {
+                                if (detail.text.toLowerCase().indexOf(searchText) !== -1) {
+                                    buttonGroup.visible = true;
+                                    break;
                                 }
                             }
                         }
                     }
                 }
             }
-            this.setSearchResultsCountMessage();
         }
+        this.setSearchResultsCountMessage();
     }
 
     private setSearchResultsCountMessage() {
