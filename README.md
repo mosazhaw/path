@@ -8,11 +8,11 @@ Path Framework is developed at <a href="https://www.zhaw.ch/de/sml/institute-zen
 
 [![Alt text](https://img.youtube.com/vi/WxLKdviTm7A/0.jpg)](https://www.youtube.com/watch?v=WxLKdviTm7A)
 
-Pros:
 * Technology independent GUI development, rendering engine may be replaced (iOS, Android, Web)
 * Extremely rapid application prototyping and development
 * GUI-based requirements engineering
 * Focus on business logic programming and GUI prototyping, not GUI programming
+* Latest changes: Read [changelog](CHANGELOG.md)
 
 ## Live Example
 Live example on Heroku Free (please wait for wakeup): https://path-example.herokuapp.com/<br/>
