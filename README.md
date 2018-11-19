@@ -55,7 +55,7 @@ Run a Path example application with 4 steps:
                         "name": "Ok"
                     }
                 ]
-            },
+            }
         ],
         "pageList": [
             {
