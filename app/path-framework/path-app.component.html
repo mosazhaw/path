@@ -50,19 +50,7 @@
 
 <!-- Breadcrumb Path -->
 <div *ngIf="getUserId() != null">
-<div class="col-md-12">
-    <h3>
-        <ol class="breadcrumb">
-            <li *ngFor='let page of _pageStack; let currentIndex = index; let last = last' class="{{last ? 'active': ''}}">
-                <a class="invisibleSP" href="#" *ngIf='!last && page.parentPageElement == null' (click)="navigateToPage(currentIndex)">{{page.getShortName()}}</a><!-- First element has no parent-->
-                <a href="#" *ngIf='!last && page.parentPageElement != null' (click)="navigateToPage(currentIndex)">{{page.parentPageElement?.getShortName()}}</a><!-- Element 2 to n -->
-                {{last && page.parentPageElement == null ? page.getShortName() : ''}}<!-- First element has no parent-->
-                {{last && page.parentPageElement != null ? page.parentPageElement?.getShortName() : ''}}<!-- Element 2 to n -->
-                &nbsp;
-            </li>
-        </ol>
-    </h3>
-</div>
+<path-breadcrumb [app]="this"></path-breadcrumb>
 
 <!-- Page Elements -->
 <div class="container-fluid">
@@ -70,22 +58,6 @@
         <div class="col-md-12">
         <span *ngFor='let pageElement of pageRow.pageElements'>
 	    <span *ngIf="pageElement.visible">
-    <!-- Button -->
-    <span *ngIf='pageElement.type == "button" || pageElement.type == "newButton"'>
-        <path-button [button]="pageElement"></path-button>
-    </span>
-    <!-- Back Button -->
-    <span *ngIf='pageElement.type == "backbutton"'>
-        <path-back-button [button]="pageElement"></path-back-button>
-    </span>
-    <!-- Delete Button -->
-    <span *ngIf='pageElement.type == "deleteButton"'>
-        <path-page-delete-button [button]="pageElement"></path-page-delete-button>
-    </span>
-    <!-- Link Button (deprecated: DownloadButton -->
-    <span *ngIf='pageElement.type == "linkButton" || pageElement.type == "downloadButton"'>
-        <path-link-button [button]="pageElement"></path-link-button>
-    </span>
 	<!-- Inline Form -->
     <span *ngIf='pageElement.type == "inlineForm"'>
         <div class="row">
@@ -111,6 +83,16 @@
     <!-- Element List -->
     <span *ngIf='pageElement.type == "elementList"'>
         <path-element-list [elementList]="pageElement"></path-element-list>
+    </span>
+    <!-- Button Group -->
+    <span *ngIf='pageElement.type == "buttonGroup"'>
+        <path-button-group [buttonGroup]="pageElement"></path-button-group>
+    </span>
+    <!-- Breadcrumb -->
+    <span *ngIf='pageElement.type == "breadcrumb"'>
+        <div class="row">
+            <path-breadcrumb [app]="this"></path-breadcrumb>
+        </div>
     </span>
     <!-- Custom Directive for custom components -->
     <span *ngIf='pageElement.typeClass'>

@@ -1,41 +1,43 @@
-import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
-import {ValueField} from "./form/field/value-field";
-import {FieldListField} from "./form/field/fieldList/field-list-field.component";
-import {IButton, IForm, IFormHandler, IPageElement, IPathApp} from "./pathinterface";
-import {RadioGroupField} from "./form/field/radio/radio-group.component";
-import {Key, PageElement} from "./page/element/page-element";
-import {KeyUtility} from "./utility/key-utility";
-import {FormFunction} from "./form/form-function";
-import {TranslationService} from "./service/translation.service";
-import {PageLabel} from "./page/element/label/page-label.component";
 import {Type} from "@angular/core";
+import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
+import {AutoCompleteField} from "./form/field/auto-complete/auto-complete-field.component";
+import {CancelButton} from "./form/field/button/cancel-button";
+import {FormDeleteButton} from "./form/field/button/form-delete-button";
+import {OkButton} from "./form/field/button/ok-button";
+import {PreviousButton} from "./form/field/button/previous-button";
+import {CheckboxGroupField} from "./form/field/checkbox/checkbox-group.component";
+import {DateField} from "./form/field/date/date-field.component";
+import {FieldListField} from "./form/field/fieldList/field-list-field.component";
+import {FormField} from "./form/field/form-field";
+import {LabelField} from "./form/field/label/label-field.component";
+import {NumberField} from "./form/field/number/number-field.component";
+import {ProgressBarField} from "./form/field/progress-bar/progress-bar.component";
+import {Radio} from "./form/field/radio/radio";
+import {RadioGroupField} from "./form/field/radio/radio-group.component";
+import {TextField} from "./form/field/text/text-field.component";
+import {TranslationField} from "./form/field/translation/translation-field.component";
+import {ValueField} from "./form/field/value-field";
+import {FormFunction} from "./form/form-function";
+import {Form} from "./form/form.component";
+import {ButtonGroup} from "./page/element/button-group/button-group.component";
+import {BackButton} from "./page/element/button/back-button.component";
+import {Button} from "./page/element/button/button.component";
+import {LinkButton} from "./page/element/button/link-button.component";
+import {PageDeleteButton} from "./page/element/button/page-delete-button.component";
+import {ChartElement} from "./page/element/chart/chart.component";
 import {CustomContainerPageElement} from "./page/element/custom/custom-container-page-element";
 import {CustomPageElement} from "./page/element/custom/custom-container.component";
 import {ElementList} from "./page/element/element-list/element-list.component";
-import {FormField} from "./form/field/form-field";
-import {Page} from "./page/page";
-import {Form} from "./form/form.component";
-import {PathService} from "./service/path.service";
-import {List} from "./page/element/list/list.component";
-import {TextField} from "./form/field/text/text-field.component";
-import {CancelButton} from "./form/field/button/cancel-button";
-import {OkButton} from "./form/field/button/ok-button";
-import {Button} from "./page/element/button/button.component";
-import {PageDeleteButton} from "./page/element/button/page-delete-button.component";
-import {LinkButton} from "./page/element/button/link-button.component";
-import {BackButton} from "./page/element/button/back-button.component";
 import {InlineForm} from "./page/element/inline-form/inline-form";
-import {ChartElement} from "./page/element/chart/chart.component";
-import {TranslationField} from "./form/field/translation/translation-field.component";
-import {NumberField} from "./form/field/number/number-field.component";
-import {LabelField} from "./form/field/label/label-field.component";
-import {AutoCompleteField} from "./form/field/auto-complete/auto-complete-field.component";
-import {DateField} from "./form/field/date/date-field.component";
-import {CheckboxGroupField} from "./form/field/checkbox/checkbox-group.component";
-import {ProgressBarField} from "./form/field/progress-bar/progress-bar.component";
-import {FormDeleteButton} from "./form/field/button/form-delete-button";
-import {PreviousButton} from "./form/field/button/previous-button";
-import {Radio} from "./form/field/radio/radio";
+import {PageLabel} from "./page/element/label/page-label.component";
+import {List} from "./page/element/list/list.component";
+import {Key, PageElement} from "./page/element/page-element";
+import {Page} from "./page/page";
+import {IButton, IForm, IFormHandler, IPageElement, IPathApp} from "./pathinterface";
+import {PathService} from "./service/path.service";
+import {TranslationService} from "./service/translation.service";
+import {KeyUtility} from "./utility/key-utility";
+import {Breadcrumb} from "./page/element/breadcrumb/breadcrumb.component";
 
 export abstract class PathAppComponent implements IPathApp {
 
@@ -136,7 +138,34 @@ export abstract class PathAppComponent implements IPathApp {
     }
 
     public refreshCurrentPage() {
-        this.refreshPageStack(this._pageStack.length - 1, false, null);
+        const pageStack = this._pageStack;
+        const afterRefreshHandler = () => {
+            // refresh all breadcrumb texts
+            for (const page of pageStack) {
+                for (const element of page.content) {
+                    if (element instanceof List) {
+                        const list = <List>element;
+                        for (const buttonGroup of list.buttonGroups) {
+                            for (const button of buttonGroup.buttons) {
+                                // a button that might have been updated
+                                // compare button key to complete breadcrumb path
+                                for (const otherPage of pageStack) {
+                                    if (otherPage.parentPageElement && otherPage.parentPageElement.getKey()) {
+                                        // button is used in key, update page name
+                                        if (otherPage.parentPageElement.getKey().getKey() === button.getKey().getKey() &&
+                                            otherPage.parentPageElement.getKey().getName() === button.getKey().getName()) {
+                                            otherPage.name = PageElement.buildShortName(button.name);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        };
+
+        this.refreshPageStack(this._pageStack.length - 1, false, afterRefreshHandler);
     }
 
     private refreshPageStack(index: number, clearSearch, afterRefreshHandler: () => void) {
@@ -186,7 +215,6 @@ export abstract class PathAppComponent implements IPathApp {
     }
 
     public navigateToPage(pageNumber: number) {
-        console.log(pageNumber);
         for (let k = this._pageStack.length - 1; k > pageNumber + 1; k--) {
             this._pageStack.pop();
         }
@@ -241,7 +269,7 @@ export abstract class PathAppComponent implements IPathApp {
 
         for (const modelPage of this.getGuiModel().application.pageList) {
             if (modelPage.id === pageId) {
-                page = new Page();
+                page = new Page(parentPageElement);
                 page.id = pageId;
                 page.name = this.translationService.getText(modelPage.name);
                 if (parentPageElement != null) {
@@ -261,39 +289,43 @@ export abstract class PathAppComponent implements IPathApp {
         }
     }
 
-    private addPageElement(page: Page, modelElement, parentPageElement: PageElement): void {
-        let element: PageElement = null;
+    public createPageElement(modelElement, parentPageElement: PageElement): PageElement[] {
+        const elements: PageElement[] = [];
         switch (modelElement.type) {
             case "button":
             case "newButton":
-                element = new Button(this, this.pathService, this.translationService);
-                element.parentPageElement = parentPageElement;
-                element.fromJson(modelElement);
+                const button = new Button(this, this.pathService, this.translationService);
+                button.parentPageElement = parentPageElement;
+                button.fromJson(modelElement);
                 if (modelElement["buttonhandler"] != null) {
-                    (<Button>element).handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
+                    (<Button>button).handler = new (this.getHandlers()[modelElement["buttonhandler"]]);
                 }
+                elements.push(this.wrapSingleButton(button));
                 break;
             case "deleteButton":
-                element = new PageDeleteButton(this, this.pathService, this.translationService);
-                element.parentPageElement = parentPageElement;
-                element.fromJson(modelElement);
+                const deleteButton = new PageDeleteButton(this, this.pathService, this.translationService);
+                deleteButton.parentPageElement = parentPageElement;
+                deleteButton.fromJson(modelElement);
+                elements.push(this.wrapSingleButton(deleteButton));
                 break;
             case "downloadButton": // deprecated
             case "linkButton":
-                element = new LinkButton(this, this.pathService, this.translationService);
-                element.parentPageElement = parentPageElement;
-                element.fromJson(modelElement);
+                const linkButton = new LinkButton(this, this.pathService, this.translationService);
+                linkButton.parentPageElement = parentPageElement;
+                linkButton.fromJson(modelElement);
+                elements.push(this.wrapSingleButton(linkButton));
                 break;
             case "backbutton":
-                element = new BackButton(this, this.pathService, this.translationService);
-                element.fromJson(modelElement);
+                const backButton = new BackButton(this, this.pathService, this.translationService);
+                backButton.fromJson(modelElement);
+                elements.push(this.wrapSingleButton(backButton));
                 break;
             case "inlineForm":
                 const inlineForm = new InlineForm(this, this.pathService, this.translationService);
                 inlineForm.fromJson(modelElement);
                 inlineForm.url = KeyUtility.translateUrl(modelElement["url"], inlineForm.getKey(), true, parentPageElement);
                 inlineForm.loadNextForm(true);
-                element = inlineForm;
+                elements.push(inlineForm);
                 break;
             case "list":
                 const dynamicList: List = new List(this, this.pathService, this.translationService);
@@ -309,18 +341,18 @@ export abstract class PathAppComponent implements IPathApp {
                 if (!dynamicList.searchRequired) {
                     dynamicList.refresh(null, null);
                 }
-                element = dynamicList;
+                elements.push(dynamicList);
                 break;
             case "ChartElement":
                 const chart = new ChartElement(this, this.pathService, this.translationService);
                 chart.fromJson(modelElement);
                 chart.url = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
-                element = chart;
+                elements.push(chart);
                 break;
             case "pageLabel":
                 const pageLabel = new PageLabel(this, this.pathService, this.translationService);
                 pageLabel.fromJson(modelElement);
-                element = pageLabel;
+                elements.push(pageLabel);
                 break;
             case "elementList":
                 const elementList = new ElementList(this, this.pathService, this.translationService);
@@ -328,31 +360,69 @@ export abstract class PathAppComponent implements IPathApp {
                 const elementListUrl: any = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                 this.pathService.serverGet(this.getBackendUrl(), elementListUrl, (data: any) => {
                     for (const dynamicElement of data) {
-                        this.addPageElement(page, dynamicElement, parentPageElement);
-                        page.updateRows();
+                        elements.push(...this.createPageElement(dynamicElement, parentPageElement));
                     }
                 }, null);
-                element = elementList;
+                elements.push(elementList);
+                break;
+            case "buttonGroup":
+                const buttonGroup = new ButtonGroup(this);
+                buttonGroup.fromJson(modelElement);
+                if (modelElement["buttons"]) {
+                    for (const buttonItem of modelElement["buttons"]) {
+                        const buttonGroups: ButtonGroup[] = <ButtonGroup[]>this.createPageElement(buttonItem, parentPageElement);
+                        if (buttonGroups.length > 0) {
+                            for (const item of buttonGroups[0].buttons) {
+                                buttonGroup.addButton(item);
+                            }
+                        }
+                    }
+                    buttonGroup.updateButtonBorders();
+                }
+                elements.push(buttonGroup);
+                break;
+            case "breadcrumb":
+                const breadcrumb = new Breadcrumb(this);
+                breadcrumb.fromJson(modelElement);
+                elements.push(breadcrumb);
                 break;
             default: {
                 // call method to get custom component class
                 const customContainerPageElement = new CustomContainerPageElement(this);
                 customContainerPageElement.fromJson(modelElement);
                 customContainerPageElement.typeClass = this.getCustomComponentClass(modelElement.type);
-                element = customContainerPageElement;
+                elements.push(customContainerPageElement);
             }
         }
-        if (modelElement["permissionUrl"] != null) {
-            element.visible = false;
-            const permissionUrl: string = KeyUtility.translateUrl(modelElement["permissionUrl"], null, false, parentPageElement);
-            const permissionHandler = (permissionElement: PageElement) => (data: any) => {
-                permissionElement.visible = data["permission"];
-            };
-            this.pathService.serverGet(this.getBackendUrl(), permissionUrl, permissionHandler(element), null);
+        for (const element of elements) {
+            if (modelElement["permissionUrl"] != null) {
+                element.visible = false;
+                const permissionUrl: string = KeyUtility.translateUrl(modelElement["permissionUrl"], null, false, parentPageElement);
+                const permissionHandler = (permissionElement: PageElement) => (data: any) => {
+                    permissionElement.visible = data["permission"];
+                };
+                this.pathService.serverGet(this.getBackendUrl(), permissionUrl, permissionHandler(element), null);
+            }
+            if (!element.type) {
+                element.type = modelElement.type;
+            }
+            element.parentPageElement = parentPageElement;
         }
-        element.type = modelElement.type;
-        element.parentPageElement = parentPageElement;
-        page.content.push(element);
+        return elements;
+    }
+
+    private addPageElement(page: Page, modelElement, parentPageElement: PageElement): void {
+        const elements = this.createPageElement(modelElement, parentPageElement);
+        page.content.push(...elements);
+    }
+
+    private wrapSingleButton(button: Button): ButtonGroup {
+        const buttonGroup = new ButtonGroup(this);
+        buttonGroup.type = "buttonGroup";
+        buttonGroup.addButton(button);
+        buttonGroup.updateButtonBorders();
+        buttonGroup.newRow = button.newRow;
+        return buttonGroup;
     }
 
     public setCurrentForm(formId: string, key: Key, handler: string, parentPageElement: IPageElement) {
@@ -437,63 +507,11 @@ export abstract class PathAppComponent implements IPathApp {
 
             // fetch data from backend
             if (form.url != null && form.key != null) {
-                form.url = KeyUtility.translateUrl(form.url, form.getKey(), true, parentPageElement);
-                this.pathService.serverGet(this.getBackendUrl(), form.url, (data: any) => {
-                    for (const field of form.fields) {
-                        if (data[field.id] != null && field instanceof ValueField) {
-                            if (field instanceof RadioGroupField) {
-                                // TODO general solution
-                                const setValueOfRadioGroupFieldContextWrapper = () => {
-                                    const f: RadioGroupField = <RadioGroupField>field;
-                                    const v: any = data[field.id];
-                                    //noinspection TypeScriptUnresolvedFunction
-                                    setValueOfRadioGroupField(f, v);
-                                };
-                                const setValueOfRadioGroupField = (radioGroupField: RadioGroupField, value: any) => {
-                                    if (!radioGroupField.created) {
-                                        console.log("Waiting for RadioGroupField " + radioGroupField.id);
-                                        console.log(radioGroupField.created);
-                                        window.setTimeout(setValueOfRadioGroupFieldContextWrapper, 50); // wait then try again
-                                        return;
-                                    }
-                                    console.log("setting radiogroupfield value");
-                                    if (value != null) {
-                                        value = value.toString(); // force radio key type string for angular2
-                                    }
-                                    radioGroupField.setValue(value);
-                                    radioGroupField.isInitialValueSet = true;
-                                };
-                                setValueOfRadioGroupFieldContextWrapper();
-                            } else {
-                                (<ValueField<any>>field).setValue(data[field.id]);
-                                (<ValueField<any>>field).isInitialValueSet = true;
-                            }
-                        }
-                        if (field instanceof FieldListField) {
-                            const setValueOfFieldListFieldContextWrapper = () => {
-                                const f: FieldListField = <FieldListField>field;
-                                const d: any = data;
-                                //noinspection TypeScriptUnresolvedFunction
-                                setValueOfFieldListField(f, d);
-                            };
-                            const setValueOfFieldListField = (fieldListField: FieldListField, value: any) => {
-                                if (!(<FieldListField>field).created) {
-                                    console.log("Waiting for FieldListField... ");
-                                    setTimeout(setValueOfFieldListFieldContextWrapper, 50); // wait then try again
-                                    return;
-                                }
-                                // update fields
-                                for (const subfield of (<FieldListField>field).subfields) {
-                                    if (data[subfield.id] != null) {
-                                        subfield.setValue(data[subfield.id]);
-                                        subfield.isInitialValueSet = true;
-                                    }
-                                }
-                            };
-                            setValueOfFieldListFieldContextWrapper();
-                        }
-                    }
-                }, null);
+                this.populateForm(form, form.getKey(), parentPageElement);
+                form.url = KeyUtility.translateUrl(form.url, key, true, parentPageElement);
+            } else if (form.urlDefaults) {
+                const nullKey = new Key("null", "nullKey");
+                this.populateForm(form, nullKey, parentPageElement);
             }
             // execute handler
             let handlerName = handler;
@@ -514,6 +532,66 @@ export abstract class PathAppComponent implements IPathApp {
             }
         }
         return form;
+    }
+
+    private populateForm(form: Form, key: Key, parentPageElement: IPageElement) {
+        const url = KeyUtility.translateUrl(form.url, key, true, parentPageElement);
+        this.pathService.serverGet(this.getBackendUrl(), url, (data: any) => {
+            for (const field of form.fields) {
+                if (data[field.id] != null && field instanceof ValueField) {
+                    if (field instanceof RadioGroupField) {
+                        // TODO general solution
+                        const setValueOfRadioGroupFieldContextWrapper = () => {
+                            const f: RadioGroupField = <RadioGroupField>field;
+                            const v: any = data[field.id];
+                            //noinspection TypeScriptUnresolvedFunction
+                            setValueOfRadioGroupField(f, v);
+                        };
+                        const setValueOfRadioGroupField = (radioGroupField: RadioGroupField, value: any) => {
+                            if (!radioGroupField.created) {
+                                console.log("Waiting for RadioGroupField " + radioGroupField.id);
+                                console.log(radioGroupField.created);
+                                window.setTimeout(setValueOfRadioGroupFieldContextWrapper, 50); // wait then try again
+                                return;
+                            }
+                            console.log("setting radiogroupfield value");
+                            if (value != null) {
+                                value = value.toString(); // force radio key type string for angular2
+                            }
+                            radioGroupField.setValue(value);
+                            radioGroupField.isInitialValueSet = true;
+                        };
+                        setValueOfRadioGroupFieldContextWrapper();
+                    } else {
+                        (<ValueField<any>>field).setValue(data[field.id]);
+                        (<ValueField<any>>field).isInitialValueSet = true;
+                    }
+                }
+                if (field instanceof FieldListField) {
+                    const setValueOfFieldListFieldContextWrapper = () => {
+                        const f: FieldListField = <FieldListField>field;
+                        const d: any = data;
+                        //noinspection TypeScriptUnresolvedFunction
+                        setValueOfFieldListField(f, d);
+                    };
+                    const setValueOfFieldListField = (fieldListField: FieldListField, value: any) => {
+                        if (!(<FieldListField>field).created) {
+                            console.log("Waiting for FieldListField... ");
+                            setTimeout(setValueOfFieldListFieldContextWrapper, 50); // wait then try again
+                            return;
+                        }
+                        // update fields
+                        for (const subfield of (<FieldListField>field).subfields) {
+                            if (data[subfield.id] != null) {
+                                subfield.setValue(data[subfield.id]);
+                                subfield.isInitialValueSet = true;
+                            }
+                        }
+                    };
+                    setValueOfFieldListFieldContextWrapper();
+                }
+            }
+        }, null);
     }
 
     private createFormField(modelFormField, form: Form, parentPageElement: IPageElement): FormField {

@@ -1,7 +1,11 @@
+import {PageElement} from "./page/element/page-element";
+
 export interface IPathApp {
     setCurrentForm(formId: string, key: IKey, handler: string, parentPageElement: IPageElement);
 
     createForm(formId: string, key: IKey, handler: string, formFunction: IFormFunction, parentPageElement: IPageElement);
+
+    createPageElement(modelElement, parentPageElement: PageElement): PageElement[];
 
     setCurrentPage(pageId: string, parentPageElement: IPageElement);
 

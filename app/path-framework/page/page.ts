@@ -5,6 +5,11 @@ export class Page {
     private _id: string;
     private _content: PageElement[] = [];
     private _rows: PageRow[] = [];
+    private readonly _parentPageElement: PageElement;
+
+    constructor(parentPageElement: PageElement) {
+        this._parentPageElement = parentPageElement;
+    }
 
     public getShortName(): string {
         return PageElement.buildShortName(this.name);
@@ -32,6 +37,10 @@ export class Page {
 
     set id(value: string) {
         this._id = value;
+    }
+
+    get parentPageElement(): PageElement {
+        return this._parentPageElement;
     }
 
     public updateRows() {

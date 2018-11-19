@@ -34,6 +34,7 @@ export class Form implements IForm {
     private _rows: FormRow[] = [];
     private _handler: IFormHandler;
     private _url: string;
+    private _urlDefaults: boolean;
     private _bean: IFormBean;
     private _formFunction: FormFunction;
     private _headerVisible = true;
@@ -139,8 +140,15 @@ export class Form implements IForm {
         this._borderStyle = value;
     }
 
+    get urlDefaults(): boolean {
+        return this._urlDefaults;
+    }
+
     public fromJson(modelForm) {
         this.url = modelForm["url"];
+        if (modelForm["urlDefaults"] != null) {
+            this._urlDefaults = modelForm["urlDefaults"];
+        }
         this.headerVisible = true;
         if (modelForm["headerVisible"] != null) {
             this.headerVisible = modelForm["headerVisible"];

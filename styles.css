@@ -266,9 +266,12 @@ textarea[readonly-with-required] {
         height: 150px;
         width: 630px;
     }
+    .tile-group {
+        display: inline-block; white-space: nowrap;
+    }
     /* hidden elements on desktop and tablet */
     .hide-on-desktop {
-        display: none;
+        display: none !important;
     }
 }
 
@@ -285,7 +288,7 @@ h3, .h3, h4, .h4, h5, .h5 {
     font-family: Futura, Futura-Medium, "Futura Medium", 'Nunito', sans-serif;
 }
 
-/* common tile styles */
+/* tiles and buttons */
 .tile {
     display: block;
     -webkit-perspective: 0;
@@ -297,18 +300,47 @@ h3, .h3, h4, .h4, h5, .h5 {
     opacity: 0.75;
     background-color: #2e8bcc;
     z-index: 1;
+    border-radius: 0px;
     border: 4px #ffffff solid;
     color: #ffffff;
+}
+@media only screen and (min-width: 768px) {
+    .tile-grouped-left {
+        border-right: 0;
+    }
+    .tile-grouped-middle {
+        border-left: 0;
+        border-right: 0;
+    }
+    .tile-grouped-right {
+        border-left: 0;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .tile-grouped-left {
+        border-right: 4px #ffffff solid;
+    }
+    .tile-grouped-middle {
+        border-left: 4px #ffffff solid;
+        border-right: 4px #ffffff solid;
+    }
+    .tile-grouped-right {
+        border-left: 4px #ffffff solid;
+    }
+    .tile-group-divider {
+        height: 10px;
+        width: 100%;
+        background-color: #ffffff;
+    }
 }
 .tile-button {
     cursor: pointer;
 }
-/* hover animation */
 .tile-button:hover {
     opacity: 1;
 }
 
-/* predefined tile colors */
+/* predefined tile colors - you may add your own colors in your path application css file */
 .tile.tile-blue {
     background-color: #2e8bcc;
 }

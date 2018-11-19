@@ -1,11 +1,11 @@
-import {IListHandler, IList, IButtonHandler, IKey, IPathApp, IButton} from "../../../pathinterface";
+import {IButton, IButtonHandler, IList, IListHandler, IPathApp} from "../../../pathinterface";
 import {PathService} from "../../../service/path.service";
 import {AfterViewInit, Component, Input, Output} from "@angular/core";
-import {Key, PageElement} from "../page-element";
+import {ButtonGroup} from "../button-group/button-group.component";
+import {PageElement} from "../page-element";
 import {TranslationService} from "../../../service/translation.service";
 import {KeyUtility} from "../../../utility/key-utility";
 import {Button} from "../button/button.component";
-import {LinkButton} from "../button/link-button.component";
 import {FocusUtility} from "../../../form/focus-utility";
 import {Subject} from "rxjs";
 import {debounceTime} from "rxjs/operators";
@@ -25,7 +25,7 @@ export class ListComponent implements AfterViewInit {
 }
 
 export class List extends PageElement implements IList {
-    private _buttons: Button[] = [];
+    private _buttonGroups: ButtonGroup[] = [];
     private _search: boolean;
     private _limit: number;
     private _searchRequired: boolean;
@@ -51,61 +51,89 @@ export class List extends PageElement implements IList {
     }
 
     public getContent(): IButton[] {
-        return this.buttons;
+        const buttons: Button[] = [];
+        for (const buttonGroup of this.buttonGroups) {
+            buttons.push(...buttonGroup.buttons);
+        }
+        return buttons;
     }
 
     public refresh(searchText: string, afterRefreshHandler: () => void) {
         // callback function for data
-        console.log("refresh list");
+        console.log("refresh list (searchText: " + searchText + ")");
         const dataHandler = (data: any) => {
-            const oldButtons = this.buttons;
-            this.buttons = [];
+            this.buttonGroups = [];
             for (const item of data) {
-                // create button or find existing button
-                const itemKey: Key = new Key(item["key"]["key"], item["key"]["name"]);
-                let button: Button = this.findButton(itemKey, oldButtons);
-                if (button == null) {
-                    // create button
-                    if (item["type"] == null || item["type"] === "button") {
-                        button = new Button(this.app, this.pathService, this.translationService);
-                    } else if (item["type"] === "linkButton") {
-                        button = new LinkButton(this.app, this.pathService, this.translationService);
+                // create button group and buttons
+                // set default types if server does not set type (button or buttonGroup)
+                const itemIsButtonGroup: boolean = item.hasOwnProperty("buttons");
+                if (itemIsButtonGroup) {
+                    item["type"] = "buttonGroup";
+                    for (const button of item.buttons) {
+                        if (button["type"] == null) {
+                            button["type"] = "button";
+                        }
                     }
-                    button.setKey(itemKey);
-                    button.parentPageElement = this.parentPageElement;
-                    button.listElement = true;
+                } else {
+                    if (item["type"] == null) {
+                        item["type"] = "button";
+                    }
                 }
-                // build button from json
-                // use list defaults if button does not specify model
-                if (item["icon"] == null) {
-                    item["icon"] = this.icon;
-                }
-                if (item["color"] == null) {
-                    item["color"] = this.color;
-                }
-                if (item["page"] == null) {
-                    item["page"] = this.page;
-                }
-                if ((item["form"] == null || item["form"]["form"] == null) && this.form != null) {
-                    item["form"] = {};
-                    item.form["form"] = this.form;
-                    item.form["handler"] = this.formHandler;
-                }
-                // special default width (2 instead of 1) for buttons in list
-                if (item["width"] == null) {
-                    item["width"] = this.width;
-                }
-                button.fromJson(item);
+                const pageElements = this.app.createPageElement(item, this.parentPageElement);
+                if (pageElements.length !== 1) {
+                    console.log("error creating button group from: ");
+                    console.log(item);
+                } else {
+                    const buttonGroup = <ButtonGroup>pageElements[0];
+                    let buttonCounter = 0;
+                    for (const button of buttonGroup.buttons) {
+                        button.listElement = true;
 
-                // special values for list buttons
-                button.handler = this._buttonHandler;
-                button.name = item.name; // no translation
-                button.tooltip = item.tooltip; // no translation
-                this.buttons.push(button);
+                        // model is either simple button or button of a group
+                        let buttonModel = item;
+                        if (itemIsButtonGroup) {
+                            buttonModel = item.buttons[buttonCounter];
+                        }
+
+                        // build button from json
+                        // use list defaults if button does not specify model
+                        if (buttonModel["icon"] == null) {
+                            buttonModel["icon"] = this.icon;
+                        }
+                        if (buttonModel["color"] == null) {
+                            buttonModel["color"] = this.color;
+                        }
+                        if (buttonModel["page"] == null && (buttonModel["form"] == null || buttonModel["form"]["form"] == null)) {
+                            // service does not return page or form, use static model
+                            if (this.page != null) {
+                                buttonModel["page"] = this.page;
+                            }
+                            if (this.form != null) {
+                                buttonModel["form"] = {};
+                                buttonModel.form["form"] = this.form;
+                                buttonModel.form["handler"] = this.formHandler;
+                            }
+                        }
+                        // special default width (2 instead of 1) for buttons in list
+                        if (buttonModel["width"] == null) {
+                            buttonModel["width"] = this.width;
+                        }
+                        button.fromJson(buttonModel);
+
+                        // special values for list buttons
+                        button.handler = this._buttonHandler;
+                        button.name = buttonModel.name; // no translation
+                        button.tooltip = buttonModel.tooltip; // no translation
+                        buttonCounter++;
+                    }
+                    this.buttonGroups.push(buttonGroup);
+                }
             }
             if (this.handler != null) {
                 this.handler.doLoad(this); // TODO useful?
             }
+            // refresh search
+            this.filterVisibleButtonGroups();
             if (this.limit) {
                 this.setSearchResultsCountMessage();
             }
@@ -119,7 +147,7 @@ export class List extends PageElement implements IList {
         // backend data
         if (this._url != null) {
             let urlParameters = "";
-            if (searchText || this.limit) {
+            if (this.searchRequest || this.limit) {
                 urlParameters = "?search=" + (searchText == null ? "" : encodeURI(searchText)) + "&limit=" + this.limit;
             }
             this.pathService.serverGet(this.app.getBackendUrl(), this.url + urlParameters, listHandlerDoLoad(this), null);
@@ -138,15 +166,6 @@ export class List extends PageElement implements IList {
         }
     }
 
-    private findButton(key: IKey, buttons: Button[]): Button {
-        for (const button of buttons) {
-            if (button.key.getKey() === key.getKey() && button.key.getName() === key.getName()) {
-                return button;
-            }
-        }
-        return null;
-    }
-
     public filterChanged(text: string) {
         this._searchTextChanged.next(text);
     }
@@ -158,34 +177,45 @@ export class List extends PageElement implements IList {
         } else if (this.searchRequest) {
             // call server to filter data
             if (!this._searchText && this.searchRequired) {
-                this._buttons = [];
+                this._buttonGroups = [];
             } else if (this._searchText === "*" || (!this._searchText && !this.searchRequired)) {
                 this.refresh(null, null);
             } else if (this._searchText && this._searchText.length >= 2) {
                 this.refresh(this._searchText, null);
             } else {
                 this._searchLabel = this.translationService.getText("SearchTextTooShort");
-                this._buttons = [];
+                this._buttonGroups = [];
             }
         } else {
             // filter loaded data only
-            const searchText: string = this._searchText ? this._searchText.toLowerCase() : "";
-            for (const button of this._buttons) {
-                button.visible = true;
-                if (searchText.length > 0) {
-                    let newVisible: boolean = button.name.toLowerCase().indexOf(searchText) !== -1;
-                    if (!newVisible) {
-                        for (const detail of button.details) {
-                            if (detail.text.toLowerCase().indexOf(searchText) !== -1) {
-                                newVisible = true;
-                                break;
+            this.filterVisibleButtonGroups();
+        }
+    }
+
+    private filterVisibleButtonGroups() {
+        const searchText: string = this._searchText ? this._searchText.toLowerCase() : "";
+        for (const buttonGroup of this._buttonGroups) {
+            if (searchText.length <= 0) {
+                buttonGroup.visible = true;
+            } else {
+                buttonGroup.visible = false;
+                for (const button of buttonGroup.buttons) {
+                    if (!buttonGroup.visible) {
+                        buttonGroup.visible = button.name.toLowerCase().indexOf(searchText) !== -1;
+                        if (!buttonGroup.visible) {
+                            for (const detail of button.details) {
+                                if (detail.text.toLowerCase().indexOf(searchText) !== -1) {
+                                    buttonGroup.visible = true;
+                                    break;
+                                }
                             }
                         }
                     }
-                    button.visible = newVisible;
-                    this.setSearchResultsCountMessage();
                 }
             }
+        }
+        if (this.visibleItemSize() !== this.buttonGroups.length) {
+            this.setSearchResultsCountMessage();
         }
     }
 
@@ -196,20 +226,25 @@ export class List extends PageElement implements IList {
 
     private visibleItemSize(): number {
         let result = 0;
-        for (const button of this.buttons) {
-            if (button.visible) {
-                result++;
+        for (const buttonGroup of this.buttonGroups) {
+            if (buttonGroup.visible) {
+                for (const button of buttonGroup.buttons) {
+                    if (button.visible) {
+                        result++;
+                        break;
+                    }
+                }
             }
         }
         return result;
     }
 
-    get buttons(): Button[] {
-        return this._buttons;
+    get buttonGroups(): ButtonGroup[] {
+        return this._buttonGroups;
     }
 
-    set buttons(value: Button[]) {
-        this._buttons = value;
+    set buttonGroups(value: ButtonGroup[]) {
+        this._buttonGroups = value;
     }
 
     get search(): boolean {

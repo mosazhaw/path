@@ -1,10 +1,9 @@
-import {Button} from "./button.component";
-import {IPathApp} from "../../../pathinterface";
-import {TranslationService} from "../../../service/translation.service";
-import {PathService} from "../../../service/path.service";
 import {Component, Input, Output} from "@angular/core";
+import {IPathApp} from "../../../pathinterface";
+import {PathService} from "../../../service/path.service";
+import {TranslationService} from "../../../service/translation.service";
 import {StringUtility} from "../../../utility/string-utility";
-import {ColorUtility} from "../../../utility/color-utility";
+import {Button} from "./button.component";
 
 @Component({
     selector: "path-back-button",
@@ -31,7 +30,7 @@ export class BackButton extends Button {
             modelElement["color"] = "silver";
         }
         super.fromJson(modelElement);
-        this.type = "backButton";
+        this.type = "backbutton";
         this.name = this.translationService.getText("Back");
     }
 
