@@ -130,11 +130,23 @@ This example links to another page (type <b>button</b>):
 }
 ```
 
-Another example opens a path form (type <b>button</b>):
+Another example opens a path form (type <b>button</b>) for modification of data. The form url will execute GET and PUT requests.
 
 ```json
 {
     "type": "button",
+    "name": "Contacts",
+    "form": {
+        "form": "ContactForm"
+    }
+}
+```
+
+A new button may be use to create data. Path will execute POST requests if an url is set on the form. A GET request may be used for default data.
+
+```json
+{
+    "type": "newButton",
     "name": "Contacts",
     "form": {
         "form": "ContactForm"
@@ -150,6 +162,30 @@ And this example opens an external link (type <b>linkButton</b>):
     "name": "www.google.com",
     "icon": "fa-google",
     "url": "http://www.google.com"
+}
+```
+
+##### Button Groups
+
+Tiles and buttons can be grouped together. For example, the first button could open a detail page, while a second button could open a form or toggle state. Groups can be used either static or as a result delivered from a path list.
+
+```json
+{
+    "type": "buttonGroup",
+    "buttons": [
+      {
+        "type": "button",
+        "name": "Contact1",
+        "page": "contactpage"
+      },
+      {
+        "type": "button",
+        "name": "Edit",
+        "form": {
+          "form": "ContactForm"
+        }
+      }      
+    ]
 }
 ```
 
@@ -200,6 +236,16 @@ The URL returns a dynamic set of path elements in JSON format. Use this element 
 {
     "type": "elementList",
     "url": "/example/elements"
+}
+```
+
+##### Breadcrumb
+
+A default breadcrumb is always displayed on top of the page. You may include additional breadcrumbs in the gui model:
+
+```json
+{
+    "type": "breadcrumb"
 }
 ```
 
@@ -345,13 +391,37 @@ Single or multi-line text input fields.
     "name": "Comments",
     "width": 2,
     "height": 4,
-    "maxLength": 5000,
+    "maxLength": 5000
 }
 ```
 
 ##### Translation
 
 Like text fields, but with built-in support for translated text.
+
+```json
+{
+    "id": "productName",
+    "type": "translation",
+    "name": "Name"
+}
+```
+
+#### Form default values
+
+You can set the **urlDefaults** parameter to true. Path will execute a GET request prior to opening a form with key value **null**. Your server application should response with default values.
+
+```json
+{
+    "id": "ProjectForm",
+    "title": "Project",
+    "url": "/project",
+    "urlDefaults": true,
+    "formFieldList": [
+      // field list
+    ]
+}
+```
 
 ## Path Framework Development
 
