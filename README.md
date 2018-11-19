@@ -423,6 +423,23 @@ You can set the **urlDefaults** parameter to true. Path will execute a GET reque
 }
 ```
 
+### Translations
+
+Path has full support for multiple languages. All language texts are keys referenced in your application translation service. Add additional keys in the translation service.
+Alternatively, you may define your texts directly in the GUI model:
+
+```json
+{
+    "type": "button",
+    "name": { "default": "A text not translated" },
+    "width": 1,
+    "icon": "fa-users",
+    "color": "amethyst"
+}
+```
+
+You may use any supported language code or a default value.
+
 ## Path Framework Development
 
 ![Path Architecture](https://github.com/innovad/path/blob/master/path-architecture.png)
