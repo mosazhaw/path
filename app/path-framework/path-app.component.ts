@@ -276,9 +276,8 @@ export abstract class PathAppComponent implements IPathApp {
                     page.name = parentPageElement.name;
                 }
                 for (const modelElement of modelPage.elementList) {
-                    this.addPageElement(page, modelElement, parentPageElement);
+                    this.createPageElement(modelElement, parentPageElement, page);
                 }
-                page.updateRows();
             }
         }
 
@@ -289,7 +288,7 @@ export abstract class PathAppComponent implements IPathApp {
         }
     }
 
-    public createPageElement(modelElement, parentPageElement: PageElement): PageElement[] {
+    public createPageElement(modelElement, parentPageElement: PageElement, page: Page): PageElement[] {
         const elements: PageElement[] = [];
         switch (modelElement.type) {
             case "button":
@@ -360,7 +359,7 @@ export abstract class PathAppComponent implements IPathApp {
                 const elementListUrl: any = KeyUtility.translateUrl(modelElement["url"], null, false, parentPageElement);
                 this.pathService.serverGet(this.getBackendUrl(), elementListUrl, (data: any) => {
                     for (const dynamicElement of data) {
-                        elements.push(...this.createPageElement(dynamicElement, parentPageElement));
+                        elements.push(...this.createPageElement(dynamicElement, parentPageElement, page));
                     }
                 }, null);
                 elements.push(elementList);
@@ -370,7 +369,7 @@ export abstract class PathAppComponent implements IPathApp {
                 buttonGroup.fromJson(modelElement);
                 if (modelElement["buttons"]) {
                     for (const buttonItem of modelElement["buttons"]) {
-                        const buttonGroups: ButtonGroup[] = <ButtonGroup[]>this.createPageElement(buttonItem, parentPageElement);
+                        const buttonGroups: ButtonGroup[] = <ButtonGroup[]>this.createPageElement(buttonItem, parentPageElement, null);
                         if (buttonGroups.length > 0) {
                             for (const item of buttonGroups[0].buttons) {
                                 buttonGroup.addButton(item);
@@ -408,12 +407,11 @@ export abstract class PathAppComponent implements IPathApp {
             }
             element.parentPageElement = parentPageElement;
         }
+        if (page && elements) {
+            page.content.push(...elements);
+            page.updateRows();
+        }
         return elements;
-    }
-
-    private addPageElement(page: Page, modelElement, parentPageElement: PageElement): void {
-        const elements = this.createPageElement(modelElement, parentPageElement);
-        page.content.push(...elements);
     }
 
     private wrapSingleButton(button: Button): ButtonGroup {

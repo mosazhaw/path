@@ -79,7 +79,7 @@ export class List extends PageElement implements IList {
                         item["type"] = "button";
                     }
                 }
-                const pageElements = this.app.createPageElement(item, this.parentPageElement);
+                const pageElements = this.app.createPageElement(item, this.parentPageElement, null);
                 if (pageElements.length !== 1) {
                     console.log("error creating button group from: ");
                     console.log(item);
