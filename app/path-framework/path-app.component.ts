@@ -504,13 +504,16 @@ export abstract class PathAppComponent implements IPathApp {
             form.updateRows();
 
             // fetch data from backend
-            if (form.url != null && form.key != null) {
+            if (form.url && form.key) {
                 this.populateForm(form, form.getKey(), parentPageElement);
-                form.url = KeyUtility.translateUrl(form.url, key, true, parentPageElement);
             } else if (form.urlDefaults) {
                 const nullKey = new Key("null", "nullKey");
                 this.populateForm(form, nullKey, parentPageElement);
             }
+            if (form.url) {
+                form.url = KeyUtility.translateUrl(form.url, key, true, parentPageElement);
+            }
+
             // execute handler
             let handlerName = handler;
             if (handlerName == null) {

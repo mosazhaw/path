@@ -1,4 +1,5 @@
 import {IPageElement, IKey} from "../pathinterface";
+import {Key} from "../page/element/page-element";
 
 export class KeyUtility {
 
@@ -22,6 +23,20 @@ export class KeyUtility {
         }
 
         return translatedUrl;
+    }
+
+    public static findKey(pageElement: IPageElement, name: string): Key {
+        let searchKeyName = name;
+        if (searchKeyName) {
+            searchKeyName = searchKeyName.replace(":", "");
+            while (pageElement != null) {
+                if (pageElement.getKey() != null && pageElement.getKey().getName() === searchKeyName) {
+                    return <Key>pageElement.getKey();
+                }
+                pageElement = pageElement.getParent();
+            }
+        }
+        return null;
     }
 
     public static replaceVariable(url: string, variable: string, value: string): string {

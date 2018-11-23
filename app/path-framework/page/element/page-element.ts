@@ -1,4 +1,5 @@
 import {IPageElement, IKey, IPathApp} from "../../pathinterface";
+import {KeyUtility} from "../../utility/key-utility";
 
 export class PageElement implements IPageElement {
     private readonly _app: IPathApp;
@@ -120,7 +121,12 @@ export class PageElement implements IPageElement {
             this.id = modelElement["id"];
         }
         if (modelElement["key"] != null) {
-            this.key = new Key(modelElement["key"]["key"], modelElement["key"]["name"]);
+            const name: string = modelElement["key"]["name"];
+            if (name.startsWith(":")) {
+                this.key = KeyUtility.findKey(this.parentPageElement, name);
+            } else {
+                this.key = new Key(modelElement["key"]["key"], name);
+            }
         }
         if (modelElement["visible"] != null) {
             this.visible = modelElement["visible"];
