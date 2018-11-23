@@ -196,7 +196,7 @@ export abstract class PathAppComponent implements IPathApp {
         }
         // breadcrumbs
         for (let k = index - 1; k > 0; k--) {
-            let currentPage = this._pageStack[k];
+            const currentPage = this._pageStack[k];
             if (currentPage) {
                 for (const element of currentPage.content) {
                     if (element instanceof List) {
