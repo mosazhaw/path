@@ -12,7 +12,7 @@ export class FocusUtility {
             }
             for (const form of forms) {
                 for (const element of <any>form.elements) {
-                    if (element instanceof HTMLInputElement && (<HTMLInputElement>element).type === "text") {
+                    if (element instanceof HTMLInputElement && (<HTMLInputElement>element).type === "text" || (<HTMLInputElement>element).type === "textarea") {
                         const input = <HTMLInputElement>element;
                         if (input.outerHTML.indexOf("readonly-with-required") < 0) { // no focus on readonly fields
                             input.focus();
