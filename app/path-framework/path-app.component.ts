@@ -195,10 +195,13 @@ export abstract class PathAppComponent implements IPathApp {
             afterRefreshHandler();
         }
         // breadcrumbs
-        if (this._pageStack[index - 1] != null) {
-            for (const element of this._pageStack[index - 1].content) {
-                if (element instanceof List) {
-                    refresh(element);
+        for (let k = index - 1; k > 0; k--) {
+            let currentPage = this._pageStack[k];
+            if (currentPage) {
+                for (const element of currentPage.content) {
+                    if (element instanceof List) {
+                        refresh(element);
+                    }
                 }
             }
         }
