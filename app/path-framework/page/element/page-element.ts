@@ -122,7 +122,7 @@ export class PageElement implements IPageElement {
         }
         if (modelElement["key"] != null) {
             const name: string = modelElement["key"]["name"];
-            if (name.startsWith(":")) {
+            if (name && !modelElement["key"]["key"]) {
                 this.key = KeyUtility.findKey(this.parentPageElement, name);
             } else {
                 this.key = new Key(modelElement["key"]["key"], name);
