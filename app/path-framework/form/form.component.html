@@ -37,6 +37,9 @@
 					<div *ngIf="field.type == 'CheckboxGroupField'">
 						<path-checkbox-group [field]="field"></path-checkbox-group>
 					</div>
+					<div *ngIf="field.type == 'fileUpload'">
+						<path-file-upload [field]="field"></path-file-upload>
+					</div>
 				</div>
 			</div>
 			<!-- show form buttons on modal-body in mobile version, otherwise they are taking up too much space when the keyboard is shown -->

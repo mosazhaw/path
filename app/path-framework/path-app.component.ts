@@ -8,6 +8,7 @@ import {PreviousButton} from "./form/field/button/previous-button";
 import {CheckboxGroupField} from "./form/field/checkbox/checkbox-group.component";
 import {DateField} from "./form/field/date/date-field.component";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
+import {FileUploadField} from "./form/field/file-upload/file-upload.component";
 import {FormField} from "./form/field/form-field";
 import {LabelField} from "./form/field/label/label-field.component";
 import {NumberField} from "./form/field/number/number-field.component";
@@ -740,6 +741,11 @@ export abstract class PathAppComponent implements IPathApp {
                 if (form.key == null) {
                     formField.visible = false;
                 }
+                break;
+            }
+            case "fileUpload": {
+                formField = new FileUploadField(form, this.translationService);
+                formField.fromJson(modelFormField);
                 break;
             }
             default: {
