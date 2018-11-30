@@ -1,17 +1,7 @@
 <path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
-    <div class="drop-container" ngFileDrop [options]="options" (uploadOutput)="onUploadOutput($event)"
-         [uploadInput]="uploadInput" [ngClass]="{ 'is-drop-over': dragOver }">
-        <h1>Drag &amp; Drop</h1>
+    <div class="form-group">
+        <input type="file" class="form-control-file" (change)="selectFile($event)" placeholder="Upload file" [multiple]="field.multiple"
+               accept=".pdf,.doc,.docx,.txt">
     </div>
-
-    <label class="upload-button">
-        <input type="file" ngFileSelect [options]="options" (uploadOutput)="onUploadOutput($event)"
-               [uploadInput]="uploadInput" multiple>
-        or choose file(s)
-    </label>
-
-    <button type="button" class="start-upload-btn" (click)="startUpload()">
-        Start Upload
-    </button>
 </div>

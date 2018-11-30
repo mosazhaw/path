@@ -1,121 +1,90 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from "@angular/core";
-import {UploaderOptions, UploadFile, UploadInput, UploadOutput} from "ngx-uploader";
 import {ValueField} from "../value-field";
+import {HttpClient, HttpEvent, HttpEventType, HttpParams, HttpRequest, HttpResponse} from "@angular/common/http";
+import {PathService} from "../../../service/path.service";
+import {Observable} from "rxjs";
 
 @Component({
     selector: "path-file-upload",
     templateUrl: "file-upload.component.html"
 })
-export class FileUploadComponent implements OnChanges {
+export class FileUploadComponent {
     @Input("field")
     @Output("field")
     field: FileUploadField;
 
-    options: UploaderOptions;
-    formData: FormData;
-    files: UploadFile[];
-    uploadInput: EventEmitter<UploadInput>;
-    humanizeBytes: Function;
-    dragOver: boolean;
-
-    constructor() {
-        console.log("file upload constructor called");
-        this.options = {concurrency: 1, maxUploads: 3};
-        this.files = []; // local uploading files array
-        this.uploadInput = new EventEmitter<UploadInput>(); // input events, we use this to emit data to ngx-uploader
-        this.humanizeBytes = this.humanizeBytes;
+    constructor(private http: HttpClient) {
     }
 
-    ngOnChanges(changes: SimpleChanges): void {
-        console.log("ngOnChanges");
-        this.files = [];
-        if (this.field) {
-            this.field.setValue(null);
-            console.log("this.field.value" + this.field.value);
-        } else {
-            console.log("field not available");
+    // At the drag drop area
+    // (drop)="onDropFile($event)"
+    onDropFile(event: DragEvent) {
+        event.preventDefault();
+        this.uploadFile(event.dataTransfer.files);
+    }
+
+    // At the drag drop area
+    // (dragover)="onDragOverFile($event)"
+    onDragOverFile(event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+
+    // At the file input element
+    // (change)="selectFile($event)"
+    selectFile(event) {
+        this.uploadFile(event.target.files);
+    }
+
+    uploadFile(files: FileList) {
+        if (files.length == 0) {
+            console.log("No file selected!");
+            return
+
         }
-        console.log(this.files);
+        let file: File = files[0];
+
+        this.doUpload(this.field.getForm().getApp().getBackendUrl() + this.field.url, file)
+            .subscribe(
+                event => {
+                    if (event.type == HttpEventType.UploadProgress) {
+                        const percentDone = Math.round(100 * event.loaded / event.total);
+                        console.log(`File is ${percentDone}% loaded.`);
+                    } else if (event instanceof HttpResponse) {
+                        console.log('File is completely loaded!');
+                    }
+                },
+                (err) => {
+                    console.log("Upload Error:", err);
+                }, () => {
+                    console.log("Upload done");
+                }
+            )
     }
 
-    onUploadOutput(output: UploadOutput): void {
-        switch (output.type) {
-            case "allAddedToQueue":
-                // uncomment this if you want to auto upload files when added
-                const event: UploadInput = {
-                    type: "uploadAll",
-                    url: this.getConfiguredUrl(),
-                    method: "POST",
-                    data: {foo: "bar"}
-                };
-                this.uploadInput.emit(event);
-                break;
-            case "addedToQueue":
-                if (typeof output.file !== "undefined") {
-                    this.files.push(output.file);
-                }
-                break;
-            case "uploading":
-                if (typeof output.file !== "undefined") {
-                    // update current data in files array for uploading file
-                    const index = this.files.findIndex((file) => typeof output.file !== "undefined" && file.id === output.file.id);
-                    this.files[index] = output.file;
-                }
-                break;
-            case "removed":
-                // remove file from array when removed
-                this.files = this.files.filter((file: UploadFile) => file !== output.file);
-                break;
-            case "dragOver":
-                this.dragOver = true;
-                break;
-            case "dragOut":
-            case "drop":
-                this.dragOver = false;
-                break;
-            case "done":
-                // the files are uploaded
-                console.log("file upload done");
-                const fileNames: string[] = [];
-                for (const file of this.files) {
-                    fileNames.push(file.name);
-                }
-                this.field.setValue(fileNames);
-                break;
-        }
-    }
+    // file from event.target.files[0]
+    private doUpload(url: string, file: File): Observable<HttpEvent<any>> {
 
-    startUpload(): void {
-        const event: UploadInput = {
-            type: "uploadAll",
-            url: this.getConfiguredUrl(),
-            method: "POST",
-            data: {foo: "bar"}
+        let formData = new FormData();
+        formData.append('upload', file);
+
+        let params = new HttpParams();
+
+        const options = {
+            params: params,
+            reportProgress: true,
         };
 
-        this.uploadInput.emit(event);
+        const req = new HttpRequest('POST', url, formData, options);
+        return this.http.request(req);
     }
 
-    cancelUpload(id: string): void {
-        this.uploadInput.emit({type: "cancel", id: id});
-    }
-
-    removeFile(id: string): void {
-        this.uploadInput.emit({type: "remove", id: id});
-    }
-
-    removeAllFiles(): void {
-        this.uploadInput.emit({type: "removeAll"});
-    }
-
-    getConfiguredUrl(): string {
-        return this.field.getForm().getApp().getBackendUrl() + this.field.url;
-    }
 }
 
 export class FileUploadField extends ValueField<string[]> {
 
     private _url: string;
+    private _multiple: boolean;
 
     get url(): string {
         return this._url;
@@ -125,11 +94,22 @@ export class FileUploadField extends ValueField<string[]> {
         this._url = value;
     }
 
+    get multiple(): boolean {
+        return this._multiple;
+    }
+
+    set multiple(value: boolean) {
+        this._multiple = value;
+    }
+
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
         this.type = "fileUpload";
         if (modelFormField["url"]) {
             this.url = modelFormField["url"];
+        }
+        if (modelFormField["multiple"]) {
+            this.multiple = modelFormField["multiple"];
         }
     }
 
