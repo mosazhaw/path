@@ -97,7 +97,7 @@ export class FileUploadField extends ValueField<PathFile[]> {
     private _url: string;
     private _multiple: boolean;
 
-    constructor(form: IForm, translationService: TranslationService, url: string) {
+    constructor(form: IForm, translationService: TranslationService) {
         super(form, translationService);
         this.value = [];
     }
