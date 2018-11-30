@@ -1,9 +1,7 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from "@angular/core";
+import {Component, Input, Output} from "@angular/core";
 import {ValueField} from "../value-field";
 import {HttpClient, HttpEvent, HttpEventType, HttpParams, HttpRequest, HttpResponse} from "@angular/common/http";
-import {PathService} from "../../../service/path.service";
 import {Observable} from "rxjs";
-import {Key} from "../../../page/element/page-element";
 import {IForm} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 
@@ -56,7 +54,7 @@ export class FileUploadComponent {
 
                     } else if (event instanceof HttpResponse) {
                         console.log("File is completely loaded!");
-                        const key: Key = new Key(event.body["key"]["key"], event.body["key"]["name"]); // TODO handle errors
+                        const key: PathFileKey = new PathFileKey(event.body["key"]["key"], event.body["key"]["name"]); // TODO handle errors
                         const newFile = new PathFile();
                         newFile.key = key;
                         newFile.name = file.name;
@@ -102,6 +100,16 @@ export class FileUploadField extends ValueField<PathFile[]> {
         this.value = [];
     }
 
+    setValue(value: PathFile[]): void {
+        const files: PathFile[] = [];
+        for (const item of value) {
+            const file = Object.assign(new PathFile(), item);
+            file.key = Object.assign(new PathFileKey(null, null), item.key);
+            files.push(file);
+        }
+        super.setValue(files);
+    }
+
     get url(): string {
         return this._url;
     }
@@ -118,14 +126,14 @@ export class FileUploadField extends ValueField<PathFile[]> {
         this._multiple = value;
     }
 
-    public remove(key: Key): void {
+    public remove(key: PathFileKey): void {
         const file: PathFile = this.find(key);
         if (file) {
             file.active = false;
         }
     }
 
-    public find(key: Key): PathFile {
+    public find(key: PathFileKey): PathFile {
         for (const file of this.value) {
             if (file.key.equals(key)) {
                 return file;
@@ -148,31 +156,33 @@ export class FileUploadField extends ValueField<PathFile[]> {
 }
 
 export class PathFile {
-    private _active: boolean;
-    private _name: string;
-    private _key: Key;
+    active: boolean;
+    name: string;
+    key: PathFileKey;
+}
 
-    get active(): boolean {
-        return this._active;
+// TODO unify with list key
+// tslint:disable:max-classes-per-file
+export class PathFileKey {
+    key: string;
+    name: any;
+
+    constructor(key: string, name: any) {
+        this.key = key;
+        this.name = name;
     }
 
-    set active(value: boolean) {
-        this._active = value;
+    public equals(otherKey: PathFileKey): boolean {
+        if (otherKey != null &&
+            otherKey.name &&
+            otherKey.key &&
+            this.name &&
+            this.key &&
+            otherKey.name === this.name &&
+            otherKey.key === this.key) {
+            return true;
+        }
+        return false;
     }
 
-    get name(): string {
-        return this._name;
-    }
-
-    set name(value: string) {
-        this._name = value;
-    }
-
-    get key(): Key {
-        return this._key;
-    }
-
-    set key(value: Key) {
-        this._key = value;
-    }
 }
