@@ -522,8 +522,10 @@ export abstract class PathAppComponent implements IPathApp {
 
             // fetch data from backend
             if (form.url && form.key) {
+                // button set a key on form, update mode, ignore urlDefaults
                 this.populateForm(form, form.getKey(), parentPageElement);
             } else if (form.urlDefaults) {
+                // no key, create mode
                 const nullKey = new Key("null", "nullKey");
                 this.populateForm(form, nullKey, parentPageElement);
             }
