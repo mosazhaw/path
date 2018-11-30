@@ -13,7 +13,7 @@
         </tr>
         </thead>
         <tbody>
-        <ng-container *ngFor="let file of field.files">
+        <ng-container *ngFor="let file of field.value">
             <tr *ngIf="file.active">
                 <td scope="row">{{file.name}}</td>
                 <td>{{file.active}}</td>

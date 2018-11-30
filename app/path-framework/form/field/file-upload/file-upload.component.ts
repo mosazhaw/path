@@ -4,6 +4,8 @@ import {HttpClient, HttpEvent, HttpEventType, HttpParams, HttpRequest, HttpRespo
 import {PathService} from "../../../service/path.service";
 import {Observable} from "rxjs";
 import {Key} from "../../../page/element/page-element";
+import {IForm} from "../../../pathinterface";
+import {TranslationService} from "../../../service/translation.service";
 
 @Component({
     selector: "path-file-upload",
@@ -51,18 +53,21 @@ export class FileUploadComponent {
                     if (event.type === HttpEventType.UploadProgress) {
                         const percentDone = Math.round(100 * event.loaded / event.total);
                         console.log(`File is ${percentDone}% loaded.`);
+
                     } else if (event instanceof HttpResponse) {
                         console.log("File is completely loaded!");
+                        const key: Key = new Key(event.body["key"]["key"], event.body["key"]["name"]); // TODO handle errors
+                        const newFile = new PathFile();
+                        newFile.key = key;
+                        newFile.name = file.name;
+                        newFile.active = true;
+                        console.log(newFile);
+                        this.field.value.push(newFile);
                     }
                 },
                 (err) => {
                     console.log("Upload Error:", err);
                 }, () => {
-                    const newFile = new PathFile();
-                    newFile.name = file.name;
-                    newFile.key = new Key("TBD", "TBD");
-                    newFile.active = true;
-                    this.field.files.push(newFile);
                     console.log("Upload done");
                 }
             );
@@ -87,11 +92,15 @@ export class FileUploadComponent {
 
 }
 
-export class FileUploadField extends ValueField<string[]> {
+export class FileUploadField extends ValueField<PathFile[]> {
 
     private _url: string;
     private _multiple: boolean;
-    private _files: PathFile[] = [];
+
+    constructor(form: IForm, translationService: TranslationService, url: string) {
+        super(form, translationService);
+        this.value = [];
+    }
 
     get url(): string {
         return this._url;
@@ -109,21 +118,20 @@ export class FileUploadField extends ValueField<string[]> {
         this._multiple = value;
     }
 
-    get files(): PathFile[] {
-        return this._files;
-    }
-
-    set files(value: PathFile[]) {
-        this._files = value;
-    }
-
     public remove(key: Key): void {
-        for (const file of this.files) {
+        const file: PathFile = this.find(key);
+        if (file) {
+            file.active = false;
+        }
+    }
+
+    public find(key: Key): PathFile {
+        for (const file of this.value) {
             if (file.key.equals(key)) {
-                file.active = false;
-                break;
+                return file;
             }
         }
+        return null;
     }
 
     public fromJson(modelFormField) {
