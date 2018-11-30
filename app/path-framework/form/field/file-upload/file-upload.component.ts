@@ -3,6 +3,7 @@ import {ValueField} from "../value-field";
 import {HttpClient, HttpEvent, HttpEventType, HttpParams, HttpRequest, HttpResponse} from "@angular/common/http";
 import {PathService} from "../../../service/path.service";
 import {Observable} from "rxjs";
+import {Key} from "../../../page/element/page-element";
 
 @Component({
     selector: "path-file-upload",
@@ -57,6 +58,11 @@ export class FileUploadComponent {
                 (err) => {
                     console.log("Upload Error:", err);
                 }, () => {
+                    const newFile = new PathFile();
+                    newFile.name = file.name;
+                    newFile.key = new Key("TBD", "TBD");
+                    newFile.active = true;
+                    this.field.files.push(newFile);
                     console.log("Upload done");
                 }
             );
@@ -85,6 +91,7 @@ export class FileUploadField extends ValueField<string[]> {
 
     private _url: string;
     private _multiple: boolean;
+    private _files: PathFile[] = [];
 
     get url(): string {
         return this._url;
@@ -102,6 +109,23 @@ export class FileUploadField extends ValueField<string[]> {
         this._multiple = value;
     }
 
+    get files(): PathFile[] {
+        return this._files;
+    }
+
+    set files(value: PathFile[]) {
+        this._files = value;
+    }
+
+    public remove(key: Key): void {
+        for (const file of this.files) {
+            if (file.key.equals(key)) {
+                file.active = false;
+                break;
+            }
+        }
+    }
+
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
         this.type = "fileUpload";
@@ -113,4 +137,34 @@ export class FileUploadField extends ValueField<string[]> {
         }
     }
 
+}
+
+export class PathFile {
+    private _active: boolean;
+    private _name: string;
+    private _key: Key;
+
+    get active(): boolean {
+        return this._active;
+    }
+
+    set active(value: boolean) {
+        this._active = value;
+    }
+
+    get name(): string {
+        return this._name;
+    }
+
+    set name(value: string) {
+        this._name = value;
+    }
+
+    get key(): Key {
+        return this._key;
+    }
+
+    set key(value: Key) {
+        this._key = value;
+    }
 }

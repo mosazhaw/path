@@ -1,7 +1,25 @@
 <path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
     <div class="form-group">
-        <input type="file" class="form-control-file" (change)="selectFile($event)" placeholder="Upload file" [multiple]="field.multiple"
-               accept=".pdf,.doc,.docx,.txt">
+        <input type="file" class="form-control-file" (change)="selectFile($event)" placeholder="Upload file"
+               [multiple]="field.multiple" accept=".pdf,.doc,.docx,.txt">
     </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">File Name</th>
+            <th scope="col">Size</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <ng-container *ngFor="let file of field.files">
+            <tr *ngIf="file.active">
+                <td scope="row">{{file.name}}</td>
+                <td>{{file.active}}</td>
+                <td align="right"><a href="#" (click)="field.remove(file.key)">Remove</a></td>
+            </tr>
+        </ng-container>
+        </tbody>
+    </table>
 </div>
