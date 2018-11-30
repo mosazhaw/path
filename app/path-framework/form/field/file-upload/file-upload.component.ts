@@ -37,21 +37,21 @@ export class FileUploadComponent {
     }
 
     uploadFile(files: FileList) {
-        if (files.length == 0) {
+        if (files.length === 0) {
             console.log("No file selected!");
-            return
+            return;
 
         }
-        let file: File = files[0];
+        const file: File = files[0];
 
         this.doUpload(this.field.getForm().getApp().getBackendUrl() + this.field.url, file)
             .subscribe(
                 event => {
-                    if (event.type == HttpEventType.UploadProgress) {
+                    if (event.type === HttpEventType.UploadProgress) {
                         const percentDone = Math.round(100 * event.loaded / event.total);
                         console.log(`File is ${percentDone}% loaded.`);
                     } else if (event instanceof HttpResponse) {
-                        console.log('File is completely loaded!');
+                        console.log("File is completely loaded!");
                     }
                 },
                 (err) => {
@@ -59,23 +59,23 @@ export class FileUploadComponent {
                 }, () => {
                     console.log("Upload done");
                 }
-            )
+            );
     }
 
     // file from event.target.files[0]
     private doUpload(url: string, file: File): Observable<HttpEvent<any>> {
 
-        let formData = new FormData();
-        formData.append('upload', file);
+        const formData = new FormData();
+        formData.append("upload", file);
 
-        let params = new HttpParams();
+        const params = new HttpParams();
 
         const options = {
             params: params,
             reportProgress: true,
         };
 
-        const req = new HttpRequest('POST', url, formData, options);
+        const req = new HttpRequest("POST", url, formData, options);
         return this.http.request(req);
     }
 
