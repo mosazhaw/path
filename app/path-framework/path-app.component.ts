@@ -141,21 +141,35 @@ export abstract class PathAppComponent implements IPathApp {
         const pageStack = this._pageStack;
         const afterRefreshHandler = () => {
             // refresh all breadcrumb texts
-            for (const page of pageStack) {
-                for (const element of page.content) {
-                    if (element instanceof List) {
-                        const list = <List>element;
-                        for (const buttonGroup of list.buttonGroups) {
-                            for (const button of buttonGroup.buttons) {
-                                // a button that might have been updated
-                                // compare button key to complete breadcrumb path
-                                for (const otherPage of pageStack) {
-                                    if (otherPage.parentPageElement && otherPage.parentPageElement.getKey()) {
-                                        // button is used in key, update page name
-                                        if (otherPage.parentPageElement.getKey().getKey() === button.getKey().getKey() &&
-                                            otherPage.parentPageElement.getKey().getName() === button.getKey().getName()) {
-                                            otherPage.name = PageElement.buildShortName(button.name);
-                                        }
+            for (let k = 1; k < pageStack.length; k++) {
+                const page = pageStack[k];
+                // only if page name is derived from parent button
+                if (page.parentPageElement && page.parentPageElement.getKey()) {
+                    const parentPage = pageStack[k - 1]; // the parent page contains a button that defines the page name
+                    for (const element of parentPage.content) {
+                        // search all lists of parent page
+                        if (element instanceof List) {
+                            const list = <List>element;
+
+                            // check if all buttons have unique keys
+                            const keys = new Set();
+                            let buttonCount = 0;
+                            for (const button of list.getContent()) {
+                                buttonCount++;
+                                keys.add(button.getKey().getName() + "-" + button.getKey().getKey());
+                                if (keys.size !== buttonCount) {
+                                    break;
+                                }
+                            }
+
+                            // only update page name if list has unique keys
+                            if (keys.size === buttonCount) {
+                                for (const button of list.getContent()) {
+                                    // compare key value and name and update page name
+                                    if (page.parentPageElement.getKey().getKey() === button.getKey().getKey() &&
+                                        page.parentPageElement.getKey().getName() === button.getKey().getName()) {
+                                        page.name = PageElement.buildShortName(button.getName());
+                                        break;
                                     }
                                 }
                             }
