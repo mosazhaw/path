@@ -1,25 +1,33 @@
 <path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
 <div [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
-    <div class="form-group">
-        <input type="file" class="form-control-file" (change)="selectFile($event)" placeholder="Upload file"
-               [multiple]="field.multiple" accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png">
-    </div>
     <table class="table">
         <thead>
         <tr>
-            <th scope="col">File Name</th>
-            <th scope="col">Size</th>
-            <th></th>
+            <td class="col-md-7">File Name</td>
+            <td class="col-md-2">Size</td>
+            <td class="col-md-3"></td>
         </tr>
         </thead>
         <tbody>
         <ng-container *ngFor="let file of field.value">
             <tr *ngIf="file.active">
-                <td scope="row"><a href="#" (click)="field.download(file.key)">{{file.name}}</a></td>
-                <td>{{file.sizeString}}</td>
-                <td align="right"><a href="#" (click)="field.remove(file.key)">Remove</a></td>
+                <td class="col-md-7"><a href="#" (click)="field.download(file.key)">{{file.name}}</a></td>
+                <td class="col-md-2">{{file.sizeString}}</td>
+                <td class="col-md-3" align="right">
+                    <a *ngIf="file.uploaded" href="#" (click)="field.remove(file.key)">Remove</a>
+                    <div *ngIf="!file.uploaded" class="progress">
+                        <div class="progress-bar" role="progressbar" [style.width.%]="file.uploadProgress"
+                             [attr.aria-valuenow]="file.uploadProgress" aria-valuemin="0" aria-valuemax="100">
+                            <span class="sr-only">{{file.uploadProgress}}% Complete</span>
+                        </div>
+                    </div>
+                </td>
             </tr>
         </ng-container>
         </tbody>
     </table>
+    <div class="form-group">
+        <input type="file" class="form-control-file" (change)="selectFile($event)" placeholder="Upload file"
+               [multiple]="field.multiple" accept="{{field.acceptedFileTypes.join(', ')}}">
+    </div>
 </div>

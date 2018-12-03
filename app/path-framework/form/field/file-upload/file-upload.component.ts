@@ -49,18 +49,29 @@ export class FileUploadComponent {
             .subscribe(
                 event => {
                     if (event.type === HttpEventType.UploadProgress) {
-                        const percentDone = Math.round(100 * event.loaded / event.total);
+                        const percentDone: number = Math.round(100 * event.loaded / event.total);
                         console.log(`File is ${percentDone}% loaded.`);
+                        let uploadFile = this.field.findCurrentUpload(file.name);
+                        if (uploadFile == null) {
+                            uploadFile = new PathFile();
+                            uploadFile.name = file.name;
+                            uploadFile.sizeString = this.getReadableFileSizeString(file.size);
+                            uploadFile.active = true;
+                            this.field.value.push(uploadFile);
+                            this.field.sortValues();
+                        }
+                        uploadFile.uploadProgress = percentDone;
 
                     } else if (event instanceof HttpResponse) {
                         console.log("File is completely loaded!");
-                        const key: PathFileKey = new PathFileKey(event.body["key"]["key"], event.body["key"]["name"]); // TODO handle errors
-                        const newFile = new PathFile();
-                        newFile.key = key;
-                        newFile.name = file.name;
-                        newFile.sizeString = this.getReadableFileSizeString(file.size);
-                        newFile.active = true;
-                        this.field.value.push(newFile);
+                        const uploadFile = this.field.findCurrentUpload(file.name);
+                        if (uploadFile) {
+                            const key: PathFileKey = new PathFileKey(event.body["key"]["key"], event.body["key"]["name"]);
+                            uploadFile.key = key;
+                            uploadFile.uploaded = true;
+                        } else {
+                            console.log("error: file should exist (" + file.name + ")");
+                        }
                     }
                 },
                 (err) => {
@@ -105,10 +116,12 @@ export class FileUploadField extends ValueField<PathFile[]> {
 
     private _url: string;
     private _multiple: boolean;
+    private _acceptedFileTypes: string[] = [];
 
     constructor(form: IForm, translationService: TranslationService) {
         super(form, translationService);
         this.value = [];
+        this._acceptedFileTypes.push("*.*");
     }
 
     setValue(value: PathFile[]): void {
@@ -118,7 +131,12 @@ export class FileUploadField extends ValueField<PathFile[]> {
             file.key = Object.assign(new PathFileKey(null, null), item.key);
             files.push(file);
         }
+        this.sortValues();
         super.setValue(files);
+    }
+
+    public sortValues() {
+        this.value.sort((a, b) => a.name.localeCompare(b.name));
     }
 
     get url(): string {
@@ -137,6 +155,14 @@ export class FileUploadField extends ValueField<PathFile[]> {
         this._multiple = value;
     }
 
+    get acceptedFileTypes(): string[] {
+        return this._acceptedFileTypes;
+    }
+
+    set acceptedFileTypes(value: string[]) {
+        this._acceptedFileTypes = value;
+    }
+
     public remove(key: PathFileKey): void {
         const file: PathFile = this.find(key);
         if (file) {
@@ -147,6 +173,15 @@ export class FileUploadField extends ValueField<PathFile[]> {
     public find(key: PathFileKey): PathFile {
         for (const file of this.value) {
             if (file.key.equals(key)) {
+                return file;
+            }
+        }
+        return null;
+    }
+
+    public findCurrentUpload(name: string): PathFile {
+        for (const file of this.value) {
+            if (file.name === name && !file.uploaded) {
                 return file;
             }
         }
@@ -166,12 +201,17 @@ export class FileUploadField extends ValueField<PathFile[]> {
         if (modelFormField["multiple"]) {
             this.multiple = modelFormField["multiple"];
         }
+        if (modelFormField["acceptedFileTypes"]) {
+            this.acceptedFileTypes = modelFormField["acceptedFileTypes"];
+        }
     }
 
 }
 
 export class PathFile {
     active: boolean;
+    uploaded = false;
+    uploadProgress = 0;
     name: string;
     sizeString: string;
     key: PathFileKey;
