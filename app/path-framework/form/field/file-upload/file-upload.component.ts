@@ -58,8 +58,8 @@ export class FileUploadComponent {
                         const newFile = new PathFile();
                         newFile.key = key;
                         newFile.name = file.name;
+                        newFile.sizeString = this.getReadableFileSizeString(file.size);
                         newFile.active = true;
-                        console.log(newFile);
                         this.field.value.push(newFile);
                     }
                 },
@@ -86,6 +86,17 @@ export class FileUploadComponent {
 
         const req = new HttpRequest("POST", url, formData, options);
         return this.http.request(req);
+    }
+
+    private getReadableFileSizeString(byteSize: number): string {
+        let i = -1;
+        const byteUnits = [" kB", " MB", " GB", " TB", " PB", " EB", " ZB", " YB"];
+        do {
+            byteSize = byteSize / 1024;
+            i++;
+        } while (byteSize > 1024);
+
+        return Math.max(byteSize, 0.1).toFixed(1) + byteUnits[i];
     }
 
 }
@@ -142,6 +153,11 @@ export class FileUploadField extends ValueField<PathFile[]> {
         return null;
     }
 
+    public download(key: PathFileKey) {
+        // TODO window.location.assign(this.getForm().getApp().getBackendUrl() + this.url + "/" + key.key);
+        window.location.assign(this.getForm().getApp().getBackendUrl() + "/upload" + "/" + key.key);
+    }
+
     public fromJson(modelFormField) {
         super.fromJson(modelFormField);
         this.type = "fileUpload";
@@ -158,6 +174,7 @@ export class FileUploadField extends ValueField<PathFile[]> {
 export class PathFile {
     active: boolean;
     name: string;
+    sizeString: string;
     key: PathFileKey;
 }
 
