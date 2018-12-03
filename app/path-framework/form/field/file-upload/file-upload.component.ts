@@ -154,8 +154,7 @@ export class FileUploadField extends ValueField<PathFile[]> {
     }
 
     public download(key: PathFileKey) {
-        // TODO window.location.assign(this.getForm().getApp().getBackendUrl() + this.url + "/" + key.key);
-        window.location.assign(this.getForm().getApp().getBackendUrl() + "/upload" + "/" + key.key);
+        window.location.assign(this.getForm().getApp().getBackendUrl() + this.url + "/" + key.key);
     }
 
     public fromJson(modelFormField) {
