@@ -14,8 +14,8 @@
                 <td class="col-md-7"><a href="#" (click)="field.download(file.key)">{{file.name}}</a></td>
                 <td class="col-md-2">{{file.sizeString}}</td>
                 <td class="col-md-3" align="right">
-                    <a *ngIf="file.uploaded" href="#" (click)="field.remove(file.key)">Remove</a>
-                    <div *ngIf="!file.uploaded" class="progress">
+                    <a *ngIf="file.uploadFinished" href="#" (click)="field.remove(file.key)">Remove</a>
+                    <div *ngIf="!file.uploadFinished" class="progress">
                         <div class="progress-bar" role="progressbar" [style.width.%]="file.uploadProgress"
                              [attr.aria-valuenow]="file.uploadProgress" aria-valuemin="0" aria-valuemax="100">
                             <span class="sr-only">{{file.uploadProgress}}% Complete</span>

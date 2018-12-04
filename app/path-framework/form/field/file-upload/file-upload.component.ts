@@ -70,7 +70,8 @@ export class FileUploadComponent {
                             if (uploadFile) {
                                 const key: PathFileKey = new PathFileKey(event.body["key"]["key"], event.body["key"]["name"]);
                                 uploadFile.key = key;
-                                uploadFile.uploaded = true;
+                                uploadFile.uploadFinished = true;
+                                uploadFile.uploadSuccessful = true;
                             } else {
                                 console.log("error: file should exist (" + file.name + ")");
                             }
@@ -78,9 +79,16 @@ export class FileUploadComponent {
                     },
                     (err) => {
                         console.log("Upload Error:", err);
+                        const uploadFile = this.field.findCurrentUpload(file.name);
+                        if (uploadFile) {
+                            uploadFile.sizeString = "Error";
+                            uploadFile.uploadFinished = true;
+                        } else {
+                            console.log("error: file should exist (" + file.name + ")");
+                        }
                     }, () => {
                         console.log("Upload done");
-                        const count = this.field.value.reduce((acc, cur) => !cur.uploaded ? ++acc : acc, 0);
+                        const count = this.field.value.reduce((acc, cur) => !cur.uploadFinished ? ++acc : acc, 0);
                         if (count === 0) {
                             this.fileInputReference.nativeElement.value = "";
                         }
@@ -188,7 +196,7 @@ export class FileUploadField extends ValueField<PathFile[]> {
 
     public findCurrentUpload(name: string): PathFile {
         for (const file of this.value) {
-            if (file.name === name && !file.uploaded) {
+            if (file.name === name && !file.uploadFinished) {
                 return file;
             }
         }
@@ -216,8 +224,9 @@ export class FileUploadField extends ValueField<PathFile[]> {
 }
 
 export class PathFile {
-    active: boolean;
-    uploaded = false;
+    active: boolean; // file deleted: active === false
+    uploadFinished = false;
+    uploadSuccessful = false;
     uploadProgress = 0;
     name: string;
     sizeString: string;
