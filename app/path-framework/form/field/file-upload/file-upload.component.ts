@@ -1,4 +1,4 @@
-import {Component, Input, Output} from "@angular/core";
+import {Component, ElementRef, Input, Output, ViewChild} from "@angular/core";
 import {ValueField} from "../value-field";
 import {HttpClient, HttpEvent, HttpEventType, HttpParams, HttpRequest, HttpResponse} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -13,6 +13,9 @@ export class FileUploadComponent {
     @Input("field")
     @Output("field")
     field: FileUploadField;
+
+    @ViewChild("fileInput")
+    fileInputReference: ElementRef;
 
     constructor(private http: HttpClient) {
     }
@@ -43,43 +46,47 @@ export class FileUploadComponent {
             return;
 
         }
-        const file: File = files[0];
+        Array.from(files).forEach((file) => {
+            this.doUpload(this.field.getForm().getApp().getBackendUrl() + this.field.url, file)
+                .subscribe(
+                    event => {
+                        if (event.type === HttpEventType.UploadProgress) {
+                            const percentDone: number = Math.round(100 * event.loaded / event.total);
+                            console.log(`File is ${percentDone}% loaded.`);
+                            let uploadFile = this.field.findCurrentUpload(file.name);
+                            if (uploadFile == null) {
+                                uploadFile = new PathFile();
+                                uploadFile.name = file.name;
+                                uploadFile.sizeString = this.getReadableFileSizeString(file.size);
+                                uploadFile.active = true;
+                                this.field.value.push(uploadFile);
+                                this.field.sortValues();
+                            }
+                            uploadFile.uploadProgress = percentDone;
 
-        this.doUpload(this.field.getForm().getApp().getBackendUrl() + this.field.url, file)
-            .subscribe(
-                event => {
-                    if (event.type === HttpEventType.UploadProgress) {
-                        const percentDone: number = Math.round(100 * event.loaded / event.total);
-                        console.log(`File is ${percentDone}% loaded.`);
-                        let uploadFile = this.field.findCurrentUpload(file.name);
-                        if (uploadFile == null) {
-                            uploadFile = new PathFile();
-                            uploadFile.name = file.name;
-                            uploadFile.sizeString = this.getReadableFileSizeString(file.size);
-                            uploadFile.active = true;
-                            this.field.value.push(uploadFile);
-                            this.field.sortValues();
+                        } else if (event instanceof HttpResponse) {
+                            console.log("File is completely loaded!");
+                            const uploadFile = this.field.findCurrentUpload(file.name);
+                            if (uploadFile) {
+                                const key: PathFileKey = new PathFileKey(event.body["key"]["key"], event.body["key"]["name"]);
+                                uploadFile.key = key;
+                                uploadFile.uploaded = true;
+                            } else {
+                                console.log("error: file should exist (" + file.name + ")");
+                            }
                         }
-                        uploadFile.uploadProgress = percentDone;
-
-                    } else if (event instanceof HttpResponse) {
-                        console.log("File is completely loaded!");
-                        const uploadFile = this.field.findCurrentUpload(file.name);
-                        if (uploadFile) {
-                            const key: PathFileKey = new PathFileKey(event.body["key"]["key"], event.body["key"]["name"]);
-                            uploadFile.key = key;
-                            uploadFile.uploaded = true;
-                        } else {
-                            console.log("error: file should exist (" + file.name + ")");
+                    },
+                    (err) => {
+                        console.log("Upload Error:", err);
+                    }, () => {
+                        console.log("Upload done");
+                        const count = this.field.value.reduce((acc, cur) => !cur.uploaded ? ++acc : acc, 0);
+                        if (count === 0) {
+                            this.fileInputReference.nativeElement.value = "";
                         }
                     }
-                },
-                (err) => {
-                    console.log("Upload Error:", err);
-                }, () => {
-                    console.log("Upload done");
-                }
-            );
+                );
+        });
     }
 
     // file from event.target.files[0]
