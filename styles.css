@@ -131,6 +131,10 @@ textarea[readonly-with-required] {
     margin-bottom: 20px;
 }
 
+.progress {
+    margin-bottom: 0;
+}
+
 /* added for mobile device support, weberm16 */
 
 /* navigation font color */
