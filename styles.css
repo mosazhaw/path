@@ -135,6 +135,10 @@ textarea[readonly-with-required] {
     margin-bottom: 0;
 }
 
+.file-upload-drop {
+    background-color: lightgrey;
+}
+
 /* added for mobile device support, weberm16 */
 
 /* navigation font color */

@@ -16,26 +16,27 @@ export class FileUploadComponent {
 
     @ViewChild("fileInput")
     fileInputReference: ElementRef;
+    dragActive = false;
 
     constructor(private http: HttpClient) {
     }
 
-    // At the drag drop area
-    // (drop)="onDropFile($event)"
     onDropFile(event: DragEvent) {
+        this.dragActive = false;
         event.preventDefault();
         this.uploadFile(event.dataTransfer.files);
     }
 
-    // At the drag drop area
-    // (dragover)="onDragOverFile($event)"
     onDragOverFile(event) {
+        this.dragActive = true;
         event.stopPropagation();
         event.preventDefault();
     }
 
-    // At the file input element
-    // (change)="selectFile($event)"
+    onDragLeave() {
+        this.dragActive = false;
+    }
+
     selectFile(event) {
         this.uploadFile(event.target.files);
     }
@@ -52,7 +53,6 @@ export class FileUploadComponent {
                     event => {
                         if (event.type === HttpEventType.UploadProgress) {
                             const percentDone: number = Math.round(100 * event.loaded / event.total);
-                            console.log(`File is ${percentDone}% loaded.`);
                             let uploadFile = this.field.findCurrentUpload(file.name);
                             if (uploadFile == null) {
                                 uploadFile = new PathFile();
@@ -65,7 +65,6 @@ export class FileUploadComponent {
                             uploadFile.uploadProgress = percentDone;
 
                         } else if (event instanceof HttpResponse) {
-                            console.log("File is completely loaded!");
                             const uploadFile = this.field.findCurrentUpload(file.name);
                             if (uploadFile) {
                                 const key: PathFileKey = new PathFileKey(event.body["key"]["key"], event.body["key"]["name"]);
@@ -87,18 +86,21 @@ export class FileUploadComponent {
                         } else {
                             console.log("error: file should exist (" + file.name + ")");
                         }
+                        this.resetFileUploadElement();
                     }, () => {
-                        console.log("Upload done");
-                        const count = this.field.value.reduce((acc, cur) => !cur.uploadFinished ? ++acc : acc, 0);
-                        if (count === 0) {
-                            this.fileInputReference.nativeElement.value = "";
-                        }
+                        this.resetFileUploadElement();
                     }
                 );
         });
     }
 
-    // file from event.target.files[0]
+    private resetFileUploadElement(): void {
+        const count = this.field.value.reduce((acc, cur) => !cur.uploadFinished ? ++acc : acc, 0);
+        if (count === 0) {
+            this.fileInputReference.nativeElement.value = "";
+        }
+    }
+
     private doUpload(url: string, file: File): Observable<HttpEvent<any>> {
 
         const formData = new FormData();
@@ -186,12 +188,16 @@ export class FileUploadField extends ValueField<PathFile[]> {
         return this._fileUploadRequired;
     }
 
-    public remove(key: PathFileKey): void {
-        const file: PathFile = this.find(key);
-        if (file) {
-            file.active = false;
+    public remove(index: number, key: PathFileKey): void {
+        if (key) {
+            const file: PathFile = this.find(key);
+            if (file) {
+                file.active = false;
+            }
+            this.updateRequiredStatus();
+        } else {
+            this.value.splice(index, 1);
         }
-        this.updateRequiredStatus();
     }
 
     public find(key: PathFileKey): PathFile {
