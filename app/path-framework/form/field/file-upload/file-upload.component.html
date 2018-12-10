@@ -28,6 +28,7 @@
     </table>
     <div class="form-group">
         <input type="file" class="form-control-file" (change)="selectFile($event)" placeholder="Upload file"
-               [multiple]="field.multiple" accept="{{field.acceptedFileTypes.join(', ')}}" [disabled]="field.isReadonly()" #fileInput>
+               [multiple]="field.multiple" accept="{{field.acceptedFileTypes.join(', ')}}" [disabled]="field.isReadonly()"
+               [required]="field.fileUploadRequired" #fileInput>
     </div>
 </div>

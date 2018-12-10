@@ -72,6 +72,7 @@ export class FileUploadComponent {
                                 uploadFile.key = key;
                                 uploadFile.uploadFinished = true;
                                 uploadFile.uploadSuccessful = true;
+                                this.field.updateRequiredStatus();
                             } else {
                                 console.log("error: file should exist (" + file.name + ")");
                             }
@@ -132,11 +133,13 @@ export class FileUploadField extends ValueField<PathFile[]> {
     private _url: string;
     private _multiple: boolean;
     private _acceptedFileTypes: string[] = [];
+    private _fileUploadRequired: boolean;
 
     constructor(form: IForm, translationService: TranslationService) {
         super(form, translationService);
         this.value = [];
         this._acceptedFileTypes.push("*.*");
+        this.updateRequiredStatus();
     }
 
     setValue(value: PathFile[]): void {
@@ -148,6 +151,7 @@ export class FileUploadField extends ValueField<PathFile[]> {
         }
         this.sortValues();
         super.setValue(files);
+        this.updateRequiredStatus();
     }
 
     public sortValues() {
@@ -178,11 +182,16 @@ export class FileUploadField extends ValueField<PathFile[]> {
         this._acceptedFileTypes = value;
     }
 
+    get fileUploadRequired(): boolean {
+        return this._fileUploadRequired;
+    }
+
     public remove(key: PathFileKey): void {
         const file: PathFile = this.find(key);
         if (file) {
             file.active = false;
         }
+        this.updateRequiredStatus();
     }
 
     public find(key: PathFileKey): PathFile {
@@ -203,6 +212,27 @@ export class FileUploadField extends ValueField<PathFile[]> {
         return null;
     }
 
+    public updateRequiredStatus() {
+        let uploadInProgressCount = 0;
+        let uploadSuccessfulCount = 0;
+        this.value.forEach((file) => {
+            if (file.active && !file.uploadFinished) {
+                uploadInProgressCount++;
+            }
+            if (file.active && file.uploadSuccessful) {
+                uploadSuccessfulCount++;
+            }
+        });
+        let newStatus = false;
+        if (uploadInProgressCount > 0) {
+            // always required if upload in progress
+            newStatus = true;
+        } else if (this.required && uploadSuccessfulCount <= 0) {
+            newStatus = true;
+        }
+        this._fileUploadRequired = newStatus;
+    }
+
     public download(key: PathFileKey) {
         window.location.assign(this.getForm().getApp().getBackendUrl() + this.url + "/" + key.key);
     }
@@ -219,6 +249,7 @@ export class FileUploadField extends ValueField<PathFile[]> {
         if (modelFormField["acceptedFileTypes"]) {
             this.acceptedFileTypes = modelFormField["acceptedFileTypes"];
         }
+        this.updateRequiredStatus();
     }
 
 }
