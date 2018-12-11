@@ -10,23 +10,31 @@ import {KeyUtility} from "../../../../../app/path-framework/utility/key-utility"
 import {TestAppComponent} from "../../../TestAppComponent";
 
 describe("FileUpload", () => {
+    let path: PathService;
+    let translate: TranslationService;
+
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
             declarations: [FileUploadComponent, FormFieldLabelComponent],
-            providers: [{ provide: PathService, useClass: {} }, { provide: TranslationService, useClass: {} }]
+            providers: [PathService, TranslationService]
         }).compileComponents();
+        path = TestBed.get(PathService);
+        translate = TestBed.get(TranslationService);
     }));
 
-    it("create component", () => {
+    it("Upload Test", () => {
         const fixture = TestBed.createComponent(FileUploadComponent);
-        /*const testApp = TestBed.createComponent(TestAppComponent);
         const fileUploadComponent = fixture.componentInstance;
-        const form = new Form(null, testApp.componentInstance);
-        fileUploadComponent.field = new FileUploadField(null, null);
+
+        const testApp = new TestAppComponent(path, translate);
+        const form = new Form(path, testApp);
+        fileUploadComponent.field = new FileUploadField(form, translate);
+
         const modifiedDate = new Date();
         const file = new File(<any>[3555], "test-file.jpg", {lastModified : modifiedDate.getMilliseconds(), type: "image/jpeg"});
-        fileUploadComponent.uploadFile(<any>[file]);*/
+        fileUploadComponent.uploadFile(<any>[file]);
+        // expect(fileUploadComponent.field.value.length).toBe(1);
     });
 
     it("getReadableFileSizeString", () => {

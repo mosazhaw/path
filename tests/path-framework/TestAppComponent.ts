@@ -7,7 +7,7 @@ import {TranslationService} from "../../app/path-framework/service/translation.s
 @Component({
     selector: "path-application",
     template: "<span></span>",
-    providers: [{ provide: PathService, useClass: PathMockService }, TranslationService]
+    providers: [PathService, TranslationService]
 })
 export class TestAppComponent extends PathAppComponent {
 
