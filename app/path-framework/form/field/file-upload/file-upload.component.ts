@@ -47,6 +47,17 @@ export class FileUploadComponent {
             return;
 
         }
+        // check if file limit is exceeded
+        if (!this.field.checkFileLimit(files.length)) {
+            this.resetFileUploadElement();
+            return;
+        }
+        // check file sizes
+        if (!this.field.checkFileSize(files)) {
+            this.resetFileUploadElement();
+            return;
+        }
+        // upload submitted files
         Array.from(files).forEach((file) => {
             this.doUpload(this.field.getForm().getApp().getBackendUrl() + this.field.url, file)
                 .subscribe(
@@ -57,7 +68,8 @@ export class FileUploadComponent {
                             if (uploadFile == null) {
                                 uploadFile = new PathFile();
                                 uploadFile.name = file.name;
-                                uploadFile.sizeString = this.getReadableFileSizeString(file.size);
+                                uploadFile.size = file.size;
+                                uploadFile.sizeString = this.field.getReadableFileSizeString(file.size);
                                 uploadFile.active = true;
                                 this.field.value.push(uploadFile);
                                 this.field.sortValues();
@@ -117,17 +129,6 @@ export class FileUploadComponent {
         return this.http.request(req);
     }
 
-    private getReadableFileSizeString(byteSize: number): string {
-        let i = -1;
-        const byteUnits = [" kB", " MB", " GB", " TB", " PB", " EB", " ZB", " YB"];
-        do {
-            byteSize = byteSize / 1024;
-            i++;
-        } while (byteSize > 1024);
-
-        return Math.max(byteSize, 0.1).toFixed(1) + byteUnits[i];
-    }
-
 }
 
 export class FileUploadField extends ValueField<PathFile[]> {
@@ -136,6 +137,9 @@ export class FileUploadField extends ValueField<PathFile[]> {
     private _multiple: boolean;
     private _acceptedFileTypes: string[] = [];
     private _fileUploadRequired: boolean;
+    private _fileLimit = 0;
+    private _singleFileSizeLimit = 0;
+    private _allFilesSizeLimit = 0;
 
     constructor(form: IForm, translationService: TranslationService) {
         super(form, translationService);
@@ -186,6 +190,10 @@ export class FileUploadField extends ValueField<PathFile[]> {
 
     get fileUploadRequired(): boolean {
         return this._fileUploadRequired;
+    }
+
+    get fileLimit(): number {
+        return this._fileLimit;
     }
 
     public remove(index: number, key: PathFileKey): void {
@@ -239,6 +247,64 @@ export class FileUploadField extends ValueField<PathFile[]> {
         this._fileUploadRequired = newStatus;
     }
 
+    public checkFileLimit(newFilesLength: number): boolean {
+        let activeFileCount = 0;
+        this.value.forEach((file) => {
+            if (file.active) {
+                activeFileCount++;
+            }
+        });
+        if (this.fileLimit > 0 && ((activeFileCount + newFilesLength) > this.fileLimit)) {
+            const message = this.translationService.getText("FileLimitMessage", String(this.fileLimit));
+            this.getForm().getApp().yesNo(message, () => {}, () => {});
+            return false;
+        }
+        return true;
+    }
+
+    public checkFileSize(files: FileList): boolean {
+        if (this._singleFileSizeLimit || this._allFilesSizeLimit) {
+            // check single file limit
+            let sizeSum = 0;
+            const fileArray = Array.from(files);
+            for (const file of fileArray) {
+                sizeSum += file.size;
+                if (this._singleFileSizeLimit > 0 && file.size > this._singleFileSizeLimit) {
+                    const message = this.translationService.getText("FileSingleSizeMessage",
+                        this.getReadableFileSizeString(this._singleFileSizeLimit));
+                    this.getForm().getApp().yesNo(message, () => {}, () => {});
+                    return false;
+                }
+            }
+            // check sum limit
+            if (this._allFilesSizeLimit > 0) {
+                this.value.forEach((file) => {
+                    if (file.active) {
+                        sizeSum += file.size;
+                    }
+                });
+                if (this._allFilesSizeLimit > 0 && sizeSum > this._allFilesSizeLimit) {
+                    const message = this.translationService.getText("FileAllSizeMessage",
+                        this.getReadableFileSizeString(this._allFilesSizeLimit));
+                    this.getForm().getApp().yesNo(message, () => {}, () => {});
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    public getReadableFileSizeString(byteSize: number): string {
+        let i = -1;
+        const byteUnits = [" kB", " MB", " GB", " TB", " PB", " EB", " ZB", " YB"];
+        do {
+            byteSize = byteSize / 1024;
+            i++;
+        } while (byteSize > 1024);
+
+        return Math.max(byteSize, 0.1).toFixed(1) + byteUnits[i];
+    }
+
     public download(key: PathFileKey) {
         window.location.assign(this.getForm().getApp().getBackendUrl() + this.url + "/" + key.key);
     }
@@ -255,6 +321,15 @@ export class FileUploadField extends ValueField<PathFile[]> {
         if (modelFormField["acceptedFileTypes"]) {
             this.acceptedFileTypes = modelFormField["acceptedFileTypes"];
         }
+        if (modelFormField["fileLimit"]) {
+            this._fileLimit = modelFormField["fileLimit"];
+        }
+        if (modelFormField["singleFileSizeLimit"]) {
+            this._singleFileSizeLimit = modelFormField["singleFileSizeLimit"];
+        }
+        if (modelFormField["allFilesSizeLimit"]) {
+            this._allFilesSizeLimit = modelFormField["allFilesSizeLimit"];
+        }
         this.updateRequiredStatus();
     }
 
@@ -267,6 +342,7 @@ export class PathFile {
     uploadProgress = 0;
     name: string;
     sizeString: string;
+    size = 0;
     key: PathFileKey;
 }
 
