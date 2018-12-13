@@ -53,24 +53,26 @@ export abstract class PathAppComponent implements IPathApp {
     show = false;
 
     constructor(private pathService: PathService, private translationService: TranslationService) {
-        this.pathService.serverGet(this.getBackendUrl(), "/ping", (data: any) => {
-            let backendVersion = data["version"];
-            if (backendVersion !== this.getFrontendVersion()) {
-                backendVersion = "Version mismatch: Backend (" + backendVersion + "), Frontend (" + this.getFrontendVersion() + "). " +
-                    "Please clear cache or check server installation.";
-                window.alert(backendVersion);
-            }
-            this._version = backendVersion;
-            if (data["userId"] !== null && data["userId"] !== "") {
-                this._userId = data["userId"];
-                this.setCurrentPage(this.getStartPage(), null);
-            }
-            if (data["languageCode"] !== null && data["languageCode"] !== "") {
-                sessionStorage.setItem("languageCode", data["languageCode"]);
-            }
-        }, (err: any) => {
-            console.error(err);
-        });
+        if (this.getBackendUrl() && this.getBackendUrl().length > 0) {
+            this.pathService.serverGet(this.getBackendUrl(), "/ping", (data: any) => {
+                let backendVersion = data["version"];
+                if (backendVersion !== this.getFrontendVersion()) {
+                    backendVersion = "Version mismatch: Backend (" + backendVersion + "), Frontend (" + this.getFrontendVersion() + "). " +
+                        "Please clear cache or check server installation.";
+                    window.alert(backendVersion);
+                }
+                this._version = backendVersion;
+                if (data["userId"] !== null && data["userId"] !== "") {
+                    this._userId = data["userId"];
+                    this.setCurrentPage(this.getStartPage(), null);
+                }
+                if (data["languageCode"] !== null && data["languageCode"] !== "") {
+                    sessionStorage.setItem("languageCode", data["languageCode"]);
+                }
+            }, (err: any) => {
+                console.error(err);
+            });
+        }
         this.loadApplicationTexts();
     }
 

@@ -27,7 +27,7 @@
     "npm": "6.4.1"
   },
   "scripts": {
-    "build": "npm run lint && ng-packagr -p package.json",
+    "build": "npm run lint && ng test --watch=false && ng-packagr -p package.json",
     "test": "ng test",
     "lint": "tslint --project .",
     "tsc": "tsc"

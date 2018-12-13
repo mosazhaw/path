@@ -66,27 +66,20 @@ export class FileUploadComponent {
                             const percentDone: number = Math.round(100 * event.loaded / event.total);
                             let uploadFile = this.field.findCurrentUpload(file.name);
                             if (uploadFile == null) {
-                                uploadFile = new PathFile();
-                                uploadFile.name = file.name;
-                                uploadFile.size = file.size;
-                                uploadFile.sizeString = this.field.getReadableFileSizeString(file.size);
-                                uploadFile.active = true;
-                                this.field.value.push(uploadFile);
-                                this.field.sortValues();
+                                uploadFile = this.addNewPathFile(file);
                             }
                             uploadFile.uploadProgress = percentDone;
 
                         } else if (event instanceof HttpResponse) {
-                            const uploadFile = this.field.findCurrentUpload(file.name);
-                            if (uploadFile) {
-                                const key: PathFileKey = new PathFileKey(event.body["key"]["key"], event.body["key"]["name"]);
-                                uploadFile.key = key;
-                                uploadFile.uploadFinished = true;
-                                uploadFile.uploadSuccessful = true;
-                                this.field.updateRequiredStatus();
-                            } else {
-                                console.log("error: file should exist (" + file.name + ")");
+                            let uploadFile = this.field.findCurrentUpload(file.name);
+                            if (uploadFile == null) {
+                                uploadFile = this.addNewPathFile(file);
                             }
+                            const key: PathFileKey = new PathFileKey(event.body["key"]["key"], event.body["key"]["name"]);
+                            uploadFile.key = key;
+                            uploadFile.uploadFinished = true;
+                            uploadFile.uploadSuccessful = true;
+                            this.field.updateRequiredStatus();
                         }
                     },
                     (err) => {
@@ -104,6 +97,17 @@ export class FileUploadComponent {
                     }
                 );
         });
+    }
+
+    private addNewPathFile(file): PathFile {
+        const uploadFile = new PathFile();
+        uploadFile.name = file.name;
+        uploadFile.size = file.size;
+        uploadFile.sizeString = this.field.getReadableFileSizeString(file.size);
+        uploadFile.active = true;
+        this.field.value.push(uploadFile);
+        this.field.sortValues();
+        return uploadFile;
     }
 
     private resetFileUploadElement(): void {
