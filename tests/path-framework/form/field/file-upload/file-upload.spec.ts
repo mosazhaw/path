@@ -1,16 +1,12 @@
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
 import {async, TestBed} from "@angular/core/testing";
-import {
-    FileUploadComponent,
+import {FileUploadComponent,
     FileUploadField,
-    PathFileKey
-} from "../../../../../app/path-framework/form/field/file-upload/file-upload.component";
+    PathFileKey} from "../../../../../app/path-framework/form/field/file-upload/file-upload.component";
 import {FormFieldLabelComponent} from "../../../../../app/path-framework/form/field/form-field-label.component";
 import {Form} from "../../../../../app/path-framework/form/form.component";
-import {PathMockService} from "../../../../../app/path-framework/service/path.mock.service";
 import {PathService} from "../../../../../app/path-framework/service/path.service";
 import {TranslationService} from "../../../../../app/path-framework/service/translation.service";
-import {KeyUtility} from "../../../../../app/path-framework/utility/key-utility";
 import {TestAppComponent} from "../../../TestAppComponent";
 
 describe("FileUpload", () => {
