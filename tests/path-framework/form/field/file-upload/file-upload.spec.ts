@@ -100,9 +100,9 @@ describe("FileUploadField", () => {
     });
 
     it("checkFileLimit", () => {
-        let app = jasmine.createSpyObj('app', ['yesNo']);
+        const app = jasmine.createSpyObj("app", ["yesNo"]);
         app.yesNo.and.returnValue(() => true);
-        let form = new Form(pathService, app);
+        const form = new Form(pathService, app);
 
         const field = new FileUploadField(form, translationService);
         field.fromJson({
@@ -118,4 +118,4 @@ describe("FileUploadField", () => {
         expect(app.yesNo).toHaveBeenCalledTimes(1);
     });
 
-}
+});
