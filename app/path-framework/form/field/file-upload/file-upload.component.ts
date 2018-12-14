@@ -138,7 +138,7 @@ export class FileUploadComponent {
 export class FileUploadField extends ValueField<PathFile[]> {
 
     private _url: string;
-    private _multiple: boolean;
+    private _multiple = true;
     private _acceptedFileTypes: string[] = [];
     private _fileUploadRequired: boolean;
     private _fileLimit = 0;
@@ -198,6 +198,14 @@ export class FileUploadField extends ValueField<PathFile[]> {
 
     get fileLimit(): number {
         return this._fileLimit;
+    }
+
+    get singleFileSizeLimit(): number {
+        return this._singleFileSizeLimit;
+    }
+
+    get allFilesSizeLimit(): number {
+        return this._allFilesSizeLimit;
     }
 
     public remove(index: number, key: PathFileKey): void {
@@ -319,7 +327,7 @@ export class FileUploadField extends ValueField<PathFile[]> {
         if (modelFormField["url"]) {
             this.url = modelFormField["url"];
         }
-        if (modelFormField["multiple"]) {
+        if (modelFormField["multiple"] != null) {
             this.multiple = modelFormField["multiple"];
         }
         if (modelFormField["acceptedFileTypes"]) {
