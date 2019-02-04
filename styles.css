@@ -355,6 +355,9 @@ h3, .h3, h4, .h4, h5, .h5 {
 .tile.tile-green {
     background-color: #339933;
 }
+.tile.tile-search {
+    background-color: #339933;
+}
 .tile.tile-red {
     background-color: #e51400;
 }
