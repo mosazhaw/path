@@ -8,6 +8,7 @@ Please refer to this document when updating applications using the Path Framewor
 * [Button groups](https://github.com/innovad/path#button-groups) are supported 
 * [Breadcrumb](https://github.com/innovad/path#breadcrumb) is supported as a GUI model element
 * [Form default values](https://github.com/innovad/path#form-default-values) are supported
+* [File Upload](https://github.com/innovad/path#file-upload) field on forms added
 
 #### Changes
 * Font Awesome 5.x update

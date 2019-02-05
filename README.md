@@ -410,6 +410,22 @@ Like text fields, but with built-in support for translated text.
 }
 ```
 
+##### File Upload
+
+Forms may contain a file upload field to upload one or more files. A file chooser and drag and drop are supported. You need to specify a backend URL, for an example see the Path-Example application. File upload starts immediately after the file chooser is closed or the file is dropped and is completed in the background.
+
+```json
+{
+    "id": "id1",
+    "name": { "default": "Full Width, pdf/txt only" },
+    "type": "fileUpload",
+    "url": "/upload",
+    "multiple": true,
+    "acceptedFileTypes": [".pdf, .txt"],
+    "width": 2
+}
+```
+
 #### Form default values
 
 You can set the **urlDefaults** parameter to true. Path will execute a GET request prior to opening a form with key value **null**. Your server application should response with default values.
