@@ -53,7 +53,7 @@ describe("ListElement", () => {
         expect(field.searchButton.cssClass).toBe("tile-search");
     });
 
-    it("fromJson (color search field)", () => {
+    it("fromJson (color search field class)", () => {
         const field = new List(null, pathService, translationService);
         field.fromJson({
             color: "silver",
@@ -61,6 +61,17 @@ describe("ListElement", () => {
         });
         expect(field.color).toBe("silver");
         expect(field.searchButton.cssClass).toBe("tile-lime");
+    });
+
+    it("fromJson (color search field html color)", () => {
+        const field = new List(null, pathService, translationService);
+        field.fromJson({
+            color: "silver",
+            searchColor: { "background-color": "#8B4513" }
+        });
+        expect(field.color).toBe("silver");
+        expect(field.searchButton.cssClass).toBeUndefined();
+        expect(field.searchButton.cssStyle).toEqual({ "background-color": "#8B4513" });
     });
 
 });
