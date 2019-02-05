@@ -131,6 +131,14 @@ textarea[readonly-with-required] {
     margin-bottom: 20px;
 }
 
+.progress {
+    margin-bottom: 0;
+}
+
+.file-upload-drop {
+    background-color: lightgrey;
+}
+
 /* added for mobile device support, weberm16 */
 
 /* navigation font color */
@@ -345,6 +353,9 @@ h3, .h3, h4, .h4, h5, .h5 {
     background-color: #2e8bcc;
 }
 .tile.tile-green {
+    background-color: #339933;
+}
+.tile.tile-search {
     background-color: #339933;
 }
 .tile.tile-red {

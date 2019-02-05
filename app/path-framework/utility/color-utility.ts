@@ -5,6 +5,7 @@ export class ColorUtility {
     private static colors = [
         "blue",
         "green",
+        "search",
         "red",
         "yellow",
         "orange",

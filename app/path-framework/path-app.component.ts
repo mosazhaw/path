@@ -8,6 +8,7 @@ import {PreviousButton} from "./form/field/button/previous-button";
 import {CheckboxGroupField} from "./form/field/checkbox/checkbox-group.component";
 import {DateField} from "./form/field/date/date-field.component";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
+import {FileUploadField} from "./form/field/file-upload/file-upload.component";
 import {FormField} from "./form/field/form-field";
 import {LabelField} from "./form/field/label/label-field.component";
 import {NumberField} from "./form/field/number/number-field.component";
@@ -52,24 +53,26 @@ export abstract class PathAppComponent implements IPathApp {
     show = false;
 
     constructor(private pathService: PathService, private translationService: TranslationService) {
-        this.pathService.serverGet(this.getBackendUrl(), "/ping", (data: any) => {
-            let backendVersion = data["version"];
-            if (backendVersion !== this.getFrontendVersion()) {
-                backendVersion = "Version mismatch: Backend (" + backendVersion + "), Frontend (" + this.getFrontendVersion() + "). " +
-                    "Please clear cache or check server installation.";
-                window.alert(backendVersion);
-            }
-            this._version = backendVersion;
-            if (data["userId"] !== null && data["userId"] !== "") {
-                this._userId = data["userId"];
-                this.setCurrentPage(this.getStartPage(), null);
-            }
-            if (data["languageCode"] !== null && data["languageCode"] !== "") {
-                sessionStorage.setItem("languageCode", data["languageCode"]);
-            }
-        }, (err: any) => {
-            console.error(err);
-        });
+        if (this.getBackendUrl() && this.getBackendUrl().length > 0) {
+            this.pathService.serverGet(this.getBackendUrl(), "/ping", (data: any) => {
+                let backendVersion = data["version"];
+                if (backendVersion !== this.getFrontendVersion()) {
+                    backendVersion = "Version mismatch: Backend (" + backendVersion + "), Frontend (" + this.getFrontendVersion() + "). " +
+                        "Please clear cache or check server installation.";
+                    window.alert(backendVersion);
+                }
+                this._version = backendVersion;
+                if (data["userId"] !== null && data["userId"] !== "") {
+                    this._userId = data["userId"];
+                    this.setCurrentPage(this.getStartPage(), null);
+                }
+                if (data["languageCode"] !== null && data["languageCode"] !== "") {
+                    sessionStorage.setItem("languageCode", data["languageCode"]);
+                }
+            }, (err: any) => {
+                console.error(err);
+            });
+        }
         this.loadApplicationTexts();
     }
 
@@ -756,6 +759,11 @@ export abstract class PathAppComponent implements IPathApp {
                 if (form.key == null) {
                     formField.visible = false;
                 }
+                break;
+            }
+            case "fileUpload": {
+                formField = new FileUploadField(form, this.translationService);
+                formField.fromJson(modelFormField);
                 break;
             }
             default: {

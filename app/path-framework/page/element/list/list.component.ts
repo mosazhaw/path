@@ -34,6 +34,7 @@ export class List extends PageElement implements IList {
     private _searchInputLabel: string;
     private _searchText: string;
     private _searchTextChanged: Subject<string> = new Subject<string>();
+    private _searchButton: Button;
     private _handler: IListHandler;
     private _buttonHandler: IButtonHandler;
     private _icon: string;
@@ -48,6 +49,7 @@ export class List extends PageElement implements IList {
         super(app);
         this._searchLabel = translationService.getText("Search");
         this._searchInputLabel = translationService.getText("SearchInputLabel");
+        this._searchButton = new Button(app, pathService, translationService);
     }
 
     public getContent(): IButton[] {
@@ -367,6 +369,10 @@ export class List extends PageElement implements IList {
         this._searchText = value;
     }
 
+    get searchButton(): Button {
+        return this._searchButton;
+    }
+
     public fromJson(modelElement) {
         super.fromJson(modelElement);
         if (modelElement["search"] != null) {
@@ -420,6 +426,11 @@ export class List extends PageElement implements IList {
         } else {
             this.width = 2; // special default for list
         }
+        // search button
+        const searchButtonModel = {};
+        searchButtonModel["color"] = modelElement["searchColor"] != null ? modelElement["searchColor"] : "tile-search";
+        searchButtonModel["width"] = modelElement["searchWidth"] != null ? modelElement["searchWidth"] : this.width;
+        this._searchButton.fromJson(searchButtonModel);
         // delay for search field
         const debounceTimeValue: number = this.searchRequest ? 300 : 30;
         this._searchTextChanged.pipe(

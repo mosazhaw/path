@@ -166,4 +166,17 @@ export class Key implements IKey {
     set name(value: string) {
         this._name = value;
     }
+
+    public equals(otherKey: Key): boolean {
+        if (otherKey != null &&
+            otherKey.getName() &&
+            otherKey.getKey() &&
+            this.getName() &&
+            this.getKey() &&
+            otherKey.getName() === this.getName() &&
+            otherKey.getKey() === this.getKey()) {
+            return true;
+        }
+        return false;
+    }
 }

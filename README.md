@@ -198,9 +198,12 @@ This example loads data from an url, and each button opens a form.
 | ------------- | ------------- |
 | icon  | the default icon for list buttons, may be overwritten by server data |
 | color  | the default color for list buttons, may be overwritten by server data |
+| width  | the default width for list buttons, may be overwritten by server data |
 | search  | show (true) or hide (false) search box |
 | searchRequired  | automatically load results when the list is displayed (false) or require the user to search (true, recommended for large lists) |
 | searchRequest  | search filter is client side (false) or create new request with every search (true) |
+| searchColor  | the color used for the search field (default is tile-search css class) |
+| searchWidth  | the width of the search field (default is width) |
 | limit | limit the number of results, parameter may be used by server service |
 
 ```json

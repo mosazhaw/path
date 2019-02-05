@@ -9,7 +9,7 @@
     <span>
         <div class="tile-group">
             <!-- default search (tablet, desktop) -->
-            <div *ngIf='list.search' class="thumbnail {{(list.width > 1 ? 'tile-wide' : '')}} tile tile-button tile-medium hide-on-mobile tile-green">
+            <div *ngIf='list.search' class="thumbnail {{(list.searchButton.width <= 1 ? 'tile-medium' : (list.searchButton.width == 2 ? 'tile-wide' : (list.searchButton.width == 3 ? 'tile-wide-3' : (list.searchButton.width >= 4 ? 'tile-wide-4' : ''))))}} tile tile-button hide-on-mobile {{list.searchButton.cssClass}}" [ngStyle]="list.searchButton.cssStyle">
                 <div class="input-group input-group-sm">
                     <div class="h3">{{list.searchLabel}}</div>
                     <i class="fa fa-2x fa-search"></i>

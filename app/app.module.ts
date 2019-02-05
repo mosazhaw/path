@@ -3,6 +3,7 @@ import {BrowserModule} from "@angular/platform-browser";
 import {HttpClientModule} from "@angular/common/http";
 import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
+import {FileUploadComponent} from "./path-framework/form/field/file-upload/file-upload.component";
 import {FormComponent} from "./path-framework/form/form.component";
 import {ButtonGroupComponent} from "./path-framework/page/element/button-group/button-group.component";
 import {ChartComponent} from "./path-framework/page/element/chart/chart.component";
@@ -65,7 +66,8 @@ import {BreadcrumbComponent} from "./path-framework/page/element/breadcrumb/brea
         CustomContainerComponent,
         ElementListComponent,
         ButtonGroupComponent,
-        BreadcrumbComponent
+        BreadcrumbComponent,
+        FileUploadComponent
     ],
     exports:      [
         DraggableDirective,
@@ -98,7 +100,8 @@ import {BreadcrumbComponent} from "./path-framework/page/element/breadcrumb/brea
         CustomContainerComponent,
         ElementListComponent,
         ButtonGroupComponent,
-        BreadcrumbComponent
+        BreadcrumbComponent,
+        FileUploadComponent
     ],
 })
 export class AppModule {
