@@ -40,6 +40,9 @@
 					<div *ngIf="field.type == 'fileUpload'">
 						<path-file-upload [field]="field"></path-file-upload>
 					</div>
+					<div *ngIf="field.type == 'SliderField'">
+						<path-slider [field]="field"></path-slider>
+					</div>
 				</div>
 			</div>
 			<!-- show form buttons on modal-body in mobile version, otherwise they are taking up too much space when the keyboard is shown -->
