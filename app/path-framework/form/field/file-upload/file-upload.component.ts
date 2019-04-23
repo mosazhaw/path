@@ -130,7 +130,7 @@ export class FileUploadComponent {
         };
 
         const req = new HttpRequest("POST", url, formData, options);
-        return this.http.request(req);
+        return <any>this.http.request(req); // <any> fixes TS2719
     }
 
 }
