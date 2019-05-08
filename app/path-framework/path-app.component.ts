@@ -763,6 +763,7 @@ export abstract class PathAppComponent implements IPathApp {
             }
             case "fileUpload": {
                 formField = new FileUploadField(form, this.translationService);
+                modelFormField["url"] = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
                 formField.fromJson(modelFormField);
                 break;
             }
