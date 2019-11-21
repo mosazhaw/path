@@ -11,6 +11,7 @@ import {KeyUtility} from "../../../utility/key-utility";
 
 @Component({
     selector: "path-autocomplete",
+    // tslint:disable-next-line
     host: {
         "(document:click)": "handleClick($event)",
     },
