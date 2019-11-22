@@ -1,5 +1,5 @@
 <a (click)="button.onClick()" class="fa-links">
-	<div class="thumbnail tile tile-button {{(button.width <= 1 ? 'tile-medium' : (button.width == 2 ? 'tile-wide' : (button.width == 3 ? 'tile-wide-3' : (button.width >= 4 ? 'tile-wide-4' : ''))))}} tile-red col-md-3 {{button.cssGroupBorder}} {{button.cssClass}}" [ngStyle]="button.cssStyle">
+	<div class="card-body tile tile-button {{(button.width <= 1 ? 'tile-medium' : (button.width == 2 ? 'tile-wide' : (button.width == 3 ? 'tile-wide-3' : (button.width >= 4 ? 'tile-wide-4' : ''))))}} tile-red col-md-3 {{button.cssGroupBorder}} {{button.cssClass}}" [ngStyle]="button.cssStyle">
 		<div class="h3">{{button.name}}</div>
 		<i class="fa fa-2x fa-remove"></i>
 	</div>

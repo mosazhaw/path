@@ -16,6 +16,10 @@
 
 
 /* modal and form*/
+.modal {
+    display: inline;
+}
+
 .path-autocomplete {
     position:absolute;
     z-index: 99;
@@ -41,10 +45,6 @@ textarea[readonly-with-required] {
 
 .required-field {
     border-color: #ff6666;
-}
-
-.modal-dialog {
-    width: 70%;
 }
 
 .modal-body {
@@ -187,7 +187,7 @@ textarea[readonly-with-required] {
     text-align: center;
 }
 /* tiles bottom margin */
-.thumbnail {
+.card.card-body {
     margin-bottom: 0;
 }
 /* only for mobile devices */

@@ -1,15 +1,13 @@
 <div [ngClass]="form.borderStyle == 2 ? 'modal-content' : ''">
 	<form (ngSubmit)="onSubmit()" #pathForm="ngForm" autocomplete="off" ngNativeValidate>
 		<div *ngIf="form.headerVisible" class="modal-header">
+			<h6 class="modal-title">{{form.title}}</h6>
 			<button type="button" class="close" data-dismiss="modal" (click)="form.close(false,false)">&times;</button>
-			<h5 class="modal-title">{{form.title}}</h5>
 		</div>
-		<div class="modal-body">
+		<div class="modal-body container">
 			<div *ngFor='let row of form.rows;' class="row" [hidden]="!row.isVisible()">
-				<div *ngFor='let field of row.fields;' [hidden]="!field.visible">
-					<div *ngIf="field.type == 'text'">
-						<path-textfield [field]="field"></path-textfield>
-					</div>
+				<div class="col" *ngFor='let field of row.fields;' [hidden]="!field.visible">
+                    <path-textfield class="col" *ngIf="field.type == 'text'" [field]="field"></path-textfield>
 					<div *ngIf="field.type == 'translation'">
 						<path-translationfield [field]="field"></path-translationfield>
 					</div>
