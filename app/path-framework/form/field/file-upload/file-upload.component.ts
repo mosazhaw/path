@@ -14,7 +14,7 @@ export class FileUploadComponent {
     @Output("field")
     field: FileUploadField;
 
-    @ViewChild("fileInput")
+    @ViewChild("fileInput", {static: true})
     fileInputReference: ElementRef;
     dragActive = false;
 

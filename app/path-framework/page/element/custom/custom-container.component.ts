@@ -11,7 +11,7 @@ import {PageElement} from "../page-element";
 
 export class CustomContainerComponent implements OnInit, OnDestroy {
     @Input() pageElement: CustomContainerPageElement;
-    @ViewChild(CustomDirective) customDirective: CustomDirective;
+    @ViewChild(CustomDirective, {static: true}) customDirective: CustomDirective;
 
     constructor(private componentFactoryResolver: ComponentFactoryResolver) {
     }

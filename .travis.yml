@@ -1,10 +1,11 @@
 language: node_js
 sudo: false
+services:
+  - xvfb
 node_js:
-  - "8.12"
+  - "12.13.1"
 before_install:
   - export DISPLAY=:99.0
-  - sh -e /etc/init.d/xvfb start
 install:
   - npm install
 script:
