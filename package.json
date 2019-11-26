@@ -1,7 +1,7 @@
 {
   "$schema": "./node_modules/ng-packagr/package.schema.json",
   "name": "path-framework",
-  "version": "0.6.1",
+  "version": "0.6.2-beta.0",
   "description": "Path Application Framework",
   "keywords": [
     "GUI",
@@ -53,7 +53,7 @@
     "@angular/upgrade": "8.2.14",
     "@fortawesome/fontawesome-free": "5.11.2",
     "@types/node": "12.12.11",
-    "bootstrap": "3.4.1",
+    "bootstrap": "4.3.1",
     "core-js": "3.4.1",
     "moment": "2.24.0",
     "ngx-bootstrap": "5.3.2",
