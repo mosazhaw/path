@@ -105,18 +105,16 @@
 </div>
 
 <!-- Forms -->
-<div class="col-md-6 col-lg-3">
-    <div class="col-md-6 col-lg-3">
-        <!-- TODO listen to escape only, not to all keystrokes -->
-        <div (window:keyup)="form.onKey($event)" *ngFor="let form of _formStack">
-            <div class="modal fade show in danger" id="myModal" role="dialog">
-                <div [path-draggable] class="modal-dialog mw-100 w-75">
-	                <path-form [form]="form"></path-form>
-                </div>
-            </div>
+<div class="container-fluid">
+    <!-- TODO listen to escape only, not to all keystrokes -->
+    <div (window:keyup)="form.onKey($event)" *ngFor="let form of _formStack">
+        <div class="modal fade show in danger" id="myModal" role="dialog">
+            <div [path-draggable] class="modal-dialog mw-100 w-75">
+                <path-form [form]="form"></path-form>
             </div>
         </div>
     </div>
+</div>
 </div>
 
 <div class="version badge">{{_version}}</div>

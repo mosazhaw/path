@@ -4,39 +4,43 @@
 			<h6 class="modal-title">{{form.title}}</h6>
 			<button type="button" class="close" data-dismiss="modal" (click)="form.close(false,false)">&times;</button>
 		</div>
-		<div class="modal-body container">
-			<div *ngFor='let row of form.rows;' class="row" [hidden]="!row.isVisible()">
-				<div class="col" *ngFor='let field of row.fields;' [hidden]="!field.visible">
-                    <path-textfield class="col" *ngIf="field.type == 'text'" [field]="field"></path-textfield>
-					<div *ngIf="field.type == 'translation'">
-						<path-translationfield [field]="field"></path-translationfield>
+		<div class="modal-body container-fluid">
+			<div class="row no-gutters" *ngFor='let row of form.rows;' [hidden]="!row.isVisible()">
+				<div class="col-sm" *ngFor='let field of row.fields;' [hidden]="!field.visible">
+					<div class="row no-gutters">
+					<div class="col-sm" *ngIf="field.type == 'text'">
+						<path-textfield class="row no-gutters"  [field]="field"></path-textfield>
 					</div>
-					<div *ngIf="field.type == 'number'">
-						<path-numberfield [field]="field"></path-numberfield>
+					<div class="col-sm" *ngIf="field.type == 'translation'">
+						<path-translationfield class="row" [field]="field"></path-translationfield>
 					</div>
-					<div *ngIf="field.type == 'label'">
-						<path-label-field [field]="field"></path-label-field>
+					<div class="col-sm" *ngIf="field.type == 'number'">
+						<path-numberfield class="row" [field]="field"></path-numberfield>
 					</div>
-					<div *ngIf="field.type == 'fieldList'">
-						<path-field-list [field]="field"></path-field-list>
+					<div class="col-sm" *ngIf="field.type == 'label'">
+						<path-label-field class="row" [field]="field"></path-label-field>
 					</div>
-					<div *ngIf="field.type == 'date'">
-						<path-datefield [field]="field"></path-datefield>
+					<div class="col-sm" *ngIf="field.type == 'fieldList'">
+						<path-field-list class="row" [field]="field"></path-field-list>
 					</div>
-					<div *ngIf="field.type == 'autocomplete'">
-						<path-autocomplete [field]="field"></path-autocomplete>
+					<div class="col-sm" *ngIf="field.type == 'date'">
+						<path-datefield class="row" [field]="field"></path-datefield>
 					</div>
-					<div *ngIf="field.type == 'ProgressBarField'">
-						<path-progress-bar [field]="field"></path-progress-bar>
+					<div class="col-sm" *ngIf="field.type == 'autocomplete'">
+						<path-autocomplete class="row" [field]="field"></path-autocomplete>
 					</div>
-					<div *ngIf="field.type == 'RadioGroupField'">
-						<path-radio-group [field]="field"></path-radio-group>
+					<div class="col-sm" *ngIf="field.type == 'ProgressBarField'">
+						<path-progress-bar class="row" [field]="field"></path-progress-bar>
 					</div>
-					<div *ngIf="field.type == 'CheckboxGroupField'">
-						<path-checkbox-group [field]="field"></path-checkbox-group>
+					<div class="col-sm" *ngIf="field.type == 'RadioGroupField'">
+						<path-radio-group class="row" [field]="field"></path-radio-group>
 					</div>
-					<div *ngIf="field.type == 'fileUpload'">
-						<path-file-upload [field]="field"></path-file-upload>
+					<div class="col-sm" *ngIf="field.type == 'CheckboxGroupField'">
+						<path-checkbox-group class="row" [field]="field"></path-checkbox-group>
+					</div>
+					<div class="col-sm" *ngIf="field.type == 'fileUpload'">
+						<path-file-upload class="row" [field]="field"></path-file-upload>
+					</div>
 					</div>
 				</div>
 			</div>
@@ -47,20 +51,20 @@
 					<div class="col-md-2 buttons-smartphone-left">
 					<span *ngFor='let field of form.fields' class="pull-left" [hidden]="!field.visible">
 						<span *ngIf="field.type == 'deleteButton'">
-							<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+							<input [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
 						</span>
 						<span *ngIf="field.type == 'previousButton'">
-							<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+							<input [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
 						</span>
 					</span>
 					</div>
 					<div class="col-md-10 buttons-smartphone-right">
 					<span *ngFor='let field of form.fields' [hidden]="!field.visible">
 						<span *ngIf="field.type == 'okButton'">
-							<input [disabled]="field.isReadonly()" type="submit" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+							<input [disabled]="field.isReadonly()" type="submit" class="btn btn-outline-secondary btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
 						</span>
 						<span *ngIf="field.type == 'cancelButton'">
-							<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+							<input [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
 						</span>
 					</span>
 					</div>
@@ -71,29 +75,21 @@
 		<!-- default version for desktop devices -->
 		<div class="hide-on-mobile">
 			<div [hidden]="!form.footerVisible" class="modal-footer">
-			<div class="row">
-				<div class="col-md-2">
-						<span *ngFor='let field of form.fields' class="pull-left" [hidden]="!field.visible">
-							<span *ngIf="field.type == 'deleteButton'">
-								<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+							<span *ngFor='let field of form.fields' [hidden]="!field.visible">
+								<span *ngIf="field.type == 'deleteButton'">
+									<input [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary btn-footer mr-auto" (click)="field.onClick()" value="{{field.name}}"/>
+								</span>
+								<span *ngIf="field.type == 'previousButton'">
+									<input [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary btn-footer mr-auto" (click)="field.onClick()" value="{{field.name}}"/>
+								</span>
+								<span *ngIf="field.type == 'okButton'">
+									<input [disabled]="field.isReadonly()" type="submit" class="btn btn-outline-secondary btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+								</span>
+								<span *ngIf="field.type == 'cancelButton'">
+									<input [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
+								</span>
 							</span>
-							<span *ngIf="field.type == 'previousButton'">
-								<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
-							</span>
-						</span>
-				</div>
-				<div class="col-md-10">
-						<span *ngFor='let field of form.fields' [hidden]="!field.visible">
-							<span *ngIf="field.type == 'okButton'">
-								<input [disabled]="field.isReadonly()" type="submit" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
-							</span>
-							<span *ngIf="field.type == 'cancelButton'">
-								<input [disabled]="field.isReadonly()" type="button" class="btn btn-default btn-footer" (click)="field.onClick()" value="{{field.name}}"/>
-							</span>
-						</span>
 				</div>
 			</div>
-			</div>
-		</div>
 	</form>
 </div>

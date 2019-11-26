@@ -1,5 +1,5 @@
-<path-form-field-label [label]="field.name" [required]="field.required"></path-form-field-label>
-<div class="checkbox" [class.col-md-4]="field.width == 1" [class.col-md-10]="field.width == 2">
+<path-form-field-label class="col-2" [label]="field.name" [required]="field.required"></path-form-field-label>
+<div class="checkbox" [class.col-4]="field.width == 1" [class.col-10]="field.width == 2">
     <span *ngFor="let entry of field.entries">
         <label class="checkbox-inline">
             <input type="checkbox" [(ngModel)]="entry.selected" (ngModelChange)="field.doClick()">
