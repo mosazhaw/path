@@ -7,11 +7,9 @@
                #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value,$event)
                (blur)="field.focusLost()" class="form-control" placeholder="">
         <!-- Auto Complete -->
-        <div *ngIf="field.filteredList.length > 0 && !field.isReadonly()">
-            <div class="path-autocomplete list-group">
-                <a *ngFor="let item of field.filteredList" class="list-group-item" href="#"
-                   (click)="field.select(item)"><h5>{{item.text}}</h5></a>
-            </div>
+        <div *ngIf="field.filteredList.length > 0 && !field.isReadonly()" class="path-autocomplete list-group">
+            <a *ngFor="let item of field.filteredList" class="list-group-item list-group-item-action" href="#"
+               (click)="field.select(item)"><span class="path-default-font">{{item.text}}</span></a>
         </div>
         <!-- Action -->
         <span *ngIf="field.detailForm != null" class="input-group-btn">

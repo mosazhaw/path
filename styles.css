@@ -26,7 +26,7 @@ body {
     position:absolute;
     z-index: 99;
     width: 100%;
-    top: 33px; /* TODO */
+    top: 38px; /* TODO */
 }
 
 input[readonly-with-required] {
@@ -104,7 +104,6 @@ textarea[readonly-with-required] {
     bottom: 2px;
     right: 2px;
     z-index: 999;
-    border-radius: 0; /* added by weberm16 */
 }
 
 .path-app-logo {
@@ -115,14 +114,10 @@ textarea[readonly-with-required] {
 .cursor-draggable {
     cursor: move;
     cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
 }
 
 .cursor-draggable:active {
     cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
 }
 
 .inlineForm {
@@ -143,17 +138,7 @@ textarea[readonly-with-required] {
 .navbar-inverse, .navbar-link,.navbar-brand:hover, .navbar-link:hover, .navbar-brand:visited {
     color: #ffffff !important;
 }
-/* navigation bar */
-.navbar {
-    border-radius: 0;
-}
-.navbar-nav {
-    margin: 0 0;
-}
-/* no rounded corners for form and buttons */
-.modal-content, .form-control, .btn {
-    border-radius: 0;
-}
+
 /* mobile device tile width */
 /* button width x1 */
 .tile.tile-medium {
