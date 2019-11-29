@@ -1,5 +1,6 @@
-<path-form-field-label class="col-sm-2" [label]="field.name" [required]="field.required"></path-form-field-label>
-<div [class.col-sm-4]="field.width == 1" [class.col-sm-10]="field.width == 2" [class.file-upload-drop]="dragActive"
+<span class="row">
+<path-form-field-label [class.col-sm-4]="field.width == 1" [class.col-sm-2]="field.width == 2" [label]="field.name" [required]="field.required"></path-form-field-label>
+<div [class.col-sm-8]="field.width == 1" [class.col-sm-10]="field.width == 2" [class.file-upload-drop]="dragActive"
      (drop)="onDropFile($event)" (dragleave)="onDragLeave()" (dragover)="onDragOverFile($event)">
     <table class="table">
         <thead>
@@ -34,3 +35,4 @@
                [required]="field.fileUploadRequired" #fileInput>
     </div>
 </div>
+</span>

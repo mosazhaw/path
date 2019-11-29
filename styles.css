@@ -1,8 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 /* custom css styles */
+body {
+    font-size: 0.875rem;
+}
+
+.path-default-font {
+    font-size: 0.875rem;
+}
+
 .row {
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
 .breadcrumb {
@@ -25,10 +33,6 @@
     z-index: 99;
     width: 100%;
     top: 33px; /* TODO */
-}
-
-.input-group {
-    width: 100%;
 }
 
 input[readonly-with-required] {

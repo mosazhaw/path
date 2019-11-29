@@ -1,5 +1,6 @@
-<path-form-field-label class="col-sm-2" [label]="field.name" [required]="field.required"></path-form-field-label>
-<div [class.col-sm-4]="field.width == 1" [class.col-sm-10]="field.width == 2">
+<span class="row">
+<path-form-field-label [class.col-sm-4]="field.width == 1" [class.col-sm-2]="field.width == 2" [label]="field.name" [required]="field.required"></path-form-field-label>
+<div [class.col-sm-8]="field.width == 1" [class.col-sm-10]="field.width == 2">
     <div class="input-group">
         <input #model="ngModel" [readonly]="field.isReadonly()"
                [class.required-field]="(!model.valid &&!model.pristine && field.required)" [required]="field.required"
@@ -14,7 +15,8 @@
         </div>
         <!-- Action -->
         <span *ngIf="field.detailForm != null" class="input-group-btn">
-                <button (click)="field.showDetailForm()" class="btn btn-outline-secondary" type="button">{{field.getDetailButtonName()}}</button>
+            <button (click)="field.showDetailForm()" class="btn btn-outline-secondary" type="button"><span class="path-default-font">{{field.getDetailButtonName()}}</span></button>
             </span>
     </div>
 </div>
+</span>
