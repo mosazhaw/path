@@ -1,6 +1,9 @@
 <span class="row">
-<path-form-field-label [hidden]="!field.labelVisible" [label]="field.name" [required]="field.required"></path-form-field-label>
-<div [class.col-md-4]="field.labelVisible" [class.col-md-6]="!field.labelVisible">
-    <h5 class="modal-title"><div [innerHTML]="field.value"></div></h5>
+<path-form-field-label [class.col-sm-4]="field.width == 1" [class.col-sm-2]="field.width == 2" [hidden]="!field.labelVisible" [label]="field.name" [required]="field.required"></path-form-field-label>
+<div [class.col-sm-8]="field.width == 1 && field.labelVisible"
+     [class.col-sm-12]="field.width == 1 && !field.labelVisible"
+     [class.col-sm-10]="field.width == 2 && field.labelVisible"
+     [class.col-sm-12]="field.width == 2 && !field.labelVisible">
+    <div class="input-group path-default-font"><div class="form-control border-0" [innerHTML]="field.value"></div></div>
 </div>
 </span>
