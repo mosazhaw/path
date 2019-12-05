@@ -57,13 +57,7 @@
 	    <span *ngIf="pageElement.visible">
 	<!-- Inline Form -->
     <span *ngIf='pageElement.type == "inlineForm"'>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="col-md-12 inlineForm">
-                    <path-form *ngIf="pageElement.form != null" [form]="pageElement.form"></path-form>
-                </div>
-             </div>
-        </div>
+        <path-form *ngIf="pageElement.form != null" [form]="pageElement.form"></path-form>
     </span>
     <!-- List -->
     <span *ngIf='pageElement.type == "list"'>

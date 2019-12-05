@@ -121,10 +121,6 @@ textarea[readonly-with-required] {
     cursor: grabbing;
 }
 
-.inlineForm {
-    margin-bottom: 20px;
-}
-
 .progress {
     margin-bottom: 0;
 }
@@ -174,15 +170,6 @@ textarea[readonly-with-required] {
 }
 /* only for mobile devices */
 @media only screen and (max-width: 768px) {
-    /* center breadcrumb */
-    .breadcrumb {
-        text-align: center;
-        font-weight: bold;
-    }
-    /* hide breadcrumb path */
-    .invisibleSP, li::before {
-        display: none;
-    }
     /* hidden elements on mobile version */
     .hide-on-mobile {
         display: none !important;
@@ -192,24 +179,6 @@ textarea[readonly-with-required] {
         padding-left: 15px;
         padding-right: 15px;
     }
-    /* increase form buttons, use line breaks */
-    .btn-footer {
-        font-size: 25px;
-    }
-    /* no double padding for inline forms */
-    .col-md-12.inlineForm{
-        padding: 0;
-    }
-    /* show buttons on the right side on mobile devices */
-    .buttons-smartphone-right {
-        float: right;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .buttons-smartphone-left {
-        padding-left: 0;
-    }
-
 }
 
 /* desktop only styles */

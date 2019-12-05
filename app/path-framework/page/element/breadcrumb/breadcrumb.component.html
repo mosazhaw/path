@@ -2,7 +2,7 @@
     <h4>
         <ol class="breadcrumb mt-2 mb-0 pb-0">
             <li *ngFor='let page of app["_pageStack"]; let currentIndex = index; let last = last' class="breadcrumb-item {{last ? 'active': ''}}">
-                <a class="invisibleSP" href="#" *ngIf='!last' (click)="app.navigateToPage(currentIndex)">{{page.getShortName()}}</a>{{last ? page.getShortName() : ''}}
+                <a href="#" *ngIf='!last' (click)="app.navigateToPage(currentIndex)">{{page.getShortName()}}</a>{{last ? page.getShortName() : ''}}
             </li>
         </ol>
     </h4>
