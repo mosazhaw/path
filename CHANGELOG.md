@@ -2,6 +2,10 @@
 
 Please refer to this document when updating applications using the Path Framework to newer Path versions.
 
+## 0.6
+* Bootstrap 4.x update (from Bootstrap 3)
+* Angular 8.x update
+
 ## 0.5
 
 #### New features
