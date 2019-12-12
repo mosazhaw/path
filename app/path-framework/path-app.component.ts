@@ -243,6 +243,7 @@ export abstract class PathAppComponent implements IPathApp {
 
     public yesNo(text: string, yesHandler: () => void, noHandler: () => void) {
         const form: Form = new Form(this.pathService, this);
+        form.headerVisible = false;
         form.formFunction = new FormFunction();
         form.formFunction.save = (data: any) => {
             this.closeCurrentForm();
@@ -256,6 +257,7 @@ export abstract class PathAppComponent implements IPathApp {
         message.visible = true;
         message.labelVisible = false;
         message.setValue(text);
+        message.width = 2;
         form.fields.push(message);
 
         const cancelButton: CancelButton = new CancelButton(form, this.translationService);

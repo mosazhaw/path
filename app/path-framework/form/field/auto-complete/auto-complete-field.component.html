@@ -12,9 +12,9 @@
                (click)="field.select(item)"><span class="path-default-font">{{item.text}}</span></a>
         </div>
         <!-- Action -->
-        <span *ngIf="field.detailForm != null" class="input-group-btn">
+        <span *ngIf="field.detailForm != null" class="input-group-append">
             <button (click)="field.showDetailForm()" class="btn btn-outline-secondary" type="button"><span class="path-default-font">{{field.getDetailButtonName()}}</span></button>
-            </span>
+        </span>
     </div>
 </div>
 </span>
