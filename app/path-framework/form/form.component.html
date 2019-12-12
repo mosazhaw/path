@@ -25,10 +25,10 @@
 		</div>
 		<div [hidden]="!form.footerVisible" class="modal-footer">
 				<ng-container *ngFor='let field of form.fields'>
-					<button *ngIf="field.type == 'deleteButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" class="btn btn-outline-secondary mr-auto" (click)="field.onClick()"><span class="path-default-font">{{field.name}}</span></button>
-					<button *ngIf="field.type == 'previousButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" class="btn btn-outline-secondary mr-auto" (click)="field.onClick()"><span class="path-default-font">{{field.name}}</span></button>
-					<input *ngIf="field.type == 'okButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="submit" class="btn btn-outline-secondary" (click)="field.onClick()" value="{{field.name}}">
-					<button *ngIf="field.type == 'cancelButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" class="btn btn-outline-secondary" (click)="field.onClick()"><span class="path-default-font">{{field.name}}</span></button>
+					<button *ngIf="field.type == 'deleteButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+					<button *ngIf="field.type == 'previousButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+					<button *ngIf="field.type == 'okButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="submit" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+					<button *ngIf="field.type == 'cancelButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
 				</ng-container>
 		</div>
 	</form>
