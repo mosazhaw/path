@@ -105,7 +105,7 @@ export class InlineForm extends PageElement {
                         };
                         this._form = this.app.createForm(this._formId, this._currentKey, null, formFunction, this);
                         this.name = this._form.title;
-                        FocusUtility.focusFirstField(this.form);
+                        window.setTimeout(() => { FocusUtility.focusFirstField(this.form); }, 1);
                     } else {
                         this._form = null;
                         if (this.page == null) {
