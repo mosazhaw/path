@@ -14,6 +14,7 @@ export class SliderFieldComponent {
 export class SliderField extends ValueField<number> {
     private _min: number;
     private _max: number;
+    public valueText = this.translationService.getText("SliderValue");
 
     get min(): number {
         return this._min;

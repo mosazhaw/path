@@ -396,9 +396,6 @@ h3, .h3, h4, .h4, h5, .h5 {
     justify-content: space-between;
     margin-top: 10px;
 }
-.slider-value{
-    margin-bottom: 10px;
-}
 .slider {
     -webkit-appearance: none;
     width: 100%;
