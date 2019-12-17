@@ -16,7 +16,7 @@
             <div class="h5 m-t-5"></div>
             <i class="fa fa-2x fa-search"></i>
             </span>
-            <form>
+            <form name="search">
                 <input class="form-control" name="search" [(ngModel)]="list.searchText" placeholder="{{list.searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' type="text">
             </form>
             </div>
