@@ -19,6 +19,7 @@ import {RadioGroupField} from "./form/field/radio/radio-group.component";
 import {TextField} from "./form/field/text/text-field.component";
 import {TranslationField} from "./form/field/translation/translation-field.component";
 import {ValueField} from "./form/field/value-field";
+import {FocusUtility} from "./form/focus-utility";
 import {FormFunction} from "./form/form-function";
 import {Form} from "./form/form.component";
 import {ButtonGroup} from "./page/element/button-group/button-group.component";
@@ -613,6 +614,7 @@ export abstract class PathAppComponent implements IPathApp {
                                 subfield.isInitialValueSet = true;
                             }
                         }
+                        setTimeout(() => { FocusUtility.focusFirstField(field.getForm()); });
                     };
                     setValueOfFieldListFieldContextWrapper();
                 }
