@@ -1,11 +1,11 @@
 <div [ngClass]="form.borderStyle == 2 ? 'modal-content' : ''">
-	<form (ngSubmit)="onSubmit()" #pathForm="ngForm" autocomplete="off" ngNativeValidate>
-		<div *ngIf="form.headerVisible" class="modal-header">
-			<h6 class="modal-title">{{form.title}}</h6>
-			<button type="button" class="close" data-dismiss="modal" (click)="form.close(false,false)">&times;</button>
-		</div>
-		<div class="modal-body container-fluid">
-			<div class="row" *ngFor='let row of form.rows;' [hidden]="!row.isVisible()">
+    <form (ngSubmit)="onSubmit()" #pathForm="ngForm" autocomplete="off" ngNativeValidate>
+        <div *ngIf="form.headerVisible" class="modal-header">
+            <h6 class="modal-title">{{form.title}}</h6>
+            <button type="button" class="close" data-dismiss="modal" (click)="form.close(false,false)">&times;</button>
+        </div>
+        <div class="modal-body container-fluid">
+            <div class="row" *ngFor='let row of form.rows;' [hidden]="!row.isVisible()">
 				<span class="col" *ngFor='let field of row.fields;' [hidden]="!field.visible">
 					<span class="row">
 					<path-textfield class="col" *ngIf="field.type == 'text'" [field]="field" ></path-textfield>
@@ -19,17 +19,18 @@
 					<path-radio-group class="col" *ngIf="field.type == 'RadioGroupField'" [field]="field" ></path-radio-group>
 					<path-checkbox-group class="col" *ngIf="field.type == 'CheckboxGroupField'" [field]="field" ></path-checkbox-group>
 					<path-file-upload class="col" *ngIf="field.type == 'fileUpload'" [field]="field" ></path-file-upload>
+					<path-slider class="col" *ngIf="field.type == 'SliderField'" [field]="field" ></path-slider>
 					</span>
 				</span>
-			</div>
-		</div>
-		<div [hidden]="!form.footerVisible" class="modal-footer">
-				<ng-container *ngFor='let field of form.fields'>
-					<button *ngIf="field.type == 'deleteButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
-					<button *ngIf="field.type == 'previousButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
-					<button *ngIf="field.type == 'okButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="submit" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
-					<button *ngIf="field.type == 'cancelButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
-				</ng-container>
-		</div>
-	</form>
+            </div>
+        </div>
+        <div [hidden]="!form.footerVisible" class="modal-footer">
+            <ng-container *ngFor='let field of form.fields'>
+                <button *ngIf="field.type == 'deleteButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+                <button *ngIf="field.type == 'previousButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+                <button *ngIf="field.type == 'okButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="submit" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+                <button *ngIf="field.type == 'cancelButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+            </ng-container>
+        </div>
+    </form>
 </div>
