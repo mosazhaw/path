@@ -29,7 +29,7 @@
 
 <!-- Login Form -->
 <div *ngIf="getUserId() == null" class="container-fluid">
-<div class="login jumbotron mx-auto">
+<div class="login jumbotron mt-3 mx-auto">
     <h1>Login</h1>
     <form role="form" (submit)="login($event, username.value, password.value)">
         <div class="form-group">
