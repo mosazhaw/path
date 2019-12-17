@@ -9,6 +9,7 @@ import {CheckboxGroupField} from "./form/field/checkbox/checkbox-group.component
 import {DateField} from "./form/field/date/date-field.component";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
 import {FileUploadField} from "./form/field/file-upload/file-upload.component";
+import {SliderField} from "./form/field/slider/slider-field.component";
 import {FormField} from "./form/field/form-field";
 import {LabelField} from "./form/field/label/label-field.component";
 import {NumberField} from "./form/field/number/number-field.component";
@@ -765,6 +766,12 @@ export abstract class PathAppComponent implements IPathApp {
                 formField = new FileUploadField(form, this.translationService);
                 modelFormField["url"] = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
                 formField.fromJson(modelFormField);
+                break;
+            }
+            case "SliderField": {
+                const sliderField = new SliderField(form, this.translationService);
+                sliderField.fromJson(modelFormField);
+                formField = sliderField;
                 break;
             }
             default: {
