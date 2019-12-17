@@ -222,13 +222,11 @@ textarea[readonly-with-required] {
 /* Source: https://github.com/TalksLab/metro-bootstrap/blob/master/dist/css/metro-bootstrap.css */
 /* general styles */
 html body {
-    /* try to use futura, fall back on nunito */
-    font-family: Futura, Futura-Medium, "Futura Medium", 'Nunito', sans-serif;
+    font-family: Nunito, Futura, Futura-Medium, "Futura Medium", sans-serif;
 }
 
 h3, .h3, h4, .h4, h5, .h5 {
-    /* try to use futura, fall back on nunito */
-    font-family: Futura, Futura-Medium, "Futura Medium", 'Nunito', sans-serif;
+    font-family: Nunito, Futura, Futura-Medium, "Futura Medium", sans-serif;
 }
 
 /* tiles and buttons */
