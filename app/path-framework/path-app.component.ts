@@ -9,6 +9,7 @@ import {CheckboxGroupField} from "./form/field/checkbox/checkbox-group.component
 import {DateField} from "./form/field/date/date-field.component";
 import {FieldListField} from "./form/field/fieldList/field-list-field.component";
 import {FileUploadField} from "./form/field/file-upload/file-upload.component";
+import {SliderField} from "./form/field/slider/slider-field.component";
 import {FormField} from "./form/field/form-field";
 import {LabelField} from "./form/field/label/label-field.component";
 import {NumberField} from "./form/field/number/number-field.component";
@@ -18,6 +19,7 @@ import {RadioGroupField} from "./form/field/radio/radio-group.component";
 import {TextField} from "./form/field/text/text-field.component";
 import {TranslationField} from "./form/field/translation/translation-field.component";
 import {ValueField} from "./form/field/value-field";
+import {FocusUtility} from "./form/focus-utility";
 import {FormFunction} from "./form/form-function";
 import {Form} from "./form/form.component";
 import {ButtonGroup} from "./page/element/button-group/button-group.component";
@@ -243,6 +245,7 @@ export abstract class PathAppComponent implements IPathApp {
 
     public yesNo(text: string, yesHandler: () => void, noHandler: () => void) {
         const form: Form = new Form(this.pathService, this);
+        form.headerVisible = false;
         form.formFunction = new FormFunction();
         form.formFunction.save = (data: any) => {
             this.closeCurrentForm();
@@ -256,6 +259,7 @@ export abstract class PathAppComponent implements IPathApp {
         message.visible = true;
         message.labelVisible = false;
         message.setValue(text);
+        message.width = 2;
         form.fields.push(message);
 
         const cancelButton: CancelButton = new CancelButton(form, this.translationService);
@@ -610,6 +614,7 @@ export abstract class PathAppComponent implements IPathApp {
                                 subfield.isInitialValueSet = true;
                             }
                         }
+                        setTimeout(() => { FocusUtility.focusFirstField(field.getForm()); });
                     };
                     setValueOfFieldListFieldContextWrapper();
                 }
@@ -765,6 +770,12 @@ export abstract class PathAppComponent implements IPathApp {
                 formField = new FileUploadField(form, this.translationService);
                 modelFormField["url"] = KeyUtility.translateUrl(modelFormField["url"], form.getKey(), false, parentPageElement);
                 formField.fromJson(modelFormField);
+                break;
+            }
+            case "SliderField": {
+                const sliderField = new SliderField(form, this.translationService);
+                sliderField.fromJson(modelFormField);
+                formField = sliderField;
                 break;
             }
             default: {

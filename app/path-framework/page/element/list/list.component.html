@@ -9,15 +9,16 @@
     <span>
         <div class="tile-group">
             <!-- default search (tablet, desktop) -->
-            <div *ngIf='list.search' class="thumbnail {{(list.searchButton.width <= 1 ? 'tile-medium' : (list.searchButton.width == 2 ? 'tile-wide' : (list.searchButton.width == 3 ? 'tile-wide-3' : (list.searchButton.width >= 4 ? 'tile-wide-4' : ''))))}} tile tile-button hide-on-mobile {{list.searchButton.cssClass}}" [ngStyle]="list.searchButton.cssStyle">
-                <div class="input-group input-group-sm">
-                    <div class="h3">{{list.searchLabel}}</div>
-                    <i class="fa fa-2x fa-search"></i>
-                    <div class="h5"></div>
-                    <form>
-                        <input name="search" [(ngModel)]="list.searchText" placeholder="{{list.searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' class="form-control" type="text">
-                    </form>
-                </div>
+            <div *ngIf='list.search' class="card-body pl-1 pr-1 pb-1 d-flex flex-column {{(list.searchButton.width <= 1 ? 'tile-medium' : (list.searchButton.width == 2 ? 'tile-wide' : (list.searchButton.width == 3 ? 'tile-wide-3' : (list.searchButton.width >= 4 ? 'tile-wide-4' : ''))))}} tile tile-button hide-on-mobile {{list.searchButton.cssClass}}" [ngStyle]="list.searchButton.cssStyle">
+            <span class="card-title">
+            <div class="h4 truncate">{{list.searchLabel}}</div>
+            <span class="truncate"></span>
+            <div class="h5 m-t-5"></div>
+            <i class="fa fa-2x fa-search"></i>
+            </span>
+            <form name="search">
+                <input class="form-control" name="search" [(ngModel)]="list.searchText" placeholder="{{list.searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' type="text">
+            </form>
             </div>
         </div>
     </span>

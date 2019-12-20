@@ -5,6 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {CommonModule} from "@angular/common";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FileUploadComponent} from "./path-framework/form/field/file-upload/file-upload.component";
+import {SliderFieldComponent} from "./path-framework/form/field/slider/slider-field.component";
 import {FormComponent} from "./path-framework/form/form.component";
 import {ButtonGroupComponent} from "./path-framework/page/element/button-group/button-group.component";
 import {ChartComponent} from "./path-framework/page/element/chart/chart.component";
@@ -69,7 +70,8 @@ import {BreadcrumbComponent} from "./path-framework/page/element/breadcrumb/brea
         ElementListComponent,
         ButtonGroupComponent,
         BreadcrumbComponent,
-        FileUploadComponent
+        FileUploadComponent,
+        SliderFieldComponent
     ],
     exports:      [
         DraggableDirective,
@@ -103,7 +105,8 @@ import {BreadcrumbComponent} from "./path-framework/page/element/breadcrumb/brea
         ElementListComponent,
         ButtonGroupComponent,
         BreadcrumbComponent,
-        FileUploadComponent
+        FileUploadComponent,
+        SliderFieldComponent
     ],
 })
 export class AppModule {

@@ -1,30 +1,32 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 /* custom css styles */
+body {
+    font-size: 0.875rem;
+}
+
+.path-default-font {
+    font-size: 0.875rem;
+}
+
 .row {
-    padding-top: 20px;
+    padding-top: 5px;
 }
 
 .breadcrumb {
     background-color: #fff;
 }
 
-/* probably to be removed with bootstrap v4 */
-.m-t-5 {
-    margin-top: 5px !important;
+/* modal and form*/
+.modal {
+    display: inline;
 }
 
-
-/* modal and form*/
 .path-autocomplete {
     position:absolute;
     z-index: 99;
     width: 100%;
-    top: 33px; /* TODO */
-}
-
-.input-group {
-    width: 100%;
+    top: 38px; /* TODO */
 }
 
 input[readonly-with-required] {
@@ -41,10 +43,6 @@ textarea[readonly-with-required] {
 
 .required-field {
     border-color: #ff6666;
-}
-
-.modal-dialog {
-    width: 70%;
 }
 
 .modal-body {
@@ -106,7 +104,7 @@ textarea[readonly-with-required] {
     bottom: 2px;
     right: 2px;
     z-index: 999;
-    border-radius: 0; /* added by weberm16 */
+    border-radius: 0;
 }
 
 .path-app-logo {
@@ -117,18 +115,10 @@ textarea[readonly-with-required] {
 .cursor-draggable {
     cursor: move;
     cursor: grab;
-    cursor: -moz-grab;
-    cursor: -webkit-grab;
 }
 
 .cursor-draggable:active {
     cursor: grabbing;
-    cursor: -moz-grabbing;
-    cursor: -webkit-grabbing;
-}
-
-.inlineForm {
-    margin-bottom: 20px;
 }
 
 .progress {
@@ -139,23 +129,11 @@ textarea[readonly-with-required] {
     background-color: lightgrey;
 }
 
-/* added for mobile device support, weberm16 */
-
 /* navigation font color */
 .navbar-inverse, .navbar-link,.navbar-brand:hover, .navbar-link:hover, .navbar-brand:visited {
     color: #ffffff !important;
 }
-/* navigation bar */
-.navbar {
-    border-radius: 0;
-}
-.navbar-nav {
-    margin: 0 0;
-}
-/* no rounded corners for form and buttons */
-.modal-content, .form-control, .btn {
-    border-radius: 0;
-}
+
 /* mobile device tile width */
 /* button width x1 */
 .tile.tile-medium {
@@ -187,20 +165,11 @@ textarea[readonly-with-required] {
     text-align: center;
 }
 /* tiles bottom margin */
-.thumbnail {
+.card.card-body {
     margin-bottom: 0;
 }
 /* only for mobile devices */
 @media only screen and (max-width: 768px) {
-    /* center breadcrumb */
-    .breadcrumb {
-        text-align: center;
-        font-weight: bold;
-    }
-    /* hide breadcrumb path */
-    .invisibleSP, li::before {
-        display: none;
-    }
     /* hidden elements on mobile version */
     .hide-on-mobile {
         display: none !important;
@@ -210,46 +179,6 @@ textarea[readonly-with-required] {
         padding-left: 15px;
         padding-right: 15px;
     }
-    /* full width forms */
-    .modal-dialog {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        margin: 0;
-    }
-    .modal-content {
-        height: 100%;
-        box-shadow: none;
-        border: none;
-    }
-    /* increase label font size */
-    .modal-title {
-        font-size: 150%;
-    }
-    /* increase form buttons, use line breaks */
-    .btn-footer {
-        font-size: 25px;
-    }
-    /* show inline forms full width and below buttons
-    calculate max heigth to allow scrolling on mobile devices */
-    .modal-body {
-        width: 100%;
-        max-height: calc(100vh - 60px);
-    }
-    /* no double padding for inline forms */
-    .col-md-12.inlineForm{
-        padding: 0;
-    }
-    /* show buttons on the right side on mobile devices */
-    .buttons-smartphone-right {
-        float: right;
-        padding-left: 0;
-        padding-right: 0;
-    }
-    .buttons-smartphone-left {
-        padding-left: 0;
-    }
-
 }
 
 /* desktop only styles */
@@ -259,24 +188,30 @@ textarea[readonly-with-required] {
         height: 150px;
         width: 150px;
     }
+
     /* button width x2 */
     .tile.tile-wide {
         height: 150px;
         width: 310px;
     }
+
     /* button width x3 */
     .tile.tile-wide-3 {
         height: 150px;
         width: 470px;
     }
+
     /* button width x4 */
     .tile.tile-wide-4 {
         height: 150px;
         width: 630px;
     }
+
     .tile-group {
-        display: inline-block; white-space: nowrap;
+        display: inline-block;
+        white-space: nowrap;
     }
+
     /* hidden elements on desktop and tablet */
     .hide-on-desktop {
         display: none !important;
@@ -287,13 +222,11 @@ textarea[readonly-with-required] {
 /* Source: https://github.com/TalksLab/metro-bootstrap/blob/master/dist/css/metro-bootstrap.css */
 /* general styles */
 html body {
-    /* try to use futura, fall back on nunito */
-    font-family: Futura, Futura-Medium, "Futura Medium", 'Nunito', sans-serif;
+    font-family: Nunito, Futura, Futura-Medium, "Futura Medium", sans-serif;
 }
 
 h3, .h3, h4, .h4, h5, .h5 {
-    /* try to use futura, fall back on nunito */
-    font-family: Futura, Futura-Medium, "Futura Medium", 'Nunito', sans-serif;
+    font-family: Nunito, Futura, Futura-Medium, "Futura Medium", sans-serif;
 }
 
 /* tiles and buttons */
@@ -311,6 +244,8 @@ h3, .h3, h4, .h4, h5, .h5 {
     border-radius: 0px;
     border: 4px #ffffff solid;
     color: #ffffff;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
 }
 @media only screen and (min-width: 768px) {
     .tile-grouped-left {
@@ -451,4 +386,40 @@ h3, .h3, h4, .h4, h5, .h5 {
 }
 .tile.tile-success {
     background-color: #2ecc71;
+}
+/* Bachelor Arbeit Matthias Urech */
+/*----Slider----*/
+.slider-box{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #339933;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #339933;
+    cursor: pointer;
 }
