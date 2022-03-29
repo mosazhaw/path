@@ -62,8 +62,8 @@
     "zone.js": "0.9.1"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "0.803.19",
-    "@angular/cli": "8.3.19",
+    "@angular-devkit/build-angular": "0.803.29",
+    "@angular/cli": "8.3.29",
     "@types/jasmine": "3.4.6",
     "@types/jasminewd2": "2.0.8",
     "concurrently": "5.0.0",
