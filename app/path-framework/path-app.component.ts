@@ -54,7 +54,7 @@ export abstract class PathAppComponent implements IPathApp {
     inspired by: https://angularfirebase.com/lessons/bootstrap-4-collapsable-navbar-work-with-angular */
     show = false;
 
-    constructor(private pathService: PathService, private translationService: TranslationService) {
+    constructor(public pathService: PathService, private translationService: TranslationService) {
         if (this.getBackendUrl() && this.getBackendUrl().length > 0) {
             this.pathService.serverGet(this.getBackendUrl(), "/ping", (data: any) => {
                 let backendVersion = data["version"];
@@ -78,15 +78,19 @@ export abstract class PathAppComponent implements IPathApp {
         this.loadApplicationTexts();
     }
 
+    public get version() {
+        return this._version;
+    }
+
     protected abstract getStartPage(): string;
 
-    protected getApplicationLogo(): string {
+    public getApplicationLogo(): string {
         return null;
     }
 
     protected abstract getOwnUserForm(): string;
 
-    protected abstract getGuiModel();
+    public abstract getGuiModel();
 
     protected abstract getBeans();
 
