@@ -1,4 +1,4 @@
-import {Component, ComponentFactoryResolver, Input, OnDestroy, OnInit, ViewChild} from "@angular/core";
+import {Component, ComponentFactoryResolver, Input, OnInit, ViewChild} from "@angular/core";
 import {CustomDirective} from "./custom.directive";
 import {CustomContainerPageElement} from "./custom-container-page-element";
 import {PageElement} from "../page-element";
@@ -9,7 +9,7 @@ import {PageElement} from "../page-element";
         <ng-template path-custom-directive></ng-template>`
 })
 
-export class CustomContainerComponent implements OnInit, OnDestroy {
+export class CustomContainerComponent implements OnInit {
     @Input() pageElement: CustomContainerPageElement;
     @ViewChild(CustomDirective, {static: true}) customDirective: CustomDirective;
 
@@ -18,9 +18,6 @@ export class CustomContainerComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.loadComponent();
-    }
-
-    ngOnDestroy() {
     }
 
     loadComponent() {
