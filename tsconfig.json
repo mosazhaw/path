@@ -10,7 +10,7 @@
       "dom"
     ],
     "target": "es5",
-    "module": "es2015",
+    "module": "esnext",
     "baseUrl": "",
     "types": ["node"]
   },
