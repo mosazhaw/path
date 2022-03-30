@@ -1,5 +1,5 @@
 import {HttpClientTestingModule} from "@angular/common/http/testing";
-import {async, TestBed} from "@angular/core/testing";
+import {waitForAsync, TestBed} from "@angular/core/testing";
 import {List} from "../../../../../app/path-framework/page/element/list/list.component";
 import {PathService} from "../../../../../app/path-framework/service/path.service";
 import {TranslationService} from "../../../../../app/path-framework/service/translation.service";
@@ -9,13 +9,13 @@ describe("ListElement", () => {
     let translationService: TranslationService;
     let pathService: PathService;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
             providers: [PathService, TranslationService]
         }).compileComponents();
-        translationService = TestBed.get(TranslationService);
-        pathService = TestBed.get(PathService);
+        translationService = TestBed.inject(TranslationService);
+        pathService = TestBed.inject(PathService);
     }));
 
     it("fromJson (defaults)", () => {

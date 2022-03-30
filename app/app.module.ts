@@ -110,7 +110,7 @@ import {BreadcrumbComponent} from "./path-framework/page/element/breadcrumb/brea
     ],
 })
 export class AppModule {
-    static forRoot(): ModuleWithProviders {
+    static forRoot(): ModuleWithProviders<any> {
         return {ngModule: AppModule, providers: []};
     }
 }

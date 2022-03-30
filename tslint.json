@@ -2,13 +2,23 @@
     "extends": ["tslint-angular"],
     "rules": {
         "directive-selector": [true, "attribute", "path", "kebab-case"],
-        "component-selector": [true, "element", "path", "kebab-case"],
+        "component-selector": [
+          true,
+          "element",
+          "path",
+          "kebab-case"
+        ],
+        "deprecation": {
+          "severity": "warning"
+        },
         "use-host-property-decorator": false,
         "angular-whitespace": false,
         "no-output-rename": false,
         "no-input-rename": false,
-        "max-classes-per-file": [true, 3],
-        "no-use-before-declare": false,
+        "max-classes-per-file": [
+          true,
+          3
+        ],
         "no-empty-interface": false,
         "quotemark": [true, "double", "jsx-double"]
     }
