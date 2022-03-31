@@ -6,7 +6,7 @@
     "path-framework": {
       "root": "",
       "sourceRoot": "src",
-      "projectType": "application",
+      "projectType": "library",
       "prefix": "app",
       "schematics": {},
       "architect": {

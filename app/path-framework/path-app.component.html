@@ -8,13 +8,13 @@
     <div class="collapse navbar-collapse" [class.show]="show">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a *ngIf="getUserId() == null" (click)="logout()" href="#" class="navbar-link">{{_texts["NotSignedIn"]}}</a>
+                <a *ngIf="getUserId() == null" (click)="logout()" href="#" class="navbar-link">{{texts["NotSignedIn"]}}</a>
             </li>
             <li class="nav-item">
-                <a *ngIf="getUserId() != null" (click)="showUserForm()" href="#" class="navbar-link">{{_texts["SignedInAs"]}} {{getUserId()}}</a>&nbsp;&nbsp;
+                <a *ngIf="getUserId() != null" (click)="showUserForm()" href="#" class="navbar-link">{{texts["SignedInAs"]}} {{getUserId()}}</a>&nbsp;&nbsp;
             </li>
             <li class="nav-item">
-                <a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link"><span class="glyphicon glyphicon-log-out hide-on-desktop"></span>{{_texts["Logout"]}}</a>
+                <a *ngIf="getUserId() != null" (click)="logout()" href="#" class="navbar-link"><span class="glyphicon glyphicon-log-out hide-on-desktop"></span>{{texts["Logout"]}}</a>
             </li>
         </ul>
     </div>

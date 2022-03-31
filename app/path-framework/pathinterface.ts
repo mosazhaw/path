@@ -2,6 +2,8 @@ import {PageElement} from "./page/element/page-element";
 import {Page} from "./page/page";
 
 export interface IPathApp {
+    createDynamicForm(): any;
+    
     setCurrentForm(formId: string, key: IKey, handler: string, parentPageElement: IPageElement);
 
     createForm(formId: string, key: IKey, handler: string, formFunction: IFormFunction, parentPageElement: IPageElement);
@@ -45,6 +47,8 @@ export interface IForm {
     close(save: boolean, remove: boolean);
 
     getKey(): IKey;
+
+    updateRows();
 }
 
 export interface IFormFunction {}

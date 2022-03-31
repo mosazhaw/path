@@ -5,7 +5,6 @@ import {Key} from "../../../page/element/page-element";
 import {IForm, IFormField} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 import {PathService} from "../../../service/path.service";
-import {Form} from "../../form.component";
 import {FormFunction} from "../../form-function";
 import {KeyUtility} from "../../../utility/key-utility";
 
@@ -194,7 +193,7 @@ export class AutoCompleteField extends ValueField<string> {
     }
 
     public showDetailForm() {
-        let form: Form = null;
+        let form: IForm = null;
 
         const formFunction = new FormFunction();
         formFunction.save = (data: any) => {

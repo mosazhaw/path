@@ -1,4 +1,4 @@
-import {Type} from "@angular/core";
+import {Directive, Type} from "@angular/core";
 import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
 import {AutoCompleteField} from "./form/field/auto-complete/auto-complete-field.component";
 import {CancelButton} from "./form/field/button/cancel-button";
@@ -42,8 +42,13 @@ import {TranslationService} from "./service/translation.service";
 import {KeyUtility} from "./utility/key-utility";
 import {Breadcrumb} from "./page/element/breadcrumb/breadcrumb.component";
 
+/* eslint-disable */
+@Directive({
+    selector: "path-application-2",
+    providers: [PathService, TranslationService]
+})
 export abstract class PathAppComponent implements IPathApp {
-
+/* eslint-enable */
 
     private _pageStack: Page[] = [];
     private _formStack: Form[] = [];
@@ -80,6 +85,10 @@ export abstract class PathAppComponent implements IPathApp {
 
     public get version() {
         return this._version;
+    }
+
+    public get texts() {
+        return this._texts;
     }
 
     protected abstract getStartPage(): string;
@@ -563,6 +572,10 @@ export abstract class PathAppComponent implements IPathApp {
             }
         }
         return form;
+    }
+
+    public createDynamicForm(): IForm {
+        return new Form(this.pathService, this);
     }
 
     private populateForm(form: Form, key: Key, parentPageElement: IPageElement) {
