@@ -1,4 +1,4 @@
-/.angular/cache
+.angular
 app/**/*.js
 tests/**/*.js
 dist
