@@ -196,7 +196,7 @@ export class Form implements IForm {
         return currentFormRow;
     }
 
-    public close(save: boolean, remove: boolean) {
+    public async close(save: boolean, remove: boolean) {
         if (save || remove) {
             // call close handler
             if (this.handler != null) {
@@ -214,13 +214,13 @@ export class Form implements IForm {
                 }
             }
             if (remove) {
-                this.pathService.serverDelete(this.app.getBackendUrl(), this.url, this.formFunction.delete);
+                await this.pathService.serverDelete(this.app.getBackendUrl(), this.url, this.formFunction.delete);
             } else if (this.key == null) {
                 // create
-                this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, this.formFunction.save, null);
+                await this.pathService.serverPost(this.app.getBackendUrl(), this.url, data, this.formFunction.save, null);
             } else {
                 // update (with key)
-                this.pathService.serverPut(this.app.getBackendUrl(), this.url, data, this.formFunction.save);
+                await this.pathService.serverPut(this.app.getBackendUrl(), this.url, data, this.formFunction.save);
             }
         } else {
             this.formFunction.cancel();

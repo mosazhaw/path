@@ -48,7 +48,7 @@ import {Breadcrumb} from "./page/element/breadcrumb/breadcrumb.component";
     providers: [PathService, TranslationService]
 })
 export abstract class PathAppComponent implements IPathApp {
-/* eslint-enable */
+    /* eslint-enable */
 
     private _pageStack: Page[] = [];
     private _formStack: Form[] = [];
@@ -256,13 +256,15 @@ export abstract class PathAppComponent implements IPathApp {
         this.navigateBack(true);
     }
 
-    public yesNo(text: string, yesHandler: () => void, noHandler: () => void) {
+    public yesNo(text: string, yesHandler: () => void, noHandler: () => void, refreshPage: boolean = true) {
         const form: Form = new Form(this.pathService, this);
         form.headerVisible = false;
         form.formFunction = new FormFunction();
         form.formFunction.save = (data: any) => {
             this.closeCurrentForm();
-            this.refreshCurrentPage();
+            if (refreshPage) {
+                this.refreshCurrentPage();
+            }
         };
         form.formFunction.cancel = () => {
             this.closeCurrentForm();
@@ -282,6 +284,7 @@ export abstract class PathAppComponent implements IPathApp {
         form.fields.push(cancelButton);
 
         const okButton: OkButton = new OkButton(form, this.translationService);
+        okButton.saveEnabled = refreshPage;
         okButton.type = "okButton";
         okButton.name = this.translationService.getText("Ok");
         okButton.visible = true;
@@ -478,7 +481,7 @@ export abstract class PathAppComponent implements IPathApp {
                     this.refreshCurrentPage();
                 } else {
                     this.navigateBack();
-                    this.refreshCurrentPage();
+                    // this.refreshCurrentPage();
                 }
             };
             const form: Form = this.createForm(formId, key, handler, formFunction, parentPageElement);

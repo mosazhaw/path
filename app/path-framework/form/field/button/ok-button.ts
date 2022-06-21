@@ -3,6 +3,7 @@ import {IButtonHandler} from "../../../pathinterface";
 
 export class OkButton extends FormField {
     private _handler: IButtonHandler;
+    private _saveEnabled: boolean = true;
 
     get handler(): IButtonHandler {
         return this._handler;
@@ -10,6 +11,14 @@ export class OkButton extends FormField {
 
     set handler(value: IButtonHandler) {
         this._handler = value;
+    }
+
+    get saveEnabled(): boolean {
+        return this._saveEnabled;
+    }
+
+    set saveEnabled(value: boolean) {
+        this._saveEnabled = value;
     }
 
     public onClick() {
