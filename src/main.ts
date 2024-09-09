@@ -7,7 +7,7 @@ import { createCustomElement } from '@angular/elements';
 import { AppComponent } from './app/app.component';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
-if (window.location.href.startsWith("http://localhost:4200")) {
+if (window.location.href.startsWith("REMOVE_FOR_DEVhttp://localhost:4200")) {
   console.log("path framework standalone angular development version");
   platformBrowserDynamic().bootstrapModule(AppModule)
     .catch(err => console.error(err));

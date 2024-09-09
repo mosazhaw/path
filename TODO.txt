@@ -15,11 +15,7 @@ main.ts: Hier wird der Web Component definiert
 
 *** TODO ***
 unify newButton / button types
-Datepicker not working
 Tooltip too late
-re-enable Web Component
-Solution for GUI-Model location
-guimodel.ts as proper .json-File (better for Editors)
 Upgrade Bootstrap / Font-Awesome
 1:1 testing with previous version
 rebuild path-example
