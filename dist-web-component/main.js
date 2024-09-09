@@ -70333,7 +70333,7 @@ var init_app_component = __esm({
     init_example_app_component();
     _AppComponent = class _AppComponent {
       constructor() {
-        this.title = "path-web-component";
+        this.title = "path-framework";
       }
     };
     _AppComponent.\u0275fac = function AppComponent_Factory(__ngFactoryType__) {

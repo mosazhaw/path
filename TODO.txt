@@ -4,8 +4,8 @@ How to run angular app in VS Code:
 
 How to run web component:
     ng build --output-hashing none --optimization=false
-    copy js/css files to web-component-test
-    cd web-component-test
+    copy js/css files to dist-web-component
+    cd dist/path-framework
     (npm install -g serve)
     serve
 
