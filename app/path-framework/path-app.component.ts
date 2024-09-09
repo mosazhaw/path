@@ -1,4 +1,4 @@
-import {Type} from "@angular/core";
+import {Directive, Type} from "@angular/core";
 import {AutoCompleteFieldEntry} from "./form/field/auto-complete/auto-complete-field-entry";
 import {AutoCompleteField} from "./form/field/auto-complete/auto-complete-field.component";
 import {CancelButton} from "./form/field/button/cancel-button";
@@ -42,8 +42,13 @@ import {TranslationService} from "./service/translation.service";
 import {KeyUtility} from "./utility/key-utility";
 import {Breadcrumb} from "./page/element/breadcrumb/breadcrumb.component";
 
+/* eslint-disable */
+@Directive({
+    selector: "path-application-2",
+    providers: [PathService, TranslationService]
+})
 export abstract class PathAppComponent implements IPathApp {
-
+    /* eslint-enable */
 
     private _pageStack: Page[] = [];
     private _formStack: Form[] = [];
@@ -54,7 +59,7 @@ export abstract class PathAppComponent implements IPathApp {
     inspired by: https://angularfirebase.com/lessons/bootstrap-4-collapsable-navbar-work-with-angular */
     show = false;
 
-    constructor(private pathService: PathService, private translationService: TranslationService) {
+    constructor(public pathService: PathService, private translationService: TranslationService) {
         if (this.getBackendUrl() && this.getBackendUrl().length > 0) {
             this.pathService.serverGet(this.getBackendUrl(), "/ping", (data: any) => {
                 let backendVersion = data["version"];
@@ -78,15 +83,23 @@ export abstract class PathAppComponent implements IPathApp {
         this.loadApplicationTexts();
     }
 
+    public get version() {
+        return this._version;
+    }
+
+    public get texts() {
+        return this._texts;
+    }
+
     protected abstract getStartPage(): string;
 
-    protected getApplicationLogo(): string {
+    public getApplicationLogo(): string {
         return null;
     }
 
     protected abstract getOwnUserForm(): string;
 
-    protected abstract getGuiModel();
+    public abstract getGuiModel();
 
     protected abstract getBeans();
 
@@ -243,13 +256,15 @@ export abstract class PathAppComponent implements IPathApp {
         this.navigateBack(true);
     }
 
-    public yesNo(text: string, yesHandler: () => void, noHandler: () => void) {
+    public yesNo(text: string, yesHandler: () => void, noHandler: () => void, refreshPage: boolean = true) {
         const form: Form = new Form(this.pathService, this);
         form.headerVisible = false;
         form.formFunction = new FormFunction();
         form.formFunction.save = (data: any) => {
             this.closeCurrentForm();
-            this.refreshCurrentPage();
+            if (refreshPage) {
+                this.refreshCurrentPage();
+            }
         };
         form.formFunction.cancel = () => {
             this.closeCurrentForm();
@@ -269,6 +284,7 @@ export abstract class PathAppComponent implements IPathApp {
         form.fields.push(cancelButton);
 
         const okButton: OkButton = new OkButton(form, this.translationService);
+        okButton.saveEnabled = refreshPage;
         okButton.type = "okButton";
         okButton.name = this.translationService.getText("Ok");
         okButton.visible = true;
@@ -465,7 +481,7 @@ export abstract class PathAppComponent implements IPathApp {
                     this.refreshCurrentPage();
                 } else {
                     this.navigateBack();
-                    this.refreshCurrentPage();
+                    // this.refreshCurrentPage();
                 }
             };
             const form: Form = this.createForm(formId, key, handler, formFunction, parentPageElement);
@@ -559,6 +575,10 @@ export abstract class PathAppComponent implements IPathApp {
             }
         }
         return form;
+    }
+
+    public createDynamicForm(): IForm {
+        return new Form(this.pathService, this);
     }
 
     private populateForm(form: Form, key: Key, parentPageElement: IPageElement) {

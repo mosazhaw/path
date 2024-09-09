@@ -22,7 +22,7 @@ export class TestAppComponent extends PathAppComponent {
         return "";
     }
 
-    protected getGuiModel() {
+    public getGuiModel() {
     }
 
     protected getHandlers() {

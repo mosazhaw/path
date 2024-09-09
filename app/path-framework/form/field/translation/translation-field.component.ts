@@ -1,13 +1,13 @@
 import {Component, Input, Output} from "@angular/core";
 import {ValueField} from "../value-field";
 import {FormFunction} from "../../form-function";
-import {Form} from "../../form.component";
 import {OkButton} from "../button/ok-button";
 import {CancelButton} from "../button/cancel-button";
 import {PathService} from "../../../service/path.service";
 import {TextField} from "../text/text-field.component";
 import {TranslationService} from "../../../service/translation.service";
 import {FocusUtility} from "../../focus-utility";
+import {IForm} from "../../../pathinterface";
 
 @Component({
     selector: "path-translationfield",
@@ -26,7 +26,7 @@ export class TranslationField extends ValueField<any[][]> {
     private _defaultTranslation: string = null;
     private _translationLabel: string;
 
-    constructor(form: Form, private pathService: PathService, public translationService: TranslationService) {
+    constructor(form: IForm, private pathService: PathService, public translationService: TranslationService) {
         super(form, translationService);
         this.userLanguage = translationService.getUserLanguage();
         this.languages = translationService.getSupportedLanguageCodes();
@@ -67,11 +67,11 @@ export class TranslationField extends ValueField<any[][]> {
     }
 
     public editTranslations() {
-        const form: Form = new Form(this.pathService, this.form.getApp());
+        const form: IForm = this.form.getApp().createDynamicForm();
         const translationFields: TextField[] = [];
-        form.title = this.name + " " + this.translationService.getText("Translations");
-        form.formFunction = new FormFunction();
-        form.formFunction.save = (data: any) => {
+        form["title"] = this.name + " " + this.translationService.getText("Translations");
+        form["formFunction"] = new FormFunction();
+        form["formFunction"].save = (data: any) => {
             const resultList: any[][] = [];
             for (const field of translationFields) {
                 resultList.push([{"key": field.id}, field.value]);
@@ -79,7 +79,7 @@ export class TranslationField extends ValueField<any[][]> {
             this.setValue(resultList);
             this.getForm().getApp().closeCurrentForm();
         };
-        form.formFunction.cancel = () => {
+        form["formFunction"].cancel = () => {
             this.getForm().getApp().closeCurrentForm();
         };
         const translations = this.value;
@@ -95,7 +95,7 @@ export class TranslationField extends ValueField<any[][]> {
             textField.labelVisible = true;
             textField.required = true;
             textField.setValue(key[1]);
-            form.fields.push(textField);
+            form["fields"].push(textField);
             translationFields.push(textField);
         }
 
@@ -103,13 +103,13 @@ export class TranslationField extends ValueField<any[][]> {
         cancelButton.type = "cancelButton";
         cancelButton.name = this.translationService.getText("Cancel");
         cancelButton.visible = true;
-        form.fields.push(cancelButton);
+        form["fields"].push(cancelButton);
 
         const okButton: OkButton = new OkButton(form, this.translationService);
         okButton.type = "okButton";
         okButton.name = this.translationService.getText("Ok");
         okButton.visible = true;
-        form.fields.push(okButton);
+        form["fields"].push(okButton);
 
         form.updateRows();
 

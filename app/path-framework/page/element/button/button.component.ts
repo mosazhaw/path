@@ -177,7 +177,11 @@ export class Button extends PageElement implements IButton {
         super.fromJson(modelElement);
 
         // general attributes
-        this.type = "button";
+        if (modelElement["type"] != null) {
+            this.type = modelElement["type"];
+        } else {
+            this.type = "button";
+        }    
         this.setIcon(modelElement["icon"]);
         if (modelElement["color"] != null) {
             const color = modelElement["color"];

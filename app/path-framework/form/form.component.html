@@ -8,18 +8,18 @@
             <div class="row" *ngFor='let row of form.rows;' [hidden]="!row.isVisible()">
 				<span class="col" *ngFor='let field of row.fields;' [hidden]="!field.visible">
 					<span class="row">
-					<path-textfield class="col" *ngIf="field.type == 'text'" [field]="field" ></path-textfield>
-					<path-translationfield class="col" *ngIf="field.type == 'translation'" [field]="field" ></path-translationfield>
-					<path-numberfield class="col" *ngIf="field.type == 'number'" [field]="field" ></path-numberfield>
-					<path-label-field class="col" *ngIf="field.type == 'label'" [field]="field" ></path-label-field>
-					<path-field-list class="col" *ngIf="field.type == 'fieldList'" [field]="field" ></path-field-list>
-					<path-datefield class="col" *ngIf="field.type == 'date'" [field]="field" ></path-datefield>
-					<path-autocomplete class="col" *ngIf="field.type == 'autocomplete'" [field]="field" ></path-autocomplete>
-					<path-progress-bar class="col" *ngIf="field.type == 'ProgressBarField'" [field]="field" ></path-progress-bar>
-					<path-radio-group class="col" *ngIf="field.type == 'RadioGroupField'" [field]="field" ></path-radio-group>
-					<path-checkbox-group class="col" *ngIf="field.type == 'CheckboxGroupField'" [field]="field" ></path-checkbox-group>
-					<path-file-upload class="col" *ngIf="field.type == 'fileUpload'" [field]="field" ></path-file-upload>
-					<path-slider class="col" *ngIf="field.type == 'SliderField'" [field]="field" ></path-slider>
+					<path-textfield class="col" *ngIf="field.type == 'text'" [field]="field | cast" ></path-textfield>
+					<path-translationfield class="col" *ngIf="field.type == 'translation'" [field]="field | cast" ></path-translationfield>
+					<path-numberfield class="col" *ngIf="field.type == 'number'" [field]="field | cast" ></path-numberfield>
+					<path-label-field class="col" *ngIf="field.type == 'label'" [field]="field | cast" ></path-label-field>
+					<path-field-list class="col" *ngIf="field.type == 'fieldList'" [field]="field | cast" ></path-field-list>
+					<path-datefield class="col" *ngIf="field.type == 'date'" [field]="field | cast" ></path-datefield>
+					<path-autocomplete class="col" *ngIf="field.type == 'autocomplete'" [field]="field | cast" ></path-autocomplete>
+					<path-progress-bar class="col" *ngIf="field.type == 'ProgressBarField'" [field]="field | cast" ></path-progress-bar>
+					<path-radio-group class="col" *ngIf="field.type == 'RadioGroupField'" [field]="field | cast" ></path-radio-group>
+					<path-checkbox-group class="col" *ngIf="field.type == 'CheckboxGroupField'" [field]="field | cast" ></path-checkbox-group>
+					<path-file-upload class="col" *ngIf="field.type == 'fileUpload'" [field]="field | cast" ></path-file-upload>
+					<path-slider class="col" *ngIf="field.type == 'SliderField'" [field]="field | cast" ></path-slider>
 					</span>
 				</span>
             </div>

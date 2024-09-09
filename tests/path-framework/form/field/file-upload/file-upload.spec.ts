@@ -1,5 +1,5 @@
 import {HttpClientTestingModule, HttpTestingController} from "@angular/common/http/testing";
-import {async, TestBed} from "@angular/core/testing";
+import {waitForAsync, TestBed} from "@angular/core/testing";
 import {FileUploadComponent,
     FileUploadField,
     PathFileKey} from "../../../../../app/path-framework/form/field/file-upload/file-upload.component";
@@ -14,15 +14,15 @@ describe("FileUploadComponent", () => {
     let translationService: TranslationService;
     let httpMock: HttpTestingController;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
             declarations: [FileUploadComponent, FormFieldLabelComponent],
             providers: [PathService, TranslationService]
         }).compileComponents();
-        pathService = TestBed.get(PathService);
-        translationService = TestBed.get(TranslationService);
-        httpMock = TestBed.get(HttpTestingController);
+        pathService = TestBed.inject(PathService);
+        translationService = TestBed.inject(TranslationService);
+        httpMock = TestBed.inject(HttpTestingController);
     }));
 
     afterEach(() => {
@@ -60,13 +60,13 @@ describe("FileUploadField", () => {
     let translationService: TranslationService;
     let pathService: PathService;
 
-    beforeEach(async(() => {
+    beforeEach(waitForAsync(() => {
         TestBed.configureTestingModule({
             imports: [ HttpClientTestingModule ],
             providers: [PathService, TranslationService]
         }).compileComponents();
-        translationService = TestBed.get(TranslationService);
-        pathService = TestBed.get(PathService);
+        translationService = TestBed.inject(TranslationService);
+        pathService = TestBed.inject(PathService);
     }));
 
     it("getReadableFileSizeString", () => {

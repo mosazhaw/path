@@ -7,19 +7,27 @@ export class FocusUtility {
             let focusDone = false;
 
             const forms = <any>document.forms;
-            for (const form of forms) {
+            // reverse order
+            for (let i=forms.length-1; i >= 0; i--) {
+                const form = forms[i];
                 if (currentForm == null || form.name !== "search") {
                     for (const element of <any>form.elements) {
-                        if (element instanceof HTMLInputElement &&
-                            ((<HTMLInputElement>element).type === "text" ||
-                                (<HTMLInputElement>element).type === "number" ||
-                                (<HTMLInputElement>element).type === "textarea")) {
+                        if (element instanceof HTMLInputElement) {
                             const input = <HTMLInputElement>element;
-                            if (input.outerHTML.indexOf("readonly-with-required") < 0) { // no focus on readonly fields
-                                input.focus();
-                                focusDone = true;
+                            if (input.type === "text" || input.type === "number" || input.type === "textarea") {
+                                if (!this.isReadonly(input)) {
+                                    input.focus();
+                                    focusDone = true;
+                                    break;
+                                }
                             }
-                            break;
+                        } else if (element instanceof HTMLTextAreaElement) {
+                            const textarea = <HTMLTextAreaElement>element;
+                            if (!this.isReadonly(textarea)) {
+                                textarea.focus();
+                                focusDone = true;
+                                break;
+                            }
                         }
                     }
                     if (focusDone) {
@@ -28,6 +36,16 @@ export class FocusUtility {
                 }
             }
         }, 1);
+    }
+
+    private static isReadonly(element: HTMLElement) {
+        if (element.outerHTML.indexOf("readonly-with-required") > 0) {
+            // no focus on readonly fields (translation)
+            return true;
+        } else if (element.hasAttribute("readonly")) {
+            return true;
+        }
+        return false;
     }
 
 }

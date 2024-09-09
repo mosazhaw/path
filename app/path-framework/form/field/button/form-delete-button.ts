@@ -13,12 +13,12 @@ export class FormDeleteButton extends FormField {
     }
 
     public onClick() {
-        this.getForm().getApp().yesNo(this.translationService.getText("DeleteWarningQuestion"), () => {
+        this.getForm().getApp().yesNo(this.translationService.getText("DeleteWarningQuestion"), async () => {
+            await this.form.close(false, true);
             if (this._handler != null) {
                 this._handler.doClick(null); // TODO
             }
-            this.form.close(false, true);
         }, () => {
-        });
+        }, false);
     }
 }

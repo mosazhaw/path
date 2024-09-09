@@ -5,7 +5,7 @@
 	    <div class="input-group-prepend">
 		    <button (click)="datepicker.toggle()" class="btn btn-outline-secondary" type="button"><i class="fa fa-calendar fa-fw"></i></button>
 	    </div>
-	    <input #datepicker="bsDatepicker" #model="ngModel" bsDatepicker [bsConfig]="{ dateInputFormat: field.dateInputFormat, containerClass: 'theme-default' }" placement="bottom left" [bsValue]="field.datePickerInitialValue" [(ngModel)]="field.datePickerValue" (bsValueChange)="field.updateValueFromGui($event)" [isDisabled]="field.isReadonly()" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!model.pristine && field.required)" [required]="field.required" type="text" class="form-control" placeholder="">
+	    <input #datepicker="bsDatepicker" #model="ngModel" bsDatepicker [bsConfig]="{ dateInputFormat: field.dateInputFormat, containerClass: 'theme-default' }" placement="bottom" [bsValue]="field.datePickerInitialValue" [(ngModel)]="field.datePickerValue" (bsValueChange)="field.updateValueFromGui($event)" [isDisabled]="field.isReadonly()" [readonly]="field.isReadonly()" [class.required-field]="(!model.valid &&!model.pristine && field.required)" [required]="field.required" type="text" class="form-control" placeholder="">
     </div>
 </div>
 </span>
