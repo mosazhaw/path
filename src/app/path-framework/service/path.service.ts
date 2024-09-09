@@ -1,6 +1,6 @@
 import {Injectable, Inject} from "@angular/core";
 import {TranslationService} from "./translation.service";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 
 @Injectable()
 export class PathService {

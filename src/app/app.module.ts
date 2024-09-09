@@ -34,56 +34,53 @@ import { CustomContainerComponent } from "./path-framework/page/element/custom/c
 import { ElementListComponent } from "./path-framework/page/element/element-list/element-list.component";
 import { BreadcrumbComponent } from "./path-framework/page/element/breadcrumb/breadcrumb.component";
 import { CastPipe } from "./path-framework/utility/cast-pipe";
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ExampleAppComponent,
-    DraggableDirective,
-    LabelFieldComponent,
-    FieldListFieldComponent,
-    FormComponent,
-    ChartComponent,
-    AutoCompleteComponent,
-    ProgressBarComponent,
-    TextFieldComponent,
-    TranslationFieldComponent,
-    NumberFieldComponent,
-    DateFieldComponent,
-    RadioGroupComponent,
-    CheckboxGroupComponent,
-    FormFieldLabelComponent,
-    BackButtonComponent,
-    LinkButtonComponent,
-    PageDeleteButtonComponent,
-    ButtonComponent,
-    PageLabelComponent,
-    ListComponent,
-    CustomDirective,
-    CustomContainerComponent,
-    ElementListComponent,
-    ButtonGroupComponent,
-    BreadcrumbComponent,
-    FileUploadComponent,
-    SliderFieldComponent,
-    CastPipe
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    TooltipModule.forRoot(),
-    BsDatepickerModule.forRoot(),
-    FormsModule,
-    HttpClientModule
-  ],
-  exports: [
-    TooltipModule,
-    BsDatepickerModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        ExampleAppComponent,
+        DraggableDirective,
+        LabelFieldComponent,
+        FieldListFieldComponent,
+        FormComponent,
+        ChartComponent,
+        AutoCompleteComponent,
+        ProgressBarComponent,
+        TextFieldComponent,
+        TranslationFieldComponent,
+        NumberFieldComponent,
+        DateFieldComponent,
+        RadioGroupComponent,
+        CheckboxGroupComponent,
+        FormFieldLabelComponent,
+        BackButtonComponent,
+        LinkButtonComponent,
+        PageDeleteButtonComponent,
+        ButtonComponent,
+        PageLabelComponent,
+        ListComponent,
+        CustomDirective,
+        CustomContainerComponent,
+        ElementListComponent,
+        ButtonGroupComponent,
+        BreadcrumbComponent,
+        FileUploadComponent,
+        SliderFieldComponent,
+        CastPipe
+    ],
+    exports: [
+        TooltipModule,
+        BsDatepickerModule
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        TooltipModule.forRoot(),
+        BsDatepickerModule.forRoot(),
+        BrowserAnimationsModule,
+        FormsModule], providers: [provideHttpClient(withInterceptorsFromDi())]
 })
 export class AppModule { }

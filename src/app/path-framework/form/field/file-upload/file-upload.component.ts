@@ -1,6 +1,6 @@
 import {Component, ElementRef, Input, Output, ViewChild} from "@angular/core";
 import {ValueField} from "../value-field";
-import {HttpClient, HttpEvent, HttpEventType, HttpParams, HttpRequest, HttpResponse} from "@angular/common/http";
+import { HttpClient, HttpEvent, HttpEventType, HttpParams, HttpRequest, HttpResponse } from "@angular/common/http";
 import {Observable} from "rxjs";
 import {IForm} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";

@@ -114,34 +114,39 @@ function initZone() {
       if (task.zone != this) {
         throw new Error("A task can only be run in the zone of creation! (Creation: " + (task.zone || NO_ZONE).name + "; Execution: " + this.name + ")");
       }
-      if (task.state === notScheduled && (task.type === eventTask || task.type === macroTask)) {
+      const zoneTask = task;
+      const { type, data: { isPeriodic = false, isRefreshable = false } = {} } = task;
+      if (task.state === notScheduled && (type === eventTask || type === macroTask)) {
         return;
       }
       const reEntryGuard = task.state != running;
-      reEntryGuard && task._transitionTo(running, scheduled);
-      task.runCount++;
+      reEntryGuard && zoneTask._transitionTo(running, scheduled);
       const previousTask = _currentTask;
-      _currentTask = task;
+      _currentTask = zoneTask;
       _currentZoneFrame = { parent: _currentZoneFrame, zone: this };
       try {
-        if (task.type == macroTask && task.data && !task.data.isPeriodic) {
+        if (type == macroTask && task.data && !isPeriodic && !isRefreshable) {
           task.cancelFn = void 0;
         }
         try {
-          return this._zoneDelegate.invokeTask(this, task, applyThis, applyArgs);
+          return this._zoneDelegate.invokeTask(this, zoneTask, applyThis, applyArgs);
         } catch (error) {
           if (this._zoneDelegate.handleError(this, error)) {
             throw error;
           }
         }
       } finally {
-        if (task.state !== notScheduled && task.state !== unknown) {
-          if (task.type == eventTask || task.data && task.data.isPeriodic) {
-            reEntryGuard && task._transitionTo(scheduled, running);
+        const state = task.state;
+        if (state !== notScheduled && state !== unknown) {
+          if (type == eventTask || isPeriodic || isRefreshable && state === scheduling) {
+            reEntryGuard && zoneTask._transitionTo(scheduled, running, scheduling);
           } else {
-            task.runCount = 0;
-            this._updateTaskCount(task, -1);
-            reEntryGuard && task._transitionTo(notScheduled, running, notScheduled);
+            const zoneDelegates = zoneTask._zoneDelegates;
+            this._updateTaskCount(zoneTask, -1);
+            reEntryGuard && zoneTask._transitionTo(notScheduled, running, notScheduled);
+            if (isRefreshable) {
+              zoneTask._zoneDelegates = zoneDelegates;
+            }
           }
         }
         _currentZoneFrame = _currentZoneFrame.parent;
@@ -202,7 +207,7 @@ function initZone() {
       }
       this._updateTaskCount(task, -1);
       task._transitionTo(notScheduled, canceling);
-      task.runCount = 0;
+      task.runCount = -1;
       return task;
     }
     _updateTaskCount(task, count) {
@@ -597,6 +602,7 @@ var isNode = !("nw" in _global) && typeof _global.process !== "undefined" && _gl
 var isBrowser = !isNode && !isWebWorker && !!(isWindowExists && internalWindow["HTMLElement"]);
 var isMix = typeof _global.process !== "undefined" && _global.process.toString() === "[object process]" && !isWebWorker && !!(isWindowExists && internalWindow["HTMLElement"]);
 var zoneSymbolEventNames$1 = {};
+var enableBeforeunloadSymbol = zoneSymbol("enable_beforeunload");
 var wrapFn = function(event) {
   event = event || _global.event;
   if (!event) {
@@ -617,7 +623,23 @@ var wrapFn = function(event) {
     }
   } else {
     result = listener && listener.apply(this, arguments);
-    if (result != void 0 && !result) {
+    if (
+      // https://github.com/angular/angular/issues/47579
+      // https://www.w3.org/TR/2011/WD-html5-20110525/history.html#beforeunloadevent
+      // This is the only specific case we should check for. The spec defines that the
+      // `returnValue` attribute represents the message to show the user. When the event
+      // is created, this attribute must be set to the empty string.
+      event.type === "beforeunload" && // To prevent any breaking changes resulting from this change, given that
+      // it was already causing a significant number of failures in G3, we have hidden
+      // that behavior behind a global configuration flag. Consumers can enable this
+      // flag explicitly if they want the `beforeunload` event to be handled as defined
+      // in the specification.
+      _global[enableBeforeunloadSymbol] && // The IDL event definition is `attribute DOMString returnValue`, so we check whether
+      // `typeof result` is a string.
+      typeof result === "string"
+    ) {
+      event.returnValue = result;
+    } else if (result != void 0 && !result) {
       event.preventDefault();
     }
   }
@@ -841,6 +863,12 @@ function isIEOrEdge() {
   } catch (error) {
   }
   return ieOrEdge;
+}
+function isFunction(value) {
+  return typeof value === "function";
+}
+function isNumber(value) {
+  return typeof value === "number";
 }
 var passiveSupported = false;
 if (typeof window !== "undefined") {
@@ -1372,15 +1400,23 @@ function patchTimer(window2, setName, cancelName, nameSuffix) {
     data.args[0] = function() {
       return task.invoke.apply(this, arguments);
     };
-    data.handleId = setNative.apply(window2, data.args);
+    const handleOrId = setNative.apply(window2, data.args);
+    if (isNumber(handleOrId)) {
+      data.handleId = handleOrId;
+    } else {
+      data.handle = handleOrId;
+      data.isRefreshable = isFunction(handleOrId.refresh);
+    }
     return task;
   }
   function clearTask(task) {
-    return clearNative.call(window2, task.data.handleId);
+    const { handle, handleId } = task.data;
+    return clearNative.call(window2, handle ?? handleId);
   }
   setNative = patchMethod(window2, setName, (delegate) => function(self2, args) {
-    if (typeof args[0] === "function") {
+    if (isFunction(args[0])) {
       const options = {
+        isRefreshable: false,
         isPeriodic: nameSuffix === "Interval",
         delay: nameSuffix === "Timeout" || nameSuffix === "Interval" ? args[1] || 0 : void 0,
         args
@@ -1390,11 +1426,12 @@ function patchTimer(window2, setName, cancelName, nameSuffix) {
         try {
           return callback.apply(this, arguments);
         } finally {
-          if (!options.isPeriodic) {
-            if (typeof options.handleId === "number") {
-              delete tasksByHandleId[options.handleId];
-            } else if (options.handleId) {
-              options.handleId[taskSymbol] = null;
+          const { handle: handle2, handleId: handleId2, isPeriodic: isPeriodic2, isRefreshable: isRefreshable2 } = options;
+          if (!isPeriodic2 && !isRefreshable2) {
+            if (handleId2) {
+              delete tasksByHandleId[handleId2];
+            } else if (handle2) {
+              handle2[taskSymbol] = null;
             }
           }
         }
@@ -1403,20 +1440,26 @@ function patchTimer(window2, setName, cancelName, nameSuffix) {
       if (!task) {
         return task;
       }
-      const handle = task.data.handleId;
-      if (typeof handle === "number") {
-        tasksByHandleId[handle] = task;
+      const { handleId, handle, isRefreshable, isPeriodic } = task.data;
+      if (handleId) {
+        tasksByHandleId[handleId] = task;
       } else if (handle) {
         handle[taskSymbol] = task;
+        if (isRefreshable && !isPeriodic) {
+          const originalRefresh = handle.refresh;
+          handle.refresh = function() {
+            const { zone, state } = task;
+            if (state === "notScheduled") {
+              task._state = "scheduled";
+              zone._updateTaskCount(task, 1);
+            } else if (state === "running") {
+              task._state = "scheduling";
+            }
+            return originalRefresh.call(this);
+          };
+        }
       }
-      if (handle && handle.ref && handle.unref && typeof handle.ref === "function" && typeof handle.unref === "function") {
-        task.ref = handle.ref.bind(handle);
-        task.unref = handle.unref.bind(handle);
-      }
-      if (typeof handle === "number" || handle) {
-        return handle;
-      }
-      return task;
+      return handle ?? handleId ?? task;
     } else {
       return delegate.apply(window2, args);
     }
@@ -1424,21 +1467,19 @@ function patchTimer(window2, setName, cancelName, nameSuffix) {
   clearNative = patchMethod(window2, cancelName, (delegate) => function(self2, args) {
     const id = args[0];
     let task;
-    if (typeof id === "number") {
+    if (isNumber(id)) {
       task = tasksByHandleId[id];
+      delete tasksByHandleId[id];
     } else {
-      task = id && id[taskSymbol];
-      if (!task) {
+      task = id?.[taskSymbol];
+      if (task) {
+        id[taskSymbol] = null;
+      } else {
         task = id;
       }
     }
-    if (task && typeof task.type === "string") {
-      if (task.state !== "notScheduled" && (task.cancelFn && task.data.isPeriodic || task.runCount === 0)) {
-        if (typeof id === "number") {
-          delete tasksByHandleId[id];
-        } else if (id) {
-          id[taskSymbol] = null;
-        }
+    if (task?.type) {
+      if (task.cancelFn) {
         task.zone.cancelTask(task);
       }
     } else {
