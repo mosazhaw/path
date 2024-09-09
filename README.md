@@ -1,6 +1,6 @@
 # Path Framework
 
-[![Build Status](https://travis-ci.org/innovad/path.svg?branch=master)](https://travis-ci.org/innovad/path)
+[![Build Status](https://travis-ci.org/mosazhaw/path.svg?branch=master)](https://travis-ci.org/mosazhaw/path)
 
 Path Framework is developed at <a href="https://www.zhaw.ch/de/sml/institute-zentren/iwi/">Zurich University of Applied Sciences</a> (ZHAW) and used in several projects. It is an application framework and rendering engine that renders your application based on a technology-independent GUI model stored in JSON format. Either mock data or any backend REST service (node, Java) may be used with Path Framework.
 <br>
@@ -16,12 +16,12 @@ Path Framework is developed at <a href="https://www.zhaw.ch/de/sml/institute-zen
 
 ## Live Example
 Live example on Heroku Free (please wait for wakeup): https://path-example.herokuapp.com/<br/>
-Source code: https://github.com/innovad/path-example
+Source code: https://github.com/mosazhaw/path-example
 
 ## QuickStart
 
 Run a Path example application with 4 steps:
-* Clone the Path example from https://github.com/innovad/path-example
+* Clone the Path example from https://github.com/mosazhaw/path-example
 * Open console in project folder, run <code>npm install</code> (requires npm: https://www.npmjs.com/)
 * Run <code>npm run start-dev</code> and open web application in browser: <code>http://localhost:8080</code>
 * Play around with the sample GUI model in <code>app/gui-model/guimodel.ts</code> and reload browser window to view changes, e.g. use the following HelloWorld model which displays a single HelloWorld button showing <code>HelloWorldForm</code>.
@@ -461,15 +461,15 @@ You may use any supported language code or a default value.
 
 ## Path Framework Development
 
-![Path Architecture](https://github.com/innovad/path/blob/master/path-architecture.png)
+![Path Architecture](https://github.com/mosazhaw/path/blob/master/path-architecture.png)
 
 Read this chapter if you want to contribute to the Path Framework. If you only want to create applications using Path Framework, the following steps are *not* necessary.
 
 * Create a directory where you will put your development code
 * Clone the framework and the example application in two separate folders inside this directory:
 ```
-git clone https://github.com/innovad/path.git
-git clone https://github.com/innovad/path-example.git
+git clone https://github.com/mosazhaw/path.git
+git clone https://github.com/mosazhaw/path-example.git
 ```
 * Run npm install on both projects (path and path-example)
 * Unfortunately we cannot use npm link to create a local dependency from path-example to path since it is not supported by TypeScript/Angular. We use npm-link-copy to make path-example use our local path project:
