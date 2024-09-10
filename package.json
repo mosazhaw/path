@@ -1,6 +1,6 @@
 {
   "name": "path-framework",
-  "version": "0.8.0-beta.1",
+  "version": "0.8.0-beta.4",
   "scripts": {
     "ng": "ng",
     "start": "tsc --project server/tsconfig.json && concurrently \"ng serve\" \"nodemon dist/server/server.js\"",
