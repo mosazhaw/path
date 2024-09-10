@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,27 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'path-framework';
+
+  @Input() backendUrl!: string;
+  @Input() modelPath!: string;
+  @Input() translationsPath!: string;
+  @Input() frontendVersion!: string;
+  @Input() startPage!: string;
+  @Input() currentUserForm!: string;
+
+  ngAfterContentInit() {
+    console.log("path-framework configuration (backend-url: ",
+      this.backendUrl,
+      ", model-path:",
+      this.modelPath, 
+      ", translations-path: ",
+      this.translationsPath,
+      ", frontend-version: ",
+      this.frontendVersion,
+      ", start-page: ",
+      this.startPage,
+      ", current-user-form: ",
+      this.currentUserForm,")");
+  }
+
 }

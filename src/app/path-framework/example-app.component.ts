@@ -1,5 +1,5 @@
 /* angular/path imports */
-import {Component, Type} from "@angular/core";
+import {Component, Input, Type} from "@angular/core";
 
 /* model imports */
 import * as handler from "./gui-model/form/handlers";
@@ -18,6 +18,12 @@ import { CustomPageElement } from "./page/element/custom/custom-container.compon
 })
 export class ExampleAppComponent extends PathAppComponent {
 
+    @Input() backendUrl:string = "";
+    @Input() modelPath:string = "";
+    @Input() translationsPath:string = "";    
+    @Input() frontendVersion:string = "";
+    @Input() startPage:string = "";
+    @Input() currentUserForm:string = "";    
     private model:any = null;
 
     constructor(pathService: PathService, translationService: TranslationService) {
@@ -25,15 +31,15 @@ export class ExampleAppComponent extends PathAppComponent {
     }
 
     protected getFrontendVersion(): string {
-        return "0.8.0";
+        return this.frontendVersion;
     }
 
     protected getStartPage(): string {
-        return "mainmenu";
+        return this.startPage;
     }
 
     protected getOwnUserForm(): string {
-        return "UserForm";
+        return this.currentUserForm;
     }
 
     public getGuiModel() {
@@ -41,7 +47,7 @@ export class ExampleAppComponent extends PathAppComponent {
             return this.model;
         }
 
-        this.pathService.getModel().then((data) => {
+        this.pathService.getConfiguration(this.modelPath, this.translationsPath).then((data) => {
             if (this.model == null) {
                 this.model = data;
                 console.log("setting start page " + this.getStartPage());
@@ -63,16 +69,11 @@ export class ExampleAppComponent extends PathAppComponent {
         return <any>null;
     }
 
-    public getBackendUrl() {
-        if (window.location.hostname.indexOf("localhost") !== -1) {
-            return "http://localhost:8082/services";
+    public getBackendUrl(): string {
+        if (!this.backendUrl) {
+            console.error("Path-Framework: backendUrl parameter not set in html");
         }
-        let url: string = window.location.href;
-        url = url.replace("/#", "");
-        if (url.endsWith("/")) {
-            return url + "services";
-        }
-        return url + "/services";
+        return this.backendUrl;
     }
 
     protected getBeans() {

@@ -1,4 +1,5 @@
 import {Injectable} from "@angular/core";
+import { PathService } from "./path.service";
 
 @Injectable()
 export class TranslationService {
@@ -58,6 +59,9 @@ export class TranslationService {
 
     public getSupportedLanguageCodes(): string[] {
         return ["en", "de"];
+    }
+
+    public loadTranslations(translations:any) {        
     }
 
     private getTranslations() {

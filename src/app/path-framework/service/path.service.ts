@@ -12,9 +12,12 @@ export class PathService {
         this._requestCount = 0;
     }
 
-    public async getModel(): Promise<any> {
-        let model:any = await this.http.get("assets/model.json").toPromise();
+    public async getConfiguration(modelPath: string, translationsPath: string): Promise<any> {
+        let model:any = await this.http.get(modelPath).toPromise();
         console.log("path-framework ui model loaded:",model.application.pageList.length,"page(s),",model.application.formList.length,"form(s)");
+
+        let translations:any = await this.http.get(translationsPath).toPromise();
+        this.translationService.loadTranslations(translations);
         return model;
     }
 

@@ -60,6 +60,9 @@ export abstract class PathAppComponent implements IPathApp {
     show = false;
 
     constructor(public pathService: PathService, private translationService: TranslationService) {
+    }
+
+    ngAfterContentInit() {
         if (this.getBackendUrl() && this.getBackendUrl().length > 0) {
             this.pathService.serverGet(this.getBackendUrl(), "/ping", (data: any) => {
                 let backendVersion = data["version"];
