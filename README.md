@@ -1,7 +1,5 @@
 # Path Framework
 
-[![Build Status](https://travis-ci.org/mosazhaw/path.svg?branch=master)](https://travis-ci.org/mosazhaw/path)
-
 Path Framework is developed at <a href="https://www.zhaw.ch/de/sml/institute-zentren/iwi/">Zurich University of Applied Sciences</a> (ZHAW) and used in several projects. It is an application framework and rendering engine that renders your application based on a technology-independent GUI model stored in JSON format. Either mock data or any backend REST service (node, Java) may be used with Path Framework.
 <br>
 <br>
@@ -15,8 +13,8 @@ Path Framework is developed at <a href="https://www.zhaw.ch/de/sml/institute-zen
 * Latest changes: Read [changelog](CHANGELOG.md)
 
 ## Live Example
-Live example on Heroku Free (please wait for wakeup): https://path-example.herokuapp.com/<br/>
-Source code: https://github.com/mosazhaw/path-example
+Live example on Render Free (please wait for wakeup): https://path-example-express.onrender.com/<br/>
+Source code: https://github.com/mosazhaw/path-example-express
 
 ## QuickStart
 
