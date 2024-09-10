@@ -1,9 +1,9 @@
 {
   "name": "path-framework",
-  "version": "0.8.0-beta.4",
+  "version": "0.8.0-beta.6",
   "scripts": {
     "ng": "ng",
-    "start": "tsc --project server/tsconfig.json && concurrently \"ng serve\" \"nodemon dist/server/server.js\"",
+    "start": "ng serve",
     "build": "ng build --output-hashing none --optimization=false",
     "release": "ng build --output-hashing none --optimization=true && node build-web-component.js",
     "watch": "ng build --watch --configuration development",
@@ -33,9 +33,6 @@
     "@angular/cli": "18.2.3",
     "@angular/compiler-cli": "18.2.3",
     "@types/jasmine": "5.1.0",
-    "concat-cli": "4.0.0",
-    "concurrently": "8.2.2",
-    "express": "4.19.2",
     "fs-extra": "11.2.0",
     "jasmine-core": "5.1.0",
     "karma": "6.4.0",
@@ -43,10 +40,6 @@
     "karma-coverage": "2.2.0",
     "karma-jasmine": "5.1.0",
     "karma-jasmine-html-reporter": "2.1.0",
-    "multer": "1.4.5-lts.1",
-    "nodemon": "3.1.4",
-    "pouchdb-adapter-memory": "9.0.0",
-    "pouchdb-core": "9.0.0",
     "typescript": "5.4.2"
   }
 }

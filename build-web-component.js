@@ -1,12 +1,8 @@
 const fs = require('fs-extra');
-const concat = require('concat');
-
 const VERSION = process.env.npm_package_version;
 
 build = async () => {
     await fs.emptyDir('./dist/release');
-
-    const VERSION = process.env.npm_package_version;
     fs.createFile("./dist/release/"+ VERSION);
 
     await fs.copyFile("package.publish.json","./dist/release/package.json");
@@ -15,6 +11,7 @@ build = async () => {
     await fs.copyFile("LICENSE","./dist/release/LICENSE");
 
     await fs.copy('./dist/path-framework/browser/media','./dist/release/media')
+    await fs.copy('./dist/path-framework/browser/assets','./dist/release/assets')
     await fs.copyFile('./dist/path-framework/browser/styles.css','./dist/release/styles.css')
     await fs.copyFile('./dist/path-framework/browser/polyfills.js','./dist/release/polyfills.js')
     await fs.copyFile('./dist/path-framework/browser/main.js','./dist/release/main.js')
