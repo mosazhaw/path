@@ -3,11 +3,16 @@ How to run angular app in VS Code:
     NPM SCRIPTS server
 
 How to run web component:
+    run path-example-express to have backend on port 8082
     ng build --output-hashing none --optimization=false
-    copy js/css files to dist-web-component
     cd dist/path-framework
     (npm install -g serve)
     serve
+
+*** Release ***
+    Increase version number in /package.publish.json
+    Run package.json script release
+    Run npm publish in dist/release
 
 *** Docs ***
 https://buddy.works/tutorials/building-web-components-with-angular#installing-setting-up-angular-elements   

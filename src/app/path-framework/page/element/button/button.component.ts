@@ -200,31 +200,32 @@ export class Button extends PageElement implements IButton {
             this.setFormHandler(modelElement["form"]["handler"]);
         }
         this.setPage(modelElement["page"]);
-        if (this.key == null && (modelElement.type === "button" || modelElement.type === "newButton")) {
+        if (this.key == null && modelElement.type !== "newButton") {
+            // set keys for button, but not for newButton
             if (this.parentPageElement != null) {
                 this.key = this.parentPageElement.key;
             }
+        }
 
-            this.name = this.translationService.getText(modelElement["name"]);
-            this.url = KeyUtility.translateUrl(modelElement["url"], <any>null, false, this);
-            if (modelElement["tooltip"] != null) {
-                this.tooltip = this.translationService.getText(modelElement["tooltip"]);
+        this.name = this.translationService.getText(modelElement["name"]);
+        this.url = KeyUtility.translateUrl(modelElement["url"], <any>null, false, this);
+        if (modelElement["tooltip"] != null) {
+            this.tooltip = this.translationService.getText(modelElement["tooltip"]);
+        }
+        // button details
+        if (modelElement["details"] != null) {
+            this.details = [];
+            for (const detail of modelElement["details"]) {
+                const bd: ButtonDetail = new ButtonDetail();
+                bd.text = detail;
+                this.details.push(bd);
             }
-            // button details
-            if (modelElement["details"] != null) {
-                this.details = [];
-                for (const detail of modelElement["details"]) {
-                    const bd: ButtonDetail = new ButtonDetail();
-                    bd.text = detail;
-                    this.details.push(bd);
-                }
-            }
-            // button target
-            this._cssButtonTarget = true;
-            if (this.type === "button") {
-                if (StringUtility.isEmpty(this.form) && StringUtility.isEmpty(this.page) && StringUtility.isEmpty(this.url)) {
-                    this._cssButtonTarget = false;
-                }
+        }
+        // button target
+        this._cssButtonTarget = true;
+        if (this.type === "button") {
+            if (StringUtility.isEmpty(this.form) && StringUtility.isEmpty(this.page) && StringUtility.isEmpty(this.url)) {
+                this._cssButtonTarget = false;
             }
         }
     }
