@@ -6,6 +6,7 @@ import {Output, Input, Component} from "@angular/core";
 import {KeyUtility} from "../../../utility/key-utility";
 
 @Component({
+    standalone: false,
     selector: "path-page-delete-button",
     templateUrl: "page-delete-button.component.html"
 })

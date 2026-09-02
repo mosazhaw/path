@@ -11,6 +11,7 @@ import {Subject} from "rxjs";
 import {debounceTime} from "rxjs/operators";
 
 @Component({
+    standalone: false,
     selector: "path-list",
     templateUrl: "list.component.html"
 })

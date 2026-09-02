@@ -7,7 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
  * Return Type obtained by assignment type.
  */
 
-@Pipe({ name: 'cast' })
+@Pipe({ name: 'cast', standalone: false })
 export class CastPipe implements PipeTransform {
      /**
      * Cast (S: SuperType) into (T: Type) using @Generics.

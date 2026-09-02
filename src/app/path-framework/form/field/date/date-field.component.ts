@@ -7,6 +7,7 @@ import momentImported from "moment";
 const moment = momentImported;
 
 @Component({
+    standalone: false,
     selector: "path-datefield",
     templateUrl: "date-field.component.html"
 })

@@ -10,6 +10,7 @@ import {FocusUtility} from "../../focus-utility";
 import {IForm} from "../../../pathinterface";
 
 @Component({
+    standalone: false,
     selector: "path-translationfield",
     templateUrl: "translation-field.component.html"
 })

@@ -5,6 +5,7 @@ import {Component, Input, Output} from "@angular/core";
 import {PageElement} from "../page-element";
 
 @Component({
+    standalone: false,
     selector: "path-element-list",
     templateUrl: "element-list.component.html"
 })

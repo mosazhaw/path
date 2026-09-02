@@ -6,6 +6,7 @@ import {TranslationService} from "../../../service/translation.service";
 import {KeyUtility} from "../../../utility/key-utility";
 
 @Component({
+    standalone: false,
     selector: "path-link-button",
     templateUrl: "link-button.component.html"
 })

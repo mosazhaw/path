@@ -3,6 +3,7 @@ import {PageElement} from "../page-element";
 import {PathAppComponent} from "../../../path-app.component";
 
 @Component({
+    standalone: false,
     selector: "path-breadcrumb",
     templateUrl: "breadcrumb.component.html"
 })

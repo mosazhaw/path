@@ -9,6 +9,7 @@ declare var Chart: any;
 // Note: Chart would be an example for a custom path element contributed by a path user
 
 @Component({
+    standalone: false,
     selector: "path-radar-chart",
     templateUrl: "chart.component.html"
 })

@@ -4,6 +4,7 @@ import {Button} from "../button/button.component";
 import {PageElement} from "../page-element";
 
 @Component({
+    standalone: false,
     selector: "path-button-group",
     templateUrl: "button-group.component.html"
 })

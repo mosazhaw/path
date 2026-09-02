@@ -9,6 +9,7 @@ import {FormFunction} from "./form-function";
 import {FocusUtility} from "./focus-utility";
 
 @Component({
+    standalone: false,
     selector: "path-form",
     templateUrl: "form.component.html",
 })

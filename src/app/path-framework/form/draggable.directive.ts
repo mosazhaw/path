@@ -4,6 +4,7 @@ import {Directive, ElementRef, HostListener, Input, OnInit} from "@angular/core"
 // MIT License: https://github.com/cedvdb/ng2draggable/blob/master/LICENSE
 
 @Directive({
+    standalone: false,
     selector: "[path-draggable]"
 })
 export class DraggableDirective implements OnInit {

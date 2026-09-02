@@ -6,6 +6,7 @@ import {StringUtility} from "../../../utility/string-utility";
 import {Button} from "./button.component";
 
 @Component({
+    standalone: false,
     selector: "path-back-button",
     templateUrl: "back-button.component.html"
 })

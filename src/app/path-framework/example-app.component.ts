@@ -12,6 +12,7 @@ import { PathAppComponent } from "./path-app.component";
 import { CustomPageElement } from "./page/element/custom/custom-container.component";
 
 @Component({
+    standalone: false,
     selector: "path-application",
     templateUrl: "path-app.component.html",
     providers: [PathService, {provide: TranslationService, useClass: ExampleTranslationService}]

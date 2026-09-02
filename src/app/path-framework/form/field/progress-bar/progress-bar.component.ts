@@ -2,6 +2,7 @@ import {Component, Input, Output} from "@angular/core";
 import {ValueField} from "../value-field";
 
 @Component({
+    standalone: false,
     selector: "path-progress-bar",
     templateUrl: "progress-bar.component.html"
 })

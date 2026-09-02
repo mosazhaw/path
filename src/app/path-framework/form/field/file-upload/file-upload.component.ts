@@ -6,6 +6,7 @@ import {IForm} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
 
 @Component({
+    standalone: false,
     selector: "path-file-upload",
     templateUrl: "file-upload.component.html"
 })

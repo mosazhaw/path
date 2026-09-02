@@ -9,6 +9,7 @@ import {FormFunction} from "../../form-function";
 import {KeyUtility} from "../../../utility/key-utility";
 
 @Component({
+    standalone: false,
     selector: "path-autocomplete",
     // tslint:disable-next-line
     host: {

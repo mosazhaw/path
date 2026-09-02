@@ -4,6 +4,7 @@ import {CustomContainerPageElement} from "./custom-container-page-element";
 import {PageElement} from "../page-element";
 
 @Component({
+    standalone: false,
     selector: "path-custom-container-component",
     template: `
         <ng-template path-custom-directive></ng-template>`

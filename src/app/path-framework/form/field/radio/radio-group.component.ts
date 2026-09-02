@@ -3,6 +3,7 @@ import {Radio} from "./radio";
 import {ValueField} from "../value-field";
 
 @Component({
+    standalone: false,
     selector: "path-radio-group",
     templateUrl: "radio-group.component.html"
 })

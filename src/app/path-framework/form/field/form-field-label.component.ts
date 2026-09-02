@@ -1,6 +1,7 @@
 import {Component, Input} from "@angular/core";
 
 @Component({
+    standalone: false,
     selector: "path-form-field-label",
     templateUrl: "form-field-label.component.html"
 })

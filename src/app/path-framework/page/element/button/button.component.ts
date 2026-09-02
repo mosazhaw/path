@@ -9,6 +9,7 @@ import { StringUtility } from "../../../utility/string-utility";
 import { ColorUtility } from "../../../utility/color-utility";
 
 @Component({
+    standalone: false,
     selector: "path-button",
     templateUrl: "button.component.html"
 })
