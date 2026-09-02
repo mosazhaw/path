@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import { Injectable } from "@angular/core";
 import { PathService } from "./path.service";
 
 @Injectable()
@@ -31,8 +31,10 @@ export class TranslationService {
 
     protected createTranslationMap(data: any): Map<string, string> {
         const result: Map<string, string> = new Map<string, string>();
-        for (const item of Object.keys(data)) {
-            result.set(item, data[item]);
+        if (data) {
+            for (const item of Object.keys(data)) {
+                result.set(item, data[item]);
+            }
         }
         return result;
     }
@@ -61,7 +63,7 @@ export class TranslationService {
         return ["en", "de"];
     }
 
-    public loadTranslations(translations:any) {        
+    public loadTranslations(translations: any) {
     }
 
     private getTranslations() {

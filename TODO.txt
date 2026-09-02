@@ -11,7 +11,7 @@ How to run web component:
 
 *** Release ***
     Increase version number in /package.publish.json
-    Run package.json script release
+    Run package.json: release
     Run npm publish in dist/release
 
 *** Docs ***
