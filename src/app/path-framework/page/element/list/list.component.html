@@ -1,29 +1,35 @@
 <!-- search on mobile devices -->
-<div *ngIf='list.search' class="search-mobile hide-on-desktop">
+@if (list.search) {
+  <div class="search-mobile hide-on-desktop">
     <div class="row">
-        <label for="search-mobile">Search</label>
-        <input id="search-mobile" name="search" [(ngModel)]="list.searchText" placeholder="{{list.searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' class="form-control" type="text">
+      <label for="search-mobile">Search</label>
+      <input id="search-mobile" name="search" [(ngModel)]="list.searchText" placeholder="{{list.searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' class="form-control" type="text">
     </div>
-</div>
+  </div>
+}
 <span>
-    <span>
-        <div class="tile-group">
-            <!-- default search (tablet, desktop) -->
-            <div *ngIf='list.search' class="card-body pl-1 pr-1 pb-1 d-flex flex-column {{(list.searchButton.width <= 1 ? 'tile-medium' : (list.searchButton.width == 2 ? 'tile-wide' : (list.searchButton.width == 3 ? 'tile-wide-3' : (list.searchButton.width >= 4 ? 'tile-wide-4' : ''))))}} tile tile-button hide-on-mobile {{list.searchButton.cssClass}}" [ngStyle]="list.searchButton.cssStyle">
-            <span class="card-title">
+  <span>
+    <div class="tile-group">
+      <!-- default search (tablet, desktop) -->
+      @if (list.search) {
+        <div class="card-body pl-1 pr-1 pb-1 d-flex flex-column {{(list.searchButton.width <= 1 ? 'tile-medium' : (list.searchButton.width == 2 ? 'tile-wide' : (list.searchButton.width == 3 ? 'tile-wide-3' : (list.searchButton.width >= 4 ? 'tile-wide-4' : ''))))}} tile tile-button hide-on-mobile {{list.searchButton.cssClass}}" [ngStyle]="list.searchButton.cssStyle">
+          <span class="card-title">
             <div class="h4 truncate">{{list.searchLabel}}</div>
             <span class="truncate"></span>
             <div class="h5 m-t-5"></div>
             <i class="fa fa-2x fa-search"></i>
-            </span>
-            <form name="search">
-                <input class="form-control" name="search" [(ngModel)]="list.searchText" placeholder="{{list.searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' type="text">
-            </form>
-            </div>
+          </span>
+          <form name="search">
+            <input class="form-control" name="search" [(ngModel)]="list.searchText" placeholder="{{list.searchInputLabel}}" (ngModelChange)='list.filterChanged($event)' type="text">
+          </form>
         </div>
+      }
+    </div>
+  </span>
+  <!-- list -->
+  @for (buttonGroup of list.buttonGroups; track buttonGroup; let i = $index) {
+    <span>
+      <path-button-group [buttonGroup]="buttonGroup"></path-button-group>
     </span>
-    <!-- list -->
-    <span *ngFor='let buttonGroup of list.buttonGroups; let i = index'>
-        <path-button-group [buttonGroup]="buttonGroup"></path-button-group>
-    </span>
+  }
 </span>

@@ -1,3 +1,5 @@
-<span *ngFor="let label of field.subfields;">
+@for (label of field.subfields; track label) {
+  <span>
     <path-label-field [field]="label"></path-label-field>
-</span>
+  </span>
+}

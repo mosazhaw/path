@@ -55,7 +55,7 @@ export class DraggableDirective implements OnInit {
         this.leftStart = event.clientX - this.element.nativeElement.style.left.replace("px", "");
     }
 
-    @HostListener("document:mouseup")
+    @HostListener("document:mouseup", ["$event"])
     onMouseUp(event: MouseEvent) {
         this.md = false;
     }

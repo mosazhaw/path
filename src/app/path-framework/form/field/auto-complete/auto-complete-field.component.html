@@ -1,20 +1,26 @@
 <span class="row">
-<path-form-field-label [class.col-sm-4]="field.width == 1" [class.col-sm-2]="field.width == 2" [label]="field.name" [required]="field.required"></path-form-field-label>
-<div [class.col-sm-8]="field.width == 1" [class.col-sm-10]="field.width == 2">
+  <path-form-field-label [class.col-sm-4]="field.width == 1" [class.col-sm-2]="field.width == 2" [label]="field.name" [required]="field.required"></path-form-field-label>
+  <div [class.col-sm-8]="field.width == 1" [class.col-sm-10]="field.width == 2">
     <div class="input-group">
-        <input #model="ngModel" [readonly]="field.isReadonly()"
-               [class.required-field]="(!model.valid &&!model.pristine && field.required)" [required]="field.required"
-               #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value,$event)
-               (blur)="field.focusLost()" class="form-control" placeholder="">
+      <input #model="ngModel" [readonly]="field.isReadonly()"
+        [class.required-field]="(!model.valid &&!model.pristine && field.required)" [required]="field.required"
+        #inputElement type="text" [ngModel]=field.query?.text (keyup)=field.filter(inputElement.value,$event)
+        (blur)="field.focusLost()" class="form-control" placeholder="">
         <!-- Auto Complete -->
-        <div *ngIf="field.filteredList.length > 0 && !field.isReadonly()" class="path-autocomplete list-group">
-            <a *ngFor="let item of field.filteredList" class="list-group-item list-group-item-action" href="#"
-               (click)="field.select(item)"><span class="path-default-font">{{item.text}}</span></a>
+        @if (field.filteredList.length > 0 && !field.isReadonly()) {
+          <div class="path-autocomplete list-group">
+            @for (item of field.filteredList; track item) {
+              <a class="list-group-item list-group-item-action" href="#"
+                (click)="field.select(item)"><span class="path-default-font">{{item.text}}</span></a>
+              }
+            </div>
+          }
+          <!-- Action -->
+          @if (field.detailForm != null) {
+            <span class="input-group-append">
+              <button (click)="field.showDetailForm()" class="btn btn-outline-secondary" type="button"><span class="path-default-font">{{field.getDetailButtonName()}}</span></button>
+            </span>
+          }
         </div>
-        <!-- Action -->
-        <span *ngIf="field.detailForm != null" class="input-group-append">
-            <button (click)="field.showDetailForm()" class="btn btn-outline-secondary" type="button"><span class="path-default-font">{{field.getDetailButtonName()}}</span></button>
-        </span>
-    </div>
-</div>
-</span>
+      </div>
+    </span>

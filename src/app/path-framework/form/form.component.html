@@ -1,36 +1,74 @@
 <div [ngClass]="form.borderStyle == 2 ? 'modal-content' : ''">
-    <form (ngSubmit)="onSubmit()" #pathForm="ngForm" autocomplete="off" ngNativeValidate>
-        <div *ngIf="form.headerVisible" class="modal-header">
-            <h6 class="modal-title">{{form.title}}</h6>
-            <button type="button" class="close" data-dismiss="modal" (click)="form.close(false,false)">&times;</button>
+  <form (ngSubmit)="onSubmit()" #pathForm="ngForm" autocomplete="off" ngNativeValidate>
+    @if (form.headerVisible) {
+      <div class="modal-header">
+        <h6 class="modal-title">{{form.title}}</h6>
+        <button type="button" class="close" data-dismiss="modal" (click)="form.close(false,false)">&times;</button>
+      </div>
+    }
+    <div class="modal-body container-fluid">
+      @for (row of form.rows; track row) {
+        <div class="row" [hidden]="!row.isVisible()">
+          @for (field of row.fields; track field) {
+            <span class="col" [hidden]="!field.visible">
+              <span class="row">
+                @if (field.type == 'text') {
+                  <path-textfield class="col" [field]="field | cast" ></path-textfield>
+                }
+                @if (field.type == 'translation') {
+                  <path-translationfield class="col" [field]="field | cast" ></path-translationfield>
+                }
+                @if (field.type == 'number') {
+                  <path-numberfield class="col" [field]="field | cast" ></path-numberfield>
+                }
+                @if (field.type == 'label') {
+                  <path-label-field class="col" [field]="field | cast" ></path-label-field>
+                }
+                @if (field.type == 'fieldList') {
+                  <path-field-list class="col" [field]="field | cast" ></path-field-list>
+                }
+                @if (field.type == 'date') {
+                  <path-datefield class="col" [field]="field | cast" ></path-datefield>
+                }
+                @if (field.type == 'autocomplete') {
+                  <path-autocomplete class="col" [field]="field | cast" ></path-autocomplete>
+                }
+                @if (field.type == 'ProgressBarField') {
+                  <path-progress-bar class="col" [field]="field | cast" ></path-progress-bar>
+                }
+                @if (field.type == 'RadioGroupField') {
+                  <path-radio-group class="col" [field]="field | cast" ></path-radio-group>
+                }
+                @if (field.type == 'CheckboxGroupField') {
+                  <path-checkbox-group class="col" [field]="field | cast" ></path-checkbox-group>
+                }
+                @if (field.type == 'fileUpload') {
+                  <path-file-upload class="col" [field]="field | cast" ></path-file-upload>
+                }
+                @if (field.type == 'SliderField') {
+                  <path-slider class="col" [field]="field | cast" ></path-slider>
+                }
+              </span>
+            </span>
+          }
         </div>
-        <div class="modal-body container-fluid">
-            <div class="row" *ngFor='let row of form.rows;' [hidden]="!row.isVisible()">
-				<span class="col" *ngFor='let field of row.fields;' [hidden]="!field.visible">
-					<span class="row">
-					<path-textfield class="col" *ngIf="field.type == 'text'" [field]="field | cast" ></path-textfield>
-					<path-translationfield class="col" *ngIf="field.type == 'translation'" [field]="field | cast" ></path-translationfield>
-					<path-numberfield class="col" *ngIf="field.type == 'number'" [field]="field | cast" ></path-numberfield>
-					<path-label-field class="col" *ngIf="field.type == 'label'" [field]="field | cast" ></path-label-field>
-					<path-field-list class="col" *ngIf="field.type == 'fieldList'" [field]="field | cast" ></path-field-list>
-					<path-datefield class="col" *ngIf="field.type == 'date'" [field]="field | cast" ></path-datefield>
-					<path-autocomplete class="col" *ngIf="field.type == 'autocomplete'" [field]="field | cast" ></path-autocomplete>
-					<path-progress-bar class="col" *ngIf="field.type == 'ProgressBarField'" [field]="field | cast" ></path-progress-bar>
-					<path-radio-group class="col" *ngIf="field.type == 'RadioGroupField'" [field]="field | cast" ></path-radio-group>
-					<path-checkbox-group class="col" *ngIf="field.type == 'CheckboxGroupField'" [field]="field | cast" ></path-checkbox-group>
-					<path-file-upload class="col" *ngIf="field.type == 'fileUpload'" [field]="field | cast" ></path-file-upload>
-					<path-slider class="col" *ngIf="field.type == 'SliderField'" [field]="field | cast" ></path-slider>
-					</span>
-				</span>
-            </div>
-        </div>
-        <div [hidden]="!form.footerVisible" class="modal-footer">
-            <ng-container *ngFor='let field of form.fields'>
-                <button *ngIf="field.type == 'deleteButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
-                <button *ngIf="field.type == 'previousButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
-                <button *ngIf="field.type == 'okButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="submit" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
-                <button *ngIf="field.type == 'cancelButton'" [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
-            </ng-container>
-        </div>
-    </form>
+      }
+    </div>
+    <div [hidden]="!form.footerVisible" class="modal-footer">
+      @for (field of form.fields; track field) {
+        @if (field.type == 'deleteButton') {
+          <button [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+        }
+        @if (field.type == 'previousButton') {
+          <button [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary mr-auto" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+        }
+        @if (field.type == 'okButton') {
+          <button [hidden]="!field.visible" [disabled]="field.isReadonly()" type="submit" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+        }
+        @if (field.type == 'cancelButton') {
+          <button [hidden]="!field.visible" [disabled]="field.isReadonly()" type="button" class="btn btn-outline-secondary" (click)="$any(field).onClick()"><span class="path-default-font">{{field.name}}</span></button>
+        }
+      }
+    </div>
+  </form>
 </div>
