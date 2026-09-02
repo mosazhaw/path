@@ -28,3 +28,18 @@ jobs:
 
       - name: Run unit tests
         run: npm run test:ci
+
+  trigger-integration-tests:
+    needs: verify
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Trigger example application end-to-end tests
+        env:
+          GH_TOKEN: ${{ secrets.PATH_EXAMPLE_DISPATCH_TOKEN }}
+          PATH_SHA: ${{ github.sha }}
+        run: |
+          gh api --method POST repos/mosazhaw/path-example-express/dispatches \
+            -f event_type=path-verified \
+            -f "client_payload[path_sha]=${PATH_SHA}"
