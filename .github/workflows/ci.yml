@@ -52,3 +52,11 @@ jobs:
           CI: true
           PATH_FRAMEWORK_DIR: ${{ github.workspace }}/dist/release
         run: npm run test:e2e
+
+      - name: Upload Playwright report
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v5
+        with:
+          name: playwright-report
+          path: example/playwright-report/
+          retention-days: 14
