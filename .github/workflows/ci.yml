@@ -14,34 +14,41 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: Check out example application tests
+        uses: actions/checkout@v6
+        with:
+          repository: mosazhaw/path-example-express
+          path: example
+
       - name: Use Node.js 24.11.1
         uses: actions/setup-node@v7
         with:
           node-version: 24.11.1
           cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            example/package-lock.json
 
       - name: Install dependencies
         run: npm ci
 
-      - name: Build web component
-        run: npm run build
+      - name: Build release web component
+        run: npm run release
 
       - name: Run unit tests
         run: npm run test:ci
 
-  trigger-integration-tests:
-    needs: verify
-    if: github.event_name == 'push'
-    runs-on: ubuntu-latest
+      - name: Install example application dependencies
+        working-directory: example
+        run: npm ci
 
-    steps:
-      - name: Trigger example application end-to-end tests
+      - name: Install Playwright Chromium
+        working-directory: example
+        run: npx playwright install --with-deps chromium
+
+      - name: Run end-to-end tests
+        working-directory: example
         env:
-          GH_TOKEN: ${{ secrets.PATH_EXAMPLE_DISPATCH_TOKEN }}
-          PATH_SHA: ${{ github.sha }}
-        run: |
-          PATH_SHORT_SHA="${PATH_SHA:0:7}"
-          gh api --method POST repos/mosazhaw/path-example-express/dispatches \
-            -f event_type=path-framework-e2e \
-            -f "client_payload[path_sha]=${PATH_SHA}" \
-            -f "client_payload[path_short_sha]=${PATH_SHORT_SHA}"
+          CI: true
+          PATH_FRAMEWORK_DIR: ${{ github.workspace }}/dist/release
+        run: npm run test:e2e
