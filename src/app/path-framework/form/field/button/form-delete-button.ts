@@ -1,0 +1,24 @@
+import {FormField} from "../form-field";
+import {IButtonHandler} from "../../../pathinterface";
+
+export class FormDeleteButton extends FormField {
+    private _handler!: IButtonHandler;
+
+    get handler(): IButtonHandler {
+        return this._handler;
+    }
+
+    set handler(value: IButtonHandler) {
+        this._handler = value;
+    }
+
+    public onClick() {
+        this.getForm().getApp().yesNo(this.translationService.getText("DeleteWarningQuestion"), async () => {
+            await this.form.close(false, true);
+            if (this._handler != null) {
+                this._handler.doClick(<any>null); // TODO
+            }
+        }, () => {
+        }, false);
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "name": "path-framework",
+  "version": "0.8.0-beta.8",
+  "description": "Path Application Framework",
+  "keywords": [
+    "GUI",
+    "JSON",
+    "REST",
+    "Rapid Application Development",
+    "Rapid Application Manufacturing"
+  ],
+  "homepage": "https://github.com/mosazhaw/path",
+  "bugs": {
+    "url": "https://github.com/mosazhaw/path/issues"
+  },
+  "license": "LGPL-3.0",
+  "author": {
+    "name": "Adrian Moser"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mosazhaw/path.git"
+  },
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {
+    "serve": "14.2.3"
+  }
+}

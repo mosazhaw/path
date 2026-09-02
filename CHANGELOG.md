@@ -2,6 +2,13 @@
 
 Please refer to this document when updating applications using the Path Framework to newer Path versions.
 
+## 0.8
+* Complete rewrite as Web Component
+* Angular is no longer required to run Path
+
+## 0.7
+* Angular 13.x update
+
 ## 0.6
 * Bootstrap 4.x update (from Bootstrap 3)
 * Angular 8.x update
