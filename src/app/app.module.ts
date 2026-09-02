@@ -78,8 +78,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ],
     bootstrap: [AppComponent], imports: [BrowserModule,
         AppRoutingModule,
-        TooltipModule.forRoot(),
-        BsDatepickerModule.forRoot(),
+        TooltipModule,
+        BsDatepickerModule,
         BrowserAnimationsModule,
         FormsModule], providers: [provideHttpClient(withInterceptorsFromDi())]
 })

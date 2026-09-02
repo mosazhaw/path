@@ -2,9 +2,6 @@ import {Component, Input, Output} from "@angular/core";
 import {ValueField} from "../value-field";
 import {IForm} from "../../../pathinterface";
 import {TranslationService} from "../../../service/translation.service";
-import momentImported from "moment";
-
-const moment = momentImported;
 
 @Component({
     standalone: false,
@@ -51,7 +48,7 @@ export class DateField extends ValueField<Date> {
 
     public override setValue(value: Date) {
         if (typeof value === "string") {
-            value = moment(value).toDate();
+            value = this.parseDate(value);
         }
         if (value != null && Object.prototype.toString.call(value) === "[object Date]") {
             // it is a date
@@ -81,5 +78,21 @@ export class DateField extends ValueField<Date> {
             this.setValue(value);
             this._datePickerValue = this.value;
         }
+    }
+
+    private parseDate(value: string): Date {
+        const dateOnly = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value);
+        if (dateOnly) {
+            const year = Number(dateOnly[1]);
+            const month = Number(dateOnly[2]) - 1;
+            const day = Number(dateOnly[3]);
+            const parsed = new Date(year, month, day);
+
+            return parsed.getFullYear() === year && parsed.getMonth() === month && parsed.getDate() === day
+                ? parsed
+                : new Date(NaN);
+        }
+
+        return new Date(value);
     }
 }
