@@ -1,6 +1,6 @@
 {
   "name": "path-framework",
-  "version": "0.8.0-beta.8",
+  "version": "0.8.0",
   "engines": {
     "node": "24.11.1"
   },

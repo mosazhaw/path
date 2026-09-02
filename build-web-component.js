@@ -1,11 +1,17 @@
 const fs = require('fs-extra');
-const VERSION = process.env.npm_package_version;
+const version = process.env.npm_package_version;
 
-build = async () => {
+async function build() {
+    if (!version) {
+        throw new Error('The package version is required to build a release.');
+    }
+
     await fs.emptyDir('./dist/release');
-    fs.createFile("./dist/release/"+ VERSION);
 
-    await fs.copyFile("package.publish.json","./dist/release/package.json");
+    const publishPackage = await fs.readJson('package.publish.json');
+    publishPackage.version = version;
+
+    await fs.writeJson('./dist/release/package.json', publishPackage, { spaces: 2 });
     await fs.copyFile("README.md","./dist/release/README.md");
     await fs.copyFile("CHANGELOG.md","./dist/release/CHANGELOG.md");
     await fs.copyFile("LICENSE","./dist/release/LICENSE");
@@ -17,8 +23,12 @@ build = async () => {
     await fs.copyFile('./dist/path-framework/browser/main.js','./dist/release/main.js')
 
     console.log("**********************************************");
-    console.log("release " + VERSION + " built in dist/release");
-    console.log("use npm publish command in direcotry dist/release");
+    console.log("release " + version + " built in dist/release");
+    console.log("use npm publish command in directory dist/release");
     console.log("**********************************************");
 }
-build();
+
+build().catch((error) => {
+    console.error(error);
+    process.exitCode = 1;
+});
