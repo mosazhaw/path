@@ -2,6 +2,10 @@
 
 Please refer to this document when updating applications using the Path Framework to newer Path versions.
 
+## 0.8.0
+* Stable release of the Web Component-based Path Framework.
+* Development toolchain updated to Angular 21 and Node.js 24.11.1.
+
 ## 0.8
 * Complete rewrite as Web Component
 * Angular is no longer required to run Path
