@@ -1,13 +1,17 @@
 {
   "name": "path-framework",
   "version": "0.8.0-beta.8",
+  "engines": {
+    "node": "24.11.1"
+  },
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --output-hashing none --optimization=false",
     "release": "ng build --output-hashing none --optimization=true && node build-web-component.js",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless"
   },
   "private": true,
   "dependencies": {
