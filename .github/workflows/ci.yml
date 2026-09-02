@@ -40,6 +40,8 @@ jobs:
           GH_TOKEN: ${{ secrets.PATH_EXAMPLE_DISPATCH_TOKEN }}
           PATH_SHA: ${{ github.sha }}
         run: |
+          PATH_SHORT_SHA="${PATH_SHA:0:7}"
           gh api --method POST repos/mosazhaw/path-example-express/dispatches \
-            -f event_type=path-verified \
-            -f "client_payload[path_sha]=${PATH_SHA}"
+            -f event_type=path-framework-e2e \
+            -f "client_payload[path_sha]=${PATH_SHA}" \
+            -f "client_payload[path_short_sha]=${PATH_SHORT_SHA}"
